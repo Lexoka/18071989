@@ -51,24 +51,26 @@
 		Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. Il y a au moins deux façons d'estimer la direction du regard : la première consiste à capturer les mouvements de la tête de l'utilisateur, et à supposer qu'il regarde droit devant lui. Comme cette hypothèse est généralement fausse, on génère un cone dont le sommet est la tête de l'utilisateur, et dont l'axe de révolution correspond à la direction (estimée) du regard. Or, 40~\%{} à 70~\%{} du déplacement du regard est déterminé par la rotation de la tête, tandis que le reste résulte des mouvements oculaires.[ref bouquin] Si cela s'avère souvent insuffisant pour effectuer une sélection directe, le suivi de tête peut présenter un certain intérêt pour la sélection en cascade.
 		
 		\paragraph{}
-A more precise way to estimate a user's gaze is to track not only the position and orientation of their head, but also the position of their eyes. Tempting as this option may be, it presents numerous technical challenges and other issues:
-\begin{itemize}
-	\item Performance may be very dependent on eye color;
-	\item The technology may require bright environments to work well, which is often incompatible with CAVEs, for example;
-	\item Stereoscopic glasses get in the way of eye trackers, and further reduce the brightness around the user's eyes;
-	\item Eye tracking technology is generally expensive;
-	\item The use of one's eyes to select objects makes one acutely aware of one's gaze, which can be disturbing.
-\end{itemize}
-Therefore, eye tracking is unlikely to be suitable, though technological improvements in the near future might alleviate some of the problems associated with it.
+		Pour estimer la direction du regard avec plus de précision, on peut capturer non seulement la position et l'orientation de la tête, mais également l'orientation des yeux. Cette option séduisante présente toutefois quelques difficultés :
+		\begin{itemize}
+			\item Les performances dépendent de la couleur des yeux ;[ref]
+			\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;[ref]
+			\item Les lunettes stéréoscopiques occultent partiellement les yeux pour les \emph{trackers} oculaires, et réduisent la luminosité du blanc des yeux ;[ref]
+			\item Le suivi des yeux, souvent combiné à celui de la tête, est plus coûteux que celui de la tête seule ;
+			\item Le fait d'utiliser ses yeux pour sélectionner un objet fait du regard une action, rend les utilisateurs conscients de la direction dans laquelle ils regardent, ce qui peut être troublant.
+		\end{itemize}
+
+		Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
 		
 	\section{\emph{Speed}}
 		\paragraph{}
-		\emph{Speed} is a target prediction heuristic. When users attempt to select a target, they move the cursor toward it in a way that can be seperated into two phases. During the first one, the cursor accelerates; during the second one, it decelerates. It is during the latter that users tend to be the most precise. \emph{Speed} therefore bases its prediction on the deceleration phase. It estimates the total distance the cursor will eventually cover using a quadratic function. When the cursor has reached 85\%{} of this estimate, \emph{Speed} uses the current direction and estimated total length of the cursor's trajectory to predict where the target is. This techniqued exhibits better performance than previous approaches that did not distinguish between the acceleration and deceleration phases[ref].
-		
-		\paragraph{}	
-However, \emph{Speed} assumes that from the moment users decide to select a target and initiate cursor movement, they know what target to select and where it is, therefore where they wish to move their cursor. Consequently, cursor movement tends to be a roughly straight line. But if targets are mobile, and their trajectories cannot be predicted easily and accurately, this assumption does not hold. Therefore, \emph{Speed} cannot be used for mobile targets. High target density only makes the situation worse, as even a slightly inaccurate estimation the position a user is trying to reach can be enough to select a distractor instead of the correct target.
+		\emph{Speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde. C'est dans cette dernière que l'utilisateur est généralement le plus précis. \emph{Speed} base donc sa prédiction de cible sur la phase de décélération. L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, \emph{Speed} utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Cette technique fournit de meilleurs résultats que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phase d'accélération et de décélération.[ref]
+			
+		\paragraph{}
+		Cependant, \emph{Speed} part du principe qu'au moment où l'utilisateur décide de sélectionner une cible et commence à déplacer le curseur, il sait quelle cible il veut choisir, où elle se trouve, et donc où placer son curseur. De fait, le mouvement effectué est approximativement rectiligne. Mais si les cibles sont mobiles, alors la trajectoire du curseur ne peut plus être supposée rectiligne. Par conséquent, la précision de \emph{Speed} avec des cibles mobiles est sujette à caution. C'est d'autant plus vrai en environnement dense, car une petite erreur de prédiction a d'autant plus de chances d'aboutir à la sélection d'un distracteur que ceux-ci sont nombreux et près de la cible visée.
 		
 	\section{Hook}
 		\paragraph{}
+		
 
 \clearpage
