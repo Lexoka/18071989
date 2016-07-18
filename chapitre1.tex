@@ -71,6 +71,10 @@
 		
 	\section{Hook}
 		\paragraph{}
+		\emph{Hook} est une heuristique de prédiction de cible. Elle se base sur une évaluation continue de la distance entre le curseur et les cibles potentielles. Celles-ci sont triées par ordre de proximité, et les $NCT$ (\emph{Number of Closest Targets} cibles les plus proches du curseur voient leur score augmenter à chaque boucle de l'heuristique, et augmenter d'autant plus fortement qu'elles sont proches du curseur. Toutes les autres cibles voient leur score diminuer, et diminuer d'autant plus fortement qu'elles sont éloignées du curseur.
+		
+		\paragraph{}
+		La cible potentielle dont le score est le plus élevé est considérée comme celle que l'utilisateur cherche probablement à sélectionner. La sélection peut donc se faire par simple pression d'un bouton, sans contrainte particulière sur la position du curseur au moment de la sélection.
 		
 
 \clearpage
