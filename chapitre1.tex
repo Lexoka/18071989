@@ -5,12 +5,25 @@
 \label{chap1}
 \cleardoublepage
 
-    \section{Contrôle du trafic aérien}
-    La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
+	\section{Contrôle du trafic aérien}
+	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
     
-    Bien sûr, cette tâche a aussi la particularité d'être critique, puisque des centaines de vies sont en jeu. C'est un élément dont il faut tenir compte si l'on développe une technique d'interaction pour le contrôle aérien. En effet, au-delà du temps moyen de sélection d'une cible, le temps maximal acceptable et le taux d'erreur sont cruciaux.
+	Quantitativement, un avion de ligne atterrit à environ 250 km/h et ne dépasse pas 1000 km/h. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde.
     
-    Les systèmes de contrôle aérien dont nous avons connaissance sont tous en deux dimensions. Une technique de sélection suffisamment performante pourrait rendre envisageable l'utilisation d'un système en 3D. Cela permettrait par exemple de mieux déterminer si deux avions qui paraissent dangereusement proches dans le plan le sont réellement dans l'espace, ou tout simplement d'avoir une meilleure représentation générale de la situation.
+	Il n'en va toutefois pas de même pour les hélicoptères, qui peuvent faire demi-tour en environ quatre secondes, voire moins. Cependant, les modèles civils dépassent rarement les 300 km/h.
+	
+	Les aéronefs militaires, en revanche, présentent des caractéristiques plus variables, avec des extrêmes plus prononcés. La vitesse d'un avion de chasse peut atteindre 3000 km/h~\cite{mig31}.
+	
+   
+    Hélicoptères ?
+    
+    Essaims de drones ?
+    
+    Missiles balistiques ?
+    
+	Bien sûr, cette tâche a aussi la particularité d'être critique, puisque des centaines de vies sont en jeu. C'est un élément dont il faut tenir compte si l'on développe une technique d'interaction pour le contrôle aérien. En effet, au-delà du temps moyen de sélection d'une cible, le temps maximal acceptable et le taux d'erreur sont cruciaux.
+    
+	Les systèmes de contrôle aérien dont nous avons connaissance sont tous en deux dimensions. Une technique de sélection suffisamment performante pourrait rendre envisageable l'utilisation d'un système en 3D. Cela permettrait par exemple de mieux déterminer si deux avions qui paraissent dangereusement proches dans le plan le sont réellement dans l'espace, ou tout simplement d'avoir une meilleure représentation générale de la situation.
     
 	\begin{figure}[h]
 		\centering
@@ -22,12 +35,23 @@
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation. Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement.
 	
+	Humains : 0 à 45 km/h
+	Changements de direction très imprévisibles et totalement libres.
+	
+	Voitures : 0 à 130 km/h en cas normal, bien plus en course-poursuite
+	Période de changements de direction de l'ordre de la dizaine de secondes, pouvant être de 90 degrés (voire plus) à basse vitesse, beaucoup plus progressifs à grande vitesse.
+	
 	\section{Analyse de processus complexes}
 	
 	\section{Retransmissions d'événements sportifs}
 	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, nécessitant souvent la sélection de cibles mobiles. Il peut être intéressant, par exemple, de sélectionner un joueur de football pour afficher des statistiques. Pour les mêmes raisons, un ballon ou une balle peut être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
 	Des sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les courses athléthiques, hippiques, ou les sports mécaniques présentent des mouvement souvent plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection.
+	
+	Humains : 0 à 45 km/h
+	Changements de direction très imprévisibles et totalement libres
+	
+	Paramètres beaucoup plus variables pour les projectiles, mais raccourci ?
 	
 	Cependant, dans la plupart 
 	
@@ -38,7 +62,7 @@
 	
 	\section{}
     
-    Les tendances observées sur les cibles statiques demeurent, à savoir que la difficulté de la tâche augmente quand la distance entre la cible et le pointeur augmente, ou quand la taille de la cible diminue. Mais l'influence du mouvement de la cible empêche d'appliquer la loi de Fitts. Certes, la difficulté de la tâche augmente aussi avec la vitesse, [ref-mec-interact?] cependant, si la nature du mouvement a une importance cruciale, celle-ci demeure peu étudiée.
+	Les tendances observées sur les cibles statiques demeurent, à savoir que la difficulté de la tâche augmente quand la distance entre la cible et le pointeur augmente, ou quand la taille de la cible diminue. Mais l'influence du mouvement de la cible empêche d'appliquer la loi de Fitts. Certes, la difficulté de la tâche augmente aussi avec la vitesse, [ref-mec-interact?] cependant, si la nature du mouvement a une importance cruciale, celle-ci demeure peu étudiée.
     
     
     
