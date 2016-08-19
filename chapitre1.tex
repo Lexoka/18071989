@@ -8,11 +8,13 @@
 	\section{Contrôle du trafic aérien}
 	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
     
-	Quantitativement, un avion de ligne atterrit à environ 250 km/h et ne dépasse pas 1000 km/h. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde.
+	Quantitativement, un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ces changements sont peu fréquents et généralement prévisibles car ils ont pour but d'emprunter des couloirs aériens, ou des trajectoires d'approche imposées aux abords des aéroports.
     
-	Il n'en va toutefois pas de même pour les hélicoptères, qui peuvent faire demi-tour en environ quatre secondes, voire moins. Cependant, les modèles civils dépassent rarement les 300 km/h.
+	Il n'en va toutefois pas de même pour les hélicoptères, qui peuvent faire demi-tour en environ quatre secondes, voire moins. Cependant, les modèles civils dépassent rarement les 300 km/h. La fréquence des changements de direction dépend considérablement de la mission, elle peut être faible pour un simple transport d'un point A vers un point B, auquel cas la trajectoire de l'hélicoptère va tendre vers la ligne droite, ou assez importante dans le cas d'un hélicoptère de police fournissant une assistance aérienne pendant une course-poursuite.
 	
-	Les aéronefs militaires, en revanche, présentent des caractéristiques plus variables, avec des extrêmes plus prononcés. La vitesse d'un avion de chasse peut atteindre 3000 km/h~\cite{mig31}.
+	Les aéronefs militaires présentent des caractéristiques beaucoup plus variables, dans des intervalles nettement plus grands. La vitesse d'un avion de chasse, par exemple, peut atteindre 3000~km/h~\cite{mig31}. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la maœuvrabilité de tels engins, mais il est du moins clair qu'un avion de chasse moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs. La fréquence maximale à laquelle un avion peut changer de direction est également difficile à connaître avec certitude, mais une simple observation d'une démonstration en vol permet d'estimer que cette valeur est, grossièrement, de l'ordre d'un changement par seconde environ~\cite{rafdemo}.
+	
+	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils, sans qu'il soit aisé de quantifier cette différence.
 	
    
     Hélicoptères ?
