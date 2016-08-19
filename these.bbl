@@ -1,4 +1,19 @@
-\begin{thebibliography}{MiG16}
+\begin{thebibliography}{OoNR15}
+
+\bibitem[Ato16]{reaper}
+General Atomics.
+\newblock Predator-b, reaper.
+\newblock \url{http://www.ga-asi.com/predator-b}, 2016.
+
+\bibitem[Avi15]{rafdemo}
+Dassault Aviation.
+\newblock Rafale, démonstration en vol.
+\newblock \url{https://www.youtube.com/watch?v=vo0ZN2_O29M}, 2015.
+
+\bibitem[dAF16]{dronesuaf}
+Union des Aéroports~Français.
+\newblock Drones.
+\newblock \url{http://www.aeroport.fr/page/page/drones}, 2016.
 
 \bibitem[MiG16]{mig31}
 Russian Aircraft~Corporation MiG.
@@ -6,5 +21,12 @@ Russian Aircraft~Corporation MiG.
 \newblock
   \url{http://www.migavia.ru/index.php/en/production/mig-31e-fighter?limit=1&s%
 tart=2}, 2016.
+
+\bibitem[OoNR15]{locust}
+US~Department of~Defense Office~of Naval~Research.
+\newblock Locust: Autonomous, swarming uavs fly into the future.
+\newblock
+  \url{http://www.onr.navy.mil/Media-Center/Press-Releases/2015/LOCUST-low-cos%
+t-UAV-swarm-ONR.aspx}, 2015.
 
 \end{thebibliography}
