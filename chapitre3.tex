@@ -7,7 +7,190 @@
 
 
 
-blabla
+\section{Étude de l'aquisition de cibles mobiles erratiques}
+
+\subsection{Characterizing Erratic Motion}
+In order to study performance when acquiring targets with erratic movements, we
+need a quantifiable, controllable and replicable way to generate such motion. We
+propose to characterize the nature of motion with three parameters:
+ S: the speed at which the target moves, in cm/s;
+ F: the frequency at which the target's direction vector is rotated, in Hz;
+ A: the maximum angle by which the direction vector of the target can be rotated:
+after every period T = 1/F, the direction vector of the target is rotated by the angle
+alpha which is pseudo-randomly sampled from [-A;+A] (with A in degrees of arc).
+These parameters (and their values in the following experiment) only capture a part
+of all possible types of motion, since simulating all of them would have been too
+complex and unmanageable, with too many parameters (e.g., acceleration, curvature,
+etc.). We rather chose a trade-off between simplicity and the potential to simulate
+types of motion that participants in our experiment would perceive as fundamentally
+different in nature. In particular, varying F and A allows the simulation of a wide
+range of movements, from regular to erratic.
+
+\subsection{Expérience}
+We conducted an experiment with 13 right-handed participants, aged 14 to 56. They
+were asked to click with a mouse on a moving target displayed on a desktop monitor.
+
+\paragraph{Dispositif expérimental}
+The input device was a standard mouse without acceleration, moving a
+standard crosshair pointer on a Dell UltraSharp U2412M 24” display. The task was
+performed in a square window of 1000 pixels (about 23.87cm).
+
+\paragraph{Task and Conditions}
+The task consisted in selecting one circular target among 50,
+with a fixed diameter of 5.4mm. The 49 “distractors” were displayed in gray, and the
+target to select in red (see Figure 3(b)). Both the target and the distractors moved
+according to the current condition, defined by the S, F and A parameters, and bounced
+off the edges of the window. To control the pointing amplitude, the motion of the
+distractors was constrained so that after selecting a target, the distance between the
+mouse cursor and the next target was constant (of about 7.96cm). When the participant successfully selected the red target, it briefly turned green while the next target to
+select turned red at the same time.
+Selection involves a trade-off between speed and accuracy [4], and users can adopt
+different approaches to this trade-off. In order to minimize such variation in selection
+strategy, participants were instructed to select the target as fast as possible but with at
+most 5 attempts. The number of remaining attempts for each trial was displayed in the
+top left corner of the window. After the last try, the word “failure” was displayed and
+the participant was asked to keep trying to select the target, but without trying to
+minimize errors. Thus, failures are not absolute, but indicate critical conditions for
+which selection is very difficult.
+We tested all combinations of the following (S,A,F) values, replicated 4 times:
+ S: 0.73, 1.46 and 2.19 cm/s (3 values);
+ F: 1, 2, 4, 8, 13, 20 and 30Hz (6 values);
+ A: 0, 30, 60, 90, 120 and 180 degrees of arc (7 values).
+An additional baseline condition was added with static targets, which was replicated 20 times. When A = 0, targets move in straight lines. In summary, we tested a total of 3×6×7 + 1 = 127 conditions, and 524 trials (126×4 + 1×20) per participant.
+
+\paragraph{Procédure et collecte de données.}
+Each session lasted approximately 40 minutes, including a training phase of over 50 trials, after which participants felt comfortable
+with the task. Short breaks were allowed after 25\%{}, 50\%{} and 75\%{} of the trials were
+completed. At the end of the session, participants were administered a short question-
+naire about their perception of the different classes of motion and the strategies they
+had adopted.
+We collected Selection Time from the moment the target turned red to the success-
+ful click, Erroneous Clicks (i.e. clicks outside of the target disk), and Failures (i.e.
+last erroneous clicks of the 5 tries).
+
+\section{Résultats et analyse}
+\subsection{Performance de sélection}
+All the values presented here are averaged across the subjects. Performance in the
+easiest conditions was relatively stable across participants: our slowest participant
+was less than 4 times slower than the fastest one for straight motion. However, there
+was a considerable amount of variation for the most difficult conditions (by a factor
+of over 18 from the fastest to the slowest participant). We therefore normalized selec-
+tion times to avoid bias from the slowest participants: for each participant, the result-
+ing averages of normalized selection times (ANSTs) are the average of selection time
+per condition, normalized according to the most difficult condition for the given par-
+ticipant. Therefore, if a condition has an ANST of 0.75 for a given participant, it
+means that this participant needed 75\%{} as much time on average to select targets in
+this condition as in the condition he/she found most difficult. Because the condition
+that was precisely the most difficult may be slightly different for each participant, no
+condition has an average ANST of 1.0 across all subjects.
+The number of errors ranges from 0 to 5. An error rate of 3.5 for a given condition
+means that on average, participants made 3.5 failed clicks for each trial in that condi-
+tion. A failure rate of 50\%{} for a given condition means that on average, 50\%{} of the
+trials in that condition were failed, i.e. that participants made at least 5 failed clicks in
+50\%{} of their trials. Note that because of growing concerns in various research fields
+over the limits of null hypothesis significance testing for reporting and interpreting
+experimental results [1, 2], our discussions are based on effect sizes (reported as per-
+cent differences1).
+
+\paragraph{Vitesse}
+We observed that both selection time and error rate increase when speed in-
+creases, as illustrated in Figure 1(a): average ANST at the highest speed (37\%{}) is
+higher than in the lowest one (17\%{}) with a percent difference of 74\%{}. We observe
+that selection time and error rates are roughly affine functions of speed. We only in-
+cluded the plots for A = 90, but the results for all other values of A are very similar.
+
+\paragraph{Angle}
+Parameter A exhibits more complicated tendencies, with an interaction with
+both S and F. At low speed, A has a small effect on selection times (for S = 0.73 and
+F = 4, when A = 0, ANST = 14\%{} and when A = 120, ANST = 20\%{}; percent differ-
+ence of 33\%{}, the highest observed at this speed) but a bigger effect at high speed (for
+S = 2.19, at the same A and F, ANSTs are respectively 21\%{} and 54\%{}; percent differ-
+ence of 90\%{}). A possible explanation is that at low speed, selection is almost as easy
+as with static targets, regardless of the nature of the motion. Figure 1(c) illustrates the
+effect of A at high speed. We observe that as long as frequency is low, higher values
+of A imply higher selection times. However, as F increases, the effect of A on selec-
+tion time is changed: after steadily increasing with A, selection time reaches a plateau,
+and then decreases. Furthermore, the value of A associated with this plateau (Apeak)
+depends on F: as F increases, Apeak decreases.
+We also observed that the number of errors and failure rates follow the same trends
+and that at medium speed, these trends are similar but less pronounced.
+
+\paragraph{Fréquence}
+A similar pattern can be observed for frequency: F has a smaller effect on
+selection time when speed is low, but a larger one at high speed. On Figure 1(d), we
+observe that for lower values of A, higher frequencies are correlated with higher se-
+lection time, but for higher values of A, the trend changes. When A is high, selection
+time increases with F up to a certain peak (Fpeak) and then decreases. Furthermore, the
+value of Fpeak decreases as A increases. Trends for number of errors and failure rates
+are consistent with those observed for selection time, and as for angle widths, trends
+at medium speed are similar to those at high speed, although less pronounced.
+
+\subsection{Analyse exploratoire}
+We also considered our parameter space as a whole in order to identify general trends.
+The heat maps in figures 2(a) and 2(b) represent the ANSTs for medium and high
+speeds. In each of those heat maps, A stands on the horizontal axis, and F on the ver-
+tical one. Each intersection is thus the average of ANSTs for the corresponding condi-
+tion. The heat maps in figures 2(b), 2(c) and 2(d) present the highest speed we tested,
+since it resulted in the most pronounced effects of A and F. In Figure 2(b), we observe
+that a region of the heat map approximately centred on the main diagonal (from top-
+left to bottom-right) exhibits the highest selection times. Figure 2(c) displays the av-
+erage error rates for each condition, which are correlated with selection times. Finally,
+failure rates are presented in figure 2(d).
+These heat maps suggest that selection is especially difficult for combinations of
+wide angles with low frequencies, narrow angles with high frequencies, or medium
+angles with moderate frequencies.
+Figure 2 - Selection performance as a function of A and F, for different values of S.
+
+\paragraph{Prévisibilité selon les angles et fréquences}
+The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak,
+which in our data is around 1,100, selection time is maximal. We suppose that AFpeak
+would vary in different conditions, e.g. target width or pointing distance as described
+by Fitts’ law, but it remains stable for the three different speeds we have tested, and
+therefore probably independent of this parameter. As mentioned before, we observed
+error rate to be generally strongly correlated with selection time, and so to also de-
+pend on the A×F product.
+
+\paragraph{Impressions subjectives}
+The answers to our questionnaire were consistent with, and complementary to, our quantitative results. Indeed, 92\%{} of our participants were able to identify different categories of motion: 77\%{} of them identified at least three major categories, together with two or three corresponding selection strategies.
+Figure 3 - Selection time as a function of A×F. Screenshot of the application.
+
+\paragraph{Catégories et stratégies}
+Participants first described rather steady motion, in roughly straight lines, with few or small deviations. In the second case, they identified “jerky” or “erratic” motion that they characterized by frequent, significant changes in direction. In the third case, they described the motion as “Brownian”, or “oscillations” or “vibrations”. More interestingly, 92\%{} of them explained that they would try to anticipate the target’s movement and to intercept it, and those who had identified a steady category specifically linked this strategy to it. However, our participants had no “clever” way of catching jerky targets, and would simply try to be fast enough and click a lot, thus making many errors. For the vibrating category, 69\%{} of them said
+they would aim for the “average” position of the target over a short period of time, and either try to intercept it or just click and hope for the best.
+
+\paragraph{Interprétation}
+The steady category reflects how our participants perceived the con-
+ditions where both angle width and change frequency were low. The jerky category
+relates to the difficult diagonal of our heat maps, and the vibrating category is the one
+with both high frequency and angle width. The important observation is that the strat-
+egy of anticipation requires a certain degree of predictability, since one can only an-
+ticipate what one can predict. Likewise, aiming for the average position of a target is a
+prediction. On the other hand, the jerky category seems to be very difficult to predict.
+We therefore conclude that the steady and vibrating categories of moving targets
+are relatively easy to acquire because their movements are quite predictable, whereas
+jerky targets are more difficult because less predictable. Of course, the borders be-
+tween these categories are hard to determine formally and are likely to depend on the
+user perception of the movement.
+
+\section{Conclusion and perspectives}
+We have proposed a way to characterize the erratic behavior of moving targets with
+three parameters: speed, angle width and frequency, and tested pointing performance
+when varying these parameters. We have shown that the nature of target motion af-
+fects pointing performance, which is not captured by Fitts’ law’s index of difficulty.
+The latter can only describe the best case, and does not indicate that acquiring fast,
+highly erratic targets can be extremely difficult.
+Although the (S,A,F) set of parameters we have proposed models a continuum of
+target motion, our participants were able to distinguish at least three distinct catego-
+ries that we have characterized (steady, vibrating and jerky). Our results suggest that
+for erratic targets, predictability determines pointing performance. And while the
+steady and vibrating categories are relatively predictable, the jerky one is not.
+We have also observed that the A×F product might be a promising way to assess
+predictability, although we still need more data to deduce a predictive law for the
+acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward
+a more formal study of the acquisition of erratic targets, and introduces a way to bet-
+ter characterize or even control their movement. Ultimately, such a model could be
+instrumental in the design of new selection techniques.
+
 
 
 \clearpage
