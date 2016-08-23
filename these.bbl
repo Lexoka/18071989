@@ -1,4 +1,11 @@
-\begin{thebibliography}{OoNR15}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{AMMSR16}
+
+\bibitem[AMMSR16]{alonso2016distributed}
+Javier Alonso-Mora, Eduardo Montijano, Mac Schwager, and Daniela Rus.
+\newblock Distributed multi-robot formation control among obstacles: A
+  geometric and optimization approach with consensus.
+\newblock 2016.
 
 \bibitem[Ato16]{reaper}
 General Atomics.
@@ -35,5 +42,14 @@ US~Department of~Defense Office~of Naval~Research.
 \newblock
   \url{http://www.onr.navy.mil/Media-Center/Press-Releases/2015/LOCUST-low-cos%
 t-UAV-swarm-ONR.aspx}, 2015.
+
+\bibitem[SCP{\etalchar{+}}14]{saska2014autonomous}
+Martin Saska, Jan Chudoba, Libor P{\v{r}}eu{\v{c}}il, Justin Thomas, Giuseppe
+  Loianno, Adam T{\v{r}}e{\v{s}}{\v{n}}{\'a}k, Vojt{\v{e}}ch Von{\'a}sek, and
+  Vijay Kumar.
+\newblock Autonomous deployment of swarms of micro-aerial vehicles in
+  cooperative surveillance.
+\newblock In {\em Unmanned Aircraft Systems (ICUAS), 2014 International
+  Conference on}, pages 584--595. IEEE, 2014.
 
 \end{thebibliography}
