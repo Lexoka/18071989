@@ -21,7 +21,7 @@
 		\centering
 		\includegraphics[width=\textwidth]{figures/AlFursan}
 		\caption{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Crédit : The National UAE (\url{http://www.thenational.ae}).}
-		\label{fig:swarm}
+		\label{fig:alfursan}
 	\end{figure}
 	
 	\paragraph{}
@@ -33,12 +33,12 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/swarm}
-		\caption{Petit essaim de drones aériens. Crédit : International Business Times (\url{http://www.ibtimes.co.uk}).}
+		\caption{Petit essaim de drones aériens. Crédit : \emph{International Business Times}.}
 		\label{fig:swarm}
 	\end{figure}
 	
 	\paragraph{}
-	Dans une certaine mesure, le contrôle du trafic de drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le Ministère de l'écologie et du développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français~\cite{dronesuaf}.
+	Dans une certaine mesure, le contrôle de la circulation des drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le Ministère de l'écologie et du développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français~\cite{dronesuaf}.
 	
 	\paragraph{}
 	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de chasse, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II dont une maquette est représentée sur la figure~\ref{fig:brahmos}.
@@ -59,23 +59,47 @@
 
 	Les systèmes de contrôle aérien dont nous avons connaissance sont tous en deux dimensions. Pour des engins volants, cela implique nécessairement une perte d'informations. Une technique de sélection suffisamment performante pourrait rendre envisageable l'utilisation d'un système en 3D. Cela permettrait par exemple de mieux déterminer si deux avions qui paraissent dangereusement proches dans le plan le sont réellement dans l'espace, ou de pouvoir choisir un objet parmi plusieurs évoluant aux mêmes coordonnées 2D, mais à des altitudes différentes, ou tout simplement d'avoir une meilleure représentation et perception générales de la situation.
 
-
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/Radar-Scope-ZSE}
-		\caption{Écran de contrôle du trafic aérien. Crédit : www.boldmethod.com}
+		\caption{Écran de contrôle du trafic aérien. Crédit : \emph{Bold Method}.}
 		\label{fig:airtraffic}
 	\end{figure}
 	
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation. Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement.
 	
+	\paragraph{}
 	La vitesse d'un être humain à pied est inférieure à 45~km/h. Les changements de direction peuvent aller jusqu'au demi-tour, et leur fréquence est très variable selon la tâche accomplie. On peut supposer que cette fréquence est au plus de l'ordre de quelques Hz, en pratique généralement moins.
+
+	\paragraph{}	
+	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, exception faite de ceux qui enfreignent le code de la route. Mais, soit à cause de l'infraction en question, soit parce qu'ils l'enfreignent pour fuir après des délits ou crimes plus graves, ces véhicules-là peuvent justement faire l'objet d'une attention particulière de la part des forces de l'ordre. Dans ces cas-là, la vitesse d'un véhicule peut dépasser les 300~km/h~\cite{speeding}.
 	
-	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, exception faite 
+	Les changements de direction dépendent évidemment de la vitesse. En ville, à moins de 50~km/h, une automobile peut effectuer un virage à 90 degrés dans un laps de temps de l'ordre de la seconde si sa vitesse est réduite, mais elle est contrainte à des courbes beaucoup plus douces lorsqu'elle se déplace rapidement, par exemple sur une autoroute.
 	
-	Voitures : 0 à 130 km/h en cas normal, bien plus en course-poursuite
-	Période de changements de direction de l'ordre de la dizaine de secondes, pouvant être de 90 degrés (voire plus) à basse vitesse, beaucoup plus progressifs à grande vitesse.
+	La fréquence des changements de direction dépend également de la vitesse, tant pour des raisons physiques que du fait du tracé des trajets communément effectués. En milieu urbain dense, on peut considérer qu'un véhicule va changer de direction, de façon plus ou moins prononcée, à une fréquence de l'ordre de 0,1~Hz, sachant qu'en cas de nécessité, cette fréquence peut être nettement plus élevée.
+	
+	\paragraph{}
+	En plus des piétons et des automobiles, la vidéo-surveillance s'applique à tous les véhicules et moyens de déplacement susceptibles d'être utilisés dans l'espace public : patins à roulettes, skateboards de tous types, bicyclettes, motocyclettes, etc. Les caractéristiques du mouvement de ces moyens de transport sont diverses, mais généralement comprises dans les intervalles formés par les piétons et les automobiles. Il est donc important qu'une technique de sélection puisse non seulement gérer les valeurs extrêmes de vitesse, d'angle et de fréquence de changements de direction, mais également les diverses combinaisons de ces valeurs qui peuvent se présenter simultanément.
+	
+	\paragraph{}
+	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance 
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/crowdhk}
+		\caption{Foule de manifestants à Hong-Kong. Mouvement très faible, mais densité très élevée. Crédit : \emph{Business Insider}.}
+		\label{fig:crowdhk}
+	\end{figure}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/crowdacdc}
+		\caption{Foule à un concert du groupe AC/DC. Mouvement presque nul, mais densité extrêmement élevée. Crédit : \emph{SHP Online}.}
+		\label{fig:crowdhk}
+	\end{figure}
+	
+	
 	
 	\section{Analyse de processus complexes}
 	
