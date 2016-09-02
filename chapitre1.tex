@@ -5,6 +5,8 @@
 \label{chap1}
 \cleardoublepage
 
+	\section{Simulations moléculaires}
+	
 	\section{Contrôle de l'espace aérien}
 	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
 	
@@ -102,26 +104,44 @@
 	
 	
 	\section{Analyse de processus complexes}
+	Mélange d'humains, de machines, espaces 3D, multiplicité d'objets, etc.
 	
 	\section{Retransmissions d'événements sportifs ou artistiques}
-	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, nécessitant souvent la sélection de cibles mobiles. Il peut être intéressant, par exemple, de sélectionner un joueur de football pour afficher des statistiques. Pour les mêmes raisons, un ballon ou une balle peut être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
+	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, nécessitant souvent la sélection de cibles mobiles. Il peut être utile, par exemple, de sélectionner un joueur de football pour afficher ses statistiques. Pour les mêmes raisons, un ballon ou une balle peut être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
-	Des sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les courses athléthiques, hippiques, ou les sports mécaniques présentent des mouvement souvent plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection.
+	\paragraph{}
+	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pieds obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc., sans parler des sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont souvent plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection.
 	
-	La vitesse d'un être humain à pied est normalement comprise entre 0 à 45~km/h.
-	Changements de direction très imprévisibles et totalement libres
+	\paragraph{}
+	Les divers projectiles utilisés en sports (balles, ballons, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficile. D'un autre côté, il n'y a généraelement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié serait probablement une option préférable à l'utilisation d'une technique de sélection libre, fût-elle assistée.
 	
-	Paramètres beaucoup plus variables pour les projectiles, mais raccourci ?
-	
-	Cependant, dans la plupart des cas
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/basket}
+		\caption{Match de basket-ball. Les joueurs sont peu nombreux, mais leurs mouvements sont vifs, horizontaux comme verticaux, et imprévisibles. Ils sont de plus très près les uns des autres et s'occultent mutuellement, \emph{a fortiori} quand ils sont filmés depuis le côté. Le ballon lui-même peut être une cible. Crédit : \emph{Weekend Notes}.}
+		\label{fig:crowdacdc}
+	\end{figure}
 	
 	\section{Jeux vidéo}
-	La sélection ou le pointage de cibles mobiles est une tâche que l'on retrouve dans de très nombreux jeux vidéo, appartenant à un nombre important de catégories. On peut notamment citer les jeux de tir (\emph{Fist-person Shooters}, ou FPS), les jeux de stratégie et tactique militaire (les catégories \emph{Real-time strategy} ou RTS, et \emph{Real-time tactics} ou RTT), les simulateurs de vol de combat (réalistes ou non) ainsi que les jeux de type arène de bataille en ligne multijoueur (\emph{Multiplayer online battle arena}, ou MOBA).
+	La sélection ou le pointage de cibles mobiles est une tâche que l'on retrouve dans de très nombreux jeux vidéo, appartenant à un nombre important de catégories. On peut notamment citer les jeux de tir (\emph{Fist-person Shooters}, ou FPS), les jeux de rôle d'action (\emph{Action role-playing game}, ou ARPG) les jeux de stratégie et tactique militaire (les catégories \emph{Real-time strategy} ou RTS, et \emph{Real-time tactics} ou RTT), les simulateurs de vol de combat (réalistes ou non) ainsi que les jeux de type arène de bataille en ligne multijoueur (\emph{Multiplayer online battle arena}, ou MOBA).
+	
+	\subsection{Jeux de tir (FPS) et jeux de rôle d'action (ARPG)}
+	Attendu que dans les FPS, la visée est précisément le cœur du jeu, et censée être difficile, les développeurs seraient probablement peu enclins à intégrer des techniques la facilitant, car cela diminuerait l'intérêt ludique de leur œuvre. Dans un jeu de rôle classique, c'est plutôt l'inverse. Les capacités du (des) personnage(s) contrôlé(s) par le joueur dépendent de l'expérience accumulée depuis le début du jeu, l'expérience étant ici une ressource précisément quantifiée, sous forme de points. Ces points sont ensuite investis dans des attributs (force, dextérité, endurance, intelligence\ldots{}) ou compétences (combat à mains nues, tir au fusil, persuasion, furtivité, magie de types divers\ldots{}). Souvent, les performances de visée d'un personnage dépendent uniquement de ses attributs et compétences, et non de la dextérité du joueur, qui n'a pas forcément besoin de désigner les cibles (le personnage les choisissant automatiquement) ou qui peut le faire pendant que l'action du jeu est en pause.
+	
+	\paragraph{}
+	Mais il existe aussi une catégorie intermédiaire, les jeux de rôle d'action (ARPG). Les détails varient d'un jeu à l'autre, mais en général, le joueur est directement responsable des mouvements de ses personnages, mais les attributs et compétences du personnage ont une influence sur ses performances finales. Ce principe peut être mis en œuvre de diverses façons. En ce qui concerne le tir avec une arme (pistolet, arc, fusil\ldots{}) trois options, pas forcément mutuellement exclusives, sont couramment retenues :
+	\begin{description}
+		\item[Dispersion.] Quand les compétences de tir du personnage sont faibles, le réticule de visée est agrandi, ce qui indique au joueur que le cône de dispersion est large. À mesure que les compétences du personnage augmentent, le réticule et le cône se resserrent.
+		\item[Perturbations.] Le curseur et le cône de dispersion peuvent être constants, mais ils bougent même lorsque le joueur ne touche pas à son périphérique de saisie. Celui-ci doit donc compenser ces mouvements pour viser correctement. À mesure que les compétences du personnage augmentent, ces mouvements diminuent, et peuvent finir par disparaître.
+		\item[Recul.] Une arme qui tire un projectile a généralement un certain recul. Celui-ci n'a pas d'influence sur la précision du premier tir, mais sur tous les suivants. Dans un jeu vidéo, il est généralement simulé par un mouvement du curseur après le tir, habituellement vers le haut, avec en plus une composante horizontale, qui peut être aléatoire. On peut diminuer cet effet de recul quand les compétences du personnage croissent.
+	\end{description}
+
+	
+	Ces mécanismes permettent d'obtenir une difficulté de tir qui dépend du joueur, puisqu'il doit tout de même viser, mais les compétences du personnage jouent sur la difficulté de la tâche. On remarque qu'il s'agit toujours de gêner le joueur, de lui imposer un handicap qui diminue quand les compétences de ses personnages augmentent. Au final, le joueur reste borné par sa propre dextérité, comme dans un FPS classique.
 	
 	
 	
-	\section{}
-    
+	\section{}    
 	Les tendances observées sur les cibles statiques demeurent, à savoir que la difficulté de la tâche augmente quand la distance entre la cible et le pointeur augmente, ou quand la taille de la cible diminue. Mais l'influence du mouvement de la cible empêche d'appliquer la loi de Fitts. Certes, la difficulté de la tâche augmente aussi avec la vitesse, [ref-mec-interact?] cependant, si la nature du mouvement a une importance cruciale, celle-ci demeure peu étudiée.
     
     
