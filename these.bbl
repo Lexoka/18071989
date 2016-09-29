@@ -17,6 +17,12 @@ Dassault Aviation.
 \newblock Rafale, démonstration en vol.
 \newblock \url{https://www.youtube.com/watch?v=vo0ZN2_O29M}, 2015.
 
+\bibitem[CLP09]{chapuis2009dynaspot}
+Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
+\newblock Dynaspot: speed-dependent area cursor.
+\newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
+  Computing Systems}, pages 1391--1400. ACM, 2009.
+
 \bibitem[dAF16]{dronesuaf}
 Union des Aéroports~Français.
 \newblock Drones.
@@ -34,12 +40,27 @@ Gamepedia.
 \newblock Turn rate.
 \newblock \url{http://dota2.gamepedia.com/Turn_rate}, 2016.
 
+\bibitem[GB05]{grossman2005bubble}
+Tovi Grossman and Ravin Balakrishnan.
+\newblock The bubble cursor: enhancing target acquisition by dynamic resizing
+  of the cursor's activation area.
+\newblock In {\em Proceedings of the SIGCHI conference on Human factors in
+  computing systems}, pages 281--290. ACM, 2005.
+
 \bibitem[IGN05]{cossacks2}
 IGN.
 \newblock Cossacks ii: Napoleonic wars strategic guide.
 \newblock
   \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-stra%
 tegy-guide}, 2005.
+
+\bibitem[KB95]{kabbash1995prince}
+Paul Kabbash and William~AS Buxton.
+\newblock The “prince” technique: Fitts' law and selection using area
+  cursors.
+\newblock In {\em Proceedings of the SIGCHI conference on Human factors in
+  computing systems}, pages 273--279. ACM Press/Addison-Wesley Publishing Co.,
+  1995.
 
 \bibitem[MiG16]{mig31}
 Russian Aircraft~Corporation MiG.
@@ -70,5 +91,12 @@ Radio~Télévision Suisse.
 \newblock
   \url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-%
 km-h-sur-l-a1.html}, 2011.
+
+\bibitem[WWBH97]{worden1997making}
+Aileen Worden, Nef Walker, Krishna Bharat, and Scott Hudson.
+\newblock Making computers easier for older adults to use: area cursors and
+  sticky icons.
+\newblock In {\em Proceedings of the ACM SIGCHI Conference on Human factors in
+  computing systems}, pages 266--271. ACM, 1997.
 
 \end{thebibliography}
