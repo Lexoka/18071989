@@ -17,6 +17,11 @@ Dassault Aviation.
 \newblock Rafale, démonstration en vol.
 \newblock \url{https://www.youtube.com/watch?v=vo0ZN2_O29M}, 2015.
 
+\bibitem[BTS12]{berg_biochemistry_2012}
+Jeremy~Mark Berg, John~L Tymoczko, and Lubert Stryer.
+\newblock {\em Biochemistry}.
+\newblock W. H. Freeman and Company, New York, N.Y, 2012.
+
 \bibitem[CLP09]{chapuis2009dynaspot}
 Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
 \newblock Dynaspot: speed-dependent area cursor.
@@ -27,6 +32,14 @@ Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
 Union des Aéroports~Français.
 \newblock Drones.
 \newblock \url{http://www.aeroport.fr/page/page/drones}, 2016.
+
+\bibitem[DGM{\etalchar{+}}13]{debarba2013disambiguation}
+Henrique~G Debarba, Jer{\^o}nimo~G Grandi, Anderson Maciel, Luciana Nedel, and
+  Ronan Boulic.
+\newblock Disambiguation canvas: a precise selection technique for virtual
+  environments.
+\newblock In {\em IFIP Conference on Human-Computer Interaction}, pages
+  388--405. Springer, 2013.
 
 \bibitem[Gal16]{missiles}
 Caroline Galactéros.
@@ -68,6 +81,15 @@ Paul Kabbash and William~AS Buxton.
   computing systems}, pages 273--279. ACM Press/Addison-Wesley Publishing Co.,
   1995.
 
+\bibitem[LCI16]{brisset}
+AFP LCI, Tony~Karumba.
+\newblock Soldats franÇais blessÉs par un drone de daech : Quand un engin de
+  loisir devient une arme du terrorisme.
+\newblock
+  \url{http://www.lci.fr/international/soldats-francais-blesses-par-un-drone-d%
+e-daech-en-irak-quand-un-engin-de-loisir-devient-une-arme-du-terrorisme-200773%
+8.html}, 2016.
+
 \bibitem[MiG16]{mig31}
 Russian Aircraft~Corporation MiG.
 \newblock Mig-31e fighter.
@@ -81,6 +103,11 @@ US~Department of~Defense Office~of Naval~Research.
 \newblock
   \url{http://www.onr.navy.mil/Media-Center/Press-Releases/2015/LOCUST-low-cos%
 t-UAV-swarm-ONR.aspx}, 2015.
+
+\bibitem[oTD15]{unctad}
+United Nations~Conference on~Trade and Development.
+\newblock Review of maritime transport.
+\newblock \url{http://unctad.org/en/PublicationsLibrary/rmt2015_en.pdf}, 2015.
 
 \bibitem[SCP{\etalchar{+}}14]{saska2014autonomous}
 Martin Saska, Jan Chudoba, Libor P{\v{r}}eu{\v{c}}il, Justin Thomas, Giuseppe
