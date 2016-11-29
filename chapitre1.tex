@@ -5,7 +5,35 @@
 \label{chap1}
 \cleardoublepage
 
-	\section{Simulations moléculaires}
+	\section{Biologie structurale}
+	\subsection{Protéines}
+	Les protéines sont des macromolécules que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et ) la régulation de l'expression génétique. L'étude de leur fonctionnement donc est essentielle à la compréhension du vivant.
+	
+	\paragraph{}
+	Concrètement, une protéine est un ensemble (éventuellement un singleton) de chaînes d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
+	
+    \begin{figure}[htb]
+        \begin{subfigure}{.4\textwidth}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}}
+            \caption{}
+            \label{Fig:amino_acid_structure}
+        \end{subfigure}
+        \begin{subfigure}{.6\textwidth}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/peptidic_bond.png}}
+            \caption{}
+            \label{Fig:peptide_bond}
+        \end{subfigure}
+        \caption{(a) Structure chimique d'un acide aminé. 
+        (b) Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.  Source :~\cite{berg_biochemistry_2012}}
+    \end{figure}
+    
+    \subsection{Dynamique moléculaire}
+    Une simulation de dynamique moléculaire consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différences forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le comportement dynamique du système.
+    
+    \subsection{Simulations interactives}
+    Densité, occultaton, vitesse, prévisibilité, etc.
 	
 	\section{Contrôle de l'espace aérien}
 	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
@@ -104,7 +132,20 @@
 	De fait, le problème de l'affichage planaire d'information tridimensionnelles demeure, même s'il est moins prégnant. Les navires sont en moyenne bien plus lents que les aéronefs, mais certains bateaux de type \emph{go-fast} peuvent dépasser les 150~km/h. Ces navires étant fréquemment utilisés par les trafiquants de drogue pour échapper aux garde-côtes, il est particulièrement important de pouvoir les détecter et les contrôler.
 	
 	\paragraph{}
-	Densité, informations contextuelles, problème d'identification, ambiguïté plaisance/trafic de drogue, etc.
+	Comme souvent pour les tâches de ce type, la densité de cibles dépend du niveau de zoom, qui peut résulter d'un choix de l'utilisateur, ou d'une contrainte (l'obligation d'avoir en permanence une zone donnée affichée, par exemple). La densité peut donc varier et, potentiellement, être très élevée. Elle devient particulièrement problématique lorsque l'on souhaite afficher des informations contextuelles à propos des navires, ou d'un sous-ensemble de ceux-ci. Ces informations peuvent concerner le type du navire, son pavillon, son propriétaire, son équipage, son origine, sa destination (connue ou présumée) ses escales, sa cargaison, etc., ainsi que les éventuelles précédentes valeurs de toutes ces données.
+	
+	\paragraph{}
+	Ces informations revêtent une importance particulière lorsqu'il est nécessaire aux autorités de faire la différence entre un bateau effectuant un simple voyage de plaisance et une embarcation susceptible d'être engagée dans une activité criminelle. Un groupe de \emph{speedboats} filant à vive allure vers une destination donnée peut tout aussi bien être un groupe d'amis en promenade qu'une bande de trafiquants de drogue. Il est donc nécessaire aux agents de contrôle de l'espace maritime de disposer d'un maximum d'informations le plus vite possible pour déterminer s'il est nécessaire d'ordonner l'interception de ces bateaux.
+	
+	\paragraph{}
+	La figure~\ref{fig:lincoln} illustre un cas de forte densité locale de navires, avec des cibles de haute importance stratégique de surcroît. Près des ports, la densité peut être plus élevée encore, même si les navires concernés sont moins préoccupants pour les autorités. Il leur est toutefois nécessaire de garantir la circulation fluide et sûre de ces navires, et de veiller à ce que personne ne tire parti de cette forte densité à des fins illicites ou criminelles.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/lincoln}
+		\caption{Même dans des eaux relativement vides, la densité de navries peut être élevée localement. C'est généralement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval Abraham Lincoln, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navries présents, compte tenu de leur importance militaire. Crédit : \emph{Gabriel Wilson, via Wikimedia}.}
+		\label{fig:lincoln}
+	\end{figure}
 	
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation. Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement.
