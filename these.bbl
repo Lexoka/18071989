@@ -33,6 +33,14 @@ Union des Aéroports~Français.
 \newblock Drones.
 \newblock \url{http://www.aeroport.fr/page/page/drones}, 2016.
 
+\bibitem[DCP{\etalchar{+}}14]{doutreligne2014unitymol}
+S{\'e}bastien Doutreligne, Tristan Cragnolini, Samuela Pasquali, Philippe
+  Derreumaux, and Marc Baaden.
+\newblock Unitymol: Interactive scientific visualization for integrative
+  biology.
+\newblock In {\em Large Data Analysis and Visualization (LDAV), 2014 IEEE 4th
+  Symposium on}, pages 109--110. IEEE, 2014.
+
 \bibitem[DGM{\etalchar{+}}13]{debarba2013disambiguation}
 Henrique~G Debarba, Jer{\^o}nimo~G Grandi, Anderson Maciel, Luciana Nedel, and
   Ronan Boulic.

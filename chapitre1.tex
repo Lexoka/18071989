@@ -32,15 +32,17 @@
     \begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
-		\caption{Illustration d'une protéine (1KX2, un mono-hème ferrocytochrome) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}.}
+		\caption{Illustration d'une protéine (1KX2, un mono-hème ferrocytochrome) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés, contre plusieurs centaines sur de nombreuses protéines ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
 		\label{fig:1KX2}
 	\end{figure}
     
-    \subsection{Dynamique moléculaire}
-    Une simulation de dynamique moléculaire consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différences forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le comportement dynamique du système.
+	\subsection{Dynamique moléculaire}
+	Une simulation de dynamique moléculaire consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différences forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le comportement dynamique du système.
     
-    \subsection{Simulations interactives}
-    Densité, occultaton, vitesse, prévisibilité, etc.
+	\subsection{Simulations interactives}
+	Besoin de steering, etc.
+	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers, dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en resulte de plus une densité élevée, voire très élevée (selon le mode de représentation.
+	 occultaton, vitesse, prévisibilité, etc.
 	
 	\section{Contrôle de l'espace aérien}
 	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
