@@ -28,6 +28,13 @@ Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
 \newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
   Computing Systems}, pages 1391--1400. ACM, 2009.
 
+\bibitem[CVT{\etalchar{+}}11]{chavent2011gpu}
+Matthieu Chavent, Antoine Vanel, Alex Tek, Bruno Levy, Sophie Robert, Bruno
+  Raffin, and Marc Baaden.
+\newblock Gpu-accelerated atom and dynamic bond visualization using hyperballs:
+  A unified algorithm for balls, sticks, and hyperboloids.
+\newblock {\em Journal of computational chemistry}, 32(13):2924--2935, 2011.
+
 \bibitem[dAF16]{dronesuaf}
 Union des Aéroports~Français.
 \newblock Drones.
