@@ -47,14 +47,95 @@
 	\end{figure}
 	
 	\begin{description}
-		\item[CPK.] Blabla
-		\item[Réglisse ou traits.] Blabla
+	    \item[Points.] Blabla
+	    \item[Réglisse ou traits.] Blabla
+		\item[CPK.] CPK models after the chemists Robert Corey, Linus Pauling, and Walter Koltun
 		\item[VdW.] Blabla
 		\item[\emph{Hyperballs}] Blabla
 		\item[Structures secondaires] Blabla
-		\item[Surface(s)] Blabla
+		\item[Surface accessible au solvant] Blabla
+		\item[Isosurface de densité] Blabla
 	\end{description}
 	
+	\newcommand{\subImgW}{0.5\textwidth}
+	
+    \begin{figure}[htb]
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_sas}}
+            \caption{Surface accessible au solvant.}
+            \label{fig:4awn_sas}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_2}}
+            \caption{Isosurface de densité, avec un seuil faible.}
+            \label{fig:4awn_iso_0_2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_5}}
+            \caption{}
+            \caption{Isosurface de densité, avec un seuil intermédiaire.}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_5}}
+            \caption{Isosurface de densité, avec un seuil élevé.}
+            \label{fig:4awn_iso_1_5}
+        \end{subfigure}
+        \caption{DNase, représentations surfaciques.}
+        \label{fig:4awn_surf}
+    \end{figure}
+    
+    \begin{figure}[htb]
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_points}}
+            \caption{Représentation en « points ».}
+            \label{fig:4awn_points}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_licorice}}
+            \caption{Représentation en « traits » encore appelée en « réglisse »}
+            \label{fig:4awn_licorice}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_CPK}}
+            \caption{Représentation dite CPK.}
+            \label{fig:4awn_CPK}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_vdW}}
+            \caption{Représentation basée sur le rayon de van der Waals.}
+            \label{fig:4awn_VdW}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_HB}}
+            \caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}.}
+            \label{fig:amino_acid_structure}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[t]{\subImgW}
+            \centering
+            {\includegraphics[height=4cm]{./figures/ch1/4awn_ss}}
+            \caption{Représentation en structures secondaires.}
+            \label{fig:4awn_ss}
+        \end{subfigure}
+        \caption{DNase}
+        \label{fig:4awn_atom}
+    \end{figure}
     
 	\subsection{Dynamique moléculaire}
 	Une simulation de dynamique moléculaire consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différences forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le comportement dynamique du système.
