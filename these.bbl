@@ -28,6 +28,11 @@ Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
 \newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
   Computing Systems}, pages 1391--1400. ACM, 2009.
 
+\bibitem[CP53]{corey1953molecular}
+Robert~B Corey and Linus Pauling.
+\newblock Molecular models of amino acids, peptides, and proteins.
+\newblock {\em Review of Scientific Instruments}, 24(8):621--627, 1953.
+
 \bibitem[CVT{\etalchar{+}}11]{chavent2011gpu}
 Matthieu Chavent, Antoine Vanel, Alex Tek, Bruno Levy, Sophie Robert, Bruno
   Raffin, and Marc Baaden.
@@ -87,6 +92,12 @@ IGN.
 \newblock
   \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-stra%
 tegy-guide}, 2005.
+
+\bibitem[K{\etalchar{+}}65]{koltun1965space}
+Walter Koltun et~al.
+\newblock Space filling atomic units and connectors for molecular models,
+  February~23 1965.
+\newblock US Patent 3,170,246.
 
 \bibitem[KB95]{kabbash1995prince}
 Paul Kabbash and William~AS Buxton.
