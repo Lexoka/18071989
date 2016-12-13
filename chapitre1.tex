@@ -12,7 +12,7 @@
 	\paragraph{}
 	Concrètement, une protéine est un ensemble (éventuellement un singleton) de chaînes d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
-    \begin{figure}[htb]
+    \begin{figure}[H]
         \begin{subfigure}{.4\textwidth}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}}
@@ -29,7 +29,7 @@
         (b) Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.  Source :~\cite{berg_biochemistry_2012}}
     \end{figure}
     
-    \begin{figure}[ht]
+    \begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
 		\caption{Illustration d'une protéine (1KX2, un mono-hème ferrocytochrome) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés, contre plusieurs centaines sur de nombreuses protéines ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
@@ -59,9 +59,11 @@
 		
 		Cette représentation dispose de suffisamment d'avantages pour être utilisée assez fréquemment. Par conséquent, elle constitue un cas d'application important pour les contributions présentées plus loin.
 		
-		\item[Boules et bâtons, ou CPK.] Une technique de visualisation très courante est appelée « en boules et bâtons » (ou \emph{ball-and-stick}, en anglais). Elle est parfois appelée CPK, un peu par abus de langage, en référence aux modèles physiques créés par les chimistes Robert \textbf{C}orey, Linus \textbf{P}auling, et améliorés par Walter \textbf{K}oltun~\cite{corey1953molecular, koltun1965space} ainsi qu'à la convention de couleurs CPK qui est souvent utilisée avec cette représentation. Cette convention est essentiellement caractérisée par l'utilisation du noir pour le carbone, du blanc pour l'hydrogène, du rouge pour l'oxygène, du bleu pour l'azote, du jaune pour le soufre, du violet pour le phosphore, de nuances de vert pour les halogènes (fluore, chlore, brome, iode) et du gris argent pour les métaux.
+		\item[Boules et bâtons, ou CPK.] Une technique de visualisation très courante est appelée \og en boules et bâtons \fg{} (ou \emph{ball-and-stick}, en anglais). Elle est parfois appelée CPK, un peu par abus de langage, en référence aux modèles physiques créés par les chimistes Robert \textbf{C}orey, Linus \textbf{P}auling, et améliorés par Walter \textbf{K}oltun~\cite{corey1953molecular, koltun1965space} ainsi qu'à la convention de couleurs CPK qui est souvent utilisée avec cette représentation. Cette convention est essentiellement caractérisée par l'utilisation du noir pour le carbone, du blanc pour l'hydrogène, du rouge pour l'oxygène, du bleu pour l'azote, du jaune pour le soufre, du violet pour le phosphore, de nuances de vert pour les halogènes (fluore, chlore, brome, iode) et du gris argent pour les métaux.
 		
-		Ce mode de visualisation, que nous désignerons ci-après par l'appellation \emph{CPK}, représente chaque atome par une sphère, et chaque laison covalente par un bâton, comme dans la représentation par bâtons. Il s'agit comme dans cette dernière de bien représenter la structure de la molécule, mais en insistant plus sur les atoms. Tranditionnellement, ceux-ci sont toutefois représentés par des sphères nettement plus petites que le rayon de van der Waals des atomes (voir le mode suivant).
+		Ce mode de visualisation, que nous désignerons ci-après par l'appellation \emph{CPK}, représente chaque atome par une sphère, et chaque laison covalente par un bâton, comme dans la représentation par bâtons. Il s'agit comme dans cette dernière de bien représenter la structure de la molécule, mais en insistant plus sur les atomes. Tranditionnellement, ceux-ci sont toutefois représentés par des sphères nettement plus petites que le rayon de van der Waals des atomes (voir le mode suivant).
+		
+		Outre le fait qu'elle correspond aux modèles physiques CPK, comme celui de la figure~\ref{fig:aspirin}, cette représentation permet de bien visualiser la structure de la molécule et la nature de ses atomes. Naturellement, l'utilisation de sphères implique un degré d'occultation accru par rapport à la représentation en bâtons.
 		
 		\item[VdW.] Blabla
 		\item[\emph{Hyperballs}] Blabla
@@ -70,9 +72,17 @@
 		\item[Isosurface de densité] Blabla
 	\end{description}
 	
-	\newcommand{\subImgW}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/aspirin}
+		\caption{Acide acétylsalicylique.}
+		\label{fig:aspirin}
+	\end{figure}
 	
-    \begin{figure}[htb]
+	
+	
+	\newcommand{\subImgW}{0.5\textwidth}
+	\begin{figure}[htb]
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_sas}}
@@ -170,7 +180,7 @@
 	\subsection{Applications militaires (surveillance de l'espace aérien)}
 	Les aéronefs militaires présentent des caractéristiques beaucoup plus variables, dans des intervalles nettement plus grands. La vitesse d'un avion de chasse, par exemple, peut atteindre 3000~km/h~\cite{mig31}. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la maœuvrabilité de tels engins, mais il est du moins clair qu'un avion de chasse moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs. La fréquence maximale à laquelle un avion peut changer de direction est également difficile à connaître avec certitude, mais une simple observation d'une démonstration en vol permet d'estimer que cette valeur est, grossièrement, de l'ordre d'un changement par seconde environ~\cite{rafdemo}. Indépendamment des capacités techniques des avions militaires, leurs missions peuvent précisément imposer la recherche de l'imprévisibilité (par exemple pour éviter les tirs ennemis) ce qui n'est généralement pas le cas dans le civil.
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/AlFursan}
 		\caption{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Crédit : The National UAE (\url{http://www.thenational.ae}).}
@@ -183,7 +193,7 @@
 	\paragraph{}
 	Le cas des drones aériens, c'est-à-dire des aéronefs sans pilote embarqué (télécommandés ou autonomes) est peut-être le plus hétérogène. On trouve en effet des drones de très petite taille, mais aussi des modèles de plusieurs tonnes~\cite{reaper}. Leurs modes de sustentation sont très divers, leurs moyens de propulsion varient également, et de fait, leurs caractéristiques de vol sont extrêmement variables, des plus petits engins extrêmement manœuvrables jusqu'au plus gros, qui se comportent comme des avions. Au-delà de leurs caractéristiques de vol, certains drones sont délibérément conçus pour être utilisés en grandes quantités, en essaims~\cite{locust, alonso2016distributed, saska2014autonomous}, notamment pour submerger l'ennemi par le nombre. Cela implique une densité de cibles potentiellement très importante, avec les niveaux d'occultation qui en découlent.
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/swarm}
 		\caption{Petit essaim de drones aériens. Crédit : \emph{International Business Times}.}
@@ -209,7 +219,7 @@
 	\paragraph{}
 	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de chasse, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II dont une maquette est représentée sur la figure~\ref{fig:brahmos}.
 	
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/brahmos-II}
 		\caption{Maquette du missile hypersonique russo-indien BrahMos-II, en cours de développement. Crédit : Pakistan Defence (\url{http://defence.pk}).}
@@ -225,7 +235,7 @@
 
 	Les systèmes de contrôle aérien dont nous avons connaissance sont tous en deux dimensions. Pour des engins volants, cela implique nécessairement une perte d'informations. Une technique de sélection suffisamment performante pourrait rendre envisageable l'utilisation d'un système en 3D. Cela permettrait par exemple de mieux déterminer si deux avions qui paraissent dangereusement proches dans le plan le sont réellement dans l'espace, ou de pouvoir choisir un objet parmi plusieurs évoluant aux mêmes coordonnées 2D, mais à des altitudes différentes, ou tout simplement d'avoir une meilleure représentation et perception générales de la situation.
 
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/Radar-Scope-ZSE}
 		\caption{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisible. Crédit : \emph{Bold Method}.}
@@ -241,7 +251,7 @@
 	Le fret maritime mondiale représentant près de 10 milliards de tonnes, on mesure l'ampleur et l'importance du défi à l'échelle planétaire~\cite{unctad}.
 	
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/channel}
 		\caption{Écran de contrôle représentant les navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : \emph{Arlo Maritime}.}
@@ -263,7 +273,7 @@
 	\paragraph{}
 	La figure~\ref{fig:lincoln} illustre un cas de forte densité locale de navires, avec des cibles de haute importance stratégique de surcroît. Près des ports, la densité peut être plus élevée encore, même si les navires concernés sont moins préoccupants pour les autorités. Il leur est toutefois nécessaire de garantir la circulation fluide et sûre de ces navires, et de veiller à ce que personne ne tire parti de cette forte densité à des fins illicites ou criminelles.
 	
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/lincoln}
 		\caption{Même dans des eaux relativement vides, la densité de navries peut être élevée localement. C'est généralement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval Abraham Lincoln, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navries présents, compte tenu de leur importance militaire. Crédit : \emph{Gabriel Wilson, via Wikimedia}.}
@@ -289,14 +299,14 @@
 	\paragraph{}
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance 
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/crowdhk}
 		\caption{Foule de manifestants à Hong-Kong. Mouvement très faible, mais densité très élevée. Crédit : \emph{Business Insider}.}
 		\label{fig:crowdhk}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/crowdacdc}
 		\caption{Foule à un concert du groupe AC/DC. Mouvement presque nul, mais densité extrêmement élevée. Crédit : \emph{SHP Online}.}
