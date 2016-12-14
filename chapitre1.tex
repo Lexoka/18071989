@@ -37,7 +37,7 @@
 	\end{figure}
 	
 	\paragraph{Modes de représentation.}
-	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de « coquille » et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
+	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
 	
 	\begin{figure}[htb]
 		\centering
@@ -51,11 +51,11 @@
 		
 	    Enfin, elle rend difficile l'appréciation de la position d'un atome par rapport à ceux qui, dans le plan de l'écran (projeté) se trouvent à proximité, car seule la taille du point permet d'estimer sa distance par rapport à l'observateur. Or, comme les atomes ne font pas tous précisément la même taille, cette appréciation ne peut être que très approximative, même dans le cas où la couleur du point indiquerait la nature de l'atome représenté à une utilisateur connaissant la taille de l'atome en quesiton. La figure~\ref{fig:4awn_points} présente un exemple de cette technique de visualisation. L'on comprend que, si la représentation en points présente certains avantages par rapport à une tâche de sélection, elle est par ailleurs trop limitée pour être apprécié des physico-chimistes ou biologistes souhaitant intéragir avec des simulations moléculaires.
 	    
-		\item[Bâtons ou réglisse.] Un autre mode de visualisation assez simple consiste à représenter uniquement les liaisons covalentes par des traits ou bâtons, juste assez épais pour être clairement visibles, ou par de petits cyclindes ou parallélépipèdes rectangles. Cette représentation est aussi parfois appelée « en réglisse » ou \emph{licorice}, en anglais. Si les atomes eux-mêmes ne sont pas explicitement représentés, ils se trouvent à l'intersection des liaisons covalentes où à leurs extrémités, et la coloration de ces liaisons indique la nature des atomes qu'elles relient.
+		\item[Bâtons ou réglisse.] Un autre mode de visualisation assez simple consiste à représenter uniquement les liaisons covalentes par des traits ou bâtons, juste assez épais pour être clairement visibles, ou par de petits cyclindes ou parallélépipèdes rectangles. Cette représentation est aussi parfois appelée \og réglisse \fg{} ou \emph{licorice}, en anglais. Si les atomes eux-mêmes ne sont pas explicitement représentés, ils se trouvent à l'intersection des liaisons covalentes où à leurs extrémités, et la coloration de ces liaisons indique la nature des atomes qu'elles relient.
 		
 		Dans une moindre mesure, cette technique de visualisation reprend les avantages de celle en points, puisque le niveau d'occultation, s'il est plus élevé, demeure assez faible. Le coût en ressources de calcul n'est pas nécessairement plus élevé que pour la représentation en points, ce qui permet également d'obtenir de très bonnes performances, même losque l'on affiche des systèmes très complexes. Un exemple est fourni dans la figure~\ref{fig:4awn_licorice}.
 		
-		La visualisation en réglisse, puisqu'elle affiche les liaisons covalentes, représente la structure de la molécule, et la représente même particulièrement clairement. Ses propriétés physico-chimiques peuvent donc être déduites de la représentation, du moins par un utilisateur expert. Par ailleurs, la distance d'un atome par rapport à la caméra est un peu plus facile à apprécier, car l'utilisateur dispose de plus de repères visuels (bien que ceux-ci puissent également occulter totalement l'atome, rendant sa localisation encore plus difficile). Elle partage cependant un inconvénient avec la visualisation en points, puisqu'elle communique à peu près aussi mal l'espace occupé par la protéine, en la réduisant visuellement à son « squelette ». Selon les cas, cet inconvénient peut être plus ou moins gênant.
+		La visualisation en réglisse, puisqu'elle affiche les liaisons covalentes, représente la structure de la molécule, et la représente même particulièrement clairement. Ses propriétés physico-chimiques peuvent donc être déduites de la représentation, du moins par un utilisateur expert. Par ailleurs, la distance d'un atome par rapport à la caméra est un peu plus facile à apprécier, car l'utilisateur dispose de plus de repères visuels (bien que ceux-ci puissent également occulter totalement l'atome, rendant sa localisation encore plus difficile). Elle partage cependant un inconvénient avec la visualisation en points, puisqu'elle communique à peu près aussi mal l'espace occupé par la protéine, en la réduisant visuellement à son \og squelette \fg{}. Selon les cas, cet inconvénient peut être plus ou moins gênant.
 		
 		Cette représentation dispose de suffisamment d'avantages pour être utilisée assez fréquemment. Par conséquent, elle constitue un cas d'application important pour les contributions présentées plus loin.
 		
@@ -63,7 +63,9 @@
 		
 		Ce mode de visualisation, que nous désignerons ci-après par l'appellation \emph{CPK}, représente chaque atome par une sphère, et chaque laison covalente par un bâton, comme dans la représentation par bâtons. Il s'agit comme dans cette dernière de bien représenter la structure de la molécule, mais en insistant plus sur les atomes. Tranditionnellement, ceux-ci sont toutefois représentés par des sphères nettement plus petites que le rayon de van der Waals des atomes (voir le mode suivant).
 		
-		Outre le fait qu'elle correspond aux modèles physiques CPK, comme celui de la figure~\ref{fig:aspirin}, cette représentation permet de bien visualiser la structure de la molécule et la nature de ses atomes. Naturellement, l'utilisation de sphères implique un degré d'occultation accru par rapport à la représentation en bâtons.
+		Outre le fait qu'elle correspond aux modèles physiques CPK, comme celui de la figure~\ref{fig:aspirin}, cette représentation permet de bien visualiser la structure de la molécule et la nature de ses atomes. Naturellement, l'utilisation de sphères implique un degré d'occultation accru par rapport à la représentation en bâtons, mais elle permet aussi d'avoir une meilleure appréciation du volume occupé par la molécule.
+		
+		
 		
 		\item[VdW.] Blabla
 		\item[\emph{Hyperballs}] Blabla
@@ -118,14 +120,14 @@
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_points}}
-            \caption{Représentation en « points ».}
+            \caption{Représentation en \og points \fg{}.}
             \label{fig:4awn_points}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_licorice}}
-            \caption{Représentation en « bâtons » encore appelée en « réglisse ».}
+            \caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}.}
             \label{fig:4awn_licorice}
         \end{subfigure}
         ~
@@ -211,7 +213,7 @@
 	
 	[\ldots{}]
 	
-	« On ne peut pas faire grand-chose », constate avec amertume auprès de LCI Jean-Vincent Brisset, général de brigade aérienne. Ce directeur de recherche à l’IRIS l'assure : « C'est quelque chose d'assez terrifiant pour les services de sécurité. Il est horriblement compliqué de stopper un drone qui, par exemple, chercherait à s'attaquer à un responsable politique en plein discours. » Pour preuve, la scène surréaliste à laquelle avaient assisté ceux qui écoutaient Angela Merkel, il y a trois ans à Dresde. Durant son intervention, la chancelière avait observé l’atterrissage surprise d’un appareil au pied de la tribune.~\cite{brisset}
+	\og On ne peut pas faire grand-chose \fg{}, constate avec amertume auprès de LCI Jean-Vincent Brisset, général de brigade aérienne. Ce directeur de recherche à l’IRIS l'assure : \og C'est quelque chose d'assez terrifiant pour les services de sécurité. Il est horriblement compliqué de stopper un drone qui, par exemple, chercherait à s'attaquer à un responsable politique en plein discours. \fg{} Pour preuve, la scène surréaliste à laquelle avaient assisté ceux qui écoutaient Angela Merkel, il y a trois ans à Dresde. Durant son intervention, la chancelière avait observé l’atterrissage surprise d’un appareil au pied de la tribune.~\cite{brisset}
 
 	
 	\end{displayquote}
