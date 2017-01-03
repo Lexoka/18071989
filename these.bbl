@@ -144,6 +144,12 @@ Martin Saska, Jan Chudoba, Libor P{\v{r}}eu{\v{c}}il, Justin Thomas, Giuseppe
 \newblock In {\em Unmanned Aircraft Systems (ICUAS), 2014 International
   Conference on}, pages 584--595. IEEE, 2014.
 
+\bibitem[SCV10]{seo2010heat}
+Seongho Seo, Moo~K Chung, and Houri~K Vorperian.
+\newblock Heat kernel smoothing using laplace-beltrami eigenfunctions.
+\newblock In {\em International Conference on Medical Image Computing and
+  Computer-Assisted Intervention}, pages 505--512. Springer, 2010.
+
 \bibitem[Sui11]{speeding}
 Radio~Télévision Suisse.
 \newblock Un chauffard roule à plus de 320~km/h sur l'a1.
