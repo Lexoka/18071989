@@ -1,15 +1,17 @@
 %!TEX root = these.tex
 
-\chapter[Contexte/Besoin/Applications]{plif}
+\chapter[Contexte/Besoin/Applications]{Contexte, besoins et applications}
+
+\setcounter{minitocdepth}{4}
 \minitoc
 \label{chap1}
 \cleardoublepage
 
 	\section{Biologie structurale}
-	\subsection{Protéines}
+	\subsection{Protéines -- définition et rôles}
 	Les protéines sont des macromolécules que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et ) la régulation de l'expression génétique. L'étude de leur fonctionnement donc est essentielle à la compréhension du vivant.
 	
-	\paragraph{}
+	\paragraph*{}
 	Concrètement, une protéine est un ensemble (éventuellement un singleton) de chaînes d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
     \begin{figure}[H]
@@ -36,7 +38,7 @@
 		\label{fig:1KX2}
 	\end{figure}
 	
-	\paragraph{Modes de représentation.}
+	\subsection{Modes de représentation}
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
 	
 	\begin{figure}[htb]
@@ -46,110 +48,142 @@
 		\label{fig:helium}
 	\end{figure}
 	
-	\begin{description}
-		\item[Points.] Le mode de visualisation le plus simple consiste à représenter chaque atome (et uniquement les atomes) par un point tout juste assez gros pour être visible. Les liaisons covalentes ne sont pas représentées. Selon la façon dont elle est mise en œuvre, cette technique de visualisation peut être très performante, et donc garantir un affichage fluide même avec de très nombreux atomes. Elle a de plus l'avantage de minimiser l'occultation des atomes les uns par les autres, du fait de leur petite taille. Cependant, elle communique peu d'informations sur la molécule. En particulier, les liaisons covalentes étant absentes, sa structure même fait défaut. De plus, l'utilisateur peut difficilement se faire une idée de l'espace qu'occupe réellement cette molécule dans son milieu, car chaque atome n'est représenté que schématiquement, par un point bien plus petit que ce que l'on observe sur la figure~\ref{fig:helium}, par exemple.
+	\paragraph{Points.} Le mode de visualisation le plus simple consiste à représenter chaque atome (et uniquement les atomes) par un point tout juste assez gros pour être visible. Les liaisons covalentes ne sont pas représentées. Selon la façon dont elle est mise en œuvre, cette technique de visualisation peut être très performante, et donc garantir un affichage fluide même avec de très nombreux atomes. Elle a de plus l'avantage de minimiser l'occultation des atomes les uns par les autres, du fait de leur petite taille. Cependant, elle communique peu d'informations sur la molécule. En particulier, les liaisons covalentes étant absentes, sa structure même fait défaut. De plus, l'utilisateur peut difficilement se faire une idée de l'espace qu'occupe réellement cette molécule dans son milieu, car chaque atome n'est représenté que schématiquement, par un point bien plus petit que ce que l'on observe sur la figure~\ref{fig:helium}, par exemple.
 		
-	    Enfin, elle rend difficile l'appréciation de la position d'un atome par rapport à ceux qui, dans le plan de l'écran (projeté) se trouvent à proximité, car seule la taille du point permet d'estimer sa distance par rapport à l'observateur. Or, comme les atomes ne font pas tous précisément la même taille, cette appréciation ne peut être que très approximative, même dans le cas où la couleur du point indiquerait la nature de l'atome représenté à une utilisateur connaissant la taille de l'atome en question. La figure~\ref{fig:4awn_points} présente un exemple de cette technique de visualisation. L'on comprend que, si la représentation en points présente certains avantages par rapport à une tâche de sélection, elle est par ailleurs trop limitée pour être apprécié des physico-chimistes ou biologistes souhaitant intéragir avec des simulations moléculaires.
+	Enfin, elle rend difficile l'appréciation de la position d'un atome par rapport à ceux qui, dans le plan de l'écran (projeté) se trouvent à proximité, car seule la taille du point permet d'estimer sa distance par rapport à l'observateur. Or, comme les atomes ne font pas tous précisément la même taille, cette appréciation ne peut être que très approximative, même dans le cas où la couleur du point indiquerait la nature de l'atome représenté à une utilisateur connaissant la taille de l'atome en question. La figure~\ref{fig:4awn_points} présente un exemple de cette technique de visualisation. L'on comprend que, si la représentation en points présente certains avantages par rapport à une tâche de sélection, elle est par ailleurs trop limitée pour être apprécié des physico-chimistes ou biologistes souhaitant intéragir avec des simulations moléculaires.
 	    
-		\item[Bâtons ou réglisse.] Un autre mode de visualisation assez simple consiste à représenter uniquement les liaisons covalentes par des traits ou bâtons, juste assez épais pour être clairement visibles, ou par de petits cyclindes ou parallélépipèdes rectangles. Cette représentation est aussi parfois appelée \og réglisse \fg{} ou \emph{licorice}, en anglais. Si les atomes eux-mêmes ne sont pas explicitement représentés, ils se trouvent à l'intersection des liaisons covalentes où à leurs extrémités, et la coloration de ces liaisons indique la nature des atomes qu'elles relient.
+	\paragraph{Bâtons ou réglisse.} Un autre mode de visualisation assez simple consiste à représenter uniquement les liaisons covalentes par des traits ou bâtons, juste assez épais pour être clairement visibles, ou par de petits cyclindes ou parallélépipèdes rectangles. Cette représentation est aussi parfois appelée \og réglisse \fg{} ou \emph{licorice}, en anglais. Si les atomes eux-mêmes ne sont pas explicitement représentés, ils se trouvent à l'intersection des liaisons covalentes où à leurs extrémités, et la coloration de ces liaisons indique la nature des atomes qu'elles relient.
 		
-		Dans une moindre mesure, cette technique de visualisation reprend les avantages de celle en points, puisque le niveau d'occultation, s'il est plus élevé, demeure assez faible. Le coût en ressources de calcul n'est pas nécessairement plus élevé que pour la représentation en points, ce qui permet également d'obtenir de très bonnes performances, même losque l'on affiche des systèmes très complexes. Un exemple est fourni dans la figure~\ref{fig:4awn_licorice}.
+	Dans une moindre mesure, cette technique de visualisation reprend les avantages de celle en points, puisque le niveau d'occultation, s'il est plus élevé, demeure assez faible. Le coût en ressources de calcul n'est pas nécessairement plus élevé que pour la représentation en points, ce qui permet également d'obtenir de très bonnes performances, même losque l'on affiche des systèmes très complexes. Un exemple est fourni dans la figure~\ref{fig:4awn_licorice}.
 		
-		La visualisation en réglisse, puisqu'elle affiche les liaisons covalentes, représente la structure de la molécule, et la représente même particulièrement clairement. Ses propriétés physico-chimiques peuvent donc être déduites de la représentation, du moins par un utilisateur expert. Par ailleurs, la distance d'un atome par rapport à la caméra est un peu plus facile à apprécier, car l'utilisateur dispose de plus de repères visuels (bien que ceux-ci puissent également occulter totalement l'atome, rendant sa localisation encore plus difficile). Elle partage cependant un inconvénient avec la visualisation en points, puisqu'elle communique à peu près aussi mal l'espace occupé par la protéine, en la réduisant visuellement à son \og squelette \fg{}. Selon les cas, cet inconvénient peut être plus ou moins gênant.
+	La visualisation en réglisse, puisqu'elle affiche les liaisons covalentes, représente la structure de la molécule, et la représente même particulièrement clairement. Ses propriétés physico-chimiques peuvent donc être déduites de la représentation, du moins par un utilisateur expert. Par ailleurs, la distance d'un atome par rapport à la caméra est un peu plus facile à apprécier, car l'utilisateur dispose de plus de repères visuels (bien que ceux-ci puissent également occulter totalement l'atome, rendant sa localisation encore plus difficile). Elle partage cependant un inconvénient avec la visualisation en points, puisqu'elle communique à peu près aussi mal l'espace occupé par la protéine, en la réduisant visuellement à son \og squelette \fg{}. Selon les cas, cet inconvénient peut être plus ou moins gênant.
 		
-		Cette représentation dispose de suffisamment d'avantages pour être utilisée assez fréquemment. Par conséquent, elle constitue un cas d'application important pour les contributions présentées plus loin.
+	Cette représentation dispose de suffisamment d'avantages pour être utilisée assez fréquemment. Par conséquent, elle constitue un cas d'application important pour les contributions présentées plus loin.
 		
-		\item[Boules et bâtons, ou CPK.] Une technique de visualisation très courante est appelée \og en boules et bâtons \fg{} (ou \emph{ball-and-stick}, en anglais). Elle est parfois appelée CPK, un peu par abus de langage, en référence aux modèles physiques créés par les chimistes Robert \textbf{C}orey, Linus \textbf{P}auling, et améliorés par Walter \textbf{K}oltun~\cite{corey1953molecular, koltun1965space} ainsi qu'à la convention de couleurs CPK qui est souvent utilisée avec cette représentation. Cette convention est essentiellement caractérisée par l'utilisation du noir pour le carbone, du blanc pour l'hydrogène, du rouge pour l'oxygène, du bleu pour l'azote, du jaune pour le soufre, du violet pour le phosphore, de nuances de vert pour les halogènes (fluore, chlore, brome, iode) et du gris argent pour les métaux.
+	\paragraph{Boules et bâtons, ou CPK.} Une technique de visualisation très courante est appelée \og en boules et bâtons \fg{} (ou \emph{ball-and-stick}, en anglais). Elle est parfois appelée CPK, un peu par abus de langage, en référence aux modèles physiques créés par les chimistes Robert \textbf{C}orey, Linus \textbf{P}auling, et améliorés par Walter \textbf{K}oltun~\cite{corey1953molecular, koltun1965space} ainsi qu'à la convention de couleurs CPK qui est souvent utilisée avec cette représentation. Cette convention est essentiellement caractérisée par l'utilisation du noir pour le carbone, du blanc pour l'hydrogène, du rouge pour l'oxygène, du bleu pour l'azote, du jaune pour le soufre, du violet pour le phosphore, de nuances de vert pour les halogènes (fluore, chlore, brome, iode) et du gris argent pour les métaux.
 		
-		Ce mode de visualisation, que nous désignerons ci-après par l'appellation \emph{CPK}, représente chaque atome par une sphère, et chaque laison covalente par un bâton, comme dans la représentation par bâtons. Il s'agit comme dans cette dernière de bien représenter la structure de la molécule, mais en insistant plus sur les atomes. Traditionnellement, ceux-ci sont toutefois représentés par des sphères nettement plus petites que le rayon de van der Waals des atomes (voir le mode suivant).
+	Ce mode de visualisation, que nous désignerons ci-après par l'appellation \emph{CPK}, représente chaque atome par une sphère, et chaque laison covalente par un bâton, comme dans la représentation par bâtons. Il s'agit comme dans cette dernière de bien représenter la structure de la molécule, mais en insistant plus sur les atomes. Traditionnellement, ceux-ci sont toutefois représentés par des sphères nettement plus petites que le rayon de van der Waals des atomes (voir le mode suivant).
 		
-		Outre le fait qu'elle correspond aux modèles physiques CPK, comme celui de la figure~\ref{fig:aspirin}, cette représentation permet de bien visualiser la structure de la molécule et la nature de ses atomes. Naturellement, l'utilisation de sphères implique un degré d'occultation accru par rapport à la représentation en bâtons, mais elle permet aussi d'avoir une meilleure appréciation du volume occupé par la molécule.
+	Outre le fait qu'elle correspond aux modèles physiques CPK, comme celui de la figure~\ref{fig:aspirin}, cette représentation permet de bien visualiser la structure de la molécule et la nature de ses atomes. Naturellement, l'utilisation de sphères implique un degré d'occultation accru par rapport à la représentation en bâtons, mais elle permet aussi d'avoir une meilleure appréciation du volume occupé par la molécule.
 		
-		Sur ce dernier point, la représentation en boules et bâtons a néanmoins ses limites, puisqu'elle occupe un volume réduit par rapport à certaines références pertinentes d'un point de vue physico-chimique, liées au rayon de van der Waals ou à la densité moléculaire, comme détaillé dans les descriptions des représentations suivantes.
+	Sur ce dernier point, la représentation en boules et bâtons a néanmoins ses limites, puisqu'elle occupe un volume réduit par rapport à certaines références pertinentes d'un point de vue physico-chimique, liées au rayon de van der Waals ou à la densité moléculaire, comme détaillé dans les descriptions des représentations suivantes.
 		
-		\item[Sphères de van der Waals.] La représentation en sphères de van der Waals repose sur la notion de rayon de van der Waals. Celle-ci découle elle même de la force de van der Waals. Il s'agit en fait de l'effet combiné de plusieurs forces :
-		\begin{itemize}%[topsep=0pt, itemsep=0pt, partopsep=0pt]
-		    \item Les interactions électrostatiques (attractives et répulsives) entre des multipôles permanents, parfois appelées Forces de Keesom ;
-		    \item L'induction (ou polarisation), c'est-à-dire l'interaction électrostatique attractive entre un multipôle permanent et un multipôle induit, également appelée force de Debye ;
-		    \item La dispersion, c'est-à-dire l'interaction électrostatique attractive entre deux multipôles induits, aussi désignée force de London ;
-		    \item La répulsion de Pauli, qui découle du principe d'exclusion de Pauli, selon lequel plusieurs électrons (et autres fermions) ne peuvent pas se trouver simultanément dans le même état quantique. En effet, attendu que les électrons de deux atomes ne peuvent pas occuper le même espace simultanément, des atomes dont les nuages électroniques se croisent sont soumis à une force répulsive.
-		\end{itemize}
-		Les logiciels de simulation utilisent fréquemment le potentiel de Lennard-Jones pour modéliser les forces de van der Waals. Celui-ci peut s'exprimer par l'équation~\ref{eq:lennard}, où $r$ est la distance entre les centres des deux atomes concernés, et $d$ représente la distance pour laquelle le potentiel de Lennard-Jones est nul ; $E_{0}$ est la valeur minimale du potentiel, soit le \og fond \fg{} du puits de potentiel. Comme on l'observe aisément sur la figure~\ref{fig:lennard}, le potentiel admet un minimum, dont on peut déduire un rayon de van der Waals. Ce rayon peut être celui d'une sphère représentant l'atome en question. La figure~\ref{fig:vdwradius} en fournit une illustration.
-		
-		\begin{figure}[H]
-    		\centering
-    		\includegraphics[width=\textwidth]{figures/ch1/vdwradius}
-    		\caption{Représentation du rayon de van der Waals, par opposition au rayon de covalence, plus petit. En effet, celui-ci est défini par la longueur d'une liaison covalente, qui implique le partage d'électrons entre une paire d'atomes. Le rayon de van der Waals, lui, correspond à une paire d'atomes non liés. C'est pour cette raison qu'en représentation de van der Waals, les atomes liés semblent imbriqués les uns dans les autres. Crédit : Chemistry -- LibreTexts (\url{http://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Chemical_Bonding/General_Principles_of_Chemical_Bonding/Covalent_Bond_Distance,_Radius_and_van_der_Waals_Radius}).}
-    		\label{fig:vdwradius}
-	    \end{figure}
-		
-		C'est le principe de la représentation en sphères de van der Waals, illustrée par la figure~\ref{fig:4awn_VdW}. Ce mode de visualisation a plusieurs avantages. Premièrement, il correspond à une réalité physique, celle des forces de van der Waals. Deuxièmement, il permet d'apprécier le volume occupé par la molécule. Troisièmement, les atomes étant représentés par de grosses sphères, ils sont mieux visibles pour un niveau de zoom donné. De fait, il est plus aisé d'envisager les interactions possibles entre cette molécule et une autre, puisque l'on perçoit mieux les volumes des cavités dans lesquelles d'éventuels ligands pourraient venir se loger, et la bonne visualisation des atomes à la surface peut aider à évaluer la probabilité d'un arrimage avec ledit ligand.
-		
-		Cependant, les liaisons covalentes sont totalement occultées, et il est seulement possible de les \og deviner \fg{} à partir de l'emplacement des atomes et grâce aux lois de la chimie. La structure de la molécule est donc beaucoup moins claire qu'en représentation CPK, par exemple. De plus, les atomes sont si gros qu'ils occultent totalement ceux qui sont derrière eux. De fait, l'intérieur de la molécule devient totalement invisible. Si sa surface est mieux représentée, sa structure interne est entièrement occultée. C'est plus gênant encore lorsque les atomes d'hydrogène sont affichés, ce qui n'est pas le cas sur la figure~\ref{fig:4awn_VdW} --- il est courant de les omettre, par souci de clarté. Selon la mise en \oe{}uvre logicielle de cette représentation, elle peut être coûteuse en ressources de calcul, même si des solutions efficaces existent. En mouvement, la grande taille des atomes a l'avantage de diminuer leur mouvement relatif, c'est-à-dire leur mouvement par rapport à eux-mêmes.
-		
-		Les sphères de van der Waals ne sont pas une mauvaise option pour visualiser (ou interagir avec) une simulation de dynamique moléculaire, à condition que l'objet d'intérêt principal soit superficiel, et donc bien visible. La grande taille des cibles peut être un avantage, même s'il y a un certain degré d'interpénétration entre elles. Cette représentation constitue donc un cas d'application notable pour une technique de sélection de cibles mobiles.
-		
-		\begin{equation}
-		    \label{eq:lennard}
-		    E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
-		\end{equation}
-		
-		\begin{figure}[H]
-    		\centering
-    		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
-    		\caption{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$.}
-    		\label{fig:lennard}
-	    \end{figure}
-		
-		\item[\emph{Hyperballs}] La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se base sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
-		
-		Les \emph{Hyperballs} présentent de nombreux avantages. Sur le plan purement technique, leur mode de représentation analytique permet, au contraire des maillages de points (\emph{meshes}, en anglais) d'éviter d'avoir à gérer un très grand nombre de points et de triangles. De plus, quel que soit le niveau de zoom, les surfaces des sphères et des liaisons covalentes (représentées par des hyperboloïdes) demeurent parfaitement lisses. Comme l'illustre la figure~\ref{fig:spheremeshes}, avec des maillages, il est nécessaire d'avoir un grand nombre de triangles pour maintenir l'illusion de la rotondité du modèle lorsqu'il est observé de près.
-		
-		La figure~\ref{fig:hyperballs} illustre la représentation analytique des \emph{Hyperballs}, et sa légende détaille la façon dont on peut les utiliser pour \og imiter \fg{} les modes de représentation sus-cités. En réalité, les illustrations fournies jusqu'ici pour la représentation en points, en bâtons, en boules et bâtons, et en sphères de van der Waals ont toutes été produites avec des \emph{Hyperballs}, simplement en jouant sur leurs paramètres. Cette grande flexibilité, combinée aux performances de premier ordre offertes par cette technique (voir~\cite{chavent2011gpu}) rend cette technique particulièrement avantageuse.
-		
-		Au-delà de sa flexibilité, cependant, elle a l'avantage de permettre une représentation originale, avec des liaisons représentées par des hyperboloïdes. En jouant sur la courbure de ces hyperboloïdes, on peut communiquer des informations sur la nature de la liaison, par exemple sur la quantité d'énergie nécessaire à sa rupture. Si cette quantité est faible, on peut représenter la liaison par une hyperboloïde très \og creusée \fg{}, donnant l'impression d'être sur le point de rompre.
-		
-		Enfin, les \emph{Hyperballs}, utilisées de la façon la plus \og classique \fg{} ou \og canonique \fg{} présentent des hyperboloïdes partiellement creusées, comme sur la figure~\ref{fig:4awn_HB}. Cette représentation est souvent appréciée pour ses qualités esthétiques, certes subjectives. D'un point de vue plus objectif, la représentation en \emph{Hyperballs} canoniques présentent à peu près les mêmes caractéristiques que la représentation en boules et bâtons. Les dimensions sont proches, même si les formes diffèrent. Les liaisons sont un peu plus épaisses près des atomes, et comparables, voire un peu plus fines au milieu. De fait, la perception de la structure de la molécule et de ses propriétés, ainsi que le niveau d'occultation visuelle, sont assez comparables. Par conséquent, la représentation en \emph{Hyperballs} canoniques est un cas d'application aussi pertinent pour la sélection de cibles mobiles que la représentation CPK, voire plus, car les bonnes performances des \emph{Hyperballs} permettent de gérer de très gros systèmes plus facilement.
-		
-		\begin{figure}[H]
-    		\centering
-    		\includegraphics[width=\textwidth]{figures/ch1/spheremeshes}
-    		\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Source :~\cite{seo2010heat}.}
-    		\label{fig:spheremeshes}
-	    \end{figure}
-		
-		\begin{figure}[H]
-    		\centering
-    		\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
-    		\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constante que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Source :~\cite{chavent2011gpu}.}
-    		\label{fig:hyperballs}
-	    \end{figure}
-		
-		\item[Structures secondaires.] En biologie structurale, on appelle structure secondaire la structure tridimensionnelle localement adoptée par un segment de molécule (généralement de protéine). Cette structure secondaire est définie par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène.
-		
-		Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta. Un exemple d'hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple de feuillet bêta est fourni, sur la figure~\ref{fig:bSheet}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch1/aHelix}
-			\caption{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}. \url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
-			\label{fig:aHelix}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch1/bSheet}
-			\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}}
-			\label{fig:bSheet}
-		\end{figure}
-		
-		
-		
-		\item[Surface accessible au solvant.] Blabla
-		\item[Isosurface de densité.] Blabla
-	\end{description}
+	\paragraph{Sphères de van der Waals.} La représentation en sphères de van der Waals repose sur la notion de rayon de van der Waals. Celle-ci découle elle même de la force de van der Waals. Il s'agit en fait de l'effet combiné de plusieurs forces :
 	
+	\begin{itemize}
+	    \item Les interactions électrostatiques (attractives et répulsives) entre des multipôles permanents, parfois appelées Forces de Keesom ;
+		\item L'induction (ou polarisation), c'est-à-dire l'interaction électrostatique attractive entre un multipôle permanent et un multipôle induit, également appelée force de Debye ;
+	    \item La dispersion, c'est-à-dire l'interaction électrostatique attractive entre deux multipôles induits, aussi désignée force de London ;
+		\item La répulsion de Pauli, qui découle du principe d'exclusion de Pauli, selon lequel plusieurs électrons (et autres fermions) ne peuvent pas se trouver simultanément dans le même état quantique. En effet, attendu que les électrons de deux atomes ne peuvent pas occuper le même espace simultanément, des atomes dont les nuages électroniques se croisent sont soumis à une force répulsive.
+	\end{itemize}
 	
+	Les logiciels de simulation utilisent fréquemment le potentiel de Lennard-Jones~\cite{lennard1924determination} pour modéliser les forces de van der Waals. Celui-ci peut s'exprimer par l'équation~\ref{eq:lennard}, où $r$ est la distance entre les centres des deux atomes concernés, et $d$ représente la distance pour laquelle le potentiel de Lennard-Jones est nul ; $E_{0}$ est la valeur minimale du potentiel, soit le \og fond \fg{} du puits de potentiel. Comme on l'observe aisément sur la figure~\ref{fig:lennard}, le potentiel admet un minimum, dont on peut déduire un rayon de van der Waals. Ce rayon peut être celui d'une sphère représentant l'atome en question. La figure~\ref{fig:vdwradius} en fournit une illustration.
+		
+	\begin{figure}[H]
+    	\centering
+    	\includegraphics[width=\textwidth]{figures/ch1/vdwradius}
+    	\caption{Représentation du rayon de van der Waals, par opposition au rayon de covalence, plus petit. En effet, celui-ci est défini par la longueur d'une liaison covalente, qui implique le partage d'électrons entre une paire d'atomes. Le rayon de van der Waals, lui, correspond à une paire d'atomes non liés. C'est pour cette raison qu'en représentation de van der Waals, les atomes liés semblent imbriqués les uns dans les autres. Crédit : Chemistry -- LibreTexts (\url{http://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Chemical_Bonding/General_Principles_of_Chemical_Bonding/Covalent_Bond_Distance,_Radius_and_van_der_Waals_Radius}).}
+   		\label{fig:vdwradius}
+    \end{figure}
+		
+	C'est le principe de la représentation en sphères de van der Waals, illustrée par la figure~\ref{fig:4awn_VdW}. Ce mode de visualisation a plusieurs avantages. Premièrement, il correspond à une réalité physique, celle des forces de van der Waals. Deuxièmement, il permet d'apprécier le volume occupé par la molécule. Troisièmement, les atomes étant représentés par de grosses sphères, ils sont mieux visibles pour un niveau de zoom donné. De fait, il est plus aisé d'envisager les interactions possibles entre cette molécule et une autre, puisque l'on perçoit mieux les volumes des cavités dans lesquelles d'éventuels ligands pourraient venir se loger, et la bonne visualisation des atomes à la surface peut aider à évaluer la probabilité d'un arrimage avec ledit ligand.
+		
+	Cependant, les liaisons covalentes sont totalement occultées, et il est seulement possible de les \og deviner \fg{} à partir de l'emplacement des atomes et grâce aux lois de la chimie. La structure de la molécule est donc beaucoup moins claire qu'en représentation CPK, par exemple. De plus, les atomes sont si gros qu'ils occultent totalement ceux qui sont derrière eux. De fait, l'intérieur de la molécule devient totalement invisible. Si sa surface est mieux représentée, sa structure interne est entièrement occultée. C'est plus gênant encore lorsque les atomes d'hydrogène sont affichés, ce qui n'est pas le cas sur la figure~\ref{fig:4awn_VdW} --- il est courant de les omettre, par souci de clarté. Selon la mise en \oe{}uvre logicielle de cette représentation, elle peut être coûteuse en ressources de calcul, même si des solutions efficaces existent. En mouvement, la grande taille des atomes a l'avantage de diminuer leur mouvement relatif, c'est-à-dire leur mouvement par rapport à eux-mêmes.
+		
+	Les sphères de van der Waals ne sont pas une mauvaise option pour visualiser (ou interagir avec) une simulation de dynamique moléculaire, à condition que l'objet d'intérêt principal soit superficiel, et donc bien visible. La grande taille des cibles peut être un avantage, même s'il y a un certain degré d'interpénétration entre elles. Cette représentation constitue donc un cas d'application notable pour une technique de sélection de cibles mobiles.
+		
+	\begin{equation}
+	    \label{eq:lennard}
+	    E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
+	\end{equation}
+		
+	\begin{figure}[H]
+    	\centering
+    	\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
+    	\caption{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$.}
+    	\label{fig:lennard}
+	\end{figure}
+		
+	\paragraph{\emph{Hyperballs}.} La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se base sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
+		
+	Les \emph{Hyperballs} présentent de nombreux avantages. Sur le plan purement technique, leur mode de représentation analytique permet, au contraire des maillages de points (\emph{meshes}, en anglais) d'éviter d'avoir à gérer un très grand nombre de points et de triangles. De plus, quel que soit le niveau de zoom, les surfaces des sphères et des liaisons covalentes (représentées par des hyperboloïdes) demeurent parfaitement lisses. Comme l'illustre la figure~\ref{fig:spheremeshes}, avec des maillages, il est nécessaire d'avoir un grand nombre de triangles pour maintenir l'illusion de la rotondité du modèle lorsqu'il est observé de près.
+		
+	La figure~\ref{fig:hyperballs} illustre la représentation analytique des \emph{Hyperballs}, et sa légende détaille la façon dont on peut les utiliser pour \og imiter \fg{} les modes de représentation sus-cités. En réalité, les illustrations fournies jusqu'ici pour la représentation en points, en bâtons, en boules et bâtons, et en sphères de van der Waals ont toutes été produites avec des \emph{Hyperballs}, simplement en jouant sur leurs paramètres. Cette grande flexibilité, combinée aux performances de premier ordre offertes par cette technique (voir~\cite{chavent2011gpu}) rend cette technique particulièrement avantageuse.
+		
+	Au-delà de sa flexibilité, cependant, elle a l'avantage de permettre une représentation originale, avec des liaisons représentées par des hyperboloïdes. En jouant sur la courbure de ces hyperboloïdes, on peut communiquer des informations sur la nature de la liaison, par exemple sur la quantité d'énergie nécessaire à sa rupture. Si cette quantité est faible, on peut représenter la liaison par une hyperboloïde très \og creusée \fg{}, donnant l'impression d'être sur le point de rompre.
+		
+	Enfin, les \emph{Hyperballs}, utilisées de la façon la plus \og classique \fg{} ou \og canonique \fg{} présentent des hyperboloïdes partiellement creusées, comme sur la figure~\ref{fig:4awn_HB}. Cette représentation est souvent appréciée pour ses qualités esthétiques, certes subjectives. D'un point de vue plus objectif, la représentation en \emph{Hyperballs} canoniques présentent à peu près les mêmes caractéristiques que la représentation en boules et bâtons. Les dimensions sont proches, même si les formes diffèrent. Les liaisons sont un peu plus épaisses près des atomes, et comparables, voire un peu plus fines au milieu. De fait, la perception de la structure de la molécule et de ses propriétés, ainsi que le niveau d'occultation visuelle, sont assez comparables. Par conséquent, la représentation en \emph{Hyperballs} canoniques est un cas d'application aussi pertinent pour la sélection de cibles mobiles que la représentation CPK, voire plus, car les bonnes performances des \emph{Hyperballs} permettent de gérer de très gros systèmes plus facilement.
+		
+	\begin{figure}[H]
+    	\centering
+    	\includegraphics[width=\textwidth]{figures/ch1/spheremeshes}
+    	\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Source :~\cite{seo2010heat}.}
+    	\label{fig:spheremeshes}
+	\end{figure}
+		
+	\begin{figure}[H]
+    	\centering
+    	\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
+    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constante que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Source :~\cite{chavent2011gpu}.}
+   		\label{fig:hyperballs}
+    \end{figure}
+		
+	\paragraph{Structures secondaires.} En biologie structurale, on appelle structure secondaire la structure tridimensionnelle localement adoptée par un segment de molécule (généralement de protéine). Cette structure secondaire est définie par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène.
+		
+	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
+		
+	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
+		
+	Toutefois, l'utilisation de cette technique de visualisation implique une perte d'information. En effet, les atomes ne sont plus visibles, aussi la composition précise de la molécule n'est-elle plus perceptible. De fait, il devient difficile d'apprécier certaines propriétés du système, comme les champs électrostatiques, l'hydrophobicité, les cavités de la surface moléculaire et autres zones susceptibles de faciliter les interactions avec d'autres molécules. Il est cependant possible de représenter certaines de ces propriétés par des couleurs, par exemple.
+		
+	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
+		
+	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie qu'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/aHelix}
+		\caption{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}. \url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
+		\label{fig:aHelix}
+	\end{figure}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/bSheet}
+		\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}}
+		\label{fig:bSheet}
+	\end{figure}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
+		\caption{À gauche : représentation en structures secondaires d'une molécule de myoglobine, une métalloprotéine présente dans les muscles des vertébrés, et dont la fonction est de stocker le dioxygène ; son hème --- un cofacteur contenant un atome de fer et pouvant accueillir du dioxygène --- est représenté en \og tout atome \fg{} et plus précisément en bâtons. À droite : une représentation schématique du hème et des histidines qui le stabilisent. Crédit :~\cite{Ordway3441}}
+		\label{fig:myoglobin}
+	\end{figure}
+		
+		
+	\paragraph{Surface accessible au solvant et surface de Connolly.} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
+		
+	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_connolly} montre une protéine entière représentée ainsi.
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/connolly}
+		\caption{Surface de Connolly d'une petite molécule. Six atomes sont représentés par des cercles verts correspondant à leurs rayons de van der Waals ; une sonde (\emph{probe}), i.e. le solvant, est représentée par un cercle jaune ; cette sonde est \og roulée \fg{} le long de la surface de la molécule, et son tracé est conservé en rouge : c'est la surface de Connolly. La surface tracée par le centre de la sonde est appelée surface accessible au solvant. Crédit :~\cite{krone2009interactive}}
+		\label{fig:connolly}
+	\end{figure}
+		
+	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se basant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}. L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
+		
+	Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ respectivement faible ($0,2$), intermédiaire ($0,5$) et élevée ($1,5$).
+		
+	\begin{figure}[H]
+	    \centering
+	    \includegraphics[width=\textwidth]{figures/ch1/marchingCubes}
+		\caption{Dans l'algorithme des \emph{marching cubes}, lorsque l'on considère une cellule, on lit la valeur du champ scalaire aux huit sommets du cube. On choisit ensuite un des quinze cubes ci-dessus, en fonction des valeurs lues. L'opération est répétée pour chaque cellule de la grille, et les cubes forment un maillage de triangles. Crédit : \emph{Wikimedia}.}
+        \label{fig:marchingCubes}
+	\end{figure}
+		
 	
 	\begin{figure}[H]
 		\centering
@@ -158,131 +192,170 @@
 		\label{fig:aspirin}
 	\end{figure}
 	
-	
-	
 	\newcommand{\subImgW}{0.5\textwidth}
-	\begin{figure}[htb]
+	\begin{figure}[H]
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_sas}}
-            \caption{Surface accessible au solvant.}
-            \label{fig:4awn_sas}
+            \caption{Surface de Connolly, correspondant aux points de contact entre une molécule d'eau et l'ADNase.}
+            \label{fig:4awn_connolly}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_2}}
-            \caption{Isosurface de densité, avec un seuil faible.}
+            \caption{Isosurface de densité, avec un seuil faible, de $0,2$.}
             \label{fig:4awn_iso_0_2}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_5}}
-            \caption{}
-            \caption{Isosurface de densité, avec un seuil intermédiaire.}
+            \caption{Isosurface de densité, avec un seuil intermédiaire, $0,5$.}
+            \label{fig:4awn_iso_0_5}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_5}}
-            \caption{Isosurface de densité, avec un seuil élevé.}
+            \caption{Isosurface de densité, avec un seuil élevé, de $1,5$}
             \label{fig:4awn_iso_1_5}
         \end{subfigure}
-        \caption{DNase, représentations surfaciques.}
+        \caption{Désoxyribonucléase (ou ADNase). Cette enzyme est ici illustrée par diverses représentations surfaciques. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
         \label{fig:4awn_surf}
     \end{figure}
     
-    \begin{figure}[htb]
+    \begin{figure}[H]
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_points}}
-            \caption{Représentation en \og points \fg{}.}
+            \caption{Représentation en \og points \fg{} ; seuls les atomes apparaissent.}
             \label{fig:4awn_points}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_licorice}}
-            \caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}.}
+            \caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}, ou \emph{licorice} en anglais. Seules les liaisons covalentes sont visibles}
             \label{fig:4awn_licorice}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_CPK}}
-            \caption{Représentation dite CPK.}
+            \caption{Représentation dite CPK, ou en \og boules et bâtons \fg{}. Les atomes et les liaisons sont représentés.}
             \label{fig:4awn_CPK}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_vdW}}
-            \caption{Représentation basée sur le rayon de van der Waals.}
+            \caption{Représentation basée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
             \label{fig:4awn_VdW}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_HB}}
-            \caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}.}
+            \caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}. Les atomes et les liaisons sont représentés.}
             \label{fig:4awn_HB}
         \end{subfigure}
         ~
         \begin{subfigure}[t]{\subImgW}
             \centering
             {\includegraphics[height=4cm]{./figures/ch1/4awn_ss}}
-            \caption{Représentation en structures secondaires.}
+            \caption{Représentation en structures secondaires. Les atomes et les liaisons sont invisibles, mais des structures plus grandes sont représentées de façon schématique.}
             \label{fig:4awn_ss}
         \end{subfigure}
-        \caption{DNase}
+        \caption{La désoxyribonucléase (ou ADNase) est une enzyme catalysant les acides désoxyribonucléiques en nucléotides ou polynucléotides. Elle hydrolyse les liaisons phosphodiester. Voici un échantillon de quelques techniques de visualisation moléculaire, avec l'ADNase pour objet. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
         \label{fig:4awn_atom}
     \end{figure}
     
 	\subsection{Dynamique moléculaire}
-	Une simulation de dynamique moléculaire consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différences forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le comportement dynamique du système.
+	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système. L'algorithme général est explicité (quoique sous forme schématique) sur la figure~\ref{fig:moldyn}.
+	
+	\paragraph{Besoins.} Il est difficile d'observer une macromolécule à l'état statique, et impossible de le faire \emph{in vivo}, lorsqu'elle est en mouvement dans son système naturel. Par conséquent, l'étude de phénomènes moléculaires complexes nécessite de passer par des simulations numériques, seules à même d'en rendre compte. En particulier, la biologie structurale s'intéresse à la \emph{dynamique conformationnelle} des macromolécules (c'est-à-dire à leur conformation tridimensionnelle dans le temps) et à leurs intéractions avec leur environnement --- par exemple le milieu cellulaire. La mise au point de ces simulations s'appuie néanmoins autant que possible sur des données expérimentales.
+	
+	\paragraph{Initialisation.}
+	Une simulation de dynamique moléculaire nécessite une phase d'initialisation. Il faut en premier lieu assigner une position à chaque particule --- chaque atome, en général. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant, qui est généralement de l'eau avec quelques ions dissous, mais c'est plus compliqué pour les macromolécules dont la conformation n'est pas triviale. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Lorsque la cristallographie n'est pas possible, d'autres méthodes, moins précises, peuvent être utilisées. Parfois, on procède également par homologie. La modélisation par homologie repose sur l'identification d'une ou plusieurs structures protéiques connues susceptibles et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acide aminés de la protéine étudiée et ceux des structures protéiques connues. Cela repose sur l'hypothèse que la forme d'une protéine dépend de sa composition chimique, et notamment des interactions entre les différents champs de forces générés par les atomes de la molécule. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
+		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
+		\label{fig:moldyn}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/crystal}
+		\caption{Schéma très simplifié de la cristallographie aux rayons X. Ces rayons traversent un cristal (contenant une même molécule présente en grande quantité) qui les diffracte avant leur capture par un détecteur connecté à un ordinateur. Ce dernier, à l'aide d'un algorithme approprié, en déduit la conformation 3D de la molécule cristallisée. Crédit :~\cite{trellet2015exploration}.}
+		\label{fig:crystal}
+	\end{figure}
+	
+	\paragraph{Périodicité.}
+	L'espace de simulation est généralement modélisé par ce qu'on appelle des conditions périodiques aux limites (CPL, en anglais \emph{periodic boundary conditions} --- PBC). Elles constituent un ensemble de conditions aux limites utilisées afin de simuler un système pavé effectivement infini. En effet, si un système microscopique est simulé dans le vide, les molécules du système s'évaporeront, s'éloignant les unes des autres à moins d'être maintenues ensemble par une force restrictive externe. Si, au contraire, le système est simulé en utilisant des murs réflecteurs aux limites, des forces parasites sont introduites dans la simulation, pouvant donc créer un écart supplémentaire (en plus des approximations de simulation utilisées) par rapport au système réel. On optera donc généralement pour un système périodique, comme celui représenté sur la figure~\ref{fig:period} --- ce dernier est en deux dimensions, mais le principe en trois dimensions est le même. Il convient toutefois de prendre des précautions avec les conditions périodiques, afin d'éviter que des interactions \og artificielles \fg{} se produisent entre les \og bords \fg{} de l'espace de simulation, notamment entre les particules et leurs propres images si cela ne correspond pas au système étudié dans son état naturel~\cite{cheatham1995molecular, de1997effect}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/period}
+		\caption{Comportement par périodicité (2D) : la particule vert foncé (coin supérieur gauche de la boîte en traits pleins) possède une quantité de mouvement l'amenant à sortir de la boîte (flèche). Une fois sortie, la périodicité du système ramène une particule identique dans la boîte, avec la même quantité de mouvement. La particule subit l'influence de toutes les particules environnantes, y compris ses propres images. Crédit : \emph{Wikimedia}.}
+		\label{fig:period}
+	\end{figure}
+	
+	\paragraph{Pas de temps.} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un laps de temps aussi grand que possible --- ce qui est souvent nécessaire pour observer des phénomènes biologiques complexes et longs --- e pas de temps doit être aussi grand que possible. Cela permet en effet à chaque itération de la simulation de couvrir une durée relativement élevée, donc pour un temps (réel) de simulation donné et pour des ressources de calcul données, la durée simulée est maximisée.
+	
+	Cependant, le pas de temps doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple (particulièrement les liaisons carbone-hydrogène) sont très courtes, de l'ordre de $10^{-14}$~s, soit 10 femtosecondes. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1 femtoseconde, du moins pour les simulations de type \og tout atome \fg{}. Des simulations plus grossières (notamment de type \og gros grains \fg{}) peuvent se contenter de pas de temps plus long, au prix de quelques compromis.
+	
     
 	\subsection{Simulations interactives}
 	Besoin de steering, etc.
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers, dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en resulte de plus une densité élevée, voire très élevée (selon le mode de représentation.
-	 occultaton, vitesse, prévisibilité, etc.
+	
+	occultation, vitesse, prévisibilité, etc.
+	 
+    \paragraph{Applications}
+    
+    \paragraph{Limites}
 	
 	\section{Contrôle de l'espace aérien}
 	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
 	
 	\subsection{Applications civiles}
+	\paragraph{Avions.}
 	Quantitativement, un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et généralement prévisibles car ils ont pour but d'emprunter des couloirs aériens, ou des trajectoires d'approche imposées aux abords des aéroports.
 
-	\paragraph{}
+	\paragraph{Hélicoptères.}
 	Il n'en va toutefois pas de même pour les hélicoptères, qui peuvent faire demi-tour en environ quatre secondes, voire moins. Cependant, les modèles civils dépassent rarement les 300 km/h. La fréquence des changements de direction dépend considérablement de la mission, elle peut être faible pour un simple transport d'un point A vers un point B, auquel cas la trajectoire de l'hélicoptère va tendre vers la ligne droite, ou assez importante dans le cas d'un hélicoptère de police fournissant une assistance aérienne pendant une course-poursuite.
 	
 	\subsection{Applications militaires (surveillance de l'espace aérien)}
+	\paragraph{Avions de chasse.}
 	Les aéronefs militaires présentent des caractéristiques beaucoup plus variables, dans des intervalles nettement plus grands. La vitesse d'un avion de chasse, par exemple, peut atteindre 3000~km/h~\cite{mig31}. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la maœuvrabilité de tels engins, mais il est du moins clair qu'un avion de chasse moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs. La fréquence maximale à laquelle un avion peut changer de direction est également difficile à connaître avec certitude, mais une simple observation d'une démonstration en vol permet d'estimer que cette valeur est, grossièrement, de l'ordre d'un changement par seconde environ~\cite{rafdemo}. Indépendamment des capacités techniques des avions militaires, leurs missions peuvent précisément imposer la recherche de l'imprévisibilité (par exemple pour éviter les tirs ennemis) ce qui n'est généralement pas le cas dans le civil.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/AlFursan}
-		\caption{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Crédit : The National UAE (\url{http://www.thenational.ae}).}
+		\caption{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Des avions militaires peuvent avoir des trajectoires à la fois complexes, très proches les unes des autres, et parcourues à grande vitesse. Crédit : The National UAE (\url{http://www.thenational.ae}).}
 		\label{fig:alfursan}
 	\end{figure}
 	
-	\paragraph{}
+	\paragraph{Hélicoptères.}
 	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils, sans qu'il soit aisé de quantifier cette différence. Comme pour les avions, leur comportement est susceptible d'être  Ils sont ausssi légèrement plus rapides, de quelques dizaines de km/h, notamment en piqué. Comme pour les avions, leurs missions impliquent souvent des trajectoires moins prévisibles.
 	
-	\paragraph{}
+	\paragraph{Drones.}
 	Le cas des drones aériens, c'est-à-dire des aéronefs sans pilote embarqué (télécommandés ou autonomes) est peut-être le plus hétérogène. On trouve en effet des drones de très petite taille, mais aussi des modèles de plusieurs tonnes~\cite{reaper}. Leurs modes de sustentation sont très divers, leurs moyens de propulsion varient également, et de fait, leurs caractéristiques de vol sont extrêmement variables, des plus petits engins extrêmement manœuvrables jusqu'au plus gros, qui se comportent comme des avions. Au-delà de leurs caractéristiques de vol, certains drones sont délibérément conçus pour être utilisés en grandes quantités, en essaims~\cite{locust, alonso2016distributed, saska2014autonomous}, notamment pour submerger l'ennemi par le nombre. Cela implique une densité de cibles potentiellement très importante, avec les niveaux d'occultation qui en découlent.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/swarm}
-		\caption{Petit essaim de drones aériens. Crédit : \emph{International Business Times}.}
+		\caption{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}.}
 		\label{fig:swarm}
 	\end{figure}
 	
-	\paragraph{}
+	\paragraph*{}
 	Dans une certaine mesure, le contrôle de la circulation des drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le Ministère de l'écologie et du développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français~\cite{dronesuaf}.
 	
-	\paragraph{}
+	\paragraph*{}
 	Les drones représentent aussi un risque sécuritaire civil généralisé :
 	
 	\begin{displayquote}
@@ -295,7 +368,7 @@
 	
 	\end{displayquote}
 	
-	\paragraph{}
+	\paragraph{Missiles.}
 	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de chasse, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II dont une maquette est représentée sur la figure~\ref{fig:brahmos}.
 	
 	\begin{figure}[htb]
@@ -305,7 +378,7 @@
 		\label{fig:brahmos}
 	\end{figure}
 	
-	\paragraph{}
+	\paragraph{Hétérogénéité des cibles.}
 	En situation réelle, un espace aérien pourrait tout à fait contenir des véhicules et autres engins volants de tous les types sus-cités, des essaims de drones très manœvrables jusqu'aux missiles balistiques les plus rapides. Un système de contrôle interactif devrait donc être assez souple pour permettre la sélection de cibles de natures très différentes.
 	On peut noter que les engins volants militaires ont vocation à chercher à éviter d'être détectés, soit en étant naturellement furtifs, soit en volant à très basse altitude et en tirant parti du relief naturel. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, et peuvent éventuellement disparaître de ces écrans, offrant une fenêtre temporelle restreinte pour l'interaction.
 	
@@ -317,7 +390,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/Radar-Scope-ZSE}
-		\caption{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisible. Crédit : \emph{Bold Method}.}
+		\caption{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}.}
 		\label{fig:airtraffic}
 	\end{figure}
 	
@@ -325,7 +398,7 @@
 	\subsection{Enjeux}
 	La figure~\ref{fig:channel} représente un écran de contrôle du trafic maritime en Manche. Fondamentalement, il s'agit d'un problème très similaire à celui du contrôle du trafic aérien, car il s'agit dans les deux cas de surveiller et organiser un espace fluide. Comme dans les airs, les enjeux sont à la fois militaires et civils. Les bâtiments militaires (\emph{a fortiori} s'ils sont potentiellement hostiles) doivent en effet être détectés le plus tôt possible et suivis tant qu'ils sont dans un espace d'intérêt défini, mais il faut également surveiller les bâtiments civils.
 	
-	\paragraph{}
+	\paragraph{Criminalité et terrorisme.}
 	En effet, au-delà des activités commerciales normales qui font l'objet de contrôles douaniers, la mer abrite des activités illégales diverses, incluant tous types de trafics (contrebande, œuvres d'art, drogue, armes, êtres humains) mais aussi la piraterie ou des activités liées au terrorisme.
 	Le fret maritime mondiale représentant près de 10 milliards de tonnes, on mesure l'ampleur et l'importance du défi à l'échelle planétaire~\cite{unctad}.
 	
@@ -340,48 +413,50 @@
 	\subsection{Difficultés}
 	La plupart des navires se déplacent à la surface de l'eau. Par conséquent, leur représentation dans le plan sur un écran de contrôle n'implique généralement pas de perte d'information significative, contrairement au cas aérien. Toutefois, les sous-marins peuvent plonger à plusieurs centaines de mètres. S'ils représentent une très petite minorité des navires en circulation, leur détection revêt une importance militaire critique.
 	
-	\paragraph{}
+	\paragraph*{}
 	De fait, le problème de l'affichage planaire d'information tridimensionnelles demeure, même s'il est moins prégnant. Les navires sont en moyenne bien plus lents que les aéronefs, mais certains bateaux de type \emph{go-fast} peuvent dépasser les 150~km/h. Ces navires étant fréquemment utilisés par les trafiquants de drogue pour échapper aux garde-côtes, il est particulièrement important de pouvoir les détecter et les contrôler.
 	
-	\paragraph{}
+	\paragraph*{}
 	Comme souvent pour les tâches de ce type, la densité de cibles dépend du niveau de zoom, qui peut résulter d'un choix de l'utilisateur, ou d'une contrainte (l'obligation d'avoir en permanence une zone donnée affichée, par exemple). La densité peut donc varier et, potentiellement, être très élevée. Elle devient particulièrement problématique lorsque l'on souhaite afficher des informations contextuelles à propos des navires, ou d'un sous-ensemble de ceux-ci. Ces informations peuvent concerner le type du navire, son pavillon, son propriétaire, son équipage, son origine, sa destination (connue ou présumée) ses escales, sa cargaison, etc., ainsi que les éventuelles précédentes valeurs de toutes ces données.
 	
-	\paragraph{}
+	\paragraph*{}
 	Ces informations revêtent une importance particulière lorsqu'il est nécessaire aux autorités de faire la différence entre un bateau effectuant un simple voyage de plaisance et une embarcation susceptible d'être engagée dans une activité criminelle. Un groupe de \emph{speedboats} filant à vive allure vers une destination donnée peut tout aussi bien être un groupe d'amis en promenade qu'une bande de trafiquants de drogue. Il est donc nécessaire aux agents de contrôle de l'espace maritime de disposer d'un maximum d'informations le plus vite possible pour déterminer s'il est nécessaire d'ordonner l'interception de ces bateaux.
 	
-	\paragraph{}
+	\paragraph*{}
 	La figure~\ref{fig:lincoln} illustre un cas de forte densité locale de navires, avec des cibles de haute importance stratégique de surcroît. Près des ports, la densité peut être plus élevée encore, même si les navires concernés sont moins préoccupants pour les autorités. Il leur est toutefois nécessaire de garantir la circulation fluide et sûre de ces navires, et de veiller à ce que personne ne tire parti de cette forte densité à des fins illicites ou criminelles.
 	
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/lincoln}
-		\caption{Même dans des eaux relativement vides, la densité de navries peut être élevée localement. C'est généralement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval Abraham Lincoln, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navries présents, compte tenu de leur importance militaire. Crédit : \emph{Gabriel Wilson, via Wikimedia}.}
+		\caption{Même dans des eaux relativement vides, la densité de navries peut être élevée localement. C'est généralement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval Abraham Lincoln, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navries présents, compte tenu de leur importance militaire. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
 		\label{fig:lincoln}
 	\end{figure}
+	
+	\section{Contrôle de l'espace extra-atmosphérique}
 	
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation. Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement.
 	
-	\paragraph{}
+	\paragraph*{}
 	La vitesse d'un être humain à pied est inférieure à 45~km/h. Les changements de direction peuvent aller jusqu'au demi-tour, et leur fréquence est très variable selon la tâche accomplie. On peut supposer que cette fréquence est au plus de l'ordre de quelques Hz, en pratique généralement moins.
 
-	\paragraph{}	
+	\paragraph*{}	
 	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, exception faite de ceux qui enfreignent le code de la route. Mais, soit à cause de l'infraction en question, soit parce qu'ils l'enfreignent pour fuir après des délits ou crimes plus graves, ces véhicules-là peuvent justement faire l'objet d'une attention particulière de la part des forces de l'ordre. Dans ces cas-là, la vitesse d'un véhicule peut dépasser les 300~km/h~\cite{speeding}.
 	
 	Les changements de direction dépendent évidemment de la vitesse. En ville, à moins de 50~km/h, une automobile peut effectuer un virage à 90 degrés dans un laps de temps de l'ordre de la seconde si sa vitesse est réduite, mais elle est contrainte à des courbes beaucoup plus douces lorsqu'elle se déplace rapidement, par exemple sur une autoroute.
 	
 	La fréquence des changements de direction dépend également de la vitesse, tant pour des raisons physiques que du fait du tracé des trajets communément effectués. En milieu urbain dense, on peut considérer qu'un véhicule va changer de direction, de façon plus ou moins prononcée, à une fréquence de l'ordre de 0,1~Hz, sachant qu'en cas de nécessité, cette fréquence peut être nettement plus élevée.
 	
-	\paragraph{}
+	\paragraph*{}
 	En plus des piétons et des automobiles, la vidéo-surveillance s'applique à tous les véhicules et moyens de déplacement susceptibles d'être utilisés dans l'espace public : patins à roulettes, skateboards de tous types, bicyclettes, motocyclettes, etc. Les caractéristiques du mouvement de ces moyens de transport sont diverses, mais généralement comprises dans les intervalles formés par les piétons et les automobiles. Il est donc important qu'une technique de sélection puisse non seulement gérer les valeurs extrêmes de vitesse, d'angle et de fréquence de changements de direction, mais également les diverses combinaisons de ces valeurs qui peuvent se présenter simultanément.
 	
-	\paragraph{}
+	\paragraph*{}
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance 
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/crowdhk}
-		\caption{Foule de manifestants à Hong-Kong. Mouvement très faible, mais densité très élevée. Crédit : \emph{Business Insider}.}
+		\caption{Foule de manifestants à Hong-Kong. Le mouvement des individus est en moyenne très faible, mais leur densité est très élevée. Crédit : \emph{Business Insider}.}
 		\label{fig:crowdhk}
 	\end{figure}
 	
@@ -400,11 +475,11 @@
 	\section{Retransmissions d'événements sportifs ou artistiques}
 	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, nécessitant souvent la sélection de cibles mobiles. Il peut être utile, par exemple, de sélectionner un joueur de football pour afficher ses statistiques. Pour les mêmes raisons, un ballon ou une balle peut être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
-	\paragraph{}
+	\paragraph*{}
 	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pieds obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc., sans parler des sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont souvent plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection.
 	
-	\paragraph{}
-	Les divers projectiles utilisés en sports (balles, ballons, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficile. D'un autre côté, il n'y a généraelement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié serait probablement une option préférable à l'utilisation d'une technique de sélection libre, fût-elle assistée.
+	\paragraph{Projectiles.}
+	Les divers projectiles utilisés en sports (balles, ballons, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficile. D'un autre côté, il n'y a généralement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié serait probablement une option préférable à l'utilisation d'une technique de sélection libre, fût-elle assistée.
 	
 	\begin{figure}[ht]
 		\centering
@@ -421,7 +496,7 @@
 	\subsection{Jeux de tir (FPS) et jeux de rôle d'action (ARPG)}
 	Attendu que dans les FPS, la visée est précisément le cœur du jeu, et censée être difficile, les développeurs seraient probablement peu enclins à intégrer des techniques la facilitant, car cela diminuerait l'intérêt ludique de leur œuvre. Dans un jeu de rôle classique, c'est plutôt l'inverse. Les capacités du (des) personnage(s) contrôlé(s) par le joueur dépendent de l'expérience accumulée depuis le début du jeu, l'expérience étant ici une ressource précisément quantifiée, sous forme de points. Ces points sont ensuite investis dans des attributs (force, dextérité, endurance, intelligence\ldots{}) ou compétences (combat à mains nues, tir au fusil, persuasion, furtivité, magie de types divers\ldots{}). Souvent, les performances de visée d'un personnage dépendent uniquement de ses attributs et compétences, et non de la dextérité du joueur, qui n'a pas forcément besoin de désigner les cibles (le personnage les choisissant automatiquement) ou qui peut le faire pendant que l'action du jeu est en pause.
 	
-	\paragraph{}
+	\paragraph{ARPG.}
 	Mais il existe aussi une catégorie intermédiaire, les jeux de rôle d'action (ARPG). Les détails varient d'un jeu à l'autre, mais en général, le joueur est directement responsable des mouvements de ses personnages, mais les attributs et compétences du personnage ont une influence sur ses performances finales. Ce principe peut être mis en œuvre de diverses façons. En ce qui concerne le tir avec une arme (pistolet, arc, fusil\ldots{}) trois options, pas forcément mutuellement exclusives, sont couramment retenues :
 	\begin{description}
 		\item[Dispersion.] Quand les compétences de tir du personnage sont faibles, le réticule de visée est agrandi, ce qui indique au joueur que le cône de dispersion est large. À mesure que les compétences du personnage augmentent, le réticule et le cône se resserrent.
@@ -429,13 +504,13 @@
 		\item[Recul.] Une arme qui tire un projectile a généralement un certain recul. Celui-ci n'a pas d'influence sur la précision du premier tir, mais sur tous les suivants. Dans un jeu vidéo, il est généralement simulé par un mouvement du curseur après le tir, habituellement vers le haut, avec en plus une composante horizontale, qui peut être aléatoire. On peut diminuer cet effet de recul quand les compétences du personnage croissent.
 	\end{description}
 
-	\paragraph{}
+	\paragraph*{}
 	Ces mécanismes permettent d'obtenir une difficulté de tir qui dépend du joueur, puisqu'il doit tout de même viser, mais les compétences du personnage jouent sur la difficulté de la tâche. On remarque qu'il s'agit toujours de gêner le joueur, de lui imposer un handicap qui diminue quand les compétences de ses personnages augmentent. Au final, le joueur reste borné par sa propre dextérité, comme dans un FPS classique.
 	
-	\paragraph{}
+	\paragraph*{}
 	Une autre technique, utilisée par les récents opus de la série \emph{Fallout} (désormais produite par Bethesda Studios) appelée \emph{Vault-Tec Assisted Targeting System}, ou V.A.T.S, consiste à arrêter ou considérablement ralentir le temps, pour permettre au joueur de désigner ses cibles, que le personnage attaquera ensuite automatiquement. Cette opération se fait en échange de << points d'action >>. L'inconvénient majeur de cette solution est la perte du temps-réel, et l'impact négatif sur l'immersion qui y est associé. De plus, le caractère automatique de l'attaque, une fois les cibles désignées, rend l'opération totalement indépendante de la dextérité du joueur, ce qui d'une part est une déviation du paradigme de l'ARPG, et d'autre part peut diminuer l'intérêt ludique du combat.
 	
-	\paragraph{}
+	\paragraph*{}
 	On pourrait imaginer, à la place ou en complément de ces approches, d'apporter au joueur une assistance à la visée. Une telle technique d'aide à la sélection devrait être paramétrable dans son << intensité >>, c'est-à-dire qu'il devrait lui être possible d'apporter au joueur une assistance plus ou moins prononcée, selon un paramètre donné. Ce paramètre pourrait être (dérivé de) la compétence de tir du personnage. Ainsi, un joueur contrôlant un personnage expert en tir serait capable d'abattre des cibles très difficiles, conformément à l'image du personnage telle qu'elle est véhiculée par le jeu, mais le joueur resterait l'acteur principal de l'opération, sans ralentissement ou suspension du temps.
 	
 	\begin{figure}[ht]
@@ -448,7 +523,7 @@
 	\subsection{Jeux de gestion, de stratégie (RTS) et de tactique (RTT)}
 	Dans ce que nous appellerons, pour simplifier, les jeux de gestion (en y incluant les RTS et RTT) le but est de mener un organisme (d'une petite entreprise à une civilisation) vers la prospérité, ou une armée vers la victoire. Ces genres mettent l'accent sur la réflexion tactique et stratégique, la gestion des ressources naturelles et humaines, l'organisation logistique, l'utilisation astucieuse du terrain, l'art de la feinte, etc. S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. Au contraire, la tâche de sélection fait perdre du temps au joueur, du temps qui pourrait être utilisé pour organiser ses resources et forces, ou tout simplement pour réfléchir.
 	
-	\paragraph{}
+	\paragraph*{}
 	Par conséquent, une technique de sélection facilitant cette tâche autant que possible serait probablement bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses. Dans \emph{Cossacks~2: Napoleonic Wars}, par exemple, une bataille peut engager jusqu'à 64~000 unités, et la situation devient suffisamment assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités~\cite{cossacks2}. Il est évident que si cette solution est acceptable (quoique loin d'être idéale) dans un jeu opposant une intelligence artificielle au joueur humain, elle vient beaucoup plus gênante dans un contexte multijoueur.
 	
 	
@@ -470,7 +545,7 @@
 	\subsection{Arènes de bataille en ligne multijoueur (MOBA)}
 	Les jeux de type MOBA sont caractérisés par un petit nombre de cibles (de l'ordre de quelques dizaines, tout au plus) rapides et imprévisibles.
 
-	\paragraph{}
+	\paragraph*{}
 	Le \emph{wiki} du jeu \emph{DOTA~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales~\cite{dota2}.	 Celles-ci sont reproduites dans le tableau~\ref{tab:dotamoves}.
 	
 	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
@@ -512,7 +587,7 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/dota2}
-		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}.}
+		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}.}
 		\label{fig:dota2}
 	\end{figure}
 	
