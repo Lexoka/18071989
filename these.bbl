@@ -17,6 +17,11 @@ Dassault Aviation.
 \newblock Rafale, démonstration en vol.
 \newblock \url{https://www.youtube.com/watch?v=vo0ZN2_O29M}, 2015.
 
+\bibitem[AW59]{alder1959studies}
+Berni~J Alder and TE~Wainwright.
+\newblock Studies in molecular dynamics. i. general method.
+\newblock {\em The Journal of Chemical Physics}, 31(2):459--466, 1959.
+
 \bibitem[BTS12]{berg_biochemistry_2012}
 Jeremy~Mark Berg, John~L Tymoczko, and Lubert Stryer.
 \newblock {\em Biochemistry}.
@@ -27,6 +32,19 @@ Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
 \newblock Dynaspot: speed-dependent area cursor.
 \newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
   Computing Systems}, pages 1391--1400. ACM, 2009.
+
+\bibitem[CMF{\etalchar{+}}95]{cheatham1995molecular}
+TE~III Cheatham, JL~Miller, T~Fox, TA~Darden, and PA~Kollman.
+\newblock Molecular dynamics simulations on solvated biomolecular systems: the
+  particle mesh ewald method leads to stable trajectories of dna, rna, and
+  proteins.
+\newblock {\em Journal of the American Chemical Society}, 117(14):4193--4194,
+  1995.
+
+\bibitem[Con83]{connolly1983analytical}
+Michael~L Connolly.
+\newblock Analytical molecular surface calculation.
+\newblock {\em Journal of Applied Crystallography}, 16(5):548--558, 1983.
 
 \bibitem[CP53]{corey1953molecular}
 Robert~B Corey and Linus Pauling.
@@ -61,6 +79,17 @@ Henrique~G Debarba, Jer{\^o}nimo~G Grandi, Anderson Maciel, Luciana Nedel, and
 \newblock In {\em IFIP Conference on Human-Computer Interaction}, pages
   388--405. Springer, 2013.
 
+\bibitem[dSO97]{de1997effect}
+O~Norberto de~Souza and Rick~L Ornstein.
+\newblock Effect of periodic box size on aqueous molecular dynamics simulation
+  of a dna dodecamer with particle-mesh ewald method.
+\newblock {\em Biophysical journal}, 72(6):2395--2397, 1997.
+
+\bibitem[FPUT55]{fermi1955alamos}
+E~Fermi, J~Pasta, S~Ulam, and M~Tsingou.
+\newblock Los alamos report la-1940.
+\newblock {\em E. Fermi, Collected Papers}, 2:977--988, 1955.
+
 \bibitem[Gal16]{missiles}
 Caroline Galactéros.
 \newblock Les porte-avions sont-ils devenus des cimetières flottants ?
@@ -79,6 +108,11 @@ Tovi Grossman and Ravin Balakrishnan.
   of the cursor's activation area.
 \newblock In {\em Proceedings of the SIGCHI conference on Human factors in
   computing systems}, pages 281--290. ACM, 2005.
+
+\bibitem[GGMV60]{gibson1960dynamics}
+JB~Gibson, An~N Goland, M~Milgram, and GoHo Vineyard.
+\newblock Dynamics of radiation damage.
+\newblock {\em Physical Review}, 120(4):1229, 1960.
 
 \bibitem[HGI11]{hasan2011comet}
 Khalad Hasan, Tovi Grossman, and Pourang Irani.
@@ -107,14 +141,37 @@ Paul Kabbash and William~AS Buxton.
   computing systems}, pages 273--279. ACM Press/Addison-Wesley Publishing Co.,
   1995.
 
+\bibitem[KBE09]{krone2009interactive}
+Michael Krone, Katrin Bidmon, and Thomas Ertl.
+\newblock Interactive visualization of molecular surface dynamics.
+\newblock {\em IEEE transactions on visualization and computer graphics},
+  15(6):1391--1398, 2009.
+
+\bibitem[KSES12]{krone2012fast}
+Michael Krone, John~E Stone, Thomas Ertl, and Klaus Schulten.
+\newblock Fast visualization of gaussian density surfaces for molecular
+  dynamics and particle system trajectories.
+\newblock {\em EuroVis-Short Papers}, 1:67--71, 2012.
+
+\bibitem[LC87]{lorensen1987marching}
+William~E Lorensen and Harvey~E Cline.
+\newblock Marching cubes: A high resolution 3d surface construction algorithm.
+\newblock In {\em ACM siggraph computer graphics}, volume~21, pages 163--169.
+  ACM, 1987.
+
 \bibitem[LCI16]{brisset}
 AFP LCI, Tony~Karumba.
-\newblock Soldats franÇais blessÉs par un drone de daech : Quand un engin de
+\newblock Soldats français blessés par un drone de daech : quand un engin de
   loisir devient une arme du terrorisme.
 \newblock
   \url{http://www.lci.fr/international/soldats-francais-blesses-par-un-drone-d%
 e-daech-en-irak-quand-un-engin-de-loisir-devient-une-arme-du-terrorisme-200773%
 8.html}, 2016.
+
+\bibitem[LJ24]{lennard1924determination}
+JE~Lennard and I~Jones.
+\newblock On the determination of molecular fields.
+\newblock In {\em Proc. R. Soc. London}, volume 106, pages 441--477, 1924.
 
 \bibitem[MiG16]{mig31}
 Russian Aircraft~Corporation MiG.
@@ -122,6 +179,11 @@ Russian Aircraft~Corporation MiG.
 \newblock
   \url{http://www.migavia.ru/index.php/en/production/mig-31e-fighter?limit=1&s%
 tart=2}, 2016.
+
+\bibitem[OG04]{Ordway3441}
+George~A. Ordway and Daniel~J. Garry.
+\newblock Myoglobin: an essential hemoprotein in striated muscle.
+\newblock {\em Journal of Experimental Biology}, 207(20):3441--3446, 2004.
 
 \bibitem[OoNR15]{locust}
 US~Department of~Defense Office~of Naval~Research.
@@ -134,6 +196,17 @@ t-UAV-swarm-ONR.aspx}, 2015.
 United Nations~Conference on~Trade and Development.
 \newblock Review of maritime transport.
 \newblock \url{http://unctad.org/en/PublicationsLibrary/rmt2015_en.pdf}, 2015.
+
+\bibitem[Rah64]{rahman1964correlations}
+A~Rahman.
+\newblock Correlations in the motion of atoms in liquid argon.
+\newblock {\em Physical Review}, 136(2A):A405, 1964.
+
+\bibitem[RSLS13]{roberts2013lattice}
+Elijah Roberts, John~E Stone, and Zaida Luthey-Schulten.
+\newblock Lattice microbes: High-performance stochastic simulation method for
+  the reaction-diffusion master equation.
+\newblock {\em Journal of computational chemistry}, 34(3):245--255, 2013.
 
 \bibitem[SCP{\etalchar{+}}14]{saska2014autonomous}
 Martin Saska, Jan Chudoba, Libor P{\v{r}}eu{\v{c}}il, Justin Thomas, Giuseppe
@@ -150,12 +223,53 @@ Seongho Seo, Moo~K Chung, and Houri~K Vorperian.
 \newblock In {\em International Conference on Medical Image Computing and
   Computer-Assisted Intervention}, pages 505--512. Springer, 2010.
 
+\bibitem[Sha49]{shannon1949communication}
+Claude~Elwood Shannon.
+\newblock Communication in the presence of noise.
+\newblock {\em Proceedings of the IRE}, 37(1):10--21, 1949.
+
+\bibitem[SIS13]{stone2013early}
+John~E Stone, Barry Isralewitz, and Klaus Schulten.
+\newblock Early experiences scaling vmd molecular visualization and analysis
+  jobs on blue waters.
+\newblock In {\em Extreme Scaling Workshop (XSW), 2013}, pages 43--50. IEEE,
+  2013.
+
+\bibitem[SMIS14]{stone2014gpu}
+John~E Stone, Ryan McGreevy, Barry Isralewitz, and Klaus Schulten.
+\newblock Gpu-accelerated analysis and visualization of large structures solved
+  by molecular dynamics flexible fitting.
+\newblock {\em Faraday discussions}, 169:265--283, 2014.
+
+\bibitem[SSB{\etalchar{+}}14]{sener2014visualization}
+Melih Sener, John~E Stone, Angela Barragan, Abhishek Singharoy, Ivan Teo,
+  Kirby~L Vandivort, Barry Isralewitz, Bo~Liu, Boon~Chong Goh, James~C
+  Phillips, et~al.
+\newblock Visualization of energy conversion processes in a light harvesting
+  organelle at atomic detail.
+\newblock In {\em Proceedings of the International Conference on High
+  Performance Computing, Networking, Storage and Analysis}, 2014.
+
 \bibitem[Sui11]{speeding}
 Radio~Télévision Suisse.
 \newblock Un chauffard roule à plus de 320~km/h sur l'a1.
 \newblock
   \url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-%
 km-h-sur-l-a1.html}, 2011.
+
+\bibitem[SVS13]{stone2013gpu}
+John~E Stone, Kirby~L Vandivort, and Klaus Schulten.
+\newblock Gpu-accelerated molecular visualization on petascale supercomputing
+  platforms.
+\newblock In {\em Proceedings of the 8th International Workshop on Ultrascale
+  Visualization}, page~6. ACM, 2013.
+
+\bibitem[Tre15]{trellet2015exploration}
+Mikael Trellet.
+\newblock {\em Exploration et analyse immersives de donn{\'e}es
+  mol{\'e}culaires guid{\'e}es par la t{\^a}che et la mod{\'e}lisation
+  s{\'e}mantique des contenus}.
+\newblock PhD thesis, Universit{\'e} Paris-Saclay, 2015.
 
 \bibitem[WWBH97]{worden1997making}
 Aileen Worden, Nef Walker, Krishna Bharat, and Scott Hudson.

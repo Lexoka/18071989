@@ -20,21 +20,21 @@
 		
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/bubble}
+		\includegraphics[width=\textwidth]{figures/ch2/bubble}
 		\caption{Illustration du fonctionnement de la technique \emph{Bubble Cursor} (a, c, d) par opposition à un curseur zonal (b). Dans le cas b, le curseur zonal ne permet pas aisément de choisir aisément entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Crédit : Grossman \emph{et al.}}
 		\label{fig:bubble}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/voronoi}
+		\includegraphics[width=\textwidth]{figures/ch2/voronoi}
 		\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. Les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule. Crédit : Grossman \emph{et al.}}
 		\label{fig:voronoi}
 	\end{figure}
 
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/bubbleResults}
+		\includegraphics[width=\textwidth]{figures/ch2/bubbleResults}
 		\caption{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : Grossman \emph{et al.}}
 		\label{fig:bubbleResults}
 	\end{figure}
@@ -48,14 +48,14 @@
 
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/dynaSpot}
+		\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
 		\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en surbrillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, il est possible de sélectionner l'espace vide. Crédit : Chapuis \emph{et al.}}
 		\label{fig:dynaSpot}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/dynaResults}
+		\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
 		\caption{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : Chapuis \emph{et al.}}
 		\label{fig:dynaResults}
 	\end{figure}
@@ -72,35 +72,35 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/comet}
+		\includegraphics[width=\textwidth]{figures/ch2/comet}
 		\caption{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : Hasan \emph{et al.}}
 		\label{fig:comet}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/targetGhost}
+		\includegraphics[width=\textwidth]{figures/ch2/targetGhost}
 		\caption{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est « \emph{ghostée} » la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il devient possible de le sélectionner. D'ailleurs, seul le proxy peut être sélectionné, pas le fantôme de la cible. Crédit : Hasan \emph{et al.}}
 		\label{fig:targetGhost}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/cometGhostTimes}
+		\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
 		\caption{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. Crédit : Hasan \emph{et al.}}
 		\label{fig:cometGhostTimes}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/cometGhostErrors}
+		\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
 		\caption{Taux d'erreur pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. Crédit : Hasan \emph{et al.}}
 		\label{fig:cometGhostErrors}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/cometGhostPredictability}
+		\includegraphics[width=\textwidth]{figures/ch2/cometGhostPredictability}
 		\caption{Temps de complétion de la tâche, (a) : en fonction des techniques, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. Crédit : Hasan \emph{et al.}}
 		\label{fig:cometGhostPredictability}
 	\end{figure}

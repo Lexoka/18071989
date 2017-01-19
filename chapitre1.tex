@@ -11,7 +11,7 @@
 	\subsection{Protéines -- définition et rôles}
 	Les protéines sont des macromolécules que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et ) la régulation de l'expression génétique. L'étude de leur fonctionnement donc est essentielle à la compréhension du vivant.
 	
-	\paragraph*{}
+	\paragraph{Composition.}
 	Concrètement, une protéine est un ensemble (éventuellement un singleton) de chaînes d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
     \begin{figure}[H]
@@ -164,7 +164,7 @@
 		
 	\paragraph{Surface accessible au solvant et surface de Connolly.} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
 		
-	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_connolly} montre une protéine entière représentée ainsi.
+	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_sas} montre une protéine entière représentée ainsi.
 		
 	\begin{figure}[H]
 		\centering
@@ -173,9 +173,13 @@
 		\label{fig:connolly}
 	\end{figure}
 		
-	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se basant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}. L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
+	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se basant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}, illustré par la figure~\ref{fig:marchingCubes}. L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
 		
-	Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ respectivement faible ($0,2$), intermédiaire ($0,5$) et élevée ($1,5$).
+	Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5}, \ref{fig:4awn_iso_1_0} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ plus ou moins élevées ($0,2$, $0,5$, $1,0$ et $1,5$). Naturellement, plus la densité choisie est élevée, plus la surface sera proche des centres atomiques, et plus sa forme sera complexe, comme sur la figure~\ref{fig:4awn_iso_1_5} ; inversement, lorsque la densité est faible, la surface est loin des centres atomiques et sa forme est plus grossière, cf. la figure~\ref{fig:4awn_iso_0_2}.
+	
+	Outre le fait qu'elle représente une grandeur physique concrète, l'isosurface de densité a l'avantage d'être relativement rapide à calculer. En effet, l'algorithme \emph{QuickSurf}~\cite{krone2012fast, roberts2013lattice, stone2013early, stone2013gpu, stone2014gpu, sener2014visualization}, par exemple, permet de calculer une isosurface de densité suffisamment vite pour la recalculer en temps réel lors d'une simulation de dynamique moléculaire. Cet algorithme est conçu pour être exécuté sur un GPU (un processeur graphique, particulièrement adapté aux calculs très parallèles) ce qui améliore ses performances d'un à deux ordres de grandeur. Il permet de plus d'ajuster plusieurs paramètres : la résolution spatiale générale, le rayon des atomes (utilisé pour générer la grille de densité, par somme de gaussiennes 3D), l'isovaleur de densité voulue, la résolution de la grille de densité, et la distance de coupure utilisée pour la gaussienne associée à chaque atome.
+	
+	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. 
 		
 	\begin{figure}[H]
 	    \centering
@@ -194,82 +198,89 @@
 	
 	\newcommand{\subImgW}{0.5\textwidth}
 	\begin{figure}[H]
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_sas}}
-            \caption{Surface de Connolly, correspondant aux points de contact entre une molécule d'eau et l'ADNase.}
-            \label{fig:4awn_connolly}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_2}}
-            \caption{Isosurface de densité, avec un seuil faible, de $0,2$.}
-            \label{fig:4awn_iso_0_2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_5}}
-            \caption{Isosurface de densité, avec un seuil intermédiaire, $0,5$.}
-            \label{fig:4awn_iso_0_5}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_5}}
-            \caption{Isosurface de densité, avec un seuil élevé, de $1,5$}
-            \label{fig:4awn_iso_1_5}
-        \end{subfigure}
-        \caption{Désoxyribonucléase (ou ADNase). Cette enzyme est ici illustrée par diverses représentations surfaciques. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
-        \label{fig:4awn_surf}
-    \end{figure}
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_sas}}
+			\caption{Surface accessible au solvant, correspondant aux points parcourus par le centre d'une molécule d'eau en contact avec l'ADNase.}
+			\label{fig:4awn_sas}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_2}}
+			\caption{Isosurface de densité, avec un seuil très faible, de $0,2$.}
+			\label{fig:4awn_iso_0_2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_5}}
+			\caption{Isosurface de densité, avec un seuil faible, de $0,5$.}
+			\label{fig:4awn_iso_0_5}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_0}}
+			\caption{Isosurface de densité, avec un seuil intermédiaire, de $1,0$.}
+			\label{fig:4awn_iso_1_0}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_5}}
+			\caption{Isosurface de densité, avec un seuil élevé, de $1,5$.}
+			\label{fig:4awn_iso_1_5}
+		\end{subfigure}
+		\caption{Désoxyribonucléase (ou ADNase). Cette enzyme est ici illustrée par diverses représentations surfaciques. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
+		\label{fig:4awn_surf}
+	\end{figure}
     
-    \begin{figure}[H]
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_points}}
-            \caption{Représentation en \og points \fg{} ; seuls les atomes apparaissent.}
-            \label{fig:4awn_points}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_licorice}}
-            \caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}, ou \emph{licorice} en anglais. Seules les liaisons covalentes sont visibles}
-            \label{fig:4awn_licorice}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_CPK}}
-            \caption{Représentation dite CPK, ou en \og boules et bâtons \fg{}. Les atomes et les liaisons sont représentés.}
-            \label{fig:4awn_CPK}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_vdW}}
-            \caption{Représentation basée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
-            \label{fig:4awn_VdW}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_HB}}
-            \caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}. Les atomes et les liaisons sont représentés.}
-            \label{fig:4awn_HB}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[t]{\subImgW}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/4awn_ss}}
-            \caption{Représentation en structures secondaires. Les atomes et les liaisons sont invisibles, mais des structures plus grandes sont représentées de façon schématique.}
-            \label{fig:4awn_ss}
-        \end{subfigure}
-        \caption{La désoxyribonucléase (ou ADNase) est une enzyme catalysant les acides désoxyribonucléiques en nucléotides ou polynucléotides. Elle hydrolyse les liaisons phosphodiester. Voici un échantillon de quelques techniques de visualisation moléculaire, avec l'ADNase pour objet. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
-        \label{fig:4awn_atom}
-    \end{figure}
+	\begin{figure}[H]
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_points}}
+			\caption{Représentation en \og points \fg{} ; seuls les atomes apparaissent.}
+			\label{fig:4awn_points}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_licorice}}
+			\caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}, ou \emph{licorice} en anglais. Seules les liaisons covalentes sont visibles}
+			\label{fig:4awn_licorice}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_CPK}}
+			\caption{Représentation dite CPK, ou en \og boules et bâtons \fg{}. Les atomes et les liaisons sont représentés.}
+			\label{fig:4awn_CPK}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_vdW}}
+			\caption{Représentation basée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
+			\label{fig:4awn_VdW}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_HB}}
+			\caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}. Les atomes et les liaisons sont représentés.}
+			\label{fig:4awn_HB}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/4awn_ss}}
+			\caption{Représentation en structures secondaires. Les atomes et les liaisons sont invisibles, mais des structures plus grandes sont représentées de façon schématique.}
+			\label{fig:4awn_ss}
+		\end{subfigure}
+		\caption{La désoxyribonucléase (ou ADNase) est une enzyme catalysant les acides désoxyribonucléiques en nucléotides ou polynucléotides. Elle hydrolyse les liaisons phosphodiester. Voici un échantillon de quelques techniques de visualisation moléculaire, avec l'ADNase pour objet. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
+		\label{fig:4awn_atom}
+	\end{figure}
     
 	\subsection{Dynamique moléculaire}
 	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système. L'algorithme général est explicité (quoique sous forme schématique) sur la figure~\ref{fig:moldyn}.
@@ -334,7 +345,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/AlFursan}
+		\includegraphics[width=\textwidth]{figures/ch1/AlFursan}
 		\caption{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Des avions militaires peuvent avoir des trajectoires à la fois complexes, très proches les unes des autres, et parcourues à grande vitesse. Crédit : The National UAE (\url{http://www.thenational.ae}).}
 		\label{fig:alfursan}
 	\end{figure}
@@ -347,7 +358,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/swarm}
+		\includegraphics[width=\textwidth]{figures/ch1/swarm}
 		\caption{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}.}
 		\label{fig:swarm}
 	\end{figure}
@@ -373,7 +384,7 @@
 	
 	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/brahmos-II}
+		\includegraphics[width=\textwidth]{figures/ch1/brahmos-II}
 		\caption{Maquette du missile hypersonique russo-indien BrahMos-II, en cours de développement. Crédit : Pakistan Defence (\url{http://defence.pk}).}
 		\label{fig:brahmos}
 	\end{figure}
@@ -389,7 +400,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/Radar-Scope-ZSE}
+		\includegraphics[width=\textwidth]{figures/ch1/Radar-Scope-ZSE}
 		\caption{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}.}
 		\label{fig:airtraffic}
 	\end{figure}
@@ -405,7 +416,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/channel}
+		\includegraphics[width=\textwidth]{figures/ch1/channel}
 		\caption{Écran de contrôle représentant les navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : \emph{Arlo Maritime}.}
 		\label{fig:channel}
 	\end{figure}
@@ -427,7 +438,7 @@
 	
 	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/lincoln}
+		\includegraphics[width=\textwidth]{figures/ch1/lincoln}
 		\caption{Même dans des eaux relativement vides, la densité de navries peut être élevée localement. C'est généralement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval Abraham Lincoln, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navries présents, compte tenu de leur importance militaire. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
 		\label{fig:lincoln}
 	\end{figure}
@@ -455,14 +466,14 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/crowdhk}
+		\includegraphics[width=\textwidth]{figures/ch1/crowdhk}
 		\caption{Foule de manifestants à Hong-Kong. Le mouvement des individus est en moyenne très faible, mais leur densité est très élevée. Crédit : \emph{Business Insider}.}
 		\label{fig:crowdhk}
 	\end{figure}
 	
 	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/crowdacdc}
+		\includegraphics[width=\textwidth]{figures/ch1/crowdacdc}
 		\caption{Foule à un concert du groupe AC/DC. Mouvement presque nul, mais densité extrêmement élevée. Crédit : \emph{SHP Online}.}
 		\label{fig:crowdacdc}
 	\end{figure}
@@ -483,7 +494,7 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/basket}
+		\includegraphics[width=\textwidth]{figures/ch1/basket}
 		\caption{Match de basket-ball. Les joueurs sont peu nombreux, mais leurs mouvements sont vifs, horizontaux comme verticaux, et imprévisibles. Ils sont de plus très près les uns des autres et s'occultent mutuellement, \emph{a fortiori} quand ils sont filmés depuis le côté. Le ballon lui-même peut être une cible. Crédit : \emph{Weekend Notes}.}
 		\label{fig:basketball}
 	\end{figure}
@@ -515,7 +526,7 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/f4vats}
+		\includegraphics[width=\textwidth]{figures/ch1/f4vats}
 		\caption{Dans l'ARPG \emph{Fallout 4}, le système V.A.T.S. permet ici au joueur de cibler tranquillement la tête de cette créature, pendant que le temps est ralenti. Le tir aura une probabilité de succès de 77~\%{}, dérivée des compétences de tir du personnage contrôlé, et des circonstances du combat à cet instant précis. Crédit : \emph{Spider's Web}.}
 		\label{fig:f4vats}
 	\end{figure}
@@ -529,14 +540,14 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/cossacks2}
+		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
 		\caption{Exemple d'une partie du RTS \emph{Cossacks~2: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Crédit : \emph{Worth Playing}.}
 		\label{fig:cossacks2}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/eveonline}
+		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
 		\caption{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community}.}
 		\label{fig:eveonline}
 	\end{figure}
@@ -579,14 +590,14 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/lol2}
+		\includegraphics[width=\textwidth]{figures/ch1/lol2}
 		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{League of Legends~2}, avec quelques personnages. Crédit : \emph{Dota Geeks}.}
 		\label{fig:lol2}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\textwidth]{figures/dota2}
+		\includegraphics[width=\textwidth]{figures/ch1/dota2}
 		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}.}
 		\label{fig:dota2}
 	\end{figure}
