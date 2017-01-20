@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{AMMSR16}
+\begin{thebibliography}{OVMVG04}
 
 \bibitem[AMMSR16]{alonso2016distributed}
 Javier Alonso-Mora, Eduardo Montijano, Mac Schwager, and Daniela Rus.
@@ -31,6 +31,20 @@ Ilaria Bartalesi, Ivano Bertini, Parvana Hajieva, Antonio Rosato, and Paul~R
   implications.
 \newblock {\em Biochemistry}, 41(16):5112--5119, 2002.
 
+\bibitem[BBM{\etalchar{+}}09]{brooks2009charmm}
+Bernard~R Brooks, Charles~L Brooks, Alexander~D MacKerell, Lennart Nilsson,
+  Robert~J Petrella, Beno{\^\i}t Roux, Youngdo Won, Georgios Archontis,
+  Christian Bartels, Stefan Boresch, et~al.
+\newblock Charmm: the biomolecular simulation program.
+\newblock {\em Journal of computational chemistry}, 30(10):1545--1614, 2009.
+
+\bibitem[BBO{\etalchar{+}}83]{brooks1983charmm}
+Bernard~R Brooks, Robert~E Bruccoleri, Barry~D Olafson, David~J States,
+  S~Swaminathan, and Martin Karplus.
+\newblock Charmm: A program for macromolecular energy, minimization, and
+  dynamics calculations.
+\newblock {\em Journal of computational chemistry}, 4(2):187--217, 1983.
+
 \bibitem[Bol70]{boltzmann1970weitere}
 Ludwig Boltzmann.
 \newblock Weitere studien {\"u}ber das w{\"a}rmegleichgewicht unter
@@ -49,6 +63,20 @@ Ludwig Boltzmann.
 Jeremy~Mark Berg, John~L Tymoczko, and Lubert Stryer.
 \newblock {\em Biochemistry}.
 \newblock W. H. Freeman and Company, New York, N.Y, 2012.
+
+\bibitem[CCB{\etalchar{+}}95]{cornell1995second}
+Wendy~D Cornell, Piotr Cieplak, Christopher~I Bayly, Ian~R Gould, Kenneth~M
+  Merz, David~M Ferguson, David~C Spellmeyer, Thomas Fox, James~W Caldwell, and
+  Peter~A Kollman.
+\newblock A second generation force field for the simulation of proteins,
+  nucleic acids, and organic molecules.
+\newblock {\em Journal of the American Chemical Society}, 117(19):5179--5197,
+  1995.
+
+\bibitem[CCW87]{crichton1987iron}
+Robert~R CRICHTON and Mireille CHARLOTEAUX-WAUTERS.
+\newblock Iron transport and storage.
+\newblock {\em European Journal of Biochemistry}, 164(3):485--506, 1987.
 
 \bibitem[CLP09]{chapuis2009dynaspot}
 Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
@@ -180,6 +208,13 @@ IGN.
   \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-stra%
 tegy-guide}, 2005.
 
+\bibitem[JMTR96]{jorgensen1996development}
+William~L Jorgensen, David~S Maxwell, and Julian Tirado-Rives.
+\newblock Development and testing of the opls all-atom force field on
+  conformational energetics and properties of organic liquids.
+\newblock {\em Journal of the American Chemical Society}, 118(45):11225--11236,
+  1996.
+
 \bibitem[K{\etalchar{+}}65]{koltun1965space}
 Walter Koltun et~al.
 \newblock Space filling atomic units and connectors for molecular models,
@@ -199,6 +234,14 @@ Michael Krone, Katrin Bidmon, and Thomas Ertl.
 \newblock Interactive visualization of molecular surface dynamics.
 \newblock {\em IEEE transactions on visualization and computer graphics},
   15(6):1391--1398, 2009.
+
+\bibitem[KFTRJ01]{kaminski2001evaluation}
+George~A Kaminski, Richard~A Friesner, Julian Tirado-Rives, and William~L
+  Jorgensen.
+\newblock Evaluation and reparametrization of the opls-aa force field for
+  proteins via comparison with accurate quantum chemical calculations on
+  peptides.
+\newblock {\em The Journal of Physical Chemistry B}, 105(28):6474--6487, 2001.
 
 \bibitem[KLA12]{konagurthu2012minimum}
 Arun~S Konagurthu, Arthur~M Lesk, and Lloyd Allison.
@@ -302,6 +345,12 @@ United Nations~Conference on~Trade and Development.
 \newblock Review of maritime transport.
 \newblock \url{http://unctad.org/en/PublicationsLibrary/rmt2015_en.pdf}, 2015.
 
+\bibitem[OVMVG04]{oostenbrink2004biomolecular}
+Chris Oostenbrink, Alessandra Villa, Alan~E Mark, and Wilfred~F Van~Gunsteren.
+\newblock A biomolecular force field based on the free enthalpy of hydration
+  and solvation: the gromos force-field parameter sets 53a5 and 53a6.
+\newblock {\em Journal of computational chemistry}, 25(13):1656--1676, 2004.
+
 \bibitem[PCB51]{pauling1951structure}
 Linus Pauling, Robert~B Corey, and Herman~R Branson.
 \newblock The structure of proteins: two hydrogen-bonded helical configurations
@@ -358,6 +407,13 @@ Seongho Seo, Moo~K Chung, and Houri~K Vorperian.
 Claude~Elwood Shannon.
 \newblock Communication in the presence of noise.
 \newblock {\em Proceedings of the IRE}, 37(1):10--21, 1949.
+
+\bibitem[SHT{\etalchar{+}}99]{scott1999gromos}
+Walter~RP Scott, Philippe~H H{\"u}nenberger, Ilario~G Tironi, Alan~E Mark,
+  Salomon~R Billeter, Jens Fennen, Andrew~E Torda, Thomas Huber, Peter
+  Kr{\"u}ger, and Wilfred~F van Gunsteren.
+\newblock The gromos biomolecular simulation program package.
+\newblock {\em The Journal of Physical Chemistry A}, 103(19):3596--3607, 1999.
 
 \bibitem[SIS13]{stone2013early}
 John~E Stone, Barry Isralewitz, and Klaus Schulten.
@@ -426,5 +482,11 @@ Aileen Worden, Nef Walker, Krishna Bharat, and Scott Hudson.
   sticky icons.
 \newblock In {\em Proceedings of the ACM SIGCHI Conference on Human factors in
   computing systems}, pages 266--271. ACM, 1997.
+
+\bibitem[WWC{\etalchar{+}}04]{wang2004development}
+Junmei Wang, Romain~M Wolf, James~W Caldwell, Peter~A Kollman, and David~A
+  Case.
+\newblock Development and testing of a general amber force field.
+\newblock {\em Journal of computational chemistry}, 25(9):1157--1174, 2004.
 
 \end{thebibliography}
