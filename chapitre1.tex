@@ -8,35 +8,87 @@
 \cleardoublepage
 
 	\section{Biologie structurale}
-	\subsection{Protéines -- définition et rôles}
+	\subsection{Protéines}
 	Les protéines sont des macromolécules que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et ) la régulation de l'expression génétique. L'étude de leur fonctionnement donc est essentielle à la compréhension du vivant.
 	
 	\paragraph{Composition.}
 	Concrètement, une protéine est un ensemble (éventuellement un singleton) de chaînes d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
-    \begin{figure}[H]
-        \begin{subfigure}{.4\textwidth}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}}
-            \caption{}
-            \label{Fig:amino_acid_structure}
-        \end{subfigure}
-        \begin{subfigure}{.6\textwidth}
-            \centering
-            {\includegraphics[height=4cm]{./figures/ch1/peptidic_bond.png}}
-            \caption{}
-            \label{Fig:peptide_bond}
-        \end{subfigure}
-        \caption{(a) Structure chimique d'un acide aminé. 
-        (b) Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.  Source :~\cite{berg_biochemistry_2012}}
-    \end{figure}
+	\begin{figure}[H]
+		\begin{subfigure}{.4\textwidth}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}}
+			\caption{Structure chimique d'un acide aminé.}
+			\label{fig:amino_acid_structure}
+		\end{subfigure}
+		~
+		\begin{subfigure}{.6\textwidth}
+			\centering
+			{\includegraphics[height=4cm]{./figures/ch1/peptidic_bond.png}}
+			\caption{Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.}
+			\label{fig:peptide_bond}
+		\end{subfigure}
+		\caption[Acide aminé.]{Représentation schématique d'un acide aminé et d'une liaison petptidique. Source :~\cite{berg_biochemistry_2012}}
+		\label{fig:aminoAcid}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/aminoAcids}
+		\caption[Ensemble des acides aminés.]{Les 21 acides aminés dits protéinogènes que l'on trouve chez les eukaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
+		\label{fig:aminoAcids}
+	\end{figure}
     
-    \begin{figure}[htb]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
-		\caption{Illustration d'une protéine (1KX2, un mono-hème ferrocytochrome) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés, contre plusieurs centaines sur de nombreuses protéines ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
+		\caption{Illustration d'une protéine (1KX2, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelque 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
 		\label{fig:1KX2}
 	\end{figure}
+	
+	\paragraph{Rôles.}
+	Les protéines sont impliquées dans la plupart des processus biologiques et, de fait, leurs rôles sont extrêmement divers. On peut toutefois les diviser en deux grandes parties : les fonctions cellulaires et les fonctions biochimiques. Les premières définissent le rôle de la protéine dans la cellule ou l'organisme, et peuvent être découpées en cing groupes~\cite{lodish1995molecular} :
+	\begin{enumerate}
+		\item Les protéines des structures, qui permettent à la cellule de maintenir son intégrité physique et son organisation dans l'espace. C'est par exemple la fonction du collagène, la protéine la plus abondante chez les mammifères~\cite{di2002mapping}, illustrée par la figure~\ref{fig:collagen}.
+		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmique, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine (illustrée par la figure~\ref{fig:transferrin}) ou d'ions à travers les membranes cellulaires, par les canaux ioniques. 
+		\item les protéines régulatrices, qui inhibent ou stimulent l'activité d'autres protéines,
+		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides) les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. C'est ainsi que fonctionnent les récepteurs d'œstrogène alpha, ou ER$\alpha$, illustrés par la figure~\ref{fig:eralpha}.
+		\item Les protéines motrices, qui permettent aux cellules ou aux organismes de se mouvoir. On peut citer par exemple la myosine, essentielle à l'activité musculaire des vertébrés~\cite{pollard1973acanthamoeba}, et illustrée par la figure~\ref{fig:myosin}.
+	\end{enumerate}	
+
+	\begin{figure}[H]
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\includegraphics[height=6cm]{./figures/ch1/collagen}
+			\caption[Collagène.]{Collagène : structure en triple-hélice d'arginines ; structure cristallographique~\cite{okuyama2014preferred}.}
+			\label{fig:collagen}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{.7\textwidth}
+			\centering
+			\includegraphics[height=6cm]{./figures/ch1/eralpha}
+			\caption[Récepteur d'œstrogène alpha.]{Récepteur d'œstrogène alpha, représenté par une isosurface de densité colorée en fonction des atomes sous-jacents~\cite{nwachukwu2016systems}.}
+			\label{fig:eralpha}
+		\end{subfigure}
+		\caption[Protéines de structure et de communication.]{Protéines de structure et de communication.}
+		\label{fig:prot_misc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/transferrin}
+		\caption[Transferrine.]{Illustration d'une protéine de transport : la transferrine humaine, ici liée à de l'ytterbium, et représentée par ses structures secondaires (hélices alpha en rouge et feuillets bêta en bleu). Illustration produite par \emph{UnityMol} à partir d'une structure de la \emph{Protein Data Bank}~\cite{wang2015anion}.}
+		\label{fig:transferrin}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/myosin}
+		\caption[Myosine.]{Illustration d'une portion de myosine, une protéine essentielle à l'activité contractile des vertébrés, notamment dans les cellules musculaires. Illustration de David Goodsell, à partir d'une structure de la \emph{Protein Data Bank}~\cite{houdusse1999atomic}.}
+		\label{fig:myosin}
+	\end{figure}
+	
+	
 	
 	\subsection{Modes de représentation}
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
@@ -128,9 +180,9 @@
    		\label{fig:hyperballs}
     \end{figure}
 		
-	\paragraph{Structures secondaires.} En biologie structurale, on appelle structure secondaire la structure tridimensionnelle localement adoptée par un segment de molécule (généralement de protéine). Cette structure secondaire est définie par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène.
+	\paragraph{Structures secondaires.} En biologie structurale, on appelle structure secondaire~\cite{foltmann1981protein} la structure tridimensionnelle localement adoptée par un segment de molécule (généralement de protéine). Cette structure secondaire est définie par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène. Les algorithmes couramment utilisés pour identifier les structures secondaires incluent DSSP~\cite{kabsch1983dictionary}, \emph{Define}~\cite{richards1988identification}, \emph{Stride}~\cite{frishman1995knowledge} et SST~\cite{konagurthu2012minimum}.
 		
-	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
+	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
 		
 	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
 		
@@ -143,9 +195,11 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/aHelix}
-		\caption{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}. \url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
+		\caption[Hélices alpha, trois représentations différentes.]{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}\footnotemark.}
 		\label{fig:aHelix}
 	\end{figure}
+	
+	\footnotetext{\url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
 		
 	\begin{figure}[H]
 		\centering
@@ -164,12 +218,12 @@
 		
 	\paragraph{Surface accessible au solvant et surface de Connolly.} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
 		
-	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_sas} montre une protéine entière représentée ainsi.
+	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant~\cite{lee1971interpretation}, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_sas} montre une protéine entière représentée par sa surface accessible au solvant, et la figure~\ref{fig:4awn_ses} représente la surface de Connolly de cette protéine.
 		
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/connolly}
-		\caption{Surface de Connolly d'une petite molécule. Six atomes sont représentés par des cercles verts correspondant à leurs rayons de van der Waals ; une sonde (\emph{probe}), i.e. le solvant, est représentée par un cercle jaune ; cette sonde est \og roulée \fg{} le long de la surface de la molécule, et son tracé est conservé en rouge : c'est la surface de Connolly. La surface tracée par le centre de la sonde est appelée surface accessible au solvant. Crédit :~\cite{krone2009interactive}}
+		\caption{Surface de Connolly d'une petite molécule. Six atomes sont représentés par des cercles verts correspondant à leurs rayons de van der Waals ; une sonde (\emph{probe}), i.e. le solvant, est représentée par un cercle jaune ; cette sonde est \og roulée \fg{} le long de la surface de la molécule, et son tracé est conservé en rouge : c'est la surface de Connolly. La surface tracée par le centre de la sonde est appelée surface accessible au solvant. Cet algorithme est couramment appelé \emph{rolling ball}~\cite{shrake1973environment}, et la surface de Connolly tire son nom des améliorations apportées par Michael Connolly à cet algorithme~\cite{connolly1983analytical, connolly1993molecular}. Crédit :~\cite{krone2009interactive}}
 		\label{fig:connolly}
 	\end{figure}
 		
@@ -179,13 +233,15 @@
 	
 	Outre le fait qu'elle représente une grandeur physique concrète, l'isosurface de densité a l'avantage d'être relativement rapide à calculer. En effet, l'algorithme \emph{QuickSurf}~\cite{krone2012fast, roberts2013lattice, stone2013early, stone2013gpu, stone2014gpu, sener2014visualization}, par exemple, permet de calculer une isosurface de densité suffisamment vite pour la recalculer en temps réel lors d'une simulation de dynamique moléculaire. Cet algorithme est conçu pour être exécuté sur un GPU (un processeur graphique, particulièrement adapté aux calculs très parallèles) ce qui améliore ses performances d'un à deux ordres de grandeur. Il permet de plus d'ajuster plusieurs paramètres : la résolution spatiale générale, le rayon des atomes (utilisé pour générer la grille de densité, par somme de gaussiennes 3D), l'isovaleur de densité voulue, la résolution de la grille de densité, et la distance de coupure utilisée pour la gaussienne associée à chaque atome.
 	
-	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. 
-		
+	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. Contrairement à ces derniers, elles ne présentent pas de (dizaines ou centaines) de milliers de cibles distinctes, mais un seul objet continu. De fait, au premier abord elles ne semblent pas nécessiter d'assistance à la sélection. Cependant, les nombreuses aspérités d'une isosurface, attendu qu'elles correspondent à celles de la molécule, peuvent être considérées comme des cibles distinctes, à condition d'avoir une méthode pour les distinguer. Cette méthode pourrait éventuellement être basée sur des critères de concavité et convexité. Si l'on considère chaque sous-ensemble convexe de la surface représentée sur la figure~\ref{fig:4awn_iso_1_5}, par exemple, on aboutit à plusieurs dizaines de cibles potentielles ; et ce pour une protéine de taille relativement réduite (moins de 2200 atomes, quand certaines protéines en comptent des dizaines de milliers). On peut également considérer les sous-ensembles concaves comme des cibles, car ils peuvent représenter des cavités\footnote{trou trou} dignes d'intérêt.
+	
+	On constate donc qu'une isosurface de densité peut présenter de nombreuses cibles mobiles, avec toutefois un niveau d'occultation réduit, puisque l'intérieur de la molécule n'est pas représenté. Les aspérités situées à \og l'arrière \fg{} de la molécule sont cependant totalement occultées. De plus, la représentation en isosurface est particulièrement prisée pour l'arrimage\footnote{\emph{docking}, en anglais} de protéines, qui implique au moins deux molécules et parfois beaucoup plus. Avec de nombreuses molécules, le nombre de cibles potentielles peut donc devenir très élevé, de même que la quantité de mouvement, puisqu'il faut ajouter au mouvement d'une aspérité d'une surface par rapport à elle-même le mouvement de toute la surface par rapport à l'environnement.
+	
 	\begin{figure}[H]
-	    \centering
-	    \includegraphics[width=\textwidth]{figures/ch1/marchingCubes}
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/marchingCubes}
 		\caption{Dans l'algorithme des \emph{marching cubes}, lorsque l'on considère une cellule, on lit la valeur du champ scalaire aux huit sommets du cube. On choisit ensuite un des quinze cubes ci-dessus, en fonction des valeurs lues. L'opération est répétée pour chaque cellule de la grille, et les cubes forment un maillage de triangles. Crédit : \emph{Wikimedia}.}
-        \label{fig:marchingCubes}
+		\label{fig:marchingCubes}
 	\end{figure}
 		
 	
@@ -200,81 +256,88 @@
 	\begin{figure}[H]
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_sas}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_sas}
 			\caption{Surface accessible au solvant, correspondant aux points parcourus par le centre d'une molécule d'eau en contact avec l'ADNase.}
 			\label{fig:4awn_sas}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_2}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_ses}
+			\caption{Surface de Connolly, ou \emph{solvent excluded surface}, correspondant aux points de contact entre une molécule d'eau et l'ADNase.}
+			\label{fig:4awn_ses}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgW}
+			\centering
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_0_2}
 			\caption{Isosurface de densité, avec un seuil très faible, de $0,2$.}
 			\label{fig:4awn_iso_0_2}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_0_5}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_0_5}
 			\caption{Isosurface de densité, avec un seuil faible, de $0,5$.}
 			\label{fig:4awn_iso_0_5}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_0}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_1_0}
 			\caption{Isosurface de densité, avec un seuil intermédiaire, de $1,0$.}
 			\label{fig:4awn_iso_1_0}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_iso_1_5}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_1_5}
 			\caption{Isosurface de densité, avec un seuil élevé, de $1,5$.}
 			\label{fig:4awn_iso_1_5}
 		\end{subfigure}
-		\caption{Désoxyribonucléase (ou ADNase). Cette enzyme est ici illustrée par diverses représentations surfaciques. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol}.}
+		\caption{Désoxyribonucléase (ou ADNase). Cette enzyme est ici illustrée par diverses représentations surfaciques. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol} et \emph{Molekel}~\cite{portmann2000molekel, varetto2009molekel}.}
 		\label{fig:4awn_surf}
 	\end{figure}
     
 	\begin{figure}[H]
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_points}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_points}
 			\caption{Représentation en \og points \fg{} ; seuls les atomes apparaissent.}
 			\label{fig:4awn_points}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_licorice}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_licorice}
 			\caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}, ou \emph{licorice} en anglais. Seules les liaisons covalentes sont visibles}
 			\label{fig:4awn_licorice}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_CPK}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_CPK}
 			\caption{Représentation dite CPK, ou en \og boules et bâtons \fg{}. Les atomes et les liaisons sont représentés.}
 			\label{fig:4awn_CPK}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_vdW}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_vdW}
 			\caption{Représentation basée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
 			\label{fig:4awn_VdW}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_HB}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_HB}
 			\caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}. Les atomes et les liaisons sont représentés.}
 			\label{fig:4awn_HB}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/4awn_ss}}
+			\includegraphics[width=\textwidth]{./figures/ch1/4awn_ss}
 			\caption{Représentation en structures secondaires. Les atomes et les liaisons sont invisibles, mais des structures plus grandes sont représentées de façon schématique.}
 			\label{fig:4awn_ss}
 		\end{subfigure}
@@ -305,7 +368,9 @@
 	\end{figure}
 	
 	\paragraph{Périodicité.}
-	L'espace de simulation est généralement modélisé par ce qu'on appelle des conditions périodiques aux limites (CPL, en anglais \emph{periodic boundary conditions} --- PBC). Elles constituent un ensemble de conditions aux limites utilisées afin de simuler un système pavé effectivement infini. En effet, si un système microscopique est simulé dans le vide, les molécules du système s'évaporeront, s'éloignant les unes des autres à moins d'être maintenues ensemble par une force restrictive externe. Si, au contraire, le système est simulé en utilisant des murs réflecteurs aux limites, des forces parasites sont introduites dans la simulation, pouvant donc créer un écart supplémentaire (en plus des approximations de simulation utilisées) par rapport au système réel. On optera donc généralement pour un système périodique, comme celui représenté sur la figure~\ref{fig:period} --- ce dernier est en deux dimensions, mais le principe en trois dimensions est le même. Il convient toutefois de prendre des précautions avec les conditions périodiques, afin d'éviter que des interactions \og artificielles \fg{} se produisent entre les \og bords \fg{} de l'espace de simulation, notamment entre les particules et leurs propres images si cela ne correspond pas au système étudié dans son état naturel~\cite{cheatham1995molecular, de1997effect}.
+	L'espace de simulation est généralement modélisé par ce qu'on appelle des conditions périodiques aux limites (CPL, en anglais \emph{periodic boundary conditions} --- PBC). Elles constituent un ensemble de conditions aux limites utilisées afin de simuler un système pavé effectivement infini. En effet, si un système microscopique est simulé dans le vide, les molécules du système s'évaporeront, s'éloignant les unes des autres à moins d'être maintenues ensemble par une force restrictive externe. Si, au contraire, le système est simulé en utilisant des murs réflecteurs aux limites, des forces parasites sont introduites dans la simulation, pouvant donc créer un écart supplémentaire (en plus des approximations de simulation utilisées) par rapport au système réel.
+	
+	On optera donc généralement pour un système périodique, comme celui représenté sur la figure~\ref{fig:period} --- ce dernier est en deux dimensions, mais le principe en trois dimensions est le même. Il convient toutefois de prendre des précautions avec les conditions périodiques, afin d'éviter que des interactions \og artificielles \fg{} se produisent entre les \og bords \fg{} de l'espace de simulation, notamment entre les particules et leurs propres images si cela ne correspond pas au système étudié dans son état naturel~\cite{cheatham1995molecular, de1997effect}. L'utilisation de formes plus complexes que des parallélépipèdes peut permettre de minimiser ces effets indésirables pour un volume de simulation donné ; les octaèdres tronqués sont une des options possibles, comme l'illustre la figure~\ref{fig:octa}.
 	
 	\begin{figure}[H]
 		\centering
@@ -314,9 +379,31 @@
 		\label{fig:period}
 	\end{figure}
 	
-	\paragraph{Pas de temps.} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un laps de temps aussi grand que possible --- ce qui est souvent nécessaire pour observer des phénomènes biologiques complexes et longs --- e pas de temps doit être aussi grand que possible. Cela permet en effet à chaque itération de la simulation de couvrir une durée relativement élevée, donc pour un temps (réel) de simulation donné et pour des ressources de calcul données, la durée simulée est maximisée.
+	\begin{figure}[H]
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[height=4cm]{./figures/ch1/truncOctahedron}
+			\caption{Octaèdre tronqué.}
+			\label{fig:truncOctahedron}
+		\end{subfigure}
+		~
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[height=4cm]{./figures/ch1/truncOctahedra}
+			\caption{Treillis d'octaèdres tronqués.}
+			\label{fig:truncOctahedra}
+		\end{subfigure}
+		\caption[Octaèdres pour les conditions périodiques aux limites.]{Utilisation d'octaèdres pour la mise en œuvre de conditions périodiques aux limites en minimisant les erreurs et les calculs nécessaires. Source : S.R. Saunders, \emph{Real Wireless}\footnotemark.}
+		\label{fig:octa}
+	\end{figure}
 	
-	Cependant, le pas de temps doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple (particulièrement les liaisons carbone-hydrogène) sont très courtes, de l'ordre de $10^{-14}$~s, soit 10 femtosecondes. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1 femtoseconde, du moins pour les simulations de type \og tout atome \fg{}. Des simulations plus grossières (notamment de type \og gros grains \fg{}) peuvent se contenter de pas de temps plus long, au prix de quelques compromis.
+	\footnotetext{\url{https://realwireless.wordpress.com/2008/06/03/}}
+	
+	\paragraph{Paramètres initiaux.} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un laps de temps aussi grand que possible --- ce qui est souvent nécessaire pour observer des phénomènes biologiques complexes et longs --- e pas de temps doit être aussi grand que possible. Cela permet en effet à chaque itération de la simulation de couvrir une durée relativement élevée, donc pour un temps (réel) de simulation donné et pour des ressources de calcul données, la durée simulée est maximisée.
+	
+	Cependant, le pas de temps doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple (particulièrement les liaisons carbone-hydrogène) sont très courtes, de l'ordre de $10^{-14}$~s, soit 10 femtosecondes. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1 femtoseconde, du moins pour les simulations de type \og tout atome \fg{} avec liaisons flexibles. Des simulations plus grossières (notamment avec liaisons rigides, voire de type \og gros grains \fg{}) peuvent se contenter de pas de temps plus long, au prix d'une précision amoindrie.
+	
+	D'autres paramètres doivent être initialisés, par exemple les vitesses des particules, qui suivent généralement une distribution de Maxwell-Boltzmann~\cite{maxwell1860v, maxwell1860ii, boltzmann1970weitere, boltzmann2003further}. Il convient également d'ajuster la température, la pression, le nombre de particules, etc., et de déterminer lesquels de ces paramètres doivent être maintenus constants, et comment. Le changement d'un seul de ces paramètres mènera généralement à une autre exploration de l'espace conformationnel, c'est-à-dire à une trajectoire\footnote{expliquer ce que c'est} différente.
 	
     
 	\subsection{Simulations interactives}

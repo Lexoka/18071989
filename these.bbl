@@ -5,7 +5,8 @@
 Javier Alonso-Mora, Eduardo Montijano, Mac Schwager, and Daniela Rus.
 \newblock Distributed multi-robot formation control among obstacles: A
   geometric and optimization approach with consensus.
-\newblock 2016.
+\newblock In {\em Robotics and Automation (ICRA), 2016 IEEE International
+  Conference on}, pages 5356--5363. IEEE, 2016.
 
 \bibitem[Ato16]{reaper}
 General Atomics.
@@ -21,6 +22,28 @@ Dassault Aviation.
 Berni~J Alder and TE~Wainwright.
 \newblock Studies in molecular dynamics. i. general method.
 \newblock {\em The Journal of Chemical Physics}, 31(2):459--466, 1959.
+
+\bibitem[BBH{\etalchar{+}}02]{bartalesi2002solution}
+Ilaria Bartalesi, Ivano Bertini, Parvana Hajieva, Antonio Rosato, and Paul~R
+  Vasos.
+\newblock Solution structure of a monoheme ferrocytochrome c from shewanella
+  putrefaciens and structural analysis of sequence-similar proteins: functional
+  implications.
+\newblock {\em Biochemistry}, 41(16):5112--5119, 2002.
+
+\bibitem[Bol70]{boltzmann1970weitere}
+Ludwig Boltzmann.
+\newblock Weitere studien {\"u}ber das w{\"a}rmegleichgewicht unter
+  gasmolek{\"u}len.
+\newblock In {\em Kinetische Theorie II}, pages 115--225. Springer, 1970.
+
+\bibitem[Bol03]{boltzmann2003further}
+Ludwig Boltzmann.
+\newblock Further studies on the thermal equilibrium of gas molecules.
+\newblock {\em The Kinetic Theory Of Gases. Series: History of Modern Physical
+  Sciences, ISBN: 978-1-86094-347-8. PUBLISHED BY IMPERIAL COLLEGE PRESS AND
+  DISTRIBUTED BY WORLD SCIENTIFIC PUBLISHING CO., Edited by Stephen G Brush and
+  Nancy S Hall, vol. 1, pp. 262-349}, 1:262--349, 2003.
 
 \bibitem[BTS12]{berg_biochemistry_2012}
 Jeremy~Mark Berg, John~L Tymoczko, and Lubert Stryer.
@@ -45,6 +68,11 @@ TE~III Cheatham, JL~Miller, T~Fox, TA~Darden, and PA~Kollman.
 Michael~L Connolly.
 \newblock Analytical molecular surface calculation.
 \newblock {\em Journal of Applied Crystallography}, 16(5):548--558, 1983.
+
+\bibitem[Con93]{connolly1993molecular}
+Michael~L Connolly.
+\newblock The molecular surface package.
+\newblock {\em Journal of molecular graphics}, 11(2):139--141, 1993.
 
 \bibitem[CP53]{corey1953molecular}
 Robert~B Corey and Linus Pauling.
@@ -79,11 +107,29 @@ Henrique~G Debarba, Jer{\^o}nimo~G Grandi, Anderson Maciel, Luciana Nedel, and
 \newblock In {\em IFIP Conference on Human-Computer Interaction}, pages
   388--405. Springer, 2013.
 
+\bibitem[DLSK{\etalchar{+}}02]{di2002mapping}
+Gloria~A Di~Lullo, Shawn~M Sweeney, Jarmo K{\"o}rkk{\"o}, Leena Ala-Kokko, and
+  James~D San~Antonio.
+\newblock Mapping the ligand-binding sites and disease-associated mutations on
+  the most abundant protein in the human, type i collagen.
+\newblock {\em Journal of Biological Chemistry}, 277(6):4223--4231, 2002.
+
 \bibitem[dSO97]{de1997effect}
 O~Norberto de~Souza and Rick~L Ornstein.
 \newblock Effect of periodic box size on aqueous molecular dynamics simulation
   of a dna dodecamer with particle-mesh ewald method.
 \newblock {\em Biophysical journal}, 72(6):2395--2397, 1997.
+
+\bibitem[FA95]{frishman1995knowledge}
+Dmitrij Frishman and Patrick Argos.
+\newblock Knowledge-based protein secondary structure assignment.
+\newblock {\em Proteins: Structure, Function, and Bioinformatics},
+  23(4):566--579, 1995.
+
+\bibitem[Fol81]{foltmann1981protein}
+B~Foltmann.
+\newblock Protein sequencing: Past and present.
+\newblock {\em Biochemical Education}, 9(1):2--7, 1981.
 
 \bibitem[FPUT55]{fermi1955alamos}
 E~Fermi, J~Pasta, S~Ulam, and M~Tsingou.
@@ -120,6 +166,13 @@ Khalad Hasan, Tovi Grossman, and Pourang Irani.
 \newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
   Computing Systems}, pages 839--848. ACM, 2011.
 
+\bibitem[HKH{\etalchar{+}}99]{houdusse1999atomic}
+Anne Houdusse, Vassilios~N Kalabokis, Daniel Himmel, Andrew~G
+  Szent-Gy{\"o}rgyi, and Carolyn Cohen.
+\newblock Atomic structure of scallop myosin subfragment s1 complexed with
+  mgadp: a novel conformation of the myosin head.
+\newblock {\em Cell}, 97(4):459--470, 1999.
+
 \bibitem[IGN05]{cossacks2}
 IGN.
 \newblock Cossacks ii: Napoleonic wars strategic guide.
@@ -147,11 +200,29 @@ Michael Krone, Katrin Bidmon, and Thomas Ertl.
 \newblock {\em IEEE transactions on visualization and computer graphics},
   15(6):1391--1398, 2009.
 
+\bibitem[KLA12]{konagurthu2012minimum}
+Arun~S Konagurthu, Arthur~M Lesk, and Lloyd Allison.
+\newblock Minimum message length inference of secondary structure from protein
+  coordinate data.
+\newblock {\em Bioinformatics}, 28(12):i97--i105, 2012.
+
+\bibitem[KS83]{kabsch1983dictionary}
+Wolfgang Kabsch and Christian Sander.
+\newblock Dictionary of protein secondary structure: pattern recognition of
+  hydrogen-bonded and geometrical features.
+\newblock {\em Biopolymers}, 22(12):2577--2637, 1983.
+
 \bibitem[KSES12]{krone2012fast}
 Michael Krone, John~E Stone, Thomas Ertl, and Klaus Schulten.
 \newblock Fast visualization of gaussian density surfaces for molecular
   dynamics and particle system trajectories.
 \newblock {\em EuroVis-Short Papers}, 1:67--71, 2012.
+
+\bibitem[LBB{\etalchar{+}}95]{lodish1995molecular}
+Harvey Lodish, David Baltimore, Arnold Berk, S~Lawrence Zipursky, Paul
+  Matsudaira, and James Darnell.
+\newblock {\em Molecular cell biology}, volume~3.
+\newblock Scientific American Books New York, 1995.
 
 \bibitem[LC87]{lorensen1987marching}
 William~E Lorensen and Harvey~E Cline.
@@ -173,6 +244,25 @@ JE~Lennard and I~Jones.
 \newblock On the determination of molecular fields.
 \newblock In {\em Proc. R. Soc. London}, volume 106, pages 441--477, 1924.
 
+\bibitem[LR71]{lee1971interpretation}
+Byungkook Lee and Frederic~M Richards.
+\newblock The interpretation of protein structures: estimation of static
+  accessibility.
+\newblock {\em Journal of molecular biology}, 55(3):379IN3--400IN4, 1971.
+
+\bibitem[Max60a]{maxwell1860ii}
+James~Clerk Maxwell.
+\newblock Ii. illustrations of the dynamical theory of gases.
+\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 20(130):21--37, 1860.
+
+\bibitem[Max60b]{maxwell1860v}
+James~Clerk Maxwell.
+\newblock V. illustrations of the dynamical theory of gases.—part i. on the
+  motions and collisions of perfectly elastic spheres.
+\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 19(124):19--32, 1860.
+
 \bibitem[MiG16]{mig31}
 Russian Aircraft~Corporation MiG.
 \newblock Mig-31e fighter.
@@ -180,10 +270,25 @@ Russian Aircraft~Corporation MiG.
   \url{http://www.migavia.ru/index.php/en/production/mig-31e-fighter?limit=1&s%
 tart=2}, 2016.
 
+\bibitem[NSB{\etalchar{+}}16]{nwachukwu2016systems}
+Jerome~C Nwachukwu, Sathish Srinivasan, Nelson~E Bruno, Jason Nowak, Nicholas~J
+  Wright, Filippo Minutolo, Erumbi~S Rangarajan, Tina Izard, Xin-Qui Yao,
+  Barry~J Grant, et~al.
+\newblock Systems structural biology analysis of ligand effects on er$\alpha$
+  predicts cellular response to environmental estrogens and anti-hormone
+  therapies.
+\newblock {\em Cell Chemical Biology}, 2016.
+
 \bibitem[OG04]{Ordway3441}
 George~A. Ordway and Daniel~J. Garry.
 \newblock Myoglobin: an essential hemoprotein in striated muscle.
 \newblock {\em Journal of Experimental Biology}, 207(20):3441--3446, 2004.
+
+\bibitem[OHNT14]{okuyama2014preferred}
+Kenji Okuyama, Mitsuru Haga, Keiichi Noguchi, and Toshiki Tanaka.
+\newblock Preferred side-chain conformation of arginine residues in a
+  triple-helical structure.
+\newblock {\em Biopolymers}, 101(10):1000--1009, 2014.
 
 \bibitem[OoNR15]{locust}
 US~Department of~Defense Office~of Naval~Research.
@@ -197,10 +302,36 @@ United Nations~Conference on~Trade and Development.
 \newblock Review of maritime transport.
 \newblock \url{http://unctad.org/en/PublicationsLibrary/rmt2015_en.pdf}, 2015.
 
+\bibitem[PCB51]{pauling1951structure}
+Linus Pauling, Robert~B Corey, and Herman~R Branson.
+\newblock The structure of proteins: two hydrogen-bonded helical configurations
+  of the polypeptide chain.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  37(4):205--211, 1951.
+
+\bibitem[PK73]{pollard1973acanthamoeba}
+Thomas~D Pollard and Edward~D Korn.
+\newblock Acanthamoeba myosin i. isolation from acanthamoeba castellanii of an
+  enzyme similar to muscle myosin.
+\newblock {\em Journal of Biological Chemistry}, 248(13):4682--4690, 1973.
+
+\bibitem[PL00]{portmann2000molekel}
+Stefan Portmann and Hans~Peter L{\"u}thi.
+\newblock Molekel: an interactive molecular graphics tool.
+\newblock {\em CHIMIA International Journal for Chemistry}, 54(12):766--770,
+  2000.
+
 \bibitem[Rah64]{rahman1964correlations}
 A~Rahman.
 \newblock Correlations in the motion of atoms in liquid argon.
 \newblock {\em Physical Review}, 136(2A):A405, 1964.
+
+\bibitem[RK88]{richards1988identification}
+Frederic~M Richards and Craig~E Kundrot.
+\newblock Identification of structural motifs from protein coordinate data:
+  secondary structure and first-level supersecondary structure.
+\newblock {\em Proteins: Structure, Function, and Bioinformatics}, 3(2):71--84,
+  1988.
 
 \bibitem[RSLS13]{roberts2013lattice}
 Elijah Roberts, John~E Stone, and Zaida Luthey-Schulten.
@@ -241,6 +372,12 @@ John~E Stone, Ryan McGreevy, Barry Isralewitz, and Klaus Schulten.
   by molecular dynamics flexible fitting.
 \newblock {\em Faraday discussions}, 169:265--283, 2014.
 
+\bibitem[SR73]{shrake1973environment}
+A~Shrake and JA~Rupley.
+\newblock Environment and exposure to solvent of protein atoms. lysozyme and
+  insulin.
+\newblock {\em Journal of molecular biology}, 79(2):351IN15365--364371, 1973.
+
 \bibitem[SSB{\etalchar{+}}14]{sener2014visualization}
 Melih Sener, John~E Stone, Angela Barragan, Abhishek Singharoy, Ivan Teo,
   Kirby~L Vandivort, Barry Isralewitz, Bo~Liu, Boon~Chong Goh, James~C
@@ -270,6 +407,18 @@ Mikael Trellet.
   mol{\'e}culaires guid{\'e}es par la t{\^a}che et la mod{\'e}lisation
   s{\'e}mantique des contenus}.
 \newblock PhD thesis, Universit{\'e} Paris-Saclay, 2015.
+
+\bibitem[Var09]{varetto2009molekel}
+Ugo Varetto.
+\newblock Molekel 5.4. 0.8.
+\newblock {\em Swiss National Supercomputing Centre, Manno, Switzerland}, 2009.
+
+\bibitem[WLW{\etalchar{+}}15]{wang2015anion}
+Minji Wang, Tsz~Pui Lai, Li~Wang, Hongmin Zhang, Nan Yang, Peter~J Sadler, and
+  Hongzhe Sun.
+\newblock “anion clamp” allows flexible protein to impose coordination
+  geometry on metal ions.
+\newblock {\em Chemical Communications}, 51(37):7867--7870, 2015.
 
 \bibitem[WWBH97]{worden1997making}
 Aileen Worden, Nef Walker, Krishna Bharat, and Scott Hudson.
