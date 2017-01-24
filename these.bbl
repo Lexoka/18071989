@@ -1,6 +1,11 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{OVMVG04}
 
+\bibitem[ADLM84]{adrian1984cryo}
+Marc Adrian, Jacques Dubochet, Jean Lepault, and Alasdair~W McDowall.
+\newblock Cryo-electron microscopy of viruses.
+\newblock {\em Nature}, 308(5954):32--36, 1984.
+
 \bibitem[AMMSR16]{alonso2016distributed}
 Javier Alonso-Mora, Eduardo Montijano, Mac Schwager, and Daniela Rus.
 \newblock Distributed multi-robot formation control among obstacles: A
@@ -45,6 +50,13 @@ Bernard~R Brooks, Robert~E Bruccoleri, Barry~D Olafson, David~J States,
   dynamics calculations.
 \newblock {\em Journal of computational chemistry}, 4(2):187--217, 1983.
 
+\bibitem[BMB{\etalchar{+}}15]{bartesaghi20152}
+Alberto Bartesaghi, Alan Merk, Soojay Banerjee, Doreen Matthies, Xiongwu Wu,
+  Jacqueline~LS Milne, and Sriram Subramaniam.
+\newblock 2.2 {\aa} resolution cryo-em structure of $\beta$-galactosidase in
+  complex with a cell-permeant inhibitor.
+\newblock {\em Science}, 348(6239):1147--1151, 2015.
+
 \bibitem[Bol70]{boltzmann1970weitere}
 Ludwig Boltzmann.
 \newblock Weitere studien {\"u}ber das w{\"a}rmegleichgewicht unter
@@ -59,10 +71,33 @@ Ludwig Boltzmann.
   DISTRIBUTED BY WORLD SCIENTIFIC PUBLISHING CO., Edited by Stephen G Brush and
   Nancy S Hall, vol. 1, pp. 262-349}, 1:262--349, 2003.
 
+\bibitem[Bra13]{bragg1913structure}
+William~Lawrence Bragg.
+\newblock The structure of some crystals as indicated by their diffraction of
+  x-rays.
+\newblock In {\em Proceedings of the Royal Society of London A: Mathematical,
+  Physical and Engineering Sciences}, volume~89, pages 248--277. The Royal
+  Society, 1913.
+
+\bibitem[Bra14]{bragg1914reflexion}
+WL~Bragg.
+\newblock Die reflexion der r{\"o}ntgenstrahlen.
+\newblock {\em Jahrbuch der Radioaktivit{\"a}t und Elektronik}, 11:350, 1914.
+
 \bibitem[BTS12]{berg_biochemistry_2012}
 Jeremy~Mark Berg, John~L Tymoczko, and Lubert Stryer.
 \newblock {\em Biochemistry}.
 \newblock W. H. Freeman and Company, New York, N.Y, 2012.
+
+\bibitem[Cal15]{callaway2015revolution}
+Ewen Callaway.
+\newblock The revolution will not be crystallized.
+\newblock {\em Nature}, 525(7568):172, 2015.
+
+\bibitem[CB86]{carson1986algorithm}
+Mike Carson and Charles~E Bugg.
+\newblock Algorithm for ribbon models of proteins.
+\newblock {\em Journal of Molecular Graphics}, 4(2):121--122, 1986.
 
 \bibitem[CCB{\etalchar{+}}95]{cornell1995second}
 Wendy~D Cornell, Piotr Cieplak, Christopher~I Bayly, Ian~R Gould, Kenneth~M
@@ -77,6 +112,19 @@ Wendy~D Cornell, Piotr Cieplak, Christopher~I Bayly, Ian~R Gould, Kenneth~M
 Robert~R CRICHTON and Mireille CHARLOTEAUX-WAUTERS.
 \newblock Iron transport and storage.
 \newblock {\em European Journal of Biochemistry}, 164(3):485--506, 1987.
+
+\bibitem[CG89]{clore1989determination}
+G~Marius Clore and Angela~M Gronenborn.
+\newblock Determination of three-dimensional structures of proteins and nucleic
+  acids in solution by nuclear magnetic resonance spectroscop.
+\newblock {\em Critical reviews in biochemistry and molecular biology},
+  24(5):479--564, 1989.
+
+\bibitem[CG91]{clore1991structures}
+G~Marius Clore and Angela~M Gronenborn.
+\newblock Structures of larger proteins in solution: three-and four-dimensional
+  heteronuclear nmr spectroscopy.
+\newblock {\em Science}, 252(5011):1390, 1991.
 
 \bibitem[CLP09]{chapuis2009dynaspot}
 Olivier Chapuis, Jean-Baptiste Labrune, and Emmanuel Pietriga.
@@ -102,10 +150,21 @@ Michael~L Connolly.
 \newblock The molecular surface package.
 \newblock {\em Journal of molecular graphics}, 11(2):139--141, 1993.
 
+\bibitem[Cou85]{coulomb1785premier}
+Charles~Augustin Coulomb.
+\newblock {\em Premier-[troisi{\`e}me] m{\'e}moire sur l'electricit{\'e} et le
+  magn{\'e}tisme}.
+\newblock Acad{\'e}mie Royale des sciences, 1785.
+
 \bibitem[CP53]{corey1953molecular}
 Robert~B Corey and Linus Pauling.
 \newblock Molecular models of amino acids, peptides, and proteins.
 \newblock {\em Review of Scientific Instruments}, 24(8):621--627, 1953.
+
+\bibitem[Cro35]{crowfoot1935x}
+Dorothy Crowfoot.
+\newblock X-ray single crystal photographs of insulin.
+\newblock {\em Nature}, 135:591--592, 1935.
 
 \bibitem[CVT{\etalchar{+}}11]{chavent2011gpu}
 Matthieu Chavent, Antoine Vanel, Alex Tek, Bruno Levy, Sophie Robert, Bruno
@@ -119,6 +178,12 @@ Union des Aéroports~Français.
 \newblock Drones.
 \newblock \url{http://www.aeroport.fr/page/page/drones}, 2016.
 
+\bibitem[dBT25]{de1925interpretation}
+M~de~Broglie and JJ~Trillat.
+\newblock Sur l'interpr{\'e}tation physique des spectres x d'acides gras.
+\newblock {\em Comptes Rendus Hebdomadaires Des S{\'e}ances de L'Acad{\'e}mie
+  Des Sciences}, 180:1485, 1925.
+
 \bibitem[DCP{\etalchar{+}}14]{doutreligne2014unitymol}
 S{\'e}bastien Doutreligne, Tristan Cragnolini, Samuela Pasquali, Philippe
   Derreumaux, and Marc Baaden.
@@ -126,6 +191,27 @@ S{\'e}bastien Doutreligne, Tristan Cragnolini, Samuela Pasquali, Philippe
   biology.
 \newblock In {\em Large Data Analysis and Visualization (LDAV), 2014 IEEE 4th
   Symposium on}, pages 109--110. IEEE, 2014.
+
+\bibitem[Deb13]{debye1913reprinted}
+P~Debye.
+\newblock reprinted 1954 in collected papers of peter jw debye interscience,
+  new york.
+\newblock {\em Ver Deut Phys Gesell}, 15:777, 1913.
+
+\bibitem[Deb29]{debye1929polar}
+Peter Josef~William Debye.
+\newblock {\em Polar molecules}.
+\newblock Chemical Catalog Company, Incorporated, 1929.
+
+\bibitem[DeL02]{delano2002pymol}
+Warren~L DeLano.
+\newblock The pymol molecular graphics system.
+\newblock 2002.
+
+\bibitem[Del15]{dellisanti2015barrier}
+Cosma Dellisanti.
+\newblock A barrier-breaking resolution.
+\newblock {\em Nature structural \& molecular biology}, 22(5):361, 2015.
 
 \bibitem[DGM{\etalchar{+}}13]{debarba2013disambiguation}
 Henrique~G Debarba, Jer{\^o}nimo~G Grandi, Anderson Maciel, Luciana Nedel, and
@@ -135,12 +221,22 @@ Henrique~G Debarba, Jer{\^o}nimo~G Grandi, Anderson Maciel, Luciana Nedel, and
 \newblock In {\em IFIP Conference on Human-Computer Interaction}, pages
   388--405. Springer, 2013.
 
+\bibitem[DLP61]{dzyaloshinskii1961general}
+Igor~Ekhiel'evich Dzyaloshinskii, EM~Lifshitz, and Lev~Petrovich Pitaevskii.
+\newblock General theory of van der waals'forces.
+\newblock {\em Physics-Uspekhi}, 4(2):153--176, 1961.
+
 \bibitem[DLSK{\etalchar{+}}02]{di2002mapping}
 Gloria~A Di~Lullo, Shawn~M Sweeney, Jarmo K{\"o}rkk{\"o}, Leena Ala-Kokko, and
   James~D San~Antonio.
 \newblock Mapping the ligand-binding sites and disease-associated mutations on
   the most abundant protein in the human, type i collagen.
 \newblock {\em Journal of Biological Chemistry}, 277(6):4223--4231, 2002.
+
+\bibitem[DR23]{dickinson1923crystal}
+Roscoe~G Dickinson and Albert~L Raymond.
+\newblock The crystal structure of hexamethylene-tetramine.
+\newblock {\em Journal of the American Chemical Society}, 45(1):22--29, 1923.
 
 \bibitem[dSO97]{de1997effect}
 O~Norberto de~Souza and Rick~L Ornstein.
@@ -155,11 +251,23 @@ Karin Dahlman-Wright, Vincent Cavailles, Suzanne~A Fuqua, V~Craig Jordan,
 \newblock International union of pharmacology. lxiv. estrogen receptors.
 \newblock {\em Pharmacological reviews}, 58(4):773--781, 2006.
 
+\bibitem[EL30]{eisenschitz1930verhaltnis}
+R~Eisenschitz and F~London.
+\newblock {\"U}ber das verh{\"a}ltnis der van der waalsschen kr{\"a}fte zu den
+  hom{\"o}opolaren bindungskr{\"a}ften.
+\newblock {\em Zeitschrift f{\"u}r Physik}, 60(7-8):491--527, 1930.
+
 \bibitem[FA95]{frishman1995knowledge}
 Dmitrij Frishman and Patrick Argos.
 \newblock Knowledge-based protein secondary structure assignment.
 \newblock {\em Proteins: Structure, Function, and Bioinformatics},
   23(4):566--579, 1995.
+
+\bibitem[FKLbR12]{friedrich1912sitzungsberichte}
+W~Friedrich, P~Knipping, M~v Laue, and Interferenz-Erscheinungen bei
+  R{\"o}ntgenstrahlen.
+\newblock Sitzungsberichte der mathematisch-physikalischen classe der
+  k{\"o}niglich-bayerischen akademie der wissenschaften zu m{\"u}nchen, 1912.
 
 \bibitem[Fol81]{foltmann1981protein}
 B~Foltmann.
@@ -200,6 +308,17 @@ Tovi Grossman and Ravin Balakrishnan.
 JB~Gibson, An~N Goland, M~Milgram, and GoHo Vineyard.
 \newblock Dynamics of radiation damage.
 \newblock {\em Physical Review}, 120(4):1229, 1960.
+
+\bibitem[HDS96]{humphrey1996vmd}
+William Humphrey, Andrew Dalke, and Klaus Schulten.
+\newblock Vmd: visual molecular dynamics.
+\newblock {\em Journal of molecular graphics}, 14(1):33--38, 1996.
+
+\bibitem[Her06]{herraez2006biomolecules}
+Angel Herraez.
+\newblock Biomolecules in the computer: Jmol to the rescue.
+\newblock {\em Biochemistry and Molecular Biology Education}, 34(4):255--261,
+  2006.
 
 \bibitem[HGI11]{hasan2011comet}
 Khalad Hasan, Tovi Grossman, and Pourang Irani.
@@ -242,11 +361,25 @@ Paul Kabbash and William~AS Buxton.
   computing systems}, pages 273--279. ACM Press/Addison-Wesley Publishing Co.,
   1995.
 
+\bibitem[KBD{\etalchar{+}}58]{kendrew1958three}
+John~C Kendrew, G~Bodo, Howard~M Dintzis, RG~Parrish, Harold Wyckoff, and
+  David~C Phillips.
+\newblock A three-dimensional model of the myoglobin molecule obtained by x-ray
+  analysis.
+\newblock {\em Nature}, 181(4610):662--666, 1958.
+
 \bibitem[KBE09]{krone2009interactive}
 Michael Krone, Katrin Bidmon, and Thomas Ertl.
 \newblock Interactive visualization of molecular surface dynamics.
 \newblock {\em IEEE transactions on visualization and computer graphics},
   15(6):1391--1398, 2009.
+
+\bibitem[Kee15]{keesom1915second}
+WH~Keesom.
+\newblock The second viral coefficient for rigid spherical molecules, whose
+  mutual attraction is equivalent to that of a quadruplet placed at their
+  centre.
+\newblock {\em Proc. R. Acad. Sci}, 18:636--646, 1915.
 
 \bibitem[KFTRJ01]{kaminski2001evaluation}
 George~A Kaminski, Richard~A Friesner, Julian Tirado-Rives, and William~L
@@ -274,11 +407,41 @@ Michael Krone, John~E Stone, Thomas Ertl, and Klaus Schulten.
   dynamics and particle system trajectories.
 \newblock {\em EuroVis-Short Papers}, 1:67--71, 2012.
 
+\bibitem[K{\"u}h14]{kuhlbrandt2014cryo}
+Werner K{\"u}hlbrandt.
+\newblock Cryo-em enters a new era.
+\newblock {\em Elife}, 3:e03678, 2014.
+
+\bibitem[KV14]{krieger2014yasara}
+Elmar Krieger and Gert Vriend.
+\newblock Yasara view—molecular graphics for all devices—from smartphones
+  to workstations.
+\newblock {\em Bioinformatics}, 30(20):2981--2982, 2014.
+
+\bibitem[KZ10]{kaczanowski2010similar}
+Szymon Kaczanowski and Piotr Zielenkiewicz.
+\newblock Why similar protein sequences encode similar three-dimensional
+  structures?
+\newblock {\em Theoretical Chemistry Accounts}, 125(3-6):643--650, 2010.
+
+\bibitem[Lat97]{latchman1997transcription}
+David~S Latchman.
+\newblock Transcription factors: an overview.
+\newblock {\em The international journal of biochemistry \& cell biology},
+  29(12):1305--1312, 1997.
+
 \bibitem[LBB{\etalchar{+}}95]{lodish1995molecular}
 Harvey Lodish, David Baltimore, Arnold Berk, S~Lawrence Zipursky, Paul
   Matsudaira, and James Darnell.
 \newblock {\em Molecular cell biology}, volume~3.
 \newblock Scientific American Books New York, 1995.
+
+\bibitem[LBM{\etalchar{+}}04]{lodish2004molecular}
+H~Lodish, A~Berk, P~Matsudaira, CA~Kaiser, M~Krieger, MP~Scott, SL~Zipursky,
+  and J~Darnell.
+\newblock {\em Molecular cell biology. Chapter 3: Protein structure and
+  function}.
+\newblock WH Freeman and Company New York, 2004.
 
 \bibitem[LC87]{lorensen1987marching}
 William~E Lorensen and Harvey~E Cline.
@@ -299,6 +462,16 @@ e-daech-en-irak-quand-un-engin-de-loisir-devient-une-arme-du-terrorisme-200773%
 JE~Lennard and I~Jones.
 \newblock On the determination of molecular fields.
 \newblock In {\em Proc. R. Soc. London}, volume 106, pages 441--477, 1924.
+
+\bibitem[Lon30]{london1930theorie}
+Fritz London.
+\newblock Zur theorie und systematik der molekularkr{\"a}fte.
+\newblock {\em Zeitschrift f{\"u}r Physik}, 63(3-4):245--279, 1930.
+
+\bibitem[Lon37]{london1937general}
+Fritz London.
+\newblock The general theory of molecular forces.
+\newblock {\em Transactions of the Faraday Society}, 33:8b--26, 1937.
 
 \bibitem[LR71]{lee1971interpretation}
 Byungkook Lee and Frederic~M Richards.
@@ -325,6 +498,13 @@ Russian Aircraft~Corporation MiG.
 \newblock
   \url{http://www.migavia.ru/index.php/en/production/mig-31e-fighter?limit=1&s%
 tart=2}, 2016.
+
+\bibitem[MRSF{\etalchar{+}}00]{marti2000comparative}
+Marc~A Mart{\'\i}-Renom, Ashley~C Stuart, Andr{\'a}s Fiser, Roberto
+  S{\'a}nchez, Francisco Melo, and Andrej {\v{S}}ali.
+\newblock Comparative protein structure modeling of genes and genomes.
+\newblock {\em Annual review of biophysics and biomolecular structure},
+  29(1):291--325, 2000.
 
 \bibitem[NSB{\etalchar{+}}16]{nwachukwu2016systems}
 Jerome~C Nwachukwu, Sathish Srinivasan, Nelson~E Bruno, Jason Nowak, Nicholas~J
@@ -364,12 +544,26 @@ Chris Oostenbrink, Alessandra Villa, Alan~E Mark, and Wilfred~F Van~Gunsteren.
   and solvation: the gromos force-field parameter sets 53a5 and 53a6.
 \newblock {\em Journal of computational chemistry}, 25(13):1656--1676, 2004.
 
+\bibitem[Pau25]{pauli1925zusammenhang}
+Wolfgang Pauli.
+\newblock {\"U}ber den zusammenhang des abschlusses der elektronengruppen im
+  atom mit der komplexstruktur der spektren.
+\newblock {\em Zeitschrift f{\"u}r Physik A Hadrons and Nuclei},
+  31(1):765--783, 1925.
+
 \bibitem[PCB51]{pauling1951structure}
 Linus Pauling, Robert~B Corey, and Herman~R Branson.
 \newblock The structure of proteins: two hydrogen-bonded helical configurations
   of the polypeptide chain.
 \newblock {\em Proceedings of the National Academy of Sciences},
   37(4):205--211, 1951.
+
+\bibitem[PGH{\etalchar{+}}04]{pettersen2004ucsf}
+Eric~F Pettersen, Thomas~D Goddard, Conrad~C Huang, Gregory~S Couch, Daniel~M
+  Greenblatt, Elaine~C Meng, and Thomas~E Ferrin.
+\newblock Ucsf chimera—a visualization system for exploratory research and
+  analysis.
+\newblock {\em Journal of computational chemistry}, 25(13):1605--1612, 2004.
 
 \bibitem[PK73]{pollard1973acanthamoeba}
 Thomas~D Pollard and Edward~D Korn.
@@ -383,10 +577,23 @@ Stefan Portmann and Hans~Peter L{\"u}thi.
 \newblock {\em CHIMIA International Journal for Chemistry}, 54(12):766--770,
   2000.
 
+\bibitem[PNS{\etalchar{+}}12]{parsiegla2012structure}
+Goetz Parsiegla, Christophe Noguere, Lydia Santell, Robert~A Lazarus, and Yves
+  Bourne.
+\newblock The structure of human dnase i bound to magnesium and phosphate ions
+  points to a catalytic mechanism common to members of the dnase i-like
+  superfamily.
+\newblock {\em Biochemistry}, 51(51):10250--10258, 2012.
+
 \bibitem[Rah64]{rahman1964correlations}
 A~Rahman.
 \newblock Correlations in the motion of atoms in liquid argon.
 \newblock {\em Physical Review}, 136(2A):A405, 1964.
+
+\bibitem[Ric00]{richardson2000early}
+Jane~S Richardson.
+\newblock Early ribbon drawings of proteins.
+\newblock {\em Nature Structural \& Molecular Biology}, 7(8):624--625, 2000.
 
 \bibitem[RK88]{richards1988identification}
 Frederic~M Richards and Craig~E Kundrot.
@@ -394,6 +601,12 @@ Frederic~M Richards and Craig~E Kundrot.
   secondary structure and first-level supersecondary structure.
 \newblock {\em Proteins: Structure, Function, and Bioinformatics}, 3(2):71--84,
   1988.
+
+\bibitem[RR02]{richardson2002teaching}
+David~C Richardson and Jane~S Richardson.
+\newblock Teaching molecular 3-d literacy.
+\newblock {\em Biochemistry and Molecular Biology Education}, 30(1):21--26,
+  2002.
 
 \bibitem[RSLS13]{roberts2013lattice}
 Elijah Roberts, John~E Stone, and Zaida Luthey-Schulten.
@@ -470,6 +683,24 @@ John~E Stone, Kirby~L Vandivort, and Klaus Schulten.
 \newblock In {\em Proceedings of the 8th International Workshop on Ultrascale
   Visualization}, page~6. ACM, 2013.
 
+\bibitem[SZP{\etalchar{+}}10]{song2010comparative}
+Gui-Sheng Song, Hong-Li Zhai, Yong-Gang Peng, Lei Zhang, Gang Wei, Xiao-Ying
+  Chen, Yu-Guo Xiao, Lili Wang, Yue-Jun Chen, Bin Wu, et~al.
+\newblock Comparative transcriptional profiling and preliminary study on
+  heterosis mechanism of super-hybrid rice.
+\newblock {\em Molecular plant}, 3(6):1012--1025, 2010.
+
+\bibitem[TCM06a]{tarini2006ambient}
+Marco Tarini, Paolo Cignoni, and Claudio Montani.
+\newblock Ambient occlusion and edge cueing for enhancing real time molecular
+  visualization.
+\newblock {\em IEEE transactions on visualization and computer graphics},
+  12(5), 2006.
+
+\bibitem[TCM06b]{tarini2006qutemol}
+Marco Tarini, Paolo Cignoni, and Claudio Montani.
+\newblock Qutemol, 2006.
+
 \bibitem[Tre15]{trellet2015exploration}
 Mikael Trellet.
 \newblock {\em Exploration et analyse immersives de donn{\'e}es
@@ -488,6 +719,16 @@ Minji Wang, Tsz~Pui Lai, Li~Wang, Hongmin Zhang, Nan Yang, Peter~J Sadler, and
 \newblock “anion clamp” allows flexible protein to impose coordination
   geometry on metal ions.
 \newblock {\em Chemical Communications}, 51(37):7867--7870, 2015.
+
+\bibitem[W{\"u}t90]{wuthrich1990protein}
+Kurt W{\"u}thrich.
+\newblock Protein structure determination in solution by nmr spectroscopy.
+\newblock {\em Journal of Biological Chemistry}, 265(36):22059--22062, 1990.
+
+\bibitem[W{\"u}t01]{wuthrich2001way}
+Kurt W{\"u}thrich.
+\newblock The way to nmr structures of proteins.
+\newblock {\em Nature Structural \& Molecular Biology}, 8(11):923, 2001.
 
 \bibitem[WWBH97]{worden1997making}
 Aileen Worden, Nef Walker, Krishna Bharat, and Scott Hudson.

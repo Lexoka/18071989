@@ -42,7 +42,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
-		\caption{Illustration d'une protéine (1KX2, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelque 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
+		\caption{Illustration d'une protéine (\emph{1KX2}, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelque 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
 		\label{fig:1KX2}
 	\end{figure}
 	
@@ -153,8 +153,8 @@
 	Les sphères de van der Waals ne sont pas une mauvaise option pour visualiser (ou interagir avec) une simulation de dynamique moléculaire, à condition que l'objet d'intérêt principal soit superficiel, et donc bien visible. La grande taille des cibles peut être un avantage, même s'il y a un certain degré d'interpénétration entre elles. Cette représentation constitue donc un cas d'application notable pour une technique de sélection de cibles mobiles.
 		
 	\begin{equation}
-	    \label{eq:lennard}
-	    E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
+		\label{eq:lennard}
+		E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
 	\end{equation}
 		
 	\begin{figure}[H]
@@ -253,6 +253,18 @@
 		\caption{Dans l'algorithme des \emph{marching cubes}, lorsque l'on considère une cellule, on lit la valeur du champ scalaire aux huit sommets du cube. On choisit ensuite un des quinze cubes ci-dessus, en fonction des valeurs lues. L'opération est répétée pour chaque cellule de la grille, et les cubes forment un maillage de triangles. Crédit : \emph{Wikimedia}.}
 		\label{fig:marchingCubes}
 	\end{figure}
+	
+	\paragraph{Autres techniques de représentations.}
+	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes courramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera}~\cite{pettersen2004ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/transSS}
+		\caption[Surface semi-transparente et structures secondaires.]{Illustration hybride d'une protéine de chloroplaste, représentée par une isosurface de densité semi-transparente et par ses structures secondaires. On peut donc apprécier à la fois le volume occupé par la molécule, les aspérités de sa surface, mais aussi sa structure interne et certaines de ses propriétés physico-chimiques. Illustration produite par \emph{UnityMol} à partir de la structure \emph{5HAD} de la \emph{Protein Data Bank}.}
+		\label{fig:transSS}
+	\end{figure}
+	
+
 		
 	
 	\begin{figure}[H]
@@ -418,23 +430,32 @@
 	D'autres paramètres doivent être initialisés, par exemple les vitesses des particules, qui suivent généralement une distribution de Maxwell-Boltzmann~\cite{maxwell1860v, maxwell1860ii, boltzmann1970weitere, boltzmann2003further}. Il convient également d'ajuster la température, la pression, le nombre de particules, etc., et de déterminer lesquels de ces paramètres doivent être maintenus constants, et comment. Le changement d'un seul de ces paramètres mènera généralement à une autre exploration de l'espace conformationnel, c'est-à-dire à une trajectoire différente.
 	
 	\paragraph{Champs de force.}
-	Une simulation de dynamique moléculaire s'appuie sur un \emph{champ de force}. Cette notion, propre à la chimie, est à ne pas confondre avec son homonyme en physique. Ce que l'on appelle ici un champ de forces est un ensemble de potentiels et de paramètres permettant de modéliser les interactions entre les particules simulées. Généralement, la forme fonctionnelle de base d'un champ de force s'appuie sur l'équation suivante :
+	Une simulation de dynamique moléculaire s'appuie sur un \emph{champ de force}. Cette notion, propre à la chimie, est à ne pas confondre avec son homonyme en physique. Ce que l'on appelle ici un champ de forces est un ensemble de potentiels et de paramètres permettant de modéliser les interactions entre les particules simulées. Généralement, la forme fonctionnelle de base d'un champ de force s'appuie sur l'équation suivante (également illustrée par la figure~\ref{fig:ffterms}) :
 	
 	\begin{equation}
-	    \label{eq:forcefield}
-	    E_{totale} = E_\text{liée} + E_\text{non-liée}
+		\label{eq:forcefield}
+		E_{totale} = E_\text{liée} + E_\text{non-liée}
 	\end{equation}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figures/ch1/ffterms}
+		\caption[Termes d'un champ de forces.]{Résumé des termes liés et non liés d'un champ de forces typique. Crédit : Patrick Fuchs.}
+		\label{fig:ffterms}
+	\end{figure}	
 	
 	L'énergie totale est égale à l'énergie liée plus l'énergie non-liée, où l'énergie liée représente l'énergie des liaisons covalentes, et l'énergie non-liée représente toutes les autres interactions.
 	
 	\begin{equation}
-	    \label{eq:ebonded}
-	    E_\text{liée} = E_{liaison} + E_{angle} + E_\text{angle\_{}dièdre}
+		\label{eq:ebonded}
+		E_\text{liée} = E_{liaison} + E_{angle} + E_\text{angle\_{}dièdre}
 	\end{equation}
 	
 	Le terme $E_{liaison}$ correspond à l'énergie associée à la variation de la longueur d'une liaison covalente par rapport à son équilibre, comme l'illustre la figure~\ref{fig:e_bond}.
 	
 	Le terme $E_{angle}$ représente l'énergie associée à la déformation des angles formés par les paires de liaisons covalentes impliquant le même atome, cf. la figure~\ref{fig:e_angle}.
+	
+	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes, ce qu'explicite la figure~\ref{fig:e_dihedral}.
 	
 	\begin{figure}[H]
 		\centering
@@ -468,8 +489,30 @@
 		\label{fig:e_dihedral}
 	\end{figure}
 	
-	
 	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
+	
+	\begin{equation}
+		\label{eq:nonbonded}
+		E_\text{non-liée} = E_\text{électrostatique} + E_{van der Waals}
+	\end{equation}
+	
+	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}. Ce terme est détaillé par la figure~\ref{fig:e_electrostat}.
+	
+	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut, et résumées par la figure~\ref{fig:e_vdw}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
+		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs.}
+		\label{fig:e_electrostat}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
+		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs.}
+		\label{fig:e_vdw}
+	\end{figure}	
 	
 	\emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
 	
