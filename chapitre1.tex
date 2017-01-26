@@ -101,7 +101,7 @@
 	\subsection{Modes de représentation}
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
 	
-	\begin{figure}[htb]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/helium}
 		\caption{Illustration d'un atome d'hélium, représentant le noyau en rose et la distribution du nuage électronique en nuances de gris. Le noyau (en haut à droite) de l'hélium-4 est représenté de façon très schématisée. La barre noire en bas à gauche indique l'échelle, et mesure un \aa{}ngström, soit $0,1$ nanomètre. Crédit : \emph{Wikimedia}.}
@@ -518,7 +518,10 @@
 	
     
 	\subsection{Simulations interactives}
-	Besoin de steering, etc.
+	\paragraph{Limites des simulations non interactives.}
+	Les processus biologiques dont l'étude nécessite l'emploi de simulations de dynamique moléculaire impliquent souvent des événements relativement longs ou rares, tels que de profonds changements de conformation, ou des transitions d'un état d'équilibre à un autre, comme la liaison ou la rupture de liaison avec un ligand\footnote{En biologie, un ligand est une molécule qui se lie de manière réversible sur une macromolécule ciblée, protéine ou acide nucléique, jouant en général un rôle fonctionnel : stabilisation structurale, catalyse, modulation d'une activité enzymatique, transmission d'un signal. Par exemple, le hème de la myoglobine est un ligand, cf. la figure~\ref{fig:myoglobin}.}. Or, les simulations de dynamique moléculaire étant généralement limitées à quelques dizaines de nanosecondes, ces phénomènes ne sont pas toujours observables ou reproductibles~\cite{phillips2005scalable}.
+	
+	
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers, dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation).
 	
 	occultation, vitesse, prévisibilité, etc.
