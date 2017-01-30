@@ -551,6 +551,13 @@ Wolfgang Pauli.
 \newblock {\em Zeitschrift f{\"u}r Physik A Hadrons and Nuclei},
   31(1):765--783, 1925.
 
+\bibitem[PBW{\etalchar{+}}05]{phillips2005scalable}
+James~C Phillips, Rosemary Braun, Wei Wang, James Gumbart, Emad Tajkhorshid,
+  Elizabeth Villa, Christophe Chipot, Robert~D Skeel, Laxmikant Kale, and Klaus
+  Schulten.
+\newblock Scalable molecular dynamics with namd.
+\newblock {\em Journal of computational chemistry}, 26(16):1781--1802, 2005.
+
 \bibitem[PCB51]{pauling1951structure}
 Linus Pauling, Robert~B Corey, and Herman~R Branson.
 \newblock The structure of proteins: two hydrogen-bonded helical configurations
