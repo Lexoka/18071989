@@ -496,7 +496,7 @@
 		E_\text{non-liée} = E_\text{électrostatique} + E_{van der Waals}
 	\end{equation}
 	
-	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}. Ce terme est détaillé par la figure~\ref{fig:e_electrostat}.
+	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}. Ce terme est détaillé par la figure~\ref{fig:e_electrostat}. En pratique, une sommation d'Ewald, basée sur une transformation de Fourier, est souvent utilisée avec la loi de Coulomb pour le calcul des énergies électrostatiques~\cite{ewald1921berechnung, essmann1995smooth}.
 	
 	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut, et résumées par la figure~\ref{fig:e_vdw}.
 	
@@ -512,7 +512,7 @@
 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
 		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs.}
 		\label{fig:e_vdw}
-	\end{figure}	
+	\end{figure}
 	
 	\emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
 	
@@ -521,14 +521,25 @@
 	\paragraph{Limites des simulations non interactives.}
 	Les processus biologiques dont l'étude nécessite l'emploi de simulations de dynamique moléculaire impliquent souvent des événements relativement longs ou rares, tels que de profonds changements de conformation, ou des transitions d'un état d'équilibre à un autre, comme la liaison ou la rupture de liaison avec un ligand\footnote{En biologie, un ligand est une molécule qui se lie de manière réversible sur une macromolécule ciblée, protéine ou acide nucléique, jouant en général un rôle fonctionnel : stabilisation structurale, catalyse, modulation d'une activité enzymatique, transmission d'un signal. Par exemple, le hème de la myoglobine est un ligand, cf. la figure~\ref{fig:myoglobin}.}. Or, les simulations de dynamique moléculaire étant généralement limitées à quelques dizaines de nanosecondes, ces phénomènes ne sont pas toujours observables ou reproductibles~\cite{phillips2005scalable}.
 	
+	\paragraph{Steering.}
+	Par conséquent, il est utile de pouvoir agir sur une simulation de dynamique moléculaire. Cette technique est souvent appelée \emph{steering} dans la littérature anglo-saxonne et consiste à appliquer des forces externes à une molécule au cours de sa simulation pour explorer ses propriétés mécaniques, ou pour chercher à provoquer les phénomènes mentionnés ci-dessus, trop lents pour les simulations sans \emph{steering}. Ces phénomènes peuvent ainsi être étudiés~\cite{izrailev1999steered, isralewitz2001steered, isralewitz2001steered}. Certains spécialistes~\cite{phillips2005scalable} préfèrent parler d'\emph{Interactive Molecular Dynamics} (IMD)~\cite{stone2001system, grayson2003mechanisms} lorsque les forces sont appliquées en temps réel par l'utilisateur, par opposition au \emph{steering} basé sur des forces dont l'application est préprogrammée. La figure~\ref{fig:steeredPIT} en présente un exemple précoce (1999).
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/steeredPIT}
+		\caption[Dynamique moléculaire interactive en environnement virtuel.]{Le logiciel de visualisation moléculaire VMD est utilisé avec les lunettes sétérographiques \emph{CrystalEyes} au sein du système \emph{Protein Interactive Theater} (PIT), qui permet l'immersion dans un environnement virtuel. Le PIT est par ailleurs couplé avec le module de simulation Sigma~\cite{mann2002sigma} pour permettre l'interaction avec la simulation. À gauche, une photo du PIT avec deux utilisateurs. À droite, un schéma de l'environnement virtuel tel qu'il est perçu par les utilisateurs. Crédit :~\cite{prins1999virtual}.}
+		\label{fig:steeredPIT}
+	\end{figure}
+	
+	\paragraph{Retour haptique.}
+	Pour améliorer la perception des propriétés mécaniques des molécules étudiées, et des forces qui s'exercent sur elle, un retour haptique est possible au cours d'une simulation de dynamique moléculaire interactive~\cite{stone2001system}. Si l'haptique concerne le toucher et les phénomènes kinesthésiques, en pratique on utilise en IMD des bras haptiques, qui fonctionnent par retour de force.
+	
+	\paragraph{Limites et défis actuels.}
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers, dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation).
 	
 	occultation, vitesse, prévisibilité, etc.
 	 
-	\paragraph{Applications}
-    
-	\paragraph{Limites}
+
 	
 	\section{Contrôle de l'espace aérien}
 	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
