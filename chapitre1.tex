@@ -522,7 +522,31 @@
 	Les processus biologiques dont l'étude nécessite l'emploi de simulations de dynamique moléculaire impliquent souvent des événements relativement longs ou rares, tels que de profonds changements de conformation, ou des transitions d'un état d'équilibre à un autre, comme la liaison ou la rupture de liaison avec un ligand\footnote{En biologie, un ligand est une molécule qui se lie de manière réversible sur une macromolécule ciblée, protéine ou acide nucléique, jouant en général un rôle fonctionnel : stabilisation structurale, catalyse, modulation d'une activité enzymatique, transmission d'un signal. Par exemple, le hème de la myoglobine est un ligand, cf. la figure~\ref{fig:myoglobin}.}. Or, les simulations de dynamique moléculaire étant généralement limitées à quelques dizaines de nanosecondes, ces phénomènes ne sont pas toujours observables ou reproductibles~\cite{phillips2005scalable}.
 	
 	\paragraph{Steering.}
-	Par conséquent, il est utile de pouvoir agir sur une simulation de dynamique moléculaire. Cette technique est souvent appelée \emph{steering} dans la littérature anglo-saxonne et consiste à appliquer des forces externes à une molécule au cours de sa simulation pour explorer ses propriétés mécaniques, ou pour chercher à provoquer les phénomènes mentionnés ci-dessus, trop lents pour les simulations sans \emph{steering}. Ces phénomènes peuvent ainsi être étudiés~\cite{izrailev1999steered, isralewitz2001steered, isralewitz2001steered}. Certains spécialistes~\cite{phillips2005scalable} préfèrent parler d'\emph{Interactive Molecular Dynamics} (IMD)~\cite{stone2001system, grayson2003mechanisms} lorsque les forces sont appliquées en temps réel par l'utilisateur, par opposition au \emph{steering} basé sur des forces dont l'application est préprogrammée. La figure~\ref{fig:steeredPIT} en présente un exemple précoce (1999).
+	Par conséquent, il est utile de pouvoir agir sur une simulation de dynamique moléculaire. Cette technique est souvent appelée \emph{steering} dans la littérature anglo-saxonne et consiste à appliquer des forces externes à une molécule au cours de sa simulation pour explorer ses propriétés mécaniques, ou pour chercher à provoquer les phénomènes mentionnés ci-dessus, trop lents pour les simulations sans \emph{steering}. Ces phénomènes peuvent ainsi être étudiés~\cite{izrailev1999steered, isralewitz2001steered, isralewitz2001steered}. Certains spécialistes~\cite{phillips2005scalable} préfèrent parler d'\emph{Interactive Molecular Dynamics} (IMD)~\cite{stone2001system, grayson2003mechanisms} lorsque les forces sont appliquées en temps réel par l'utilisateur, par opposition au \emph{steering} basé sur des forces dont l'application est préprogrammée.
+	
+	\paragraph{Simulations en immersion et retour haptique.}
+	La figure~\ref{fig:steeredPIT} présente un exemple précoce (1999) d'IMD en contexte immersif. La notion d'immersion fait l'objet de plusieurs définitions, notamment celles citées par J.-M.~Burkhardt \emph{et al.}~\cite{burkhardt2003immersion} :
+	
+	\begin{displayquote}
+	    \textbf{Acception 1.} Dans le langage courant, le terme d'immersion est compris comme \emph{l'exposition de l'utilisateur à un EV au moyen de dispositifs occultant en partie la perception} (surtout visuelle) de l'environnement alentours, pour afficher en lieu et place une image du monde virtuel (visio-casque, salle immersive de type CAVE, etc.). Par extension, on parle d'immersion auditive, haptique, sensorielle etc. Au-delà d'un caractère informel, cette acception comporte deux ambiguïtés. D'une part, deux sémantiques différentes coexistent :
+	    \renewcommand{\labelenumi}{\alph{enumi}} % small letters
+	    \begin{enumerate}
+	        \item l'immersion comme \emph{l'action d'exposer l'utilisateur à un environnement simulé numériquement},
+	        \item l'effet avéré ou supposé de cette exposition sur l'utilisateur.
+	    \end{enumerate}
+	    
+	    D'autre part, en se focalisant sur l'aspect d'exposition, cet usage courant tend à centrer le problème sur la recréation d'une image artificielle proche de la situation réelle de référence, et à occulter les éventuelles interactions avec l'information persistante liée à l'environnement physique réel de l'utilisateur.
+	    
+	    \textbf{Acception 2.} Le développement d'investigations empiriques en termes d'effet de l'immersion sur la cognition et l'apprentissage, nécessitera de définir de mieux en mieux le concept et de préciser les paramètres de sa mesure. Une définition plus formelle de l'immersion correspondrait ainsi au degré et à la qualité avec lesquels l'interface du système contrôle les entrées sensorielles pour chaque modalité de perception et d'action ; l'immersion peut alors se décrire dans les termes des dispositifs logiciels et matériels particuliers utilisés~\cite{burkhardt1999conception}. Le degré d'immersion se caractériserait alors au moins par :
+	    \begin{enumerate}
+	        \item le sous-ensemble des modalités mises en \oe{}uvre dans l'interaction,
+	        \item les propriétés (degré de complétude, qualité, paramètres du signal, etc.) des dispositifs d'interaction pour chacune des modalités visées,
+	        \item la cohérence interne et la latence globale de l'information et des réactions délivrées en temps réel par le système,
+	        \item les propriétés de l'environnement physique dans lequel se déroule l'expérience.
+	    \end{enumerate}
+	    
+	    Cette acception renvoie à la notion théorique analogue de \og fidélité du stimulus \fg{}~\cite{stoffregen2003nature} proposée pour être un indicateur de la distance entre le monde physique et sa simulation. Le concept d'immersion ainsi précisé ouvre vers la construction de métriques qui permettraient de quantifier, comparer et étudier systématiquement les effets de l'immersion sur la cognition, les performances et la satisfaction des utilisateurs.
+	\end{displayquote}
 	
 	\begin{figure}[H]
 		\centering
@@ -531,8 +555,26 @@
 		\label{fig:steeredPIT}
 	\end{figure}
 	
-	\paragraph{Retour haptique.}
+	Pour Guillaume Bouyer~\cite{bouyer2007rendu} :
+	
+	\begin{displayquote}
+	    D'un point de vue sensoriel, concret, il s'agit d'occulter partiellement ou totalement la perception de l'humain des objets réels qui l'entourent pour qu'elle soit uniquement ou principalement exposée aux stimuli du monde virtuel. Dans le cas le plus abouti de l'immersion virtuelle, l'humain est totalement découplé du monde réel : seul l'environnement virtuel l'occupe, c'est la notion de \og présence \fg{}. Mais l'immersion peut également être mentale, l'utilisateur pouvant être littéralement \og plongé \fg{}, absorbé par son activité, occultant de lui-même le monde réel (comme il pourrait l'être par exemple pendant la vision d'un film ou la lecture d'un livre). L'immersion de l'utilisateur dans l'[environnement virtuel] est donc créée à la fois par des moyens techniques, sensoriels, comme l'obscurité, de grands écrans et des enceintes diffusant des images en relief et du son 3D, des interfaces de commande non intrusives et naturelles, etc. ; et des procédés logiciels, basés sur des connaissances psychologiques : les concepteurs jouent sur le rendu de la scène, les habitudes de l'utilisateur, ses émotions, etc.
+	    
+	    Ensuite, l'interaction doit être pseudo-naturelle, c'est-à-dire proche de l'interaction de l'humain dans son environnement réel. En effet, dans le monde réel, l'être humain a acquis, assimilé un certain nombre de \og schèmes \fg{}, de comportements à la fois sensori-moteurs voire cognitifs. Il possède ses propres raisonnements assortis de représentations mentales, a construit une organisation du monde selon un ensemble de règles spatio-temporelles et causales, a acquis des réflexes, a appris des gestes, etc. Dans un [environnement virtuel], il va être tenté de répéter ces schèmes ou de les adapter au nouveau contenu qui s'offre à lui. L'une des caractéristiques des travaux sur l'interaction en RV est de faciliter cette transposition, pour que l'interaction se fasse inconsciemment et sans grand effort mental : \og les interfaces exploitent la motricité ou les perceptions de l'homme issues de son comportement dans le monde réel \fg{}~\cite{fuchs2006introduction}.	
+	\end{displayquote}
+	
+	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
+	
 	Pour améliorer la perception des propriétés mécaniques des molécules étudiées, et des forces qui s'exercent sur elle, un retour haptique est possible au cours d'une simulation de dynamique moléculaire interactive~\cite{stone2001system}. Si l'haptique concerne le toucher et les phénomènes kinesthésiques, en pratique on utilise en IMD des bras haptiques, qui fonctionnent par retour de force.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/exaviz}
+		\caption[IMD en environnement virtuel avec retour haptique, \emph{Exaviz}.]{Le système \emph{Exaviz}. À gauche, deux utilisateurs sont dans un CAVE\footnotemark, chacun avec son point de vue personnel en 3D, grâce au suivi de la tête ; ils peuvent ainsi désigner des objets du doigt et en discuter. À droite, l'utilisation du bras haptique permet d'interagir avec les objets de la scène en obtenant un retour de force. Crédit :~\cite{dreher2014exaviz}.}
+		\label{fig:exaviz}
+	\end{figure}
+	
+	\footnotetext{\emph{Cave automatic virtual environment}, un système permettant l'immersion dans un environnement virtuel doté de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite expose ses vues sur la perception, la réalité et l'illusion.}
 	
 	\paragraph{Limites et défis actuels.}
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers, dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation).
@@ -586,7 +628,7 @@
 	
 	[\ldots{}]
 	
-	\og On ne peut pas faire grand-chose \fg{}, constate avec amertume auprès de LCI Jean-Vincent Brisset, général de brigade aérienne. Ce directeur de recherche à l’IRIS l'assure : \og C'est quelque chose d'assez terrifiant pour les services de sécurité. Il est horriblement compliqué de stopper un drone qui, par exemple, chercherait à s'attaquer à un responsable politique en plein discours. \fg{} Pour preuve, la scène surréaliste à laquelle avaient assisté ceux qui écoutaient Angela Merkel, il y a trois ans à Dresde. Durant son intervention, la chancelière avait observé l’atterrissage surprise d’un appareil au pied de la tribune.~\cite{brisset}
+	\og On ne peut pas faire grand-chose \fg{}, constate avec amertume auprès de LCI Jean-Vincent Brisset, général de brigade aérienne. Ce directeur de recherche à l'IRIS l'assure : \og C'est quelque chose d'assez terrifiant pour les services de sécurité. Il est horriblement compliqué de stopper un drone qui, par exemple, chercherait à s'attaquer à un responsable politique en plein discours. \fg{} Pour preuve, la scène surréaliste à laquelle avaient assisté ceux qui écoutaient Angela Merkel, il y a trois ans à Dresde. Durant son intervention, la chancelière avait observé l'atterrissage surprise d'un appareil au pied de la tribune.~\cite{brisset}
 
 	
 	\end{displayquote}
