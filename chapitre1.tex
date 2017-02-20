@@ -585,19 +585,32 @@
 	
 	Ceux-ci peuvent être utilisés de diverses façons, notamment pour percevoir les \og collisions \fg{} entre le curseur et les objets de la scène, ou entre un objet sélectionné par l'utilisateur et un autre objet de la scène, pour permettre à l'utilisateur de percevoir les forces qui s'exercent entre les composantes de la molécule, ou encore pour guider la sélection, en appliquant une force au périphérique haptique dans la direction de la cible présumée de l'utilisateur. Le choix du mode d'utilisation d'un périphérique haptique dans une simulation d'IMD dépend de l'effet recherché.
 	
-	
-	
 	\footnotetext{\emph{Cave Automatic Virtual Environment}, un système permettant l'immersion dans un environnement virtuel doté de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite expose ses vues sur la perception, la réalité et l'illusion.}
 	
 	\paragraph{Limites et défis actuels.}
-	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers, dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation).
+	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers ou plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité, et encore cet exemple n'est-il pas le plus extrême, car la molécule représentée n'est pas très grande et, surtout, le solvant n'est pas représenté.
 	
-	occultation, vitesse, prévisibilité, etc.
-	 
-
+	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Comme nous l'avons vu plus haut, cette occultation dépend également du mode de représentation utilisé. Le système représenté sur la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/gluTrans}
+		\caption[Transporteur de glutamate, très forte occultation.]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
+		\label{fig:gluTrans}
+	\end{figure}
+	
+	\footnotetext{\url{https://blogs.nvidia.com/blog/2011/01/13/university-pittsburg-researcher-studies-molecular-dynamics-gpus/}}
+	
+	Dans les simulations d'IMD, la vitesse des cibles peut être très élevée. Elle dépend en pratique de la vitesse de la simulation, donc de la taille du système simulé et des ressources de calcul disponibles, mais elle peut être supérieure à 10~\r{A}/s, sachant que le rayon d'un atome est d'environ 1~\r{A}.
+	
+	Quand il s'agit d'interagir avec un tel système, la vitesse d'une particule dans l'espace moteur dépend de la façon dont le système est représenté et du périphérique utilisé, mais elle devient rapidement problématique, \emph{a fortiori} quand la nature même du mouvement pose problème.
+	
+	En effet, les mouvements des atomes dans une simulation de dynamique moléculaire se caractérisent par leur irrégularité et, par conséquent, leur imprévisibilité. Selon la simulation et la façon dont elle est représentée, les atomes peuvent adopter un mouvement brownien ou plus proche de celui d'une mouche, avec des mouvements très vifs, saccadés et imprévisibles.
+	
+	Ensemble, la très forte densité de cibles, le haut degré d'occultation, la haute vitesse de ces cibles et la nature très imprévisible de leurs mouvement rendent l'interaction (et en particulier la sélection d'une particule) avec les simulations de dynamique moléculaire très difficile. C'est pourquoi les chercheurs en biologie structurale expriment le besoin de meilleurs modes d'interaction, et c'est la principale motivation des travaux présentés dans cette thèse.
 	
 	\section{Contrôle de l'espace aérien}
-	La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
+	La biologie structurale n'est cependant pas le seul domaine caractérisé par un besoin d'interaction avec des cibles mobiles, loin s'en faut. La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
 	
 	\subsection{Applications civiles}
 	\paragraph{Avions.}
