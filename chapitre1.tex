@@ -28,7 +28,7 @@
 			\caption{Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.}
 			\label{fig:peptide_bond}
 		\end{subfigure}
-		\caption[Acide aminé.]{Représentation schématique d'un acide aminé et d'une liaison petptidique. Source :~\cite{berg_biochemistry_2012}}
+		\caption[Acide aminé.]{Représentation schématique d'un acide aminé et d'une liaison petptidique. Crédit :~\cite{berg_biochemistry_2012}}
 		\label{fig:aminoAcid}
 	\end{figure}
 	
@@ -140,12 +140,14 @@
 	Les logiciels de simulation utilisent fréquemment le potentiel de Lennard-Jones~\cite{lennard1924determination} pour modéliser les forces de van der Waals. Celui-ci peut s'exprimer par l'équation~\ref{eq:lennard}, où $r$ est la distance entre les centres des deux atomes concernés, et $d$ représente la distance pour laquelle le potentiel de Lennard-Jones est nul ; $E_{0}$ est la valeur minimale du potentiel, soit le \og fond \fg{} du puits de potentiel. Comme on l'observe aisément sur la figure~\ref{fig:lennard}, le potentiel admet un minimum, dont on peut déduire un rayon de van der Waals. Ce rayon peut être celui d'une sphère représentant l'atome en question. La figure~\ref{fig:vdwradius} en fournit une illustration.
 		
 	\begin{figure}[H]
-    	\centering
-    	\includegraphics[width=\textwidth]{figures/ch1/vdwradius}
-    	\caption{Représentation du rayon de van der Waals, par opposition au rayon de covalence, plus petit. En effet, celui-ci est défini par la longueur d'une liaison covalente, qui implique le partage d'électrons entre une paire d'atomes. Le rayon de van der Waals, lui, correspond à une paire d'atomes non liés. C'est pour cette raison qu'en représentation de van der Waals, les atomes liés semblent imbriqués les uns dans les autres. Crédit : Chemistry -- LibreTexts (\url{http://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Chemical_Bonding/General_Principles_of_Chemical_Bonding/Covalent_Bond_Distance,_Radius_and_van_der_Waals_Radius}).}
-   		\label{fig:vdwradius}
-    \end{figure}
-		
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/vdwradius}
+		\caption{Représentation du rayon de van der Waals, par opposition au rayon de covalence, plus petit. En effet, celui-ci est défini par la longueur d'une liaison covalente, qui implique le partage d'électrons entre une paire d'atomes. Le rayon de van der Waals, lui, correspond à une paire d'atomes non liés. C'est pour cette raison qu'en représentation de van der Waals, les atomes liés semblent imbriqués les uns dans les autres. Crédit : Chemistry -- LibreTexts\protect\footnotemark.}
+		\label{fig:vdwradius}
+	\end{figure}
+	
+\footnotetext{\url{http://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Chemical_Bonding/General_Principles_of_Chemical_Bonding/Covalent_Bond_Distance,_Radius_and_van_der_Waals_Radius}}
+    
 	C'est le principe de la représentation en sphères de van der Waals, illustrée par la figure~\ref{fig:4awn_VdW}. Ce mode de visualisation a plusieurs avantages. Premièrement, il correspond à une réalité physique, celle des forces de van der Waals. Deuxièmement, il permet d'apprécier le volume occupé par la molécule. Troisièmement, les atomes étant représentés par de grosses sphères, ils sont mieux visibles pour un niveau de zoom donné. De fait, il est plus aisé d'envisager les interactions possibles entre cette molécule et une autre, puisque l'on perçoit mieux les volumes des cavités dans lesquelles d'éventuels ligands pourraient venir se loger, et la bonne visualisation des atomes à la surface peut aider à évaluer la probabilité d'un arrimage avec ledit ligand.
 		
 	Cependant, les liaisons covalentes sont totalement occultées, et il est seulement possible de les \og deviner \fg{} à partir de l'emplacement des atomes et grâce aux lois de la chimie. La structure de la molécule est donc beaucoup moins claire qu'en représentation CPK, par exemple. De plus, les atomes sont si gros qu'ils occultent totalement ceux qui sont derrière eux. De fait, l'intérieur de la molécule devient totalement invisible. Si sa surface est mieux représentée, sa structure interne est entièrement occultée. C'est plus gênant encore lorsque les atomes d'hydrogène sont affichés, ce qui n'est pas le cas sur la figure~\ref{fig:4awn_VdW} --- il est courant de les omettre, par souci de clarté. Selon la mise en \oe{}uvre logicielle de cette représentation, elle peut être coûteuse en ressources de calcul, même si des solutions efficaces existent. En mouvement, la grande taille des atomes a l'avantage de diminuer leur mouvement relatif, c'est-à-dire leur mouvement par rapport à eux-mêmes.
@@ -158,10 +160,10 @@
 	\end{equation}
 		
 	\begin{figure}[H]
-    	\centering
-    	\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
-    	\caption{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$.}
-    	\label{fig:lennard}
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
+		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$. Crédit : \emph{Wikimedia}.}
+		\label{fig:lennard}
 	\end{figure}
 		
 	\paragraph{\emph{Hyperballs}.} La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se base sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
@@ -177,14 +179,14 @@
 	\begin{figure}[H]
     	\centering
     	\includegraphics[width=\textwidth]{figures/ch1/spheremeshes}
-    	\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Source :~\cite{seo2010heat}.}
+    	\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Crédit :~\cite{seo2010heat}.}
     	\label{fig:spheremeshes}
 	\end{figure}
 		
 	\begin{figure}[H]
     	\centering
     	\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
-    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constante que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Source :~\cite{chavent2011gpu}.}
+    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constante que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Crédit :~\cite{chavent2011gpu}.}
    		\label{fig:hyperballs}
     \end{figure}
 		
@@ -212,9 +214,10 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/bSheet}
-		\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}}
+		\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}\protect\footnotemark}
 		\label{fig:bSheet}
 	\end{figure}
+		\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
 		
 	\begin{figure}[H]
 		\centering
@@ -440,7 +443,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\textwidth]{figures/ch1/ffterms}
-		\caption[Termes d'un champ de forces.]{Résumé des termes liés et non liés d'un champ de forces typique. Crédit : Patrick Fuchs.}
+		\caption[Termes d'un champ de forces.]{Résumé des termes liés et non liés d'un champ de forces typique. Crédit : Patrick Fuchs\footnotemark.}
 		\label{fig:ffterms}
 	\end{figure}	
 	
@@ -467,7 +470,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
-		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs.}
+		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
 		\label{fig:e_angle}
 	\end{figure}
 	
@@ -489,8 +492,6 @@
 		\label{fig:e_dihedral}
 	\end{figure}
 	
-	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
-	
 	\begin{equation}
 		\label{eq:nonbonded}
 		E_\text{non-liée} = E_\text{électrostatique} + E_{van der Waals}
@@ -503,18 +504,20 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
-		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs.}
+		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
 		\label{fig:e_electrostat}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
-		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs.}
+		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
 		\label{fig:e_vdw}
 	\end{figure}
 	
-	\emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
+	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
+	
+	Il existe de très nombreux champs de force, avec chacun ses avantages et inconvénients spécifiques, mais parmi les plus couramment utilisés, on peut citer \emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, ou encore \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
 	
     
 	\subsection{Simulations interactives}
@@ -670,16 +673,20 @@
 	
 	Au-delà de leurs caractéristiques de vol, certains drones sont délibérément conçus pour être utilisés en grandes quantités, en essaims\footnotemark~\cite{alonso2016distributed, saska2014autonomous}, notamment pour submerger l'ennemi par le nombre. Cela implique une densité de cibles potentiellement très importante, avec les niveaux d'occultation qui en découlent. L'on peut d'ailleurs supposer qu'ils seront impliqués dans des manœuvres délibérément conçues pour compliquer la détection, l'identification et le suivi des drones individuels.
 	
-	\footnotetext{L'\emph{Office of Naval Research} du \emph{Department of Defense} étastunien ne cache pas son intérêt pour l'usage d'essaims de drones, comme l'illustre ce communiqué de presse intitulé \emph{LOCUST: Autonomous, swarming UAVs fly into the future} : \url{http://www.onr.navy.mil/Media-Center/Press-Releases/2015/LOCUST-low-cost-UAV-swarm-ONR.aspx}}
+	\footnotetext{L'\emph{Office of Naval Research} du \emph{Department of Defense} étastunien ne cache pas son intérêt pour l'usage d'essaims de drones, comme l'illustre ce communiqué de presse intitulé \emph{LOCUST: Autonomous, swarming UAVs fly into the future} : \url{http://www.onr.navy.mil/Media-Center/Press-Releases/2015/LOCUST-low-cost-UAV-swarm-ONR.aspx}.
+	
+	Le \emph{Strategic Capabilities Office} du même département a déjà mené des essais avec des essaims d'une centaine de petits drones : \url{https://www.washingtonpost.com/news/checkpoint/wp/2016/03/08/watch-perdix-the-secretive-pentagon-program-dropping-tiny-drones-from-jets/} ; \url{https://www.defense.gov/Portals/1/Documents/pubs/Perdix\%20Fact\%20Sheet.pdf}.}
 	
 	
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/swarm}
-		\caption{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}.}
+		\caption{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}\protect\footnotemark.}
 		\label{fig:swarm}
 	\end{figure}
+	
+	\footnotetext{\url{http://www.ibtimes.com/}}
 	
 	\paragraph*{}
 	Dans une certaine mesure, le contrôle de la circulation des drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le Ministère de l'écologie et du développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français~\cite{dronesuaf}. Par ailleurs, l'utilisation de drones au-dessus de sites sensibles tels que les centrales nucléaires ne va pas sans inquiéter EDF et les pouvoirs publics\footnotemark.
@@ -718,7 +725,7 @@
 	En situation réelle, un espace aérien pourrait tout à fait contenir des véhicules et autres engins volants de tous les types sus-cités, des essaims de drones très manœvrables jusqu'aux missiles balistiques les plus rapides. Un système de contrôle interactif devrait donc être assez souple pour permettre la sélection de cibles de natures très différentes.
 	On peut noter que les engins volants militaires ont vocation à chercher à éviter d'être détectés, soit en étant naturellement furtifs, soit en volant à très basse altitude et en tirant parti du relief naturel. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, et peuvent éventuellement disparaître de ces écrans, offrant une fenêtre temporelle restreinte pour l'interaction.
 	
-	De plus, le commandant du \emph{Chevalier Paul}\footnotemark précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnote{Abattu en Ukraine le 17 juillet 2014.}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims.
+	De plus, le commandant du \emph{Chevalier Paul}\footnotemark précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnote{Abattu en Ukraine le 17 juillet 2014.}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Néanmoins, cet entraînement à 40 cibles est déjà parmi les plus exigeants au monde, et les difficultés qu'il présentent ne sauraient être sous-estimées.
 	
 	
 	
@@ -736,9 +743,11 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/Radar-Scope-ZSE}
-		\caption[Écran de contrôle du trafic aérien, en 2D.]{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}.}
+		\caption[Écran de contrôle du trafic aérien, en 2D.]{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}\footnotemark.}
 		\label{fig:airtraffic}
 	\end{figure}
+	
+	\footnotetext{\url{http://www.boldmethod.com/}}
 	
 	\section{Contrôle de l'espace maritime}
 	\subsection{Enjeux}
@@ -785,6 +794,28 @@
 	\end{figure}
 	
 	\section{Contrôle de l'espace extra-atmosphérique}
+	\subsection{Enjeux}
+	Le problème de la surveillance de l'espace extra-atmosphérique se pose de façon assez analogue à celui des espaces aérien et maritime. Là encore il s'agit d'une part de vérifier que les objets qui s'y meuvent le font de façon sûre, et d'identifier ce qui peut potentiellement représenter une menace (essentiellement militaire, car à ce jour aucune organisation criminelle connue n'a pu mettre un objet en orbite).
+	
+	\subsection{Débris}
+	D'après l'Agence spatiale européenne (ASE ou ESA pour son sigle anglophone), l'orbite terrestre compterait environ 29~000 objets de plus de 10~cm, 670~000 objets de plus de 1~cm, et pas moins de 170 millions d'objets de plus de 1~mm\ldots{} La collision d'un satellite artificiel avec un objet de seulement un millimètre pourrait détruire un sous-système, tandis qu'un objet d'un centimètre détruirait généralement le satellite\footnotemark.
+	\footnotetext{\url{http://www.esa.int/Our_Activities/Space_Engineering_Technology/Clean_Space/How_many_space_debris_objects_are_currently_in_orbit}}
+	
+	Les débris spatiaux proviennent de sources aussi diverses que des véhicules spatiaux hors service, de l'équipement perdu, des propulseurs de véhicules\ldots{} ou des armes\footnotemark~\cite{chun1999shooting}.
+	
+	\footnotetext{\emph{Space Debris from Anti-Satellite Weapons} -- \url{http://www.ucsusa.org/sites/default/files/legacy/assets/documents/nwgs/debris-in-brief-factsheet.pdf}}
+	
+	Si le sujet est préoccupant pour les satellites et autres vols non habités, il est beaucoup plus inquiétant pour les vols habités, comme en témoigne l'incident illustré par la figure~\ref{fig:endeavour}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/endeavour}
+		\caption[Dégâts sur un panneau de radiateur de la navette spatiale \emph{Endeavour}.]{Un panneau de radiateur de la navette spatiale \emph{Endeavour}, très endommagé par un impact avec une particule riche en métaux (titane, zinc, et peut-être antimoine) d'un diamètre estimé entre $1,5$ et $2$~millimètres. Crédit : NASA\protect\footnotemark.}
+		\label{fig:endeavour}
+	\end{figure}
+	
+	\footnotetext{\url{https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20080010742.pdf}}
+	
 	
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation. Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement.
