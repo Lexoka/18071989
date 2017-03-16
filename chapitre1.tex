@@ -1005,7 +1005,7 @@
 	
 	On pourrait imaginer, à la place ou en complément de ces approches, d'apporter au joueur une assistance à la visée. Une telle technique d'aide à la sélection devrait être paramétrable dans son \og intensité \fg{} c'est-à-dire qu'il devrait lui être possible d'apporter au joueur une assistance plus ou moins prononcée, selon un paramètre donné. Ce paramètre pourrait être (dérivé de) la compétence de tir du personnage. Ainsi, un joueur contrôlant un personnage expert en tir serait capable d'abattre des cibles très difficiles, conformément à l'image du personnage telle qu'elle est véhiculée par le jeu, mais le joueur resterait l'acteur principal de l'opération, sans ralentissement ou suspension du temps. L'aide à la sélection permettrait ici de dépasser la \og borne \fg{} imposée par la dextérité du joueur.
 	
-	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut.
+	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.
 	
 	\begin{figure}[H]
 		\centering
@@ -1018,37 +1018,42 @@
 	\subsection{Jeux de gestion, de stratégie (RTS) et de tactique (RTT)}
 	Dans ce que nous appellerons, pour simplifier, les jeux de gestion (en y incluant les RTS et RTT) le but est de mener un organisme (d'une petite entreprise à une civilisation) vers la prospérité, ou une armée vers la victoire. Ces genres mettent l'accent sur la réflexion tactique et stratégique, la gestion des ressources naturelles et humaines, l'organisation logistique, l'utilisation astucieuse du terrain, l'art de la feinte, etc. La figure~\ref{fig:cossacks2} présente un exemple de RTS.
 	
-	S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. Au contraire, la tâche de sélection est purement utilitaire et vue comme une banale nécessité, voire une corvée. Elle fait perdre du temps au joueur, du temps qui pourrait être utilisé pour organiser ses resources et forces, ou tout simplement pour réfléchir.
+	S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. Au contraire, la tâche de sélection est purement utilitaire et vue comme une banale nécessité, voire une corvée. Elle fait perdre du temps au joueur, du temps qui pourrait être utilisé pour organiser ses ressources et forces, ou tout simplement pour réfléchir.
 	
-	Par conséquent, une technique de sélection facilitant cette tâche autant que possible serait probablement bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses. Dans \emph{Cossacks~2: Napoleonic Wars}, par exemple, une bataille peut engager jusqu'à 64~000 unités, et la situation devient suffisamment assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités~\cite{cossacks2}. Il est évident que si cette solution est acceptable (quoique loin d'être idéale) dans un jeu opposant une intelligence artificielle au joueur humain, elle vient beaucoup plus gênante dans un contexte multijoueur.
+	Par conséquent, une technique de sélection facilitant cette tâche autant que possible serait probablement bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses. Dans \emph{Cossacks~II: Napoleonic Wars}, par exemple, une bataille peut engager jusqu'à 64~000 unités, et la situation devient assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités\footnotemark. Il est évident que si cette solution est acceptable (quoique loin d'être idéale) dans un jeu opposant une intelligence artificielle au joueur humain, elle vient beaucoup plus gênante dans un contexte multijoueur, où les instances du jeu s'exécutant sur chaque machine doivent rester synchronisées. Une bataille de ce jeu est illustrée par la figure~\ref{fig:cossacks2}, mais elle fait pâle figure comparée à l'énorme bataille du jeu de rôle et de stratégie multijoueur \emph{EVE Online}, représentée sur la figure~\ref{fig:eveonline}.
+	
+	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
-		\caption{Exemple d'une partie du RTS \emph{Cossacks~2: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Jeu développé par GSC Game World et édité par CDV Software.}
+		\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}.]{Exemple d'une partie du RTS \emph{Cossacks~II: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Ce jeu est connu pour son nombre maximal d'unités particulièrement élevé : 64~000. La gestion de troupes si nombreuses est un défi particulièrement difficile qui n'est pas facilité par la pénibilité de la tâche de sélection dans un tel contexte. Jeu développé par GSC Game World et édité par CDV Software.}
 		\label{fig:cossacks2}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
-		\caption{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community}.}
+		\caption[Énorme bataille dans le jeu \emph{EVE Online}.]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
 		\label{fig:eveonline}
 	\end{figure}
 	
 
-	\subsection{Arènes de bataille en ligne multijoueur (MOBA)}
-	Les jeux de type MOBA sont caractérisés par un petit nombre de cibles (de l'ordre de quelques dizaines, tout au plus) rapides et imprévisibles.
+	\subsection{Arènes de bataille en ligne multijoueur (MOBA/ARTS)}
+	Les jeux de type arène de bataille en ligne (MOBA, ou ARTS pour \emph{action real-time strategy}) ont émergé comme un sous-genre de la catégorie RTS, dans lequel le joueur ne contrôle qu'un seul personnage, et est éventuellement aidé par des personnages non jouables\footnotemark dans sa lutte contre ses ennemis. Ces derniers sont souvent au nombre d'une poignée ou de quelques dizaines, et sont généralement caractérisés par leurs mouvements vifs. Les MOBA présentent donc un assez petit nombre de cibles potentielles (parfois très) rapides dont les mouvements sont fréquemment imprévisibles. Le jeu \emph{League of Legends} est un exemple de MOBA, illustré par la figure~\ref{fig:lol}.
+	
+	\footnotetext{PNJ : personnage non jouable, ou non-joueur, de l'anglais \emph{non-player character} (NPC). Désigne, dans un jeu vidéo, un personnage contrôlé exclusivement par l'ordinateur, qui peut être opposé au joueur, l'aider, ou avoir une position neutre.}
 
-	\paragraph*{}
-	Le \emph{wiki} du jeu \emph{DOTA~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales~\cite{dota2}.	 Celles-ci sont reproduites dans le tableau~\ref{tab:dotamoves}.
+	Le \emph{wiki} du MOBA \emph{Dota~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales du jeu\footnotemark. Celles-ci sont reproduites dans le tableau~\ref{tab:dotamoves}.
+	
+	\footnotetext{\emph{Dota~2 Wiki -- Turn rate} --- \url{http://dota2.gamepedia.com/Turn_rate}}
 	
 	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
-	\begin{table}[ht]
+	\begin{table}[H]
 		\centering
 		\begin{tabular}{ p{0.25\textwidth} c c }
-		Héros				&	Temps de demi-tour (180°)	&	Vitesse (unités arbitraires)	\newrow
+		Héros				&	Temps de demi-tour (180\textdegree)	&	Vitesse (unités arbitraires)	\newrow
 		Lifestealer		&	0.094 s				&	315						\newrow
 		Shadow Fiend		&	0.094 s				&	315						\newrow
 		Faceless Void		&	0.094 s				&	300						\newrow
@@ -1069,21 +1074,21 @@
 		Enchantress		&	0.236 s				&	335						\newrow
 		Lone Druid			&	0.236 s				&	325						\bigstrut[t] \\
 		\end{tabular}
-		\caption{Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}.}
+		\caption[Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}.]{Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}. Les personnages les plus \og agiles \fg{} peuvent effectuer un demi-tour en moins de 0,1 seconde, ce qui correspond à une fréquence d'un peu plus de 10~Hz, ou 20~Hz pour des virages de 90\textdegree, 30~Hz pour des virages de 60\textdegree, etc.}
 		\label{tab:dotamoves}
 	\end{table}
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/lol2}
-		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{League of Legends~2}, avec quelques personnages. Crédit : \emph{Dota Geeks}.}
-		\label{fig:lol2}
+		\includegraphics[width=\textwidth]{figures/ch1/lol}
+		\caption[Une partie d'un MOBA, \emph{League of Legends}.]{Exemple d'une partie d'un MOBA, le jeu \emph{League of Legends}, avec quelques personnages. Les cibles potentielles ne sont pas très nombreuses, mais leurs mouvements sont vifs et imprévisibles. Jeu développé et édité par Riot Games.}
+		\label{fig:lol}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/dota2}
-		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}.}
+		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
 		\label{fig:dota2}
 	\end{figure}
 	
