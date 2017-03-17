@@ -1,6 +1,6 @@
 %!TEX root = these.tex
 
-\chapter[Contexte/Besoin/Applications]{Contexte, besoins et applications}
+\chapter[Sélection de cibles mobiles : besoins]{Sélection de cibles mobiles : besoins}
 
 \setcounter{minitocdepth}{4}
 \minitoc
@@ -57,20 +57,20 @@
 	\end{enumerate}	
 
 	\begin{figure}[H]
-		\begin{subfigure}[t]{.3\textwidth}
+		\begin{subfigure}[t]{.4\textwidth}
 			\centering
 			\includegraphics[height=7cm]{./figures/ch1/collagen}
 			\caption[Collagène.]{Collagène : structure en triple-hélice d'arginines ; structure cristallographique~\cite{okuyama2014preferred}.}
 			\label{fig:collagen}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{.7\textwidth}
+		\begin{subfigure}[t]{.6\textwidth}
 			\centering
 			\includegraphics[height=7cm]{./figures/ch1/eralpha}
 			\caption[Récepteur d'œstrogène alpha.]{Récepteur d'œstrogène alpha, représenté par une isosurface de densité colorée en fonction des atomes sous-jacents~\cite{nwachukwu2016systems}.}
 			\label{fig:eralpha}
 		\end{subfigure}
-		\caption[Protéines de structure et de communication.]{Protéines de structure et de communication.}
+		\caption[Protéines de structure et de communication.]{Protéines de structure et de communication. Illustrations produites par \emph{UnityMol}.}
 		\label{fig:prot_misc}
 	\end{figure}
 	
@@ -1024,13 +1024,16 @@
 	
 	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
-	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
 		\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}.]{Exemple d'une partie du RTS \emph{Cossacks~II: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Ce jeu est connu pour son nombre maximal d'unités particulièrement élevé : 64~000. La gestion de troupes si nombreuses est un défi particulièrement difficile qui n'est pas facilité par la pénibilité de la tâche de sélection dans un tel contexte. Jeu développé par GSC Game World et édité par CDV Software.}
 		\label{fig:cossacks2}
 	\end{figure}
+	
+	Notons qu'une difficulté spécifique au RTS/RTT doit être prise en compte : s'il est parfois souhaitable de sélectionner \emph{une} cible (qu'il s'agisse d'une unité alliée à laquelle on veut donner un ordre ou d'une unité ennemie à attaquer) il est plus fréquent de vouloir sélectionner une groupe d'unités d'un coup (là encore, qu'elles soient amies ou ennemies). Une technique de sélection appropriée devrait donc permettre aux joueurs de sélectionner leurs cibles rapidement et confortablement, mais aussi de pouvoir gérer à la fois la sélection simple et la sélection multiple.
+	
+	Une telle technique allégerait le fardeau de la sélection, laissant les joueurs de RTS et RTT de se concentrer sur le cœur du jeu, sur les éléments dont la valeur ludique est la plus élevée --- gestion, organisation tactique, choix stratégiques, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter les véhicules et pièces d'artillerie\ldots{}
 	
 	\begin{figure}[H]
 		\centering
@@ -1045,50 +1048,61 @@
 	
 	\footnotetext{PNJ : personnage non jouable, ou non-joueur, de l'anglais \emph{non-player character} (NPC). Désigne, dans un jeu vidéo, un personnage contrôlé exclusivement par l'ordinateur, qui peut être opposé au joueur, l'aider, ou avoir une position neutre.}
 
-	Le \emph{wiki} du MOBA \emph{Dota~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales du jeu\footnotemark. Celles-ci sont reproduites dans le tableau~\ref{tab:dotamoves}.
+	Le \emph{wiki} du MOBA \emph{Dota~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales du jeu\footnotemark. Celles-ci sont reproduites dans le tableau~\ref{tab:dotamoves}. Les détails figurent dans la légende du tableau, mais l'on peut résumer ces informations en deux points essentiels : les personnages peuvent changer de direction de façon significative à une fréquence de plusieurs dizaines de hertz, et ils peuvent se déplacer d'une dizaine de centimètres par seconde sur l'écran du joueur. Ces changements de direction se font au gré des décisions de l'intelligence artificielle pour les PNJ, ou du joueur pour les personnage qu'ils contrôle. \emph{Dota~2} est un jeu multijoueur, et naturellement les joueurs peuvent chercher à éviter les attaques de leurs adversaires, précisément en adoptant des mouvements imprévisibles.
+	
+	Par conséquent, une technique d'aide à la sélection serait bénéfique dans le sens où elle permettrait aux joueurs de se concentrer sur les aspects tactiques du jeu, mais elle pourrait également modifier l'équilibre du jeu en faveur de l'attaque, au détriment de l'esquive. Cette perturbation de l'équilibre ne serait pas nécessairement souhaitable, mais elle pourrait aussi être compensée par une augmentation de la vitesse des personnages. Le résultat net serait donc d'augmenter la sensation de vivacité du jeu. Une autre option serait de permettre aux personnages, actuellement limités à un espace bidimensionnel, d'évoluer en 3D. Une assistance à la sélection suffisamment performante permettrait d'acquérir les cibles souhaitées même en 3D, ce qui conférerait une toute nouvelle profondeur tactique au genre MOBA.
 	
 	\footnotetext{\emph{Dota~2 Wiki -- Turn rate} --- \url{http://dota2.gamepedia.com/Turn_rate}}
 	
 	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
+	\newcolumntype{Y}{>{\small}X}
+	\newcolumntype{Z}{>{\centering}X}
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{ p{0.25\textwidth} c c }
-		Héros				&	Temps de demi-tour (180\textdegree)	&	Vitesse (unités arbitraires)	\newrow
-		Lifestealer		&	0.094 s				&	315						\newrow
-		Shadow Fiend		&	0.094 s				&	315						\newrow
-		Faceless Void		&	0.094 s				&	300						\newrow
-		Batrider			&	0.094 s				&	290						\newrow
-		Bristleback		&	0.094 s				&	290						\newrow
-		Phoenix			&	0.094 s				&	285						\newrow
-		Earthshaker		&	0.105 s				&	310						\newrow
-		Magnus			&	0.118 s				&	315						\newrow
-		Storm Spirit		&	0.118 s				&	285						\newrow
-		Luna				&	0.157 s				&	335						\newrow
-		Gyrocopter			&	0.157 s				&	315						\newrow
-		Keeper of the Light	&	0.188 s				&	335						\newrow
-		Pugna				&	0.188 s				&	330						\newrow
-		Leshrac			&	0.188 s				&	325						\newrow
-		Skywrath Mage		&	0.188 s				&	325						\newrow
-		Lich				&	0.188 s				&	315						\newrow
-		Outworld Devourer	&	0.188 s				&	315						\newrow
-		Enchantress		&	0.236 s				&	335						\newrow
-		Lone Druid			&	0.236 s				&	325						\bigstrut[t] \\
-		\end{tabular}
-		\caption[Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}.]{Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}. Les personnages les plus \og agiles \fg{} peuvent effectuer un demi-tour en moins de 0,1 seconde, ce qui correspond à une fréquence d'un peu plus de 10~Hz, ou 20~Hz pour des virages de 90\textdegree, 30~Hz pour des virages de 60\textdegree, etc.}
+%		\begin{tabularx}{\textwidth}{ l {\centering}\p{width=0.24\textwidth} {\centering}\p{width=0.24\textwidth} {\centering}\p{width=0.24\textwidth} }
+		\begin{tabularx}{\textwidth}{ Y Z {\centering}X Z } % Putain j'entrave que dalle mais ça marche à peu près
+		Héros				&	Temps de virage à 180\textdegree(s)	&	Vitesse (unités arbitraires)	&	Vitesse à l'écran (cm/s)	\newrow
+		Lifestealer			&	0.094 s								&	315								&	63							\newrow
+		Shadow Fiend		&	0.094 s								&	315								&	63							\newrow
+		Faceless Void		&	0.094 s								&	300								&	60							\newrow
+		Batrider			&	0.094 s								&	290								&	58							\newrow
+		Bristleback			&	0.094 s								&	290								&	58							\newrow
+		Phoenix				&	0.094 s								&	285								&	57							\newrow
+		Earthshaker			&	0.105 s								&	310								&	62							\newrow
+		Magnus				&	0.118 s								&	315								&	63							\newrow
+		Storm Spirit		&	0.118 s								&	285								&	57							\newrow
+		Luna				&	0.157 s								&	335								&	67							\newrow
+		Gyrocopter			&	0.157 s								&	315								&	63							\newrow
+		Keeper of the Light	&	0.188 s								&	335								&	67							\newrow
+		Pugna				&	0.188 s								&	330								&	66							\newrow
+		Leshrac				&	0.188 s								&	325								&	65							\newrow
+		Skywrath Mage		&	0.188 s								&	325								&	65							\newrow
+		Lich				&	0.188 s								&	315								&	63							\newrow
+		Outworld Devourer	&	0.188 s								&	315								&	63							\newrow
+		Enchantress			&	0.236 s								&	335								&	67							\newrow
+		Lone Druid			&	0.236 s								&	325								&	65							\newrow
+		\og Maximum \fg{}	&	---									&	550								&	110							\bigstrut[t] \\
+		\end{tabularx}
+		\caption[Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}.]{Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}. Les personnages les plus \og agiles \fg{} peuvent effectuer un demi-tour en moins de 0,1 seconde, ce qui correspond à une fréquence d'un peu plus de 10~Hz, ou 20~Hz pour des virages de 90\textdegree, 30~Hz pour des virages de 60\textdegree, etc. Les vitesses des personnages sont également notées dans ce tableau, premièrement dans les unités arbitraires du jeu, et deuxièmement en cm/s telles qu'elles apparaissent sur un écran. Ces dernières valeurs peuvent déprendre de la définition de l'écran et de sa taille, mais sont assez typiques d'un écran de bureau ordinaire. Enfin, la ligne \og maximum \fg{} correspond à la vitesse \og maximale \fg{} d'un personnage. Les guillemets sont dus en fait qu'en pratique, certains objets et certaines capacités accessibles à quelques personnages leur permettent d'aller encore plus vite. Les valeurs exactes ne sont pas très importantes, d'autant qu'elles sont variables, mais l'on retiendra que des changements de direction significatifs sont possibles à plusieurs dizaines de hertz, et qu'un personnage peut se déplacer à l'écran d'environ 10 centimètres par seconde.}
 		\label{tab:dotamoves}
 	\end{table}
+	% On peut considérer que 128 unités représentent à peu près un mètre dans l'espace virtuel, et apparemment 600 unités feraient environ 12 cm à l'écran, soit environ 2 mm par unité.
+	% https://www.hiveworkshop.com/threads/warcraft-iii-distance-units-convert.137848/
+	% https://www.reddit.com/r/DotA2/comments/1vaklc/how_big_is_the_dota2_map_really/
+	
+
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/lol}
-		\caption[Une partie d'un MOBA, \emph{League of Legends}.]{Exemple d'une partie d'un MOBA, le jeu \emph{League of Legends}, avec quelques personnages. Les cibles potentielles ne sont pas très nombreuses, mais leurs mouvements sont vifs et imprévisibles. Jeu développé et édité par Riot Games.}
+		\caption[Une partie d'un MOBA, \emph{League of Legends}.]{Exemple d'une partie d'un MOBA, le jeu \emph{League of Legends}, avec quelques personnages. Les cibles potentielles ne sont pas très nombreuses, mais leurs mouvements sont vifs et imprévisibles. Par ailleurs, divers événements (lancements de sorts et autres effets magiques, par exemple) peuvent créer des effets visuels qui, parfois, occultent une bonne partie de l'écran. Pour autant, le jeu ne s'arrête pas pendant ces moments-là et il demeure nécessaire de pouvoir sélectionner des personnages. Jeu développé et édité par Riot Games.}
 		\label{fig:lol}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/dota2}
-		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
+		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Dans ce jeu comme dans \emph{League of Legends}, des effets visuels plus ou moins occultants peuvent survenir à tout moment, et gêner la sélection des cibles. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
 		\label{fig:dota2}
 	\end{figure}
 	
