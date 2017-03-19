@@ -63,7 +63,9 @@
 % =========== hyperref ============
 
 % Pour avoir des liens hypertexte dans le document compilé
-\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+%\usepackage{hyperref}
 %\usepackage{nohyperref} % à utiliser pour pouvoir compiler sans générer des liens
 
 % pdfborder= couleur de l'encadrement des hyperliens ; désactivé si colorlinks est on

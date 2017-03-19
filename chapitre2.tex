@@ -1,11 +1,31 @@
 %!TEX root = these.tex
 
-\chapter[Chapitre2]{Chapitre2}
+\chapter[Chapitre2]{État de l'art des techniques de sélection}
 \minitoc
 \label{chap2}
 \cleardoublepage
 
-\section{Loi de Fitts}
+\section{Introduction}
+	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/fitts}
+		\caption[Expérience de Paul M. Fitts.]{Illustration de la première expérience ayant mené Paul Fitts a la découverte de sa loi. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
+		\label{fig:fitts}
+	\end{figure}
+	
+	Paul M. Fitts a donc pu déduire de cette étude la loi qui porte son nom, et que l'on peut décrire par l'équation~\ref{eq:fitts} (d'autres formulations à peu près équivalentes existent).
+	
+	\begin{equation}
+		\label{eq:fitts}
+		MT = a + b \times ID = a + b \times \log\left(\frac{A}{W} + 1\right)
+	\end{equation}
+	
+	Ici, $MT$ représente le temps de mouvement, $ID$ représente l'indice de difficulté (développé à droite), $A$ représente l'amplitude, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que les termes $a$ et $b$ sont des constantes déterminées empiriquement, propres à chaque système. La partie la plus intéressante de cette équation est l'indice de difficulté, $\log(2A/W)$. C'est la seule partie variable, et c'est lui qui, comme son nom l'indique, détermine la difficulté de la tâche. Il est aisé à comprendre intuitivement : plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile.
+	
+	L'étude de Paul M. Fitts portait sur des mouvements sur une seule dimension, mais sa loi s'étend aisément au plan~\cite{mackenzie1992extending}, en tenant compte de la forme de la cible~\cite{accot2003refining}, et même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
+	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour 
 
 \section{Curseurs zonaux}
 	\subsection{Principe et avantages}
