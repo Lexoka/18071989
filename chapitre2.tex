@@ -15,17 +15,30 @@
 		\label{fig:fitts}
 	\end{figure}
 	
-	Paul M. Fitts a donc pu déduire de cette étude la loi qui porte son nom, et que l'on peut décrire par l'équation~\ref{eq:fitts} (d'autres formulations à peu près équivalentes existent).
+	Paul M. Fitts a donc pu déduire de cette étude la loi qui porte son nom, et que l'on peut décrire par les équations~\ref{eq:fitts} et~\ref{eq:fittsID}.
 	
 	\begin{equation}
 		\label{eq:fitts}
-		MT = a + b \times ID = a + b \times \log\left(\frac{A}{W} + 1\right)
+		MT = a + bID
 	\end{equation}
 	
-	Ici, $MT$ représente le temps de mouvement, $ID$ représente l'indice de difficulté (développé à droite), $A$ représente l'amplitude, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que les termes $a$ et $b$ sont des constantes déterminées empiriquement, propres à chaque système. La partie la plus intéressante de cette équation est l'indice de difficulté, $\log(2A/W)$. C'est la seule partie variable, et c'est lui qui, comme son nom l'indique, détermine la difficulté de la tâche. Il est aisé à comprendre intuitivement : plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile.
+	\begin{equation}
+		\label{eq:fittsID}
+		ID = \log_2\left(\frac{2D}{W} \right)
+	\end{equation}
 	
-	L'étude de Paul M. Fitts portait sur des mouvements sur une seule dimension, mais sa loi s'étend aisément au plan~\cite{mackenzie1992extending}, en tenant compte de la forme de la cible~\cite{accot2003refining}, et même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
-	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour 
+	Dans l'équation~\ref{eq:fitts}, $MT$ représente le temps de mouvement, $a$ et $b$ sont des constantes déterminées empiriquement. Dans l'équation~\ref{eq:fittsID}, $ID$ représente l'indice de difficulté, $D$ représente l'amplitude du mouvement, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que $W$ représente la largeur de la cible. La partie la plus intéressante de cette équation est l'indice de difficulté. C'est la seule partie variable, et c'est celle qui, comme son nom l'indique, détermine la difficulté de la tâche. Cet indice est aisé à comprendre intuitivement : plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile.
+	
+	Pour l'indice de difficulté, MacKenzie propose une formulation de l'indice de difficulté dite de Shannon, inspirée de la théorie de l'information proposée par ce dernier~\cite{mackenzie1989note}. Cette formulation est fournie dans l'équation~\ref{eq:shannon}.
+	
+	\begin{equation}
+		\label{eq:shannon}
+		ID = \log_2\left(\frac{D}{W} + 1\right)
+	\end{equation}	
+	
+	L'étude de Paul M. Fitts portait sur un dispositif mécanique simple, mais sa loi s'applique aussi bien aux périphériques de saisie classiques (soursi, \emph{joysticks}, etc.)~\cite{card1978evaluation}. Mieux, alors qu'elle fut d'abord énoncée pour des mouvements sur une seule dimension, elle loi s'étend aisément au plan~\cite{card1978evaluation, mackenzie1992extending}, éventuellement en tenant compte de la forme de la cible~\cite{accot2003refining}, ou même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
+	
+	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour modéliser les performances de sélection, de nombreuses formulations plus ou moins différentes existent, et leurs mérites respectifs font débat~\cite{casallas2015prediction}.S
 
 \section{Curseurs zonaux}
 	\subsection{Principe et avantages}
@@ -127,6 +140,10 @@
 
 	\subsection{Inconvénients}
 	Cependant, \emph{Comet} ajoute un « encombrement » visuel important. En effet, à chaque cible vient s'ajouter une queue qui fait plusieurs fois sa taille. Étendue à la 3D, cette technique ferait logiquement usage de rendu volumique semi-transparent pour les queues de comètes, ce qui aurait probablement pour effet de porter l'encombrement visuel et donc l'occultation à des niveaux inacceptables, surtout dans des environnements denses. Un autre inconvénient de cette technique est qu'elle modifie la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Par conséquent, la technique \emph{Comet} ne peut être retenue pour les environnements tridimensionnels denses.
+	
+\section{\emph{AttachedShock}}
+
+Paraît que c'est mieux que Comet~\cite{you2012attachedshock, you2014attachedshock}.
 
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
