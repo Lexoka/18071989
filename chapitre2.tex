@@ -96,8 +96,7 @@
 	\subsection{Inconvénients}
 	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
 
-	\paragraph{}	
-	On pourrait toutefois envisager une sélection en deux temps : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long.
+	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long.
 
 \section{\emph{(Bubble) Comet}}
 	\subsection{Principe et avantages}
@@ -106,35 +105,35 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/comet}
-		\caption{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : Hasan \emph{et al.}}
+		\caption{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}}
 		\label{fig:comet}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/targetGhost}
-		\caption{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est « \emph{ghostée} » la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il devient possible de le sélectionner. D'ailleurs, seul le proxy peut être sélectionné, pas le fantôme de la cible. Crédit : Hasan \emph{et al.}}
+		\caption{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est « \emph{ghostée} » la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il devient possible de le sélectionner. D'ailleurs, seul le proxy peut être sélectionné, pas le fantôme de la cible. Crédit : \cite{hasan2011comet}}
 		\label{fig:targetGhost}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
-		\caption{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. Crédit : Hasan \emph{et al.}}
+		\caption{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. Crédit : \cite{hasan2011comet}}
 		\label{fig:cometGhostTimes}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
-		\caption{Taux d'erreur pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. Crédit : Hasan \emph{et al.}}
+		\caption{Taux d'erreur pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. Crédit : \cite{hasan2011comet}}
 		\label{fig:cometGhostErrors}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/cometGhostPredictability}
-		\caption{Temps de complétion de la tâche, (a) : en fonction des techniques, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. Crédit : Hasan \emph{et al.}}
+		\caption{Temps de complétion de la tâche, (a) : en fonction des techniques, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. Crédit : \cite{hasan2011comet}}
 		\label{fig:cometGhostPredictability}
 	\end{figure}
 
@@ -142,8 +141,29 @@
 	Cependant, \emph{Comet} ajoute un « encombrement » visuel important. En effet, à chaque cible vient s'ajouter une queue qui fait plusieurs fois sa taille. Étendue à la 3D, cette technique ferait logiquement usage de rendu volumique semi-transparent pour les queues de comètes, ce qui aurait probablement pour effet de porter l'encombrement visuel et donc l'occultation à des niveaux inacceptables, surtout dans des environnements denses. Un autre inconvénient de cette technique est qu'elle modifie la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Par conséquent, la technique \emph{Comet} ne peut être retenue pour les environnements tridimensionnels denses.
 	
 \section{\emph{AttachedShock}}
+	\subsection{Principe et avantages}
+	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets « fuyants » : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/as2dspeed}
+		\caption[\emph{AttachedShock}, profil de vitesse]{Représentation de la vue d'un utilisateur utilisant un système de réalité augmentée dans une voiture, et fixant la route en face de lui. Des objets, ici représentés par des sphères vertes, attirent son attention. Ils sont fixés au sol, mais leur vitesse relative déterminée par rapport au référentiel de la voiture correspond à la vitesse de la voiture dans le référentiel terrestre. Si celle-ci est constante, alors la vitesse relative des objets l'est aussi ; pourtant, une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran, comme l'illustre la courbe sous l'image. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
+		\label{fig:as2dspeed}
+	\end{figure}
+	
+	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en « traversant » l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
+	
+Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme « naturelle » --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute.
 
-Paraît que c'est mieux que Comet~\cite{you2012attachedshock, you2014attachedshock}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/asas}
+		\caption[\emph{AttachedShock}, onde de choc]{À gauche, une représentation schématique de la réelle onde de choc d'un avion supersonique (un \emph{Concorde}). À droite, une cible mobile (la sphère verte) accompagnée de son onde de choc telle qu'elle est représentée par \emph{AttachedShock}. Cette onde vient augmenter la représentation visuelle de la cible afin d'en faciliter la sélection. Crédit : ~\cite{you2012attachedshock}.}
+		\label{fig:asas}
+	\end{figure}
+
+	\subsection{Inconvénients}
+	Chgts dir
 
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
@@ -152,7 +172,6 @@ Paraît que c'est mieux que Comet~\cite{you2012attachedshock, you2014attachedsho
 	\subsection{Inconvénients}
 	Là encore, l'inconvénient principal de cette technique est l'augmentation de l'encombrement visuel, puisque le nombre de cibles affichées double, même si la moitié d'entre elles sont semi-transparentes. Elle peut par ailleurs aggraver le problème d'occultation : en effet, si une cible mobile passe derrière un objet statique ou une autre cible potentielle, déclencher \emph{Target/Bubble Ghost} à cet instant aurait pour effet de prolonger indéfiniment l'occultation de cette cible. Ce problème est d'autant plus gênant que la densité de cibles potentielles est élevée.
 		
-	\paragraph{}
 	L'utilisation d'un proxy peut aussi être gênante dans un contexte immersif avec un périphérique de saisie permettant une correspondance à l'échelle $1$ entre l'espace moteur et l'espace virtuel, en particulier si la sélection a pour but de permettre une manipulation de l'objet saisi. C'est notamment le cas pour les simulations de dynamique moléculaire, qui impliquent d'envoyer des forces au système simulé, avec un retour (pseudo-)haptique pour l'utilisateur.
 		
 
