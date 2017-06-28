@@ -152,8 +152,6 @@
 	\end{figure}
 	
 	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en « traversant » l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
-	
-Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme « naturelle » --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute.
 
 	\begin{figure}[H]
 		\centering
@@ -161,9 +159,31 @@ Cette technique a pour particularité de le faire en limitant l'encombrement vis
 		\caption[\emph{AttachedShock}, onde de choc]{À gauche, une représentation schématique de la réelle onde de choc d'un avion supersonique (un \emph{Concorde}). À droite, une cible mobile (la sphère verte) accompagnée de son onde de choc telle qu'elle est représentée par \emph{AttachedShock}. Cette onde vient augmenter la représentation visuelle de la cible afin d'en faciliter la sélection. Crédit : ~\cite{you2012attachedshock}.}
 		\label{fig:asas}
 	\end{figure}
+	
+Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme « naturelle » --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute. Les auteurs ont comparé \emph{AttachedShock} à d'autres techniques de référence, dont bien sûr un simple curseur de type « point » mais aussi un curseur zonal, ainsi que la technique \emph{Comet}, présentée plus haut.
+
+La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/asRes}
+		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreur très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
+		\label{fig:asRes}
+	\end{figure}
 
 	\subsection{Inconvénients}
-	Chgts dir
+	\emph{AttachedShock} n'est toutefois pas sans limite. En effet, la densité de cibles testée par les auteurs est très faible, comme le montre la figure~\ref{fig:asDensity}. La technique n'ayant pas été évaluée avec une grande densité de cibles, il est impossible d'affirmer qu'elle fonctionnerait bien dans de telles conditions, mais l'on peut en douter compte tenu du fait qu'elle repose sur la possibilité qu'a l'utilisateur de se « contenter » de mouvements balistiques sans mouvements correctifs, ce qui serait bien difficile avec les nombreux obstacles que de nombreux distracteurs constitueraient.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/asDensity}
+		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de « traverser » leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
+		\label{fig:asDensity}
+	\end{figure}
+	
+	En outre, dans cette évaluation les cibles sont fixées au sol, et donc ne se déplacent à l'écran qu'à l'horizontale. De fait, leurs ondes de choc se présentent toujours dans la même orientation. Or, dans bien des cas, les cibles peuvent changer de direction en cours de route, ce qui soumettrait logiquement ces ondes de choc à de fréquentes rotations. Dans ces condtions, déclencher un mouvement balistique pour traverser l'onde de choc sans mouvements correctifs serait sans doute beaucoup plus difficile.
+	
+	Ainsi, si \emph{AttachedShock} présente un intérêt certain pour la sélection de cibles mobiles peu nombreuses (avec peu de distracteurs) se déplaçant à l'horizontale, son efficacité en environnement dense et/ou avec des cibles changeant souvent de direction, \emph{a fortiori} de manière imprévisible, demeure à démontrer. Et compte tenu du fonctionnement de la technique, on peut même s'attendre à une chute significative de son efficacité relative dans ces conditions.
 
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
