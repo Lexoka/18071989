@@ -6,6 +6,7 @@
 \cleardoublepage
 
 \section{Introduction}
+	\subsection{Pointage, sélection et loi de Fitts}
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[H]
@@ -34,11 +35,26 @@
 	\begin{equation}
 		\label{eq:shannon}
 		ID = \log_2\left(\frac{D}{W} + 1\right)
-	\end{equation}	
+	\end{equation}
 	
-	L'étude de Paul M. Fitts portait sur un dispositif mécanique simple, mais sa loi s'applique aussi bien aux périphériques de saisie classiques (soursi, \emph{joysticks}, etc.)~\cite{card1978evaluation}. Mieux, alors qu'elle fut d'abord énoncée pour des mouvements sur une seule dimension, elle loi s'étend aisément au plan~\cite{card1978evaluation, mackenzie1992extending}, éventuellement en tenant compte de la forme de la cible~\cite{accot2003refining}, ou même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
+	\subsection{Extensions de la loi de Fitts}
+	L'étude de Paul M. Fitts portait sur un dispositif mécanique simple, mais sa loi s'applique aussi bien aux périphériques de saisie classiques (souris, \emph{joysticks}, etc.)~\cite{card1978evaluation}. Mieux, alors qu'elle fut d'abord énoncée pour des mouvements sur une seule dimension, elle loi s'étend aisément au plan~\cite{card1978evaluation, mackenzie1992extending}, éventuellement en tenant compte de la forme de la cible~\cite{accot2003refining}, ou même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
 	
-	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour modéliser les performances de sélection, de nombreuses formulations plus ou moins différentes existent, et leurs mérites respectifs font débat~\cite{casallas2015prediction}.S
+	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour modéliser les performances de sélection, de nombreuses formulations plus ou moins différentes existent, et leurs mérites respectifs font débat~\cite{casallas2015prediction}. Certaines formulations peuvent, par exemple, tenir compte de l'angle $\theta$ entre le vecteur qui va du curseur à la cible et un vecteur horizontal orienté vers la droite (cf. la figure~\ref{fig:theta}). C'est le cas de la formulation de~\cite{murata2001extending} exposée dans l'équation~\ref{eq:murata}.
+	
+	\begin{equation}
+		\label{eq:murata}
+		ID = \log_2\left(\frac{D}{W} + 1\right) + c \sin \theta
+	\end{equation}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/theta}
+		\caption[Fitts et $\theta$]{Angle $\theta$ pris en compte par~\cite{murata2001extending} dans une version étendue de la loi de Fitts, présentée dans l'équation~\ref{eq:murata}. Le disque rouge représente le curseur, tandis que le rectangle vert représente la cible, située à une distance $D$ du curseur, avec sa largeur $W$ et sa hauteur $H$. Crédit : \cite{casallas2015prediction}.}
+		\label{fig:theta}
+	\end{figure}
+	
+	D'autres versions tiennent compte simultanément de la forme de la cible et de cet angle $\theta$~\cite{appert2008evaluation, grossman2004pointing}.
 
 \section{Curseurs zonaux}
 	\subsection{Principe et avantages}
