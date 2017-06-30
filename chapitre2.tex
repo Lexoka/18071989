@@ -1,6 +1,6 @@
 %!TEX root = these.tex
 
-\chapter[Chapitre2]{État de l'art des techniques de sélection}
+\chapter[État de l'art des techniques de sélection]{État de l'art des techniques de sélection}
 \minitoc
 \label{chap2}
 \cleardoublepage
@@ -58,10 +58,59 @@
 	
 	\subsection{Loi de Fitts et cibles mobiles}
 	La recherche sur la loi de Fitts appliquée aux cibles mobiles, comparativement aux travaux sur les cibles statiques, est très pauvre~\cite{casallas2015prediction}. Elle n'est pas inexistante~\cite{jagacinski1980test, hoffmann1991capture, hajri2011moving} mais très limitée, et elle s'intéresse rarement à la nature du mouvement des cibles, surtout quand ce mouvement est imprévisible.
+	
+	De fait, les modèles développés dans les travaux de Jagacinski \emph{et al.}~\cite{jagacinski1980test} ou d'Al Harji \emph{et al.}~\cite{hajri2011moving}, par exemple, font l'hypothèse de cibles de vitesse et de direction constantes. La loi de Fitts étendue par Jagacinski \emph{et al.} est présentée dans l'équation~\ref{eq:jagacinski}, où $CT$ est le temps de sélection, $D$ et $W$ sont toujours la distance à la cible et sa largeur, $V$ est la vitesse de la cible, tandis que $c$, $d$ et $e$ sont des constantes réelles.
+	
+	\begin{equation}
+		\label{eq:jagacinski}
+		CT = c + dD + e(V + 1) \left(\frac{1}{W} - 1\right)
+	\end{equation}
+	
+	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles « quelconques » --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
+	
+	Celle-ci demeure donc, à notre connaissance, incapable de modéliser la difficulté de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
 
 \section{Curseurs zonaux}
-	\subsection{Principe et avantages}
-	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{worden1997making, kabbash1995prince}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance effective entre le curseur et la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
+	\subsection{Principe et avantages généraux}
+	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{kabbash1995prince, worden1997making}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance effective entre le curseur et la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
+	
+	\subsection{\emph{Prince}}
+	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles « larges », ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/princeCursor}
+		\caption[\emph{Prince} et son curseur]{En haut, une représentation schématique de l'expérience de Fitts~\cite{fitts1954information} : un curseur ponctuel est déplacé pour atteindre deux cibles d'aire non nulle. En bas, l'expérience analogue menée dans~\cite{kabbash1995prince}, où le curseur est zonal et les cibles sont ponctuelles. Crédit : \cite{kabbash1995prince}.}
+		\label{fig:princeCursor}
+	\end{figure}
+	
+	Les auteurs ont pu constater que la loi de Fitts s'appliquait bien à cette configuration, de fait sensiblement identique à celle évaluée par Fitts. Naturellement, dans un environnement de bureau classique, les cibles ne sont pas ponctuelles, mais généralement des icônes ou des boutons d'aire non nulle, comme sur la figure~\ref{fig:princeSelection}, et ce quel que soit le curseur utilisé. De fait, en utilisant un curseur de largeur $W'$, c'est $W'$ qui détermine la difficulté de sélection et non plus la largeur $W$ de la cible (si $W' > w$). Avec un curseur suffisamment gros, l'indice de difficulté peut être considérablement réduit.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/princeSelection}
+		\caption[\emph{Prince} dans un cas pratique]{Application de la technique \emph{Prince} à un cas de sélection pratique, avec pour cible une icône d'aire non nulle. Crédit : \cite{kabbash1995prince}.}
+		\label{fig:princeSelection}
+	\end{figure}
+	
+	La technique \emph{Prince} présente également l'avantage de permettre la sélection de plusieurs cibles d'un coup si elles sont incluses dans le curseur, mais cet avantage reflète une limitation de \emph{Prince}, car il peut dans ces cas-là y avoir ambiguïté si l'utilisateur ne souhaite sélectionner qu'une seule cible.
+	
+	\subsection{\emph{Area Cursor} et \emph{hot spot}}
+	Une solution à ce problème d'ambiguïté est proposée par Worden \emph{et al.}~\cite{worden1997making} : lorsqu'un curseur zonal recouvre plusieurs cibles, le curseur devient en pratique un curseur ponctuel, et seul son centre est actif, comme l'illustre la figure~\ref{fig:areaCursor}.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/areaCursor}
+		\caption[\emph{Area Cursor} avec \emph{hot spot}]{Un curseur zonal dont seul le centre, marqué par l'intersection de deux segments, demeure actif lorsque le curseur chevauche plusieurs cibles. Crédit : \cite{worden1997making}.}
+		\label{fig:areaCursor}
+	\end{figure}
+	
+	Cette technique simple permet de tirer parti des avantages d'un curseur zonal quand la densité de cibles est suffisamment faibles, sans pour autant souffrir de ses inconvénients lorsqu'elle est élevée, puisque l'on revient alors à un simple curseur ponctuel.
+	
+	\begin{tabular}{c c c c c}
+			&	Jeunes	&	&	Âgés	&	\\
+			
+	\end{tabular}
 	
 	\subsection{Inconvénients}
 	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux, voire impossible s'il y en a d'autres autour. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}.
@@ -213,6 +262,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		
 	L'utilisation d'un proxy peut aussi être gênante dans un contexte immersif avec un périphérique de saisie permettant une correspondance à l'échelle $1$ entre l'espace moteur et l'espace virtuel, en particulier si la sélection a pour but de permettre une manipulation de l'objet saisi. C'est notamment le cas pour les simulations de dynamique moléculaire, qui impliquent d'envoyer des forces au système simulé, avec un retour (pseudo-)haptique pour l'utilisateur.
 		
+\section{\emph{Hold}}
 
 \section{Sélection en cascade, grossière, puis fine}
 	 \subsection{Principe et avantages}
