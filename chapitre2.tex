@@ -95,7 +95,8 @@
 	
 	La technique \emph{Prince} présente également l'avantage de permettre la sélection de plusieurs cibles d'un coup si elles sont incluses dans le curseur, mais cet avantage reflète une limitation de \emph{Prince}, car il peut dans ces cas-là y avoir ambiguïté si l'utilisateur ne souhaite sélectionner qu'une seule cible.
 	
-	\subsection{\emph{Area Cursor} et \emph{hot spot}}
+	\subsection{\emph{(Sticky) Area Cursor}, \emph{stickiness} et adaptativité}
+		\subsubsection{Adaptativité}
 	Une solution à ce problème d'ambiguïté est proposée par Worden \emph{et al.}~\cite{worden1997making} : lorsqu'un curseur zonal recouvre plusieurs cibles, le curseur devient en pratique un curseur ponctuel, et seul son centre est actif, comme l'illustre la figure~\ref{fig:areaCursor}.
 	
 	\begin{figure}[ht]
@@ -107,13 +108,30 @@
 	
 	Cette technique simple permet de tirer parti des avantages d'un curseur zonal quand la densité de cibles est suffisamment faibles, sans pour autant souffrir de ses inconvénients lorsqu'elle est élevée, puisque l'on revient alors à un simple curseur ponctuel.
 	
-	\begin{tabular}{c c c c c}
-			&	Jeunes	&	&	Âgés	&	\\
-			
+		\subsubsection{\emph{Stickiness}}
+	À cette solution, Worden \emph{et al.} ont ajouté l'usage de \emph{stickiness} adaptative pour les icônes. Un curseur est dit \emph{sticky} si, lorsqu'il s'approche d'une icône, celle-ci devient « collante ». En pratique, le ratio de sensibilité du curseur (la quantité du curseur par rapport à la quantité de mouvement du périphérique de saisie) diminue, ce qui permet d'une part de ralentir le curseur automatiquement, et d'autre part d'affiner les mouvements correctifs permettant la sélection d'une cible lors de son approche.
+	
+	Le problème des cibles collantes est que lorsque leur densité est élevée, donc en présence de nombreux distracteurs, la trajectoire du curseur se trouve fortement perturbée par ceux-ci, ce qui peut être contre-productif, ou du moins limiter les bénéfices de cette technique. La solution proposée par Worden \emph{et al.} est de ne rendre les cibles collantes que lorsque le curseur est à moins de 30~\%{} de la vitesse maximale qu'il a atteinte au cours de la tâche de sélection courante. L'hypothèse est qu'une sélection commence par une phase de mouvement très rapide et ample, suivie de petits mouvements correctifs plus lents, et que le curseur sera donc relativement lent près de la cible réellement visée par l'utilisateur.
+	
+	L'\emph{Area cursor}, en particulier complémenté par des cibles collantes et un gain adaptatif, permet un gain de performances important, en particulier avec des utilisateurs âgés, comme le détaille le tableau~\ref{tab:areaCursor}.
+	
+	\begin{table}
+	\begin{tabular}{l c c c c}
+										& \multicolumn{2}{c}{Jeunes}	&	\multicolumn{2}{c}{Âgés}			\\
+										& Temps (ms)	& Taux de succès	& Temps (ms)	& Taux de succès	\\
+		Pointeur seul					& 759			& 95,0				& 1893			& 95,0				\\
+		Pointeur collant				& 712			& 97,4				& 1869			& 96,3				\\
+		Pointeur adaptatif				& 743			& 97,7				& 1485			& 95,5				\\
+		\emph{Area cursor} seul			& 639			& 96,9				& 1658			& 96,3				\\
+		\emph{Area cursor} collant		& 596			& 97,9				& 1596			& 97,7				\\
+		\emph{Area cursor} adaptatif	& 591			& 99,0				& 1203			& 97,9				\\
 	\end{tabular}
+	\caption{Performances mesurées pour un \emph{Area cursor} avec des cibles collantes, ainsi qu'avec des cibles collantes et un gain adaptatif en fonction de la vitesse du curseur. Les résultats sont comparés avec un curseur ponctuel dans les mêmes conditions, avec des sujets jeunes (23,4 ans en moyenne) et plus âgés (70,1 ans en moyenne). Les performances sont rapportées par le temps de sélection ainsi que le taux de succès (pourcentage de sélections réussies). Le curseur zonal avec cibles collantes et gain adaptatif permet les meilleures performances, tant avec des sujets jeunes que plus âgés, mais c'est au sein du second groupe que l'apport est le plus important. Données tirées de~\cite{worden1997making}.}
+	\label{tab:areaCursor}
+	\end{table}
 	
 	\subsection{Inconvénients}
-	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux, voire impossible s'il y en a d'autres autour. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}.
+	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
 
 \section{\emph{Bubble Cursor}}
 	\subsection{Principe et avantages}
@@ -122,97 +140,120 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/bubble}
-		\caption{Illustration du fonctionnement de la technique \emph{Bubble Cursor} (a, c, d) par opposition à un curseur zonal (b). Dans le cas b, le curseur zonal ne permet pas aisément de choisir aisément entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Crédit : Grossman \emph{et al.}}
+		\caption{Illustration du fonctionnement de la technique \emph{Bubble Cursor} (a, c, d) par opposition à un curseur zonal (b). Dans le cas b, le curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Dans le cas (d), la cible n'est pas entièrement recouverte par le curseur, le disque du curseur, mais elle l'est partiellement, et pour représenter visuellement que c'est suffisant à sa sélection, le curseur est localement étendu pour l'englober. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:bubble}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/voronoi}
-		\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. Les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule. Crédit : Grossman \emph{et al.}}
+		\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. Un diagramme de Voronoï est un découpage du plan (pavage) en cellules à partir d'un ensemble discret de points appelés « germes ». Chaque cellule enferme un seul germe, et forme l'ensemble des points du plan plus proches de ce germe que de tous les autres. La cellule représente en quelque sorte la « zone de proximité » du germe. Ici, les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:voronoi}
 	\end{figure}
 
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/bubbleResults}
-		\caption{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : Grossman \emph{et al.}}
+		\caption{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:bubbleResults}
 	\end{figure}
 
 	\subsection{Inconvénients}
 	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides.
+	
+	Un autre inconvénient (potentiellement majeur) du \emph{Bubble Cursor} est intrinsèquement lié à son mode de fonctionnement : il partage l'espace de sélection en un diagramme de Voronoï, où toute partie de l'espace fait partie de la zone de sélection d'une cible. Par conséquent, il n'existe plus d'espace « vide » dans lequel on pourrait utiliser le périphérique de saisie pour effectuer une opération indépendante des cibles, par exemple ouvrir un menu contextuel.
 
 \section{\emph{DynaSpot}}
 	\subsection{Principe}
-	\emph{DynaSpot} est une technique qui relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il de déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement « normal » et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}. Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}. Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur.
-
-	\begin{figure}[ht]
+	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci est une technique qui relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement « normal » et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
+	
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
-		\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en surbrillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, il est possible de sélectionner l'espace vide. Crédit : Chapuis \emph{et al.}}
+		\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en surbrillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, il est possible de sélectionner l'espace vide, par exemple pour ouvrir un menu contextuel. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaSpot}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
+	 
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
-		\caption{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : Chapuis \emph{et al.}}
+		\caption{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaResults}
 	\end{figure}
+
+	Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur. En cela, cette technique permet de pallier deux autres inconvénients du \emph{Bubble Cursor}.
 
 	\subsection{Inconvénients}
 	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
 
-	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long.
-
-\section{\emph{(Bubble) Comet}}
+	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un « dézoom » avant que la sélection finale ne puisse avoir lieu.
+	
+\section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
-	Avec \emph{Comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même. Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. \emph{Hasan et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreur pour les cibles mobiles en 2D~\cite{hasan2011comet}.
+	\emph{Target Ghost}~\cite{hasan2011comet} est une technique qui repose sur un déclenchement délibéré. Quand elle est déclenchée par l'utilisateur, \emph{Target Ghost} duplique toutes les cibles potentielles. Une des copies devient statique et reste opaque, tandis que l'autre demeure mobile mais est rendue semi-transparente, comme l'illustre la figure~\ref{fig:targetGhost}.
 	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/comet}
-		\caption{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}}
-		\label{fig:comet}
-	\end{figure}
-	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/targetGhost}
-		\caption{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est « \emph{ghostée} » la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il devient possible de le sélectionner. D'ailleurs, seul le proxy peut être sélectionné, pas le fantôme de la cible. Crédit : \cite{hasan2011comet}}
+		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est « \emph{ghostée} » la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné relativement aisément. D'ailleurs, seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
 		\label{fig:targetGhost}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreur, comme le montrent les graphiques des figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/cometGhostPredictability}
+		\caption[\emph{Comet/Ghost}, prévisibilité et résultats]{Temps de complétion de la tâche, (a) : en fonction des types de curseur, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
+		\label{fig:cometGhostPredictability}
+	\end{figure}
+	
+		\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
-		\caption{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. Crédit : \cite{hasan2011comet}}
+		\caption[\emph{Comet/Ghost}, temps de sélection]{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostTimes}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
-		\caption{Taux d'erreur pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. Crédit : \cite{hasan2011comet}}
+		\caption[\emph{Comet/Ghost}, taux d'erreur]{Taux d'erreur pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostErrors}
 	\end{figure}
+		
+	De plus, cette technique n'affectant que les cibles, elle peut être combinée à une technique de curseur, ce qui fut d'ailleurs fait avec le \emph{Bubble Cursor}, pour une combinaison baptisée \emph{Bubble Ghost}~\cite{hasan2011comet}.
+		
+	\subsection{Inconvénients}
+	Là encore, l'inconvénient principal de cette technique est l'augmentation de l'encombrement visuel, puisque le nombre de cibles affichées double, même si la moitié d'entre elles sont semi-transparentes. Le \emph{ghosting} peut par ailleurs aggraver le problème d'occultation : en effet, si une cible mobile passe derrière un objet statique ou une autre cible potentielle, déclencher \emph{Target/Bubble Ghost} à cet instant aurait pour effet de prolonger indéfiniment l'occultation de cette cible. Ce problème est d'autant plus gênant que la densité de cibles potentielles est élevée.
+		
+	L'utilisation d'un proxy peut aussi être gênante dans un contexte immersif avec un périphérique de saisie permettant une correspondance à l'échelle 1 entre l'espace moteur et l'espace virtuel, en particulier si la sélection a pour but de permettre une manipulation de l'objet saisi. C'est notamment le cas pour les simulations de dynamique moléculaire, qui impliquent d'envoyer des forces au système simulé, avec un retour (pseudo-)haptique pour l'utilisateur.
+
+\section{\emph{(Bubble) Comet}}
+	\subsection{Principe et avantages}
+	Avec \emph{Comet}~\cite{hasan2011comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même, comme le montre la figure~\ref{fig:comet}.
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/cometGhostPredictability}
-		\caption{Temps de complétion de la tâche, (a) : en fonction des techniques, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. Crédit : \cite{hasan2011comet}}
-		\label{fig:cometGhostPredictability}
-	\end{figure}
+		\includegraphics[width=\textwidth]{figures/ch2/comet}
+		\caption[La technique \emph{Comet}]{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}.}
+		\label{fig:comet}
+	\end{figure}	
+	
+	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreur pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
 	\subsection{Inconvénients}
 	Cependant, \emph{Comet} ajoute un « encombrement » visuel important. En effet, à chaque cible vient s'ajouter une queue qui fait plusieurs fois sa taille. Étendue à la 3D, cette technique ferait logiquement usage de rendu volumique semi-transparent pour les queues de comètes, ce qui aurait probablement pour effet de porter l'encombrement visuel et donc l'occultation à des niveaux inacceptables, surtout dans des environnements denses. Un autre inconvénient de cette technique est qu'elle modifie la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Par conséquent, la technique \emph{Comet} ne peut être retenue pour les environnements tridimensionnels denses.
-	
+
+	De surcroît, si son couplage à du \emph{ghosting} est parfois avantageux, comme nous l'avons vu plus haut, c'est au prix d'un encombrement visuel qui s'en trouve encore accru, à un point hélas inacceptable pour de nombreuses applications nécessitant la sélection de cibles mobiles en environnements particulièrement denses.
+
 \section{\emph{AttachedShock}}
 	\subsection{Principe et avantages}
 	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets « fuyants » : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/as2dspeed}
 		\caption[\emph{AttachedShock}, profil de vitesse]{Représentation de la vue d'un utilisateur utilisant un système de réalité augmentée dans une voiture, et fixant la route en face de lui. Des objets, ici représentés par des sphères vertes, attirent son attention. Ils sont fixés au sol, mais leur vitesse relative déterminée par rapport au référentiel de la voiture correspond à la vitesse de la voiture dans le référentiel terrestre. Si celle-ci est constante, alors la vitesse relative des objets l'est aussi ; pourtant, une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran, comme l'illustre la courbe sous l'image. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
@@ -232,7 +273,7 @@ Cette technique a pour particularité de le faire en limitant l'encombrement vis
 
 La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/asRes}
 		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreur très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
@@ -253,16 +294,27 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Ainsi, si \emph{AttachedShock} présente un intérêt certain pour la sélection de cibles mobiles peu nombreuses (avec peu de distracteurs) se déplaçant à l'horizontale, son efficacité en environnement dense et/ou avec des cibles changeant souvent de direction, \emph{a fortiori} de manière imprévisible, demeure à démontrer. Et compte tenu du fonctionnement de la technique, on peut même s'attendre à une chute significative de son efficacité relative dans ces conditions.
 
-\section{\emph{Target/Bubble Ghost}}
-	\subsection{Principe et avantages}
-	\emph{Target Ghost}[ref] est une technique qui repose sur un déclenchement délibéré. Quand elle est déclenchée par l'utilisateur, \emph{Target Ghost} duplique toutes les cibles potentielles. Une des copies est devient statique et reste opaque, tandis que l'autre demeure mobile mais est rendue semi-transparente. L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreur. De plus, cette technique n'affectant que les cibles, elle peut être combinée à une technique de curseur, ce qui fut d'ailleurs fait avec le \emph{Bubble Cursor}, pour une combinaison baptisée \emph{Bubble Ghost}~\cite{hasan2011comet}.
-		
-	\subsection{Inconvénients}
-	Là encore, l'inconvénient principal de cette technique est l'augmentation de l'encombrement visuel, puisque le nombre de cibles affichées double, même si la moitié d'entre elles sont semi-transparentes. Elle peut par ailleurs aggraver le problème d'occultation : en effet, si une cible mobile passe derrière un objet statique ou une autre cible potentielle, déclencher \emph{Target/Bubble Ghost} à cet instant aurait pour effet de prolonger indéfiniment l'occultation de cette cible. Ce problème est d'autant plus gênant que la densité de cibles potentielles est élevée.
-		
-	L'utilisation d'un proxy peut aussi être gênante dans un contexte immersif avec un périphérique de saisie permettant une correspondance à l'échelle $1$ entre l'espace moteur et l'espace virtuel, en particulier si la sélection a pour but de permettre une manipulation de l'objet saisi. C'est notamment le cas pour les simulations de dynamique moléculaire, qui impliquent d'envoyer des forces au système simulé, avec un retour (pseudo-)haptique pour l'utilisateur.
-		
 \section{\emph{Hold}}
+	\subsection{Principe et avantages}
+	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un boutons, et « réactivées » en relâchant le bouton, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/hold}
+		\caption[La technique \emph{Hold}]{Mode de fonctionnement de la technique \emph{Hold} telle qu'elle fut évaluée dans~\cite{hajri2011moving}. En haut (a,b) le système classique (baptisé \emph{Chase} par Al Hajri \emph{et al.}) : l'utilisateur positionne sa souris sur le flacon rouge pour déclencher la sélection, et doit ensuite cliquer sur le disque noir. Au milieu (c,d) la technique \emph{Hold} ; l'utilisateur doit cliquer sur le flacon bleu pour arrêter la cible, maintenir le bouton pressé, et ne le relâcher que sur le disque noir. En bas (e,f), l'utilisateur doit d'abord positionner sa souris sur le flacon vert, puis peut cliquer librement sur le disque, comme dans le premier cas, ou cliquer sur le flacon pour stopper la cible et relâcher le bouton dessus, comme dans le deuxième cas. Cette technique est appelée \emph{Hybrid} par les auteurs. Crédit : \cite{hajri2011moving}.}
+		\label{fig:hold}
+	\end{figure}
+	
+	Cela peut pallier le problème d'occultation inhérent à ce type de technique, qui survient si l'on stoppe le mouvement des objets lorsque la cible visée est occultée par un autre objet --- tout particulièrement dans un contexte 3D. On ajoutera que comme la plupart des techniques portant sur les cibles, \emph{Hold} peut être couplée à une technique de curseur, comme le \emph{Bubble Cursor} ou \emph{DynaSpot}, par exemple.
+	
+	\subsection{Inconvénients}
+	Néanmoins et bien qu'il soit atténué, le problème d'occultation demeure. Mais surtout, cette technique impose d'arrêter l'animation ou la simulation à la source des mouvements des cibles, ce qui est inacceptable dans bon nombre d'applications, comme la plupart des jeux vidéo, par exemple.
+	
+	Pour les simulations moléculaires ou encore le contrôle des espaces aérien, maritime, terrestre, les retransmissions d'événements sportifs, etc., cela implique une perte de connexion avec le réel, qui peut dans certains cas être inacceptable.
+	
+	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utiliser des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} impliquerait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations.
+	
+	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
 
 \section{Sélection en cascade, grossière, puis fine}
 	 \subsection{Principe et avantages}
