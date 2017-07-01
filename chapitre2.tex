@@ -59,6 +59,15 @@
 	\subsection{Loi de Fitts et cibles mobiles}
 	La recherche sur la loi de Fitts appliquée aux cibles mobiles, comparativement aux travaux sur les cibles statiques, est très pauvre~\cite{casallas2015prediction}. Elle n'est pas inexistante~\cite{jagacinski1980test, hoffmann1991capture, hajri2011moving} mais très limitée, et elle s'intéresse rarement à la nature du mouvement des cibles, surtout quand ce mouvement est imprévisible.
 	
+	Sauf figure~\ref{fig:holdID}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/holdID}
+		\caption[Indice de difficulté en fonction de la nature du mouvement]{Bla. Crédit : \cite{hajri2011moving}.}
+		\label{fig:holdID}
+	\end{figure}
+	
 	De fait, les modèles développés dans les travaux de Jagacinski \emph{et al.}~\cite{jagacinski1980test} ou d'Al Harji \emph{et al.}~\cite{hajri2011moving}, par exemple, font l'hypothèse de cibles de vitesse et de direction constantes. La loi de Fitts étendue par Jagacinski \emph{et al.} est présentée dans l'équation~\ref{eq:jagacinski}, où $CT$ est le temps de sélection, $D$ et $W$ sont toujours la distance à la cible et sa largeur, $V$ est la vitesse de la cible, tandis que $c$, $d$ et $e$ sont des constantes réelles.
 	
 	\begin{equation}
@@ -301,11 +310,49 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/hold}
-		\caption[La technique \emph{Hold}]{Mode de fonctionnement de la technique \emph{Hold} telle qu'elle fut évaluée dans~\cite{hajri2011moving}. En haut (a,b) le système classique (baptisé \emph{Chase} par Al Hajri \emph{et al.}) : l'utilisateur positionne sa souris sur le flacon rouge pour déclencher la sélection, et doit ensuite cliquer sur le disque noir. Au milieu (c,d) la technique \emph{Hold} ; l'utilisateur doit cliquer sur le flacon bleu pour arrêter la cible, maintenir le bouton pressé, et ne le relâcher que sur le disque noir. En bas (e,f), l'utilisateur doit d'abord positionner sa souris sur le flacon vert, puis peut cliquer librement sur le disque, comme dans le premier cas, ou cliquer sur le flacon pour stopper la cible et relâcher le bouton dessus, comme dans le deuxième cas. Cette technique est appelée \emph{Hybrid} par les auteurs. Crédit : \cite{hajri2011moving}.}
+		\caption[La technique \emph{Hold}]{Mode de fonctionnement de la technique \emph{Hold} telle qu'elle fut évaluée dans~\cite{hajri2011moving}. En haut (a,b) le système classique (baptisé \emph{Chase} par Al Hajri \emph{et al.}) : l'utilisateur positionne sa souris sur le flacon rouge pour déclencher la sélection, et doit ensuite cliquer sur le disque noir. Au milieu (c,d) la technique \emph{Hold} ; l'utilisateur doit cliquer sur le flacon bleu pour arrêter la cible, maintenir le bouton pressé, et ne le relâcher que sur le disque noir. En bas (e,f), l'utilisateur doit d'abord positionner sa souris sur le flacon vert, puis peut cliquer librement sur le disque, comme dans le premier cas, ou cliquer sur le flacon pour stopper la cible et relâcher le bouton dessus, comme dans le deuxième cas. Cette technique est appelée \emph{Hybrid} par les auteurs, et a l'avantage d'être plus flexible. En effet, elle permet à un utilisateur de laisser une cible se déplacer avant de la sélectionner, ce qui peut être avantageux si elle se dirige vers le curseur. Crédit : \cite{hajri2011moving}.}
 		\label{fig:hold}
 	\end{figure}
 	
 	Cela peut pallier le problème d'occultation inhérent à ce type de technique, qui survient si l'on stoppe le mouvement des objets lorsque la cible visée est occultée par un autre objet --- tout particulièrement dans un contexte 3D. On ajoutera que comme la plupart des techniques portant sur les cibles, \emph{Hold} peut être couplée à une technique de curseur, comme le \emph{Bubble Cursor} ou \emph{DynaSpot}, par exemple.
+	
+	En pratique, l'évaluation de la technique \emph{Hold} menée par Al Hajri \emph{et al.} montre qu'elle \emph{augmente} le temps de sélection, mais réduit le taux d'erreurs. Les sujets de l'évaluation ont expliqué aux auteurs qu'une fois la cible stoppée, ils ressentaient moins le besoin de se presser pour la sélectionner, vu que la tâche était devenue plus facile. De plus, \emph{Hold} nécessite de cliquer une première fois pour stopper la cible, puis de maintenir le bouton de la souris pressé jusqu'à le relâcher sur la cible, ce qui implique un effort supplémentaire et peut partiellemet expliquer ces résultats. Enfin, le nombre de clics montre que les sujets privilégient la rapidité sans \emph{Hold}, et la précision avec.
+	
+	On peut néanmoins se demander s'ils auraient été identiques si les utilisateurs avaient été plus encouragés à se dépêcher, par exemple en affichant un chronomètre, ou avec un système de points. Les temps de sélection mesurés en fonction des différents paramètres régissant le mouvement de la cible à sélectionner sont détaillés sur la figure~\ref{fig:holdRes}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/holdRes}
+		\caption[\emph{Hold} --- évaluation]{Résultats de l'évaluation de la technique \emph{Hold}. En haut, les résultats en 1D ; en bas, en 2D. Comme le prédit la loi de Fitts, la difficulté de sélection décroît avec la taille des cibles, et comme d'autres études l'ont montré, elle croît naturellement avec leur vitesse.  Crédit : \cite{hajri2011moving}.}
+		\label{fig:holdRes}
+	\end{figure}
+	
+	Toutefois, cette tendance générale s'inverse si l'on s'intéresse aux cibles les plus difficiles à sélectionner, c'est-à-dire celles qui sont rapides, petites, ou \emph{a fortiori} les deux à la fois, comme les résultats présentés sur la figure~\ref{fig:holdSFast} le montrent. C'est assez logique puisque la vitesse en particulier n'a que très peu d'incidence sur la difficulté de sélection avec \emph{Hold}, puisqu'elle s'annule dès que l'utilisateur délenche l'arrêt de la cible. La taille conserve son influence décrite par la loi de Fitts, mais son interaction avec la vitesse disparaît presque totalement.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/holdSFast}
+		\caption[\emph{Hold} --- petites cibles rapides]{Résultats de l'évaluation de la technique \emph{Hold} en fonction de la taille et de la vitesse de la cible. En rouge (légende \emph{C}) sont notés les temps de sélection de la technique \emph{Chase}, c'est-à-dire la sélection classique ; en bleu (légende \emph{H}) figurent les temps de sélection de la technique \emph{Hold}. On remarque que dans le cas d'une sélection non assistée, la réduction de la taille de la cible ainsi que l'augmentation de sa vitesse rendent la sélection bien plus difficile. Ces effets sont nettement moins prononcés avec la technique \emph{Hold}, de sorte q'elle fournit de meilleurs résultats que la sélection non assistée pour les cas les plus difficiles. Crédit : \cite{hajri2011moving}.}
+		\label{fig:holdSFast}
+	\end{figure}
+	
+	L'on peut supposer, en extrapolant ces résultats, que la technique \emph{Hold} serait encore plus bénéfique sur des cibles encore plus petites ou rapides. Elle devrait logiquement permettre de sélectionner de façon relativement aisée des cibles d'une vitesse originelle quelconque, tandis que sans assistance, des cibles trop rapides peuvent devenir insaisissables.
+	
+	Tech choice figure~\ref{fig:holdTech}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/holdTech}
+		\caption[\emph{Hold} --- choix de la technique]{Blabla. Crédit : \cite{hajri2011moving}.}
+		\label{fig:holdTech}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/holdRatio}
+		\caption[\emph{Hold} --- distribution \emph{Hold/Chase} en mode \emph{Hybrid}]{Blabla. Crédit : \cite{hajri2011moving}.}
+		\label{fig:holdRatio}
+	\end{figure}
 	
 	\subsection{Inconvénients}
 	Néanmoins et bien qu'il soit atténué, le problème d'occultation demeure. Mais surtout, cette technique impose d'arrêter l'animation ou la simulation à la source des mouvements des cibles, ce qui est inacceptable dans bon nombre d'applications, comme la plupart des jeux vidéo, par exemple.
@@ -350,13 +397,19 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{itemize}
 
 	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
+	
+\section{\emph{Kinematic Endpoint Prediction}}
+	\subsection{Principe et avantages}
+	\cite{lank2007endpoint}
+	\subsection{Inconvénients}
 		
 \section{\emph{Speed}}
 	\subsection{Principe et avantages}
-	\emph{Speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde. C'est dans cette dernière que l'utilisateur est généralement le plus précis. \emph{Speed} base donc sa prédiction de cible sur la phase de décélération. L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, \emph{Speed} utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Cette technique fournit de meilleurs résultats que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phase d'accélération et de décélération.[ref]
+	\emph{Speed}~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde. C'est dans cette dernière que l'utilisateur est généralement le plus précis. \emph{Speed} base donc sa prédiction de cible sur la phase de décélération. L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, \emph{Speed} utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Cette technique fournit de meilleurs résultats que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phase d'accélération et de décélération.[ref]
 			
 	\subsection{Inconvénients}
 	Cependant, \emph{Speed} part du principe qu'au moment où l'utilisateur décide de sélectionner une cible et commence à déplacer le curseur, il sait quelle cible il veut choisir, où elle se trouve, et donc où placer son curseur. De fait, le mouvement effectué est approximativement rectiligne. Mais si les cibles sont mobiles, alors la trajectoire du curseur ne peut plus être supposée rectiligne. Par conséquent, la précision de \emph{Speed} avec des cibles mobiles est sujette à caution. C'est d'autant plus vrai en environnement dense, car une petite erreur de prédiction a d'autant plus de chances d'aboutir à la sélection d'un distracteur que ceux-ci sont nombreux et près de la cible visée.
+
 		
 \section{Hook}
 	\paragraph{}
