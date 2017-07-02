@@ -382,18 +382,61 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utiliser des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} impliquerait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations.
 	
 	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
+	
+\section{\emph{Ray casting}}
+	\subsection{Principe et avantages}
+	Le \emph{ray casting} est une technique de sélection conceptuellement très simple : un périphérique est utilisé pour lancer un rayon virtuel, généralement le long d'un axe du périphérique. Le rayon peut ensuite croiser un objet, ce qui permet de le sélectionner. Cette technique est parfois appelée \emph{laser gun}~\cite{liang1994jdcad}, et elle est illustrée par la figure~\ref{fig:dCanvas2}.
+	
+	Elle a plusieurs avantages : elle permet de sélectionner un objet à n'importe quelle distance, sans avoir à se déplacer ; on peut sélectionner un objet très éloigné de la position initiale du curseur sans avoir à faire de grand mouvement, puisqu'il suffit de changer l'orientation du périphérique de pointage, donc d'un simple mouvement de poignet.
+	
+	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{ray casting} ont été développées.
+	
+	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/spotlight}
+		\caption[Cône de sélection : \emph{Spotlight}]{Illustration d'une technique de sélection par cône, baptisée \emph{Spotlight}. Les objets qui se trouvent dans le cône sont des candidats à la sélection : quand il y en a plusieurs, le plus proche de l'axe de révolution du cône est choisi ; en cas de proximité égale, le plus proche du périphérique de pointage est choisi. Crédit : \cite{liang1994jdcad}.}
+		\label{fig:spotlight}
+	\end{figure}
+	
+	Cela facilite la sélection, puisque les gestes n'ont plus besoin d'être aussi précis, mais peut ajouter de l'ambiguïté si deux objets se trouvent dans le cône de sélection. Le cas échéant, cette ambiguïté peut être levée de plusieurs façon, en fonction de la proximité à l'axe de révolution du cône, en fonction de la distance au périphérique de pointage, ou via une intervention directe de l'utilisateur.
+	
+	Le choix de l'angle du cône est important : plus il sera grand, plus la sélection sera facile mais potentiellement ambiguë ; plus il sera petit, plus la sélection sera difficile mais spécifique. Le choix de cet angle peut éventuellement être paramétrable, permettant à l'utilisateur de choisir ce qui lui convient le mieux, voire de l'ajuster à la volée en cours d'utilisation. Cet ajustement pourrait également être géré automatiquement par le système interactif, par exemple de façon analogue à ce qui est fait avec des pointeurs classiques dans le \emph{Bubble Cursor}~\cite{grossman2005bubble} ou \emph{DynaSpot}~\cite{chapuis2009dynaspot}.
+	
+	\subsection{Inconvénients}
+	Lorsque l'environnement est particulièrement dense, la sélection par rayon ou cône devient difficile~\cite{kopper2011rapid}, car la précision requise devient très élevée, tant pour l'utilisateur que pour le système de suivi du périphérique de pointage. L'utilisation d'un cône facilite la sélection de petites cibles, mais ajoute un risque d'ambiguïté.
+	
+	Or, si diverses techniques peuvent aider à lever l'ambiguïté, leur utilisation est d'autant plus difficile que les cibles situées dans le volume du cône sont nombreuses, petites et\ldots{} mobiles. En effet, la mobilité des cibles nécessite d'effectuer des mouvements plus rapides pour les pointer, donc d'exercer plus de force, et de fait, d'être moins précis~\cite{schmidt1979motor}.
+	
+	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles mobiles, \emph{a fortiori} si elles sont rapides et si leurs mouvements sont imprévisibles.  
+	
 
 \section{Sélection en cascade, grossière, puis fine}
 	 \subsection{Principe et avantages}
-	 Les techniques de cette catégorie divisent la sélection en deux phases. Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé. Du point de vue de la loi de Fitts, au cours de la phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase fine offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait généralement un certain « coût cognitif » lié au basculement d'une phase à l'autre, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé.[mettre une bonne ref !]
+	 Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé.
 	 
-	 Exemple~\cite{debarba2013disambiguation}.
+	 Du point de vue de la loi de Fitts, au cours de la phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase fine offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait généralement un certain « coût cognitif » lié au basculement d'une phase à l'autre, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé.[mettre une bonne ref !]
 	 
-	\begin{figure}[ht]
+	Un exemple typique de technique de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
+(SQUAD)}~\cite{kopper2011rapid}. 
+	 
+	La technique du \emph{Disambiguation Canvas} en est un exemple~\cite{debarba2013disambiguation}, illustré par la figure~\ref{fig:dCanvas}. 
+		 
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dcanvas}
-		\caption{Fonctionnement du \emph{Disambiguation canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette présélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de saisie contrôle un volume de sélection. (b) : Une fois la présélection faite, une « toile » (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles présélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont ici à des fins purement illustratives. Crédit : Debarba \emph{et al.}}
-		\label{fig:dcanvas}
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
+		\caption[\emph{Disambiguation Canvas}]{Fonctionnement du \emph{Disambiguation Canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette présélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la présélection faite, une « toile » (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles présélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence, mais cela pourrait être une tablette) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont présents ici à des fins purement illustratives. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvas}
+	\end{figure}
+	
+	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvas2}
+		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvas2}
 	\end{figure}
 		 
 	\subsection{Inconvénients}
