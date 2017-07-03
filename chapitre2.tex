@@ -160,7 +160,7 @@
 
 \section{\emph{Bubble Cursor}}
 	\subsection{Principe et avantages}
-	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci. Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D.
+	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci. Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.	
 		
 	\begin{figure}[ht]
 		\centering
@@ -409,17 +409,35 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Or, si diverses techniques peuvent aider à lever l'ambiguïté, leur utilisation est d'autant plus difficile que les cibles situées dans le volume du cône sont nombreuses, petites et\ldots{} mobiles. En effet, la mobilité des cibles nécessite d'effectuer des mouvements plus rapides pour les pointer, donc d'exercer plus de force, et de fait, d'être moins précis~\cite{schmidt1979motor}.
 	
-	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles mobiles, \emph{a fortiori} si elles sont rapides et si leurs mouvements sont imprévisibles.  
+	Une solution à certains de ces problèmes peut être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon qu'il lance, ce qui peut être très troublant. En outre, cette solution pourrait être difficile à adapter aux cibles mobiles, surtout si elles sont rapides.
 	
+	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles~\cite{steed20043d}, \emph{a fortiori} si elles sont mobiles, rapides, et si leurs mouvements sont imprévisibles.  
+	
+\section{\emph{Depth Ray}}
+	\subsection{Principe et avantages}
+	~\cite{vanacken2007exploring}
+	
+	\subsection{Inconvénients}
 
 \section{Sélection en cascade, grossière, puis fine}
-	 \subsection{Principe et avantages}
-	 Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé.
+	\subsection{Principe et avantages}
+	Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur (ou autre medium de sélection) peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection (plus) fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé, ou bien affine encore l'espace de sélection, jusqu'à ce qu'une phase finale permette la sélection effective de la cible.
 	 
-	 Du point de vue de la loi de Fitts, au cours de la phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase fine offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait généralement un certain « coût cognitif » lié au basculement d'une phase à l'autre, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé.[mettre une bonne ref !]
+	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain « coût cognitif » lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
+	
+	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreur qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
 	 
-	Un exemple typique de technique de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
-(SQUAD)}~\cite{kopper2011rapid}. 
+	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
+(SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squad}
+		\caption[Fonctionnement de la technique SQUAD]{La technique SQUAD. À gauche, la première étape de sélection, au cours de laquelle l'utilisateur présélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets présélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squad}
+	\end{figure}
+	
+	Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets présélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de présélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
 	 
 	La technique du \emph{Disambiguation Canvas} en est un exemple~\cite{debarba2013disambiguation}, illustré par la figure~\ref{fig:dCanvas}. 
 		 
