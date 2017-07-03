@@ -389,13 +389,13 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
 	
-\section{\emph{Ray casting}}
+\section{\emph{raycasting}}
 	\subsection{Principe et avantages}
-	Le \emph{ray casting} est une technique de sélection conceptuellement très simple : un périphérique est utilisé pour lancer un rayon virtuel, généralement le long d'un axe du périphérique. Le rayon peut ensuite croiser un objet, ce qui permet de le sélectionner. Cette technique est parfois appelée \emph{laser gun}~\cite{liang1994jdcad}, et elle est illustrée par la figure~\ref{fig:dCanvas2}.
+	Le \emph{raycasting} est une technique de sélection conceptuellement très simple : un périphérique est utilisé pour lancer un rayon virtuel, généralement le long d'un axe du périphérique. Le rayon peut ensuite croiser un objet, ce qui permet de le sélectionner. Cette technique est parfois appelée \emph{laser gun}~\cite{liang1994jdcad}, et elle est illustrée par la figure~\ref{fig:dCanvas2}.
 	
 	Elle a plusieurs avantages : elle permet de sélectionner un objet à n'importe quelle distance, sans avoir à se déplacer ; on peut sélectionner un objet très éloigné de la position initiale du curseur sans avoir à faire de grand mouvement, puisqu'il suffit de changer l'orientation du périphérique de pointage, donc d'un simple mouvement de poignet.
 	
-	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{ray casting} ont été développées.
+	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{raycasting} ont été développées.
 	
 	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
 	
@@ -426,47 +426,60 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	
 	
-\section{\emph{Ray casting} avec disambiguïsation}
-	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{ray casting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
+\section{\emph{raycasting} avec disambiguïsation}
+	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
 
 	\subsection{\emph{Depth Ray}}
-	\paragraph{Principe et avantages.}
+	\subsubsection{Principe}
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/depthRay}
-		\caption[Principe du \emph{Depth Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui (a) --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche (b). Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine (c). Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Depth Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
 		\label{fig:depthRay}
 	\end{figure}
 	
-	\paragraph{Inconvénients.}
-	
 	\subsection{\emph{Lock Ray}}
-	\paragraph{Principe et avantages.}
+	\subsubsection{Principe}
 	Le \emph{Lock Ray}~\cite{grossman2006design} fonctionne de la même façon que le \emph{Depth Ray}, si ce n'est qu'une fois que le rayon est positionné, il est \emph{verrouillé} --- d'où le nom --- afin de permettre à l'utilisateur de déplacer le marqueur de profondeur sans avoir à craindre de faire bouger le rayon par accident.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/lockRay}
-		\caption[Principe du \emph{Lock Ray}]{Illustration du fonctionnement du \emph{Lock Ray}. La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur (a). Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère (b). L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton (c). Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Lock Ray}]{Illustration du fonctionnement du \emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur. (b) Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton. Crédit : \cite{grossman2006design}.}
 		\label{fig:lockRay}
 	\end{figure}
 	
-	\paragraph{Inconvénients.}
-	
 	\subsection{\emph{Flower Ray}}
-	\paragraph{Principe et avantages.}
-	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon « s'épanouissent » --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}.
+	\subsubsection{Principe}
+	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon « s'épanouissent » --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}. Dans le menu « floral » les objets sont disposés par ordre de profondeur croissante dans le sens horaire, avec le plus proche en haut à droite.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/flowerRay}
-		\caption[Principe du \emph{Flower Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. Toutes les cibles croisées par le rayon sont colorées en vert (a). Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant (b). L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner (c). Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Flower Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant. (c) L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
 		\label{fig:flowerRay}
 	\end{figure}
 	
-	\paragraph{Inconvénients.}
+	\subsection{\emph{Smart Ray}}
+	\subsubsection{Principe}
+	Par définition, un rayon contient une infinité de points. Toutefois, si deux sont sécants, alors ils n'ont qu'un seul point en commun. Il donc possible d'utilier deux rayons pour effectuer une sélection par \emph{raycasting} sans aucune ambiguïté. Toutefois, cela nécessite deux périphériques de saisie et cela occupe les deux mains de l'utilisateur.
+	
+	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instant différents, selon une idée exposée mais non évaluée par Anthony Steed~\cite{steed2006towards}. Chaque objet se voit attribuer un « poids » qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/smartRay}
+		\caption[Principe du \emph{Smart Ray}]{Utilisation du \emph{Smart Ray} pour sélectionner le petit carré. (a) Les poids des cibles sont basés sur la distance entre le rayon et la cible, et visualisés par de petites sphères au centre de chaque cible. À tout moment, la cible avec le plus gros poids peut être sélectionnée. (b,c) Le rayon peut être repositionné en continu pour augmenter le poids de la cible visée, même si elle est occultée. Crédit : \cite{grossman2006design}.}
+		\label{fig:smartRay}
+	\end{figure}
+	
+	\subsection{Motivations}
+	Grossman \emph{et al.}~\cite{grossman2006design} notent que les techniques présentées ci-dessus ont chacune des avantages et des inconvénients. Le \emph{Depth Ray} unifie les phases de sélection et de désambiguïsation, ce qui peut faire gagner du temps mais aussi causer des perturbations entre les phases. Le \emph{Lock Ray} sépare les phases explicitement, mais désambiguïse avec un menu linéaire. Le \emph{Flower Ray} propose un menu radial, théoriquement plus rapide, mais les utilisateurs doivent suivre l'animation pour ne pas perdre leur cible entre les deux phases. Enfin, le \emph{Smart Ray} fournit un mode de désambiguïsation implicite et possiblement plus fluide, mais potentiellement source de frustration s'il échoue à prédire correctement l'intention de l'utilisateur, comme toujours avec les techniques prédictives.
+	
+	\subsection{Évaluations}
+	Avec ces mérites respectifs en tête, Grossman \emph{et al.} ont évalué ces quatre techniques dans un environnement dense, afin de rendre la désambiguïsation absolument nécessaire. De fait, la sélection par \emph{raycasting} classique est impossible, et donc ne fut pas évaluée ici. La technique de base considérée est donc le curseur ponctuel.
 
 \section{Sélection en cascade, grossière, puis fine}
 	\subsection{Principe général et avantages}
@@ -501,19 +514,19 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\paragraph{Performances.}
-	Les performances de SQUAD, comparée au \emph{ray casting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{ray casting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
+	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
-		\caption[SQUAD --- Résultats : densité]{Performances de la technique SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{ray casting} classique. Les performances de cette dernière technique ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible. C'est assez logique car l'indice de difficulté n'est pas modifié par la densité de distracteurs, seul le temps de réaction peut l'être. En revanche, les performances de SQUAD sont fortement affectées, ce qui là encore est logique puisque le nombre d'étapes dans la seconde phase en dépend directement. En pratique, SQUAD brille particulièrement dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux. Crédit : \cite{kopper2011rapid}.}
+		\caption[SQUAD --- Résultats : densité]{Performances de la technique SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting} classique. Les performances de cette dernière technique ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible. C'est assez logique car l'indice de difficulté n'est pas modifié par la densité de distracteurs, seul le temps de réaction peut l'être. En revanche, les performances de SQUAD sont fortement affectées, ce qui là encore est logique puisque le nombre d'étapes dans la seconde phase en dépend directement. En pratique, SQUAD brille particulièrement dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadDensity}
 	\end{figure}
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squadSize}
-		\caption[SQUAD --- Résultats : récapitulatif]{Performances de la technique SQUAD comparées avec celle du \emph{ray casting} classique, en fonction de la taille des cibles, et pour différentes densités de distracteurs. Notez que les performances du \emph{ray casting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. La technique SQUAD se montre clairement plus performante à faible densité, mais se montre capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est très intéressant pour certaines applications. Pour les cas les plus faciles avec de grosses cibles, on préférera le \emph{ray casting}, en particulier dans ses formes améliorées. Crédit : \cite{kopper2011rapid}.}
+		\caption[SQUAD --- Résultats : récapitulatif]{Performances de la technique SQUAD comparées avec celle du \emph{raycasting} classique, en fonction de la taille des cibles, et pour différentes densités de distracteurs. Notez que les performances du \emph{raycasting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. La technique SQUAD se montre clairement plus performante à faible densité, mais se montre capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est très intéressant pour certaines applications. Pour les cas les plus faciles avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadSize}
 	\end{figure}
 	
@@ -522,7 +535,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squadRecap}
-		\caption[SQUAD --- Résultats : taille]{Performances de la technique SQUAD en fonction de la taille de la cible, comparées avec celle du \emph{ray casting} classique. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible quand elle est petite. C'est assez logique car l'indice de difficulté n'est pas modifié par la taille de la cible, puisque seul le quadrant qui la contient doit être sélectionné, mais le temps de réaction peut l'être. En revanche, les performances du \emph{ray casting} sont fortement affectées, ce qui là encore est logique puisqu'une petite cible a un indice de difficulté bien plus élevé. En pratique, SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
+		\caption[SQUAD --- Résultats : taille]{Performances de la technique SQUAD en fonction de la taille de la cible, comparées avec celle du \emph{raycasting} classique. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible quand elle est petite. C'est assez logique car l'indice de difficulté n'est pas modifié par la taille de la cible, puisque seul le quadrant qui la contient doit être sélectionné, mais le temps de réaction peut l'être. En revanche, les performances du \emph{raycasting} sont fortement affectées, ce qui là encore est logique puisqu'une petite cible a un indice de difficulté bien plus élevé. En pratique, SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadRecap}
 	\end{figure}
 	
@@ -574,18 +587,18 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\paragraph{Performances}
-	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{ray casting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{ray casting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
+	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
 	
-	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{ray casting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
+	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
-		\caption[\emph{Disambiguation Canvas} --- Performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{ray casting} classique, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas} --- Performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting} classique, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasRCPerf}
 	\end{figure}
 
-	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{ray casting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
+	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
 	
 	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape « d'affinage » une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
 	
