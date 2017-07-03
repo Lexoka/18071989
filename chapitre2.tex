@@ -420,13 +420,16 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 
 \section{Sélection en cascade, grossière, puis fine}
-	\subsection{Principe et avantages}
+	\subsection{Principe général et avantages}
 	Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur (ou autre medium de sélection) peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection (plus) fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé, ou bien affine encore l'espace de sélection, jusqu'à ce qu'une phase finale permette la sélection effective de la cible.
 	 
 	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain « coût cognitif » lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
 	
 	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreur qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
-	 
+	
+	\subsubsection{\emph{Sphere-casting refined by QUAD-menu
+(SQUAD)}}
+	\paragraph{Principe et avantages.}	 
 	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
 
@@ -438,8 +441,47 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets présélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de présélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
-	 
-	La technique du \emph{Disambiguation Canvas} en est un exemple~\cite{debarba2013disambiguation}, illustré par la figure~\ref{fig:dCanvas}. 
+	
+	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squad2}
+		\caption[La technique SQUAD --- évaluation]{La technique SQUAD telle qu'elle fut évaluée dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge, ce qui la rend facile à repérer, notamment dans la seconde phase, à droite. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir la sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squad2}
+	\end{figure}
+	
+	\paragraph{Performances.}
+	Les performances de SQUAD, comparée au \emph{ray casting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{ray casting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
+		\caption[SQUAD --- Résultats : densité]{Performances de la technique SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{ray casting} classique. Les performances de cette dernière technique ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible. C'est assez logique car l'indice de difficulté n'est pas modifié par la densité de distracteurs, seul le temps de réaction peut l'être. En revanche, les performances de SQUAD sont fortement affectées, ce qui là encore est logique puisque le nombre d'étapes dans la seconde phase en dépend directement. En pratique, SQUAD brille particulièrement dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squadDensity}
+	\end{figure}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squadSize}
+		\caption[SQUAD --- Résultats : récapitulatif]{Performances de la technique SQUAD comparées avec celle du \emph{ray casting} classique, en fonction de la taille des cibles, et pour différentes densités de distracteurs. Notez que les performances du \emph{ray casting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. La technique SQUAD se montre clairement plus performante à faible densité, mais se montre capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est très intéressant pour certaines applications. Pour les cas les plus faciles avec de grosses cibles, on préférera le \emph{ray casting}, en particulier dans ses formes améliorées. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squadSize}
+	\end{figure}
+	
+	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squadRecap}
+		\caption[SQUAD --- Résultats : taille]{Performances de la technique SQUAD en fonction de la taille de la cible, comparées avec celle du \emph{ray casting} classique. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible quand elle est petite. C'est assez logique car l'indice de difficulté n'est pas modifié par la taille de la cible, puisque seul le quadrant qui la contient doit être sélectionné, mais le temps de réaction peut l'être. En revanche, les performances du \emph{ray casting} sont fortement affectées, ce qui là encore est logique puisqu'une petite cible a un indice de difficulté bien plus élevé. En pratique, SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squadRecap}
+	\end{figure}
+	
+	\paragraph{Inconvénients.}
+	densité
+	
+	
+	La technique du \emph{Disambiguation Canvas} en est un exemple~\cite{debarba2013disambiguation}, illustré par la figure~\ref{fig:dCanvas}.
 		 
 	\begin{figure}[H]
 		\centering
