@@ -215,6 +215,12 @@
 
 	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un « dézoom » avant que la sélection finale ne puisse avoir lieu.
 	
+\section{\emph{Silk Cursor}}
+	\subsection{Principe et avantages}
+	~\cite{zhai1994silk}
+	
+	\subsection{Inconvénients}
+	
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
 	\emph{Target Ghost}~\cite{hasan2011comet} est une technique qui repose sur un déclenchement délibéré. Quand elle est déclenchée par l'utilisateur, \emph{Target Ghost} duplique toutes les cibles potentielles. Une des copies devient statique et reste opaque, tandis que l'autre demeure mobile mais est rendue semi-transparente, comme l'illustre la figure~\ref{fig:targetGhost}.
@@ -413,22 +419,54 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles~\cite{steed20043d}, \emph{a fortiori} si elles sont mobiles, rapides, et si leurs mouvements sont imprévisibles.
 	
-\section{\emph{Flower Ray}}
+\section{\emph{Shadow Cone}}
 	\subsection{Principe et avantages}
-	~\cite{grossman2006design}
+	~\cite{steed20043d}
 	
 	\subsection{Inconvénients}
 	
-\section{\emph{Depth Ray}}
-	\subsection{Principe et avantages}
-	~\cite{vanacken2007exploring}
 	
-	\subsection{Inconvénients}
+\section{\emph{Ray casting} avec disambiguïsation}
+	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{ray casting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
+
+	\subsection{\emph{Depth Ray}}
+	\paragraph{Principe et avantages.}
+	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
-\section{\emph{Lock Ray}}
-	\subsection{Principe et avantages}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/depthRay}
+		\caption[Principe du \emph{Depth Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui (a) --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche (b). Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine (c). Crédit : \cite{grossman2006design}.}
+		\label{fig:depthRay}
+	\end{figure}
 	
-	\subsection{Inconvénients}
+	\paragraph{Inconvénients.}
+	
+	\subsection{\emph{Lock Ray}}
+	\paragraph{Principe et avantages.}
+	Le \emph{Lock Ray}~\cite{grossman2006design} fonctionne de la même façon que le \emph{Depth Ray}, si ce n'est qu'une fois que le rayon est positionné, il est \emph{verrouillé} --- d'où le nom --- afin de permettre à l'utilisateur de déplacer le marqueur de profondeur sans avoir à craindre de faire bouger le rayon par accident.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/lockRay}
+		\caption[Principe du \emph{Lock Ray}]{Illustration du fonctionnement du \emph{Lock Ray}. La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur (a). Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère (b). L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton (c). Crédit : \cite{grossman2006design}.}
+		\label{fig:lockRay}
+	\end{figure}
+	
+	\paragraph{Inconvénients.}
+	
+	\subsection{\emph{Flower Ray}}
+	\paragraph{Principe et avantages.}
+	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon « s'épanouissent » --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/flowerRay}
+		\caption[Principe du \emph{Flower Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. Toutes les cibles croisées par le rayon sont colorées en vert (a). Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant (b). L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner (c). Crédit : \cite{grossman2006design}.}
+		\label{fig:flowerRay}
+	\end{figure}
+	
+	\paragraph{Inconvénients.}
 
 \section{Sélection en cascade, grossière, puis fine}
 	\subsection{Principe général et avantages}
