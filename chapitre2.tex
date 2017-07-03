@@ -513,16 +513,77 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvas2}
-		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Comme dans l'évaluation originale de SQUAD, les petites sphères sont réparties sur la surface d'une grande sphère invisible~\cite{kopper2011rapid}, ce qui permet d'uniformiser leurs tailles apparentes. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvas2}
 	\end{figure}
 	
+	Pour définir un agencement optimal des objets dans la deuxième phase, dite de désambiguïsation, Debarba \emph{et al.} ont opté pour une étape de calibrage présentée sur la figure~\ref{fig:dCanvasLayout}.
 	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasLayout}
+		\caption[\emph{Disambiguation Canvas} --- Calibrage]{En (a), une étape de calibrage pour la deuxième phase du \emph{Disambiguation Canvas}. On demande ici à l'utilisateur de faire le tour de l'écran avec son pouce, en essayant de s'approcher des bords. Il en résulte un motif fermé représentant l'espace que l'utilisateur peut atteindre confortablement. En (b), cet espace est utilisé pour répartir les objets parmi lesquels figure la cible, que l'utilisateur pourra donc sélectionner aisément. Par défaut, l'emplacement où se trouve le curseur est laissé vide, pour éviter les sélections accidentelles et pour faciliter l'annulation en cas d'erreur au cours de la première phase. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasLayout}
+	\end{figure}
+	
+	Notez que les objets présélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets préselectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets présélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasDensity}
+		\caption[\emph{Disambiguation Canvas} --- Densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets présélectionnés dans la première étape. À gauche (a), 25 objets peuvent être sélectionnés, et sont de fait assez gros ; au milieu (b), ils sont 97, et de taille moyenne ; à droite (c) ils sont 224 et nettement plus petits. La loi de Fitts s'applique et nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasDensity}
+	\end{figure}
+	
+	\paragraph{Performances}
+	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{ray casting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{ray casting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
+	
+	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{ray casting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
+		\caption[\emph{Disambiguation Canvas} --- Performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{ray casting} classique, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasRCPerf}
+	\end{figure}
+
+	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{ray casting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
+	
+	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape « d'affinage » une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
+	
+	Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, sans appel. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objet colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées avec une pression du pouce.	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasSPerf}
+		\caption[\emph{Disambiguation Canvas} --- Performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasSPerf}
+	\end{figure}
+	
+	Au-delà des temps de sélection, les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Sur l'intervalle de tailles testé, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, mais ce dernier résultat reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques.
 		 
 	\paragraph{Inconvénients}
+	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
+	
+	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon « douce » et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
+		\caption[\emph{Disambiguation Canvas} --- Animation de transition]{Animation pendant la transition entre la phase de présélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés « en douceur » ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasContext}
+	\end{figure}
+	
+	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemble, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles.
 	
 	\subsubsection{Inconvénients généraux}
-	Les techniques de sélection en cascade pouvant prendre des formes très diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui pourrait être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable. Notons que la phase grossière ne se fait pas nécessairement avec le même périphérique que la phase fine ; elle peut par exemple se baser sur une estimation de la direction du regard de l'utilisateur, voire se faire automatiquement, par exemple lorsque l'utilisateur focalise son regard sur une zone approximativement constante pendant un certain laps de temps.
+	Les techniques de sélection en cascade pouvant prendre des formes très diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable.
+	
+	Notons que la phase grossière ne se fait pas nécessairement avec le même périphérique que la phase fine ; elle peut par exemple se baser sur une estimation de la direction du regard de l'utilisateur, voire se faire automatiquement, par exemple lorsque l'utilisateur focalise son regard sur une zone approximativement constante pendant un certain laps de temps.
+	
+	En revanche, on retrouve couramment avec les techniques de sélection en cascade une dégradation, voire une perte du contexte spatial lorsque l'on passe de la phase grossière à la phase fine~\cite{kopper2011rapid, debarba2013disambiguation}. C'est potentiellement plus problématique que la perte de correspondance entre l'espace moteur et l'espace virtuel, et d'autant plus gênant que la phase fine est généralement peu adaptée à des cibles mobiles, qui nous intéressent particulièrement dans ces travaux.
+	
+	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ.
 
 
 % 40% to 70% of gaze displacement is provided by head rotation, while the remaining 60% to 30% result from angular displacement of the eyes in orbit
