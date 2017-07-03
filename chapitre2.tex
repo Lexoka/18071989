@@ -411,11 +411,22 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Une solution à certains de ces problèmes peut être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon qu'il lance, ce qui peut être très troublant. En outre, cette solution pourrait être difficile à adapter aux cibles mobiles, surtout si elles sont rapides.
 	
-	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles~\cite{steed20043d}, \emph{a fortiori} si elles sont mobiles, rapides, et si leurs mouvements sont imprévisibles.  
+	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles~\cite{steed20043d}, \emph{a fortiori} si elles sont mobiles, rapides, et si leurs mouvements sont imprévisibles.
+	
+\section{\emph{Flower Ray}}
+	\subsection{Principe et avantages}
+	~\cite{grossman2006design}
+	
+	\subsection{Inconvénients}
 	
 \section{\emph{Depth Ray}}
 	\subsection{Principe et avantages}
 	~\cite{vanacken2007exploring}
+	
+	\subsection{Inconvénients}
+	
+\section{\emph{Lock Ray}}
+	\subsection{Principe et avantages}
 	
 	\subsection{Inconvénients}
 
@@ -468,7 +479,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:squadSize}
 	\end{figure}
 	
-	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs.
+	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Notons par ailleurs que le taux d'erreurs avec SQUAD était extrêmement faible, avec seulement 0,7~\%{}, ce qui est un atout notable pour cette technique. De fait, si l'on considérait non pas les temps de sélection, mais les temps de sélection normalisés par rapport aux erreurs, l'évaluation serait nettement plus favorable à SQUAD.
 	
 	\begin{figure}[ht]
 		\centering
@@ -478,10 +489,17 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\paragraph{Inconvénients.}
-	densité
+	La chute des performances de SQUAD en cas de forte densité de distracteurs est certes un inconvénient de la technique, mais ce n'est peut-être pas le principal. En effet, au cours de la seconde phase, les objets sont répartis uniformément et aléatoirement dans quatre quadrants, pour que l'utilisateur sélectionne le bon. Celui-ci doit donc être capable de l'identifier visuellement le plus rapidement possible.
 	
+	Or, dans certains cas de figure, la cible n'est pas intrinsèquement différente des distracteurs, mais est choisie en fonction de sa position dans l'espace, par exemple. C'est notamment le cas le plus fréquent pour des simulations moléculaires, dans lesquels l'utilisateur peut vouloir sélectionner un atome d'un certain type (par exemple du carbone) parce qu'il se situe à un endroit spécifique, au sein d'une structure spécifique. Si tous les atomes étaient répartis dans des quadrants, il deviendrait impossible de distinguer cet atome de carbone des milliers d'autres.
 	
-	La technique du \emph{Disambiguation Canvas} en est un exemple~\cite{debarba2013disambiguation}, illustré par la figure~\ref{fig:dCanvas}.
+	De plus, la technique SQUAD telle qu'elle existe fait l'hypothèse de cibles statiques, ce qui n'est pas le cas dans les applications qui nous intéressent. Certes, des cibles mobiles pourraient le rester dans leur quadrant, mais ce mouvement serait hors contexte et il est douteux qu'il puisse conserver du sens ou transmettre une information de valeur à l'utilisateur.
+	
+	Il nous apparaît donc que la technique SQUAD ne peut fournir de résultats satisfaisants qu'avec de petites cibles statiques dans des environnements de densité modérée, et à condition que la cible soit très distincte des distracteurs, suffisamment pour pouvoir être identifiée visuellement le plus rapidement possible.
+	
+	\subsubsection{\emph{Disambiguation Canvas}}
+	\paragraph{Principe et avantages.}
+	La technique du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est un autre exemple de technique de sélection en cascade, et est illustrée par la figure~\ref{fig:dCanvas}.
 		 
 	\begin{figure}[H]
 		\centering
@@ -490,7 +508,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:dCanvas}
 	\end{figure}
 	
-	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique.
+	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une présélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets présélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
 	
 	\begin{figure}[H]
 		\centering
@@ -498,18 +516,21 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvas2}
 	\end{figure}
+	
+	
 		 
-	\subsection{Inconvénients}
+	\paragraph{Inconvénients}
+	
+	\subsubsection{Inconvénients généraux}
 	Les techniques de sélection en cascade pouvant prendre des formes très diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui pourrait être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable. Notons que la phase grossière ne se fait pas nécessairement avec le même périphérique que la phase fine ; elle peut par exemple se baser sur une estimation de la direction du regard de l'utilisateur, voire se faire automatiquement, par exemple lorsque l'utilisateur focalise son regard sur une zone approximativement constante pendant un certain laps de temps.
 
 
 % 40% to 70% of gaze displacement is provided by head rotation, while the remaining 60% to 30% result from angular displacement of the eyes in orbit
 % http://books.google.fr/books?id=h9FEnj3C7MoC&pg=PA102&lpg=PA102&dq=head+tracking+70%25+of+gaze&source=bl&ots=cp8OJm_G-1&sig=0jsxP3V20VGuxmIvg9CB1sUcyeU&hl=en&sa=X&ei=JFUsU-rVJYam0AW1zYDwAw&redir_esc=y#v=onepage&q&f=false
 \section{Suivi de la tête et des yeux}
-	\paragraph{}
+	\subsection{Principe général et avantages}
 	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. Il y a au moins deux façons d'estimer la direction du regard : la première consiste à capturer les mouvements de la tête de l'utilisateur, et à supposer qu'il regarde droit devant lui. Comme cette hypothèse est généralement fausse, on génère un cone dont le sommet est la tête de l'utilisateur, et dont l'axe de révolution correspond à la direction (estimée) du regard. Or, 40~\%{} à 70~\%{} du déplacement du regard est déterminé par la rotation de la tête, tandis que le reste résulte des mouvements oculaires.[ref bouquin] Si cela s'avère souvent insuffisant pour effectuer une sélection directe, le suivi de tête peut présenter un certain intérêt pour la sélection en cascade.
 		
-	\paragraph{}
 	Pour estimer la direction du regard avec plus de précision, on peut capturer non seulement la position et l'orientation de la tête, mais également l'orientation des yeux. Cette option séduisante présente toutefois quelques difficultés :
 	\begin{itemize}
 		\item Les performances dépendent de la couleur des yeux ;[ref]
@@ -520,6 +541,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{itemize}
 
 	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
+	
+	\subsection{\emph{Look and Touch}}
+	\subsubsection{Principe et avantages}
+	~\cite{stellmach2012look}
+	
+	\subsubsection{Inconvénients}
+	
+	\subsection{Inconvénients généraux}
 	
 \section{\emph{Kinematic Endpoint Prediction}}
 	\subsection{Principe et avantages}
@@ -533,15 +562,21 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	Cependant, \emph{Speed} part du principe qu'au moment où l'utilisateur décide de sélectionner une cible et commence à déplacer le curseur, il sait quelle cible il veut choisir, où elle se trouve, et donc où placer son curseur. De fait, le mouvement effectué est approximativement rectiligne. Mais si les cibles sont mobiles, alors la trajectoire du curseur ne peut plus être supposée rectiligne. Par conséquent, la précision de \emph{Speed} avec des cibles mobiles est sujette à caution. C'est d'autant plus vrai en environnement dense, car une petite erreur de prédiction a d'autant plus de chances d'aboutir à la sélection d'un distracteur que ceux-ci sont nombreux et près de la cible visée.
 
+
+\section{\emph{Intenselect}}
+	\subsection{Principe et avantages}
+	~\cite{de2005intenselect}
+	
+	\subsection{Inconvénients}
 		
 \section{Hook}
-	\paragraph{}
+	\subsection{Principe et avantages}
 	\emph{Hook} est une heuristique de prédiction de cible. Elle se base sur une évaluation continue de la distance entre le curseur et les cibles potentielles. Celles-ci sont triées par ordre de proximité, et les $NCT$ (\emph{Number of Closest Targets} cibles les plus proches du curseur voient leur score augmenter à chaque boucle de l'heuristique, et augmenter d'autant plus fortement qu'elles sont proches du curseur. Toutes les autres cibles voient leur score diminuer, et diminuer d'autant plus fortement qu'elles sont éloignées du curseur.
 		
-	\paragraph{}
 	La cible potentielle dont le score est le plus élevé est considérée comme celle que l'utilisateur cherche probablement à sélectionner. La sélection peut donc se faire par simple pression d'un bouton, sans contrainte particulière sur la position du curseur au moment où elle est déclenchée.
 		
-	\paragraph{}
-	\emph{Hook} présente plusieurs avantages. Cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques. Elle n'ajoute aucun encombrement visuel, ne transforme pas le curseur, ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. L'évaluation menée par Michael Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreur plus faibles. Lorsque les cibles sont rapides, le taux d'erreur peut être moindre d'un facteur supérieur à 4. [ref]
+	\emph{Hook} présente plusieurs avantages. Cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques. Elle n'ajoute aucun encombrement visuel, ne transforme pas le curseur, ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. L'évaluation menée par Michael Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreur plus faibles. Lorsque les cibles sont rapides, le taux d'erreur peut être moindre d'un facteur supérieur à 4~\cite{ortega2013hook}.
+	
+	\subsection{Inconvénients}
 
 \clearpage
