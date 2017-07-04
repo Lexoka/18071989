@@ -220,7 +220,35 @@
 	
 \section{\emph{Silk Cursor}}
 	\subsection{Principe et avantages}
-	~\cite{zhai1994silk}
+	Le \emph{Silk Cursor}~\cite{zhai1994silk} est analogue aux curseurs zonaux décrits plus haut, mais étendu à la 3D. Il s'agit donc d'un volume semi-transparent que l'utilisateur peut utiliser pour sélectionner un objet en déplaçant le volume de telle sorte que l'objet soit dedans.
+	
+	Tel qu'il fut évalué dans~\cite{zhai1994silk}, le \emph{Silk Cursor} doit entièrement englober un objet pour pouvoir le sélectionner ; ainsi, dans l'illustration de la figure~\ref{fig:silk}, le poisson ne peut pas encore être sélectionné. Celui-ci était animé par une combinaison de fonctions sinusoïdales agissant indépendamment sur chacune de ses coordonnées (x,y,z). Ces fonctions sont détaillées par les équations~\ref{eq:silkMotion0}, \ref{eq:silkMotion1} et~\ref{eq:silkMotion2} où $t$ est le temps, $A = 4,55$~cm, $p = 2$, $f_{0} = 0,02$~Hz, 	$\phi_{x}(i)$, $\phi_{y}(i)$ et $\phi_{z}(i)$ sont des nombres pseudo-aléatoires, échantillonés uniformément entre $0$ et $2\pi$. Ces fonctions ont pour but de produire un mouvement lisse (\emph{smooth}) et subjectivement imprévisible~\cite{zhai1993human}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/silk}
+		\caption[Le \emph{Silk Cursor}]{Fonctionnement du \emph{Silk Cursor}. L'utilisateur est ici en train d'essayer de sélectionner un poisson, en l'englobant avec le volume du curseur. En l'occurence, quelques parties du poisson ne sont pas incluses dans le volume de sélection, et de fait il ne peut pas encore être sélectionné. Crédit : \cite{zhai1994silk}.}
+		\label{fig:silk}
+	\end{figure}
+	
+	\begin{align}
+		\label{eq:silkMotion0}
+		x(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{x}(i) \right) \\
+		\label{eq:silkMotion1}
+		y(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{y}(i) \right) \\
+		\label{eq:silkMotion2}
+		z(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{z}(i) \right) - 7.8
+	\end{align}
+	
+	\subsection{Perfomances}
+	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}).
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
+		\caption[Performances du \emph{Silk Cursor}]{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. Crédit : \cite{zhai1994silk}.}
+		\label{fig:silkPerf}
+	\end{figure}
 	
 	\subsection{Inconvénients}
 	
@@ -392,7 +420,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
 	
-\section{\emph{raycasting}}
+\section{\emph{Raycasting}}
 	\subsection{Principe et avantages}
 	Le \emph{raycasting} est une technique de sélection conceptuellement très simple : un périphérique est utilisé pour lancer un rayon virtuel, généralement le long d'un axe du périphérique. Le rayon peut ensuite croiser un objet, ce qui permet de le sélectionner. Cette technique est parfois appelée \emph{laser gun}~\cite{liang1994jdcad}, et elle est illustrée par la figure~\ref{fig:dCanvas2}.
 	
