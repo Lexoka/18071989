@@ -272,7 +272,27 @@
 		\label{fig:silkErrorMag}
 	\end{figure}
 	
+	\subsubsection{Impressions subjectives}
+	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
+
+	\begin{table}
+	\centering
+	\begin{tabular}{c | c c c c c}
+							& \multicolumn{5}{c}{Impressions subjectives} \\
+		Condition			& Très basse	& Basse	& Moyenne	& Haute	& Très haute \bigstrut[b] \\ \hline
+		\emph{MonoWire}		& 8				& 2		& 1			&		& \bigstrut[t]	\\
+		\emph{MonoSilk}		& 				& 		& 4			& 4		& 4 			\\
+		\emph{StereoWire}	& 				& 2		& 7			& 3		& 	 			\\
+		\emph{StereoSilk}	& 				& 		& 			& 3		& 9 			\\
+	\end{tabular}
+	\caption[\emph{Silk Cursor} --- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. \emph{MonoWire} et \emph{MonoSilk} sont les conditions monoscopiques en fil de fer et avec le \emph{Silk Cursor} respectivement, tandis que \emph{StereoWire} et \emph{StereoSilk} sont les équivalents respectifs en stéréoscopie. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Données tirées de~\cite{zhai1994silk}.}
+	\label{tab:silkImpr}
+	\end{table}
+	
 	\subsection{Inconvénients}
+	Malgré les bons résultats commentés plus haut, le \emph{Silk Cursor} n'est pas exempt de défauts. En tant que curseur volumique, il s'agit en substance de l'extension à l'espace tridimensionnel d'un curseur zonal classique, comme ceux décrits plus haut dans un contexte 2D. Par conséquent, cette technique souffre des mêmes inconvénients que ses analogues bidimensionnels.
+	
+	En particulier, les solutions de ce type voient leur performances chuter quand la densité de cibles est élevée, car le curseur a tendance à « saisir » plusieurs objets à la fois, y compris des distracteurs. Un curseur volumique ne peut donc être viable en environnement dense qu'avec une bonne solution de disambiguïsation.
 	
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
