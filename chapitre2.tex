@@ -141,6 +141,7 @@
 	L'\emph{Area cursor}, en particulier complémenté par des cibles collantes et un gain adaptatif, permet un gain de performances important, en particulier avec des utilisateurs âgés, comme le détaille le tableau~\ref{tab:areaCursor}.
 	
 	\begin{table}
+	\centering
 	\begin{tabular}{l c c c c}
 										& \multicolumn{2}{c}{Jeunes}	&	\multicolumn{2}{c}{Âgés}			\\
 										& Temps (ms)	& Taux de succès	& Temps (ms)	& Taux de succès	\\
@@ -160,9 +161,9 @@
 
 \section{\emph{Bubble Cursor}}
 	\subsection{Principe et avantages}
-	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci. Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.	
+	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci.	
 		
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/bubble}
 		\caption{Illustration du fonctionnement de la technique \emph{Bubble Cursor} (a, c, d) par opposition à un curseur zonal (b). Dans le cas b, le curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Dans le cas (d), la cible n'est pas entièrement recouverte par le curseur, le disque du curseur, mais elle l'est partiellement, et pour représenter visuellement que c'est suffisant à sa sélection, le curseur est localement étendu pour l'englober. Crédit : \cite{grossman2005bubble}.}
@@ -175,8 +176,10 @@
 		\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. Un diagramme de Voronoï est un découpage du plan (pavage) en cellules à partir d'un ensemble discret de points appelés « germes ». Chaque cellule enferme un seul germe, et forme l'ensemble des points du plan plus proches de ce germe que de tous les autres. La cellule représente en quelque sorte la « zone de proximité » du germe. Ici, les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:voronoi}
 	\end{figure}
+	
+	Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.
 
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/bubbleResults}
 		\caption{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : \cite{grossman2005bubble}.}
@@ -426,7 +429,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	
 	
-\section{\emph{raycasting} avec disambiguïsation}
+\section{\emph{Raycasting} avec disambiguïsation}
 	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
 
 	\subsection{\emph{Depth Ray}}
@@ -480,6 +483,72 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsection{Évaluations}
 	Avec ces mérites respectifs en tête, Grossman \emph{et al.} ont évalué ces quatre techniques dans un environnement dense, afin de rendre la désambiguïsation absolument nécessaire. De fait, la sélection par \emph{raycasting} classique est impossible, et donc ne fut pas évaluée ici. La technique de base considérée est donc le curseur ponctuel.
+
+	\subsubsection{Temps de sélection}
+	
+	Les temps de sélection mesurés par les auteurs pour les différentes techniques sont représentés sur la figure~\ref{fig:rayTimes}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/rayTimes}
+		\caption[Évaluation des techniques de \emph{raycasting} avec disambiguïsation]{Évaluation des techniques de \emph{raycasting} avec disambiguïsation en environnement dense. Les résultats présentés sont les temps de sélection. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel. Crédit : \cite{grossman2006design}.}
+		\label{fig:rayTimes}
+	\end{figure}
+
+	Le premier constat est que le curseur ponctuel offre de très bonnes performances par rapport aux techniques de \emph{raycasting}, ce qui peut surprendre compte tenu des performances généralement supérieures de ces dernières~\cite{bowman2001testbed}. Mais le niveau d'occultation avec de nombreux distracteurs est tel que les performances de cette classe de techniques chutent. Toutefois, le \emph{Depth Ray} fournit de très bons résultats, meilleurs que ceux du curseur ponctuel. Il profite selon toute probabilité de l'intégration des phases de sélection et de disambiguïsation. Grossman \emph{et al.} remarquent au passage que le temps de disambiguïsation du \emph{Flower Ray} est relativement constant en fonction de l'emplacement de la cible, alors que celui du \emph{Lock Ray} varie beaucoup ; sans doute le menu radial du premier a-t-il un effet lisseur sur cette valeur.
+
+	\subsubsection{Performances en fontion de l'emplacement de la cible}
+	Les performances du \emph{Smart Ray} paraissent décevantes. Un examen plus poussé des résultats montre toutefois une forte interaction entre le temps de sélection et l'emplacement de la cible avec cette technique (voir la figure~\ref{fig:smartRayLocation}). Pour les cibles situées à droite, les performances s'effondrent, car le rayon part également de la droite (tous les sujets étant droitiers) donc rencontre beaucoup d'obstacles. Dans ces conditions, l'heuristique de prédiction du \emph{Smart Ray} échoue plus souvent.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/smartRayLocation}
+		\caption[\emph{Smart Ray} et emplacement des cibles]{Pour les cibles dont les identifiants sont faibles (plutôt situées vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont très mauvais pour les cibles dont les identifiants sont élevés (plutôt à droite). Or, tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite. De fait, il rencontrait beaucoup d'obstacles dans ce cas. Crédit : \cite{grossman2006design}.}
+		\label{fig:smartRayLocation}
+	\end{figure}
+
+	Ces mauvais résultats du \emph{Smart Ray} sont toutefois à nuancer, puisque les sujets avaient pour instruction de ne pas bouger leurs pieds ; s'ils avaient pu se déplacer, les résultats auraient probablement été meilleurs, à condition que leur temps de déplacement ne soit pas assez long pour annuler le bénéfice du déplacement.
+	
+	\subsubsection{Distance parcourue par le périphérique}
+	Les auteurs ont par ailleurs mesuré la distance parcourue par le périphérique de pointage au cours d'une tâche de sélection, pour chaque technique évaluée. C'est un résultat important car il est déterminant pour la fatigue ressentie par un utilisateur sur une durée significative. Ici encore, le \emph{Smart Ray} déçoit, tandis que les autres techniques permettent de réduire la distance à parcourir par rapport au curseur ponctuel, comme l'illustre la figure~\ref{fig:rayFootprint}.
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/rayFootprint}
+		\caption[Distance parcourue par le périphérique avec les diverses techniques de \emph{raycasting} évaluées]{Distance parcourue par le périphérique de pointage avec les diverses techniques de \emph{raycasting} évaluées. Les \emph{Depth, Lock} et\emph{Flower Rays} font mieux que le curseur ponctuel, au contraire du \emph{Smart Ray} qui affiche en outre un écart-type considérable. Crédit : \cite{grossman2006design}.}
+		\label{fig:rayFootprint}
+	\end{figure}
+	
+	Là encore on peut s'interroger sur la solidité des distances mesurées sur \emph{Smart Ray} attendu que dans un contexte « réel » les utilisateurs seraient libres de se déplacer. Naturellement, la quantité de mouvement absolue du pointeur pourrait s'en trouver accrue, mais sa quantité de mouvement relatif à l'utilisateur pourrait diminuer. Il resterait à déterminer s'il est plus fatigant de bouger beaucoup son bras, ou un peu son corps et un peu son bras. Cette question est à notre connaissance ouverte.
+	
+	\subsubsection{Taux d'erreurs}
+	Enfin, Grossman \emph{et al.} rapportent que les taux d'erreurs sont avantageux avec ces techniques de \emph{raycasting} avec disambiguïsation, comme le détaille la table~\ref{tab:rayErrors}.
+	
+%	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
+	\begin{table}
+	\centering
+	\begin{tabular}{c c}
+		Type de curseur			& Taux d'erreurs \bigstrut[b] \\ \hline
+		Curseur ponctuel		& 20,7~\%{} \bigstrut[t] \\
+		\emph{Depth Ray}		& 13,3~\%{} \\
+		\emph{Lock Ray}			& 11,1~\%{} \\
+		\emph{Flower Ray}		& 10,9~\%{} \\
+		\emph{Smart Ray}		& 10,4~\%{} \\
+	\end{tabular}
+	\caption[Taux d'erreurs pour les techniques de \emph{raycasting} avec disambiguïsation]{Taux d'erreurs pour les techniques de \emph{raycasting} avec disambiguïsation. Données tirées de~\cite{grossman2006design}.}
+	\label{tab:rayErrors}
+	\end{table}
+	
+	\subsection{Conclusion}
+	L'étude de Grossman \emph{et al.}~\cite{grossman2006design} montre qu'en environnement dense, la sélection par \emph{raycasting} pur est moins efficace qu'un curseur ponctuel, voire impossible, mais que des méthodes de disambiguïsation peuvent permettre d'atteindre de meilleures performances. Dans une certaine mesure, on peut en effet améliorer les temps de sélection, mais les bénéfices sur les taux d'erreurs sont encore plus importants.
+	
+	Permi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple.
+	
+	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de présélection et de disambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à « capturer » la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree d'angle, même si ce n'était pas indiqué par le rendu graphique.
+	
+	Si le \emph{Smart Ray} fournit ici d'assez mauvais résultats, il serait intéressant de le réévaluer dans ce contexte, car d'une part, il souffrirait peut-être moins de l'occultation de la cible si elle était mobile, et d'autre part, il ne serait peut-être plus nécessaire de bouger le rayon pour lever l'ambiguïté, puisqu'en suivant la cible, son poids augmenterait continuellement, tandis que les poids des distracteurs seraient susceptibles de baisser assez rapidement --- à moins que ceux-ci ne se déplacent de façon corrélée à la cible, en étant toujours touchés par le rayon, ce qui est assez improbable sur une durée de plusieurs secondes dans la plupart des cas.
+	
+	Ainsi, les inconvénients principaux de cette technique, à savoir la distance parcourue par le périphérique et l'occultation pourraient être atténués, tandis que l'heuristique de prédiction pourrait \emph{mieux} fonctionner qu'avec des cibles statiques. Nous verrons plus loin que la technique \emph{Hook}~\cite{ortega2013hook}, basée sur un curseur ponctuel, fonctionne à peu près sur ce principe.
 
 \section{Sélection en cascade, grossière, puis fine}
 	\subsection{Principe général et avantages}
