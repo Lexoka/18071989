@@ -963,7 +963,39 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 \section{\emph{Kinematic Endpoint Prediction}}
 	\subsection{Principe et avantages}
-	\cite{lank2007endpoint}
+	La technique \emph{Kinematic Endpoint Prediction}, ou KEP~\cite{lank2007endpoint}, vise à améliorer le \emph{Delphian Desktop} à l'aide d'un modèle théorique de prédiction de point d'arrivée du mouvement, inspiré de la loi de l'à-coup minimum~\cite{hogan1984organizing, richardson2002comparing}\footnotemark{}, et du modèle stochastique du sous-mouvement optimisé~\cite{meyer1990speed}. Lank \emph{et al.} (les auteurs de KEP) font valoir que leur algorithme est deux fois plus précis que les techniques existantes.
+	
+	\footnotetext{L'à-coup, aussi appelé \emph{jerk} ou \emph{jolt} dans la littérature anglo-saxonne, est le vecteur quantifiant le changement d'accélération d'un objet. Mathématiquement, il s'agit de la dérivée de l'accélération par rapport au temps --- c'est-à-dire de la dérivée seconde de la vitesse, ou troisième de la position, toujours par rapport au temps.}
+	
+	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi « douce » que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
+	
+	\begin{align}
+		\label{eq:kepP}
+		x(t) &= 6t^{5} + 10t^{3} - 15t^{4} \\
+		\label{eq:kepV}
+		v(t) &= 30t^{2}(t - 1)^{2}
+	\end{align}
+	
+	Ces équations sont représentées graphiquement sur la figure~\ref{fig:kepPS}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/kepPS}
+		\caption[Loi de l'à-coup minimum --- position et vitesse du curseur en fonction du temps]{Position et vitesse du curseur en fonction du temps, prédites par la loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:kepPS}
+	\end{figure}
+	
+	Toutefois, pour prédire le point d'arrivée d'un mouvement, il est plus utile de connaître la vitesse en fonction de la distance. Lank \emph{et al.} ont donc transposé le modèle de l'à-coup minimum pour obtenir le profil tracé en bleu sur la figure~\ref{fig:kepQuad}, ainsi qu'une approximation donnée par un polynôme quadratique en noir sur la même figure.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/kepQuad}
+		\caption[Loi de l'à-coup minimum --- vitesse du curseur en fonction du temps, approximation quadratique]{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir. L'équation du polynôme et la valeur du coefficient de détermination $R^{2}$ sont également indiquées. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:kepQuad}
+	\end{figure}
+	
+	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique.
+	
 	\subsection{Inconvénients}
 		
 \section{\emph{Speed}}
