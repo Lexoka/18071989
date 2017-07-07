@@ -94,6 +94,8 @@
 	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles « quelconques » --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
 	
 	Celle-ci demeure donc, à notre connaissance, incapable de modéliser la difficulté de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
+	\subsection{Balistique bidule}
+	~\cite{woodworth1899accuracy, plamondon1997speed}
 
 \section{Curseurs zonaux}
 	\subsection{Principe et avantages généraux}
@@ -501,8 +503,70 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\footnotetext{Le système EVE (Environnement Virtuel Evolutif), permet d'étudier à la fois les aspects multisensoriels et collaboratifs des interactions humaines au sein de mondes virtuels. Les spécificités du système EVE, comme ses dimensions très grandes, une stéréoscopie multi-utilisateurs haute qualité, des rendus haptiques et audio 3D, en font un dispositif unique au monde à la pointe de la technologie dans le domaine de la réalité virtuelle.
 	\url{https://www.limsi.fr/index.php/fr/recherche/venise/menuitem-venise-demos-fr}}
 	
-	\subsection{Inconvénients}
+	Le \emph{Shadow Cone} fonctionne comme un cône de sélection, mais avec une disambiguïsation explicite : lorsque l'utilisateur presse le bouton de son périphérique de pointage, tous les objets dans le cône sont présélectionnés ; puis, l'utilisateur déplace le périphérique et son cône avec, de telle sorte que certains des objets présélectionnés ne sont plus dans le cône. Dès lors qu'ils en sortent, ils ne sont plus présélectionnés, et aucun objet n'est ajouté à la présélection. Quand l'utilisateur relâche le bouton de son périphérique, tous les objets se trouvant encore dans le cône --- et l'ayant toujours été --- sont sélectionnés. Ce fonctionnement est illustré par la figure~\ref{fig:shadow}.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadow}
+		\caption[Fonctionnement du \emph{Shadow Cone}]{Fonctionnement du \emph{Shadow Cone}. (a) Sélection par \emph{raycasting} classique : le premier objet croisé par le rayon est sélectionné (A ici). (b) Sélection par cône : l'objet le plus proche de l'axe de révolution du cône est sélectionné (D ici). (c) \emph{Shadow Cone} : l'objet sélectionné est celui qui est inclus dans le cône de sélection à tous les instants entre la pression du bouton du périphérique et son relâchement (G ici). Crédit : \cite{steed20043d}.}
+		\label{fig:shadow}
+	\end{figure}
+	
+	\subsection{Performances}
+	Steed et Parker ont évalué les temps de sélection du \emph{Shadow Cone}, comparé à la sélection par rayon ou par cône.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
+		\caption[Performances du \emph{Shadow Cone} --- Grande cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowSLarge}
+	\end{figure}
+	
+	Les temps de sélection mesurés pour les différentes techniques, avec et sans suivi de la tête, sont présentés sur la figure~\ref{fig:shadowSLarge} pour une grande cible seule, la figure~\ref{fig:shadowSSmall} pour une petite cible seule, la figure~\ref{fig:shadowPLarge} pour une grande cible avec un distracteur, la figure~\ref{fig:shadowPSmall} pour une petite cible avec un distracteur, la figure~\ref{fig:shadowCLarge} pour une grande cible avec de nombreux distracteurs, et enfin la figure~\ref{fig:shadowCSmall} pour une petite cible avec de nombreux distracteurs.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
+		\caption[Performances du \emph{Shadow Cone} --- Petite cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une petite cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowSSmall}
+	\end{figure}
+	
+	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
+		\caption[Performances du \emph{Shadow Cone} --- Paire de grands objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une paire de grands objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Aucune différence significative n'est mesurée entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowPLarge}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadowPSmall}
+		\caption[Performances du \emph{Shadow Cone} --- Paire de petits objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une paire de petits objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Le \emph{Shadow Cone} est ici plus lent que la sélection par cône, mais génère moins d'erreurs (0,2 par utilisateur contre 0,6) ; la sélection par rayon ne produisit aucune erreur, là encore avec suivi de la tête. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowPSmall}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
+		\caption[Performances du \emph{Shadow Cone} --- Grappe de gros objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de gros objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowCLarge}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
+		\caption[Performances du \emph{Shadow Cone} --- Grappe de petits objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de petits objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Encore une fois, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. De plus, la sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, toujours avec suivi de la tête bien sûr. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowCSmall}
+	\end{figure}
+	
+	\subsection{Inconvénients}
+	Force est de constater tout d'abord que les performances du \emph{Shadow Cone} ne sont pas, en moyenne, particulièrement meilleures que celles du \emph{raycasting} ou de la sélection par cône, même si certains contextes mettent en avant ses qualités.
+	
+	Mais le principal inconvénient concerne probablement les cibles mobiles, puisque le \emph{Shadow Cone} impose de maintenir la cible visée à l'intérieur du cône pendant toute la phase de disambiguïsation, ce qui peut s'avérer extrêmement difficile avec une cible en mouvement, \emph{a fortiori} si ses mouvements sont rapides et/ou imprévisibles. Par conséquent, nous ne pouvons retenir cette technique pour les applications qui nous intéressent.
+	
+	Néanmoins, observons qu'en assouplissant quelque peu cette contrainte, le \emph{Shadow Cone} fournirait potentiellement de meilleurs résultats avec les cibles mobiles. C'est en substance ce que propose le \emph{Smart Ray}~\cite{grossman2006design}, décrit dans la section suivante.	
 	
 \section{\emph{Raycasting} avec disambiguïsation}
 	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
@@ -785,6 +849,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 % http://books.google.fr/books?id=h9FEnj3C7MoC&pg=PA102&lpg=PA102&dq=head+tracking+70%25+of+gaze&source=bl&ots=cp8OJm_G-1&sig=0jsxP3V20VGuxmIvg9CB1sUcyeU&hl=en&sa=X&ei=JFUsU-rVJYam0AW1zYDwAw&redir_esc=y#v=onepage&q&f=false
 \section{Suivi de la tête et des yeux}
 	\subsection{Principe général et avantages}
+	~\cite{zhai1999manual}
 	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. Il y a au moins deux façons d'estimer la direction du regard : la première consiste à capturer les mouvements de la tête de l'utilisateur, et à supposer qu'il regarde droit devant lui. Comme cette hypothèse est généralement fausse, on génère un cone dont le sommet est la tête de l'utilisateur, et dont l'axe de révolution correspond à la direction (estimée) du regard. Or, 40~\%{} à 70~\%{} du déplacement du regard est déterminé par la rotation de la tête, tandis que le reste résulte des mouvements oculaires.[ref bouquin] Si cela s'avère souvent insuffisant pour effectuer une sélection directe, le suivi de tête peut présenter un certain intérêt pour la sélection en cascade.
 		
 	Pour estimer la direction du regard avec plus de précision, on peut capturer non seulement la position et l'orientation de la tête, mais également l'orientation des yeux. Cette option séduisante présente toutefois quelques difficultés :
@@ -805,6 +870,41 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Inconvénients}
 	
 	\subsection{Inconvénients généraux}
+	
+\section{Le \emph{Delphian Desktop}}
+	\subsection{Principe et avantages}
+	Le \emph{Delphian Desktop}~\cite{asano2005predictive} est une technique de prédiction de l'intention de l'utilisateur, qui analyse la position du curseur dans le temps pour essayer de déterminer si un pic de vélocité pour le mouvement en cours a été atteint. Il s'inspire d'observations sur les systèmes perceptif et moteur de l'humain, issues de diverses études de psychologie et kinésiologie~\cite{accot2003refining, graham1995pointing, graham1996physical, mackenzie1992extending, mackenzie1994prediction, takagi2002fundamental, walker1993spatial}.
+	
+	On sait en effet depuis un étude de Walker \emph{et al.}~\cite{walker1993spatial} que la hauteur du pic de vitesse d'un curseur croît avec la distance entre la cible et lui-même, avec un profil typique illustré par la figure~\ref{fig:delphianPeak}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
+		\caption[Profil de vitesse d'un curseur pendant une tâche de pointage]{Profil de vitesse d'un curseur pendant une tâche de pointage. Le curseur accélère au cours de la phase de balistique (\emph{Plan time}) puis décélère pendant la phase de correction (\emph{Adjustment time}). Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianPeak}
+	\end{figure}
+	
+	Cette croissance est quant à elle illustrée par la figure~\ref{fig:delphianSpeedDist}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/delphianSpeedDist}
+		\caption[Pic de vitesse du curseur en fonction de la distance à parcourir]{Pic de vitesse du curseur en fonction de la distance à parcourir. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianSpeedDist}
+	\end{figure}
+	
+	Le fonctionnement du \emph{Delphian Desktop} est basé sur les hypothèses suivantes :
+	
+	\begin{enumerate}
+		\item Le curseur suit une ligne approximativement droite vers la cible ;
+		\item La relation entre la distance à parcourir et le pic de vitesse du curseur est linéaire : $D = aPV + b$ où $D$ est la distance, $PV$ est le pic de vitesse, $a$ et $b$ sont des constantes.
+	\end{enumerate}
+	
+	Ainsi, à partir du moment où l'on détermine que $PV$ a été atteint, si les constantes $a$ et $b$ sont correctement calibrées, il est possible de calculer D, et puisque le mouvement du curseur est supposé rectiligne, l'on peut estimer le point de destination du curseur. Ces constantes peuvent se calibrer par régression linéaire à partir d'enregistrement de trajectoires de curseur pour un individu donné --- en effet, pour des résultats optimaux, on calibrera les constantes différemment pour chaque personne.
+	
+	Dès lors que le \emph{Delphian Desktop} détermine que $PV$ est atteint, il déplace le curseur directement vers la position estimée. L'utilisateur n'a plus alors qu'à sélectionner la cible s'il est déjà dessus, ou effectuer le déplacement nécessaire (en principe petit) avant de le faire. Il est toutefois possible de modifier ce système afin que le curseur se déplace directement et automatiquement vers la cible la plus proche de la position finale estimée.
+	
+	\subsection{Inconvénients}
 	
 \section{\emph{Kinematic Endpoint Prediction}}
 	\subsection{Principe et avantages}
