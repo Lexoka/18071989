@@ -962,16 +962,18 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Il ne nous semble donc pas possible de retenir le \emph{Delphian Desktop} comme solution viable aux tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
 	
 \section{\emph{Kinematic Endpoint Prediction}}
-	\subsection{Principe et avantages}
+	\subsection{Principe}
 	La technique \emph{Kinematic Endpoint Prediction}, ou KEP~\cite{lank2007endpoint}, vise à améliorer le \emph{Delphian Desktop} à l'aide d'un modèle théorique de prédiction de point d'arrivée du mouvement, inspiré de la loi de l'à-coup minimum~\cite{hogan1984organizing, richardson2002comparing}\footnotemark{}, et du modèle stochastique du sous-mouvement optimisé~\cite{meyer1990speed}. Lank \emph{et al.} (les auteurs de KEP) font valoir que leur algorithme est deux fois plus précis que les techniques existantes.
 	
 	\footnotetext{L'à-coup, aussi appelé \emph{jerk} ou \emph{jolt} dans la littérature anglo-saxonne, est le vecteur quantifiant le changement d'accélération d'un objet. Mathématiquement, il s'agit de la dérivée de l'accélération par rapport au temps --- c'est-à-dire de la dérivée seconde de la vitesse, ou troisième de la position, toujours par rapport au temps.}
 	
+	\subsubsection{Fondements théoriques et mathématiques}
+	\paragraph{Minimisation de l'à-coup.}
 	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi « douce » que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
 	
 	\begin{align}
 		\label{eq:kepP}
-		x(t) &= 6t^{5} + 10t^{3} - 15t^{4} \\
+		x(t) &= 6t^{5} - 15t^{4} + 10t^{3} \\
 		\label{eq:kepV}
 		v(t) &= 30t^{2}(t - 1)^{2}
 	\end{align}
@@ -985,6 +987,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:kepPS}
 	\end{figure}
 	
+	\paragraph{Approximation quadratique.}
 	Toutefois, pour prédire le point d'arrivée d'un mouvement, il est plus utile de connaître la vitesse en fonction de la distance. Lank \emph{et al.} ont donc transposé le modèle de l'à-coup minimum pour obtenir le profil tracé en bleu sur la figure~\ref{fig:kepQuad}, ainsi qu'une approximation donnée par un polynôme quadratique en noir sur la même figure.
 	
 	\begin{figure}[H]
@@ -1005,6 +1008,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	En effet, les résultats ne sont réellement satisfaisants que si l'extrapolation est faite après 80~\%{} du mouvement. Attendu que les 10~\%{} finaux (en distance) du mouvement représentent jusqu'à 50~\%{} du temps de sélection~\cite{mackenzie1987three, graham1996physical}, ce n'est pas nécessairement un problème majeur.
 	
+	\paragraph{Coefficients de correction.}
 	En pratique, Lank \emph{et al.} ont simplement calculé des coefficients de correction, par lesquels il suffit de multiplier la distance estimée fournie par l'approximation quadratique pour obtenir la distance estimée par le modèle d'à-coup minimum, pour un pourcentage de mouvement effectué $s_{i}$ donné. Un échantillon de ces coefficients est présenté par la table~\ref{tab:kepCoeffs}.
 	
 	\begin{table}
@@ -1025,9 +1029,24 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Ainsi, pour prédire le point d'arrivée du mouvement d'un utilisateur à partir d'un mouvement partiel, il faut premièrement ajuster un polynôme quadratique aux données $(x, v(x))$ du mouvement partiel. Naturellement, ce polynôme admet une racine en $(0,0)$, mais aussi une autre en $x_{calc}$. Il faut trouver la véritable racine, $x_{véritable}$. Pour cela, il faut déterminer le bon coefficient de correction. Or, cela nécessite de connaître $s_{i}$. Autrement dit, il faut savoir où l'on en est du mouvement en cours. Il faut pour cela résoudre l'équation $d = s_{i}c_{c}x_{calc}$ où $d$ est la distance parcourue, et $c_{c}$ est le coefficient de correction. Or, $c_{c}$ est fonction de $s_{i}$, donc l'équation peut être résolue numériquement, en environ 1 milliseconde d'après Lank \emph{et al.}~\cite{lank2007endpoint}.
 	
+	\subsubsection{Précision de la prédiction}
+	Lank \emph{et al.} ont validé leur modèle en comparant les prédictions de KEP à des mesures empiriques. Les résultats de cette validation sont exposées dans les graphiques de la figure~\ref{fig:kepErrors}, pour des cibles de 15 à 75 pixels de diamètre.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/kepErrors}
+		\caption[KEP --- erreurs de prédiction]{Erreurs de prédiction du point d'arrivée par KEP en fonction du pourcentage de mouvement effectué ($s_{i}$) auquel l'extrapolation est effectuée. Chaque graphique correspond aux résultats obtenus avec des cibles circulaires d'un diamètre donné, mentionné au bas de chaque graphique (de 15 à 75 pixels, sur un écran de 1024~$\times$~768 pixels). Les meilleurs résultats sont obtenus pour $s_{i} = 85~\%{}$. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:kepErrors}
+	\end{figure}
+	
+	Compte tenu de ces résultats, les auteurs ont opté pour une valeur optimale de $s_{i}$ de 80~\%{}, soit environ 67~\%{} de la durée du sous-mouvement. Ils notent qu'ainsi 42,4~\%{} des prédictions de point d'arrivée sont bien à l'intérieur de la cible.	
 	
 	\subsection{Inconvénients}
+	Si KEP semble plus précis que le \emph{Delphian Desktop}~\cite{asano2005predictive} présenté plus haut, il est malheureux que ses auteurs n'aient pas mesuré ses performances en temps de sélection et taux d'erreur, afin de pouvoir présenter des résultats plus facilement comparables. Quoi qu'il en soit, l'apport théorique de l'étude de Lank \emph{et al.}~\cite{lank2007endpoint} est très précieux.
+	
+	Néanmoins, KEP souffre des mêmes inconvénients majeurs que le \emph{Delphian Desktop}, en particulier sa dépendance à une hypothèse très forte, celle de la rectitude du mouvement. Comme nous l'expliquions plus haut, cette hypothèse ne saurait tenir pour des cibles mobiles, \emph{a fortiori} si leurs mouvements sont rapides et/ou imprévisibles. De fait, pour les mêmes raisons que le \emph{Delphian Desktop}, nous ne pouvons retenir KEP sous sa forme existante.
+	
+	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer que KEP puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
 		
 \section{\emph{Speed}}
 	\subsection{Principe et avantages}
