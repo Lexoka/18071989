@@ -904,7 +904,62 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Dès lors que le \emph{Delphian Desktop} détermine que $PV$ est atteint, il déplace le curseur directement vers la position estimée. L'utilisateur n'a plus alors qu'à sélectionner la cible s'il est déjà dessus, ou effectuer le déplacement nécessaire (en principe petit) avant de le faire. Il est toutefois possible de modifier ce système afin que le curseur se déplace directement et automatiquement vers la cible la plus proche de la position finale estimée.
 	
+	\subsection{Performances}
+	\subsubsection{Temps de sélection}
+	Les résultats obtenus par Asano \emph{et al.}\cite{asano2005predictive} sont présentés sur la figure~\ref{fig:delphianTimes}. On y constate que le \emph{Delphian Desktop} est plus lent que la sélection non assistée lorsque les cibles sont proches, mais plus rapides quand elles sont distantes.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/delphianTimes}
+		\caption[\emph{Delphian Desktop} --- temps de sélection]{Temps de sélection en fonction de la distance entre le curseur et la cible, avec le \emph{Delphian Desktop} (\emph{Prediction}, en gris) et sans (\emph{Non-Prediction}, en blanc). Cette technique se montre contre-productive pour les faibles distances, mais bénéfiques quand les distances sont grandes. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianTimes}
+	\end{figure}
+
+	Cette tendance est d'ailleurs mieux illustrée par la figure~\ref{fig:delphianTimesID}, qui met en évidence les différences de pentes entre les droites qui représentent le temps de sélection en fonction de l'indice de difficulté (ID) pour la sélection non assistée et pour le \emph{Delphian Desktop}. On peut supposer que, pour des cibles d'ID très élevé, celui-ci serait d'autant plus avantageux.
+	
+	Il convient néanmoins de remarquer que dasns l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/delphianTimesID}
+		\caption[\emph{Delphian Desktop} --- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'indice de difficulté (ID), avec le \emph{Delphian Desktop} (\emph{Prediction}, en noir) et sans (\emph{Non-Prediction}, en blanc). Cette technique se montre contre-productive pour les faibles distances, mais bénéfiques quand les distances sont grandes. La droite qui estime son temps de sélection en fonction de l'ID est d'une pente nettement plus douce, ce qui est de bon augure pour d'hypothétiques cibles encore plus distantes. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianTimesID}
+	\end{figure}
+	
+	Asano \emph{et al.} ont par ailleurs mesuré les erreurs de prédiction de la direction du mouvement, c'est-à-dire l'écart angulaire entre la direction estimée par le \emph{Delphian Desktop} et la droite passant par le point de départ du curseur et par le centre de la cible. La figure~\ref{fig:delphianTimesErrors} présente les résultats obtenus. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/delphianTimesErrors}
+		\caption[\emph{Delphian Desktop} --- temps de sélection en fonction de l'erreur de prédiction]{Temps de sélection en fonction de l'erreur de prédiction de la direction du mouvement. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianTimesErrors}
+	\end{figure}
+	
+	\subsubsection{Erreurs}
+	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreur (les clics hors de la cible), les ratios d'erreur de distance $R\_{ED}$ définis par $R\_{ED} = D\_{E}/D$ où $D\_{E}$ est la distance entre le point d'arrivée du « saut » effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
+	
+	\begin{table}
+	\centering
+	\begin{tabular}{c | c c }
+		Type d'erreur						& Quantité d'erreur	\bigstrut[b] \\ \hline
+		Erreur de prédiction de direction	& 3,89\textdegree	\bigstrut[t] \\
+		Taux d'erreurs						& 6,59~\%{}			\\
+		Ratio d'erreur de distance			& 15,4~\%{}			\\
+	\end{tabular}
+	\caption[\emph{Delphian Desktop} --- Erreurs]{Différentes erreurs mesurées pour le \emph{Delphian Desktop}, toutes conditions confondues. Données tirées de~\cite{asano2005predictive}.}
+	\label{tab:delphianErrors}
+	\end{table}
+	
 	\subsection{Inconvénients}
+	L'inconvénient du \emph{Delphian Desktop} le plus évident est celui mis en lumière par les résultats présentés plus haut : pour les courtes distances, il est contre-productif. Attendu que cet inconvénient est connu et assez précisément quantifié, une solution pourrait être de simplement le désactiver dynamiquement lorsqu'il prédit une distance de mouvement inférieur à celle à partir de laquelle il est utile.
+	
+	Cela pourrait cependant être perturbateur pour les utilisateurs qui ne sauraient jamais pas toujours s'ils doivent s'attendre à un « saut » ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
+	
+	Par ailleurs, l'hypothèse de rectitude du mouvement est très forte et généralement fausse ; bien entendu, elle peut être assez proche de la réalité pour fournir de bons résultats, mais lorsque ce n'est pas le cas, il est difficile de régler le problème. Une solution potentielle serait d'appliquer une deuxième technique de curseur après le saut du \emph{Delphian Desktop}, par exemple le \emph{Bubble Cursor}.
+	
+	Toutefois, cette hypothèse de rectitude devient totalement caduque lorsque les cibles sont mobiles, \emph{a fortiori} quand leurs mouvements sont rapides et imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
+	
+	Il ne nous semble donc pas possible de retenir le \emph{Delphian Desktop} comme solution viable aux tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
 	
 \section{\emph{Kinematic Endpoint Prediction}}
 	\subsection{Principe et avantages}
