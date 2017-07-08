@@ -1155,7 +1155,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\subsubsection{Accumulation des scores}
-	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. L'équation~\ref{eq:intensContrib} décrit la contribution au score d'une cible donné à l'instant $t$, et l'équation~\ref{eq:intensTotal} définit le score total d'une cible. Pour les grandeurs de l'équation~\ref{eq:intensContrib}, on se référera à la figure~\ref{fig:intensCone} et à sa légende.
+	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. L'équation~\ref{eq:intensContrib} décrit la contribution au score d'une cible donné à l'instant $t$, et l'équation~\ref{eq:intensTotal} définit le score total d'une cible. Pour les grandeurs de l'équation~\ref{eq:intensContrib}, on se référera à la figure~\ref{fig:intensCone} et à sa légende ; $k$ est une constante réelle.
 	
 	Pour l'équation~\ref{eq:intensTotal}, on notera que $s_{total}(t)$ est le score total à l'instant $t$, $c_{s}$ est le taux de diminution naturelle du score, et $c_{g}$ est son taux de croissance ; ces deux constantes réelles sont déterminées empiriquement. De Haan \emph{et al.} précisent qu'elles représentent un compromis entre \emph{snappiness} et \emph{stickiness}, c'est-à-dire qu'elles déterminent l'inertie de la sélection. 
 	
@@ -1185,7 +1185,19 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:intenSnap}
 	\end{figure}
 	
-	Tant que la cible prédite restera la même, le rayon s'adaptera pour se plier vers elle ; si elle change, le rayon sautera immédiateent vers la nouvelle.
+	Tant que la cible prédite restera la même, le rayon s'adaptera pour se plier vers elle ; si elle change, le rayon sautera immédiatement vers la nouvelle. L'utilisation d'une heuristique avec une certaine « inertie » rend la technique nettement plus robuste pour les sélections difficiles, particulièrement avec des cibles mouvantes (voir la figure~\ref{fig:intenSnap2}).
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intenSnap2}
+		\caption[\emph{IntenSelect} --- \emph{Snapping feedback} II]{Schéma représentant la technique \emph{IntenSelect} en action avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon, et même avec un cône, on peut la « perdre » à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intenSnap2}
+	\end{figure}
+	
+	\subsubsection{Flexibilité}
+	De Haan \emph{et al.} font remarquer que leur technique confère une certaine flexibilité, puisque les fonctions de calcul et accumulation du score peuvent être modifiées, non seulement pour chaque application, mais encore pour chaque objet. Ainsi, un objet ayant une plus forte probabilité d'intéresser l'utilisateur pourrait avoir un score croissant plus rapidement ; un objet ayant une sous-partie d'intérêt particulier (comme une porte et sa poignée) pourrait rediriger le score du tout vers la partie.
+	
+	Les possibilités sont extrêmement nombreuses et laissées à la libre appréciation des concepteurs d'applications. Reconnaissons simplement l'avantage (potentiellement considérable) de fonctions de \emph{scoring} facilement paramétrables.
 	
 	\subsection{Inconvénients}
 		
