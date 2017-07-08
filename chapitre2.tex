@@ -1157,7 +1157,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Accumulation des scores}
 	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. L'équation~\ref{eq:intensContrib} décrit la contribution au score d'une cible donné à l'instant $t$, et l'équation~\ref{eq:intensTotal} définit le score total d'une cible. Pour les grandeurs de l'équation~\ref{eq:intensContrib}, on se référera à la figure~\ref{fig:intensCone} et à sa légende ; $k$ est une constante réelle.
 	
-	Pour l'équation~\ref{eq:intensTotal}, on notera que $s_{total}(t)$ est le score total à l'instant $t$, $c_{s}$ est le taux de diminution naturelle du score, et $c_{g}$ est son taux de croissance ; ces deux constantes réelles sont déterminées empiriquement. De Haan \emph{et al.} précisent qu'elles représentent un compromis entre \emph{snappiness} et \emph{stickiness}, c'est-à-dire qu'elles déterminent l'inertie de la sélection. 
+	Pour l'équation~\ref{eq:intensTotal}, on notera que $s_{total}(t)$ est le score total à l'instant $t$, $c_{s}$ est le taux de diminution naturelle du score, et $c_{g}$ est son taux de croissance ; ces deux constantes réelles sont déterminées empiriquement. De Haan \emph{et al.} précisent qu'elles représentent un compromis entre \emph{snappiness} et \emph{stickiness}, c'est-à-dire qu'elles déterminent l'inertie de la sélection.
 	
 	\begin{align}
 		\label{eq:intensContrib}
@@ -1199,7 +1199,28 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Les possibilités sont extrêmement nombreuses et laissées à la libre appréciation des concepteurs d'applications. Reconnaissons simplement l'avantage (potentiellement considérable) de fonctions de \emph{scoring} facilement paramétrables.
 	
+	\subsection{Performances}
+	Les perforances d'\emph{IntenSelect} sont bonnes et le sont particulièrement avec des cibles mobiles, comme l'on pouvait s'y attendre --- c'est du moins ce qu'indique l'étude empirique menée par de Haan \emph{et al.}~\cite{de2005intenselect}, qui mettent tout de même le lecteur en garde en précisant qu'ils n'avaient que 8 sujets. Quoi qu'il en soit, leurs résultats sont présentés sur la figure~\ref{fig:intensPerf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intensPerf}
+		\caption[\emph{IntenSelect} --- Performances]{Performances de la technique \emph{IntenSelect} en sélection de cibles statiques (à gauche) et mobiles (à droite), comparée au \emph{raycasting} et à la sélection par cône. Les résultats ne se démarquent pas de ceux de la sélection par cône avec des cibles statiques mais c'est le cas quand elles bougent. Les boîtes représentent les données entre le premier et le dernier quartile, avec la valeur médiane indiquée en rouge. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intensPerf}
+	\end{figure}
+	
+	Bien qu'\emph{IntenSelect} ne puisse faire mieux que la sélection par cône avec des cibles statiques, cette technique brille plus avec des cibles mobiles. Les sujets expérimentés de cette étude empirique rapportent parfois qu'avec des cibles statiques, \emph{IntenSelect} était trop « collant ». De fait, ils étaient forcés d'attendre un peu avant que le rayon s'attache à la cible qu'ils visaient réellement. Les autres sujets ne rapportent pas de différence, mais furent en réalité \emph{plus} rapides avec \emph{IntenSelect}.
+	
+	Nous pouvons émettre l'hypothèse que cette technique n'est réellement utile que lorsque la tâche est difficile, et que la difficulté effective varie d'un utilisateur à l'autre. Peut-être serait-il opportun de réduire l'inertie de la fonction de \emph{scoring} pour les tâches les plus faciles, ce qui inclut les tâches de difficulté modérée effectuées par des utilisateurs expérimentés.
+	
+	On notera que certains utilisateurs très expérimentés ont réussi à obtenir de bons résultats avec le \emph{raycasting} sur des cibles mobiles\ldots{} en tirant parti de la périodicité de leurs mouvements pour les intercepter. Il nous semble qu'ils ont ici exploité une faille du protocole expérimental. Dans un contexte plus réaliste --- peu des applications que nous avons identifiées dans le premier chapitre présentent des cibles aux mouvements périodiques --- le \emph{raycasting}, et sans doute la sélection par cône, auraient probablement obtenu des résultats moins bons encore. Naturellement, les performances relatives d'\emph{IntenSelect} ne s'en trouveraient qu'améliorées.
+	
 	\subsection{Inconvénients}
+	Le premier inconvénient d'\emph{IntenSelect} est évident : il s'est montré moins performant que la sélection par cône avec des cibles statiques. Néanmoins, comme nous le soulignions ci-dessus, il est probable que cette situation puisse s'inverser en adaptant les fonctions de calcul et d'accumulation de score afin qu'il réagisse plus rapidement. Sans doute le problème du calibrage optimal de ses fonctions nécessiterait-il une étude entière à lui seul, voire plus, mais le potentiel nous paraît grand. Malgré tout, éliminer totalement le coût associé à l'inertie d'une telle heuristique de prédiction pourrait s'avérer très difficile, voire impossible.
+	
+	L'étude menée par de Haan \emph{et al.} est, de leur propre aveu, informelle. On regrettera en effet que, dans la condition dite dynamique, ils ne se soient intéressés qu'à des cibles de taille relativement grande. Par ailleurs, la nature précise du mouvement de ces cibles n'est pas précisée, même si les auteurs révèlent qu'il était périodique, ce qui ne nous semble pas souhaitable pour une étude ce type.
+	
+	La question de la robustesse d'\emph{IntenSelect} pour des tâches particulièrement difficiles avec des cibles plus petites, beaucoup plus nombreuses, avec des mouvements rapides et imprévisibles demeure donc ouverte. Reconnaissons néanmoins qu'\emph{IntenSelect} nous paraît mieux équipée que bien d'autres techniques pour gérer ces considérables difficultés.
 		
 \section{Hook}
 	\subsection{Principe et avantages}
