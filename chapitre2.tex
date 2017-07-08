@@ -1134,6 +1134,16 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\item[4. Retour (\emph{feedback}) :] L'objet de score maximal, donc de premier rang, est mis en surbrillance et indiqué par un rayon qui se « tord » vers lui.
 	\end{description}
 	
+	\subsubsection{Test d'appartenance au volume de sélection}
+	Le volume de sélection est un simple cône, et pour chaque point donné, il suffit de vérifier s'il est dans le cône pour déterminer s'il est dans le volume de sélection, et donc s'il doit être pris en compte pour l'étape 2 de l'algorithme. Le détail du test d'appartenance est fourni par la figure~\ref{fig:intensCone}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intensCone}
+		\caption[\emph{IntenSelect} --- Test d'appartenance au volume de sélection]{Schéma illustrant le test d'appartenance du point $P$ au volume de sélection d'\emph{IntenSelect}. Notez que $d_{perp}$ est la distance entre $P$ et sa projection sur le rayon, et $d_{proj}$ est la distance entre cette projection et l'origine du rayon. De plus, $\beta_{cone}$ est l'angle d'ouverture du cône de sélection, et $\alpha$ est l'angle formé par le rayon et la droite passant par l'origine du rayon et par $P$. Si $\alpha < \beta_{cone}$, alors $P$ est dans le volume de sélection. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intensCone}
+	\end{figure}
+	
 	\subsubsection{Métrique}
 	La métrique utilisée dans l'étape 2 est illustrée par la figure~\ref{fig:intensMetric}.
 	
@@ -1145,14 +1155,35 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\subsubsection{Accumulation des scores}
-	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. 
+	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. L'équation~\ref{eq:intensContrib} décrit la contribution au score d'une cible donné à l'instant $t$, et l'équation~\ref{eq:intensTotal} définit le score total d'une cible. Pour les grandeurs de l'équation~\ref{eq:intensContrib}, on se référera à la figure~\ref{fig:intensCone} et à sa légende.
+	
+	Pour l'équation~\ref{eq:intensTotal}, on notera que $s_{total}(t)$ est le score total à l'instant $t$, $c_{s}$ est le taux de diminution naturelle du score, et $c_{g}$ est son taux de croissance ; ces deux constantes réelles sont déterminées empiriquement. De Haan \emph{et al.} précisent qu'elles représentent un compromis entre \emph{snappiness} et \emph{stickiness}, c'est-à-dire qu'elles déterminent l'inertie de la sélection. 
 	
 	\begin{align}
 		\label{eq:intensContrib}
-		a = b \\
+		s_{contrib}(t) &= 1 - \frac{\arctan \left(\frac{d_{perp}(t)}{\left(d_{proj}(t)\right)^{k}}\right)}{\beta_{cone}} \\
 		\label{eq:intensTotal}
-		b = a
+		s_{total}(t) &= s_{total}(t-1)c_{s} + s_{contrib}(t)c_{g}
 	\end{align}
+	
+	Un exemple synthétique d'accumulation de score par une cible d'abord hors du volume de sélection, puis dedans, puis à nouveau dehors est représenté sur la figure~\ref{fig:intensAccumul}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intensAccumul}
+		\caption[\emph{IntenSelect} --- Accumulation de score]{Représentation d'un exemple synthétique d'accumulation de score pour une cible. À partir de $t = 60$, la cible est précisément sélectionnée par le cône et son score augmente ; à $t = 180$, elle n'est plus, et son score diminue rapidement. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intensAccumul}
+	\end{figure}
+	
+	\subsubsection{Retour (\emph{feedback})}
+	À tout instant $t$, l'objet dont le score accumulé est maximal est considéré comme la cible choisie ou active. Le rayon est tracé à l'aide de la suite \emph{Virtual SprintTools}~\cite{koutek2001spring} qui détermine une courbe de Bézier atteignant la cible visée (ou du moins estimée). Ce fonctionnement est illustré sur la figure~\ref{fig:intenSnap}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intenSnap}
+		\caption[\emph{IntenSelect} --- \emph{Snapping feedback}]{Schéma représentant la technique \emph{IntenSelect} en action. Le rayon de sélection est représenté par un mince trait noir, tandis que le rayon bordeaux se courbe pour atteindre la cible prédite. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intenSnap}
+	\end{figure}
 	
 	\subsection{Inconvénients}
 		
