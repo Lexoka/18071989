@@ -835,7 +835,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemble, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles.
 	
-	\subsubsection{Inconvénients généraux}
+	\subsection{Inconvénients généraux}
 	Les techniques de sélection en cascade pouvant prendre des formes très diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable.
 	
 	Notons que la phase grossière ne se fait pas nécessairement avec le même périphérique que la phase fine ; elle peut par exemple se baser sur une estimation de la direction du regard de l'utilisateur, voire se faire automatiquement, par exemple lorsque l'utilisateur focalise son regard sur une zone approximativement constante pendant un certain laps de temps.
@@ -1111,9 +1111,48 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer que SPEED puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
 
 
-\section{\emph{Intenselect}}
-	\subsection{Principe et avantages}
-	~\cite{de2005intenselect}
+\section{\emph{IntenSelect}}
+	\subsection{Motivations}
+	De Haan \emph{et al.}~\cite{de2005intenselect} observent que le \emph{raycasting} fonctionne mal pour sélectionner des objets petits, fins, ou distants ; occultés ou dans un milieu très dense ; ou caractérisés par un comportement dynamique complexe. C'est pour cette raison qu'ils ont développé une nouvelle méthode d'interaction baptisée \emph{IntenSelect}, visant à faciliter la sélection de cibles. Ils identifient notamment les simulations de dynamique moléculaire comme une application particulièrement exigeante, ainsi que nous le soulignions dans le premier chapitre de ce manuscrit. Cette observation est illustrée par la figure~\ref{fig:intensMD}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intensMD}
+		\caption[Sélection d'un atome dans une simulation de dynamique moléculaire]{Schéma illustrant la sélection d'un atome dans une simulation de dynamique moléculaire. L'environnement très dense rend la tâche particulièrement difficile. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intensMD}
+	\end{figure}
+
+	De Haan \emph{et al.} notent par ailleurs que le mouvement des cibles ne fait qu'exacerber les difficultés rencontrées avec les cibles distantes et/ou de petite taille.
+	
+	\subsection{Principe}
+	L'algorithme \emph{IntenSelect} peut être décrit simplement en quatre étapes :
+	
+	\begin{description}
+		\item[1. Test dans le volume de sélection :] Déterminer quels objets sont dans le cône de sélection ;
+		\item[2. Contributions aux scores :] Chaque objet dans le volume de sélection se voit attribué un score, déterminé à partir d'une métrique spécifique ;
+		\item[3. Accumulation des scores :] Les contributions aux scores des objets s'accumulent avec le temps ;
+		\item[4. Retour (\emph{feedback}) :] L'objet de score maximal, donc de premier rang, est mis en surbrillance et indiqué par un rayon qui se « tord » vers lui.
+	\end{description}
+	
+	\subsubsection{Métrique}
+	La métrique utilisée dans l'étape 2 est illustrée par la figure~\ref{fig:intensMetric}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/intensMetric}
+		\caption[Métrique de \emph{scoring} de la technique \emph{IntenSelect}]{Schéma illustrant la métrique de \emph{scoring} de la technique \emph{IntenSelect}. Il s'agit du cône de sélection vu de côté, où la surface du cône est tracée en pointillés rouge et le rayon en noir. Un point P quelconque inclus dans le cône est placé ici à des fins purement illustratives. La valeur de la métrique est indiquée par la nuance de girs/bleu : en blanc, la métrique vaut 1 ; en noir, elle vaut 0. Crédit : \cite{de2005intenselect}.}
+		\label{fig:intensMetric}
+	\end{figure}
+	
+	\subsubsection{Accumulation des scores}
+	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. 
+	
+	\begin{align}
+		\label{eq:intensContrib}
+		a = b \\
+		\label{eq:intensTotal}
+		b = a
+	\end{align}
 	
 	\subsection{Inconvénients}
 		
