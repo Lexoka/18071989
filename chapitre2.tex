@@ -850,9 +850,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 \section{Suivi de la tête et des yeux}
 	\subsection{Principe général et avantages}
 	~\cite{zhai1999manual}
-	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. Il y a au moins deux façons d'estimer la direction du regard : la première consiste à capturer les mouvements de la tête de l'utilisateur, et à supposer qu'il regarde droit devant lui. Comme cette hypothèse est généralement fausse, on génère un cone dont le sommet est la tête de l'utilisateur, et dont l'axe de révolution correspond à la direction (estimée) du regard. Or, 40~\%{} à 70~\%{} du déplacement du regard est déterminé par la rotation de la tête, tandis que le reste résulte des mouvements oculaires.[ref bouquin] Si cela s'avère souvent insuffisant pour effectuer une sélection directe, le suivi de tête peut présenter un certain intérêt pour la sélection en cascade.
-		
-	Pour estimer la direction du regard avec plus de précision, on peut capturer non seulement la position et l'orientation de la tête, mais également l'orientation des yeux. Cette option séduisante présente toutefois quelques difficultés :
+	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade.
+
+	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
+	
+	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête.
+	
 	\begin{itemize}
 		\item Les performances dépendent de la couleur des yeux ;[ref]
 		\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;[ref]
