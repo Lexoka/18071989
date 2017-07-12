@@ -8,15 +8,17 @@
 \cleardoublepage
 
 	\section{Introduction}
-	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante et, surtout, plus difficile, du fait du mouvement des cibles, naturellement. Et bien que moins répandues que les cibles statiques, les cibles mobiles sont peut-être plus diverses en ce qu'elles peuvent, comme les cibles statiques, avoir des tailles, des formes et des emplacements variés, mais aussi des caractéristiques de mouvement très différentes : leur direction et leur vitesse peuvent être différentes, et peuvent, pour une même cible, varier dans le temps avec une infinité de valeurs possibles. 
+	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une posititon, s'ajoutent des caractéristiques de mouvement, direction, vitesse,  accélération, et qui peuvent de plus varier dans le temps. 
 	
-	Subjectivement, un utilisateur peut percevoir un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire, etc. La grande diversité des types de mouvement implique une diversité des difficultés de sélection commensurable, et peut nécessiter des solutions spécialement adaptées. Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité.
+	D'un point de vue perceptif, un utilisateur peut percevoir un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire. La grande diversité des types de mouvement perçus, souvent relié à des mouvements relatif à l'expérience écologique de l'utilisateur, ce qui implique des difficultés à établir  des protocole expérimentaux permettant de caractériser difficulté de sélection de cible mobile. En effet, et peut nécessiter des solutions  adaptées aux différentes natures du mouvement des objets à sélectionner, mais aussi,  . Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité.
 	
-	Dans ce chapitre introductif, nous nous attacherons à dresser un inventaire des applications impliquant la sélection de cibles mobiles comme tâche importante. Nous nous appliquerons à caractériser qualitativement --- et dans la mesure du possible, quantitativement --- cette tâche pour chaque cas. Nous analyserons les enjeux de la sélection dans chacun des cas, afin de comprendre les priorités et besoins spécifiques à chaque application.
+	Dans ce chapitre introductif, nous nous attacherons à dresser un inventaire des applications impliquant la sélection de cibles mobiles comme tâche durant l'activité,  cette tâche pour chaque cas. Nous analyserons les enjeux de la sélection dans chacun des cas, afin de comprendre les priorités et besoins spécifiques à chaque application.
 	
-	Il va sans dire que cet inventaire ne saurait prétendre à l'exhaustivité, tant les applications sont nombreuses, et leur champ en constante expansion. À défaut d'exhaustivité, l'objectif que nous nous sommes fixés est la représentativité, afin de se forger une idée générale des besoins, difficultés et enjeux de la sélection de cibles mobiles. Nous verrons que les applications vont des simulations moléculaires aux jeux vidéo, en passant par le contrôle de la circulation aérienne, maritime, terrestre, ainsi que la télévision interactive et divers domaines de la sécurité et de la défense.
+	Il va sans dire que cet inventaire ne saurait prétendre à l'exhaustivité, tant ces applications sont nombreuses. À défaut d'exhaustivité, l'objectif que nous nous sommes fixés est la représentativité, afin de se forger une idée générale des besoins, difficultés et enjeux de la sélection de cibles mobiles. Nous verrons que les applications vont des simulations moléculaires aux jeux vidéo, en passant par le contrôle de la circulation aérienne, maritime, terrestre, ainsi que la télévision interactive et divers domaines de la sécurité et de la défense. Une attention plus particulière est portée sur la description de l'activité de simulation moléculaire interactive, les problématiques de sélection liée à cette activité étant à la base de ce travail de thèse sur la sélection de cible mobile.
+	
 
-	\section{Biologie structurale}
+	\section{Simulation moléculaire interactive}
+	Avant de décrire l'activité de simulation moléculaire interactive et ses objectifs, il convient de décrire le domaine sous-jacent, c'est à dire la biologie moléculaire ou structurale. 
 	La biologie structurale est la branche de la biologie qui étudie la structure et l'organisation spatiale des macromolécules biologiques, principalement les protéines et les acides nucléiques. Elle concerne en particulier la détermination à l'échelle nanoscopique des structures tridimensionnelles de ces molécules et complexes moléculaires (au moyen de techniques biophysiques) les principes à la base des modifications de conformation des macromolécules, l'analyse des mouvements moléculaires et la dynamique de ces structures.
 
 La compréhension moléculaire et structurale du mode d'action d'une molécule sur une autre (ou sur un complexe moléculaire), que des techniques de visualisation aident à appréhender, permet de modéliser les interactions qui se déroulent en permanence à l'échelle moléculaire au sein des organismes vivants.
@@ -29,7 +31,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	Les protéines sont des macromolécules\footnote{Une macromolécule est une \og grosse \fg{} molécule, généralement un polymère ; elle est constituée de plusieurs milliers d'atomes.} que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus~\cite{lodish2004molecular}. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et à la régulation de l'expression génétique. L'étude de leur fonctionnement donc est essentielle à la compréhension du vivant et de ses processus.
 	
 	\paragraph{Composition.}
-	Concrètement, une protéine est un ensemble (éventuellement un singleton) de chaînes d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
+	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{.4\textwidth}
@@ -59,9 +61,53 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
-		\caption{Illustration d'une protéine (\emph{1KX2}, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelque 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occulée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
+		\caption{Illustration d'une protéine (\emph{1KX2}, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelque 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occultée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
 		\label{fig:1KX2}
 	\end{figure}
+	
+	\paragraph{Synthèse.}
+	
+	\paragraph{Structure.}
+	Les protéines sont décrites selon plusieurs niveaux de structures. On appelle structure primaire, la suite d'acides aminés qui composent la protéine, résultat de la traduction séquentielle d'un gène de l'ADN en protéine selon les règles du code génétique universel, dans lequel à chacun des 64 triplets possibles de nucléotides (A,C,G,T) composant l'ADN, correspond à un acide aminé. A ce niveau de structure, c'est la séquence qui est importante, la protéine étant considérée comme un collier de perle, chque perle étant des 21 acides aminées.
+	
+	Ensuite, pendant et après la synthèse, les protéines s'organise en 3D pour former des architectures typiques, et cette organisation correspond à la structure secondaire~\cite{foltmann1981protein} qui est en fait une description de la structure tridimensionnelle localement adoptée par un segment de molécule. Cette structure secondaire s'explique par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène. Les algorithmes couramment utilisés pour identifier les structures secondaires incluent DSSP~\cite{kabsch1983dictionary}, \emph{Define}~\cite{richards1988identification}, \emph{Stride}~\cite{frishman1995knowledge} et SST~\cite{konagurthu2012minimum}.
+		
+	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
+		
+	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée~\cite{richardson2002teaching}. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
+		
+	Toutefois, l'utilisation de cette technique de visualisation implique une perte d'information. En effet, les atomes ne sont plus visibles, aussi la composition précise de la molécule n'est-elle plus perceptible. De fait, il devient difficile d'apprécier certaines propriétés du système, comme les champs électrostatiques, l'hydrophobicité, les cavités de la surface moléculaire et autres zones susceptibles de faciliter les interactions avec d'autres molécules. Il est cependant possible de représenter certaines de ces propriétés par des couleurs, par exemple.
+		
+	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires\footnote{Dans le contexte de la dynamique moléculaire, on appelle \og trajectoire \fg{} l'évolution du système dans le temps, en particulier l'évolution des positions et des vélocités des particules simulées.} de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
+		
+	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie qu'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/aHelix}
+		\caption[Hélices alpha, trois représentations différentes.]{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}\footnotemark.}
+		\label{fig:aHelix}
+	\end{figure}
+	
+	\footnotetext{\url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/bSheet}
+		\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}\protect\footnotemark}
+		\label{fig:bSheet}
+	\end{figure}
+		\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
+		\caption{À gauche : représentation en structures secondaires d'une molécule de myoglobine, une métalloprotéine présente dans les muscles des vertébrés, et dont la fonction est de stocker le dioxygène ; son hème --- un cofacteur contenant un atome de fer et pouvant accueillir du dioxygène --- est représenté en \og tout atome \fg{} et plus précisément en bâtons. À droite : une représentation schématique du hème et des histidines qui le stabilisent. Crédit :~\cite{Ordway3441}}
+		\label{fig:myoglobin}
+	\end{figure}
+	
+	Dans la littérature anglo-saxonne, la représentation en structures secondaires est parfois appelée \emph{cartoon} ou \emph{ribbons}~\cite{carson1986algorithm, richardson2000early}.
+	
 	
 	\paragraph{Rôles.}
 	Les protéines sont impliquées dans la plupart des processus biologiques et, de fait, leurs rôles sont extrêmement divers. On peut toutefois les diviser en deux grandes parties : les fonctions cellulaires et les fonctions biochimiques. Les premières définissent le rôle de la protéine dans la cellule ou l'organisme, et peuvent être découpées en cing groupes~\cite{lodish1995molecular} :
@@ -171,17 +217,17 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 		
 	Les sphères de van der Waals ne sont pas une mauvaise option pour visualiser (ou interagir avec) une simulation de dynamique moléculaire, à condition que l'objet d'intérêt principal soit superficiel, et donc bien visible. La grande taille des cibles peut être un avantage, même s'il y a un certain degré d'interpénétration entre elles. Cette représentation constitue donc un cas d'application notable pour une technique de sélection de cibles mobiles.
 		
-	\begin{equation}
-		\label{eq:lennard}
-		E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
-	\end{equation}
+% 	\begin{equation}
+% 		\label{eq:lennard}
+% 		E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
+% 	\end{equation}
 		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
-		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$. Crédit : \emph{Wikimedia}.}
-		\label{fig:lennard}
-	\end{figure}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
+% 		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$. Crédit : \emph{Wikimedia}.}
+% 		\label{fig:lennard}
+% 	\end{figure}
 		
 	\paragraph{\emph{Hyperballs}.} La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se base sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
 		
@@ -193,57 +239,21 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 		
 	Enfin, les \emph{Hyperballs}, utilisées de la façon la plus \og classique \fg{} ou \og canonique \fg{} présentent des hyperboloïdes partiellement creusées, comme sur la figure~\ref{fig:4awn_HB}. Cette représentation est souvent appréciée pour ses qualités esthétiques, certes subjectives. D'un point de vue plus objectif, la représentation en \emph{Hyperballs} canoniques présentent à peu près les mêmes caractéristiques que la représentation en boules et bâtons. Les dimensions sont proches, même si les formes diffèrent. Les liaisons sont un peu plus épaisses près des atomes, et comparables, voire un peu plus fines au milieu. De fait, la perception de la structure de la molécule et de ses propriétés, ainsi que le niveau d'occultation visuelle, sont assez comparables. Par conséquent, la représentation en \emph{Hyperballs} canoniques est un cas d'application aussi pertinent pour la sélection de cibles mobiles que la représentation CPK, voire plus, car les bonnes performances des \emph{Hyperballs} permettent de gérer de très gros systèmes plus facilement.
 		
-	\begin{figure}[H]
+	\begin{figure}[!h]
     	\centering
     	\includegraphics[width=\textwidth]{figures/ch1/spheremeshes}
     	\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Crédit :~\cite{seo2010heat}.}
     	\label{fig:spheremeshes}
 	\end{figure}
 		
-	\begin{figure}[H]
+	\begin{figure}[!h]
     	\centering
     	\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
     	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constante que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Crédit :~\cite{chavent2011gpu}.}
    		\label{fig:hyperballs}
     \end{figure}
 		
-	\paragraph{Structures secondaires.} En biologie structurale, on appelle structure secondaire~\cite{foltmann1981protein} la structure tridimensionnelle localement adoptée par un segment de molécule (généralement de protéine). Cette structure secondaire est définie par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène. Les algorithmes couramment utilisés pour identifier les structures secondaires incluent DSSP~\cite{kabsch1983dictionary}, \emph{Define}~\cite{richards1988identification}, \emph{Stride}~\cite{frishman1995knowledge} et SST~\cite{konagurthu2012minimum}.
-		
-	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
-		
-	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée~\cite{richardson2002teaching}. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
-		
-	Toutefois, l'utilisation de cette technique de visualisation implique une perte d'information. En effet, les atomes ne sont plus visibles, aussi la composition précise de la molécule n'est-elle plus perceptible. De fait, il devient difficile d'apprécier certaines propriétés du système, comme les champs électrostatiques, l'hydrophobicité, les cavités de la surface moléculaire et autres zones susceptibles de faciliter les interactions avec d'autres molécules. Il est cependant possible de représenter certaines de ces propriétés par des couleurs, par exemple.
-		
-	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires\footnote{Dans le contexte de la dynamique moléculaire, on appelle \og trajectoire \fg{} l'évolution du système dans le temps, en particulier l'évolution des positions et des vélocités des particules simulées.} de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
-		
-	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie qu'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
-		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/aHelix}
-		\caption[Hélices alpha, trois représentations différentes.]{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}\footnotemark.}
-		\label{fig:aHelix}
-	\end{figure}
 	
-	\footnotetext{\url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
-		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/bSheet}
-		\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}\protect\footnotemark}
-		\label{fig:bSheet}
-	\end{figure}
-		\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
-		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
-		\caption{À gauche : représentation en structures secondaires d'une molécule de myoglobine, une métalloprotéine présente dans les muscles des vertébrés, et dont la fonction est de stocker le dioxygène ; son hème --- un cofacteur contenant un atome de fer et pouvant accueillir du dioxygène --- est représenté en \og tout atome \fg{} et plus précisément en bâtons. À droite : une représentation schématique du hème et des histidines qui le stabilisent. Crédit :~\cite{Ordway3441}}
-		\label{fig:myoglobin}
-	\end{figure}
-	
-	Dans la littérature anglo-saxonne, la représentation en structures secondaires est parfois appelée \emph{cartoon} ou \emph{ribbons}~\cite{carson1986algorithm, richardson2000early}.
 		
 		
 	\paragraph{Surface accessible au solvant et surface de Connolly.} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
@@ -399,12 +409,12 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. La modélisation par homologie repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acide aminés de la protéine étudiée et ceux des structures protéiques connues. Cela repose sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
-		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
-		\label{fig:moldyn}
-	\end{figure}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
+% 		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
+% 		\label{fig:moldyn}
+% 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
@@ -479,37 +489,37 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes, ce qu'explicite la figure~\ref{fig:e_dihedral}.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
-		\caption[Énergie de liaison.]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
-		\label{fig:e_bond}
-	\end{figure}
+%  	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
+% 		\caption[Énergie de liaison.]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_bond}
+% 	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
-		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
-		\label{fig:e_angle}
-	\end{figure}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
+% 		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_angle}
+% 	\end{figure}
 	
-	\begin{figure}[H]
-		\begin{subfigure}{\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
-			%\caption{}
-			\label{fig:e_dihedrala}
-		\end{subfigure}
-		~
-		\begin{subfigure}{\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
-			%\caption{}
-			\label{fig:e_dihedralb}
-		\end{subfigure}
-		\caption[Énergie de torsion, ou d'angles dièdres.]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
-		\label{fig:e_dihedral}
-	\end{figure}
+% 	\begin{figure}[H]
+% 		\begin{subfigure}{\textwidth}
+% 			\centering
+% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
+% 			%\caption{}
+% 			\label{fig:e_dihedrala}
+% 		\end{subfigure}
+% 		~
+% 		\begin{subfigure}{\textwidth}
+% 			\centering
+% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
+% 			%\caption{}
+% 			\label{fig:e_dihedralb}
+% 		\end{subfigure}
+% 		\caption[Énergie de torsion, ou d'angles dièdres.]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
+% 		\label{fig:e_dihedral}
+% 	\end{figure}
 	
 	\begin{equation}
 		\label{eq:nonbonded}
@@ -520,19 +530,19 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut, et résumées par la figure~\ref{fig:e_vdw}.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
-		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
-		\label{fig:e_electrostat}
-	\end{figure}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
+% 		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_electrostat}
+% 	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
-		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
-		\label{fig:e_vdw}
-	\end{figure}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
+% 		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_vdw}
+% 	\end{figure}
 	
 	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
 	
@@ -984,7 +994,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\section{Analyse de processus complexes}
 	Mélange d'humains, de machines, espaces 3D, multiplicité d'objets, etc.
 	
-	\section{Retransmissions d'événements sportifs ou artistiques}
+	\section{Annotation de gestes sportifs ou artistiques}
 	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, et nécessitent souvent la sélection de cibles mobiles~\cite{ilich2010moving}. Il peut être utile, par exemple, de sélectionner un joueur de football pour afficher ses statistiques. Pour les mêmes raisons, un ballon ou une balle peuvent être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
 	\subsection{Athlètes}
