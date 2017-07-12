@@ -644,16 +644,16 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\section{Simulations de problèmes à N corps}
 	
 	\section{Contrôle de l'espace aérien}
-	La biologie structurale n'est cependant pas le seul domaine caractérisé par un besoin d'interaction avec des cibles mobiles, loin s'en faut. La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détail plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions seront lents sur l'écran.
+	La biologie structurale n'est cependant pas le seul domaine caractérisé par un besoin d'interaction avec des cibles mobiles, loin s'en faut. La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détails plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions sont lents sur l'écran.
 	
 	\subsection{Applications civiles}
 	\paragraph{Avions.}
-	Un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h en vol de croisière. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et habituellement prévisibles car les pilotes tâchent d'emprunter des couloirs aériens, ou des trajectoires d'approche imposées aux abords des aéroports. Les avions sont néanmoins nombreux, en particulier près des aéroports, et la grande quantité d'informations pertinentes associées à chaque vol peut requérir un affichage contextuel important, d'où une forte densité d'informations, et des niveaux d'occultation parfois élevés. La figure~\ref{fig:atlanta} en fournit un exemple.
+	Un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h en vol de croisière. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et habituellement prévisibles car les pilotes tâchent d'emprunter des couloirs aériens, ou des trajectoires d'approches imposées aux abords des aéroports. Les avions sont néanmoins nombreux, en particulier près des aéroports, et la grande quantité d'informations pertinentes associées à chaque vol peut requérir un affichage contextuel important, d'où une forte densité d'informations, et des niveaux d'occultation parfois élevés. La figure~\ref{fig:atlanta} en fournit un exemple.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/atlanta}
-		\caption[Trafic aérien, Atlanta.]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40, heure locale. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, altitude, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée ; malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport (à quelques kilomètres d'Atlanta, au sud). Néanmoins, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
+		\caption[Trafic aérien, Atlanta.]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40, heure locale. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, altitude, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée sur cette image ; néanmoins en cliquant sur un avion, on peut voir apparaître des données supplémentaires (sur sa trajectoire, sa vitesse, son origine, sa destination, son pavillon, son temps de vol, etc.) ; malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport (à quelques kilomètres d'Atlanta, au sud). Néanmoins, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
 		\label{fig:atlanta}
 	\end{figure}
 	
@@ -684,8 +684,8 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsection{Applications de sécurité et défense (surveillance de l'espace aérien)}
 	Les aéronefs militaires présentent des caractéristiques beaucoup plus variables, dans des intervalles nettement plus grands. C'est notamment dû à leur diversité, puisque l'on trouve des avions de tailles et usages divers, des drones de quelques grammes comme de plusieurs tonnes, des hélicoptères, des missiles, etc.
 	
-	\paragraph{Avions de chasse.}
-	La vitesse d'un avion de chasse, par exemple, peut atteindre 3000~km/h\footnotemark. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la manœuvrabilité de tels engins, mais il est du moins clair qu'un avion de chasse moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs\footnotemark. Des données officielles font état de 12,9\textdegree{}/s \emph{soutenus} pour le Leonardo DRS T-100, qui n'est pourtant qu'un avion d'entraînement\footnotemark.
+	\paragraph{Avions de combat.}
+	La vitesse d'un avion de combat, par exemple, peut atteindre 3000~km/h\footnotemark. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la manœuvrabilité de tels engins, mais il est du moins clair qu'un avion de combat moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs\footnotemark. Des données officielles font état de 12,9\textdegree{}/s \emph{soutenus} pour le Leonardo DRS T-100, qui n'est pourtant qu'un avion d'entraînement\footnotemark.
 	
 	\addtocounter{footnote}{-2}
 	\footnotetext{Données constructeur : \url{http://www.migavia.ru/index.php/en/production/mig-31e-fighter?limit=1&start=2}}
@@ -708,7 +708,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.thenational.ae}}
 	
-	Il convient de noter que les avions de chasses eux-mêmes ont des besoins similaires en matière de sélection de cibles mobiles, puisqu'ils ont, comme les stations au sol, pour rôle de contrôler l'espace aérien. Ils ont de plus la charge de mener des opérations de reconnaissance ou de bombardement de cibles au sol qui, si elles sont statiques, sont bien mobiles dans le référentiel de l'avion en vol, a fortiori si elles sont filmées par des caméras mobiles. Par ailleurs, les cibles affichées sur les ordinateurs de bord des avions sont accompagnées de diverses informations tactiques qui augmentent fortement la densité d'informations, et potentiellement le niveau d'occultation, comme l'illustre la figure~\ref{fig:sitac}.
+	Il convient de noter que les avions de combat eux-mêmes ont des besoins similaires en matière de sélection de cibles mobiles, puisqu'ils ont, comme les stations au sol, pour rôle de contrôler l'espace aérien. Ils ont de plus la charge de mener des opérations de reconnaissance ou de bombardement de cibles au sol qui, si elles sont statiques, sont bien mobiles dans le référentiel de l'avion en vol, \emph{a fortiori} si elles sont filmées par des caméras mobiles. Par ailleurs, les cibles affichées sur les ordinateurs de bord des avions sont accompagnées de diverses informations tactiques qui augmentent fortement la densité d'informations, et potentiellement le niveau d'occultation, comme l'illustre la figure~\ref{fig:sitac}.
 	
 	\begin{figure}[H]
 		\centering
@@ -723,20 +723,20 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{Ou USAF, la force aérienne des États-Unis d'Amérique.}
 	
-	Par conséquent, l'on passe d'une seule cible (apparente) à plusieurs cibles d'abord très rapprochées, mais souvent rapidement divergentes. Parfois, les pilotes plongent vers le sol pour utiliser les retours radar du reflief afin de masquer le leur ; ajoutons que c'est d'autant plus efficace que l'aéronef est furtif, et qu'il peut donc apparaître et disparaître des écrans radar à tout moment. Ce point est d'autant plus important que les technologies furtives se répandent progressivement et les aéronefs furtifs sont de plus en plus courants. Parmi les plus connus, on peut citer le Lockheed Martin F-117 \emph{Nighthawk} (déjà retiré du service), le Northrop Grumman B-2 \emph{Spirit}, ainsi que le F-22 \emph{Raptor} et le F-35 \emph{Lightning II}, tous deux produits par Lockheed Martin.
+	Par conséquent, l'on passe d'une seule cible (apparente) à plusieurs cibles d'abord très rapprochées, mais souvent rapidement divergentes. Parfois, les pilotes plongent vers le sol pour utiliser les retours radar du relief afin de masquer le leur ; ajoutons que c'est d'autant plus efficace que l'aéronef est furtif, et qu'il peut donc apparaître et disparaître des écrans radar à tout moment. Ce point est d'autant plus important que les technologies furtives se répandent progressivement et les aéronefs furtifs sont de plus en plus courants. Parmi les plus connus, on peut citer le Lockheed Martin F-117 \emph{Nighthawk} (déjà retiré du service), le Northrop Grumman B-2 \emph{Spirit}, ainsi que le F-22 \emph{Raptor} et le F-35 \emph{Lightning II}, tous deux produits par Lockheed Martin.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/B2}
-		\caption[Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif.]{Le Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif états-unien. Sa forme d'aile volante, son alignement de plans jamais perpendiculaires à son axe longitudinal, le placement de ses moteurs sur son dos, enfouis dans le fuselage, l'utilisation de matériaux compostites absorbants, etc., contribuent à réduire la signature de cet appareil dans plusieurs bandes électromagnétiques. Crédit : \emph{Wired}\footnotemark{}.}
+		\caption[Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif.]{Le Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif états-unien. Sa forme d'aile volante, son alignement de plans jamais perpendiculaires à son axe longitudinal, le placement de ses moteurs sur son dos, enfouis dans le fuselage, l'utilisation de matériaux composites absorbants, etc., contribuent à réduire la signature de cet appareil dans plusieurs bandes électromagnétiques. Crédit : \emph{Wired}\footnotemark{}.}
 		\label{fig:B2}
 	\end{figure}
 	
 	\footnotetext{\url{https://www.wired.com/2011/06/stealth-tech-obsolete}}
 	
-	Mais à ces appareils états-uniens doivent aujourd'hui s'ajouter le Chengdu J-20 chinois, ainsi qu'un nombre d'avions encore en développement : le Sukhoi PAK FA russe, sa variante FGFA russo-indienne, le B-21 \emph{Raider} de Northrop Grumman, le drone franco-britannique FCAS/SCAF, et bien d'autres, donc l'avenir nous dira s'ils entreront en production.
+	Mais à ces appareils états-uniens doivent aujourd'hui s'ajouter le Chengdu J-20 chinois, ainsi qu'un nombre d'avions encore en développement : le Sukhoi PAK FA russe, sa variante FGFA russo-indienne, le B-21 \emph{Raider} de Northrop Grumman, le drone franco-britannique FCAS/SCAF, et bien d'autres, dont l'avenir nous dira s'ils entreront en production.
 	
-	Le combat aérien est une application qui peut mêler une très forte densité de cibles (avec un taux d'occultation considérable) parfois évanescentes à des mouvements rapides et délibérément imprévisibles ; de plus, détecter et sélectionner les cibles aussi rapidement que possible revêt une importance littéralement capitale, puisque les pilotes jouent leur vie, sans parler des enjeux stratégiques et humains spécifique au conflit en question.
+	Le combat aérien est une application qui peut mêler une très forte densité de cibles (avec un taux d'occultation considérable) parfois évanescentes à des mouvements rapides et délibérément imprévisibles ; de plus, détecter et sélectionner les cibles aussi rapidement que possible revêt une importance littéralement capitale, puisque les pilotes jouent leur vie, sans parler des enjeux stratégiques et humains spécifiques au conflit en question.
 	
 	%If you have sneaky guys like me, at long range we’ll fly in ‘res cell’ which means we’ll be so close to each other we’re closer than the width of the radar beam at that range. That makes it difficult to know exactly how many people are in an attack or air defense package. Then, at some pre-designated range, we’ll do very abrupt maneuvers and split while guys who are locked or not locked (spiked or not spiked) will do different things to optimize our chances of getting at least one good guy untargeted and unseen to a merge.
 
@@ -748,7 +748,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 
 %So we climb a 4-ship through the cons and then above so the bad guys can see 4 contrails. Then a sneaky guy . . . me . . . would descend in a 90 degree turn in IDLE with chaff and descend to low altitude with NO contrail so the opponents think we are all above the cons leaving me free to maneuver behind them on the deck. It was a very effective tactics at times.
 	
-	\paragraph{Hélicoptères.}
+	\paragraph{Hélicoptères de combat.}
 	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils, sans qu'il soit aisé de quantifier cette différence. Comme pour les avions, leur comportement est susceptible de varier considérablement selon la mission. Ils sont ausssi légèrement plus rapides, de quelques dizaines de km/h, notamment en piqué. Comme pour les avions, leurs missions impliquent souvent des trajectoires moins prévisibles, d'autant qu'ils cherchent souvent à se camoufler (visuellement et pour les radars) en volant le plus bas possible, ce qui implique de contourner les éléments de relief. L'hélicoptère \emph{Tigre} représenté sur la figure~\ref{fig:tigre} est un exemple d'appareil rapide, compact et très manœuvrable.
 	
 	\begin{figure}[H]
@@ -781,7 +781,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.ibtimes.com/}}
 	
-	Dans une certaine mesure, le contrôle de la circulation des drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le Ministère de l'écologie et du développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français\footnotemark. Par ailleurs, l'utilisation de drones au-dessus de sites sensibles tels que les centrales nucléaires ne va pas sans inquiéter EDF et les pouvoirs publics\footnotemark.
+	Dans une certaine mesure, le contrôle de la circulation des drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le ministère de l'Écologie et du Développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français\footnotemark. Par ailleurs, l'utilisation de drones au-dessus de sites sensibles tels que les centrales nucléaires ne va pas sans inquiéter EDF et les pouvoirs publics\footnotemark.
 	
 	\addtocounter{footnote}{-1}
 	\footnotetext{\url{http://www.aeroport.fr/page/page/drones}}
@@ -803,7 +803,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\emph{Soldats français blessés par un drone de Daech : quand un engin de loisir devient une arme du terrorisme} -- \url{http://www.lci.fr/international/soldats-francais-blesses-par-un-drone-de-daech-en-irak-quand-un-engin-de-loisir-devient-une-arme-du-terrorisme-2007738.html}}
 	
 	\paragraph{Missiles.}
-	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de chasse, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5\footnote{C'est-à-dire 5 fois la vitesse du son, ou nettement plus de 5000~km/h.}) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II dont une maquette est représentée sur la figure~\ref{fig:brahmos}.
+	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de combat, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5\footnote{C'est-à-dire 5 fois la vitesse du son, ou nettement plus de 5000~km/h.}) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II dont une maquette est représentée sur la figure~\ref{fig:brahmos}.
 	
 	\begin{figure}[htb]
 		\centering
@@ -821,13 +821,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	En situation réelle, un espace aérien pourrait tout à fait contenir des véhicules et autres engins volants de tous les types sus-cités, des essaims de drones très manœvrables jusqu'aux missiles balistiques les plus rapides. Un système de contrôle interactif devrait donc être assez souple pour permettre la sélection de cibles de natures très différentes.
 	On peut noter que les engins volants militaires ont vocation à chercher à éviter d'être détectés, soit en étant naturellement furtifs, soit en volant à très basse altitude et en tirant parti du relief naturel. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, et peuvent éventuellement disparaître de ces écrans, offrant une fenêtre temporelle restreinte pour l'interaction.
 	
-	De plus, le commandant du \emph{Chevalier Paul}\footnotemark précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnote{Abattu en Ukraine le 17 juillet 2014.}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Néanmoins, cet entraînement à 40 cibles est déjà parmi les plus exigeants au monde, et les difficultés qu'il présentent ne sauraient être sous-estimées.
+	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnotemark{}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Néanmoins, cet entraînement à 40 cibles est déjà parmi les plus exigeants au monde, et les difficultés qu'il présentent ne sauraient être sous-estimées.
 	
-	
-	
+	\addtocounter{footnote}{-1}
 	\footnotetext{Une frégate de défense aérienne (FDA) française de classe \emph{Horizon}. C'est bâtiments, d'un déplacement d'environ 7000 tonnes, ont pour mission principale de participer à la défense antiaérienne d'un groupe aéronaval, ou d'assurer la protection d'une zone ou d'un convoi contre des attaques aériennes ou de missiles. Un groupe aéronaval est un groupe de combat naval articulé autour d'un porte-avions. Les groupes aéronavals représentent une part importante des capacités de projection de puissance militaire des pays dont les marines sont dotées de porte-avions.}
-	
-	
+	\addtocounter{footnote}{1}
+	\footnotetext{Abattu en Ukraine le 17 juillet 2014.}
 	
 	\subsection{Observations}
 	Qu'il s'agisse d'applications civiles ou militaires, cette tâche est critique, puisque de nombreuses vies sont en jeu. Selon l'application, il peut donc y avoir des contraintes fermes et spécifiques, soit sur le temps de sélection maximal acceptable (contrainte de temps-réel) soit sur le taux d'erreur, ou encore sur les niveaux de zoom, etc.
