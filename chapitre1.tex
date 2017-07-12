@@ -10,25 +10,25 @@
 	\section{Introduction}
 	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une posititon, s'ajoutent des caractéristiques de mouvement, direction, vitesse,  accélération, et qui peuvent de plus varier dans le temps. 
 	
-	D'un point de vue perceptif, un utilisateur peut percevoir un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire. La grande diversité des types de mouvement perçus, souvent relié à des mouvements relatif à l'expérience écologique de l'utilisateur, ce qui implique des difficultés à établir  des protocole expérimentaux permettant de caractériser difficulté de sélection de cible mobile. En effet, et peut nécessiter des solutions  adaptées aux différentes natures du mouvement des objets à sélectionner, mais aussi,  . Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité.
+	D'un point de vue perceptif, un utilisateur peut percevoir un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire. La grande diversité des types de mouvements perçus, souvent reliés à des mouvements relatifs à l'expérience écologique de l'utilisateur, ce qui implique des difficultés à établir  des protocoles expérimentaux permettant de caractériser la difficulté de sélection de cibles mobiles. En effet, il est nécessaire d'apporter des solutions  adaptées aux différentes natures du mouvement des objets à sélectionner. Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité de types de mouvements.
 	
-	Dans ce chapitre introductif, nous nous attacherons à dresser un inventaire des applications impliquant la sélection de cibles mobiles comme tâche durant l'activité,  cette tâche pour chaque cas. Nous analyserons les enjeux de la sélection dans chacun des cas, afin de comprendre les priorités et besoins spécifiques à chaque application.
+	Dans ce chapitre introductif, nous nous attacherons à dresser un inventaire des applications impliquant la sélection de cibles mobiles comme tâche durant l'activité. Nous analyserons les enjeux de la sélection dans chacun des cas, afin de comprendre les priorités et besoins spécifiques à chaque application.
 	
-	Il va sans dire que cet inventaire ne saurait prétendre à l'exhaustivité, tant ces applications sont nombreuses. À défaut d'exhaustivité, l'objectif que nous nous sommes fixés est la représentativité, afin de se forger une idée générale des besoins, difficultés et enjeux de la sélection de cibles mobiles. Nous verrons que les applications vont des simulations moléculaires aux jeux vidéo, en passant par le contrôle de la circulation aérienne, maritime, terrestre, ainsi que la télévision interactive et divers domaines de la sécurité et de la défense. Une attention plus particulière est portée sur la description de l'activité de simulation moléculaire interactive, les problématiques de sélection liée à cette activité étant à la base de ce travail de thèse sur la sélection de cible mobile.
+	Il va sans dire que cet inventaire ne saurait prétendre à l'exhaustivité, tant ces applications sont nombreuses. À défaut d'exhaustivité, l'objectif que nous nous sommes fixés est la représentativité, afin de se forger une idée générale des besoins, des difficultés et enjeux de la sélection de cibles mobiles. Nous verrons que les applications vont des simulations moléculaires aux jeux vidéo, en passant par le contrôle de la circulation aérienne, maritime, terrestre, ainsi que la télévision interactive et divers domaines de la sécurité et de la défense. Une attention plus particulière est portée sur la description de l'activité de simulation moléculaire interactive, les problématiques de sélection liées à cette activité étant à la base de ce travail de thèse sur la sélection de cibles mobiles.
 	
 
 	\section{Simulation moléculaire interactive}
-	Avant de décrire l'activité de simulation moléculaire interactive et ses objectifs, il convient de décrire le domaine sous-jacent, c'est à dire la biologie moléculaire ou structurale. 
-	La biologie structurale est la branche de la biologie qui étudie la structure et l'organisation spatiale des macromolécules biologiques, principalement les protéines et les acides nucléiques. Elle concerne en particulier la détermination à l'échelle nanoscopique des structures tridimensionnelles de ces molécules et complexes moléculaires (au moyen de techniques biophysiques) les principes à la base des modifications de conformation des macromolécules, l'analyse des mouvements moléculaires et la dynamique de ces structures.
+	Avant de décrire l'activité de simulation moléculaire interactive et ses objectifs, il convient de décrire le domaine sous-jacent, c'est-à-dire la biologie moléculaire ou structurale. 
+	La biologie structurale est la branche de la biologie qui étudie la structure et l'organisation spatiale des macromolécules biologiques, principalement les protéines et les acides nucléiques. Elle concerne en particulier la détermination à l'échelle nanoscopique des structures tridimensionnelles de ces molécules et complexes moléculaires (au moyen de techniques biophysiques), les principes à la base des modifications de conformation des macromolécules, l'analyse des mouvements moléculaires et la dynamique de ces structures.
 
 La compréhension moléculaire et structurale du mode d'action d'une molécule sur une autre (ou sur un complexe moléculaire), que des techniques de visualisation aident à appréhender, permet de modéliser les interactions qui se déroulent en permanence à l'échelle moléculaire au sein des organismes vivants.
 
 De même, cette compréhension permet de rationaliser la conception et l'amélioration de molécules actives, de médicaments. On utilise pour cela à la fois des méthodes expérimentales d'analyse structurale, mais aussi des approches computationnelles pour prédire des candidats médicaments à partir de la structure.
 
-Nous allons voir dans cette section que les approches computationnelles se basent notamment sur des simulations qui, lorsqu'elles sont interactives, nécessitent la sélection de cibles mobiles particulièrement difficile à saisir. Cette difficulté est la première motivation des travaux présentés dans ce manuscrit.
+Nous allons voir dans cette section que les approches computationnelles se fondent notamment sur des simulations qui, lorsqu'elles sont interactives, nécessitent la sélection de cibles mobiles particulièrement difficiles à saisir. Cette difficulté est la première motivation des travaux présentés dans ce manuscrit.
 	
 	\subsection{Protéines}
-	Les protéines sont des macromolécules\footnote{Une macromolécule est une \og grosse \fg{} molécule, généralement un polymère ; elle est constituée de plusieurs milliers d'atomes.} que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus~\cite{lodish2004molecular}. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et à la régulation de l'expression génétique. L'étude de leur fonctionnement donc est essentielle à la compréhension du vivant et de ses processus.
+	Les protéines sont des macromolécules\footnote{Une macromolécule est une \og grosse \fg{} molécule, généralement un polymère ; elle est constituée de plusieurs milliers d'atomes.} que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus~\cite{lodish2004molecular}. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et à la régulation de l'expression génétique. L'étude de leur fonctionnement est donc essentiel à la compréhension du vivant et de ses processus.
 	
 	\paragraph{Composition.}
 	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
@@ -54,21 +54,21 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/aminoAcids}
-		\caption[Ensemble des acides aminés.]{Les 21 acides aminés dits protéinogènes que l'on trouve chez les eukaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
+		\caption[Ensemble des acides aminés.]{Les 22 acides aminés dits protéinogènes que l'on trouve chez les eucaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
 		\label{fig:aminoAcids}
 	\end{figure}
     
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
-		\caption{Illustration d'une protéine (\emph{1KX2}, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelque 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occultée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
+		\caption{Illustration d'une protéine (\emph{1KX2}, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelques 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occultée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
 		\label{fig:1KX2}
 	\end{figure}
 	
 	\paragraph{Synthèse.}
 	
 	\paragraph{Structure.}
-	Les protéines sont décrites selon plusieurs niveaux de structures. On appelle structure primaire, la suite d'acides aminés qui composent la protéine, résultat de la traduction séquentielle d'un gène de l'ADN en protéine selon les règles du code génétique universel, dans lequel à chacun des 64 triplets possibles de nucléotides (A,C,G,T) composant l'ADN, correspond à un acide aminé. A ce niveau de structure, c'est la séquence qui est importante, la protéine étant considérée comme un collier de perle, chque perle étant des 21 acides aminées.
+	Les protéines sont décrites selon plusieurs niveaux de structures. On appelle structure primaire, la suite d'acides aminés qui composent la protéine, résultat de la traduction séquentielle d'un gène de l'ADN en protéine selon les règles du code génétique universel, dans lequel à chacun des 64 triplets possibles de nucléotides (A,C,G,T) composant l'ADN, correspond à un acide aminé. À ce niveau de structure, c'est la séquence qui est importante, la protéine étant considérée comme un collier de perles, chaque perle étant un des 22 acides aminées.
 	
 	Ensuite, pendant et après la synthèse, les protéines s'organise en 3D pour former des architectures typiques, et cette organisation correspond à la structure secondaire~\cite{foltmann1981protein} qui est en fait une description de la structure tridimensionnelle localement adoptée par un segment de molécule. Cette structure secondaire s'explique par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène. Les algorithmes couramment utilisés pour identifier les structures secondaires incluent DSSP~\cite{kabsch1983dictionary}, \emph{Define}~\cite{richards1988identification}, \emph{Stride}~\cite{frishman1995knowledge} et SST~\cite{konagurthu2012minimum}.
 		
@@ -80,7 +80,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 		
 	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires\footnote{Dans le contexte de la dynamique moléculaire, on appelle \og trajectoire \fg{} l'évolution du système dans le temps, en particulier l'évolution des positions et des vélocités des particules simulées.} de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
 		
-	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie qu'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
+	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie que l'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
 		
 	\begin{figure}[H]
 		\centering
@@ -110,12 +110,12 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	
 	\paragraph{Rôles.}
-	Les protéines sont impliquées dans la plupart des processus biologiques et, de fait, leurs rôles sont extrêmement divers. On peut toutefois les diviser en deux grandes parties : les fonctions cellulaires et les fonctions biochimiques. Les premières définissent le rôle de la protéine dans la cellule ou l'organisme, et peuvent être découpées en cing groupes~\cite{lodish1995molecular} :
+	Les protéines sont impliquées dans la plupart des processus biologiques et, de fait, leurs rôles sont extrêmement divers. On peut toutefois les diviser en deux grandes parties : les fonctions cellulaires et les fonctions biochimiques. Les premières définissent le rôle de la protéine dans la cellule ou l'organisme, et peuvent être découpées en cinq groupes~\cite{lodish1995molecular} :
 	\begin{enumerate}
 		\item Les protéines des structures, qui permettent à la cellule de maintenir son intégrité physique et son organisation dans l'espace. C'est par exemple la fonction du collagène, la protéine la plus abondante chez les mammifères~\cite{di2002mapping}, illustrée par la figure~\ref{fig:collagen}.
-		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmique, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine~\cite{crichton1987iron} (illustrée par la figure~\ref{fig:transferrin}) ou d'ions à travers les membranes cellulaires, par les canaux ioniques. 
+		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmiques, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine~\cite{crichton1987iron} (illustrée par la figure~\ref{fig:transferrin}) ou d'ions à travers les membranes cellulaires, par les canaux ioniques. 
 		\item Les protéines régulatrices, qui inhibent ou stimulent l'activité d'autres protéines, ou la transcription de gènes, ce qui permet réguler divers processus biologiques. Un exemple de réseau de régulation formé par plusieurs protéines est représenté par la figure~\ref{fig:regulation}.
-		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides) les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. C'est notamment le cas des récepteurs de l'insuline~\cite{gammeltoft1984insulin}. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. C'est ainsi que fonctionnent les récepteurs d'œstrogène alpha, ou ER$\alpha$~\cite{dahlman2006international}, illustrés par la figure~\ref{fig:eralpha}.
+		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides), les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. C'est notamment le cas des récepteurs de l'insuline~\cite{gammeltoft1984insulin}. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. C'est ainsi que fonctionnent les récepteurs d'œstrogène alpha, ou ER$\alpha$~\cite{dahlman2006international}, illustrés par la figure~\ref{fig:eralpha}.
 		\item Les protéines motrices, qui permettent aux cellules ou aux organismes de se mouvoir. On peut citer par exemple la myosine, essentielle à l'activité musculaire des vertébrés~\cite{pollard1973acanthamoeba}, et illustrée par la figure~\ref{fig:myosin}.
 	\end{enumerate}	
 
@@ -173,7 +173,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	\paragraph{Points.} Le mode de visualisation le plus simple consiste à représenter chaque atome (et uniquement les atomes) par un point tout juste assez gros pour être visible. Les liaisons covalentes ne sont pas représentées. Selon la façon dont elle est mise en œuvre, cette technique de visualisation peut être très performante, et donc garantir un affichage fluide même avec de très nombreux atomes. Elle a de plus l'avantage de minimiser l'occultation des atomes les uns par les autres, du fait de leur petite taille. Cependant, elle communique peu d'informations sur la molécule. En particulier, les liaisons covalentes étant absentes, sa structure même fait défaut. De plus, l'utilisateur peut difficilement se faire une idée de l'espace qu'occupe réellement cette molécule dans son milieu, car chaque atome n'est représenté que schématiquement, par un point bien plus petit que ce que l'on observe sur la figure~\ref{fig:helium}, par exemple.
 		
-	Enfin, elle rend difficile l'appréciation de la position d'un atome par rapport à ceux qui, dans le plan de l'écran (projeté) se trouvent à proximité, car seule la taille du point permet d'estimer sa distance par rapport à l'observateur. Or, comme les atomes ne font pas tous précisément la même taille, cette appréciation ne peut être que très approximative, même dans le cas où la couleur du point indiquerait la nature de l'atome représenté à une utilisateur connaissant la taille de l'atome en question. La figure~\ref{fig:4awn_points} présente un exemple de cette technique de visualisation. L'on comprend que, si la représentation en points présente certains avantages par rapport à une tâche de sélection, elle est par ailleurs trop limitée pour être apprécié des physico-chimistes ou biologistes souhaitant intéragir avec des simulations moléculaires.
+	Enfin, elle rend difficile l'appréciation de la position d'un atome par rapport à ceux qui, dans le plan de l'écran (projeté) se trouvent à proximité, car seule la taille du point permet d'estimer sa distance par rapport à l'observateur. Or, comme les atomes ne font pas tous précisément la même taille, cette appréciation ne peut être que très approximative, même dans le cas où la couleur du point indiquerait la nature de l'atome représenté à un utilisateur connaissant la taille de l'atome en question. La figure~\ref{fig:4awn_points} présente un exemple de cette technique de visualisation. L'on comprend que, si la représentation en points présente certains avantages par rapport à une tâche de sélection, elle est par ailleurs trop limitée pour être appréciée des physico-chimistes ou biologistes souhaitant intéragir avec des simulations moléculaires.
 	    
 	\paragraph{Bâtons ou réglisse.} Un autre mode de visualisation assez simple consiste à représenter uniquement les liaisons covalentes par des traits ou bâtons, juste assez épais pour être clairement visibles, ou par de petits cyclindes ou parallélépipèdes rectangles. Cette représentation est aussi parfois appelée \og réglisse \fg{} ou \emph{licorice}, en anglais. Si les atomes eux-mêmes ne sont pas explicitement représentés, ils se trouvent à l'intersection des liaisons covalentes où à leurs extrémités, et la coloration de ces liaisons indique la nature des atomes qu'elles relient.
 		
@@ -217,21 +217,21 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 		
 	Les sphères de van der Waals ne sont pas une mauvaise option pour visualiser (ou interagir avec) une simulation de dynamique moléculaire, à condition que l'objet d'intérêt principal soit superficiel, et donc bien visible. La grande taille des cibles peut être un avantage, même s'il y a un certain degré d'interpénétration entre elles. Cette représentation constitue donc un cas d'application notable pour une technique de sélection de cibles mobiles.
 		
-% 	\begin{equation}
-% 		\label{eq:lennard}
-% 		E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
-% 	\end{equation}
+	\begin{equation}
+		\label{eq:lennard}
+		E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
+	\end{equation}
 		
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
-% 		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$. Crédit : \emph{Wikimedia}.}
-% 		\label{fig:lennard}
-% 	\end{figure}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
+		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$. Crédit : \emph{Wikimedia}.}
+ 		\label{fig:lennard}
+ 	\end{figure}
 		
-	\paragraph{\emph{Hyperballs}.} La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se base sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
+	\paragraph{\emph{Hyperballs}.} La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se fonde sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
 		
-	Les \emph{Hyperballs} présentent de nombreux avantages. Sur le plan purement technique, leur mode de représentation analytique permet, au contraire des maillages de points (\emph{meshes}, en anglais) d'éviter d'avoir à gérer un très grand nombre de points et de triangles. De plus, quel que soit le niveau de zoom, les surfaces des sphères et des liaisons covalentes (représentées par des hyperboloïdes) demeurent parfaitement lisses. Comme l'illustre la figure~\ref{fig:spheremeshes}, avec des maillages, il est nécessaire d'avoir un grand nombre de triangles pour maintenir l'illusion de la rotondité du modèle lorsqu'il est observé de près.
+	Les \emph{Hyperballs} présentent de nombreux avantages. Sur le plan purement technique, leur mode de représentation analytique permet, au contraire des maillages de points (\emph{meshes}, en anglais), d'éviter d'avoir à gérer un très grand nombre de points et de triangles. De plus, quel que soit le niveau de zoom, les surfaces des sphères et des liaisons covalentes (représentées par des hyperboloïdes) demeurent parfaitement lisses. Comme l'illustre la figure~\ref{fig:spheremeshes}, avec des maillages, il est nécessaire d'avoir un grand nombre de triangles pour maintenir l'illusion de la rotondité du modèle lorsqu'il est observé de près.
 		
 	La figure~\ref{fig:hyperballs} illustre la représentation analytique des \emph{Hyperballs}, et sa légende détaille la façon dont on peut les utiliser pour \og imiter \fg{} les modes de représentation sus-cités. En réalité, les illustrations fournies jusqu'ici pour la représentation en points, en bâtons, en boules et bâtons, et en sphères de van der Waals ont toutes été produites avec des \emph{Hyperballs}, simplement en jouant sur leurs paramètres. Cette grande flexibilité, combinée aux performances de premier ordre offertes par cette technique (voir~\cite{chavent2011gpu}) rend cette technique particulièrement avantageuse.
 		
@@ -249,7 +249,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\begin{figure}[!h]
     	\centering
     	\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
-    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constante que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Crédit :~\cite{chavent2011gpu}.}
+    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constate que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Crédit :~\cite{chavent2011gpu}.}
    		\label{fig:hyperballs}
     \end{figure}
 		
@@ -267,13 +267,13 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 		\label{fig:connolly}
 	\end{figure}
 		
-	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se basant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}, illustré par la figure~\ref{fig:marchingCubes}. L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
+	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se fondant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}, illustré par la figure~\ref{fig:marchingCubes}. L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
 		
 	Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5}, \ref{fig:4awn_iso_1_0} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ plus ou moins élevées ($0,2$, $0,5$, $1,0$ et $1,5$). Naturellement, plus la densité choisie est élevée, plus la surface sera proche des centres atomiques, et plus sa forme sera complexe, comme sur la figure~\ref{fig:4awn_iso_1_5} ; inversement, lorsque la densité est faible, la surface est loin des centres atomiques et sa forme est plus grossière, cf. la figure~\ref{fig:4awn_iso_0_2}.
 	
 	Outre le fait qu'elle représente une grandeur physique concrète, l'isosurface de densité a l'avantage d'être relativement rapide à calculer. En effet, l'algorithme \emph{QuickSurf}~\cite{krone2012fast, roberts2013lattice, stone2013early, stone2013gpu, stone2014gpu, sener2014visualization}, par exemple, permet de calculer une isosurface de densité suffisamment vite pour la recalculer en temps réel lors d'une simulation de dynamique moléculaire. Cet algorithme est conçu pour être exécuté sur un GPU (un processeur graphique, particulièrement adapté aux calculs très parallèles) ce qui améliore ses performances d'un à deux ordres de grandeur. Il permet de plus d'ajuster plusieurs paramètres : la résolution spatiale générale, le rayon des atomes (utilisé pour générer la grille de densité, par somme de gaussiennes 3D), l'isovaleur de densité voulue, la résolution de la grille de densité, et la distance de coupure utilisée pour la gaussienne associée à chaque atome\footnote{\url{http://www.ks.uiuc.edu/Research/vmd/current/ug/node73.html}}.
 	
-	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. Contrairement à ces derniers, elles ne présentent pas de (dizaines ou centaines) de milliers de cibles distinctes, mais un seul objet continu. De fait, au premier abord elles ne semblent pas nécessiter d'assistance à la sélection. Cependant, les nombreuses aspérités d'une isosurface, attendu qu'elles correspondent à celles de la molécule, peuvent être considérées comme des cibles distinctes, à condition d'avoir une méthode pour les distinguer. Cette méthode pourrait éventuellement être basée sur des critères de concavité et convexité. Si l'on considère chaque sous-ensemble convexe de la surface représentée sur la figure~\ref{fig:4awn_iso_1_5}, par exemple, on aboutit à plusieurs dizaines de cibles potentielles ; et ce pour une protéine de taille relativement réduite (moins de 2200 atomes, quand certaines protéines en comptent des dizaines de milliers). On peut également considérer les sous-ensembles concaves comme des cibles, car ils peuvent représenter des cavités ou tunnels\footnotemark dignes d'intérêt.
+	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. Contrairement à ces derniers, elles ne présentent pas de (dizaines ou centaines) de milliers de cibles distinctes, mais un seul objet continu. De fait, au premier abord elles ne semblent pas nécessiter d'assistance à la sélection. Cependant, les nombreuses aspérités d'une isosurface, attendu qu'elles correspondent à celles de la molécule, peuvent être considérées comme des cibles distinctes, à condition d'avoir une méthode pour les distinguer. Cette méthode pourrait éventuellement être fondée sur des critères de concavité et convexité. Si l'on considère chaque sous-ensemble convexe de la surface représentée sur la figure~\ref{fig:4awn_iso_1_5}, par exemple, on aboutit à plusieurs dizaines de cibles potentielles ; et ce pour une protéine de taille relativement réduite (moins de 2200 atomes, quand certaines protéines en comptent des dizaines de milliers). On peut également considérer les sous-ensembles concaves comme des cibles, car ils peuvent représenter des cavités ou tunnels\footnotemark dignes d'intérêt.
 	
 	\footnotetext{Les cavités et tunnels des protéines sont critiques pour la compréhension de phénomènes tels que la liaison de ligands, le transport moléculaire ou la catalyse enzymatique~\cite{paramo2014}.}
 	
@@ -287,7 +287,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\end{figure}
 	
 	\paragraph{Autres techniques de représentations.}
-	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes courramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera}~\cite{pettersen2004ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara}, \emph{LigandScout}~\cite{wolber2005ligandscout} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
+	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes couramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera}~\cite{pettersen2004ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara}, \emph{LigandScout}~\cite{wolber2005ligandscout} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
 	
 	\begin{figure}[H]
 		\centering
@@ -332,7 +332,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_vdW}
-			\caption{Représentation basée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
+			\caption{Représentation fondée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
 			\label{fig:4awn_VdW}
 		\end{subfigure}
 		~
@@ -407,14 +407,14 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\paragraph{Initialisation.}
 	Une simulation de dynamique moléculaire nécessite une phase d'initialisation. Il faut en premier lieu assigner une position à chaque particule --- chaque atome, en général. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant, qui est généralement de l'eau avec quelques ions dissous, mais c'est plus compliqué pour les macromolécules dont la conformation n'est pas triviale. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Cette technique fut d'abord employée pour déterminer la structure de petits cristaux inorganiques~\cite{friedrich1912sitzungsberichte, bragg1914reflexion, bragg1913structure, dickinson1923crystal}, puis de molécules organiques et de protéines~\cite{de1925interpretation, crowfoot1935x, kendrew1958three}. Lorsque la cristallographie n'est pas possible, d'autres méthodes, souvent moins précises, peuvent être utilisées. C'est notamment le cas de la spectroscopie de résonance magnétique nucléaire~\cite{clore1989determination, wuthrich1990protein, clore1991structures, wuthrich2001way}. La cryo-microscopie électronique~\cite{adrian1984cryo} (ou cryo-ME, ou encore \emph{cryo-EM} dans la littérature anglo-saxonne) est de plus en plus utilisée~\cite{kuhlbrandt2014cryo, callaway2015revolution}, notamment du fait de ses moindres contraintes --- pas de cristallisation nécessaire --- et de sa résolution croissante~\cite{dellisanti2015barrier, bartesaghi20152}.
 	
-	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. La modélisation par homologie repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acide aminés de la protéine étudiée et ceux des structures protéiques connues. Cela repose sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
+	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. La modélisation par homologie repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela repose sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
 	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
-% 		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
-% 		\label{fig:moldyn}
-% 	\end{figure}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
+ 		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
+ 		\label{fig:moldyn}
+ 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
@@ -457,7 +457,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	\paragraph{Paramètres initiaux.} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un laps de temps aussi grand que possible --- ce qui est souvent nécessaire pour observer des phénomènes biologiques complexes et longs --- le pas de temps doit être aussi grand que possible. Cela permet en effet à chaque itération de la simulation de couvrir une durée relativement élevée, donc pour un temps (réel) de simulation donné et pour des ressources de calcul données, la durée simulée est maximisée.
 	
-	Cependant, le pas de temps doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple (particulièrement les liaisons carbone-hydrogène) sont très courtes, de l'ordre de $10^{-14}$~s, soit 10 femtosecondes. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1 femtoseconde, du moins pour les simulations de type \og tout atome \fg{} avec liaisons flexibles. Des simulations plus grossières (notamment avec liaisons rigides, voire de type \og gros grains \fg{}) peuvent se contenter de pas de temps plus long, au prix d'une précision amoindrie.
+	Cependant, le pas de temps doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple (particulièrement les liaisons carbone-hydrogène) sont très courtes, de l'ordre de $10^{-14}$~s, soit 10 femtosecondes. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins le double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1 femtoseconde, du moins pour les simulations de type \og tout atome \fg{} avec liaisons flexibles. Des simulations plus grossières (notamment avec liaisons rigides, voire de type \og gros grains \fg{}) peuvent se contenter de pas de temps plus long, au prix d'une précision amoindrie.
 	
 	D'autres paramètres doivent être initialisés, par exemple les vitesses des particules, qui suivent généralement une distribution de Maxwell-Boltzmann~\cite{maxwell1860v, maxwell1860ii, boltzmann1970weitere, boltzmann2003further}. Il convient également d'ajuster la température, la pression, le nombre de particules, etc., et de déterminer lesquels de ces paramètres doivent être maintenus constants, et comment. Le changement d'un seul de ces paramètres mènera généralement à une autre exploration de l'espace conformationnel, c'est-à-dire à une trajectoire différente.
 	
@@ -489,37 +489,37 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes, ce qu'explicite la figure~\ref{fig:e_dihedral}.
 	
-%  	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
-% 		\caption[Énergie de liaison.]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_bond}
-% 	\end{figure}
+  	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
+ 		\caption[Énergie de liaison.]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
+ 		\label{fig:e_bond}
+ 	\end{figure}
 	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
-% 		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_angle}
-% 	\end{figure}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
+ 		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
+ 		\label{fig:e_angle}
+ 	\end{figure}
 	
-% 	\begin{figure}[H]
-% 		\begin{subfigure}{\textwidth}
-% 			\centering
-% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
-% 			%\caption{}
-% 			\label{fig:e_dihedrala}
-% 		\end{subfigure}
-% 		~
-% 		\begin{subfigure}{\textwidth}
-% 			\centering
-% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
-% 			%\caption{}
-% 			\label{fig:e_dihedralb}
-% 		\end{subfigure}
-% 		\caption[Énergie de torsion, ou d'angles dièdres.]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
-% 		\label{fig:e_dihedral}
-% 	\end{figure}
+ 	\begin{figure}[H]
+ 		\begin{subfigure}{\textwidth}
+ 			\centering
+ 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
+ 			%\caption{}
+ 			\label{fig:e_dihedrala}
+ 		\end{subfigure}
+ 		~
+ 		\begin{subfigure}{\textwidth}
+ 			\centering
+ 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
+ 			%\caption{}
+ 			\label{fig:e_dihedralb}
+ 		\end{subfigure}
+ 		\caption[Énergie de torsion, ou d'angles dièdres.]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
+ 		\label{fig:e_dihedral}
+ 	\end{figure}
 	
 	\begin{equation}
 		\label{eq:nonbonded}
@@ -530,19 +530,19 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut, et résumées par la figure~\ref{fig:e_vdw}.
 	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
-% 		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_electrostat}
-% 	\end{figure}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
+ 		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
+ 		\label{fig:e_electrostat}
+ 	\end{figure}
 	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
-% 		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_vdw}
-% 	\end{figure}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
+ 		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
+ 		\label{fig:e_vdw}
+ 	\end{figure}
 	
 	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
 	
@@ -554,13 +554,13 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	Les processus biologiques dont l'étude nécessite l'emploi de simulations de dynamique moléculaire impliquent souvent des événements relativement longs ou rares, tels que de profonds changements de conformation, ou des transitions d'un état d'équilibre à un autre, comme la liaison ou la rupture de liaison avec un ligand\footnote{En biologie, un ligand est une molécule qui se lie de manière réversible sur une macromolécule ciblée, protéine ou acide nucléique, jouant en général un rôle fonctionnel : stabilisation structurale, catalyse, modulation d'une activité enzymatique, transmission d'un signal. Par exemple, le hème de la myoglobine est un ligand, cf. la figure~\ref{fig:myoglobin}.}. Or, les simulations de dynamique moléculaire étant généralement limitées à quelques dizaines de nanosecondes, ces phénomènes ne sont pas toujours observables ou reproductibles~\cite{phillips2005scalable}.
 	
 	\paragraph{Steering.}
-	Par conséquent, il est utile de pouvoir agir sur une simulation de dynamique moléculaire. Cette technique est souvent appelée \emph{steering} dans la littérature anglo-saxonne et consiste à appliquer des forces externes à une molécule au cours de sa simulation pour explorer ses propriétés mécaniques, ou pour chercher à provoquer les phénomènes mentionnés ci-dessus, trop lents pour les simulations sans \emph{steering}. Ces phénomènes peuvent ainsi être étudiés~\cite{izrailev1999steered, isralewitz2001steered, isralewitz2001steered}. Certains spécialistes~\cite{phillips2005scalable} préfèrent parler d'\emph{Interactive Molecular Dynamics} (IMD)~\cite{stone2001system, grayson2003mechanisms} lorsque les forces sont appliquées en temps réel par l'utilisateur, par opposition au \emph{steering} basé sur des forces dont l'application est préprogrammée. L'interactivité permet aussi de trouver des repliements d'acides nucléiques plus rapidement, même avec des utilisateurs novices~\cite{mazzanti2017can}.
+	Par conséquent, il est utile de pouvoir agir sur une simulation de dynamique moléculaire. Cette technique est souvent appelée \emph{steering} dans la littérature anglo-saxonne et consiste à appliquer des forces externes à une molécule au cours de sa simulation pour explorer ses propriétés mécaniques, ou pour chercher à provoquer les phénomènes mentionnés ci-dessus, trop lents pour les simulations sans \emph{steering}. Ces phénomènes peuvent ainsi être étudiés~\cite{izrailev1999steered, isralewitz2001steered, isralewitz2001steered}. Certains spécialistes~\cite{phillips2005scalable} préfèrent parler d'\emph{Interactive Molecular Dynamics} (IMD)~\cite{stone2001system, grayson2003mechanisms} lorsque les forces sont appliquées en temps réel par l'utilisateur, par opposition au \emph{steering} fondé sur des forces dont l'application est préprogrammée. L'interactivité permet aussi de trouver des repliements d'acides nucléiques plus rapidement, même avec des utilisateurs novices~\cite{mazzanti2017can}.
 	
 	\paragraph{Simulations en immersion et retour haptique.}
 	La figure~\ref{fig:steeredPIT} présente un exemple précoce (1999) d'IMD en contexte immersif. La notion d'immersion fait l'objet de plusieurs définitions, notamment celles citées par J.-M.~Burkhardt \emph{et al.}~\cite{burkhardt2003immersion} :
 	
 	\begin{displayquote}
-	    \textbf{Acception 1.} Dans le langage courant, le terme d'immersion est compris comme \emph{l'exposition de l'utilisateur à un EV au moyen de dispositifs occultant en partie la perception} (surtout visuelle) de l'environnement alentours, pour afficher en lieu et place une image du monde virtuel (visio-casque, salle immersive de type CAVE, etc.). Par extension, on parle d'immersion auditive, haptique, sensorielle etc. Au-delà d'un caractère informel, cette acception comporte deux ambiguïtés. D'une part, deux sémantiques différentes coexistent :
+	    \textbf{Acception 1.} Dans le langage courant, le terme d'immersion est compris comme \emph{l'exposition de l'utilisateur à un EV au moyen de dispositifs occultant en partie la perception} (surtout visuelle) de l'environnement alentour, pour afficher en lieu et place une image du monde virtuel (visio-casque, salle immersive de type CAVE, etc.). Par extension, on parle d'immersion auditive, haptique, sensorielle etc. Au-delà d'un caractère informel, cette acception comporte deux ambiguïtés. D'une part, deux sémantiques différentes coexistent :
 	    \renewcommand{\labelenumi}{\alph{enumi}} % small letters
 	    \begin{enumerate}
 	        \item l'immersion comme \emph{l'action d'exposer l'utilisateur à un environnement simulé numériquement},
@@ -590,7 +590,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	Pour Guillaume Bouyer~\cite{bouyer2007rendu} :
 	
 	\begin{displayquote}
-	    D'un point de vue sensoriel, concret, il s'agit d'occulter partiellement ou totalement la perception de l'humain des objets réels qui l'entourent pour qu'elle soit uniquement ou principalement exposée aux stimuli du monde virtuel. Dans le cas le plus abouti de l'immersion virtuelle, l'humain est totalement découplé du monde réel : seul l'environnement virtuel l'occupe, c'est la notion de \og présence \fg{}. Mais l'immersion peut également être mentale, l'utilisateur pouvant être littéralement \og plongé \fg{}, absorbé par son activité, occultant de lui-même le monde réel (comme il pourrait l'être par exemple pendant la vision d'un film ou la lecture d'un livre). L'immersion de l'utilisateur dans l'[environnement virtuel] est donc créée à la fois par des moyens techniques, sensoriels, comme l'obscurité, de grands écrans et des enceintes diffusant des images en relief et du son 3D, des interfaces de commande non intrusives et naturelles, etc. ; et des procédés logiciels, basés sur des connaissances psychologiques : les concepteurs jouent sur le rendu de la scène, les habitudes de l'utilisateur, ses émotions, etc.
+	    D'un point de vue sensoriel, concret, il s'agit d'occulter partiellement ou totalement la perception de l'humain des objets réels qui l'entourent pour qu'elle soit uniquement ou principalement exposée aux stimuli du monde virtuel. Dans le cas le plus abouti de l'immersion virtuelle, l'humain est totalement découplé du monde réel : seul l'environnement virtuel l'occupe, c'est la notion de \og présence \fg{}. Mais l'immersion peut également être mentale, l'utilisateur pouvant être littéralement \og plongé \fg{}, absorbé par son activité, occultant de lui-même le monde réel (comme il pourrait l'être par exemple pendant la vision d'un film ou la lecture d'un livre). L'immersion de l'utilisateur dans l'[environnement virtuel] est donc créée à la fois par des moyens techniques, sensoriels, comme l'obscurité, de grands écrans et des enceintes diffusant des images en relief et du son 3D, des interfaces de commande non intrusives et naturelles, etc. ; et des procédés logiciels, fondés sur des connaissances psychologiques : les concepteurs jouent sur le rendu de la scène, les habitudes de l'utilisateur, ses émotions, etc.
 	    
 	    Ensuite, l'interaction doit être pseudo-naturelle, c'est-à-dire proche de l'interaction de l'humain dans son environnement réel. En effet, dans le monde réel, l'être humain a acquis, assimilé un certain nombre de \og schèmes \fg{}, de comportements à la fois sensori-moteurs voire cognitifs. Il possède ses propres raisonnements assortis de représentations mentales, a construit une organisation du monde selon un ensemble de règles spatio-temporelles et causales, a acquis des réflexes, a appris des gestes, etc. Dans un [environnement virtuel], il va être tenté de répéter ces schèmes ou de les adapter au nouveau contenu qui s'offre à lui. L'une des caractéristiques des travaux sur l'interaction en RV est de faciliter cette transposition, pour que l'interaction se fasse inconsciemment et sans grand effort mental : \og les interfaces exploitent la motricité ou les perceptions de l'homme issues de son comportement dans le monde réel \fg{}~\cite{fuchs2006introduction}.	
 	\end{displayquote}
@@ -617,7 +617,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	Ceux-ci peuvent être utilisés de diverses façons, notamment pour percevoir les \og collisions \fg{} entre le curseur et les objets de la scène, ou entre un objet sélectionné par l'utilisateur et un autre objet de la scène, pour permettre à l'utilisateur de percevoir les forces qui s'exercent entre les composantes de la molécule, ou encore pour guider la sélection, en appliquant une force au périphérique haptique dans la direction de la cible présumée de l'utilisateur. Le choix du mode d'utilisation d'un périphérique haptique dans une simulation d'IMD dépend de l'effet recherché.
 	
-	\footnotetext{\emph{Cave Automatic Virtual Environment}, un système permettant l'immersion dans un environnement virtuel doté de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite expose ses vues sur la perception, la réalité et l'illusion.}
+	\footnotetext{\emph{Cave Automatic Virtual Environment}, un système permettant l'immersion dans un environnement virtuel doté de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite et expose ses vues sur la perception, la réalité et l'illusion.}
 	
 	\paragraph{Limites et défis actuels.}
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers ou plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité, et encore cet exemple n'est-il pas le plus extrême, car la molécule représentée n'est pas très grande et, surtout, le solvant n'est pas représenté.
@@ -627,7 +627,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/gluTrans}
-		\caption[Transporteur de glutamate, très forte occultation.]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
+		\caption[Transporteur de glutamate, très forte occultation.]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
 		\label{fig:gluTrans}
 	\end{figure}
 	
@@ -639,7 +639,7 @@ Nous allons voir dans cette section que les approches computationnelles se basen
 	
 	En effet, les mouvements des atomes dans une simulation de dynamique moléculaire se caractérisent par leur irrégularité et, par conséquent, leur imprévisibilité. Selon la simulation et la façon dont elle est représentée, les atomes peuvent adopter un mouvement brownien ou plus proche de celui d'une mouche --- très vif, très saccadé et de fait imprévisible.
 	
-	Ensemble, la très forte densité de cibles, le haut degré d'occultation, la grande vitesse de ces cibles et la nature très imprévisible de leurs mouvement rendent l'interaction (et en particulier la sélection d'une particule) avec les simulations de dynamique moléculaire très difficile. C'est pourquoi les chercheurs en biologie structurale expriment le besoin de meilleurs modes d'interaction, et c'est la principale motivation des travaux présentés dans cette thèse.
+	Ensemble, la très forte densité de cibles, le haut degré d'occultation, la grande vitesse de ces cibles et la nature très imprévisible de leurs mouvements rendent l'interaction (et en particulier la sélection d'une particule) avec les simulations de dynamique moléculaire très difficile. C'est pourquoi les chercheurs en biologie structurale expriment le besoin de meilleurs modes d'interaction, et c'est la principale motivation des travaux présentés dans cette thèse.
 	
 	\section{Simulations de problèmes à N corps}
 	
