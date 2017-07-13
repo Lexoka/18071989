@@ -854,7 +854,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 
 	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
 	
-	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête.
+	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête. Ces techniques sont toutefois destinées à traiter des données vidéo brutes.
+	
+	Or, dans le cas qui nous intéressent, il est généralement possible d'installer des marqueurs sur la tête d'un utilisateur pour connaître plus précisément sa \emph{pose}, en s'appuyant également sur des caméras de \emph{tracking}, comme par exemple les systèmes d'Advanced Realtime Tracking\footnotemark{}. Outre sa précision, ce système est autrement plus robuste que les techniques sans marqueurs.
+	
+	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
+	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
+	
+	
 	
 	\begin{itemize}
 		\item Les performances dépendent de la couleur des yeux ;[ref]
