@@ -108,6 +108,8 @@
 % Pour inclure des .eps, il faut compiler avec latex + dvips + ps2pdf.
 \usepackage{epstopdf}	% Pour éviter le problème de compilation des .eps mentionné au-dessus
 
+\usepackage[section]{placeins} % Puts a float barrier at each section
+
 % on change la couleur des parties dans la TdM
 \newcommand{\parttoccolor}{black} 
 \newcommand{\chaptertoccolor}{black}
@@ -137,6 +139,8 @@
 \usepackage{float}
 
 \usepackage{wrapfig}
+\restylefloat{figure}
+
 
 % pour utiliser et standardiser les acronymes
 \usepackage{acronym}

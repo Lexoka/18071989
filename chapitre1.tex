@@ -33,7 +33,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{Composition.}
 	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
-	\begin{figure}[H]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+		\centering
+		\includegraphics[width=0.46\textwidth]{figures/ch1/1KX2}
+		\caption[Une protéine en \emph{Hyperballs}]{Une protéine (un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Elle est relativement petite (81 acides aminés, vs. $\approx$~30~000 pour la titine). De plus, les atomes étant ici représentés avec un rayon inférieur à leur rayon de van der Walls, l'occultation est réduite, et les molécules du solvant ne sont pas représentées. Malgré tout, la densité d'objets et le niveau d'occultation demeurent très importants.}
+		\label{fig:1KX2}
+	\end{wrapfigure}
+	
+	\begin{figure}[ht]
 		\begin{subfigure}{.4\textwidth}
 			\centering
 			{\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}}
@@ -51,18 +58,11 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:aminoAcid}
 	\end{figure}
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/aminoAcids}
-		\caption[Ensemble des acides aminés.]{Les 22 acides aminés dits protéinogènes que l'on trouve chez les eucaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
+		\caption[Ensemble des acides aminés.]{Les 21 acides aminés dits protéinogènes que l'on trouve chez les eucaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
 		\label{fig:aminoAcids}
-	\end{figure}
-    
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/1KX2}
-		\caption{Illustration d'une protéine (\emph{1KX2}, un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Les atomes de carbone sont représentés en gris, ceux d'oxygène en rouge, d'hydrogène en blanc, et de soufre en jaune. Cette protéine est relativement petite, avec seulement 81 acides aminés (à comparer avec les quelques 30~000 de la titine, ou connectine) ; de plus, ce mode de représentation, dans lequel les atomes ont un rayon inférieur à leur rayon de van der Walls, couramment utilisé, minimise l'occultation ; néanmoins, on constate qu'une très grande partie de la molécule est occultée par les atomes situés au premier plan. De surcroît, il s'agit ici d'une représentation \emph{in vacuo}, c'est-à-dire sans le solvant dans lequel une protéine se trouve généralement à l'état naturel.}
-		\label{fig:1KX2}
 	\end{figure}
 	
 	\paragraph{Synthèse.}
@@ -81,30 +81,36 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires\footnote{Dans le contexte de la dynamique moléculaire, on appelle \og trajectoire \fg{} l'évolution du système dans le temps, en particulier l'évolution des positions et des vélocités des particules simulées.} de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
 		
 	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie que l'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
-		
+
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/aHelix}
-		\caption[Hélices alpha, trois représentations différentes.]{Une hélice alpha sous forme schématique (à gauche), sous forme schématique avec un affichage texte représentant les atomes de façon simplifiée (au centre) et en représentation \og tout atome \fg{} (à droite) avec les doubles liaisons illustrées explicitement par deux bâtons, et les liaisons hydrogène représentées en pointillés rouges. Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est généralement choisie, la plupart du temps sans la tige jaune au niveau de l'axe de l'hélice. Crédit : \emph{\emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, Anna University - K.~B. Chandrasekhar Research Centre, Madras Institute of Technology}\footnotemark.}
-		\label{fig:aHelix}
+		\begin{subfigure}[b]{.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./figures/ch1/aHelix}
+			\caption[Hélices alpha, trois représentations différentes.]{Une hélice alpha schématisée (gauche), avec du texte représentant les atomes (centre) et en représentation \og tout atome \fg{} (droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est plus courante. Crédit : \emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, AU\footnotemark.}
+			\label{fig:aHelix}
+		\end{subfigure}
+		~
+		\begin{subfigure}[b]{.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./figures/ch1/bSheet}
+			\caption[Feuillets bêta]{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology} -- PSU\footnotemark.}
+			\label{fig:bSheet}
+		\end{subfigure}
+		\caption{Structures secondaires.}
+		\label{fig:secStructs}
 	\end{figure}
 	
+	\addtocounter{footnote}{-1}
 	\footnotetext{\url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
-		
-	\begin{figure}[H]
+	\addtocounter{footnote}{1}
+	\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/bSheet}
-		\caption{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology -- Penn State University.}\protect\footnotemark}
-		\label{fig:bSheet}
-	\end{figure}
-		\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
-		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
-		\caption{À gauche : représentation en structures secondaires d'une molécule de myoglobine, une métalloprotéine présente dans les muscles des vertébrés, et dont la fonction est de stocker le dioxygène ; son hème --- un cofacteur contenant un atome de fer et pouvant accueillir du dioxygène --- est représenté en \og tout atome \fg{} et plus précisément en bâtons. À droite : une représentation schématique du hème et des histidines qui le stabilisent. Crédit :~\cite{Ordway3441}}
+		\includegraphics[width=0.46\textwidth]{figures/ch1/myoglobin}
+		\caption[Représentation hybride d'une protéine]{Représentation en structures secondaires d'une molécule de myoglobine (protéine dont la fonction est de stocker le dioxygène). Son hème est représenté en \og tout atome \fg{} et plus précisément en bâtons rouges. Les niveaux de densité et d'occultation sont donc compris entre ceux de ces deux modes de représentation. Crédit :~\cite{Ordway3441}.}
 		\label{fig:myoglobin}
-	\end{figure}
+	\end{wrapfigure}
 	
 	Dans la littérature anglo-saxonne, la représentation en structures secondaires est parfois appelée \emph{cartoon} ou \emph{ribbons}~\cite{carson1986algorithm, richardson2000early}.
 	
@@ -112,64 +118,65 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{Rôles.}
 	Les protéines sont impliquées dans la plupart des processus biologiques et, de fait, leurs rôles sont extrêmement divers. On peut toutefois les diviser en deux grandes parties : les fonctions cellulaires et les fonctions biochimiques. Les premières définissent le rôle de la protéine dans la cellule ou l'organisme, et peuvent être découpées en cinq groupes~\cite{lodish1995molecular} :
 	\begin{enumerate}
-		\item Les protéines des structures, qui permettent à la cellule de maintenir son intégrité physique et son organisation dans l'espace. C'est par exemple la fonction du collagène, la protéine la plus abondante chez les mammifères~\cite{di2002mapping}, illustrée par la figure~\ref{fig:collagen}.
-		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmiques, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine~\cite{crichton1987iron} (illustrée par la figure~\ref{fig:transferrin}) ou d'ions à travers les membranes cellulaires, par les canaux ioniques. 
-		\item Les protéines régulatrices, qui inhibent ou stimulent l'activité d'autres protéines, ou la transcription de gènes, ce qui permet réguler divers processus biologiques. Un exemple de réseau de régulation formé par plusieurs protéines est représenté par la figure~\ref{fig:regulation}.
-		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides), les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. C'est notamment le cas des récepteurs de l'insuline~\cite{gammeltoft1984insulin}. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. C'est ainsi que fonctionnent les récepteurs d'œstrogène alpha, ou ER$\alpha$~\cite{dahlman2006international}, illustrés par la figure~\ref{fig:eralpha}.
-		\item Les protéines motrices, qui permettent aux cellules ou aux organismes de se mouvoir. On peut citer par exemple la myosine, essentielle à l'activité musculaire des vertébrés~\cite{pollard1973acanthamoeba}, et illustrée par la figure~\ref{fig:myosin}.
+		\item Les protéines des structures, qui permettent à la cellule de maintenir son intégrité physique et son organisation dans l'espace. C'est par exemple la fonction du collagène, la protéine la plus abondante chez les mammifères~\cite{di2002mapping}.%, illustrée par la figure~\ref{fig:collagen}.
+		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmiques, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine~\cite{crichton1987iron} ou d'ions à travers les membranes cellulaires, par les canaux ioniques. %(illustrée par la figure~\ref{fig:transferrin})
+		\item Les protéines régulatrices, qui inhibent ou stimulent l'activité d'autres protéines, ou la transcription de gènes, ce qui permet réguler divers processus biologiques.% Un exemple de réseau de régulation formé par plusieurs protéines est représenté par la figure~\ref{fig:regulation}.
+		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides), les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. C'est notamment le cas des récepteurs de l'insuline~\cite{gammeltoft1984insulin}. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. %C'est ainsi que fonctionnent les récepteurs d'œstrogène alpha, ou ER$\alpha$~\cite{dahlman2006international}, illustrés par la figure~\ref{fig:eralpha}.
+		\item Les protéines motrices, qui permettent aux cellules ou aux organismes de se mouvoir. On peut citer par exemple la myosine, essentielle à l'activité musculaire des vertébrés~\cite{pollard1973acanthamoeba}.%, et illustrée par la figure~\ref{fig:myosin}.
 	\end{enumerate}	
 
-	\begin{figure}[H]
-		\begin{subfigure}[t]{.4\textwidth}
-			\centering
-			\includegraphics[height=7cm]{./figures/ch1/collagen}
-			\caption[Collagène.]{Collagène : structure en triple-hélice d'arginines ; structure cristallographique~\cite{okuyama2014preferred}.}
-			\label{fig:collagen}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{.6\textwidth}
-			\centering
-			\includegraphics[height=7cm]{./figures/ch1/eralpha}
-			\caption[Récepteur d'œstrogène alpha.]{Récepteur d'œstrogène alpha, représenté par une isosurface de densité colorée en fonction des atomes sous-jacents~\cite{nwachukwu2016systems}.}
-			\label{fig:eralpha}
-		\end{subfigure}
-		\caption[Protéines de structure et de communication.]{Protéines de structure et de communication. Illustrations produites par \emph{UnityMol}.}
-		\label{fig:prot_misc}
-	\end{figure}
+%	\begin{figure}[H]
+%		\begin{subfigure}[t]{.4\textwidth}
+%			\centering
+%			\includegraphics[height=7cm]{./figures/ch1/collagen}
+%			\caption[Collagène.]{Collagène : structure en triple-hélice d'arginines ; structure cristallographique~\cite{okuyama2014preferred}.}
+%			\label{fig:collagen}
+%		\end{subfigure}
+%		~
+%		\begin{subfigure}[t]{.6\textwidth}
+%			\centering
+%			\includegraphics[height=7cm]{./figures/ch1/eralpha}
+%			\caption[Récepteur d'œstrogène alpha.]{Récepteur d'œstrogène alpha, représenté par une isosurface de densité colorée en fonction des atomes sous-jacents~\cite{nwachukwu2016systems}.}
+%			\label{fig:eralpha}
+%		\end{subfigure}
+%		\caption[Protéines de structure et de communication.]{Protéines de structure et de communication. Illustrations produites par \emph{UnityMol}.}
+%		\label{fig:prot_misc}
+%	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/transferrin}
-		\caption[Transferrine.]{Illustration d'une protéine de transport : la transferrine humaine, ici liée à de l'ytterbium, et représentée par ses structures secondaires (hélices alpha en rouge et feuillets bêta en bleu). Illustration produite par \emph{UnityMol} à partir d'une structure de la \emph{Protein Data Bank}~\cite{wang2015anion}.}
-		\label{fig:transferrin}
-	\end{figure}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/transferrin}
+%		\caption[Transferrine.]{Illustration d'une protéine de transport : la transferrine humaine, ici liée à de l'ytterbium, et représentée par ses structures secondaires (hélices alpha en rouge et feuillets bêta en bleu). Illustration produite par \emph{UnityMol} à partir d'une structure de la \emph{Protein Data Bank}~\cite{wang2015anion}.}
+%		\label{fig:transferrin}
+%	\end{figure}
+%	
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/myosin}
+%		\caption[Myosine.]{Illustration d'une portion de myosine, une protéine essentielle à l'activité contractile des vertébrés, notamment dans les cellules musculaires. Illustration de David Goodsell, à partir d'une structure de la \emph{Protein Data Bank}~\cite{houdusse1999atomic}.}
+%		\label{fig:myosin}
+%	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/myosin}
-		\caption[Myosine.]{Illustration d'une portion de myosine, une protéine essentielle à l'activité contractile des vertébrés, notamment dans les cellules musculaires. Illustration de David Goodsell, à partir d'une structure de la \emph{Protein Data Bank}~\cite{houdusse1999atomic}.}
-		\label{fig:myosin}
-	\end{figure}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/regulation}
+%		\caption[Réseau de régulation.]{Schéma représentant un réseau de régulation génétique (chez une espèce de riz hybride). Les ellipses roses-rouges représentent des protéines, et les disques roses représentent des facteurs de transcription\footnotemark. Les interactions sont multiples, et peuvent prendre la forme d'une liaison, d'une stimulation, d'une inhibition\ldots{} Les protéines sont impliquées à tous les niveaux du processus. Crédit :~\cite{song2010comparative}.}
+%		\label{fig:regulation}
+%	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/regulation}
-		\caption[Réseau de régulation.]{Schéma représentant un réseau de régulation génétique (chez une espèce de riz hybride). Les ellipses roses-rouges représentent des protéines, et les disques roses représentent des facteurs de transcription\footnotemark. Les interactions sont multiples, et peuvent prendre la forme d'une liaison, d'une stimulation, d'une inhibition\ldots{} Les protéines sont impliquées à tous les niveaux du processus. Crédit :~\cite{song2010comparative}.}
-		\label{fig:regulation}
-	\end{figure}
-	
-	\footnotetext{Un facteur de transcription est une protéine qui contrôle le taux de transcription d'une portion d'ADN en ARN messager~\cite{latchman1997transcription}.}
+%	\footnotetext{Un facteur de transcription est une protéine qui contrôle le taux de transcription d'une portion d'ADN en ARN messager~\cite{latchman1997transcription}.}
 	
 	
 	\subsection{Modes de représentation}
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
+
 	
-	\begin{figure}[H]
+	\begin{wrapfigure}{O}{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/helium}
-		\caption{Illustration d'un atome d'hélium, représentant le noyau en rose et la distribution du nuage électronique en nuances de gris. Le noyau (en haut à droite) de l'hélium-4 est représenté de façon très schématisée. La barre noire en bas à gauche indique l'échelle, et mesure un \aa{}ngström, soit $0,1$ nanomètre. Crédit : \emph{Wikimedia}.}
+		\includegraphics[width=0.46\textwidth]{figures/ch1/helium}
+		\caption[Un atome d'hélium avec son nuage électronique]{Un atome d'hélium, avec le noyau en rose et la distribution du nuage électronique en nuances de gris. Le noyau de l'hélium-4 est représenté de façon très schématisée. La barre noire en bas indique l'échelle, et mesure $0,1$ nanomètre. Le dessin d'une « coque » pour représenter un atome sous forme de sphère de rayon fini est un choix arbitraire, dont l'importance pour la sélection d'atomes est déterminante. Crédit : \emph{Wikimedia}.}
 		\label{fig:helium}
-	\end{figure}
+	\end{wrapfigure}
 	
 	\paragraph{Points.} Le mode de visualisation le plus simple consiste à représenter chaque atome (et uniquement les atomes) par un point tout juste assez gros pour être visible. Les liaisons covalentes ne sont pas représentées. Selon la façon dont elle est mise en œuvre, cette technique de visualisation peut être très performante, et donc garantir un affichage fluide même avec de très nombreux atomes. Elle a de plus l'avantage de minimiser l'occultation des atomes les uns par les autres, du fait de leur petite taille. Cependant, elle communique peu d'informations sur la molécule. En particulier, les liaisons covalentes étant absentes, sa structure même fait défaut. De plus, l'utilisateur peut difficilement se faire une idée de l'espace qu'occupe réellement cette molécule dans son milieu, car chaque atome n'est représenté que schématiquement, par un point bien plus petit que ce que l'on observe sur la figure~\ref{fig:helium}, par exemple.
 		
@@ -199,243 +206,210 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	    \item La dispersion, c'est-à-dire l'interaction électrostatique attractive entre deux multipôles induits, aussi désignée force de London~\cite{eisenschitz1930verhaltnis, london1930theorie, london1937general} ;
 		\item La répulsion de Pauli, qui découle du principe d'exclusion de Pauli~\cite{pauli1925zusammenhang}, selon lequel plusieurs électrons (et autres fermions) ne peuvent pas se trouver simultanément dans le même état quantique. En effet, attendu que les électrons de deux atomes ne peuvent pas occuper le même espace simultanément, des atomes dont les nuages électroniques se croisent sont soumis à une force répulsive.
 	\end{itemize}
+
 	
-	Les logiciels de simulation utilisent fréquemment le potentiel de Lennard-Jones~\cite{lennard1924determination} pour modéliser les forces de van der Waals. Celui-ci peut s'exprimer par l'équation~\ref{eq:lennard}, où $r$ est la distance entre les centres des deux atomes concernés, et $d$ représente la distance pour laquelle le potentiel de Lennard-Jones est nul ; $E_{0}$ est la valeur minimale du potentiel, soit le \og fond \fg{} du puits de potentiel. Comme on l'observe aisément sur la figure~\ref{fig:lennard}, le potentiel admet un minimum, dont on peut déduire un rayon de van der Waals. Ce rayon peut être celui d'une sphère représentant l'atome en question. La figure~\ref{fig:vdwradius} en fournit une illustration.
+	Les logiciels de simulation utilisent fréquemment le potentiel de Lennard-Jones~\cite{lennard1924determination} pour modéliser les forces de van der Waals. Celui-ci peut s'exprimer par $E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)$, où $r$ est la distance entre les centres des deux atomes concernés, et $d$ représente la distance pour laquelle le potentiel de Lennard-Jones est nul ; $E_{0}$ est la valeur minimale du potentiel, soit le \og fond \fg{} du puits de potentiel. Comme on l'observe aisément sur la figure~\ref{fig:lennard}, le potentiel admet un minimum, dont on peut déduire un rayon de van der Waals. Ce rayon peut être celui d'une sphère représentant l'atome en question.% La figure~\ref{fig:vdwradius} en fournit une illustration.
 		
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/vdwradius}
-		\caption{Représentation du rayon de van der Waals, par opposition au rayon de covalence, plus petit. En effet, celui-ci est défini par la longueur d'une liaison covalente, qui implique le partage d'électrons entre une paire d'atomes. Le rayon de van der Waals, lui, correspond à une paire d'atomes non liés. C'est pour cette raison qu'en représentation de van der Waals, les atomes liés semblent imbriqués les uns dans les autres. Crédit : Chemistry -- LibreTexts\protect\footnotemark.}
-		\label{fig:vdwradius}
-	\end{figure}
-	
-\footnotetext{\url{http://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Chemical_Bonding/General_Principles_of_Chemical_Bonding/Covalent_Bond_Distance,_Radius_and_van_der_Waals_Radius}}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/vdwradius}
+%		\caption{Représentation du rayon de van der Waals, par opposition au rayon de covalence, plus petit. En effet, celui-ci est défini par la longueur d'une liaison covalente, qui implique le partage d'électrons entre une paire d'atomes. Le rayon de van der Waals, lui, correspond à une paire d'atomes non liés. C'est pour cette raison qu'en représentation de van der Waals, les atomes liés semblent imbriqués les uns dans les autres. Crédit : Chemistry -- LibreTexts\protect\footnotemark.}
+%		\label{fig:vdwradius}
+%	\end{figure}
+%	
+%\footnotetext{\url{http://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Chemical_Bonding/General_Principles_of_Chemical_Bonding/Covalent_Bond_Distance,_Radius_and_van_der_Waals_Radius}}
     
 	C'est le principe de la représentation en sphères de van der Waals, illustrée par la figure~\ref{fig:4awn_VdW}. Ce mode de visualisation a plusieurs avantages. Premièrement, il correspond à une réalité physique, celle des forces de van der Waals. Deuxièmement, il permet d'apprécier le volume occupé par la molécule. Troisièmement, les atomes étant représentés par de grosses sphères, ils sont mieux visibles pour un niveau de zoom donné. De fait, il est plus aisé d'envisager les interactions possibles entre cette molécule et une autre, puisque l'on perçoit mieux les volumes des cavités dans lesquelles d'éventuels ligands pourraient venir se loger, et la bonne visualisation des atomes à la surface peut aider à évaluer la probabilité d'un arrimage avec ledit ligand.
 		
 	Cependant, les liaisons covalentes sont totalement occultées, et il est seulement possible de les \og deviner \fg{} à partir de l'emplacement des atomes et grâce aux lois de la chimie. La structure de la molécule est donc beaucoup moins claire qu'en représentation CPK, par exemple. De plus, les atomes sont si gros qu'ils occultent totalement ceux qui sont derrière eux. De fait, l'intérieur de la molécule devient totalement invisible. Si sa surface est mieux représentée, sa structure interne est entièrement occultée. C'est plus gênant encore lorsque les atomes d'hydrogène sont affichés, ce qui n'est pas le cas sur la figure~\ref{fig:4awn_VdW} --- il est courant de les omettre, par souci de clarté. Selon la mise en \oe{}uvre logicielle de cette représentation, elle peut être coûteuse en ressources de calcul, même si des solutions efficaces existent. En mouvement, la grande taille des atomes a l'avantage de diminuer leur mouvement relatif, c'est-à-dire leur mouvement par rapport à eux-mêmes.
 		
 	Les sphères de van der Waals ne sont pas une mauvaise option pour visualiser (ou interagir avec) une simulation de dynamique moléculaire, à condition que l'objet d'intérêt principal soit superficiel, et donc bien visible. La grande taille des cibles peut être un avantage, même s'il y a un certain degré d'interpénétration entre elles. Cette représentation constitue donc un cas d'application notable pour une technique de sélection de cibles mobiles.
-		
-	\begin{equation}
-		\label{eq:lennard}
-		E_{p}\left(r\right) = 4E_{0} \left( \left(\frac{d}{r}\right)^{12} - \left(\frac{d}{r}\right)^{6} \right)
-	\end{equation}
-		
- 	\begin{figure}[H]
+	
+ 	\begin{wrapfigure}{O}{0.45\textwidth}
  		\centering
- 		\includegraphics[width=\textwidth]{figures/ch1/lennard-jones}
-		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12246$. Crédit : \emph{Wikimedia}.}
+ 		\includegraphics[width=0.41\textwidth]{figures/ch1/lennard-jones}
+		\caption[Représentation graphique du potentiel de Lennard-Jones.]{Représentation graphique du potentiel de Lennard-Jones, en fonction du rapport $r/d$ entre la distance interatomique réelle et celle pour laquelle le potentiel s'annule. Le potentiel admet un minimum en $r/d = 2^{1/6}$, soit environ $1,12$ ; ce minimum correspond au rayon de van der Waals. Crédit : \emph{Wikimedia}.}
  		\label{fig:lennard}
- 	\end{figure}
-		
+ 	\end{wrapfigure}
+	
 	\paragraph{\emph{Hyperballs}.} La technique de visualisation de molécules appelée \emph{Hyperballs}~\cite{chavent2011gpu} se fonde sur une représentation analytique des atomes et des liaisons covalentes. Leurs surfaces sont décrites par des équations, des rayons sont lancés vers les atomes, et il s'agit ensuite de résoudre des équations d'intersection entre les rayons et les surfaces.
 		
-	Les \emph{Hyperballs} présentent de nombreux avantages. Sur le plan purement technique, leur mode de représentation analytique permet, au contraire des maillages de points (\emph{meshes}, en anglais), d'éviter d'avoir à gérer un très grand nombre de points et de triangles. De plus, quel que soit le niveau de zoom, les surfaces des sphères et des liaisons covalentes (représentées par des hyperboloïdes) demeurent parfaitement lisses. Comme l'illustre la figure~\ref{fig:spheremeshes}, avec des maillages, il est nécessaire d'avoir un grand nombre de triangles pour maintenir l'illusion de la rotondité du modèle lorsqu'il est observé de près.
+	Les \emph{Hyperballs} présentent de nombreux avantages. Sur le plan purement technique, leur mode de représentation analytique permet, au contraire des maillages de points (\emph{meshes}, en anglais), d'éviter d'avoir à gérer un très grand nombre de points et de triangles. De plus, quel que soit le niveau de zoom, les surfaces des sphères et des liaisons covalentes (représentées par des hyperboloïdes) demeurent parfaitement lisses. %Comme l'illustre la figure~\ref{fig:spheremeshes}, 
+	Avec des maillages, il est nécessaire d'avoir un grand nombre de triangles pour maintenir l'illusion de la rotondité du modèle lorsqu'il est observé de près.
 		
-	La figure~\ref{fig:hyperballs} illustre la représentation analytique des \emph{Hyperballs}, et sa légende détaille la façon dont on peut les utiliser pour \og imiter \fg{} les modes de représentation sus-cités. En réalité, les illustrations fournies jusqu'ici pour la représentation en points, en bâtons, en boules et bâtons, et en sphères de van der Waals ont toutes été produites avec des \emph{Hyperballs}, simplement en jouant sur leurs paramètres. Cette grande flexibilité, combinée aux performances de premier ordre offertes par cette technique (voir~\cite{chavent2011gpu}) rend cette technique particulièrement avantageuse.
+	%La figure~\ref{fig:hyperballs} illustre la représentation analytique des \emph{Hyperballs}, et sa légende détaille la façon dont on peut les utiliser pour \og imiter \fg{} les modes de représentation sus-cités.
+	En réalité, les illustrations fournies jusqu'ici pour la représentation en points, en bâtons, en boules et bâtons, et en sphères de van der Waals ont toutes été produites avec des \emph{Hyperballs}, simplement en jouant sur leurs paramètres. Cette grande flexibilité rend cette technique particulièrement avantageuse, surtout compte tenu des performances de premier ordre qu'elle offre~\cite{chavent2011gpu}.
 		
 	Au-delà de sa flexibilité, cependant, elle a l'avantage de permettre une représentation originale, avec des liaisons représentées par des hyperboloïdes. En jouant sur la courbure de ces hyperboloïdes, on peut communiquer des informations sur la nature de la liaison, par exemple sur la quantité d'énergie nécessaire à sa rupture. Si cette quantité est faible, on peut représenter la liaison par une hyperboloïde très \og creusée \fg{}, donnant l'impression d'être sur le point de rompre.
 		
 	Enfin, les \emph{Hyperballs}, utilisées de la façon la plus \og classique \fg{} ou \og canonique \fg{} présentent des hyperboloïdes partiellement creusées, comme sur la figure~\ref{fig:4awn_HB}. Cette représentation est souvent appréciée pour ses qualités esthétiques, certes subjectives. D'un point de vue plus objectif, la représentation en \emph{Hyperballs} canoniques présentent à peu près les mêmes caractéristiques que la représentation en boules et bâtons. Les dimensions sont proches, même si les formes diffèrent. Les liaisons sont un peu plus épaisses près des atomes, et comparables, voire un peu plus fines au milieu. De fait, la perception de la structure de la molécule et de ses propriétés, ainsi que le niveau d'occultation visuelle, sont assez comparables. Par conséquent, la représentation en \emph{Hyperballs} canoniques est un cas d'application aussi pertinent pour la sélection de cibles mobiles que la représentation CPK, voire plus, car les bonnes performances des \emph{Hyperballs} permettent de gérer de très gros systèmes plus facilement.
 		
-	\begin{figure}[!h]
-    	\centering
-    	\includegraphics[width=\textwidth]{figures/ch1/spheremeshes}
-    	\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Crédit :~\cite{seo2010heat}.}
-    	\label{fig:spheremeshes}
-	\end{figure}
-		
-	\begin{figure}[!h]
-    	\centering
-    	\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
-    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constate que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Crédit :~\cite{chavent2011gpu}.}
-   		\label{fig:hyperballs}
-    \end{figure}
-		
+%	\begin{figure}[ht]
+%    	\centering
+%    	\includegraphics[width=\textwidth]{figures/ch1/spheremeshes}
+%    	\caption{Représentations d'une sphère par maillages de triangles, plus ou moins fins. Si un maillage grossier est économe en triangles (donc en ressources de calcul et en mémoire) il n'apparaît comme sphérique que de loin ; inversement, les maillages plus fins fournissent une illusion de rotondité convaincante, mais à un coût prohibitif. Du reste, un niveau de zoom très élevé peut briser cette illusion, même sur un maillage très fin. Crédit :~\cite{seo2010heat}.}
+%    	\label{fig:spheremeshes}
+%	\end{figure}
+%		
+%	\begin{figure}[ht]
+%    	\centering
+%    	\includegraphics[width=\textwidth]{figures/ch1/hyperballs}
+%    	\caption{\emph{Hyperballs}. La figure A représente une paire d'atomes liés, avec quelques-uns des paramètres utilisés pour la représentation analytique de ce système. La figure B illustre particulièrement l'effet du \emph{shrink factor} (noté $S$), le principal paramètre d'ajustement de la forme de la liaison, du rayon de la liaison $r_{b}$ et du rayon des sphères $r_{b}$ (ici identique pour les deux sphères. On constate que lorsque le \emph{shrink factor} devient grand (supérieur à $0,3$ pour les valeurs de cet exemple), l'hyperboloïde qui représente la liaison entre les deux atomes se sépare en deux \emph{nappes}. Cet effet est avantageux si l'on souhaite représenter la rupture d'une liaison covalente ou hydrogène. Pour des valeurs de \emph{shrink factor} plus faibles, l'hyperboloïde reste unifiée mais apparaît plus ou moins \og creusée \fg{}. Lorsque le \emph{shrink} factor est nul, la liaison est représentée par un cylindre. Dans ce dernier cas, si le rayon des sphères est supérieur au rayon des liaisons, les \emph{Hyperballs} présentent l'apparence d'une représentation en boules et bâtons ; si le rayon est identique, alors elles génèrent une représentation à bâtons, ou \og en réglisse \fg{}. Dans tous les cas, elles le font avec un nombre de triangles très réduit, et d'excellentes performances. Surtout, ces paramètres étant modifiables à volonté et même en temps réel, les \emph{Hyperballs} permettent de basculer progressivement d'un mode de représentation à un autre. Crédit :~\cite{chavent2011gpu}.}
+%   		\label{fig:hyperballs}
+%    \end{figure}
 	
-		
-		
+	
 	\paragraph{Surface accessible au solvant et surface de Connolly.} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
 		
 	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant~\cite{lee1971interpretation}, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_sas} montre une protéine entière représentée par sa surface accessible au solvant, et la figure~\ref{fig:4awn_ses} représente la surface de Connolly de cette protéine.
-		
-	\begin{figure}[H]
+
+	\begin{wrapfigure}{O}{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/connolly}
-		\caption{Surface de Connolly d'une petite molécule. Six atomes sont représentés par des cercles verts correspondant à leurs rayons de van der Waals ; une sonde (\emph{probe}), i.e. le solvant, est représentée par un cercle jaune ; cette sonde est \og roulée \fg{} le long de la surface de la molécule, et son tracé est conservé en rouge : c'est la surface de Connolly. La surface tracée par le centre de la sonde est appelée surface accessible au solvant. Cet algorithme est couramment appelé \emph{rolling ball}~\cite{shrake1973environment}, et la surface de Connolly tire son nom des améliorations apportées par Michael Connolly à cet algorithme~\cite{connolly1983analytical, connolly1993molecular}. Crédit :~\cite{krone2009interactive}}
+		\includegraphics[width=0.46\textwidth]{figures/ch1/connolly}
+		\caption[Surface de Connolly et accessible au solvant]{Surface de Connolly d'une petite molécule. Les atomes sont représentés par des cercles verts correspondant à leurs rayons de van der Waals ; une sonde (\emph{probe}, i.e. le solvant, représentée par un cercle jaune) est \og roulée \fg{} le long de la surface de la molécule, et son tracé est conservé en rouge : c'est la surface de Connolly. La surface tracée par le centre de la sonde est appelée surface accessible au solvant. Cet algorithme est couramment appelé \emph{rolling ball}~\cite{shrake1973environment, connolly1983analytical, connolly1993molecular}. Crédit :~\cite{krone2009interactive}.}
 		\label{fig:connolly}
-	\end{figure}
+	\end{wrapfigure}
 		
-	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se fondant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}, illustré par la figure~\ref{fig:marchingCubes}. L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
+	\paragraph{Isosurface de densité.} On peut également représenter une molécule par sa surface en se fondant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}.%, illustré par la figure~\ref{fig:marchingCubes}.
+	L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
 		
-	Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5}, \ref{fig:4awn_iso_1_0} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ plus ou moins élevées ($0,2$, $0,5$, $1,0$ et $1,5$). Naturellement, plus la densité choisie est élevée, plus la surface sera proche des centres atomiques, et plus sa forme sera complexe, comme sur la figure~\ref{fig:4awn_iso_1_5} ; inversement, lorsque la densité est faible, la surface est loin des centres atomiques et sa forme est plus grossière, cf. la figure~\ref{fig:4awn_iso_0_2}.
+	%Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5}, \ref{fig:4awn_iso_1_0} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ plus ou moins élevées ($0,2$, $0,5$, $1,0$ et $1,5$). Naturellement, plus la densité choisie est élevée, plus la surface sera proche des centres atomiques, et plus sa forme sera complexe, comme sur la figure~\ref{fig:4awn_iso_1_5} ; inversement, lorsque la densité est faible, la surface est loin des centres atomiques et sa forme est plus grossière, cf. la figure~\ref{fig:4awn_iso_0_2}.
 	
 	Outre le fait qu'elle représente une grandeur physique concrète, l'isosurface de densité a l'avantage d'être relativement rapide à calculer. En effet, l'algorithme \emph{QuickSurf}~\cite{krone2012fast, roberts2013lattice, stone2013early, stone2013gpu, stone2014gpu, sener2014visualization}, par exemple, permet de calculer une isosurface de densité suffisamment vite pour la recalculer en temps réel lors d'une simulation de dynamique moléculaire. Cet algorithme est conçu pour être exécuté sur un GPU (un processeur graphique, particulièrement adapté aux calculs très parallèles) ce qui améliore ses performances d'un à deux ordres de grandeur. Il permet de plus d'ajuster plusieurs paramètres : la résolution spatiale générale, le rayon des atomes (utilisé pour générer la grille de densité, par somme de gaussiennes 3D), l'isovaleur de densité voulue, la résolution de la grille de densité, et la distance de coupure utilisée pour la gaussienne associée à chaque atome\footnote{\url{http://www.ks.uiuc.edu/Research/vmd/current/ug/node73.html}}.
 	
-	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. Contrairement à ces derniers, elles ne présentent pas de (dizaines ou centaines) de milliers de cibles distinctes, mais un seul objet continu. De fait, au premier abord elles ne semblent pas nécessiter d'assistance à la sélection. Cependant, les nombreuses aspérités d'une isosurface, attendu qu'elles correspondent à celles de la molécule, peuvent être considérées comme des cibles distinctes, à condition d'avoir une méthode pour les distinguer. Cette méthode pourrait éventuellement être fondée sur des critères de concavité et convexité. Si l'on considère chaque sous-ensemble convexe de la surface représentée sur la figure~\ref{fig:4awn_iso_1_5}, par exemple, on aboutit à plusieurs dizaines de cibles potentielles ; et ce pour une protéine de taille relativement réduite (moins de 2200 atomes, quand certaines protéines en comptent des dizaines de milliers). On peut également considérer les sous-ensembles concaves comme des cibles, car ils peuvent représenter des cavités ou tunnels\footnotemark dignes d'intérêt.
+	Du fait des performances de cet algorithme et de sa souplesse, les isosurfaces de densité représentent un cas d'application intéressant. En effet, elles sont assez couramment utilisées en simulation de dynamique moléculaire, et présentent des caractéristiques très distinctes des modèles de représentation atomiques. Contrairement à ces derniers, elles ne présentent pas de (dizaines ou centaines) de milliers de cibles distinctes, mais un seul objet continu. De fait, au premier abord elles ne semblent pas nécessiter d'assistance à la sélection. Cependant, les nombreuses aspérités d'une isosurface, attendu qu'elles correspondent à celles de la molécule, peuvent être considérées comme des cibles distinctes, à condition d'avoir une méthode pour les distinguer. Cette méthode pourrait éventuellement être fondée sur des critères de concavité et convexité. Si l'on considère chaque sous-ensemble convexe d'une surface de densité avec un seuil élevé, par exemple, on aboutit à plusieurs dizaines de cibles potentielles ; et ce pour une protéine de taille relativement réduite (par exemple 2000 atomes, quand certaines protéines en comptent des dizaines de milliers). On peut également considérer les sous-ensembles concaves comme des cibles, car ils peuvent représenter des cavités ou tunnels\footnotemark{} dignes d'intérêt.
 	
 	\footnotetext{Les cavités et tunnels des protéines sont critiques pour la compréhension de phénomènes tels que la liaison de ligands, le transport moléculaire ou la catalyse enzymatique~\cite{paramo2014}.}
 	
 	On constate donc qu'une isosurface de densité peut présenter de nombreuses cibles mobiles, avec toutefois un niveau d'occultation réduit, puisque l'intérieur de la molécule n'est pas représenté. Les aspérités situées à \og l'arrière \fg{} de la molécule sont cependant totalement occultées. De plus, la représentation en isosurface est particulièrement prisée pour l'arrimage\footnote{\emph{docking}, en anglais} de protéines, qui implique au moins deux molécules et parfois beaucoup plus. Avec de nombreuses molécules, le nombre de cibles potentielles peut donc devenir très élevé, de même que la quantité de mouvement, puisqu'il faut ajouter au mouvement d'une aspérité d'une surface par rapport à elle-même le mouvement de toute la surface par rapport à l'environnement.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/marchingCubes}
-		\caption{Dans l'algorithme des \emph{marching cubes}, lorsque l'on considère une cellule, on lit la valeur du champ scalaire aux huit sommets du cube. On choisit ensuite un des quinze cubes ci-dessus, en fonction des valeurs lues. L'opération est répétée pour chaque cellule de la grille, et les cubes forment un maillage de triangles. Crédit : \emph{Wikimedia}.}
-		\label{fig:marchingCubes}
-	\end{figure}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/marchingCubes}
+%		\caption{Dans l'algorithme des \emph{marching cubes}, lorsque l'on considère une cellule, on lit la valeur du champ scalaire aux huit sommets du cube. On choisit ensuite un des quinze cubes ci-dessus, en fonction des valeurs lues. L'opération est répétée pour chaque cellule de la grille, et les cubes forment un maillage de triangles. Crédit : \emph{Wikimedia}.}
+%		\label{fig:marchingCubes}
+%	\end{figure}
 	
 	\paragraph{Autres techniques de représentations.}
 	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes couramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera}~\cite{pettersen2004ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara}, \emph{LigandScout}~\cite{wolber2005ligandscout} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/transSS}
 		\caption[Surface semi-transparente et structures secondaires.]{Illustration hybride d'une protéine de chloroplaste, représentée par une isosurface de densité semi-transparente et par ses structures secondaires. On peut donc apprécier à la fois le volume occupé par la molécule, les aspérités de sa surface, mais aussi sa structure interne et certaines de ses propriétés physico-chimiques. Illustration produite par \emph{UnityMol} à partir de la structure \emph{5HAD} de la \emph{Protein Data Bank}.}
 		\label{fig:transSS}
 	\end{figure}
 	
-
-		
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/aspirin}
-		\caption{Modèle physique en boules et bâtons d'une molécule d'acide acétylsalicylique, plus connue sous le nom d'aspirine. Les liaisons covalentes sont représentées par des bâtons, et les liaisons doubles sont représentées par des paires de bâtons, ce qui permet notamment de rendre le modèle plus rigide à ces endroits-là, comme la molécule elle-même. La convention de couleurs CPK est respectée, donc le carbone est en noir, l'hydrogène en blanc, et l'oxygène en rouge. La manipulation manuelle de tels modèles peut favoriser la perception des propriétés d'une molécule, ou leur mémorisation.}
-		\label{fig:aspirin}
-	\end{figure}
-	
-	\newcommand{\subImgW}{0.5\textwidth}
+	\newcommand{\subImgW}{0.32\textwidth}
+	\newcommand{\subImgWinside}{0.36\textwidth}
 	\begin{figure}[H]
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_points}
-			\caption{Représentation en \og points \fg{} ; seuls les atomes apparaissent.}
+			\caption[Représentation en points]{\textbf{Points :} seuls les atomes apparaissent.}
 			\label{fig:4awn_points}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_licorice}
-			\caption{Représentation en \og bâtons \fg{} encore appelée en \og réglisse \fg{}, ou \emph{licorice} en anglais. Seules les liaisons covalentes sont visibles}
+			\caption[Représentation en réglisse]{\textbf{Bâtons/réglisse/\emph{licorice} :} seules les liaisons covalentes sont visibles}
 			\label{fig:4awn_licorice}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_CPK}
-			\caption{Représentation dite CPK, ou en \og boules et bâtons \fg{}. Les atomes et les liaisons sont représentés.}
+			\caption[Représentation en CPK]{\textbf{CPK/boules et bâtons :} les atomes et les liaisons sont représentés.}
 			\label{fig:4awn_CPK}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_vdW}
-			\caption{Représentation fondée sur le rayon de van der Waals. Seuls les atomes sont visibles.}
+			\caption[Représentation de van der Waals]{\textbf{Van der Waals :} seuls les atomes sont visibles.}
 			\label{fig:4awn_VdW}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_HB}
-			\caption{Représentation en \emph{Hyperballs}~\cite{chavent2011gpu}. Les atomes et les liaisons sont représentés.}
+			\caption[Représentation en \emph{Hyperballs}]{\textbf{Hyperballs :} les atomes et les liaisons sont représentés~\cite{chavent2011gpu}.}
 			\label{fig:4awn_HB}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_ss}
-			\caption{Représentation en structures secondaires. Les atomes et les liaisons sont invisibles, mais des structures plus grandes sont représentées de façon schématique.}
+			\caption[Représentation en structures secondaires]{\textbf{Structures secondaires :} les atomes et les liaisons sont invisibles, mais des structures plus grandes sont représentées de façon schématique.}
 			\label{fig:4awn_ss}
 		\end{subfigure}
-		\caption{La désoxyribonucléase (ou ADNase) est une enzyme catalysant les acides désoxyribonucléiques en nucléotides ou polynucléotides. Elle hydrolyse les liaisons phosphodiester. Voici un échantillon de quelques techniques de visualisation moléculaire, avec l'ADNase pour objet. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol} à partir d'une structure de la \emph{Protein Data Bank}~\cite{parsiegla2012structure}.}
-		\label{fig:4awn_atom}
-	\end{figure}
-	
-	\begin{figure}[H]
+		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			\includegraphics[width=\textwidth]{./figures/ch1/4awn_sas}
-			\caption{Surface accessible au solvant, correspondant aux points parcourus par le centre d'une molécule d'eau en contact avec l'ADNase.}
-			\label{fig:4awn_sas}
+			\includegraphics[width=\textwidth]{./figures/ch1/aspirin}
+			\caption[Modèle physique de l'aspirine]{\textbf{Modèle physique }d'aspirine (et non d'ADNase). Les liaisons doubles sont modélisées par des paires de bâtons pour empêcher les rotations.}
+			\label{fig:aspirin}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_ses}
-			\caption{Surface de Connolly, ou \emph{solvent excluded surface}, correspondant aux points de contact entre une molécule d'eau et l'ADNase.}
+			\caption[Représentation en surface de Connolly]{\textbf{Surface de Connolly/\emph{solvent excluded surface} :} les points de contact entre une molécule d'eau et l'ADNase.}
 			\label{fig:4awn_ses}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgW}
 			\centering
-			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_0_2}
-			\caption{Isosurface de densité, avec un seuil très faible, de $0,2$.}
-			\label{fig:4awn_iso_0_2}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgW}
-			\centering
-			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_0_5}
-			\caption{Isosurface de densité, avec un seuil faible, de $0,5$.}
-			\label{fig:4awn_iso_0_5}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgW}
-			\centering
-			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_1_0}
-			\caption{Isosurface de densité, avec un seuil intermédiaire, de $1,0$.}
-			\label{fig:4awn_iso_1_0}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgW}
-			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_iso_1_5}
-			\caption{Isosurface de densité, avec un seuil élevé, de $1,5$.}
+			\caption[Isosurface de densité]{\textbf{Isosurface de densité :} la surface est constituée des points de densité $1,5$.}
 			\label{fig:4awn_iso_1_5}
 		\end{subfigure}
-		\caption{Désoxyribonucléase (ou ADNase). Cette enzyme est ici illustrée par diverses représentations surfaciques. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol} et \emph{Molekel}~\cite{portmann2000molekel, varetto2009molekel} à partir d'une structure de la \emph{Protein Data Bank}~\cite{parsiegla2012structure}.}
-		\label{fig:4awn_surf}
+		\caption[Modes de représentation moléculaire]{La désoxyribonucléase (ADNase) est une enzyme catalysant les acides désoxyribonucléiques en nucléotides ou polynucléotides. Voici quelques techniques de visualisation moléculaire, avec l'ADNase pour objet. Illustrations produites par \emph{UnityMol}~\cite{doutreligne2014unitymol} à partir d'une structure de la \emph{Protein Data Bank}~\cite{parsiegla2012structure}.}
+		\label{fig:4awn_atom}
 	\end{figure}
-    
+
+	
 	\subsection{Dynamique moléculaire}
-	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système. L'algorithme général est explicité (quoique sous forme schématique) sur la figure~\ref{fig:moldyn}.
+	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système.% L'algorithme général est explicité (quoique sous forme schématique) sur la figure~\ref{fig:moldyn}.
 	
 	\paragraph{Besoins.} Il est difficile d'observer une macromolécule à l'état statique, et impossible de le faire \emph{in vivo}, lorsqu'elle est en mouvement dans son système naturel. Par conséquent, l'étude de phénomènes moléculaires complexes nécessite de passer par des simulations numériques, seules à même d'en rendre compte. En particulier, la biologie structurale s'intéresse à la \emph{dynamique conformationnelle} des macromolécules (c'est-à-dire à leur conformation tridimensionnelle dans le temps) et à leurs intéractions avec leur environnement --- par exemple le milieu cellulaire. La mise au point de ces simulations s'appuie néanmoins autant que possible sur des données expérimentales.
 	
 	\paragraph{Initialisation.}
-	Une simulation de dynamique moléculaire nécessite une phase d'initialisation. Il faut en premier lieu assigner une position à chaque particule --- chaque atome, en général. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant, qui est généralement de l'eau avec quelques ions dissous, mais c'est plus compliqué pour les macromolécules dont la conformation n'est pas triviale. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Cette technique fut d'abord employée pour déterminer la structure de petits cristaux inorganiques~\cite{friedrich1912sitzungsberichte, bragg1914reflexion, bragg1913structure, dickinson1923crystal}, puis de molécules organiques et de protéines~\cite{de1925interpretation, crowfoot1935x, kendrew1958three}. Lorsque la cristallographie n'est pas possible, d'autres méthodes, souvent moins précises, peuvent être utilisées. C'est notamment le cas de la spectroscopie de résonance magnétique nucléaire~\cite{clore1989determination, wuthrich1990protein, clore1991structures, wuthrich2001way}. La cryo-microscopie électronique~\cite{adrian1984cryo} (ou cryo-ME, ou encore \emph{cryo-EM} dans la littérature anglo-saxonne) est de plus en plus utilisée~\cite{kuhlbrandt2014cryo, callaway2015revolution}, notamment du fait de ses moindres contraintes --- pas de cristallisation nécessaire --- et de sa résolution croissante~\cite{dellisanti2015barrier, bartesaghi20152}.
+	Une simulation de dynamique moléculaire nécessite une phase d'initialisation : on assigne une position à chaque particule. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant, mais c'est plus compliqué pour les macromolécules dont la conformation est complexe. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Cette technique fut d'abord employée pour déterminer la structure de petits cristaux inorganiques~\cite{friedrich1912sitzungsberichte, bragg1914reflexion, bragg1913structure, dickinson1923crystal}, puis de molécules organiques et de protéines~\cite{de1925interpretation, crowfoot1935x, kendrew1958three}. Lorsque la cristallographie n'est pas possible, d'autres méthodes, souvent moins précises, peuvent être utilisées. Citons la spectroscopie de résonance magnétique nucléaire~\cite{clore1989determination, wuthrich1990protein, clore1991structures, wuthrich2001way}, ou la cryo-microscopie électronique~\cite{adrian1984cryo} (cryo-ME/\emph{cryo-EM}), de plus en plus utilisée~\cite{kuhlbrandt2014cryo, callaway2015revolution, dellisanti2015barrier, bartesaghi20152}.
 	
-	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. La modélisation par homologie repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela repose sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
+	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. Ce procédé repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela s'appuie sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
 	
- 	\begin{figure}[H]
- 		\centering
- 		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
- 		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
- 		\label{fig:moldyn}
- 	\end{figure}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
+% 		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
+% 		\label{fig:moldyn}
+% 	\end{figure}
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/crystal}
-		\caption{Schéma très simplifié de la cristallographie aux rayons X. Ces rayons traversent un cristal (contenant une même molécule présente en grande quantité) qui les diffracte avant leur capture par un détecteur connecté à un ordinateur. Ce dernier, à l'aide d'un algorithme approprié, en déduit la conformation 3D de la molécule cristallisée. Crédit :~\cite{trellet2015exploration}.}
+		\caption[Schéma très simplifié de la cristallographie aux rayons X]{Schéma très simplifié de la cristallographie aux rayons X. Ces rayons traversent un cristal (contenant une même molécule présente en grande quantité) qui les diffracte avant leur capture par un détecteur connecté à un ordinateur. Ce dernier, à l'aide d'un algorithme approprié, en déduit la conformation 3D de la molécule cristallisée. Crédit :~\cite{trellet2015exploration}.}
 		\label{fig:crystal}
 	\end{figure}
 	
 	\paragraph{Périodicité.}
 	L'espace de simulation est généralement modélisé par ce qu'on appelle des conditions périodiques aux limites~\cite{cheatham1995molecular} (CPL, en anglais \emph{periodic boundary conditions} --- PBC). Elles constituent un ensemble de conditions aux limites utilisées afin de simuler un système pavé effectivement infini. En effet, si un système microscopique est simulé dans le vide, les molécules du système s'évaporeront, s'éloignant les unes des autres à moins d'être maintenues ensemble par une force restrictive externe. Si, au contraire, le système est simulé en utilisant des murs réflecteurs aux limites, des forces parasites sont introduites dans la simulation, pouvant donc créer un écart supplémentaire (en plus des approximations de simulation utilisées) par rapport au système réel.
 	
-	On optera donc généralement pour un système périodique, comme celui représenté sur la figure~\ref{fig:period} --- ce dernier est en deux dimensions, mais le principe en trois dimensions est le même. Il convient toutefois de prendre des précautions avec les conditions périodiques, afin d'éviter que des interactions \og artificielles \fg{} se produisent entre les \og bords \fg{} de l'espace de simulation, notamment entre les particules et leurs propres images si cela ne correspond pas au système étudié dans son état naturel~\cite{de1997effect}. L'utilisation de formes plus complexes que des parallélépipèdes peut permettre de minimiser ces effets indésirables pour un volume de simulation donné ; les octaèdres tronqués sont une des options possibles, comme l'illustre la figure~\ref{fig:octa}.
+	%, comme celui représenté sur la figure~\ref{fig:period} --- ce dernier est en deux dimensions, mais le principe en trois dimensions est le même. 
+	On optera donc généralement pour un système périodique. Il convient toutefois de prendre des précautions avec les conditions périodiques, afin d'éviter que des interactions \og artificielles \fg{} se produisent entre les \og bords \fg{} de l'espace de simulation, notamment entre les particules et leurs propres images si cela ne correspond pas au système étudié dans son état naturel~\cite{de1997effect}. L'utilisation de formes plus complexes que des parallélépipèdes peut permettre de minimiser ces effets indésirables pour un volume de simulation donné ; les octaèdres tronqués sont une des options possibles, comme l'illustre la figure~\ref{fig:octa}.
+	La périodicité introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/period}
-		\caption{Comportement par périodicité (2D) : la particule vert foncé (coin supérieur gauche de la boîte en traits pleins) possède une quantité de mouvement l'amenant à sortir de la boîte (flèche). Une fois sortie, la périodicité du système ramène une particule identique dans la boîte, avec la même quantité de mouvement. La particule subit l'influence de toutes les particules environnantes, y compris ses propres images. Crédit : \emph{Wikimedia}.}
-		\label{fig:period}
-	\end{figure}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/period}
+%		\caption{Comportement par périodicité (2D) : la particule vert foncé (coin supérieur gauche de la boîte en traits pleins) possède une quantité de mouvement l'amenant à sortir de la boîte (flèche). Une fois sortie, la périodicité du système ramène une particule identique dans la boîte, avec la même quantité de mouvement. La particule subit l'influence de toutes les particules environnantes, y compris ses propres images. Crédit : \emph{Wikimedia}.}
+%		\label{fig:period}
+%	\end{figure}
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\begin{subfigure}{.5\textwidth}
 			\centering
 			\includegraphics[height=4cm]{./figures/ch1/truncOctahedron}
@@ -453,13 +427,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:octa}
 	\end{figure}
 	
-	\footnotetext{\url{https://realwireless.wordpress.com/2008/06/03/}}
+	\footnotetext{\url{https://realwireless.wordpress.com/2008/06/03}}
 	
-	\paragraph{Paramètres initiaux.} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un laps de temps aussi grand que possible --- ce qui est souvent nécessaire pour observer des phénomènes biologiques complexes et longs --- le pas de temps doit être aussi grand que possible. Cela permet en effet à chaque itération de la simulation de couvrir une durée relativement élevée, donc pour un temps (réel) de simulation donné et pour des ressources de calcul données, la durée simulée est maximisée.
+	\paragraph{Paramètres initiaux.} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un temps assez long --- afin d'observer des phénomènes biologiques complexes et longs --- le pas de temps doit être aussi grand que possible.
 	
-	Cependant, le pas de temps doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple (particulièrement les liaisons carbone-hydrogène) sont très courtes, de l'ordre de $10^{-14}$~s, soit 10 femtosecondes. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins le double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1 femtoseconde, du moins pour les simulations de type \og tout atome \fg{} avec liaisons flexibles. Des simulations plus grossières (notamment avec liaisons rigides, voire de type \og gros grains \fg{}) peuvent se contenter de pas de temps plus long, au prix d'une précision amoindrie.
+	Cependant, il doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes, par exemple, sont très courtes, de l'ordre de $10^{-14}$~s, soit 10~fs. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins le double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1~fs pour les simulations les plus précises.
 	
-	D'autres paramètres doivent être initialisés, par exemple les vitesses des particules, qui suivent généralement une distribution de Maxwell-Boltzmann~\cite{maxwell1860v, maxwell1860ii, boltzmann1970weitere, boltzmann2003further}. Il convient également d'ajuster la température, la pression, le nombre de particules, etc., et de déterminer lesquels de ces paramètres doivent être maintenus constants, et comment. Le changement d'un seul de ces paramètres mènera généralement à une autre exploration de l'espace conformationnel, c'est-à-dire à une trajectoire différente.
+	D'autres paramètres doivent être initialisés : les vitesses des particules, (généralement selon une distribution de Maxwell-Boltzmann~\cite{maxwell1860v, maxwell1860ii, boltzmann1970weitere, boltzmann2003further}), la température, la pression, le nombre de particules, etc. Le changement d'un seul de ces paramètres mènera généralement à une autre exploration de l'espace conformationnel, c'est-à-dire à une trajectoire différente.
 	
 	\paragraph{Champs de force.}
 	Une simulation de dynamique moléculaire s'appuie sur un \emph{champ de force}. Cette notion, propre à la chimie, est à ne pas confondre avec son homonyme en physique. Ce que l'on appelle ici un champ de forces est un ensemble de potentiels et de paramètres permettant de modéliser les interactions entre les particules simulées. Généralement, la forme fonctionnelle de base d'un champ de force s'appuie sur l'équation suivante (également illustrée par la figure~\ref{fig:ffterms}) :
@@ -469,9 +443,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		E_{totale} = E_\text{liée} + E_\text{non-liée}
 	\end{equation}
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=0.7\textwidth]{figures/ch1/ffterms}
+		\includegraphics[width=\textwidth]{figures/ch1/ffterms}
 		\caption[Termes d'un champ de forces.]{Résumé des termes liés et non liés d'un champ de forces typique. Crédit : Patrick Fuchs\footnotemark.}
 		\label{fig:ffterms}
 	\end{figure}	
@@ -483,68 +457,69 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		E_\text{liée} = E_{liaison} + E_{angle} + E_\text{angle\_{}dièdre}
 	\end{equation}
 	
-	Le terme $E_{liaison}$ correspond à l'énergie associée à la variation de la longueur d'une liaison covalente par rapport à son équilibre, comme l'illustre la figure~\ref{fig:e_bond}.
+	Le terme $E_{liaison}$ correspond à l'énergie associée à la variation de la longueur d'une liaison covalente par rapport à son équilibre.%, comme l'illustre la figure~\ref{fig:e_bond}.
 	
-	Le terme $E_{angle}$ représente l'énergie associée à la déformation des angles formés par les paires de liaisons covalentes impliquant le même atome, cf. la figure~\ref{fig:e_angle}.
+	Le terme $E_{angle}$ représente l'énergie associée à la déformation des angles formés par les paires de liaisons covalentes impliquant le même atome.% cf. la figure~\ref{fig:e_angle}.
 	
-	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes, ce qu'explicite la figure~\ref{fig:e_dihedral}.
+	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes.%, ce qu'explicite la figure~\ref{fig:e_dihedral}.
 	
-  	\begin{figure}[H]
- 		\centering
- 		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
- 		\caption[Énergie de liaison.]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
- 		\label{fig:e_bond}
- 	\end{figure}
+%  	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
+% 		\caption[Énergie de liaison.]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_bond}
+% 	\end{figure}
+%	
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
+% 		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_angle}
+% 	\end{figure}
 	
- 	\begin{figure}[H]
- 		\centering
- 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
- 		\caption[Énergie d'angle.]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
- 		\label{fig:e_angle}
- 	\end{figure}
-	
- 	\begin{figure}[H]
- 		\begin{subfigure}{\textwidth}
- 			\centering
- 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
- 			%\caption{}
- 			\label{fig:e_dihedrala}
- 		\end{subfigure}
- 		~
- 		\begin{subfigure}{\textwidth}
- 			\centering
- 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
- 			%\caption{}
- 			\label{fig:e_dihedralb}
- 		\end{subfigure}
- 		\caption[Énergie de torsion, ou d'angles dièdres.]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
- 		\label{fig:e_dihedral}
- 	\end{figure}
+% 	\begin{figure}[H]
+% 		\begin{subfigure}{\textwidth}
+% 			\centering
+% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
+% 			%\caption{}
+% 			\label{fig:e_dihedrala}
+% 		\end{subfigure}
+% 		~
+% 		\begin{subfigure}{\textwidth}
+% 			\centering
+% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
+% 			%\caption{}
+% 			\label{fig:e_dihedralb}
+% 		\end{subfigure}
+% 		\caption[Énergie de torsion, ou d'angles dièdres.]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
+% 		\label{fig:e_dihedral}
+% 	\end{figure}
 	
 	\begin{equation}
 		\label{eq:nonbonded}
 		E_\text{non-liée} = E_\text{électrostatique} + E_{van der Waals}
 	\end{equation}
 	
-	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}. Ce terme est détaillé par la figure~\ref{fig:e_electrostat}. En pratique, une sommation d'Ewald, basée sur une transformation de Fourier, est souvent utilisée avec la loi de Coulomb pour le calcul des énergies électrostatiques~\cite{ewald1921berechnung, essmann1995smooth}.
+	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}.% Ce terme est détaillé par la figure~\ref{fig:e_electrostat}.
+	En pratique, une sommation d'Ewald, basée sur une transformation de Fourier, est souvent utilisée avec la loi de Coulomb pour le calcul des énergies électrostatiques~\cite{ewald1921berechnung, essmann1995smooth}.
 	
-	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut, et résumées par la figure~\ref{fig:e_vdw}.
+	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut.%, et résumées par la figure~\ref{fig:e_vdw}.
 	
- 	\begin{figure}[H]
- 		\centering
- 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
- 		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
- 		\label{fig:e_electrostat}
- 	\end{figure}
-	
- 	\begin{figure}[H]
- 		\centering
- 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
- 		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
- 		\label{fig:e_vdw}
- 	\end{figure}
-	
-	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
+% 		\caption[Énergie liée aux interactions électrostatiques.]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_electrostat}
+% 	\end{figure}
+%	
+% 	\begin{figure}[H]
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
+% 		\caption[Énergie liée aux forces de van der Waals.]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
+% 		\label{fig:e_vdw}
+% 	\end{figure}
+%	
+%	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
 	
 	Il existe de très nombreux champs de force, avec chacun ses avantages et inconvénients spécifiques, mais parmi les plus couramment utilisés, on peut citer \emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, ou encore \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
 	
@@ -775,7 +750,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/swarm}
-		\caption{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}\protect\footnotemark.}
+		\caption[Petit essaim de drones aériens]{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}\protect\footnotemark.}
 		\label{fig:swarm}
 	\end{figure}
 	
