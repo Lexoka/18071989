@@ -43,14 +43,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{figure}[ht]
 		\begin{subfigure}{.4\textwidth}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}}
+			\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}
 			\caption{Structure chimique d'un acide aminé.}
 			\label{fig:amino_acid_structure}
 		\end{subfigure}
 		~
 		\begin{subfigure}{.6\textwidth}
 			\centering
-			{\includegraphics[height=4cm]{./figures/ch1/peptidic_bond.png}}
+			\includegraphics[height=4cm]{./figures/ch1/peptidic_bond.png}
 			\caption{Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.}
 			\label{fig:peptide_bond}
 		\end{subfigure}
@@ -303,7 +303,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\newcommand{\subImgW}{0.32\textwidth}
 	\newcommand{\subImgWinside}{0.36\textwidth}
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_points}
@@ -531,12 +531,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{Steering.}
 	Par conséquent, il est utile de pouvoir agir sur une simulation de dynamique moléculaire. Cette technique est souvent appelée \emph{steering} dans la littérature anglo-saxonne et consiste à appliquer des forces externes à une molécule au cours de sa simulation pour explorer ses propriétés mécaniques, ou pour chercher à provoquer les phénomènes mentionnés ci-dessus, trop lents pour les simulations sans \emph{steering}. Ces phénomènes peuvent ainsi être étudiés~\cite{izrailev1999steered, isralewitz2001steered, isralewitz2001steered}. Certains spécialistes~\cite{phillips2005scalable} préfèrent parler d'\emph{Interactive Molecular Dynamics} (IMD)~\cite{stone2001system, grayson2003mechanisms} lorsque les forces sont appliquées en temps réel par l'utilisateur, par opposition au \emph{steering} fondé sur des forces dont l'application est préprogrammée. L'interactivité permet aussi de trouver des repliements d'acides nucléiques plus rapidement, même avec des utilisateurs novices~\cite{mazzanti2017can}.
 	
-	\paragraph{Simulations en immersion et retour haptique.}
+	\paragraph{Simulations en immersion.}
 	La figure~\ref{fig:steeredPIT} présente un exemple précoce (1999) d'IMD en contexte immersif. La notion d'immersion fait l'objet de plusieurs définitions, notamment celles citées par J.-M.~Burkhardt \emph{et al.}~\cite{burkhardt2003immersion} :
 	
 	\begin{displayquote}
 	    \textbf{Acception 1.} Dans le langage courant, le terme d'immersion est compris comme \emph{l'exposition de l'utilisateur à un EV au moyen de dispositifs occultant en partie la perception} (surtout visuelle) de l'environnement alentour, pour afficher en lieu et place une image du monde virtuel (visio-casque, salle immersive de type CAVE, etc.). Par extension, on parle d'immersion auditive, haptique, sensorielle etc. Au-delà d'un caractère informel, cette acception comporte deux ambiguïtés. D'une part, deux sémantiques différentes coexistent :
-	    \renewcommand{\labelenumi}{\alph{enumi}} % small letters
+	    %\renewcommand{\labelenumi}{\alph{enumi}} % small letters
 	    \begin{enumerate}
 	        \item l'immersion comme \emph{l'action d'exposer l'utilisateur à un environnement simulé numériquement},
 	        \item l'effet avéré ou supposé de cette exposition sur l'utilisateur.
@@ -562,13 +562,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:steeredPIT}
 	\end{figure}
 	
-	Pour Guillaume Bouyer~\cite{bouyer2007rendu} :
-	
-	\begin{displayquote}
-	    D'un point de vue sensoriel, concret, il s'agit d'occulter partiellement ou totalement la perception de l'humain des objets réels qui l'entourent pour qu'elle soit uniquement ou principalement exposée aux stimuli du monde virtuel. Dans le cas le plus abouti de l'immersion virtuelle, l'humain est totalement découplé du monde réel : seul l'environnement virtuel l'occupe, c'est la notion de \og présence \fg{}. Mais l'immersion peut également être mentale, l'utilisateur pouvant être littéralement \og plongé \fg{}, absorbé par son activité, occultant de lui-même le monde réel (comme il pourrait l'être par exemple pendant la vision d'un film ou la lecture d'un livre). L'immersion de l'utilisateur dans l'[environnement virtuel] est donc créée à la fois par des moyens techniques, sensoriels, comme l'obscurité, de grands écrans et des enceintes diffusant des images en relief et du son 3D, des interfaces de commande non intrusives et naturelles, etc. ; et des procédés logiciels, fondés sur des connaissances psychologiques : les concepteurs jouent sur le rendu de la scène, les habitudes de l'utilisateur, ses émotions, etc.
-	    
-	    Ensuite, l'interaction doit être pseudo-naturelle, c'est-à-dire proche de l'interaction de l'humain dans son environnement réel. En effet, dans le monde réel, l'être humain a acquis, assimilé un certain nombre de \og schèmes \fg{}, de comportements à la fois sensori-moteurs voire cognitifs. Il possède ses propres raisonnements assortis de représentations mentales, a construit une organisation du monde selon un ensemble de règles spatio-temporelles et causales, a acquis des réflexes, a appris des gestes, etc. Dans un [environnement virtuel], il va être tenté de répéter ces schèmes ou de les adapter au nouveau contenu qui s'offre à lui. L'une des caractéristiques des travaux sur l'interaction en RV est de faciliter cette transposition, pour que l'interaction se fasse inconsciemment et sans grand effort mental : \og les interfaces exploitent la motricité ou les perceptions de l'homme issues de son comportement dans le monde réel \fg{}~\cite{fuchs2006introduction}.	
-	\end{displayquote}
+%	Pour Guillaume Bouyer~\cite{bouyer2007rendu} :
+%	
+%	\begin{displayquote}
+%	    D'un point de vue sensoriel, concret, il s'agit d'occulter partiellement ou totalement la perception de l'humain des objets réels qui l'entourent pour qu'elle soit uniquement ou principalement exposée aux stimuli du monde virtuel. Dans le cas le plus abouti de l'immersion virtuelle, l'humain est totalement découplé du monde réel : seul l'environnement virtuel l'occupe, c'est la notion de \og présence \fg{}. Mais l'immersion peut également être mentale, l'utilisateur pouvant être littéralement \og plongé \fg{}, absorbé par son activité, occultant de lui-même le monde réel (comme il pourrait l'être par exemple pendant la vision d'un film ou la lecture d'un livre). L'immersion de l'utilisateur dans l'[environnement virtuel] est donc créée à la fois par des moyens techniques, sensoriels, comme l'obscurité, de grands écrans et des enceintes diffusant des images en relief et du son 3D, des interfaces de commande non intrusives et naturelles, etc. ; et des procédés logiciels, fondés sur des connaissances psychologiques : les concepteurs jouent sur le rendu de la scène, les habitudes de l'utilisateur, ses émotions, etc.
+%	    
+%	    Ensuite, l'interaction doit être pseudo-naturelle, c'est-à-dire proche de l'interaction de l'humain dans son environnement réel. En effet, dans le monde réel, l'être humain a acquis, assimilé un certain nombre de \og schèmes \fg{}, de comportements à la fois sensori-moteurs voire cognitifs. Il possède ses propres raisonnements assortis de représentations mentales, a construit une organisation du monde selon un ensemble de règles spatio-temporelles et causales, a acquis des réflexes, a appris des gestes, etc. Dans un [environnement virtuel], il va être tenté de répéter ces schèmes ou de les adapter au nouveau contenu qui s'offre à lui. L'une des caractéristiques des travaux sur l'interaction en RV est de faciliter cette transposition, pour que l'interaction se fasse inconsciemment et sans grand effort mental : \og les interfaces exploitent la motricité ou les perceptions de l'homme issues de son comportement dans le monde réel \fg{}~\cite{fuchs2006introduction}.	
+%	\end{displayquote}
 	
 	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
 	
@@ -579,27 +579,28 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:exaviz}
 	\end{figure}
 	
-	Pour améliorer la perception des propriétés mécaniques des molécules étudiées, et des forces qui s'exercent sur elle, un retour haptique est possible au cours d'une simulation de dynamique moléculaire interactive~\cite{stone2001system}. Si l'haptique concerne le toucher et les phénomènes kinesthésiques, en pratique on utilise en IMD des bras haptiques, qui fonctionnent par retour de force, comme celui de la figure~\ref{fig:virt6d}.
+	\footnotetext{Un \emph{Cave Automatic Virtual Environment}, un système permettant l'immersion dans un environnement virtuel à l'aide de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite et expose ses vues sur la perception, la réalité et l'illusion. Il s'agit ici du dispositif EVE de notre équipe, Venise.
+	\url{https://www.limsi.fr/index.php/fr/recherche/venise/menuitem-venise-demos-fr}}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/virt6d}
-		\caption[Bras haptique, Virtuose 6D.]{Le \emph{Virtuose 6D Desktop} est un périphérique haptique conçu pour l'interaction bidirectionnelle avec des environnements virtuels en 3D. C'est un dispositif série dont la structure permet de travailler dans un volume correspondant à un tore de section carrée de 20 cm. Le centre du tore est de 30 cm de la base de l'appareil. La résolution en position est de $4.10^{-2}$ millimètres. Crédit :~\emph{Haption}\footnotemark.}
-		\label{fig:virt6d}
-	\end{figure}
+	Pour améliorer la perception des propriétés mécaniques des molécules étudiées, et des forces qui s'exercent sur elle, un retour haptique est possible au cours d'une simulation de dynamique moléculaire interactive~\cite{stone2001system}. Si l'haptique concerne le toucher et les phénomènes kinesthésiques, en pratique on utilise en IMD des bras haptiques, qui fonctionnent par retour de force.%, comme celui de la figure~\ref{fig:virt6d}.
 	
-	\footnotetext{\url{http://www.haption.com/site/index.php/fr/products-menu-fr/hardware-menu-fr/virtuose-6ddesktop-menu-fr}}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch1/virt6d}
+%		\caption[Bras haptique, Virtuose 6D.]{Le \emph{Virtuose 6D Desktop} est un périphérique haptique conçu pour l'interaction bidirectionnelle avec des environnements virtuels en 3D. C'est un dispositif série dont la structure permet de travailler dans un volume correspondant à un tore de section carrée de 20 cm. Le centre du tore est de 30 cm de la base de l'appareil. La résolution en position est de $4.10^{-2}$ millimètres. Crédit :~\emph{Haption}\footnotemark.}
+%		\label{fig:virt6d}
+%	\end{figure}
+%	
+%	\footnotetext{\url{http://www.haption.com/site/index.php/fr/products-menu-fr/hardware-menu-fr/virtuose-6ddesktop-menu-fr}}
 	
 	Ceux-ci peuvent être utilisés de diverses façons, notamment pour percevoir les \og collisions \fg{} entre le curseur et les objets de la scène, ou entre un objet sélectionné par l'utilisateur et un autre objet de la scène, pour permettre à l'utilisateur de percevoir les forces qui s'exercent entre les composantes de la molécule, ou encore pour guider la sélection, en appliquant une force au périphérique haptique dans la direction de la cible présumée de l'utilisateur. Le choix du mode d'utilisation d'un périphérique haptique dans une simulation d'IMD dépend de l'effet recherché.
-	
-	\footnotetext{\emph{Cave Automatic Virtual Environment}, un système permettant l'immersion dans un environnement virtuel doté de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite et expose ses vues sur la perception, la réalité et l'illusion.}
 	
 	\paragraph{Limites et défis actuels.}
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs centaines d'objets, généralement plusieurs dizaines de milliers, voire plusieurs centaines de milliers ou plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité, et encore cet exemple n'est-il pas le plus extrême, car la molécule représentée n'est pas très grande et, surtout, le solvant n'est pas représenté.
 	
 	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Comme nous l'avons vu plus haut, cette occultation dépend également du mode de représentation utilisé. Le système représenté sur la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/gluTrans}
 		\caption[Transporteur de glutamate, très forte occultation.]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
@@ -625,18 +626,18 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{Avions.}
 	Un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h en vol de croisière. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et habituellement prévisibles car les pilotes tâchent d'emprunter des couloirs aériens, ou des trajectoires d'approches imposées aux abords des aéroports. Les avions sont néanmoins nombreux, en particulier près des aéroports, et la grande quantité d'informations pertinentes associées à chaque vol peut requérir un affichage contextuel important, d'où une forte densité d'informations, et des niveaux d'occultation parfois élevés. La figure~\ref{fig:atlanta} en fournit un exemple.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/atlanta}
-		\caption[Trafic aérien, Atlanta.]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40, heure locale. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, altitude, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée sur cette image ; néanmoins en cliquant sur un avion, on peut voir apparaître des données supplémentaires (sur sa trajectoire, sa vitesse, son origine, sa destination, son pavillon, son temps de vol, etc.) ; malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport (à quelques kilomètres d'Atlanta, au sud). Néanmoins, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
+		\caption[Trafic aérien, Atlanta.]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, trajectoire, altitude, pavillon de l'appareil, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée sur cette image, car aucun avion n'est sélectionné. Malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport. Enfin, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
 		\label{fig:atlanta}
 	\end{figure}
 	
 	\footnotetext{\url{https://www.flightradar24.com}}
 	
-	Le Groupe \emph{Aéroports de Paris} (ou ADP) utilise un logiciel (encore en phase bêta) de visualisation et contrôle des aéroports\footnotemark{} permettant non seulement de surveiller les mouvements des avions en l'air et au sol, mais aussi de tous les véhicules au sol tels que les bus d'embarquement, les camions de ravitaillement, les véhicules de maintenance, de secours, etc.
+	Le Groupe \emph{Aéroports de Paris} (ou ADP) utilise un logiciel (encore en phase bêta) de visualisation et contrôle des aéroports permettant non seulement de surveiller les mouvements des avions en l'air et au sol, mais aussi de tous les véhicules au sol tels que les bus d'embarquement, les camions de ravitaillement, les véhicules de maintenance, de secours, etc. Ce logiciel est développé par une équipe du groupe Valtech\footnotemark{}, que nous avons rencontrée afin de mieux comprendre les besoins d'ADP, et les solutions actuellement mises en \oe{}uvre.
 	
-	\footnotetext{Développé par le groupe Valtech : \url{https://www.valtech.fr}}
+	\footnotetext{\url{https://www.valtech.fr}}
 	
 	La nature de la tâche implique une quantité de données contextuelles très importante, puisque le logiciel permet d'afficher notamment le statut de chaque avion, ses codes d'identification, sa destination ou son origine, son retard éventuel, le statut de ses bagages ou de ses passagers, la liste des passagers en question, les pistes et emplacements de stationnement qui lui sont alloués ou disponibles, sa compagnie, son type, etc. La figure~\ref{fig:adp} fournit un exemple modéré de la quantité d'informations potentiellement affichées.
 	
@@ -685,7 +686,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Il convient de noter que les avions de combat eux-mêmes ont des besoins similaires en matière de sélection de cibles mobiles, puisqu'ils ont, comme les stations au sol, pour rôle de contrôler l'espace aérien. Ils ont de plus la charge de mener des opérations de reconnaissance ou de bombardement de cibles au sol qui, si elles sont statiques, sont bien mobiles dans le référentiel de l'avion en vol, \emph{a fortiori} si elles sont filmées par des caméras mobiles. Par ailleurs, les cibles affichées sur les ordinateurs de bord des avions sont accompagnées de diverses informations tactiques qui augmentent fortement la densité d'informations, et potentiellement le niveau d'occultation, comme l'illustre la figure~\ref{fig:sitac}.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/sitac}
 		\caption[Situation tactique vue d'un \emph{Rafale}.]{Cette image représente une situation tactique telle qu'affichée sur un écran dit \og visualisation tête moyenne \fg{} dans un \emph{Rafale}, un avion de chasse français produit par Dassault Aviation. Sur cette image très \og chargée \fg{} seuls deux petits symboles, que nous avons ici entourés en rouge, représentent des avions ennemis. Au-delà de la carte de fond, les autres symboles représentent diverses informations tactiques importantes : l'avion lui-même bien sûr, sa direction, une boussole, l'altitude maximale des obstacles terrestres, l'échelle, la vitesse de l'avion, le plan de vol, la ligne de front, une loupe, etc. Par conséquent, même avec un très petit nombre de cibles potentielles, l'affichage est complexe, dense, et potentiellement gênant pour la sélection. Crédit : Portail Aviation\footnotemark.}
@@ -700,12 +701,24 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Par conséquent, l'on passe d'une seule cible (apparente) à plusieurs cibles d'abord très rapprochées, mais souvent rapidement divergentes. Parfois, les pilotes plongent vers le sol pour utiliser les retours radar du relief afin de masquer le leur ; ajoutons que c'est d'autant plus efficace que l'aéronef est furtif, et qu'il peut donc apparaître et disparaître des écrans radar à tout moment. Ce point est d'autant plus important que les technologies furtives se répandent progressivement et les aéronefs furtifs sont de plus en plus courants. Parmi les plus connus, on peut citer le Lockheed Martin F-117 \emph{Nighthawk} (déjà retiré du service), le Northrop Grumman B-2 \emph{Spirit}, ainsi que le F-22 \emph{Raptor} et le F-35 \emph{Lightning II}, tous deux produits par Lockheed Martin.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/B2}
 		\caption[Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif.]{Le Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif états-unien. Sa forme d'aile volante, son alignement de plans jamais perpendiculaires à son axe longitudinal, le placement de ses moteurs sur son dos, enfouis dans le fuselage, l'utilisation de matériaux composites absorbants, etc., contribuent à réduire la signature de cet appareil dans plusieurs bandes électromagnétiques. Crédit : \emph{Wired}\footnotemark{}.}
 		\label{fig:B2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/tigre}
+		\caption[Hélicoptère d'attaque \emph{Tigre}.]{L'hélicoptère d'attaque \emph{Tigre} conçu et fabriqué par Airbus Helicopters. Cet aéronef est capable de voler jusqu'à 370~km/h en piqué, et il est assez manœuvrable pour changer de direction de vol (sans nécessairement changer l'orientation de l'engin, par exemple en volant latéralement) très rapidement, voler à très basse altitude en suivant le terrain, effectuer des tonneaux, \emph{loopings}, etc., notamment grâce à sa capacité de tolérer des accélérations allant jusqu'à 4g~\cite{tigre}. Crédit : \emph{Wikimedia}}
+		\label{fig:tigre}
+		\end{subfigure}
+		\caption{}
+		\label{fig:coolAircraft}
 	\end{figure}
+	
 	
 	\footnotetext{\url{https://www.wired.com/2011/06/stealth-tech-obsolete}}
 	
@@ -726,12 +739,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{Hélicoptères de combat.}
 	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils, sans qu'il soit aisé de quantifier cette différence. Comme pour les avions, leur comportement est susceptible de varier considérablement selon la mission. Ils sont ausssi légèrement plus rapides, de quelques dizaines de km/h, notamment en piqué. Comme pour les avions, leurs missions impliquent souvent des trajectoires moins prévisibles, d'autant qu'ils cherchent souvent à se camoufler (visuellement et pour les radars) en volant le plus bas possible, ce qui implique de contourner les éléments de relief. L'hélicoptère \emph{Tigre} représenté sur la figure~\ref{fig:tigre} est un exemple d'appareil rapide, compact et très manœuvrable.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/tigre}
-		\caption[Hélicoptère d'attaque \emph{Tigre}.]{L'hélicoptère d'attaque \emph{Tigre} conçu et fabriqué par Airbus Helicopters. Cet aéronef est capable de voler jusqu'à 370~km/h en piqué, et il est assez manœuvrable pour changer de direction de vol (sans nécessairement changer l'orientation de l'engin, par exemple en volant latéralement) très rapidement, voler à très basse altitude en suivant le terrain, effectuer des tonneaux, \emph{loopings}, etc., notamment grâce à sa capacité de tolérer des accélérations allant jusqu'à 4g~\cite{tigre}. Crédit : \emph{Wikimedia}}
-		\label{fig:tigre}
-	\end{figure}
 	
 	\paragraph{Drones.}
 	Le cas des drones aériens, c'est-à-dire des aéronefs sans pilote embarqué (télécommandés ou autonomes) est peut-être le plus hétérogène. On trouve en effet des drones de très petite taille, mais aussi des modèles de plusieurs tonnes~\footnotemark. Leurs modes de sustentation sont très divers, leurs moyens de propulsion varient également et, de fait, leurs caractéristiques de vol sont extrêmement variables, selon qu'il s'agisse de très petits engins extrêmement manœuvrables ou d'aéronefs plus gros, qui se comportent comme des avions traditionnels.
@@ -746,8 +753,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Le \emph{Strategic Capabilities Office} du même département a déjà mené des essais avec des essaims d'une centaine de petits drones : \url{https://www.washingtonpost.com/news/checkpoint/wp/2016/03/08/watch-perdix-the-secretive-pentagon-program-dropping-tiny-drones-from-jets/} ; \url{https://www.defense.gov/Portals/1/Documents/pubs/Perdix\%20Fact\%20Sheet.pdf}.}
 	
 	
-	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/swarm}
 		\caption[Petit essaim de drones aériens]{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}\protect\footnotemark.}
@@ -780,12 +786,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{Missiles.}
 	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de combat, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5\footnote{C'est-à-dire 5 fois la vitesse du son, ou nettement plus de 5000~km/h.}) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II dont une maquette est représentée sur la figure~\ref{fig:brahmos}.
 	
-	\begin{figure}[htb]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/brahmos-II}
+		\includegraphics[width=0.48\textwidth]{figures/ch1/brahmos-II}
 		\caption[Missile hypersonique BrahMos-II.]{Maquette du missile de croisière hypersonique russo-indien BrahMos-II, en cours de développement. L'objectif de ce missile est d'atteindre une vitesse de croisière de Mach~7\footnotemark. Crédit : Pakistan Defence\footnotemark.}
 		\label{fig:brahmos}
-	\end{figure}
+	\end{wrapfigure}
 	
 	\addtocounter{footnote}{-1}
 	\footnotetext{\emph{The Economic Times} -- \url{http://economictimes.indiatimes.com/news/politics-and-nation/hypersonic-version-of-brahmos-missile-on-the-way/articleshow/10286984.cms}}
@@ -810,7 +816,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	L'utilisation d'un dispositif immersif présente \emph{a priori} des avantages intéressants, tant pour la perception et la représentation de l'environnement que pour l'interaction. Elle faciliterait par ailleurs l'affichage de données contextuelles plus détaillées que ce qu'un dispositif de rendu 2D traditionnel permet (sans mener à un niveau d'occultation intolérable). Dans un contexte militaire, on peut également imaginer permettre à l'utilisateur, via ses interactions avec l'environnement virtuel, de donner des instructions tactiques aux forces déployées sur terre, en mer ou dans les airs.
 
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/Radar-Scope-ZSE}
 		\caption[Écran de contrôle du trafic aérien, en 2D.]{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}\footnotemark.}
@@ -833,11 +839,22 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{http://eunavfor.eu/}}
 	
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.41\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/channel}
 		\caption[Écran de contrôle maritime en Manche (SIA).]{Écran de contrôle représentant les navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : \emph{Arlo Maritime}\footnotemark.}
 		\label{fig:channel}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.59\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/lincoln}
+		\caption[Le groupe aéronaval de l'USS \emph{Abraham Lincoln}.]{Même dans des eaux relativement vides, la densité de navires peut être élevée localement. C'est potentiellement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval de l'USS \emph{Abraham Lincoln}, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navires présents, compte tenu de leur importance militaire, sous-marins compris. On précisera toutefois qu'en situation réelle, les navires sont généralement plus espacés que cela. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
+		\label{fig:lincoln}
+		\end{subfigure}
+		\label{fig:muddyWaters}
+		\caption{Densité de cibles dans les espaces maritimes.}
 	\end{figure}
 	
 	\footnotetext{\url{http://www.arlomaritime.com/}}
@@ -856,13 +873,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La figure~\ref{fig:lincoln} illustre un cas de forte densité locale de navires, avec des cibles de haute importance stratégique de surcroît. Près des ports, la densité peut être plus élevée encore, même si les navires concernés sont moins préoccupants pour les autorités. Il leur est toutefois nécessaire de garantir la circulation fluide et sûre de ces navires, et de veiller à ce que personne ne tire parti de cette forte densité à des fins illicites ou criminelles.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/lincoln}
-		\caption[Le groupe aéronaval de l'USS \emph{Abraham Lincoln}.]{Même dans des eaux relativement vides, la densité de navires peut être élevée localement. C'est potentiellement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval de l'USS \emph{Abraham Lincoln}, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navires présents, compte tenu de leur importance militaire, sous-marins compris. On précisera toutefois qu'en situation réelle, les navires sont généralement plus espacés que cela. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
-		\label{fig:lincoln}
-	\end{figure}
-	
 	\section{Contrôle de l'espace extra-atmosphérique}
 	\subsection{Enjeux}
 	Le problème de la surveillance de l'espace extra-atmosphérique se pose de façon assez analogue à celui des espaces aérien et maritime. Là encore il s'agit d'une part de vérifier que les objets qui s'y meuvent le font de façon sûre, et d'identifier ce qui peut potentiellement représenter une menace (essentiellement militaire, car à ce jour aucune organisation criminelle connue n'a pu mettre un objet en orbite).
@@ -874,12 +884,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\emph{Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies} -- \url{http://disarmament.un.org/treaties/t/outer_space}}
 	
-	\begin{figure}[H]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/m51}
-		\caption[Missile mer-sol-balistique-stratégique (MSBS) français, désigné M51.]{Tir d'essai du missile français mer-sol-balistique-stratégique (MSBS) M51, depuis un sous-marin. Son altitude de croisière est d'environ 1000~km/h et sa vitesse maximale serait de Mach~25\footnotemark. Crédit : \emph{Defence Talk}\footnotemark.}
+		\includegraphics[width=0.46\textwidth]{figures/ch1/m51}
+		\caption[Missile français M51.]{Tir du missile balistique français M51, depuis un sous-marin. Son altitude de croisière est d'environ 1000~km et sa vitesse maximale serait de Mach~25\footnotemark. Crédit : \emph{Defence Talk}\footnotemark.}
 		\label{fig:m51}
-	\end{figure}
+	\end{wrapfigure}
 	
 	\addtocounter{footnote}{-1}
 	\footnotetext{\url{http://www.techno-science.net/?onglet=glossaire&definition=12366}}
@@ -890,11 +900,11 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	D'après l'Agence spatiale européenne (ASE ou ESA pour son sigle anglophone), l'orbite terrestre compterait environ 29~000 objets de plus de 10~cm, 670~000 objets de plus de 1~cm, et pas moins de 170 millions d'objets de plus de 1~mm\ldots{} La collision d'un satellite artificiel avec un objet de seulement un millimètre pourrait détruire un sous-système, tandis qu'un objet d'un centimètre détruirait généralement le satellite\footnotemark.
 	\footnotetext{\url{http://www.esa.int/Our_Activities/Space_Engineering_Technology/Clean_Space/How_many_space_debris_objects_are_currently_in_orbit}}
 	
-	Les débris spatiaux proviennent de sources aussi diverses que des véhicules spatiaux hors service, de l'équipement perdu, des propulseurs de véhicules\ldots{} ou des armes\footnotemark~\cite{chun1999shooting}.
+	Les débris spatiaux proviennent de sources aussi diverses que des véhicules spatiaux hors service, de l'équipement perdu (voir figure~\ref{fig:spaceDeb}), des propulseurs de véhicules\ldots{} ou des armes\footnotemark~\cite{chun1999shooting}.
 	
 	\footnotetext{\emph{Space Debris from Anti-Satellite Weapons} -- \url{http://www.ucsusa.org/sites/default/files/legacy/assets/documents/nwgs/debris-in-brief-factsheet.pdf}}
 	
-	Si le sujet est préoccupant pour les satellites et autres vols non habités, il est beaucoup plus inquiétant pour les vols habités, comme en témoigne l'incident illustré par la figure~\ref{fig:endeavour}. La question est d'autant plus importante que les vols habités pourraient devenir bien plus courants à moyen terme\footnotemark.
+	Si le sujet est préoccupant pour les satellites et autres vols non habités, il est beaucoup plus inquiétant pour les vols habités. La question est d'autant plus importante que les vols habités pourraient devenir bien plus courants à moyen terme\footnotemark.
 	
 	\footnotetext{\emph{SpaceX's Elon Musk Unveils Interplanetary Spaceship to Colonize Mars} -- \url{http://www.space.com/34210-elon-musk-unveils-spacex-mars-colony-ship.html}}
 	
@@ -904,14 +914,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\emph{Congress gets report on giving FAA space traffic role} -- \url{http://spacenews.com/congress-gets-report-on-giving-faa-space-traffic-role}}
 	
-	\begin{figure}[H]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/endeavour}
-		\caption[Dégâts sur un panneau de radiateur de la navette spatiale \emph{Endeavour}.]{Un panneau de radiateur de la navette spatiale \emph{Endeavour}, très endommagé par un impact avec une particule riche en métaux (titane, zinc, et peut-être antimoine) d'un diamètre estimé entre $1,5$ et $2$~millimètres. Crédit : NASA\protect\footnotemark.}
-		\label{fig:endeavour}
-	\end{figure}
+		\includegraphics[width=0.48\textwidth]{figures/ch1/space_debris_zoom}
+		\caption[Débris spatial]{Débris spatial : une couverture thermique à la dérive en orbite terrestre. Crédit : NASA\protect\footnotemark.}
+		\label{fig:spaceDeb}
+	\end{wrapfigure}
 	
-	\footnotetext{\url{https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20080010742.pdf}}
+	\footnotetext{\url{https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=STS088&roll=724&frame=66}}
 	
 	
 	\section{Vidéo-surveillance}
