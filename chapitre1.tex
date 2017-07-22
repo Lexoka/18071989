@@ -40,7 +40,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:1KX2}
 	\end{wrapfigure}
 	
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\begin{subfigure}{.4\textwidth}
 			\centering
 			\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}
@@ -949,22 +949,27 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsection{Foules}
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance devient difficile.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/crowdhk}
 		\caption[Foule de manifestants à Hong-Kong.]{Foule de manifestants à Hong-Kong. Le mouvement des individus est en moyenne très faible, mais leur densité est très élevée. Crédit : \emph{ABC News}\footnotemark.}
 		\label{fig:crowdhk}
-	\end{figure}
-	
-	\footnotetext{\url{http://a.abcnews.com/images/International/AP_hong_kong_democracy_protests_1_sk_140929_3x2_1600.jpg}}
-	
-	\begin{figure}[H]
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/crowdacdc}
 		\caption[Foule à un concert.]{Foule à un concert du groupe AC/DC. Le mouvement presque nul, mais la densité de cibles est extrêmement élevée. Crédit : \emph{SHP Online}\footnotemark.}
 		\label{fig:crowdacdc}
+		\end{subfigure}
+		\label{fig:crowds}
+		\caption{Foules.}
 	\end{figure}
 	
+	\addtocounter{footnote}{-1}
+	\footnotetext{\url{http://a.abcnews.com/images/International/AP_hong_kong_democracy_protests_1_sk_140929_3x2_1600.jpg}}
+	\addtocounter{footnote}{1}
 	\footnotetext{\url{http://www.shponline.co.uk/understanding-crowds-and-crowded-space-issues}}
 	
 	\section{Surveillance électromagnétique}
@@ -987,10 +992,10 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.deveryware.com/savoir-faire/notre-expertise}}
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cellphones}
-		\caption[Surveillance des signaux de téléphones portables.]{Illustration d'un système de surveillance en temps réel des signaux émis par les téléphones portables, tiré de la série télévisée \emph{Le Bureau des légendes}, et inspiré de systèmes réels (dont les images ne sont pas publiques). Sur cette image représentant une vue de la ville d'Alger, chaque point coloré représente la position d'un téléphone portable dont le signal est capté et localisé. Le nombre de cibles potentielles est très élevé, et la densité peut être extrême par endroits. \OE{}uvre réalisée par Éric Rochant et produite par Canal+.}
+		\caption[Surveillance des signaux de téléphones portables]{Illustration d'un système de surveillance en temps réel des signaux émis par les téléphones portables, tiré de la série télévisée \emph{Le Bureau des légendes}, et inspiré de systèmes réels (dont les images ne sont pas publiques). Sur cette image représentant une vue de la ville d'Alger, chaque point coloré représente la position d'un téléphone portable dont le signal est capté et localisé. Le nombre de cibles potentielles est très élevé, et la densité peut être extrême par endroits. \OE{}uvre réalisée par Éric Rochant et produite par Canal+.}
 		\label{fig:cellphones}
 	\end{figure}
 	
@@ -1004,7 +1009,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Ces informations pourraient être affichées sous forme de texte associé à un point, ou représentées par d'autres moyens graphiques : traits entre les signaux, clignotements, textures, etc. Dans tous les cas, la complexité visuelle et la densité de la vue présentée à l'utilisateur n'en seraient qu'accrues ; de fait, la difficulté de la tâche de sélection le serait aussi. Nous sommes donc face à une tâche de sélection de cibles mobiles très nombreuses, denses, hétérogènes dans un environnement visuel pouvant contenir de nombreuses informations complémentaires.
 	
-	\section{Annotation de gestes sportifs ou artistiques}
+	\section{Interaction avec des gestes sportifs ou artistiques}
 	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, et nécessitent souvent la sélection de cibles mobiles~\cite{ilich2010moving}. Il peut être utile, par exemple, de sélectionner un joueur de football pour afficher ses statistiques. Pour les mêmes raisons, un ballon ou une balle peuvent être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
 	\subsection{Athlètes}
@@ -1012,8 +1017,17 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\emph{Ski alpin -- Une histoire de famille se termine au Lauberhorn} --- \url{http://www.swissinfo.ch/fre/societe/ski-alpin-_une-histoire-de-famille-se-termine-au-lauberhorn/37746484}}
 	
+	\begin{wrapfigure}{O}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.48\textwidth]{figures/ch1/basket}
+		\caption[Match de basket-ball.]{Match de basket-ball. Les joueurs sont peu nombreux, mais leurs mouvements sont vifs et imprévisibles. Ils sont de plus très près les uns des autres et s'occultent mutuellement, \emph{a fortiori} quand ils sont filmés depuis le côté. Le ballon lui-même peut être une cible, plus rapide et imprévisible encore. Crédit : \emph{Weekend Notes}\footnotemark.}
+		\label{fig:basketball}
+	\end{wrapfigure}
+	
+	\footnotetext{\url{http://www.weekendnotes.com/perth-wildcats-nbl-games}}
+	
 	\subsection{Véhicules}
-	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens\footnotemark (une discipline récente et en plein essor) dans les sports mécaniques, l'on est alors face à un cas où les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
+	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens\footnotemark{} (une discipline récente et en plein essor) dans les sports mécaniques, l'on est alors face à un cas où les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
 	
 	\footnotetext{\url{https://thedroneracingleague.com}}
 	
@@ -1031,14 +1045,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\addtocounter{footnote}{1}
 	\footnotetext{\emph{Aussie smashes tennis serve speed record} -- \url{http://www.smh.com.au/sport/tennis/aussie-smashes-tennis-serve-speed-record-20120513-1ykfk.html}}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/basket}
-		\caption[Match de basket-ball.]{Match de basket-ball. Les joueurs sont peu nombreux, mais leurs mouvements sont vifs, horizontaux comme verticaux, et imprévisibles. Ils sont de plus très près les uns des autres et s'occultent mutuellement, \emph{a fortiori} quand ils sont filmés depuis le côté, comme souvent et notamment sur cette image. Le ballon lui-même peut être une cible. Crédit : \emph{Weekend Notes}\footnotemark.}
-		\label{fig:basketball}
-	\end{figure}
-	
-	\footnotetext{\url{http://www.weekendnotes.com/perth-wildcats-nbl-games}}
 	
 	\section{Jeux vidéo}
 	\subsection{Une tâche centrale dans de nombreux genres}
@@ -1050,21 +1056,25 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\paragraph{FPS/TPS.}
 	Dans un jeu de tir à la première personne (FPS) la caméra est placée \og dans la tête \fg{} du personnage, selon un mode appelé \og vue subjective \fg{} ; dans un jeu de tir à la troisième personne (TPS) la caméra est placée hors du personnage, souvent derrière lui, un peu au-dessus et, parfois, avec un décalage sur le côté. On appelle parfois la vue d'un TPS \og objective \fg{}. Un FPS est présenté sur la figure~\ref{fig:bf1}, tandis qu'un exemple de TPS est fourni par la figure~\ref{fig:gears}.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/bf1}
-		\caption[Le FPS \emph{Battlefield 1}.]{Extrait du jeu de tir à la première personne (FPS) \emph{Battlefield 1}. Le réticule de visée est bien visible ici. Aucune cible n'est visible sur cette image, mais des ennemis peuvent surgir n'importe quand, de n'importe où, et le joueur devra réagir avec vitesse et précision. Jeu développé par EA DICE et produit par Electronic Arts.}
+		\caption[Le FPS \emph{Battlefield 1}]{Extrait du jeu de tir à la première personne (FPS) \emph{Battlefield 1}. Le réticule de visée est bien visible ici. Aucune cible n'est visible sur cette image, mais des ennemis peuvent surgir n'importe quand, de n'importe où, et le joueur devra réagir avec vitesse et précision. Jeu développé par EA DICE et produit par Electronic Arts.}
 		\label{fig:bf1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/gears}
+		\caption[Le TPS \emph{Gears of War 4}]{Extrait du jeu de tir à la troisième personne (TPS) \emph{Gears of War 4}. La caméra est placée derrière le personnage, au-dessus et sur le côté. Jeu développé par The Coalition et produit par Microsoft Studios.}
+		\label{fig:gears}
+		\end{subfigure}
+		\label{fig:shooters}
+		\caption{Jeux de tir.}
 	\end{figure}
 	
 	Attendu que dans les FPS/TPS, la visée est précisément le cœur du jeu, et censée être difficile, les développeurs seraient probablement peu enclins à intégrer des techniques la facilitant, car cela diminuerait l'intérêt ludique (la valeur du \emph{gameplay}) de leur œuvre. Toutefois, cela pourrait avoir un intérêt dans le cadre d'un mode de jeu à difficulté réduite, pour les débutants. D'ordinaire, ces modes sont plutôt mis en œuvre par une réduction du nombre des ennemis, de leurs compétences, de leur résistance, etc., ce qui peut rendre l'expérience de jeu moins spectaculaire.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/gears}
-		\caption[Le TPS \emph{Gears of War 4}.]{Extrait du jeu de tir à la troisième personne (TPS) \emph{Gears of War 4}. La caméra est placée derrière le personnage, au-dessus et sur le côté. Jeu développé par The Coalition et produit par Microsoft Studios.}
-		\label{fig:gears}
-	\end{figure}
 	
 	\paragraph{Jeux de rôle (RPG).}
 	Dans un jeu de rôle (RPG) classique, l'enjeu est très différent. Les capacités du (des) personnage(s) contrôlé(s) par le joueur dépendent de l'expérience accumulée depuis le début du jeu, l'expérience étant ici une ressource précisément quantifiée, sous forme de points la plupart du temps. Ces points sont ensuite investis dans des attributs (force, dextérité, endurance, intelligence\ldots{}) ou compétences (combat à mains nues, tir au fusil, persuasion, furtivité, magie de types divers\ldots{}). Souvent, les performances de visée d'un personnage dépendent uniquement de ses attributs et compétences, et non de la dextérité du joueur, qui n'a pas forcément besoin de désigner les cibles (le personnage les choisissant automatiquement) ou qui peut le faire pendant que l'action du jeu est en pause.
@@ -1079,20 +1089,31 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\item[Recul.] Une arme qui tire un projectile a généralement un certain recul. Celui-ci n'a généralement pas d'influence sur la précision du premier tir, mais sur tous les suivants. Dans un jeu vidéo, il est généralement simulé par un mouvement du curseur après le tir, habituellement vers le haut, avec en plus une composante horizontale, qui peut être aléatoire. On peut diminuer cet effet de recul quand les attributs et compétences du personnage croissent, là encore éventuellement jusqu'à l'annuler totalement, quoique cette option soit rarement retenue, pour des raisons de réalisme.
 	\end{description}
 
-	\paragraph*{}
+
 	Ces mécanismes permettent d'obtenir une difficulté de tir qui dépend du joueur, puisqu'il doit tout de même viser, mais aussi des attributs et compétences du personnage. On remarque qu'il s'agit toujours de gêner le joueur, de lui imposer un handicap qui diminue quand les attributs et compétences de ses personnages augmentent. Mais \emph{in fine}, lorsque ce handicap est minime ou nul, le joueur reste borné par sa propre dextérité, comme dans un FPS classique.
 	
-	Une autre technique, utilisée par les récents opus de la série \emph{Fallout} (désormais produite par Bethesda Studios) appelée \emph{Vault-Tec Assisted Targeting System}, ou V.A.T.S, consiste à arrêter ou considérablement ralentir le temps, pour permettre au joueur de désigner ses cibles, que le personnage attaquera ensuite automatiquement. Cette opération se fait en échange de \og points d'action \fg{}. L'inconvénient majeur de cette solution (illustrée par la figure~\ref{fig:f4vats}) est la perte du temps-réel, et l'impact négatif sur l'immersion qui y est associé. De plus, le caractère automatique de l'attaque, une fois les cibles désignées, rend l'opération totalement indépendante de la dextérité du joueur, ce qui d'une part est une déviation par rapport au paradigme de l'ARPG, et d'autre part peut diminuer l'intérêt ludique du combat, ou nuire à la sensation d'immersion.
+	Une autre technique, utilisée par les récents opus de la série \emph{Fallout} (désormais produite par Bethesda Studios) appelée \emph{Vault-Tec Assisted Targeting System}, ou V.A.T.S consiste à arrêter ou considérablement ralentir le temps, pour permettre au joueur de désigner ses cibles, que le personnage attaquera ensuite automatiquement. Cette opération se fait en échange de \og points d'action \fg{}. L'inconvénient majeur de cette solution (illustrée par la figure~\ref{fig:f4vats}) est la perte du temps-réel, et l'impact négatif sur l'immersion qui y est associé. De plus, le caractère automatique de l'attaque, une fois les cibles désignées, rend l'opération totalement indépendante de la dextérité du joueur, ce qui d'une part est une déviation par rapport au paradigme de l'ARPG, et d'autre part peut diminuer l'intérêt ludique du combat, ou nuire à la sensation d'immersion.
 	
 	On pourrait imaginer, à la place ou en complément de ces approches, d'apporter au joueur une assistance à la visée. Une telle technique d'aide à la sélection devrait être paramétrable dans son \og intensité \fg{} c'est-à-dire qu'il devrait lui être possible d'apporter au joueur une assistance plus ou moins prononcée, selon un paramètre donné. Ce paramètre pourrait être (dérivé de) la compétence de tir du personnage. Ainsi, un joueur contrôlant un personnage expert en tir serait capable d'abattre des cibles très difficiles, conformément à l'image du personnage telle qu'elle est véhiculée par le jeu, mais le joueur resterait l'acteur principal de l'opération, sans ralentissement ou suspension du temps. L'aide à la sélection permettrait ici de dépasser la \og borne \fg{} imposée par la dextérité du joueur.
 	
 	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.46\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/f4vats}
-		\caption[Système V.A.T.S permettant de faciliter les tirs dans \emph{Fallout 4}.]{Dans l'ARPG \emph{Fallout 4}, le système V.A.T.S. permet ici au joueur de cibler tranquillement la tête de cette créature, pendant que le temps est ralenti. Le tir aura une probabilité de succès de 77~\%{}, dérivée des compétences de tir du personnage contrôlé, et des circonstances du combat à cet instant précis. Cette technique a cependant l'inconvénient majeur de ralentir le jeu, d'afficher beaucoup d'informations contextuelles, et ainsi de nuire doublement à la qualité de la sensation d'immersion. Jeu édité par Bethesda Softworks, et développé par ses propres studios.}
+		\caption[Système V.A.T.S permettant de faciliter les tirs dans \emph{Fallout 4}]{Dans l'ARPG \emph{Fallout 4}, le système V.A.T.S. permet ici au joueur de cibler tranquillement la tête de cette créature, pendant que le temps est ralenti. Le tir aura une probabilité de succès de 77~\%{}, dérivée des compétences de tir du personnage contrôlé, et des circonstances du combat à cet instant précis. Cette technique a cependant l'inconvénient majeur de ralentir le jeu, d'afficher beaucoup d'informations contextuelles, et ainsi de nuire doublement à la qualité de la sensation d'immersion. Jeu édité par Bethesda Softworks, et développé par ses propres studios.}
 		\label{fig:f4vats}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.54\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/assassin}
+		\caption[Système \emph{Eagle Vision} dans le jeu \emph{Assassin's Creed}] {Dans les jeux de la série \emph{Assassin's Creed}, le personnage jouable dispose d'une capacité appelée \emph{Eagle Vision} lui permettant de voir les personnages à travers les obstacles, et de connaître leur nature grâce à leur couleur. Surtout, elle permet au joueur de désigner la cible que le personnage attaquera ensuite de manière semi-automatique. C'est utile car si les cibles elles-mêmes ne sont pas très rapides ni très imprévisibles, à leurs mouvements absolus doivent s'ajouteur ceux du personnage contrôlé par le joueur. Ajoutons que celui-ci ne dispose généralement que d'un petit \emph{joystick} sous son pouce pour viser. Jeu édité par Ubisoft, et développé par ses propres studios.}
+		\label{fig:ac_ev}
+		\end{subfigure}
+		\label{fig:gamesTargeting}
+		\caption{Techniques d'assistance à la visée ou sélection dans les jeux vidéo.}
 	\end{figure}
 	
 	
@@ -1105,7 +1126,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
 		\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}.]{Exemple d'une partie du RTS \emph{Cossacks~II: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Ce jeu est connu pour son nombre maximal d'unités particulièrement élevé : 64~000. La gestion de troupes si nombreuses est un défi particulièrement difficile qui n'est pas facilité par la pénibilité de la tâche de sélection dans un tel contexte. Jeu développé par GSC Game World et édité par CDV Software.}
@@ -1116,7 +1137,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Une telle technique allégerait le fardeau de la sélection, laissant les joueurs de RTS et RTT se concentrer sur le cœur du jeu, sur les éléments dont la valeur ludique est la plus élevée --- gestion, organisation tactique, choix stratégiques, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter les véhicules et pièces d'artillerie\ldots{}
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
 		\caption[Énorme bataille dans le jeu \emph{EVE Online}.]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
@@ -1138,7 +1159,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
 	\newcolumntype{Y}{>{\small}X}
 	\newcolumntype{Z}{>{\centering}X}
-	\begin{table}[H]
+	\begin{table}[htb]
 		\centering
 %		\begin{tabularx}{\textwidth}{ l {\centering}\p{width=0.24\textwidth} {\centering}\p{width=0.24\textwidth} {\centering}\p{width=0.24\textwidth} }
 		\begin{tabularx}{\textwidth}{ Y X X X } % Putain j'entrave que dalle mais ça marche à peu près
@@ -1171,22 +1192,24 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	% https://www.hiveworkshop.com/threads/warcraft-iii-distance-units-convert.137848/
 	% https://www.reddit.com/r/DotA2/comments/1vaklc/how_big_is_the_dota2_map_really/
 	
-
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/lol}
-		\caption[Une partie d'un MOBA, \emph{League of Legends}.]{Exemple d'une partie d'un MOBA, le jeu \emph{League of Legends}, avec quelques personnages. Les cibles potentielles ne sont pas très nombreuses, mais leurs mouvements sont vifs et imprévisibles. Par ailleurs, divers événements (lancements de sorts et autres effets magiques, par exemple) peuvent créer des effets visuels qui, parfois, occultent une bonne partie de l'écran. Pour autant, le jeu ne s'arrête pas pendant ces moments-là et il demeure nécessaire de pouvoir sélectionner des personnages. Jeu développé et édité par Riot Games.}
+		\caption[Une partie d'un MOBA, \emph{League of Legends}]{Une partie d'un MOBA, \emph{League of Legends}. Les cibles potentielles ne sont pas très nombreuses, mais leurs mouvements sont vifs et imprévisibles. Par ailleurs, divers événements (lancements de sorts et autres effets magiques, par exemple) peuvent créer des effets visuels qui, parfois, occultent une bonne partie de l'écran. Pour autant, le jeu ne s'arrête pas pendant ces moments-là et il demeure nécessaire de pouvoir sélectionner des personnages. Jeu développé et édité par Riot Games.}
 		\label{fig:lol}
-	\end{figure}
-	
-	\begin{figure}[H]
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/dota2}
-		\caption{Exemple d'une partie d'un MOBA, le jeu \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Dans ce jeu comme dans \emph{League of Legends}, des effets visuels plus ou moins occultants peuvent survenir à tout moment, et gêner la sélection des cibles. Les caractéristiques de ses personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
+		\caption[Une partie d'un MOBA, \emph{DOTA~2}]{Une partie d'un MOBA, \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Dans ce jeu comme dans \emph{League of Legends}, des effets visuels plus ou moins occultants peuvent survenir à tout moment, et gêner la sélection des cibles, pourtant critique. Les caractéristiques des personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
 		\label{fig:dota2}
+		\end{subfigure}
+		\label{fig:mobas}
+		\caption{Arènes de bataille en ligne multijoueur, ou MOBA.}
 	\end{figure}
-	
 	
 	\section{Conclusion}    
 	Les besoins en sélection de cibles mobiles sont très divers, et répartis sur des domaines bien différents : des simulations scientifiques aux jeux vidéo, en passant par le maintien de l'ordre, la défense, les retransmissions sportives, etc. Selon les domaines, les impératifs peuvent varier : dans tous les cas, la performance est recherchée, mais le temps de sélection peut être plus important pour certaines applications, et le taux d'erreur pour d'autres. Parfois, les applications sont si critiques (car des vies humaines en dépendent, par exemple dans la défense) que les performances doivent impérativement atteindre certains seuils.
