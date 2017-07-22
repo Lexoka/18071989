@@ -849,7 +849,6 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 % http://books.google.fr/books?id=h9FEnj3C7MoC&pg=PA102&lpg=PA102&dq=head+tracking+70%25+of+gaze&source=bl&ots=cp8OJm_G-1&sig=0jsxP3V20VGuxmIvg9CB1sUcyeU&hl=en&sa=X&ei=JFUsU-rVJYam0AW1zYDwAw&redir_esc=y#v=onepage&q&f=false
 \section{Suivi de la tête et des yeux}
 	\subsection{Principe général et avantages}
-	~\cite{zhai1999manual}
 	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade.
 
 	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
@@ -861,8 +860,22 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
 	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
 	
+	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux.
+	
+	Par ailleurs, il peut être très déroutant pour un utilisateur de « charger » un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
+	
+	\footnotetext{Remarquons cependant que le regard, quand il est contrôlé de façon délibérée, peut être utilisé pour communiquer, par exemple lorsqu'une personne en invite une autre, oralement, à regarder quelque chose qu'elle désigne du regard. Lever les yeux au ciel peut communiquer de l'agacement ou du dédain, etc.}
+	
+	Dès lors, il serait tentant de rejeter cette technique, et \emph{a fortiori} l'estimation de la \emph{pose} de la tête ne tenant pas compte des yeux, puisque c'est forcément beaucoup moins précis. Mais ce serait faire fi un peu trop rapidement des avantages du suivi des yeux, et en particulier de sa rapidité inégalée. Certes, il ne peut suffire à lui seul à sélectionner un objet d'indice de difficulté élevé ; il n'est pas inutile pour autant, loin s'en faut.
 	
 	
+	\subsection{\emph{Look and Touch}}
+	\subsubsection{Principe et avantages}
+	~\cite{stellmach2012look}
+	
+	\subsubsection{Inconvénients}
+	
+	\subsection{Inconvénients généraux}
 	\begin{itemize}
 		\item Les performances dépendent de la couleur des yeux ;[ref]
 		\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;[ref]
@@ -872,14 +885,6 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{itemize}
 
 	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
-	
-	\subsection{\emph{Look and Touch}}
-	\subsubsection{Principe et avantages}
-	~\cite{stellmach2012look}
-	
-	\subsubsection{Inconvénients}
-	
-	\subsection{Inconvénients généraux}
 	
 \section{Le \emph{Delphian Desktop}}
 	\subsection{Principe et avantages}
