@@ -30,15 +30,15 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsection{Protéines}
 	Les protéines sont des macromolécules\footnote{Une macromolécule est une \og grosse \fg{} molécule, généralement un polymère ; elle est constituée de plusieurs milliers d'atomes.} que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus~\cite{lodish2004molecular}. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et à la régulation de l'expression génétique. L'étude de leur fonctionnement est donc essentiel à la compréhension du vivant et de ses processus.
 	
-	\paragraph{Composition.}
-	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
-	
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch1/1KX2}
 		\caption[Une protéine en \emph{Hyperballs}]{Une protéine (un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Elle est relativement petite (81 acides aminés, vs. $\approx$~30~000 pour la titine). De plus, les atomes étant ici représentés avec un rayon inférieur à leur rayon de van der Walls, l'occultation est réduite, et les molécules du solvant ne sont pas représentées. Malgré tout, la densité d'objets et le niveau d'occultation demeurent très importants.}
 		\label{fig:1KX2}
 	\end{wrapfigure}
+	
+	\paragraph{Composition.}
+	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
 	\begin{figure}[htb]
 		\begin{subfigure}{.4\textwidth}
@@ -54,35 +54,54 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 			\caption{Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.}
 			\label{fig:peptide_bond}
 		\end{subfigure}
-		\caption[Acide aminé.]{Représentation schématique d'un acide aminé et d'une liaison petptidique. Crédit :~\cite{berg_biochemistry_2012}}
+		\caption[Acide aminé]{Représentation schématique d'un acide aminé et d'une liaison petptidique. Crédit :~\cite{berg_biochemistry_2012}}
 		\label{fig:aminoAcid}
 	\end{figure}
 	
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/aminoAcids}
-		\caption[Ensemble des acides aminés.]{Les 21 acides aminés dits protéinogènes que l'on trouve chez les eucaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
+		\caption[Ensemble des acides aminés]{Les 21 acides aminés dits protéinogènes que l'on trouve chez les eucaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
 		\label{fig:aminoAcids}
 	\end{figure}
 	
 	\paragraph{Synthèse.}
+	Un gène est un brin d'ADN qui « code » une protéine. Dans la cellule, ce brin d'ADN, composé de quatre nucléotides différents : adénine, cytosine, guanine et thymine (A, C, G, T) subit une \emph{transcription} en un brin d'ARN messager, composé également d'adénine, cytosine et guanine, mais d'uracil à la place de la thymine (A, C, G, U). Par exemple, la séquence \texttt{TAGTTCCAGTCAGT} serait transcrite en \texttt{UAGUUCCAGUCAGU}. Si l'ADN a pour fonction de stocker l'information génétique, l'ARN messager permet, comme son nom l'indique, de la communiquer au ribosome, un complexe moléculaire chargé de l'étape de \emph{traduction}.
+	
+	La traduction se fait selon le \emph{code génétique} illustré par la figure~\ref{fig:geneCode}. Ainsi, à chaque \emph{codon} (non-stop) est associé un acide aminé.
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/geneCode}
+			\caption[Le code génétique]{Ce diagramme illustre la correspondance entre un \emph{codon}, c'est-à-dire une suite de trois nucléotides (par exemple \texttt{UCG}) et l'acide aminé associé (dans le même exemple, la serine). On lit un codon du centre vers la périphérie du diagramme. Crédit : J\_{}Alves\footnotemark{}.}
+			\label{fig:geneCode}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.55\textwidth}
+			\includegraphics[width=\textwidth]{figures/ch1/translation}
+			\caption[Traduction de l'ARN messager en protéine]{Traduction de l'ARN messager et synthèse d'une chaîne polypeptidique. Des ARN de transfert apportent les acides aminés au ribosome qui, en les liant aux bons codons sur le brin d'ARN messager, construit la chaîne polypeptidique dont la protéine finale sera constituée. Crédit : Liberty Voice\footnotemark{}.}
+			\label{fig:translation}
+		\end{subfigure}
+		\label{fig:codeTrans}
+		\caption{Code génétique et traduction.}
+	\end{figure}
+	
+	\addtocounter{footnote}{-1}
+	\footnotetext{\url{https://openclipart.org/detail/95203/genetic-code-rna}}
+	\addtocounter{footnote}{1}
+	\footnotetext{\url{http://guardianlv.com/2013/10/naked-mole-rat-longevity-explained-by-higher-translational-fidelity}}
+	
+	Le ribosome peut ainsi synthétiser une protéine à partir d'un brin d'ARN messager en associant le bon acide aminé à chaque codon, comme l'illustre le montre la figure
 	
 	\paragraph{Structure.}
 	Les protéines sont décrites selon plusieurs niveaux de structures. On appelle structure primaire, la suite d'acides aminés qui composent la protéine, résultat de la traduction séquentielle d'un gène de l'ADN en protéine selon les règles du code génétique universel, dans lequel à chacun des 64 triplets possibles de nucléotides (A,C,G,T) composant l'ADN, correspond à un acide aminé. À ce niveau de structure, c'est la séquence qui est importante, la protéine étant considérée comme un collier de perles, chaque perle étant un des 22 acides aminées.
 	
-	Ensuite, pendant et après la synthèse, les protéines s'organise en 3D pour former des architectures typiques, et cette organisation correspond à la structure secondaire~\cite{foltmann1981protein} qui est en fait une description de la structure tridimensionnelle localement adoptée par un segment de molécule. Cette structure secondaire s'explique par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène. Les algorithmes couramment utilisés pour identifier les structures secondaires incluent DSSP~\cite{kabsch1983dictionary}, \emph{Define}~\cite{richards1988identification}, \emph{Stride}~\cite{frishman1995knowledge} et SST~\cite{konagurthu2012minimum}.
+	Ensuite, pendant et après la synthèse, les protéines s'organisent en 3D pour former des architectures typiques, et cette organisation correspond à la structure secondaire~\cite{foltmann1981protein} qui est en fait une description de la structure tridimensionnelle localement adoptée par un segment de molécule. Cette structure secondaire s'explique par les liaisons hydrogène au sein du segment concerné, plus précisément entre les groupements amide et carbonyle du squelette peptidique, dans le cas des protéines, et entre les bases nucléiques dans le cas des acides nucléiques (acide désoxyribonucléique, ou ADN, et acide ribonucléique, ou ARN). Parfois, cette définition est assouplie et un segment peut être considéré comme une structure secondaire particulière sur la base des valeurs de certains de ses angles dièdres, indépendamment des liaisons hydrogène. Les algorithmes couramment utilisés pour identifier les structures secondaires incluent DSSP~\cite{kabsch1983dictionary}, \emph{Define}~\cite{richards1988identification}, \emph{Stride}~\cite{frishman1995knowledge} et SST~\cite{konagurthu2012minimum}.
 		
 	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
-		
-	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée~\cite{richardson2002teaching}. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
-		
-	Toutefois, l'utilisation de cette technique de visualisation implique une perte d'information. En effet, les atomes ne sont plus visibles, aussi la composition précise de la molécule n'est-elle plus perceptible. De fait, il devient difficile d'apprécier certaines propriétés du système, comme les champs électrostatiques, l'hydrophobicité, les cavités de la surface moléculaire et autres zones susceptibles de faciliter les interactions avec d'autres molécules. Il est cependant possible de représenter certaines de ces propriétés par des couleurs, par exemple.
-		
-	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires\footnote{Dans le contexte de la dynamique moléculaire, on appelle \og trajectoire \fg{} l'évolution du système dans le temps, en particulier l'évolution des positions et des vélocités des particules simulées.} de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
-		
-	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie que l'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
-
-	\begin{figure}[H]
+	
+	\begin{figure}[htb]
 		\begin{subfigure}[b]{.5\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/aHelix}
@@ -104,13 +123,32 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{http://bioinfo.au-kbc.org.in/books/bi/1.html}}
 	\addtocounter{footnote}{1}
 	\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
+		
+	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée~\cite{richardson2002teaching}. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
+		
+	Toutefois, l'utilisation de cette technique de visualisation implique une perte d'information. En effet, les atomes ne sont plus visibles, aussi la composition précise de la molécule n'est-elle plus perceptible. De fait, il devient difficile d'apprécier certaines propriétés du système, comme les champs électrostatiques, l'hydrophobicité, les cavités de la surface moléculaire et autres zones susceptibles de faciliter les interactions avec d'autres molécules. Il est cependant possible de représenter certaines de ces propriétés par des couleurs, par exemple.
+		
+	La représentation en structures secondaires est très courante, notamment pour visualiser des trajectoires\footnote{Dans le contexte de la dynamique moléculaire, on appelle \og trajectoire \fg{} l'évolution du système dans le temps, en particulier l'évolution des positions et des vélocités des particules simulées.} de dynamique moléculaire. Cette raison suffit à en faire une application majeure pour une technique de sélection de cibles mobiles. Le niveau d'occultation est particulièrement faible (relativement aux autres représentations, mais il reste élevé dans l'absolu) et les cibles, assez grosses, bougent relativement peu.
+		
+	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie que l'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
 
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch1/myoglobin}
-		\caption[Représentation hybride d'une protéine]{Représentation en structures secondaires d'une molécule de myoglobine (protéine dont la fonction est de stocker le dioxygène). Son hème est représenté en \og tout atome \fg{} et plus précisément en bâtons rouges. Les niveaux de densité et d'occultation sont donc compris entre ceux de ces deux modes de représentation. Crédit :~\cite{Ordway3441}.}
-		\label{fig:myoglobin}
-	\end{wrapfigure}
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
+			\caption[Représentation hybride d'une protéine]{Molécule de myoglobine en  structures secondaires, avec son hème en \og tout atome \fg{} (en bâtons rouges). Les niveaux de densité et d'occultation sont donc compris entre ceux de ces deux modes de représentation. Crédit :~\cite{Ordway3441}.}
+			\label{fig:myoglobin}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/transSS}
+			\caption[Surface semi-transparente et structures secondaires.]{Illustration hybride d'une protéine de chloroplaste, représentée par une isosurface de densité semi-transparente et par ses structures secondaires. On peut donc apprécier à la fois le volume occupé par la molécule, les aspérités de sa surface, mais aussi sa structure interne et certaines de ses propriétés physico-chimiques. Illustration produite par \emph{UnityMol} à partir de la structure \emph{5HAD} de la \emph{Protein Data Bank}.}
+			\label{fig:transSS}
+		\end{subfigure}
+		\label{fig:hybrid}
+		\caption{Représentations hybrides de molécules.}
+	\end{figure}
 	
 	Dans la littérature anglo-saxonne, la représentation en structures secondaires est parfois appelée \emph{cartoon} ou \emph{ribbons}~\cite{carson1986algorithm, richardson2000early}.
 	
@@ -292,13 +330,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\paragraph{Autres techniques de représentations.}
 	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes couramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera}~\cite{pettersen2004ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara}, \emph{LigandScout}~\cite{wolber2005ligandscout} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
-	
-	\begin{figure}[htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/transSS}
-		\caption[Surface semi-transparente et structures secondaires.]{Illustration hybride d'une protéine de chloroplaste, représentée par une isosurface de densité semi-transparente et par ses structures secondaires. On peut donc apprécier à la fois le volume occupé par la molécule, les aspérités de sa surface, mais aussi sa structure interne et certaines de ses propriétés physico-chimiques. Illustration produite par \emph{UnityMol} à partir de la structure \emph{5HAD} de la \emph{Protein Data Bank}.}
-		\label{fig:transSS}
-	\end{figure}
 	
 	
 	\newcommand{\subImgW}{0.32\textwidth}
@@ -572,7 +603,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/exaviz}
 		\caption[IMD en environnement virtuel avec retour haptique, \emph{Exaviz}.]{Le système \emph{Exaviz}. À gauche, deux utilisateurs sont dans un CAVE\footnotemark, chacun avec son point de vue personnel en 3D, grâce au suivi de la tête ; ils peuvent ainsi désigner des objets du doigt et en discuter. À droite, l'utilisation du bras haptique permet d'interagir avec les objets de la scène en obtenant un retour de force. Crédit :~\cite{dreher2014exaviz}.}
