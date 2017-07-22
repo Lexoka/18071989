@@ -132,23 +132,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		
 	Cependant, en pratique, il est courant d'associer à une représentation en structures secondaires la représentation \og tout atome \fg{} d'une partie de la molécule, généralement la partie que l'on soupçonne d'interagir avec une autre molécule, d'être un site d'arrimage, ou de présenter un autre intérêt particulier. Il en résulte une situation hybride, avec des cibles très mobiles et petites, mais un degré d'occultation global réduit. Cela permet de réduire le nombre de cibles potentielles, mais ce n'est possible qu'à condition de savoir \emph{a priori} qu'un sous-ensemble d'atomes --- et seulement ce sous-ensemble --- est susceptible d'être choisi par l'utilisateur, ce qui n'est pas toujours possible. La figure~\ref{fig:myoglobin} est un exemple de cette représentation hybride.
 
-	\begin{figure}[htb]
-		\begin{subfigure}[t]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
-			\caption[Représentation hybride d'une protéine]{Molécule de myoglobine en  structures secondaires, avec son hème en \og tout atome \fg{} (en bâtons rouges). Les niveaux de densité et d'occultation sont donc compris entre ceux de ces deux modes de représentation. Crédit :~\cite{Ordway3441}.}
-			\label{fig:myoglobin}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch1/transSS}
-			\caption[Surface semi-transparente et structures secondaires.]{Illustration hybride d'une protéine de chloroplaste, représentée par une isosurface de densité semi-transparente et par ses structures secondaires. On peut donc apprécier à la fois le volume occupé par la molécule, les aspérités de sa surface, mais aussi sa structure interne et certaines de ses propriétés physico-chimiques. Illustration produite par \emph{UnityMol} à partir de la structure \emph{5HAD} de la \emph{Protein Data Bank}.}
-			\label{fig:transSS}
-		\end{subfigure}
-		\label{fig:hybrid}
-		\caption{Représentations hybrides de molécules.}
-	\end{figure}
+
 	
 	Dans la littérature anglo-saxonne, la représentation en structures secondaires est parfois appelée \emph{cartoon} ou \emph{ribbons}~\cite{carson1986algorithm, richardson2000early}.
 	
@@ -604,6 +588,24 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
 	
 	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.44\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
+			\caption[Représentation hybride d'une protéine]{Molécule de myoglobine en  structures secondaires, avec son hème en \og tout atome \fg{} (en bâtons rouges). Les niveaux de densité et d'occultation sont donc compris entre ceux de ces deux modes de représentation. Crédit :~\cite{Ordway3441}.}
+			\label{fig:myoglobin}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.56\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/transSS}
+			\caption[Surface semi-transparente et structures secondaires.]{Représentation hybride d'une protéine de chloroplaste, avec une isosurface de densité semi-transparente et les structures secondaires. On peut donc apprécier à la fois le volume occupé par la molécule et les aspérités de sa surface, mais aussi sa structure interne et certaines de ses propriétés physico-chimiques. Image générée avec \emph{UnityMol} à partir d'une structure de la \emph{Protein Data Bank}.}
+			\label{fig:transSS}
+		\end{subfigure}
+		\label{fig:hybrid}
+		\caption{Représentations hybrides de molécules.}
+	\end{figure}	
+	
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/exaviz}
 		\caption[IMD en environnement virtuel avec retour haptique, \emph{Exaviz}.]{Le système \emph{Exaviz}. À gauche, deux utilisateurs sont dans un CAVE\footnotemark, chacun avec son point de vue personnel en 3D, grâce au suivi de la tête ; ils peuvent ainsi désigner des objets du doigt et en discuter. À droite, l'utilisation du bras haptique permet d'interagir avec les objets de la scène en obtenant un retour de force. Crédit :~\cite{dreher2014exaviz}.}
@@ -746,7 +748,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\caption[Hélicoptère d'attaque \emph{Tigre}.]{L'hélicoptère d'attaque \emph{Tigre} conçu et fabriqué par Airbus Helicopters. Cet aéronef est capable de voler jusqu'à 370~km/h en piqué, et il est assez manœuvrable pour changer de direction de vol (sans nécessairement changer l'orientation de l'engin, par exemple en volant latéralement) très rapidement, voler à très basse altitude en suivant le terrain, effectuer des tonneaux, \emph{loopings}, etc., notamment grâce à sa capacité de tolérer des accélérations allant jusqu'à 4g~\cite{tigre}. Crédit : \emph{Wikimedia}}
 		\label{fig:tigre}
 		\end{subfigure}
-		\caption{}
+		\caption{Aéronefs de combat.}
 		\label{fig:coolAircraft}
 	\end{figure}
 	
@@ -1171,7 +1173,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
-		\caption[Énorme bataille dans le jeu \emph{EVE Online}.]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
+		\caption[Énorme bataille dans le jeu \emph{EVE Online}]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
 		\label{fig:eveonline}
 	\end{figure}
 	
@@ -1241,6 +1243,25 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:mobas}
 		\caption{Arènes de bataille en ligne multijoueur, ou MOBA.}
 	\end{figure}
+	
+	\subsection{Richesse et diversité}
+	L'univers vidéoludique est d'une richesse et d'une diversité considérables. Chaque genre, chaque sous-genre est très riche et divers, tandis que le nombre de ceux-ci est considérable et en constante croissance. Bien que les genres sus-cités (avec quelques autres qui ne nous intéressent pas ici) figurent parmi les plus connus, tout un foisonnement de créations vidéoludiques apparaît chaque année, parfois sous l'impulsion de gros éditeurs, souvent à l'initiative de développeurs indépendants.
+	
+	Il serait bien impossible dans ce manuscrit de faire un inventaire complet de cette diversité, dût-il être entièrement consacré à cet objectif. Contentons-nous simplement de mentionner un seul exemple, \emph{Agar.io}. Dans cette curieuse création de Matheus Valadares, le joueur contrôle un disque coloré qu'il doit nourrir pour le faire grossir au maximum, en dévorant ses adversaires.
+	
+	Le principe de ce jeu d'une complexité inattendue est illustré par la figure~\ref{fig:agario}. Pour avaler un adversaire, l'on peut soit le rattraper et l'englober, ce qui est difficile car il faut pour cela être significativement plus gros (et donc plus lent, selon le mécanisme du jeu) soit se diviser en deux et propulser une de ses moitiés sur lui, ce qui nécessite de viser très soigneusement, et d'autant plus prudemment qu'une fois scindé en deux, le joueur est beaucoup plus vulnérables à ses gros adversaires.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch1/agario}
+		\caption[\emph{Agar.io}]{Scène de jeu d'\emph{Agar.io}. Chaque ensemble de disques d'un même nom (par exemple MENT97) est contrôlé par un joueur, qui cherchera à dévorer les autres disques. Notez cependant que les disques à bords dentés sont des obstacles causant l'éclatement des joueurs qui les percutent vivement. Chaque tout petit disque sans texte est de la nourriture à attraper, chaque disque avec du texte est également une cible potentielle. Dans cette scène, celles-ci sont nombreuses et leur agancement est complexe, d'autant qu'elles ont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Crédit : GD Rentstr0m\footnotemark{} ; jeu développé et édité par Matheus Valadares.}
+		\label{fig:agario}
+	\end{figure}
+	
+	\footnotetext{\url{https://www.youtube.com/watch?v=XaZ2n_feTko}}
+	
+	Sans doute \emph{Agar.io} fait-il partie des jeux pour lesquels la visée est une fin en soi, un ressort ludique. Cependant, son principe très simple cache une profondeur tactique insoupçonnée, notamment du fait de la possibilité de coopérer avec d'autres joueurs, selon des procédés complexes --- bien qu'issus de mécanismes très simples --- qu'il n'est pas utile de détailler ici. Disons simplement que le développeur pourrait choisir de faciliter la visée pour mettre plus de poids sur la tactique, et ajoutons enfin qu'\emph{Agar.io} illustre surtout l'incroyable richesse du monde vidéoludique, et la quasi infinitude de ses possibilités.
+
 	
 	\section{Conclusion}    
 	Les besoins en sélection de cibles mobiles sont très divers, et répartis sur des domaines bien différents : des simulations scientifiques aux jeux vidéo, en passant par le maintien de l'ordre, la défense, les retransmissions sportives, etc. Selon les domaines, les impératifs peuvent varier : dans tous les cas, la performance est recherchée, mais le temps de sélection peut être plus important pour certaines applications, et le taux d'erreur pour d'autres. Parfois, les applications sont si critiques (car des vies humaines en dépendent, par exemple dans la défense) que les performances doivent impérativement atteindre certains seuils.
