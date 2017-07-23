@@ -307,7 +307,7 @@
 		\label{fig:targetGhost}
 	\end{figure}
 	
-	L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreur, comme le montrent les graphiques des figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
+	L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreurs, comme le montrent les graphiques des figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
 	\begin{figure}[H]
 		\centering
@@ -326,7 +326,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
-		\caption[\emph{Comet/Ghost}, taux d'erreur]{Taux d'erreur pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
+		\caption[\emph{Comet/Ghost}, taux d'erreurs]{Taux d'erreurs pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostErrors}
 	\end{figure}
 		
@@ -348,7 +348,7 @@
 		\label{fig:comet}
 	\end{figure}	
 	
-	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreur pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
+	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreurs pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
 	\subsection{Inconvénients}
 	Cependant, \emph{Comet} ajoute un « encombrement » visuel important. En effet, à chaque cible vient s'ajouter une queue qui fait plusieurs fois sa taille. Étendue à la 3D, cette technique ferait logiquement usage de rendu volumique semi-transparent pour les queues de comètes, ce qui aurait probablement pour effet de porter l'encombrement visuel et donc l'occultation à des niveaux inacceptables, surtout dans des environnements denses. Un autre inconvénient de cette technique est qu'elle modifie la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Par conséquent, la technique \emph{Comet} ne peut être retenue pour les environnements tridimensionnels denses.
@@ -382,7 +382,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/asRes}
-		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreur très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
+		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
 		\label{fig:asRes}
 	\end{figure}
 
@@ -695,7 +695,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	 
 	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain « coût cognitif » lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
 	
-	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreur qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
+	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreurs qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
 	
 	\subsection{Utilisation du regard}
 	\subsubsection{Une rapidité inégalée}
@@ -762,6 +762,31 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:lookandtouch2}
 	\end{figure}
 	
+	\subsubsection{De bons résultats, sans vainqueur clair}
+	Stellmach \emph{et al.} ont évalué les variantes de \emph{Look \&{} Touch} sus-citées dans trois blocs de tâches : T1, avec des objets disjoints sur une grille 2D ; T2, avec une ligne d'objets 2D se chevauchant ; et T3, avec des objets 2D de tailles diverses se chevauchant.
+	
+	Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances dans la plupart des cas, avec peut-être un léger avantage global à la technique \emph{MAGIC tab}. Du moins cette tendance est-elle confirmée par les impressions sujectives recueillies par Stellmach \emph{et al.}, et exposées sur la figure~\ref{fig:latSubj}.
+
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/latRes}
+		\caption[\emph{Look \&{} Touch -- performances}]{Performances obtenues pour les diverses techniques de type \emph{Look \&{} Touch}. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances. Crédit : \cite{stellmach2012look}.}
+		\label{fig:latRes}
+	\end{figure}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/latSubj}
+		\caption[\emph{Look \&{} Touch -- impressions subjectives}]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation des techniques \emph{Look \&{} Touch}. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête. Crédit : \cite{stellmach2012look}.}
+		\label{fig:latSubj}
+	\end{figure}
+	
+	\subsubsection{\emph{MAGIC tab} et le problème de linéarité}
+	Si, comme l'on vient de le voir, la technique \emph{MAGIC tab} sort légèrement du lot et se hisse en tête des résultats objectifs et subjectifs, elle souffre d'une limitation inhérente à sa nature : le temps de sélection dans la phase fine dépend de façon approximativement linéaire du nombre d'objets à parcourir, puisque l'utilisateur est contraint de faire ce parcours de façon linéaire.
+	
+	En comparaison, la plupart des processus de sélection sont accompagnés d'une relation logarithmique entre le nombre d'objets et le temps de sélection~\cite{hick1952rate, hyman1953stimulus}. L'on peut donc émettre des doutes sur la robustesse de \emph{MAGIC tab} dans des environnements très denses.
+	
+	Ajoutons que le comportement de cette technique avec des cibles mobiles pose question, puisque le menu contiendrait des objets n'étant plus nécessairement dans l'espace de pré-sélection au moment où l'utilisateur les parcourt. Cette perte de contexte spatial pourrait, dans le cas de cibles visuellement très proches (ou identiques) rendre la sélection impossible.
 	
 	\subsection{\emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}}
@@ -976,7 +1001,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\subsubsection{Erreurs}
-	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreur (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du « saut » effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
+	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du « saut » effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
 	
 	\begin{table}
 	\centering
@@ -1082,7 +1107,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Compte tenu de ces résultats, les auteurs ont opté pour une valeur optimale de $s_{i}$ de 80~\%{}, soit environ 67~\%{} de la durée du sous-mouvement. Ils notent qu'ainsi 42,4~\%{} des prédictions de point d'arrivée sont bien à l'intérieur de la cible.	
 	
 	\subsection{Inconvénients}
-	Si KEP semble plus précis que le \emph{Delphian Desktop}~\cite{asano2005predictive} présenté plus haut, il est malheureux que ses auteurs n'aient pas mesuré ses performances en temps de sélection et taux d'erreur, afin de pouvoir présenter des résultats plus facilement comparables. Quoi qu'il en soit, l'apport théorique de l'étude de Lank \emph{et al.}~\cite{lank2007endpoint} est très précieux.
+	Si KEP semble plus précis que le \emph{Delphian Desktop}~\cite{asano2005predictive} présenté plus haut, il est malheureux que ses auteurs n'aient pas mesuré ses performances en temps de sélection et taux d'erreurs, afin de pouvoir présenter des résultats plus facilement comparables. Quoi qu'il en soit, l'apport théorique de l'étude de Lank \emph{et al.}~\cite{lank2007endpoint} est très précieux.
 	
 	Néanmoins, KEP souffre des mêmes inconvénients majeurs que le \emph{Delphian Desktop}, en particulier sa dépendance à une hypothèse très forte, celle de la rectitude du mouvement. Comme nous l'expliquions plus haut, cette hypothèse ne saurait tenir pour des cibles mobiles, \emph{a fortiori} si leurs mouvements sont rapides et/ou imprévisibles. De fait, pour les mêmes raisons que le \emph{Delphian Desktop}, nous ne pouvons retenir KEP sous sa forme existante.
 	
@@ -1268,7 +1293,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		
 	La cible potentielle dont le score est le plus élevé est considérée comme celle que l'utilisateur cherche probablement à sélectionner. La sélection peut donc se faire par simple pression d'un bouton, sans contrainte particulière sur la position du curseur au moment où elle est déclenchée.
 		
-	\emph{Hook} présente plusieurs avantages. Cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques. Elle n'ajoute aucun encombrement visuel, ne transforme pas le curseur, ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. L'évaluation menée par Michael Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreur plus faibles. Lorsque les cibles sont rapides, le taux d'erreur peut être moindre d'un facteur supérieur à 4~\cite{ortega2013hook}.
+	\emph{Hook} présente plusieurs avantages. Cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques. Elle n'ajoute aucun encombrement visuel, ne transforme pas le curseur, ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. L'évaluation menée par Michael Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4~\cite{ortega2013hook}.
 	
 	\subsection{Inconvénients}
 
