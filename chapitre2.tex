@@ -651,7 +651,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Distance parcourue par le périphérique}
 	Les auteurs ont par ailleurs mesuré la distance parcourue par le périphérique de pointage au cours d'une tâche de sélection, pour chaque technique évaluée. C'est un résultat important car il est déterminant pour la fatigue ressentie par un utilisateur sur une durée significative. Ici encore, le \emph{Smart Ray} déçoit, tandis que les autres techniques permettent de réduire la distance à parcourir par rapport au curseur ponctuel, comme l'illustre la figure~\ref{fig:rayFootprint}.
 
-	\begin{figure}[ht]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/rayFootprint}
 		\caption[Distance parcourue par le périphérique avec les diverses techniques de \emph{raycasting} évaluées]{Distance parcourue par le périphérique de pointage avec les diverses techniques de \emph{raycasting} évaluées. Les \emph{Depth, Lock} et\emph{Flower Rays} font mieux que le curseur ponctuel, au contraire du \emph{Smart Ray} qui affiche en outre un écart-type considérable. Crédit : \cite{grossman2006design}.}
@@ -697,9 +697,75 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreur qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
 	
-	\subsubsection{\emph{Sphere-casting refined by QUAD-menu
+	\subsection{Utilisation du regard}
+	\subsubsection{Une rapidité inégalée}
+	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. C'est généralement dans cette seconde fonction que l'on trouve cette technique, selon le principe « le regard suggère, le toucher confirme »~\cite{stellmach2012look}.
+
+	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
+	
+	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête. Ces techniques sont toutefois destinées à traiter des données vidéo brutes.
+	
+	Or, dans le cas qui nous intéressent, il est généralement possible d'installer des marqueurs sur la tête d'un utilisateur pour connaître plus précisément sa \emph{pose}, en s'appuyant également sur des caméras de \emph{tracking}, comme par exemple les systèmes d'Advanced Realtime Tracking\footnotemark{}. Outre sa précision, ce système est autrement plus robuste que les techniques sans marqueurs.
+	
+	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
+	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
+	
+	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux~\cite{monden2005evaluation, vspakov2011comparison}. Dans uen certaine mesure, ces derniers peuvent être filtrés, mais cela ne règle que partiellement le problème~\cite{zhang2008improving}.
+	
+	Par ailleurs, il peut être très déroutant pour un utilisateur de « charger » un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
+	
+	\footnotetext{Remarquons cependant que le regard, quand il est contrôlé de façon délibérée, peut être utilisé pour communiquer, par exemple lorsqu'une personne en invite une autre, oralement, à regarder quelque chose qu'elle désigne du regard. Lever les yeux au ciel peut communiquer de l'agacement ou du dédain, etc.}
+	
+	Dès lors, il serait tentant de rejeter cette technique, et \emph{a fortiori} l'estimation de la \emph{pose} de la tête ne tenant pas compte des yeux, puisque c'est forcément beaucoup moins précis. Mais ce serait faire fi un peu trop rapidement des avantages du suivi des yeux, et en particulier de sa rapidité inégalée. Certes, il ne peut suffire à lui seul à sélectionner un objet d'indice de difficulté élevé ; il n'est pas inutile pour autant, loin s'en faut.
+
+	En effet, des études ont en effet montré que le regard permettait de faire mieux que les périphériques de saisie traditionnels pour des tâches de sélection~\cite{stellmach2012look, ware1987evaluation, smith2000hand, bieg2010eye}.
+	
+	\subsubsection{Suivi des yeux : une tâche ardue}
+
+	Cependant, le suivi des yeux présente en pratique des difficultés qui peuvent être considérables, dont au moins les suivantes :
+	
+	\begin{itemize}
+		\item Les performances peuvent dépendre de la couleur des yeux ;
+		\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;
+		\item Les lunettes peuvent nuire aux performances du système ;
+		\item Les lunettes stéréoscopiques, en particulier, occultent partiellement les yeux pour les \emph{trackers} oculaires, et réduisent la luminosité du blanc des yeux.
+	\end{itemize}
+
+	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
+	
+	Du reste, même quand le suivi des yeux est impossible et seule la tête peut être pris en compte, les informations captées demeurent précieuses. En effet, 40~\%{} à 70~\%{} de l'orientation du regard est déterminée par la rotation de la tête, tandis que les 60~\%{} à 30~\%{} restants (respectivement) dépendent des mouvements oculaires~\cite{gauthier1991short}. On peut donc, le plus souvent, obtenir une bonne estimation de la direction du regard en se fondant uniquement sur l'orientation de la tête.
+	
+	\subsection{\emph{Look \&{} Touch}}
+	\subsubsection{Le regard suggère, le toucher confirme}
+	Stellmach \emph{et al.}~\cite{stellmach2012look} ont développé et évalué plusieurs techniques fondées sur le principe de la sélection en cascade avec une phase grossière dirigée par le regard, et une phase fine s'appuyant sur un périphérique doté d'un écran tactile, tel qu'un \emph{smartphone}.
+	
+	\begin{enumerate}
+		\item \textbf{\emph{Gaze-directed cursor} :} Ce mode très simple peut à peine être considéré comme une cascade : l'utilisateur suit sa cible des yeux, puis appuie sur un écran tactile et le relâche pour effectuer la sélection. Voir la figure~\ref{fig:lookandtouch}, à gauche.
+		\item \textbf{\emph{MAGIC touch} absolue :} Cette technique est analogue à la précédente, mais le curseur peut être déplacé en fonction de la position absolue du doigt de l'utilisateur sur son écran tactile. Voir la figure~\ref{fig:lookandtouch}, deuxième vignette.
+		\item \textbf{\emph{MAGIC touch} relative :} Cette technique est identique à la précédente, mais le curseur positionnement du curseur dépend des mouvements relatifs du doigt de l'utilisateur par rapport à son point de départ. Voir la figure~\ref{fig:lookandtouch}, troisième vignette.
+		\item \textbf{\emph{MAGIC tab} :} Cette technique demeure similaire aux précédentes, mais le curseur ne bouge pas ; en revanche, l'utilisateur peut parcourir les objets comme dans un menu, en faisant glisser son doigt. Ce procédé s'inspire de la touche \emph{tabulation} d'un clavier. Voir la figure~\ref{fig:lookandtouch}, à droite.
+		\item \textbf{\emph{Gaze-supported Expanded Target Selection} asservie au regard :} Le regard contrôle une lentille de zoom, inactive par défaut, mais activée en appuyant sur l'écran tactile. Une nouvelle pression permet de sélectionner la cible, tandis qu'un geste de glissement vertical permet d'ajuster le niveau de zoom. Cette technique est illustrée par la figure~\ref{fig:lookandtouch2}, à gauche et au milieu.
+		\item \textbf{\emph{Gaze-supported Expanded Target Selection} semi-fixe :} Contrairement à la technique précédente, la lentille cesse de bouger une fois activée, et l'utilisateur déplace le curseur au sein de la zone de zoom à l'aide de son regard, avant d'activer la sélection avec son écran tactile. Si son regard quitte la zone de zoom, alors la lentille se déplace. Voir la figure~\ref{fig:lookandtouch2}, vignettes de gauche et de droite.
+	\end{enumerate}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
+		\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
+		\label{fig:lookandtouch}
+	\end{figure}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch2}
+		\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
+		\label{fig:lookandtouch2}
+	\end{figure}
+	
+	
+	\subsection{\emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}}
-	\paragraph{Principe et avantages.}	 
+	\subsubsection{Principe et avantages}
 	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
 
@@ -721,7 +787,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:squad2}
 	\end{figure}
 	
-	\paragraph{Performances.}
+	\subsubsection{Performances}
 	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
 	
 	\begin{figure}[ht]
@@ -747,7 +813,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:squadRecap}
 	\end{figure}
 	
-	\paragraph{Inconvénients.}
+	\subsubsection{Inconvénients}
 	La chute des performances de SQUAD en cas de forte densité de distracteurs est certes un inconvénient de la technique, mais ce n'est peut-être pas le principal. En effet, au cours de la seconde phase, les objets sont répartis uniformément et aléatoirement dans quatre quadrants, pour que l'utilisateur sélectionne le bon. Celui-ci doit donc être capable de l'identifier visuellement le plus rapidement possible.
 	
 	Or, dans certains cas de figure, la cible n'est pas intrinsèquement différente des distracteurs, mais est choisie en fonction de sa position dans l'espace, par exemple. C'est notamment le cas le plus fréquent pour des simulations moléculaires, dans lesquels l'utilisateur peut vouloir sélectionner un atome d'un certain type (par exemple du carbone) parce qu'il se situe à un endroit spécifique, au sein d'une structure spécifique. Si tous les atomes étaient répartis dans des quadrants, il deviendrait impossible de distinguer cet atome de carbone des milliers d'autres.
@@ -756,8 +822,8 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Il nous apparaît donc que la technique SQUAD ne peut fournir de résultats satisfaisants qu'avec de petites cibles statiques dans des environnements de densité modérée, et à condition que la cible soit très distincte des distracteurs, suffisamment pour pouvoir être identifiée visuellement le plus rapidement possible.
 	
-	\subsubsection{\emph{Disambiguation Canvas}}
-	\paragraph{Principe et avantages.}
+	\subsection{\emph{Disambiguation Canvas}}
+	\subsubsection{Principe et avantages}
 	La technique du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est un autre exemple de technique de sélection en cascade, et est illustrée par la figure~\ref{fig:dCanvas}.
 		 
 	\begin{figure}[H]
@@ -794,7 +860,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:dCanvasDensity}
 	\end{figure}
 	
-	\paragraph{Performances}
+	\subsubsection{Performances}
 	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
 	
 	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
@@ -821,7 +887,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Au-delà des temps de sélection, les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Sur l'intervalle de tailles testé, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, mais ce dernier résultat reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques.
 		 
-	\paragraph{Inconvénients}
+	\subsubsection{Inconvénients}
 	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
 	
 	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon « douce » et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
@@ -842,49 +908,8 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	En revanche, on retrouve couramment avec les techniques de sélection en cascade une dégradation, voire une perte du contexte spatial lorsque l'on passe de la phase grossière à la phase fine~\cite{kopper2011rapid, debarba2013disambiguation}. C'est potentiellement plus problématique que la perte de correspondance entre l'espace moteur et l'espace virtuel, et d'autant plus gênant que la phase fine est généralement peu adaptée à des cibles mobiles, qui nous intéressent particulièrement dans ces travaux.
 	
-	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ.
+	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ.	
 
-
-% 40% to 70% of gaze displacement is provided by head rotation, while the remaining 60% to 30% result from angular displacement of the eyes in orbit
-% http://books.google.fr/books?id=h9FEnj3C7MoC&pg=PA102&lpg=PA102&dq=head+tracking+70%25+of+gaze&source=bl&ots=cp8OJm_G-1&sig=0jsxP3V20VGuxmIvg9CB1sUcyeU&hl=en&sa=X&ei=JFUsU-rVJYam0AW1zYDwAw&redir_esc=y#v=onepage&q&f=false
-\section{Suivi de la tête et des yeux}
-	\subsection{Principe général et avantages}
-	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade.
-
-	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
-	
-	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête. Ces techniques sont toutefois destinées à traiter des données vidéo brutes.
-	
-	Or, dans le cas qui nous intéressent, il est généralement possible d'installer des marqueurs sur la tête d'un utilisateur pour connaître plus précisément sa \emph{pose}, en s'appuyant également sur des caméras de \emph{tracking}, comme par exemple les systèmes d'Advanced Realtime Tracking\footnotemark{}. Outre sa précision, ce système est autrement plus robuste que les techniques sans marqueurs.
-	
-	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
-	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
-	
-	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux.
-	
-	Par ailleurs, il peut être très déroutant pour un utilisateur de « charger » un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
-	
-	\footnotetext{Remarquons cependant que le regard, quand il est contrôlé de façon délibérée, peut être utilisé pour communiquer, par exemple lorsqu'une personne en invite une autre, oralement, à regarder quelque chose qu'elle désigne du regard. Lever les yeux au ciel peut communiquer de l'agacement ou du dédain, etc.}
-	
-	Dès lors, il serait tentant de rejeter cette technique, et \emph{a fortiori} l'estimation de la \emph{pose} de la tête ne tenant pas compte des yeux, puisque c'est forcément beaucoup moins précis. Mais ce serait faire fi un peu trop rapidement des avantages du suivi des yeux, et en particulier de sa rapidité inégalée. Certes, il ne peut suffire à lui seul à sélectionner un objet d'indice de difficulté élevé ; il n'est pas inutile pour autant, loin s'en faut.
-	
-	
-	\subsection{\emph{Look and Touch}}
-	\subsubsection{Principe et avantages}
-	~\cite{stellmach2012look}
-	
-	\subsubsection{Inconvénients}
-	
-	\subsection{Inconvénients généraux}
-	\begin{itemize}
-		\item Les performances dépendent de la couleur des yeux ;[ref]
-		\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;[ref]
-		\item Les lunettes stéréoscopiques occultent partiellement les yeux pour les \emph{trackers} oculaires, et réduisent la luminosité du blanc des yeux ;[ref]
-		\item Le suivi des yeux, souvent combiné à celui de la tête, est plus coûteux que celui de la tête seule ;
-		\item Le fait d'utiliser ses yeux pour sélectionner un objet fait du regard une action, rend les utilisateurs conscients de la direction dans laquelle ils regardent, ce qui peut être troublant.
-	\end{itemize}
-
-	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
 	
 \section{Le \emph{Delphian Desktop}}
 	\subsection{Principe et avantages}
