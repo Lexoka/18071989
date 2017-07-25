@@ -5,7 +5,7 @@
 \label{chap2}
 \cleardoublepage
 
-\section{Introduction}
+\section{Introduction : théorie du pointage et du mouvement ciblé}
 	\subsection{Pointage, sélection et loi de Fitts}
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
@@ -91,18 +91,45 @@
 		\label{fig:holdID}
 	\end{figure}
 	
-	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles « quelconques » --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
+	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles \og quelconques \fg{} --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
 	
 	Celle-ci demeure donc, à notre connaissance, incapable de modéliser la difficulté de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
-	\subsection{Balistique bidule}
-	~\cite{woodworth1899accuracy, plamondon1997speed}
+	
+	\subsection{Complexité du mouvement : phases balistique et de correction}
+	Woodworth~\cite{woodworth1899accuracy} fut à notre connaissance le premier à identifier deux phases dans le mouvement ciblé : une impulsion initiale et une phase de contrôle. Welford~\cite{welford1968fundamentals} fit la même observation et nota par ailleurs que la première phase, visant à couvrir la distance nécessaire, était plus rapide, tandis que la seconde, celle de visée, était plus courte~\cite{mackenzie1987three}. Il remarqua de plus, et de même que Crossman et Goodeve~\cite{crossman1983feedback}, que la première phase était \emph{balistique} et qu'à la seconde s'ajoutait un processus de contrôle visuel.
+	
+	Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/ballistic}
+		\caption[Profil de vitesse -- phases balistique et de correction]{Vitesse du pointeur en fonction du temps au cours d'un mouvement ciblé. La vitesse croît fortement puis décroît de même au cours de la phase balistique, puis connaît de petites oscillations au cours de la phase de correction. Crédit : \cite{liu2009designing}.}
+		\label{fig:ballistic}
+	\end{figure}
+	
+	Langolf \emph{et al.}~\cite{langolf1976investigation} ont de plus montré que \og le mouvement entier vers le centre de la cible devient plus lent quand les tolérances sur la cible [i.e. sa largeur] diminuent \fg{}, ce qui est cohérent avec les travaux de Crossman et Goodeve~\cite{crossman1983feedback}, Marteniuk \emph{et al.}~ \cite{marteniuk1987constraints}, ainsi que ceux de Soechting~\cite{soechting1984effect}. Ce dernier remarqua par ailleurs qu'avec de petites cibles, la phase balistique était plus courte, et de fait la phase de correction en était d'autant rallongée.
+	
+	La conclusion générale de ces travaux est que la précision requise par un mouvement influe non seulement sur son temps global de complétion, mais également sur l'ensemble de la trajectoire, et notamment sur le profil de vitesse du curseur en fonction du temps. Dès lors, nous pouvons formuler l'hypothèse que les difficultés inhérentes à la sélection de cibles mobiles peuvent être assimilées à un besoin accru de précision, et que par conséquent, un effet comparable pourra être observé sur les trajectoires des curseurs.
+	
+	Nous reviendrons dans les chapitres suivants sur cette hypothèse.
+	
+	\subsection{État de l'art et taxinomie des techniques de sélection}
+	Dans le présent chapitre, nous nous attacherons à établir une taxinomie des techniques de sélection les plus connues et/ou performantes. Il ne s'agit pas, là non plus, d'être exhaustif, mais de tâcher d'être représentatif, de mentionner et d'analyser les mérites et limites des principales techniques de sélection.
+	
+	Notez cependant que cette taxinomie n'a pas vocation à avoir un intérêt universel pour la sélection de cibles, mais qu'elle est établie dans l'optique de la sélection de cibles \emph{mobiles}, et en particulier de cibles mobiles dans des environnements particulièrement difficiles : denses, avec beaucoup d'occultation, de mouvements vifs et imprévisibles, etc. Par conséquent, nos observations sur les différentes techniques citées plus bas seront orientées par la problématique qui nous intéresse, et ne sauraient être prises pour des évaluations absolues des techniques concernées.
+	
+	Dans cette optique, nous discuterons donc des techniques de sélection fondées sur un curseur zonal (surfacique ou volumique), sur l'augmentation ou la transoformation des cibles, sur l'altération du temps, sur le lancer de rayon ou la projection conique, sur la sélection à plusieurs étapes (dite en cascade), ainsi que sur la prédiction de l'intention de l'utilisateur.
+	
+	Remarquez que ces catégories ne sont pas mutuellement exclusives, loin s'en faut, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâcherons de d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, en fonction de ce qui nous paraît être son principe fondamental.
+	
+	Outre les principes de fonctionnement et mérites apparents des techniques que nous analyserons dans ce chapitre, nous nous attacherons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles. Nous nous attellerons donc à en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur. Que celui-ci soit néanmoins averti et conscient des limites de cette démarche.
 
 \section{Curseurs zonaux}
 	\subsection{Principe et avantages généraux}
 	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{kabbash1995prince, worden1997making}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance effective entre le curseur et la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
 	
 	\subsection{\emph{Prince}}
-	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles « larges », ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
+	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
 	
 	\begin{figure}[htb]
 		\centering
@@ -136,7 +163,7 @@
 	Cette technique simple permet de tirer parti des avantages d'un curseur zonal quand la densité de cibles est suffisamment faibles, sans pour autant souffrir de ses inconvénients lorsqu'elle est élevée, puisque l'on revient alors à un simple curseur ponctuel.
 	
 		\subsubsection{\emph{Stickiness}}
-	À cette solution, Worden \emph{et al.} ont ajouté l'usage de \emph{stickiness} adaptative pour les icônes. Un curseur est dit \emph{sticky} si, lorsqu'il s'approche d'une icône, celle-ci devient « collante ». En pratique, le ratio de sensibilité du curseur (la quantité du curseur par rapport à la quantité de mouvement du périphérique de saisie) diminue, ce qui permet d'une part de ralentir le curseur automatiquement, et d'autre part d'affiner les mouvements correctifs permettant la sélection d'une cible lors de son approche.
+	À cette solution, Worden \emph{et al.} ont ajouté l'usage de \emph{stickiness} adaptative pour les icônes. Un curseur est dit \emph{sticky} si, lorsqu'il s'approche d'une icône, celle-ci devient \og collante \fg{}. En pratique, le ratio de sensibilité du curseur (la quantité du curseur par rapport à la quantité de mouvement du périphérique de saisie) diminue, ce qui permet d'une part de ralentir le curseur automatiquement, et d'autre part d'affiner les mouvements correctifs permettant la sélection d'une cible lors de son approche.
 	
 	Le problème des cibles collantes est que lorsque leur densité est élevée, donc en présence de nombreux distracteurs, la trajectoire du curseur se trouve fortement perturbée par ceux-ci, ce qui peut être contre-productif, ou du moins limiter les bénéfices de cette technique. La solution proposée par Worden \emph{et al.} est de ne rendre les cibles collantes que lorsque le curseur est à moins de 30~\%{} de la vitesse maximale qu'il a atteinte au cours de la tâche de sélection courante. L'hypothèse est qu'une sélection commence par une phase de mouvement très rapide et ample, suivie de petits mouvements correctifs plus lents, et que le curseur sera donc relativement lent près de la cible réellement visée par l'utilisateur.
 	
@@ -175,7 +202,7 @@
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/voronoi}
-		\caption[Diagramme de Voronoï définissant les cellules associées à chaque cible]{Diagramme de Voronoï définissant les cellules associées à chaque cible. Un diagramme de Voronoï est un découpage du plan (pavage) en cellules à partir d'un ensemble discret de points appelés « germes ». Chaque cellule enferme un seul germe, et forme l'ensemble des points du plan plus proches de ce germe que de tous les autres. La cellule représente en quelque sorte la « zone de proximité » du germe. Ici, les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule. Crédit : \cite{grossman2005bubble}.}
+		\caption[Diagramme de Voronoï définissant les cellules associées à chaque cible]{Diagramme de Voronoï définissant les cellules associées à chaque cible. Un diagramme de Voronoï est un découpage du plan (pavage) en cellules à partir d'un ensemble discret de points appelés \og germes \fg{}. Chaque cellule enferme un seul germe, et forme l'ensemble des points du plan plus proches de ce germe que de tous les autres. La cellule représente en quelque sorte la \og zone de proximité \fg{} du germe. Ici, les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:voronoi}
 	\end{figure}
 	
@@ -191,11 +218,11 @@
 	\subsection{Inconvénients}
 	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides.
 	
-	Un autre inconvénient (potentiellement majeur) du \emph{Bubble Cursor} est intrinsèquement lié à son mode de fonctionnement : il partage l'espace de sélection en un diagramme de Voronoï, où toute partie de l'espace fait partie de la zone de sélection d'une cible. Par conséquent, il n'existe plus d'espace « vide » dans lequel on pourrait utiliser le périphérique de saisie pour effectuer une opération indépendante des cibles, par exemple ouvrir un menu contextuel.
+	Un autre inconvénient (potentiellement majeur) du \emph{Bubble Cursor} est intrinsèquement lié à son mode de fonctionnement : il partage l'espace de sélection en un diagramme de Voronoï, où toute partie de l'espace fait partie de la zone de sélection d'une cible. Par conséquent, il n'existe plus d'espace \og vide \fg{} dans lequel on pourrait utiliser le périphérique de saisie pour effectuer une opération indépendante des cibles, par exemple ouvrir un menu contextuel.
 
 \section{\emph{DynaSpot}}
 	\subsection{Principe}
-	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci est une technique qui relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement « normal » et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
+	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci est une technique qui relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
 	\begin{figure}[H]
 		\centering
@@ -218,7 +245,7 @@
 	\subsection{Inconvénients}
 	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
 
-	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un « dézoom » avant que la sélection finale ne puisse avoir lieu.
+	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un \og dézoom \fg{} avant que la sélection finale ne puisse avoir lieu.
 	
 \section{\emph{Silk Cursor}}
 	\subsection{Principe et avantages}
@@ -294,7 +321,7 @@
 	\subsection{Inconvénients}
 	Malgré les bons résultats commentés plus haut, le \emph{Silk Cursor} n'est pas exempt de défauts. En tant que curseur volumique, il s'agit en substance de l'extension à l'espace tridimensionnel d'un curseur zonal classique, comme ceux décrits plus haut dans un contexte 2D. Par conséquent, cette technique souffre des mêmes inconvénients que ses analogues bidimensionnels.
 	
-	En particulier, les solutions de ce type voient leur performances chuter quand la densité de cibles est élevée, car le curseur a tendance à « saisir » plusieurs objets à la fois, y compris des distracteurs. Un curseur volumique ne peut donc être viable en environnement dense qu'avec une bonne solution de disambiguïsation.
+	En particulier, les solutions de ce type voient leur performances chuter quand la densité de cibles est élevée, car le curseur a tendance à \og saisir \fg{} plusieurs objets à la fois, y compris des distracteurs. Un curseur volumique ne peut donc être viable en environnement dense qu'avec une bonne solution de disambiguïsation.
 	
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
@@ -303,7 +330,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/targetGhost}
-		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est « \emph{ghostée} » la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné relativement aisément. D'ailleurs, seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
+		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné relativement aisément. D'ailleurs, seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
 		\label{fig:targetGhost}
 	\end{figure}
 	
@@ -351,13 +378,13 @@
 	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreurs pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
 	\subsection{Inconvénients}
-	Cependant, \emph{Comet} ajoute un « encombrement » visuel important. En effet, à chaque cible vient s'ajouter une queue qui fait plusieurs fois sa taille. Étendue à la 3D, cette technique ferait logiquement usage de rendu volumique semi-transparent pour les queues de comètes, ce qui aurait probablement pour effet de porter l'encombrement visuel et donc l'occultation à des niveaux inacceptables, surtout dans des environnements denses. Un autre inconvénient de cette technique est qu'elle modifie la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Par conséquent, la technique \emph{Comet} ne peut être retenue pour les environnements tridimensionnels denses.
+	Cependant, \emph{Comet} ajoute un \og encombrement \fg{} visuel important. En effet, à chaque cible vient s'ajouter une queue qui fait plusieurs fois sa taille. Étendue à la 3D, cette technique ferait logiquement usage de rendu volumique semi-transparent pour les queues de comètes, ce qui aurait probablement pour effet de porter l'encombrement visuel et donc l'occultation à des niveaux inacceptables, surtout dans des environnements denses. Un autre inconvénient de cette technique est qu'elle modifie la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Par conséquent, la technique \emph{Comet} ne peut être retenue pour les environnements tridimensionnels denses.
 
 	De surcroît, si son couplage à du \emph{ghosting} est parfois avantageux, comme nous l'avons vu plus haut, c'est au prix d'un encombrement visuel qui s'en trouve encore accru, à un point hélas inacceptable pour de nombreuses applications nécessitant la sélection de cibles mobiles en environnements particulièrement denses.
 
 \section{\emph{AttachedShock}}
 	\subsection{Principe et avantages}
-	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets « fuyants » : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
+	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets \og fuyants \fg{} : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
 	
 	\begin{figure}[H]
 		\centering
@@ -366,7 +393,7 @@
 		\label{fig:as2dspeed}
 	\end{figure}
 	
-	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en « traversant » l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
+	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
 
 	\begin{figure}[H]
 		\centering
@@ -375,7 +402,7 @@
 		\label{fig:asas}
 	\end{figure}
 	
-Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme « naturelle » --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute. Les auteurs ont comparé \emph{AttachedShock} à d'autres techniques de référence, dont bien sûr un simple curseur de type « point » mais aussi un curseur zonal, ainsi que la technique \emph{Comet}, présentée plus haut.
+Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme \og naturelle \fg{} --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute. Les auteurs ont comparé \emph{AttachedShock} à d'autres techniques de référence, dont bien sûr un simple curseur ponctuel mais aussi un curseur zonal, ainsi que la technique \emph{Comet}, présentée plus haut.
 
 La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
 	
@@ -387,12 +414,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 
 	\subsection{Inconvénients}
-	\emph{AttachedShock} n'est toutefois pas sans limite. En effet, la densité de cibles testée par les auteurs est très faible, comme le montre la figure~\ref{fig:asDensity}. La technique n'ayant pas été évaluée avec une grande densité de cibles, il est impossible d'affirmer qu'elle fonctionnerait bien dans de telles conditions, mais l'on peut en douter compte tenu du fait qu'elle repose sur la possibilité qu'a l'utilisateur de se « contenter » de mouvements balistiques sans mouvements correctifs, ce qui serait bien difficile avec les nombreux obstacles que de nombreux distracteurs constitueraient.
+	\emph{AttachedShock} n'est toutefois pas sans limite. En effet, la densité de cibles testée par les auteurs est très faible, comme le montre la figure~\ref{fig:asDensity}. La technique n'ayant pas été évaluée avec une grande densité de cibles, il est impossible d'affirmer qu'elle fonctionnerait bien dans de telles conditions, mais l'on peut en douter compte tenu du fait qu'elle repose sur la possibilité qu'a l'utilisateur de se \og contenter \fg{} de mouvements balistiques sans mouvements correctifs, ce qui serait bien difficile avec les nombreux obstacles que de nombreux distracteurs constitueraient.
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/asDensity}
-		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de « traverser » leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
+		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de \og traverser \fg{} leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
 		\label{fig:asDensity}
 	\end{figure}
 	
@@ -402,7 +429,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 
 \section{\emph{Hold}}
 	\subsection{Principe et avantages}
-	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un boutons, et « réactivées » en relâchant le bouton, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
+	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un boutons, et \og réactivées \fg{} en relâchant le bouton, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
 	
 	\begin{figure}[ht]
 		\centering
@@ -442,7 +469,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdTech}
-		\caption[\emph{Hold} --- choix de la technique]{Les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction. Les résultats de la première ligne de graphiques correspondent aux essais en 1D, et ceux de la seconde, en 2D. On constate que les cibles « faciles » tendent à inciter au choix de \emph{Chase}, que les sujets décrivent comme plus rapide, tandis que les cibles plus difficiles à sélectionner encouragent le choix de \emph{Hold} ou \emph{Hybrid}. La taille et la vitesse sont les paramètres dont l'effet est le plus significatif. Les barres notées \emph{Error} correspondent simplement aux essais ratés, c'est-à-dire ceux pour lesquels le sujet à délenché la sélection hors de la cible. Crédit : \cite{hajri2011moving}.}
+		\caption[\emph{Hold} --- choix de la technique]{Les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction. Les résultats de la première ligne de graphiques correspondent aux essais en 1D, et ceux de la seconde, en 2D. On constate que les cibles \og faciles \fg{}  tendent à inciter au choix de \emph{Chase}, que les sujets décrivent comme plus rapide, tandis que les cibles plus difficiles à sélectionner encouragent le choix de \emph{Hold} ou \emph{Hybrid}. La taille et la vitesse sont les paramètres dont l'effet est le plus significatif. Les barres notées \emph{Error} correspondent simplement aux essais ratés, c'est-à-dire ceux pour lesquels le sujet à délenché la sélection hors de la cible. Crédit : \cite{hajri2011moving}.}
 		\label{fig:holdTech}
 	\end{figure}
 	
@@ -496,7 +523,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 \section{\emph{Shadow Cone}}
 	\subsection{Principe et avantages}
-	Le \emph{Shadow Cone}~\cite{steed20043d} est une technique développée spécifiquement pour les \emph{spatially immersive displays} (SID) tels que les CAVE. L'idée est de permettre non seulement une sélection performante dans des conditions « normales » mais également de sélectionner des objets lorsque l'utilisateur n'est pas suivi par le SID, et que le rendu n'est pas adapté à sa position, donc incorrect.
+	Le \emph{Shadow Cone}~\cite{steed20043d} est une technique développée spécifiquement pour les \emph{spatially immersive displays} (SID) tels que les CAVE. L'idée est de permettre non seulement une sélection performante dans des conditions \og normales \fg{} mais également de sélectionner des objets lorsque l'utilisateur n'est pas suivi par le SID, et que le rendu n'est pas adapté à sa position, donc incorrect.
 	
 	Steed et Parker~\cite{steed20043d} identifient ce besoin en partant du constat qu'un SID ne permet généralement de suivre et d'adapter le rendu graphique qu'à une seule personne (mais pas toujours\footnotemark), ce qui implique qu'un deuxième utilisateur ne peut bénéficier d'un rendu adapté, et rencontrera donc des difficultés pour accomplir des tâches collaboratives nécessitant une étape de sélection.
 	
@@ -595,7 +622,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsection{\emph{Flower Ray}}
 	\subsubsection{Principe}
-	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon « s'épanouissent » --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}. Dans le menu « floral » les objets sont disposés par ordre de profondeur croissante dans le sens horaire, avec le plus proche en haut à droite.
+	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon \og s'épanouissent \fg{}  --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}. Dans le menu \og floral \fg{} les objets sont disposés par ordre de profondeur croissante dans le sens horaire, avec le plus proche en haut à droite.
 	
 	\begin{figure}[H]
 		\centering
@@ -608,7 +635,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Principe}
 	Par définition, un rayon contient une infinité de points. Toutefois, si deux sont sécants, alors ils n'ont qu'un seul point en commun. Il donc possible d'utilier deux rayons pour effectuer une sélection par \emph{raycasting} sans aucune ambiguïté. Toutefois, cela nécessite deux périphériques de saisie et cela occupe les deux mains de l'utilisateur.
 	
-	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instant différents, selon un principe proche de celui du \emph{Shadow Cone}~\cite{steed20043d}. Chaque objet se voit attribuer un « poids » qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
+	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instant différents, selon un principe proche de celui du \emph{Shadow Cone}~\cite{steed20043d}. Chaque objet se voit attribuer un \og poids \fg{} qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
 	
 	\begin{figure}[H]
 		\centering
@@ -658,7 +685,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:rayFootprint}
 	\end{figure}
 	
-	Là encore on peut s'interroger sur la solidité des distances mesurées sur \emph{Smart Ray} attendu que dans un contexte « réel » les utilisateurs seraient libres de se déplacer. Naturellement, la quantité de mouvement absolue du pointeur pourrait s'en trouver accrue, mais sa quantité de mouvement relatif à l'utilisateur pourrait diminuer. Il resterait à déterminer s'il est plus fatigant de bouger beaucoup son bras, ou un peu son corps et un peu son bras. Cette question est à notre connaissance ouverte.
+	Là encore on peut s'interroger sur la solidité des distances mesurées sur \emph{Smart Ray} attendu que dans un contexte \og réel \fg{} les utilisateurs seraient libres de se déplacer. Naturellement, la quantité de mouvement absolue du pointeur pourrait s'en trouver accrue, mais sa quantité de mouvement relatif à l'utilisateur pourrait diminuer. Il resterait à déterminer s'il est plus fatigant de bouger beaucoup son bras, ou un peu son corps et un peu son bras. Cette question est à notre connaissance ouverte.
 	
 	\subsubsection{Taux d'erreurs}
 	Enfin, Grossman \emph{et al.} rapportent que les taux d'erreurs sont avantageux avec ces techniques de \emph{raycasting} avec disambiguïsation, comme le détaille la table~\ref{tab:rayErrors}.
@@ -683,7 +710,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Permi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple.
 	
-	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de présélection et de disambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à « capturer » la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree d'angle, même si ce n'était pas indiqué par le rendu graphique.
+	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de présélection et de disambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à \og capturer \fg{} la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree d'angle, même si ce n'était pas indiqué par le rendu graphique.
 	
 	Si le \emph{Smart Ray} fournit ici d'assez mauvais résultats, il serait intéressant de le réévaluer dans ce contexte, car d'une part, il souffrirait peut-être moins de l'occultation de la cible si elle était mobile, et d'autre part, il ne serait peut-être plus nécessaire de bouger le rayon pour lever l'ambiguïté, puisqu'en suivant la cible, son poids augmenterait continuellement, tandis que les poids des distracteurs seraient susceptibles de baisser assez rapidement --- à moins que ceux-ci ne se déplacent de façon corrélée à la cible, en étant toujours touchés par le rayon, ce qui est assez improbable sur une durée de plusieurs secondes dans la plupart des cas.
 	
@@ -693,13 +720,13 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Principe général et avantages}
 	Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur (ou autre medium de sélection) peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection (plus) fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé, ou bien affine encore l'espace de sélection, jusqu'à ce qu'une phase finale permette la sélection effective de la cible.
 	 
-	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain « coût cognitif » lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
+	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain \og coût cognitif \fg{} lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
 	
 	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreurs qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
 	
 	\subsection{Utilisation du regard}
 	\subsubsection{Une rapidité inégalée}
-	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. C'est généralement dans cette seconde fonction que l'on trouve cette technique, selon le principe « le regard suggère, le toucher confirme »~\cite{stellmach2012look}.
+	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. C'est généralement dans cette seconde fonction que l'on trouve cette technique, selon le principe \og le regard suggère, le toucher confirme \fg{}~\cite{stellmach2012look}.
 
 	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
 	
@@ -712,7 +739,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux~\cite{monden2005evaluation, vspakov2011comparison}. Dans uen certaine mesure, ces derniers peuvent être filtrés, mais cela ne règle que partiellement le problème~\cite{zhang2008improving}.
 	
-	Par ailleurs, il peut être très déroutant pour un utilisateur de « charger » un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
+	Par ailleurs, il peut être très déroutant pour un utilisateur de \og charger \fg{} un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
 	
 	\footnotetext{Remarquons cependant que le regard, quand il est contrôlé de façon délibérée, peut être utilisé pour communiquer, par exemple lorsqu'une personne en invite une autre, oralement, à regarder quelque chose qu'elle désigne du regard. Lever les yeux au ciel peut communiquer de l'agacement ou du dédain, etc.}
 	
@@ -854,7 +881,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
-		\caption[\emph{Disambiguation Canvas}]{Fonctionnement du \emph{Disambiguation Canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette présélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la présélection faite, une « toile » (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles présélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence, mais cela pourrait être une tablette) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont présents ici à des fins purement illustratives. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas}]{Fonctionnement du \emph{Disambiguation Canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette présélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la présélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles présélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence, mais cela pourrait être une tablette) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont présents ici à des fins purement illustratives. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvas}
 	\end{figure}
 	
@@ -899,7 +926,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 
 	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
 	
-	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape « d'affinage » une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
+	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape \og d'affichage \fg{} une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
 	
 	Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, sans appel. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objet colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées avec une pression du pouce.	
 	
@@ -915,12 +942,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Inconvénients}
 	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
 	
-	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon « douce » et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
+	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon \og douce \fg{} et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
-		\caption[\emph{Disambiguation Canvas} --- Animation de transition]{Animation pendant la transition entre la phase de présélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés « en douceur » ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas} --- Animation de transition]{Animation pendant la transition entre la phase de présélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasContext}
 	\end{figure}
 	
@@ -1001,7 +1028,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\subsubsection{Erreurs}
-	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du « saut » effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
+	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
 	
 	\begin{table}
 	\centering
@@ -1018,7 +1045,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	L'inconvénient du \emph{Delphian Desktop} le plus évident est celui mis en lumière par les résultats présentés plus haut : pour les courtes distances, il est contre-productif. Attendu que cet inconvénient est connu et assez précisément quantifié, une solution pourrait être de simplement le désactiver dynamiquement lorsqu'il prédit une distance de mouvement inférieur à celle à partir de laquelle il est utile.
 	
-	Cela pourrait cependant être perturbateur pour les utilisateurs qui ne sauraient jamais pas toujours s'ils doivent s'attendre à un « saut » ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
+	Cela pourrait cependant être perturbateur pour les utilisateurs qui ne sauraient jamais pas toujours s'ils doivent s'attendre à un \og saut \fg{} ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
 	
 	Par ailleurs, l'hypothèse de rectitude du mouvement est très forte et généralement fausse ; bien entendu, elle peut être assez proche de la réalité pour fournir de bons résultats, mais lorsque ce n'est pas le cas, il est difficile de régler le problème. Une solution potentielle serait d'appliquer une deuxième technique de curseur après le saut du \emph{Delphian Desktop}, par exemple le \emph{Bubble Cursor}.
 	
@@ -1034,7 +1061,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsubsection{Fondements théoriques et mathématiques}
 	\paragraph{Minimisation de l'à-coup.}
-	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi « douce » que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
+	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
 	
 	\begin{align}
 		\label{eq:kepP}
@@ -1196,7 +1223,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\item[1. Test dans le volume de sélection :] Déterminer quels objets sont dans le cône de sélection ;
 		\item[2. Contributions aux scores :] Chaque objet dans le volume de sélection se voit attribué un score, déterminé à partir d'une métrique spécifique ;
 		\item[3. Accumulation des scores :] Les contributions aux scores des objets s'accumulent avec le temps ;
-		\item[4. Retour (\emph{feedback}) :] L'objet de score maximal, donc de premier rang, est mis en surbrillance et indiqué par un rayon qui se « tord » vers lui.
+		\item[4. Retour (\emph{feedback}) :] L'objet de score maximal, donc de premier rang, est mis en surbrillance et indiqué par un rayon qui se \og tord \fg{} vers lui.
 	\end{description}
 	
 	\subsubsection{Test d'appartenance au volume de sélection}
@@ -1250,12 +1277,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:intenSnap}
 	\end{figure}
 	
-	Tant que la cible prédite restera la même, le rayon s'adaptera pour se plier vers elle ; si elle change, le rayon sautera immédiatement vers la nouvelle. L'utilisation d'une heuristique avec une certaine « inertie » rend la technique nettement plus robuste pour les sélections difficiles, particulièrement avec des cibles mouvantes (voir la figure~\ref{fig:intenSnap2}).
+	Tant que la cible prédite restera la même, le rayon s'adaptera pour se plier vers elle ; si elle change, le rayon sautera immédiatement vers la nouvelle. L'utilisation d'une heuristique avec une certaine \og inertie \fg{} rend la technique nettement plus robuste pour les sélections difficiles, particulièrement avec des cibles mouvantes (voir la figure~\ref{fig:intenSnap2}).
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/intenSnap2}
-		\caption[\emph{IntenSelect} --- \emph{Snapping feedback} II]{Schéma représentant la technique \emph{IntenSelect} en action avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon, et même avec un cône, on peut la « perdre » à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème. Crédit : \cite{de2005intenselect}.}
+		\caption[\emph{IntenSelect} --- \emph{Snapping feedback} II]{Schéma représentant la technique \emph{IntenSelect} en action avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon, et même avec un cône, on peut la \og perdre \fg{} à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intenSnap2}
 	\end{figure}
 	
@@ -1274,7 +1301,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:intensPerf}
 	\end{figure}
 	
-	Bien qu'\emph{IntenSelect} ne puisse faire mieux que la sélection par cône avec des cibles statiques, cette technique brille plus avec des cibles mobiles. Les sujets expérimentés de cette étude empirique rapportent parfois qu'avec des cibles statiques, \emph{IntenSelect} était trop « collant ». De fait, ils étaient forcés d'attendre un peu avant que le rayon s'attache à la cible qu'ils visaient réellement. Les autres sujets ne rapportent pas de différence, mais furent en réalité \emph{plus} rapides avec \emph{IntenSelect}.
+	Bien qu'\emph{IntenSelect} ne puisse faire mieux que la sélection par cône avec des cibles statiques, cette technique brille plus avec des cibles mobiles. Les sujets expérimentés de cette étude empirique rapportent parfois qu'avec des cibles statiques, \emph{IntenSelect} était trop \og collant \fg{}. De fait, ils étaient forcés d'attendre un peu avant que le rayon s'attache à la cible qu'ils visaient réellement. Les autres sujets ne rapportent pas de différence, mais furent en réalité \emph{plus} rapides avec \emph{IntenSelect}.
 	
 	Nous pouvons émettre l'hypothèse que cette technique n'est réellement utile que lorsque la tâche est difficile, et que la difficulté effective varie d'un utilisateur à l'autre. Peut-être serait-il opportun de réduire l'inertie de la fonction de \emph{scoring} pour les tâches les plus faciles, ce qui inclut les tâches de difficulté modérée effectuées par des utilisateurs expérimentés.
 	
