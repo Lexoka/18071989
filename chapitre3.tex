@@ -1,22 +1,62 @@
 %!TEX root = these.tex
 
-\chapter[Chapitre3]{Chapitre3}
+\chapter[Taxinomie des environnements de sélection]{Taxinomie des environnements de sélection}
 \minitoc
 \label{chap3}
 \cleardoublepage
 
 \section{Introduction}
-	Au cours du premier chapitre de ce manuscrit, nous avons identifié un certain nombre de besoins associés à des applications précises. Nous nous sommes également attachés à caractérisés la nature des cibles mobiles que l'on rencontre dans ces applications, afin de permettre au lecteur d'apprécier d'une part l'ensemble des difficultés inhérentes aux tâches de sélection dans ces applications, et d'autre part la nécessité d'une assistance à la sélection.
+
+	\subsection{Nature des cibles}
+	Au cours du premier chapitre de ce manuscrit, nous avons identifié un certain nombre de besoins associés à des applications précises. Nous nous sommes également attachés à caractériser la nature des cibles mobiles que l'on rencontre dans ces applications, afin de permettre au lecteur d'apprécier d'une part l'ensemble des difficultés inhérentes aux tâches de sélection dans ces applications, et d'autre part la nécessité d'une assistance à la sélection.
 	
-	Si nous avons jusqu'ici énuméré et caractérisé ces types de cibles, avec une attention toute particulière à leur contexte applicatif, nous n'avons pas procédé à une classification systématique des cibles selon la nature de leur mouvement, définie selon des critères objectifs et et des mesures quantitatives.
+	Si nous avons jusqu'ici énuméré et caractérisé ces types de cibles, avec une attention toute particulière à leur contexte applicatif, nous n'avons pas procédé à une classification systématique des cibles selon la nature de leur mouvement, définie selon des critères objectifs et des mesures quantitatives.
 	
 	Or, il nous apparaît que pour réellement comprendre les enjeux et défis liés à la sélection de cibles mobiles, une telle classification est nécessaire. L'objectif de ce chapitre est donc d'établir une taxinomie des cibles mobiles selon des critères objectifs et, dans la mesure du possible, permettant une quantification des valeurs auxquelles ils se rapportent.
+	
+	\subsection{Nature des environnements}
+	Bien qu'une \og simple \fg{} taxinomie des cibles mobiles en fonction de la nature de leur mouvement ait beaucoup d'intérêt, elle ne saurait fournir suffisamment d'informations pour guider la conception de techniques de sélection sans tenir compte de l'\emph{environnement} de sélection. En effet, la cible la plus petite, la plus rapide et la plus imprévisible qui soit est triviale à sélectionner s'il s'agit du seul objet d'intérêt dans l'environnement : il n'y a qu'une sélection possible, donc la technique de sélection optimale --- ou du moins suffisante --- consiste à permettre la sélection de la cible par la simple pression d'un bouton, ou activation d'un quelconque périphérique de saisie.
+	
+	En effet, du point de vue de la théorie de l'information de Shannon~\cite{shannon2001mathematical}, un seul bit d'information est à transmettre de l'utilisateur au système, correspondant à la réponse à la question suivante : \og La cible doit-elle être sélectionnée ? \fg{}. Si la réponse est négative, l'utilisateur ne fait rien et le système non plus ; si elle est positive, une seule action est nécessaire de la part de l'utilisateur, et le système, qui connaît la position de la cible, n'a qu'à la sélectionner sans requérir de précision de la part de l'utilisateur.
+	
+	Même dans un cas où il y aurait plusieurs objets de ce type, mais en petit nombre, la sélection demeurerait relativement aisée avec une technique telle que le \emph{Bubble Cursor}, analysé au cours du deuxième chapitre. En effet, cette technique illustrée par la figure~\ref{fig:bubble} partage l'espace en plusieurs cellules, selon un diagramme de Voronoï (voire figure~\ref{fig:voronoi}). De fait, avec par exemple quatre cibles (éventuellement très petites, rapides et imprévisibles) l'espace virtuel serait partagé en quatre parties qui, la plupart du temps, serait très grandes. La loi de Fitts ne s'appliquerait pas directement, car ces zones de sélection seraient mobiles, mais l'on voit bien que la sélection ne serait pas très difficile.
+	
+	À l'inverse, avec des cibles aussi petites, rapides et imprévisibles, mais extrêmement nombreuses, l'on comprend aisément que l'intérêt du \emph{Bubble Cursor} serait très fortement diminué car les cellules de Voronoï de chaque cible deviendraient fort petites, et pas nécessairement significativement plus grandes que les cibles elles-mêmes.
+	
+	Il apparaît donc clairement que la difficulté d'une tâche de sélection ne peut être évaluée qu'en tenant compte de l'environnement dans lequel l'objet ciblé est sélectionné. De fait, les besoins et contraintes devant orienter la conception d'une technique d'assistance doivent également en tenir compte. Aussi notre taxinomie tiendra-t-elle compte de l'environnement global, et non seulement de la cible à sélectionner et de la nature de ses mouvements.
+	
+	\subsection{Critères subjectifs}
+	Nous verrons plus loin que des critères plus subjectifs --- quoique fondés sur des observations empiriques --- peuvent être plus pertinents pour estimer la difficulté d'une tâche de sélection, et nous proposerons une taxinomie révisée en conséquence.
+
+\section{Taxinomie des environnements de sélection}
+\subsection{Critères de discrimination}
+L'établissement de notre taxinomie passe par le choix des critères qui nous permettront de d'établir des distinctions entre les 
+
+\subsubsection{Autocorrélation}
+Si à un instant donné ça dépend de l'instant précédent
+
+\paragraph{Uniformité.}
+Pas de changement.
+
+\paragraph{Périodicité.}
+Répétition selon une période.
+
+\subparagraph{Circularité.}
+En cercle tout bêtement.
+
+\subsubsection{Densité et occultation}
+Nombre de cibles par unité de surface/volume, occultation.
+
+\subsection{Taxinomie obtenue}
+Résultats ; bidule OpenCV ?
 
 \section{Modèle de génération de mouvement}
+\subsection{Motivations et principe}
+Vitesse, angle, fréquence ; pas d'autocorrélation.
 
-\section{Taxinomie des cibles mobiles}
-\subsubsection{Mouvement autocorrélé}
-\subsubsection{Mouvement non autocorrélé, ou aléatoire}
+\subsection{Résultats}
+Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
+
 
 \section{Conclusion}
 
