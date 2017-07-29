@@ -1,6 +1,6 @@
 %!TEX root = these.tex
 
-\chapter[État de l'art des travaux lié à la tâche de sélection de cibles en mouvement]{État de l'art des travaux lié à la tâche de sélection de cibles en mouvement}
+\chapter[État de l'art des travaux sur la sélection de cibles mobiles]{État de l'art des travaux sur la sélection de cibles mobiles}
 \minitoc
 \label{chap2}
 \cleardoublepage
@@ -181,7 +181,7 @@
 		\emph{Area cursor} collant		& 596			& 97,9				& 1596			& 97,7				\\
 		\emph{Area cursor} adaptatif	& 591			& 99,0				& 1203			& 97,9				\\
 	\end{tabular}
-	\caption{Performances mesurées pour un \emph{Area cursor} avec des cibles collantes, ainsi qu'avec des cibles collantes et un gain adaptatif en fonction de la vitesse du curseur. Les résultats sont comparés avec un curseur ponctuel dans les mêmes conditions, avec des sujets jeunes (23,4 ans en moyenne) et plus âgés (70,1 ans en moyenne). Les performances sont rapportées par le temps de sélection ainsi que le taux de succès (pourcentage de sélections réussies). Le curseur zonal avec cibles collantes et gain adaptatif permet les meilleures performances, tant avec des sujets jeunes que plus âgés, mais c'est au sein du second groupe que l'apport est le plus important. Données tirées de~\cite{worden1997making}.}
+	\caption[emph{Area cursor} -- performances]{Performances mesurées pour un \emph{Area cursor} avec des cibles collantes, ainsi qu'avec des cibles collantes et un gain adaptatif en fonction de la vitesse du curseur. Les résultats sont comparés avec un curseur ponctuel dans les mêmes conditions, avec des sujets jeunes (23,4 ans en moyenne) et plus âgés (70,1 ans en moyenne). Les performances sont rapportées par le temps de sélection ainsi que le taux de succès (pourcentage de sélections réussies). Le curseur zonal avec cibles collantes et gain adaptatif permet les meilleures performances, tant avec des sujets jeunes que plus âgés, mais c'est au sein du second groupe que l'apport est le plus important. Données tirées de~\cite{worden1997making}.}
 	\label{tab:areaCursor}
 	\end{table}
 	
@@ -708,7 +708,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Conclusion}
 	L'étude de Grossman \emph{et al.}~\cite{grossman2006design} montre qu'en environnement dense, la sélection par \emph{raycasting} pur est moins efficace qu'un curseur ponctuel, voire impossible, mais que des méthodes de disambiguïsation peuvent permettre d'atteindre de meilleures performances. Dans une certaine mesure, on peut en effet améliorer les temps de sélection, mais les bénéfices sur les taux d'erreurs sont encore plus importants.
 	
-	Permi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple.
+	Parmi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple.
 	
 	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de présélection et de disambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à \og capturer \fg{} la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree d'angle, même si ce n'était pas indiqué par le rendu graphique.
 	
@@ -1119,7 +1119,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\label{tab:kepCoeffs}
 	\end{table}
 	
-	Ainsi, pour prédire le point d'arrivée du mouvement d'un utilisateur à partir d'un mouvement partiel, il faut premièrement ajuster un polynôme quadratique aux données $(x, v(x))$ du mouvement partiel. Naturellement, ce polynôme admet une racine en $(0,0)$, mais aussi une autre en $x_{calc}$. Il faut trouver la véritable racine, $x_{véritable}$. Pour cela, il faut déterminer le bon coefficient de correction. Or, cela nécessite de connaître $s_{i}$. Autrement dit, il faut savoir où l'on en est du mouvement en cours. Il faut pour cela résoudre l'équation $d = s_{i}c_{c}x_{calc}$ où $d$ est la distance parcourue, et $c_{c}$ est le coefficient de correction. Or, $c_{c}$ est fonction de $s_{i}$, donc l'équation peut être résolue numériquement, en environ 1 milliseconde d'après Lank \emph{et al.}~\cite{lank2007endpoint}.
+	Ainsi, pour prédire le point d'arrivée du mouvement d'un utilisateur à partir d'un mouvement partiel, il faut premièrement ajuster un polynôme quadratique aux données $(x, v(x))$ du mouvement partiel. Naturellement, ce polynôme admet une racine en $(0,0)$, mais aussi une autre en $x_{calc}$. Il faut trouver la véritable racine, $x_{v\acute{e}ritable}$. Pour cela, il faut déterminer le bon coefficient de correction. Or, cela nécessite de connaître $s_{i}$. Autrement dit, il faut savoir où l'on en est du mouvement en cours. Il faut pour cela résoudre l'équation $d = s_{i}c_{c}x_{calc}$ où $d$ est la distance parcourue, et $c_{c}$ est le coefficient de correction. Or, $c_{c}$ est fonction de $s_{i}$, donc l'équation peut être résolue numériquement, en environ une milliseconde d'après Lank \emph{et al.}~\cite{lank2007endpoint}.
 	
 	\subsubsection{Précision de la prédiction}
 	Lank \emph{et al.} ont validé leur modèle en comparant les prédictions de KEP à des mesures empiriques. Les résultats de cette validation sont exposées dans les graphiques de la figure~\ref{fig:kepErrors}, pour des cibles de 15 à 75 pixels de diamètre.
@@ -1315,13 +1315,40 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	La question de la robustesse d'\emph{IntenSelect} pour des tâches particulièrement difficiles avec des cibles plus petites, beaucoup plus nombreuses, avec des mouvements rapides et imprévisibles demeure donc ouverte. Reconnaissons néanmoins qu'\emph{IntenSelect} nous paraît mieux équipée que bien d'autres techniques pour gérer ces considérables difficultés.
 		
 \section{Hook}
-	\subsection{Principe et avantages}
-	\emph{Hook} est une heuristique de prédiction de cible. Elle se base sur une évaluation continue de la distance entre le curseur et les cibles potentielles. Celles-ci sont triées par ordre de proximité, et les $NCT$ (\emph{Number of Closest Targets} cibles les plus proches du curseur voient leur score augmenter à chaque boucle de l'heuristique, et augmenter d'autant plus fortement qu'elles sont proches du curseur. Toutes les autres cibles voient leur score diminuer, et diminuer d'autant plus fortement qu'elles sont éloignées du curseur.
+	\subsection{Prédiction de l'intention selon la distance curseur--cible}
+	\emph{Hook}~\cite{ortega2013hook} est une heuristique de prédiction de l'intention de l'utilisateur. Elle est fondée sur une évaluation continue de la distance entre le curseur et les cibles potentielles. Celles-ci sont triées par ordre de proximité, et les $NCT$ (\emph{Number of Closest Targets} objets les plus proches du curseur voient leur score augmenter à chaque boucle de l'heuristique, et augmenter d'autant plus fortement qu'ils sont proches du curseur. Tous les autres objets voient leur score diminuer, et diminuer d'autant plus fortement qu'ils sont éloignés du curseur.
 		
 	La cible potentielle dont le score est le plus élevé est considérée comme celle que l'utilisateur cherche probablement à sélectionner. La sélection peut donc se faire par simple pression d'un bouton, sans contrainte particulière sur la position du curseur au moment où elle est déclenchée.
-		
-	\emph{Hook} présente plusieurs avantages. Cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques. Elle n'ajoute aucun encombrement visuel, ne transforme pas le curseur, ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. L'évaluation menée par Michael Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4~\cite{ortega2013hook}.
+
+	L'hypothèse de base sur laquelle \emph{Hook} repose est que puisque l'utilisateur, lorsqu'il essaie de sélectionner une cible mobile, \og suit \fg{} ses mouvements avec son curseur\cite{hasan2011comet}, la trajectoire de celui-ci sera fortement corrélée à celle de la cible, et permettra donc de l'identifier.
 	
-	\subsection{Inconvénients}
+	\emph{Hook} est manifestement une technique pensée pour les cibles mobiles, mais elle est également bien adaptée aux environnements denses, car elle ne repose pas sur un agrandissement effectif des objets (comme le \emph{Bubble Cursor}) ou sur l'hypothèse que la cible n'est pas occultée, comme la plupart des techniques de \emph{raycasting}.
+	
+	Cette technique ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. Si un retour graphique indique la cible prédite en la mettant en surbrillance dans une sphère semi-transparente et en affichant un cône semi-transparent du curseur vers la cible, l'encombrement visuel qui en résulte est minimal.
+	
+	\subsection{Calcul du score}
+	Comme pour toutes les heuristiques de ce type, le calcul du score doit tenir compte de deux impératifs contradictoires, afin d'aboutir à un bon compromis : la prédiction de la cible présumée doit être suffisamment stable pour ne pas perturber l'utilisateur par d'incessants changements, mais doit pouvoir changer suffisamment vite (lorsqu'elle est fausse ou quand l'utilisateur change de cible) pour permettre une sélection rapide.
+	
+	La solution retenue par Ortega~\cite{ortega2013hook} se résume en deux formules simples. La première décrit l'évolution dans le temps des objets les plus proches du curseur :
+	
+	$Score_{cible_{i}}(t) = Score_{cible_{i}}(t-1) + (NCT - i) \times \Delta{}t$ ; et la seconde définit celle des objets éloignés du curseur : $Score_{cible_{i}}(t) = Score_{cible_{i}}(t-1) - \frac{NCT}{2} \times \Delta{}t$ où $Score_{cible_{i}}(t)$ est le score de la cible $i$ à l'instant $t$, $NCT$ est le nombre d'objets proches du curseur et $\Delta{}t$ est le temps écoulé depuis la précédente itération.
+	
+	À tout instant, l'objet de score maximal peut être sélectionné en activant un seul contrôle ou bouton d'un périphérique de saisie. Notez que cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques, puisque le calcul du score ne nécessite pas que les objets bougent. De même, \emph{Hook} fonctionne avec un périphérique de saisie à deux degrés de liberté, en effectuant les calculs de score dans un plan sur lequel l'espace 3D est projeté.
+	
+	\subsection{Performances}
+	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien.
+	
+	L'évaluation menée par Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4. Ces résultats valent en 2D (figure ) comme en 3D (figure ). La sélection non assistée était si inadéquate à la tâche que les sujets ne purent sélectionner les cibles en 3D à partir de la vitesse 3.
+	
+	\subsection{\emph{Quid} des environnements denses à objets liés ?}
+	Les qualités et avantages de \emph{Hook} sont nombreux, mais plusieurs interrogations demeurent. Premièrement, les performances relatives de cette technique seraient-elles aussi bonnes avec d'autres types de mouvements ? Le seraient-elles avec des objets beaucoup plus nombreux et plus d'occultation encore ?
+	
+	Mais surtout, nous nous interrogeons sur les performances de \emph{Hook} lorsqu'il s'agit de sélectionner un objet dans un groupe dense dont les membres ont des mouvements corrélés. Nous pensons par exemple à un banc de poissons, un groupe d'oiseaux en formation ou une escadrille d'avions.
+	
+	En effet, dans ces situations, \emph{Hook} pourrait avoir du mal à distinguer la cible visée des objets environnants, puisque leurs positions seraient très proche et leurs mouvements très similaires.
+	
+	Néanmoins, cette technique présente suffisamment de qualités dans le contexte de la sélection de cibles mobiles en environnement dense pour retenir particulièrement notre attention, et il nous apparaît qu'elle forme le meilleur point de départ pour la conception d'une technique optimale pour cette classe de tâches.
+	
+\section{Conclusion}
 
 \clearpage

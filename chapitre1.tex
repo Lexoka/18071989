@@ -1,6 +1,6 @@
 %!TEX root = these.tex
 
-\chapter[La sélection de cibles mobiles : pour quels domaines et quelles applications]{La sélection de cibles mobiles : pour quels domaines et quelles applications}
+\chapter[La sélection de cibles mobiles : pour quels domaines et quelles applications ?]{La sélection de cibles mobiles : pour quels domaines et quelles applications ?}
 
 \setcounter{minitocdepth}{4}
 \minitoc
@@ -60,7 +60,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/aminoAcids}
+		\includegraphics[width=0.9\textwidth]{figures/ch1/aminoAcids}
 		\caption[Ensemble des acides aminés]{Les 21 acides aminés dits protéinogènes que l'on trouve chez les eucaryotes, c'est-à-dire ceux qui sont incorporés dans leurs protéines lors de la traduction de l'ARN messager par les ribosomes --- des complexes ribonucléoprotéiques dont la fonction est de synthétiser les protéines. Sur cette illustration, les acides aminés sont groupés en fonction des propriétés de leurs chaînes latérales, ici représentées \og au bas \fg{} des acides aminés. Crédit : \emph{Wikimedia}.}
 		\label{fig:aminoAcids}
 	\end{figure}
@@ -283,7 +283,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\paragraph{Surface accessible au solvant et surface de Connolly.} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
 		
-	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant~\cite{lee1971interpretation}, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_sas} montre une protéine entière représentée par sa surface accessible au solvant, et la figure~\ref{fig:4awn_ses} représente la surface de Connolly de cette protéine.
+	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals. La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant~\cite{lee1971interpretation}, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_ses} montre une protéine entière représentée par sa surface de Connolly.
 
 	\begin{wrapfigure}{O}{0.5\textwidth}
 		\centering
@@ -1053,9 +1053,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, et nécessitent souvent la sélection de cibles mobiles~\cite{ilich2010moving}. Il peut être utile, par exemple, de sélectionner un joueur de football pour afficher ses statistiques. Pour les mêmes raisons, un ballon ou une balle peuvent être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
 	\subsection{Athlètes}
-	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pied obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc. Les athlètes peuvent donc avoir des mouvements nettement plus rapides que de simples piétons, jusqu'à plus de 160~km/h pour certains skieurs\footnotemark.
-	
-	\footnotetext{\emph{Ski alpin -- Une histoire de famille se termine au Lauberhorn} --- \url{http://www.swissinfo.ch/fre/societe/ski-alpin-_une-histoire-de-famille-se-termine-au-lauberhorn/37746484}}
 	
 	\begin{wrapfigure}{O}{0.5\textwidth}
 		\centering
@@ -1065,6 +1062,10 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\end{wrapfigure}
 	
 	\footnotetext{\url{http://www.weekendnotes.com/perth-wildcats-nbl-games}}
+	
+	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pied obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc. Les athlètes peuvent donc avoir des mouvements nettement plus rapides que de simples piétons, jusqu'à plus de 160~km/h pour certains skieurs\footnotemark.
+	
+	\footnotetext{\emph{Ski alpin -- Une histoire de famille se termine au Lauberhorn} --- \url{http://www.swissinfo.ch/fre/societe/ski-alpin-_une-histoire-de-famille-se-termine-au-lauberhorn/37746484}}
 	
 	\subsection{Véhicules}
 	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens\footnotemark{} (une discipline récente et en plein essor) dans les sports mécaniques, l'on est alors face à un cas où les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
