@@ -1,6 +1,6 @@
 %!TEX root = these.tex
 
-\chapter[Sélection de cibles mobiles : besoins]{Sélection de cibles mobiles : besoins}
+\chapter[La sélection de cibles mobiles : pour quels domaines et quelles applications]{La sélection de cibles mobiles : pour quels domaines et quelles applications}
 
 \setcounter{minitocdepth}{4}
 \minitoc
@@ -8,7 +8,7 @@
 \cleardoublepage
 
 	\section{Introduction}
-	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une posititon, s'ajoutent des caractéristiques de mouvement, direction, vitesse,  accélération, et qui peuvent de plus varier dans le temps. 
+	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une position, s'ajoutent des caractéristiques de mouvement, direction, vitesse,  accélération, et qui peuvent de plus varier dans le temps. 
 	
 	D'un point de vue perceptif, un utilisateur peut percevoir un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire. La grande diversité des types de mouvements perçus, souvent reliés à des mouvements relatifs à l'expérience écologique de l'utilisateur, ce qui implique des difficultés à établir  des protocoles expérimentaux permettant de caractériser la difficulté de sélection de cibles mobiles. En effet, il est nécessaire d'apporter des solutions  adaptées aux différentes natures du mouvement des objets à sélectionner. Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité de types de mouvements.
 	
@@ -650,7 +650,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Ensemble, la très forte densité de cibles, le haut degré d'occultation, la grande vitesse de ces cibles et la nature très imprévisible de leurs mouvements rendent l'interaction (et en particulier la sélection d'une particule) avec les simulations de dynamique moléculaire très difficile. C'est pourquoi les chercheurs en biologie structurale expriment le besoin de meilleurs modes d'interaction, et c'est la principale motivation des travaux présentés dans cette thèse.
 	
-	\section{Simulations de problèmes à N corps}
+	%\section{Simulations de problèmes à N corps}
 	
 	\section{Contrôle de l'espace aérien}
 	La biologie structurale n'est cependant pas le seul domaine caractérisé par un besoin d'interaction avec des cibles mobiles, loin s'en faut. La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détails plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions sont lents sur l'écran.
@@ -1271,9 +1271,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 
 	
 	\section{Conclusion}    
-	Les besoins en sélection de cibles mobiles sont très divers, et répartis sur des domaines bien différents : des simulations scientifiques aux jeux vidéo, en passant par le maintien de l'ordre, la défense, les retransmissions sportives, etc. Selon les domaines, les impératifs peuvent varier : dans tous les cas, la performance est recherchée, mais le temps de sélection peut être plus important pour certaines applications, et le taux d'erreur pour d'autres. Parfois, les applications sont si critiques (car des vies humaines en dépendent, par exemple dans la défense) que les performances doivent impérativement atteindre certains seuils.
+	Les besoins en sélection de cibles mobiles sont très divers, et répartis sur des domaines variés : des simulations scientifiques aux jeux vidéo, en passant par le maintien de l'ordre, la défense, les retransmissions sportives, etc. Selon les domaines, les impératifs peuvent varier : dans tous les cas, la performance est recherchée, mais le temps de sélection peut être plus important pour certaines applications, et le taux d'erreur pour d'autres. Parfois, les applications sont si critiques (car des vies humaines en dépendent, par exemple dans la défense) que le temps de sélection doit impérativement être court et borné.
 	
-	La difficulté de la tâche varie également d'un domaine à l'autre. L'on peut identifier parmi les facteurs de difficulté :
+	La difficulté de la tâche de sélection de cible mobile varie également selon l'application. Voici les principaux facteurs de difficulté décrits dans les  :
 	\begin{itemize}
 		\item la taille des cibles,
 		\item la distance des cibles par rapport au \og curseur \fg{} ou périphérique,
@@ -1292,6 +1292,11 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{Périphérique d'interaction sans fil conçu pour la réalité virtuelle, produit par Advanced Realtime Tracking (ART) : \url{http://www.ar-tracking.com/products/interaction/flystick2}}
 	
-	L'enjeu des travaux présentés dans cette thèse sera donc de développer une technique suffisamment efficace et souple pour répondre à ces besoins, après avoir caractérisés plus précisément l'effet des facteurs de difficultés identifiés mais à ce jour encore insuffisamment étudiés. En particulier, l'impact de l'imprévisibilité du mouvement d'une cible sur la difficulté de sa sélection a jusqu'ici été négligé par la recherche en interaction homme-machine. Il est pourtant essentiel dans certaines des applications évoquées dans ce chapitre, et en particulier pour les simulations moléculaires.
+	L'enjeu des ces travaux de thèse est de d'une part de formaliser le mouvement et la dynamique ces cibles, en identifiant des facteurs, comme l'imprévisibilité du mouvement d'une cible, dans le cas de la simulation moléculaire. 
+	
+	D'autre part, il s'agit dans ce travail de déterminer dans quelle mesure ces facteurs  influencent les difficultés liés à sélection de cible mobile, problématiques à ce jour peu étudiée d'un point de vue expérimental.  
 
+    Ce travail préalable est essentiel pour répondre au besoin des applications évoquées dans ce chapitre, comme base au développement des techniques pour faciliter la sélection de cible mobile.
+	 
+	 
 \clearpage
