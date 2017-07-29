@@ -4,32 +4,20 @@
 \pagenumbering{arabic}
 \setcounter{secnumdepth}{3}% enlève la numérotation après les sections
 \usepackage{titlesec}
-\titleformat{\subsubsection}
-   {\normalfont\fontsize{11pt}{13pt}\selectfont\bfseries}% apparence commune au titre et au numéro
-   {\thesubsubsection}% apparence du numéro
-   {1em}% espacement numéro/texte
-   {}% apparence du titre
+%\titleformat{\subsubsection}
+%   {\normalfont\fontsize{11pt}{13pt}\selectfont\bfseries}% apparence commune au titre et au numéro
+%   {\thesubsubsection}% apparence du numéro
+%   {1em}% espacement numéro/texte
+%   {}% apparence du titre
 
 \usepackage[a4paper]{geometry}
-%\geometry{vmargin=3.8cm,hmargin=3.3cm} % marges verticales et horizontales
 %\geometry{left=2.5cm,right=2.5cm,top=1.5cm,bottom=2cm} % marges verticales et
 % horizontales ministérielles (minimales)
 
-%\geometry{left=3.25cm,right=2.25cm,top=3.cm, bottom=3.5cm} % proposition pour impression (marge différente page droite page gauche)
-%\geometry{left=2.75cm,right=2.75cm,top=3.cm, bottom=3.5cm} % proposition pour PDF
 
-%%%%%%%%%%%%%%\headsep = 30pt\footskip = 30pt
-
-%\usepackage{ucs}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} % accent
 \usepackage{tipa} % pour alphabet phonétique
-%\usepackage{url} % mettre des liens internet et adresse mails
-% pour les url
-% \url{http://linuxfr.org}
-% pour les mailsOui
-% \urlstyle{rm}
-% \url{meuuuuh@le_pays_des_vaches.net} ou ..{mailto:adresse@domaine.com}
 
 \usepackage{lipsum} %Pour faire des essais avec du texte random
 
@@ -311,23 +299,12 @@
 
 \adjustmtc[1] % pour recaler compteur de \minitoc si besoin
 
-%\mainmatter
-% On bascule la num�rotation des pages en chiffres arabes jusqu'� la fin du
-% document - la num�rotation reprend � 1 (toujours d�conseill� par le minist�re)
-
-
-% Notations
-
-
-% Liste fichiers audioVideo
-% \include{list_resources}
-
 \include{resume}
 
 % Introduction
 \include{introduction}
 \bookmarksetup{startatroot}% package bookmark --> pour sortir de la "part" précédente (pour les liens pdfbookmark dans le pdf)
-\addtocontents{toc}{\bigskip}% rajoute un espace dans la tbale des matières
+\addtocontents{toc}{\bigskip}% rajoute un espace dans la table des matières
 
 
 % Chapitres de la thèse
@@ -336,40 +313,34 @@
 \include{chapitre3}
 \include{chapitre4}
 
-\bookmarksetup{startatroot}% package bookmark --> pour sortir de la "part" pr�c�dente (pour les liens pdfbookmark dans le pdf)
-\addtocontents{toc}{\bigskip}% rajoute un espace dans la tbale des mati�res
+\bookmarksetup{startatroot}% package bookmark --> pour sortir de la "part" précédente (pour les liens pdfbookmark dans le pdf)
+\addtocontents{toc}{\bigskip}% rajoute un espace dans la table des matières
 
-%% Conclusion et PerpectivesPo
+%% Conclusion et Perpectives
 \include{conclusion}
 
-
-%% Annexes
-% \partstar{ANNEXES} % // TO UNCOMMENT
-% sinon, il met la 1ere annexe avant la partie dans le sommaire , je ne sais pas why.
-%\addstarredpart{Annexes} % Pour ajouter une partie fictive dans la table des mati�re
-%\phantomsection % 
 
 % \appendix
 \include{appendix} % chorus digitalis
 % \include{ann_tps} % aspects techniques pour le temps r�el
 % \include{ann_pub} % Liste des publications
 
-\bookmarksetup{startatroot}% package bookmark --> pour sortir de la "part" pr�c�dente (pour les liens pdfbookmark dans le pdf)
-\addtocontents{toc}{\bigskip}% rajoute un espace dans la tbale des mati�res
+\bookmarksetup{startatroot}% package bookmark --> pour sortir de la "part" précédente (pour les liens pdfbookmark dans le pdf)
+\addtocontents{toc}{\bigskip}% rajoute un espace dans la table des matières
 
 \listoftables  		% Liste des tableaux
-% \mtcaddchapter % pour �viter d�calage de \minitoc
+\mtcaddchapter % pour éviter décalage de minitoc
 \listoffigures      % Liste des figures
-\mtcaddchapter % pour �viter d�calage de \minitoc
+\mtcaddchapter % pour éviter décalage de minitoc
 
 \include{notations}
 
 % =============== BIBLIOGRAPHIE ================
 
 %% Choix du style 
-%% En fran�ais
+%% En français
 \bibliographystyle{alpha}
-% \bibliographystyle{./macros/alpha-fr} % style alphab�tique en fran�ais
+% \bibliographystyle{./macros/alpha-fr} % style alphabétique en français
 %% En anglais
 %\bibliographystyle{alpha} % style alphab�tique en anglais
 %\bibliographystyle{plain} % style num�rot� en anglais
