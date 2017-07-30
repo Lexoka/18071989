@@ -321,7 +321,7 @@
 	\subsection{Inconvénients}
 	Malgré les bons résultats commentés plus haut, le \emph{Silk Cursor} n'est pas exempt de défauts. En tant que curseur volumique, il s'agit en substance de l'extension à l'espace tridimensionnel d'un curseur zonal classique, comme ceux décrits plus haut dans un contexte 2D. Par conséquent, cette technique souffre des mêmes inconvénients que ses analogues bidimensionnels.
 	
-	En particulier, les solutions de ce type voient leur performances chuter quand la densité de cibles est élevée, car le curseur a tendance à \og saisir \fg{} plusieurs objets à la fois, y compris des distracteurs. Un curseur volumique ne peut donc être viable en environnement dense qu'avec une bonne solution de disambiguïsation.
+	En particulier, les solutions de ce type voient leur performances chuter quand la densité de cibles est élevée, car le curseur a tendance à \og saisir \fg{} plusieurs objets à la fois, y compris des distracteurs. Un curseur volumique ne peut donc être viable en environnement dense qu'avec une bonne solution de désambiguïsation.
 	
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
@@ -530,7 +530,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\footnotetext{Le système EVE (Environnement Virtuel Evolutif), permet d'étudier à la fois les aspects multisensoriels et collaboratifs des interactions humaines au sein de mondes virtuels. Les spécificités du système EVE, comme ses dimensions très grandes, une stéréoscopie multi-utilisateurs haute qualité, des rendus haptiques et audio 3D, en font un dispositif unique au monde à la pointe de la technologie dans le domaine de la réalité virtuelle.
 	\url{https://www.limsi.fr/index.php/fr/recherche/venise/menuitem-venise-demos-fr}}
 	
-	Le \emph{Shadow Cone} fonctionne comme un cône de sélection, mais avec une disambiguïsation explicite : lorsque l'utilisateur presse le bouton de son périphérique de pointage, tous les objets dans le cône sont présélectionnés ; puis, l'utilisateur déplace le périphérique et son cône avec, de telle sorte que certains des objets présélectionnés ne sont plus dans le cône. Dès lors qu'ils en sortent, ils ne sont plus présélectionnés, et aucun objet n'est ajouté à la présélection. Quand l'utilisateur relâche le bouton de son périphérique, tous les objets se trouvant encore dans le cône --- et l'ayant toujours été --- sont sélectionnés. Ce fonctionnement est illustré par la figure~\ref{fig:shadow}.
+	Le \emph{Shadow Cone} fonctionne comme un cône de sélection, mais avec une désambiguïsation explicite : lorsque l'utilisateur presse le bouton de son périphérique de pointage, tous les objets dans le cône sont pré-sélectionnés ; puis, l'utilisateur déplace le périphérique et son cône avec, de telle sorte que certains des objets pré-sélectionnés ne sont plus dans le cône. Dès lors qu'ils en sortent, ils ne sont plus pré-sélectionnés, et aucun objet n'est ajouté à la pré-sélection. Quand l'utilisateur relâche le bouton de son périphérique, tous les objets se trouvant encore dans le cône --- et l'ayant toujours été --- sont sélectionnés. Ce fonctionnement est illustré par la figure~\ref{fig:shadow}.
 	
 	\begin{figure}[H]
 		\centering
@@ -591,11 +591,11 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	Force est de constater tout d'abord que les performances du \emph{Shadow Cone} ne sont pas, en moyenne, particulièrement meilleures que celles du \emph{raycasting} ou de la sélection par cône, même si certains contextes mettent en avant ses qualités.
 	
-	Mais le principal inconvénient concerne probablement les cibles mobiles, puisque le \emph{Shadow Cone} impose de maintenir la cible visée à l'intérieur du cône pendant toute la phase de disambiguïsation, ce qui peut s'avérer extrêmement difficile avec une cible en mouvement, \emph{a fortiori} si ses mouvements sont rapides et/ou imprévisibles. Par conséquent, nous ne pouvons retenir cette technique pour les applications qui nous intéressent.
+	Mais le principal inconvénient concerne probablement les cibles mobiles, puisque le \emph{Shadow Cone} impose de maintenir la cible visée à l'intérieur du cône pendant toute la phase de désambiguïsation, ce qui peut s'avérer extrêmement difficile avec une cible en mouvement, \emph{a fortiori} si ses mouvements sont rapides et/ou imprévisibles. Par conséquent, nous ne pouvons retenir cette technique pour les applications qui nous intéressent.
 	
 	Néanmoins, observons qu'en assouplissant quelque peu cette contrainte, le \emph{Shadow Cone} fournirait potentiellement de meilleurs résultats avec les cibles mobiles. C'est en substance ce que propose le \emph{Smart Ray}~\cite{grossman2006design}, décrit dans la section suivante.	
 	
-\section{\emph{Raycasting} avec disambiguïsation}
+\section{\emph{Raycasting} avec désambiguïsation}
 	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
 
 	\subsection{\emph{Depth Ray}}
@@ -657,11 +657,11 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/rayTimes}
-		\caption[Évaluation des techniques de \emph{raycasting} avec disambiguïsation]{Évaluation des techniques de \emph{raycasting} avec disambiguïsation en environnement dense. Les résultats présentés sont les temps de sélection. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel. Crédit : \cite{grossman2006design}.}
+		\caption[Évaluation des techniques de \emph{raycasting} avec désambiguïsation]{Évaluation des techniques de \emph{raycasting} avec désambiguïsation en environnement dense. Les résultats présentés sont les temps de sélection. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel. Crédit : \cite{grossman2006design}.}
 		\label{fig:rayTimes}
 	\end{figure}
 
-	Le premier constat est que le curseur ponctuel offre de très bonnes performances par rapport aux techniques de \emph{raycasting}, ce qui peut surprendre compte tenu des performances généralement supérieures de ces dernières~\cite{bowman2001testbed}. Mais le niveau d'occultation avec de nombreux distracteurs est tel que les performances de cette classe de techniques chutent. Toutefois, le \emph{Depth Ray} fournit de très bons résultats, meilleurs que ceux du curseur ponctuel. Il profite selon toute probabilité de l'intégration des phases de sélection et de disambiguïsation. Grossman \emph{et al.} remarquent au passage que le temps de disambiguïsation du \emph{Flower Ray} est relativement constant en fonction de l'emplacement de la cible, alors que celui du \emph{Lock Ray} varie beaucoup ; sans doute le menu radial du premier a-t-il un effet lisseur sur cette valeur.
+	Le premier constat est que le curseur ponctuel offre de très bonnes performances par rapport aux techniques de \emph{raycasting}, ce qui peut surprendre compte tenu des performances généralement supérieures de ces dernières~\cite{bowman2001testbed}. Mais le niveau d'occultation avec de nombreux distracteurs est tel que les performances de cette classe de techniques chutent. Toutefois, le \emph{Depth Ray} fournit de très bons résultats, meilleurs que ceux du curseur ponctuel. Il profite selon toute probabilité de l'intégration des phases de sélection et de désambiguïsation. Grossman \emph{et al.} remarquent au passage que le temps de désambiguïsation du \emph{Flower Ray} est relativement constant en fonction de l'emplacement de la cible, alors que celui du \emph{Lock Ray} varie beaucoup ; sans doute le menu radial du premier a-t-il un effet lisseur sur cette valeur.
 
 	\subsubsection{Performances en fontion de l'emplacement de la cible}
 	Les performances du \emph{Smart Ray} paraissent décevantes. Un examen plus poussé des résultats montre toutefois une forte interaction entre le temps de sélection et l'emplacement de la cible avec cette technique (voir la figure~\ref{fig:smartRayLocation}). Pour les cibles situées à droite, les performances s'effondrent, car le rayon part également de la droite (tous les sujets étant droitiers) donc rencontre beaucoup d'obstacles. Dans ces conditions, l'heuristique de prédiction du \emph{Smart Ray} échoue plus souvent.
@@ -688,7 +688,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Là encore on peut s'interroger sur la solidité des distances mesurées sur \emph{Smart Ray} attendu que dans un contexte \og réel \fg{} les utilisateurs seraient libres de se déplacer. Naturellement, la quantité de mouvement absolue du pointeur pourrait s'en trouver accrue, mais sa quantité de mouvement relatif à l'utilisateur pourrait diminuer. Il resterait à déterminer s'il est plus fatigant de bouger beaucoup son bras, ou un peu son corps et un peu son bras. Cette question est à notre connaissance ouverte.
 	
 	\subsubsection{Taux d'erreurs}
-	Enfin, Grossman \emph{et al.} rapportent que les taux d'erreurs sont avantageux avec ces techniques de \emph{raycasting} avec disambiguïsation, comme le détaille la table~\ref{tab:rayErrors}.
+	Enfin, Grossman \emph{et al.} rapportent que les taux d'erreurs sont avantageux avec ces techniques de \emph{raycasting} avec désambiguïsation, comme le détaille la table~\ref{tab:rayErrors}.
 	
 %	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
 	\begin{table}
@@ -701,20 +701,20 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\emph{Flower Ray}		& 10,9~\%{} \\
 		\emph{Smart Ray}		& 10,4~\%{} \\
 	\end{tabular}
-	\caption[Taux d'erreurs pour les techniques de \emph{raycasting} avec disambiguïsation]{Taux d'erreurs pour les techniques de \emph{raycasting} avec disambiguïsation. Données tirées de~\cite{grossman2006design}.}
+	\caption[Taux d'erreurs pour les techniques de \emph{raycasting} avec désambiguïsation]{Taux d'erreurs pour les techniques de \emph{raycasting} avec désambiguïsation. Données tirées de~\cite{grossman2006design}.}
 	\label{tab:rayErrors}
 	\end{table}
 	
 	\subsection{Conclusion}
-	L'étude de Grossman \emph{et al.}~\cite{grossman2006design} montre qu'en environnement dense, la sélection par \emph{raycasting} pur est moins efficace qu'un curseur ponctuel, voire impossible, mais que des méthodes de disambiguïsation peuvent permettre d'atteindre de meilleures performances. Dans une certaine mesure, on peut en effet améliorer les temps de sélection, mais les bénéfices sur les taux d'erreurs sont encore plus importants.
+	L'étude de Grossman \emph{et al.}~\cite{grossman2006design} montre qu'en environnement dense, la sélection par \emph{raycasting} pur est moins efficace qu'un curseur ponctuel, voire impossible, mais que des méthodes de désambiguïsation peuvent permettre d'atteindre de meilleures performances. Dans une certaine mesure, on peut en effet améliorer les temps de sélection, mais les bénéfices sur les taux d'erreurs sont encore plus importants.
 	
 	Parmi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple.
 	
-	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de présélection et de disambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à \og capturer \fg{} la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree d'angle, même si ce n'était pas indiqué par le rendu graphique.
+	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de pré-sélection et de désambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à \og capturer \fg{} la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree{} d'angle, même si ce n'était pas indiqué par le rendu graphique.
 	
 	Si le \emph{Smart Ray} fournit ici d'assez mauvais résultats, il serait intéressant de le réévaluer dans ce contexte, car d'une part, il souffrirait peut-être moins de l'occultation de la cible si elle était mobile, et d'autre part, il ne serait peut-être plus nécessaire de bouger le rayon pour lever l'ambiguïté, puisqu'en suivant la cible, son poids augmenterait continuellement, tandis que les poids des distracteurs seraient susceptibles de baisser assez rapidement --- à moins que ceux-ci ne se déplacent de façon corrélée à la cible, en étant toujours touchés par le rayon, ce qui est assez improbable sur une durée de plusieurs secondes dans la plupart des cas.
 	
-	Ainsi, les inconvénients principaux de cette technique, à savoir la distance parcourue par le périphérique et l'occultation pourraient être atténués, tandis que l'heuristique de prédiction pourrait \emph{mieux} fonctionner qu'avec des cibles statiques. Nous verrons plus loin que la technique \emph{Hook}~\cite{ortega2013hook}, basée sur un curseur ponctuel, fonctionne à peu près sur ce principe.
+	Ainsi, les inconvénients principaux de cette technique, à savoir la distance parcourue par le périphérique et l'occultation pourraient être atténués, tandis que l'heuristique de prédiction pourrait \emph{mieux} fonctionner qu'avec des cibles statiques. Nous verrons plus loin que la technique \emph{IntenSelect}~\cite{de2005intenselect} fonctionne à peu près sur ce principe, de même que \emph{Hook}~\cite{ortega2013hook}, qui fait cependant usage d'un curseur ponctuel.
 
 \section{Sélection en cascade, grossière, puis fine}
 	\subsection{Principe général et avantages}
@@ -824,11 +824,11 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad}
-		\caption[Fonctionnement de la technique SQUAD]{La technique SQUAD. À gauche, la première étape de sélection, au cours de laquelle l'utilisateur présélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets présélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
+		\caption[Fonctionnement de la technique SQUAD]{La technique SQUAD. À gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squad}
 	\end{figure}
 	
-	Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets présélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de présélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
+	Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets pré-sélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de pré-sélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
 	
 	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
 	
@@ -881,11 +881,11 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
-		\caption[\emph{Disambiguation Canvas}]{Fonctionnement du \emph{Disambiguation Canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette présélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la présélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles présélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence, mais cela pourrait être une tablette) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont présents ici à des fins purement illustratives. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas}]{Fonctionnement du \emph{Disambiguation Canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles pré-sélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence, mais cela pourrait être une tablette) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont présents ici à des fins purement illustratives. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvas}
 	\end{figure}
 	
-	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une présélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets présélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
+	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une pré-sélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets pré-sélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
 	
 	\begin{figure}[H]
 		\centering
@@ -903,12 +903,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:dCanvasLayout}
 	\end{figure}
 	
-	Notez que les objets présélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets présélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets présélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
+	Notez que les objets pré-sélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasDensity}
-		\caption[\emph{Disambiguation Canvas} --- Densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets présélectionnés dans la première étape. À gauche (a), 25 objets peuvent être sélectionnés, et sont de fait assez gros ; au milieu (b), ils sont 97, et de taille moyenne ; à droite (c) ils sont 224 et nettement plus petits. La loi de Fitts s'applique et nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas} --- Densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. À gauche (a), 25 objets peuvent être sélectionnés, et sont de fait assez gros ; au milieu (b), ils sont 97, et de taille moyenne ; à droite (c) ils sont 224 et nettement plus petits. La loi de Fitts s'applique et nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasDensity}
 	\end{figure}
 	
@@ -947,7 +947,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
-		\caption[\emph{Disambiguation Canvas} --- Animation de transition]{Animation pendant la transition entre la phase de présélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas} --- Animation de transition]{Animation pendant la transition entre la phase de pré-sélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasContext}
 	\end{figure}
 	
@@ -1369,5 +1369,29 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     Quand les environnements sont denses, quand une charte graphique doit être respectée, ou quand l'encombrement visuel doit être minimisé, ces techniques devraient selon nous être écartées.
     
     \subsection{Manipulation du temps}
+    Les techniques spécifiquement pensées pour les cibles mobiles adoptent parfois une solution radicale : les rendre statiques. C'est notamment le cas d'une technique simplement appelée \emph{Hold}~\cite{hajri2011moving}, qui se contente de stopper tous les objets pendant la phase de sélection, mais aussi de \emph{Target Ghost}~\cite{hasan2011comet}, qui crée des copies statiques des cibles qui, elles, demeurent mobiles, mais semi-transparentes. Cette dernière technique a l'avantage de ne pas perdre le contexte dynamique.
+    
+    Mais elle a aussi l'inconvénient de doubler le nombre d'objets affichés, et ceux qui sont voués à être sélectionnés (les copies statiques) demeurent détachés de leur contexte dynamique. Pis, si les objets ne sont pas visuellement différents les uns des autres, il peut être impossible pour l'utilisateur de relier une copie statique à l'objet qui l'a engendré.
+    
+    Là encore, les applications à forte densité ne peuvent se satisfaire d'une technique de ce type, et ce d'autant plus que le contexte dynamique est important, ou que les objets sont visuellement similaires.
+    
+    \subsection{\emph{Raycasting}}
+    Une approche radicalement différente consiste à lancer un rayon dans l'espace virtuel pour pouvoir sélectionner un objet en le \og touchant \fg{} avec ce rayon. Le principe n'est pas récent~\cite{liang1994jdcad}, et se retrouve sous de nombreuses formes, notamment avec un cône au lieu d'un rayon~\cite{steed20043d}, afin de faciliter la sélection de cibles de petite taille apparente.
+    
+    Cependant, le lancer de rayon --- et plus encore sous sa forme conique --- souffre d'un problème majeur : l'ambiguïté lorsque plusieurs objets sont traversés par le rayon ou le cône. Pour pallier ce défaut, des solutions de désambiguïsation sont régulièrement mises en place~\cite{grossman2006design}. Elles sont diverses et leurs efficacités respectives varient, notamment selon les circonstances.
+    
+    Sans désambiguïsation, le lancer de rayon/cône se montre rapidement inutilisable en environnement dense ; avec, il peut fournir de bons résultats. Cependant, cela n'a été montré que sur des cibles statiques, et l'on peut légitimement douter de l'efficacité de cette approche avec des cibles mobiles, compte tenu de la précision déjà requise avec des objets statiques.
+    
+    Observons néanmoins qu'une heuristique de prédiction de l'intention de l'utilisateur peut apporter des gains significatifs. Nous reviendrons sur ce point plus bas. Contentons-nous ici d'observer que le \emph{raycasting} pur, ou même accompagné d'une solution de désambiguïsation efficace, est assez mal adapté aux environnements denses et surtout dynamiques.
+    
+    \subsection{Sélection en cascade}
+    Pour gérer la difficulté d'une tâche de sélection, celle-ci peut être divisée en sous-tâches, dans une approche dite de sélection en cascade. Le principe est de pré-sélectionner une zone de l'espace virtuel afin d'éliminer tout le reste (et tous les objets s'y trouvant) avant de procéder à une seconde phase de sélection, plus fine, et pouvant éventuellement être de nouveau subdivisée.
+    
+    La sélection en cascade peut fournir de bons temps de sélection, et permet souvent une réduction drastique du taux d'erreurs~\cite{kopper2011rapid}. Les techniques de sélection en cascade font souvent usage d'une première phase grossière tirant parti d'une estimation de la direction du regard de l'utilisateur, notamment parce que cela permet d'accomplir cette phase très rapidement~\cite{debarba2013disambiguation}.
+    
+    \subsection{Prédiction de la trajectoire du curseur}
+    
+    
+    \subsection{Prédiction de l'intention de l'utilisateur}
 
 \clearpage
