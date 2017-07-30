@@ -1350,5 +1350,24 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Néanmoins, cette technique présente suffisamment de qualités dans le contexte de la sélection de cibles mobiles en environnement dense pour retenir particulièrement notre attention, et il nous apparaît qu'elle forme le meilleur point de départ pour la conception d'une technique optimale pour cette classe de tâches.
 	
 \section{Conclusion}
+    Comme nous venons de le voir, les techniques d'aide à la sélection sont de natures diverses. Elles consistent souvent à faciliter la sélection d'une cible en augmentant sa taille effective, ou en réduisant la distance effective entre elle et le curseur, selon les recommandations que l'on peut déduire de la loi de Fitts.
+    
+    \subsection{Curseurs zonaux}
+    Les curseurs zonaux, qu'ils soient surfaciques ou volumiques, ont pour but d'augmenter la taille effective des cibles en y ajoutant celle du curseur. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} pousse ce concept à sa conclusion logique en transformant chaque point de l'espace en un proxy permettant de sélectionner la cible la plus proche ; ce principe fonctionne en 2D comme en 3D. \emph{DynaSpot}~\cite{chapuis2009dynaspot} adopte une approche similaire mais dépendant de la vitesse du curseur, et non de connaissances \emph{a priori} sur les positions des cibles.
+    
+    Le propre de ces systèmes est de dépendre de la densité de l'environnement : plus celle-ci est faible, plus ils sont efficaces, et inversement. En outre, ils ne tiennent pas compte du mouvement des cibles et ne sont pas particulièrement aptes à faciliter la sélection de cibles mobiles.
+    
+    De fait, nous ne saurions les recommander pour de telles cibles en environnement dense. Cependant, attendu qu'ils peuvent être combinés à d'autres techniques, les curseurs zonaux sont loin d'être dénués d'intérêt pour les applications qui nous intéressent.
+    
+    \subsection{Augmentation des objets}
+    D'autres techniques, spécifiquement développées pour la sélection de cibles mobiles, augmentent les objets d'un appendice, comme pour \emph{Comet}~\cite{hasan2011comet}, ou d'une onde de choc, comme pour \emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. Il s'agit là encore d'augmenter la taille effective des cibles, mais en tenant compte de leur nature mobile.
+    
+    Bien que souvent efficaces, et ce d'autant plus qu'elles peuvent être combinées à un curseur zonal, ces techniques souffrent du même inconvénient que les curseurs zonaux : la densité réduit considérablement leur intérêt, d'une part à cause du chevauchement potentiel des cibles augmentées, et d'autre part à cause de l'encombrement visuel impliqué par l'augmentation.
+    
+    Celle-ci peut en effet être désagréable, occulter des éléments importants, ou poser de graves problèmes esthétiques, particulièrement dans des contextes d'une nature (au moins partiellement) artistique, tels que les jeux vidéo.
+    
+    Quand les environnements sont denses, quand une charte graphique doit être respectée, ou quand l'encombrement visuel doit être minimisé, ces techniques devraient selon nous être écartées.
+    
+    \subsection{Manipulation du temps}
 
 \clearpage
