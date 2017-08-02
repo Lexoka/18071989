@@ -78,7 +78,8 @@
 % permet d'indiquer à Latex où découper des mots qu'il ne connaît pas
 \hyphenation{au-tres}
 
-% multicolonne (le texte passe d'une colonne à l'autre)
+\NoAutoSpaceBeforeFDP % sinon il fout des espaces devant : ; et cie en anglais
+
 \usepackage{multicol}
 
 % pour pouvoir commencer sur une page paire : insérer à l'endroit voulu \skiptoevenpage
