@@ -1411,5 +1411,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     Ces questions --- au demeurant très intéressantes --- sont à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
     
     \subsection{Prédiction de l'intention de l'utilisateur}
+    Une autre approche prédictive consiste à observer le comportement de l'utilisateur pour essayer de deviner son intention, et plus précisément pour déterminer quel objet il souhaite sélectionner. C'est ainsi que fonctionnent \emph{IntenSelect}~\cite{de2005intenselect} (est une forme de lancer de rayon) et \emph{Hook}~\cite{ortega2013hook} (qui fait usage d'un curseur ponctuel).
+    
+    Un des intérêts de la prédiction d'intention est de ne pas dépendre d'hypothèses telles que la rectitude de la trajectoire du curseur, particulièrement \og fragiles \fg{} avec des cibles mobiles. L'hypothèse généralement commune aux techniques de ce type est que l'utilisateur va chercher à \og suivre \fg{} sa cible pour la capturer, donc que ses mouvements seront corrélés à ceux de la cible. Cette corrélation est exploitée pour déterminer quel objet est visé par l'utilisateur.
+    
+    En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesses des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
+    
+    Observons par ailleurs que la prédiction de l'intention n'est pas incompatible avec d'autres approches mentionnées plus haut, telles que la sélection en cascade, par exemple.
 
 \clearpage
