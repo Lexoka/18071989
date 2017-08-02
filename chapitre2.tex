@@ -1389,6 +1389,18 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     
     La sélection en cascade peut fournir de bons temps de sélection, et permet souvent une réduction drastique du taux d'erreurs~\cite{kopper2011rapid}. Les techniques de sélection en cascade font souvent usage d'une première phase grossière tirant parti d'une estimation de la direction du regard de l'utilisateur, notamment parce que cela permet d'accomplir cette phase très rapidement~\cite{debarba2013disambiguation}.
     
+    De manière générale, la sélection en cascade a un inconvénient inhérent à son principe même : le nombre de tâches de sélection augmente, et est au minimum doublé. L'hypothèse motivant la mise en \oe{}uvre d'une telle technique est que les sous-tâches prendront un temps total inférieur à celui de la tâche originelle ; mais ce n'est malheureusement pas toujours le cas.
+    
+    Dans le cas plus spécifique des cibles mobiles, un autre problème s'ajoute. En effet, à partir du moment où une pré-sélection a été faite, les objets qui n'ont pas été pré-sélectionnés sont écartés d'une manière ou d'une autre. En soi, cela peut être gênant car la présence de ces objets et leurs interactions dans le temps avec les objets pré-sélectionnés peuvent avoir de l'importance pour l'utilisateur. Il s'agit là encore de préserver le contexte dynamique de la situation. Une fois pré-sélectionnés, les objets toujours présents dans la phase fine se retrouvent en effet extraits de ce contexte dynamique et, parfois, totalement déconnectés de leur situation originelle dans l'espace comme dans le temps.
+    
+    Certes, une technique de sélection en cascade peut, dans une certaine mesure, minimiser ces problèmes ; mais ce sera généralement au prix d'une diminution des performances.
+    
+    L'on pourrait donc écarter ces techniques pour les usages identifiés dans le premier chapitre, mais remarquons qu'une autre forme de sélection en cascade est possible et potentiellement pertinente : le filtrage sémantique. Dans le cas d'une simulation moléculaire, par exemple, l'utilisateur, sachant qu'il veut sélectionner un atome d'azote, pourrait communiquer cette intention au système qui, en retour, désactiverait la sélection de tout autre objet, et pourrait éventuellement dé-saturer les objets en question, ou en faire un rendu en semi-transparence.
+    
+    Cela aurait pour effet de réduire la densité effective de l'environnement d'un point de vue moteur, et éventuellement visuel, mais sans perdre (totalement) le contexte dynamique. L'efficacité pratique d'un tel filtrage repose néanmoins sur la capacité de l'effectuer rapidement et de manière fiable. L'usage de commandes vocales est particulièrement tentant pour une telle sous-tâche, mais présente les inconvénients inhérents au traitement du signal habituels --- erreurs et imprécisions de reconnaissance, latence, coût, complexité, etc.
+    
+    En somme, le principe de sélection en cascade est fort intéressant, à condition de pouvoir effectuer la phase grossière de pré-sélection très rapidement, et de ne pas perdre le contexte dynamique.
+    
     \subsection{Prédiction de la trajectoire du curseur}
     
     
