@@ -1402,7 +1402,13 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     En somme, le principe de sélection en cascade est fort intéressant, à condition de pouvoir effectuer la phase grossière de pré-sélection très rapidement, et de ne pas perdre le contexte dynamique.
     
     \subsection{Prédiction de la trajectoire du curseur}
+    Plutôt que de chercher à optimiser les paramètres de la tâche de sélection (taille ou distance effectives) il est possible d'analyser la trajectoire du curseur pendant la tâche, et d'essayer de prédire son point d'arrivée à l'avance, afin d'accélérer la sélection. \emph{Kinematic Endpoint Prediction} (KEP)~\cite{lank2007endpoint} ou encore \emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} fonctionnent sur ce principe.
     
+    En examinant le profil de vitesse en fonction du temps d'un curseur, connaissant les lois qui gouvernent la forme de ces profils, et sur l'hypothèse d'une trajectoire à peu près rectiligne, l'on peut estimer avec une certaine précision le point d'arrivée d'un curseur. En pratique, les performances obtenues peuvent être bonnes, mais cette approche s'accommode assez mal des environnements particulièrement denses, mais surtout, il est fort douteux qu'elle puisse s'appliquer efficacement aux cibles mobiles.
+    
+    En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou la position où l'utilisateur estime qu'elle sera à la fin du mouvement ?
+    
+    Ces questions --- au demeurant très intéressantes --- sont à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
     
     \subsection{Prédiction de l'intention de l'utilisateur}
 
