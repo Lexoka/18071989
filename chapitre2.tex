@@ -1320,7 +1320,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		
 	La cible potentielle dont le score est le plus élevé est considérée comme celle que l'utilisateur cherche probablement à sélectionner. La sélection peut donc se faire par simple pression d'un bouton, sans contrainte particulière sur la position du curseur au moment où elle est déclenchée.
 
-	L'hypothèse de base sur laquelle \emph{Hook} repose est que puisque l'utilisateur, lorsqu'il essaie de sélectionner une cible mobile, \og suit \fg{} ses mouvements avec son curseur\cite{hasan2011comet}, la trajectoire de celui-ci sera fortement corrélée à celle de la cible, et permettra donc de l'identifier.
+	L'hypothèse de base sur laquelle \emph{Hook} repose est que puisque l'utilisateur, lorsqu'il essaie de sélectionner une cible mobile, \og suit \fg{} ses mouvements avec son curseur~\cite{hasan2011comet}, la trajectoire de celui-ci sera fortement corrélée à celle de la cible, et permettra donc de l'identifier.
 	
 	\emph{Hook} est manifestement une technique pensée pour les cibles mobiles, mais elle est également bien adaptée aux environnements denses, car elle ne repose pas sur un agrandissement effectif des objets (comme le \emph{Bubble Cursor}) ou sur l'hypothèse que la cible n'est pas occultée, comme la plupart des techniques de \emph{raycasting}.
 	
@@ -1338,7 +1338,39 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Performances}
 	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien.
 	
-	L'évaluation menée par Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4. Ces résultats valent en 2D (figure ) comme en 3D (figure ). La sélection non assistée était si inadéquate à la tâche que les sujets ne purent sélectionner les cibles en 3D à partir de la vitesse 3.
+	\begin{figure}[htb]
+		\begin{subfigure}{.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/hookPic}
+			\caption[\emph{Hook} -- fonctionnement]{Fonctionnement de la technique \emph{Hook}. L'encombrement visuel de la technique est minimal : seul un cône semi-transparent et une mise en valeur de la cible prédite s'ajoutent au rendu. Crédit : \cite{ortega2013hook}.}
+			\label{fig:hookPic}
+		\end{subfigure}
+		~
+		\begin{subfigure}{.7\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/hookDir}
+			\caption[\emph{Hook} -- mouvements des cibles]{Mouvements des cibles générés pour évaluer la technique \emph{Hook}. Le vecteur direction à l'instant $t$ subit une rotation de 10\textdegree{} par rapport à son orientation à $t-1$. Cette opération est effectuée à chaque image calculée. Ainsi, un mouvement imprévisible mais non brownien est généré. Crédit : \cite{ortega2013hook}.}
+			\label{fig:hookDir}
+		\end{subfigure}
+		\caption[\emph{Hook} -- fonctionnement]{Fonctionnement de la technique \emph{Hook}.}
+		\label{fig:hook}
+	\end{figure}
+	
+	L'évaluation menée par Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4. Ces résultats valent en 2D (voir la figure~\ref{fig:hookRes2d}) comme en 3D (voir la figure~\ref{fig:hookRes3d}). La sélection non assistée était si inadéquate à la tâche que les sujets ne purent sélectionner les cibles en 3D à partir de la vitesse 3.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/hookRes2d}
+		\caption[\emph{Hook} -- performances en 2D]{Performances de la technique \emph{Hook} en 2D. Temps de sélection (à gauche) et taux d'erreurs (à droite) en fonction de la vitesse. Crédit : \cite{ortega2013hook}.}
+		\label{fig:hookRes2d}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/hookRes3d}
+		\caption[\emph{Hook} -- performances en 2D]{Performances de la technique \emph{Hook} en 3D. Temps de sélection (à gauche) et taux d'erreurs (à droite) en fonction de la vitesse. Crédit : \cite{ortega2013hook}.}
+		\label{fig:hookRes3d}
+	\end{figure}
 	
 	\subsection{\emph{Quid} des environnements denses à objets liés ?}
 	Les qualités et avantages de \emph{Hook} sont nombreux, mais plusieurs interrogations demeurent. Premièrement, les performances relatives de cette technique seraient-elles aussi bonnes avec d'autres types de mouvements ? Le seraient-elles avec des objets beaucoup plus nombreux et plus d'occultation encore ?
