@@ -41,13 +41,17 @@
     Concrètement, les objets macroscopiques dont les mouvements sont soumis aux lois de la physique newtonienne~\cite{newton1833philosophiae} ont des mouvements autocorrélés --- ce sera donc le cas de véhicules de tous types, des êtres vivants (athlètes compris) des projectiles, missiles, etc. Les objets nanoscopiques dont les mouvements sont soumis aux lois de la mécanique quantique ont des mouvements markoviens --- ce sera notamment le cas des particules dans les simulations moléculaires. Les objets pouvant être sélectionnés dans les jeux vidéo seront autocorrélés ou markoviens, selon les règles choisies par les développeurs.
 
     \paragraph{Uniformité.}
-    Pas de changement.
+    Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur direction de l'objet concerné change.
 
     \paragraph{Périodicité.}
-    Répétition selon une période.
+    Un mouvement sera dit périodique si les changements de directions sont tels que l'objet effectuera une trajectoire fermée qu'il répétera à intervalles réguliers. Plus formellement, un mouvement est périodique s'il admet une période $T$ telle que :
+    $\forall t,~Position_{t}~=~Position_{t+T}$ où $Position_{t}$ désigne la position de l'objet à l'instant $t$.
+    
+    \subparagraph{Pseudo-périodicité.}
+    Nous appellerons pseudo-périodique un mouvement caractérisé par une trajectoire fermée et répétée à intervalles \emph{irréguliers}. Un tel mouvement ne satisfait pas la condition formalisée ci-dessus, mais admet un ensemble de positions limitées à une trajectoire donnée, et revisitées continuellement dans le même ordre --- simplement, à des vitesses pouvant varier.
 
     \subparagraph{Circularité.}
-    En cercle tout bêtement.
+    Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
 
     \subsubsection{Densité et occultation}
     Nombre de cibles par unité de surface/volume, occultation.
