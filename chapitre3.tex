@@ -31,10 +31,14 @@
 \section{Taxinomie des environnements de sélection}
 
     \subsection{Critères de discrimination}
-    L'établissement de notre taxinomie passe par le choix des critères qui nous permettront de d'établir des distinctions entre les 
+    L'établissement de notre taxinomie passe par le choix des critères qui nous permettront de d'établir des distinctions entre les types de mouvements des cibles et les environnements de sélection. Dans les sous-sections suivantes, nous allons détailler les critères que nous avons retenus.
 
     \subsubsection{Autocorrélation}
-    Si à un instant donné ça dépend de l'instant précédent
+    Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quel que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
+    
+    En effet, si ledit changement se fait selon un angle borné (entre -45\textdegree{} et +45\textdegree{}, par exemple) alors l'orientation du vecteur direction à l'instant $t$ dépendra de son orientation à $t-1$. Tant que le changement de direction à l'instant $t$, lui, est bien indépendant du changement à l'instant $t-1$ nous admettrons cet abus de langage et parlerons de mouvement markovien ; sinon, le mouvement sera dit autocorrélé. Par commodité, un objet dont les mouvements sont autocorrélés sera dit autocorrélé, et un objet dont les mouvements sont markoviens sera dit markovien.
+    
+    Concrètement, les objets macroscopiques dont les mouvements sont soumis aux lois de la physique newtonienne~\cite{newton1833philosophiae} ont des mouvements autocorrélés --- ce sera donc le cas de véhicules de tous types, des êtres vivants (athlètes compris) des projectiles, missiles, etc. Les objets nanoscopiques dont les mouvements sont soumis aux lois de la mécanique quantique ont des mouvements markoviens --- ce sera notamment le cas des particules dans les simulations moléculaires. Les objets pouvant être sélectionnés dans les jeux vidéo seront autocorrélés ou markoviens, selon les règles choisies par les développeurs.
 
     \paragraph{Uniformité.}
     Pas de changement.

@@ -1324,7 +1324,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\emph{Hook} est manifestement une technique pensée pour les cibles mobiles, mais elle est également bien adaptée aux environnements denses, car elle ne repose pas sur un agrandissement effectif des objets (comme le \emph{Bubble Cursor}) ou sur l'hypothèse que la cible n'est pas occultée, comme la plupart des techniques de \emph{raycasting}.
 	
-	Cette technique ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. Si un retour graphique indique la cible prédite en la mettant en surbrillance dans une sphère semi-transparente et en affichant un cône semi-transparent du curseur vers la cible, l'encombrement visuel qui en résulte est minimal.
+	Cette technique ne modifie pas l'apparence des cibles, et n'interrompt pas l'animation ou la simulation en cours. Si un retour graphique indique la cible prédite en la mettant en surbrillance dans une sphère semi-transparente et en affichant un cône semi-transparent du curseur vers la cible, l'encombrement visuel qui en résulte est minimal, comme on peut le constater sur la figure~\ref{fig:hookPic}.
 	
 	\subsection{Calcul du score}
 	Comme pour toutes les heuristiques de ce type, le calcul du score doit tenir compte de deux impératifs contradictoires, afin d'aboutir à un bon compromis : la prédiction de la cible présumée doit être suffisamment stable pour ne pas perturber l'utilisateur par d'incessants changements, mais doit pouvoir changer suffisamment vite (lorsqu'elle est fausse ou quand l'utilisateur change de cible) pour permettre une sélection rapide.
@@ -1336,7 +1336,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	À tout instant, l'objet de score maximal peut être sélectionné en activant un seul contrôle ou bouton d'un périphérique de saisie. Notez que cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques, puisque le calcul du score ne nécessite pas que les objets bougent. De même, \emph{Hook} fonctionne avec un périphérique de saisie à deux degrés de liberté, en effectuant les calculs de score dans un plan sur lequel l'espace 3D est projeté.
 	
 	\subsection{Performances}
-	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien.
+	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien. Ce processus est illustré par la figure~\ref{fig:hookDir}.
 	
 	\begin{figure}[htb]
 		\begin{subfigure}{.3\textwidth}
