@@ -53,8 +53,15 @@
     \subparagraph{Circularité.}
     Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
 
-    \subsubsection{Densité et occultation}
-    Nombre de cibles par unité de surface/volume, occultation.
+    \subsubsection{Densité de l'environnement}
+    Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continus mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
+    
+    \paragraph{Occultation.}
+    Le niveau d'occultation visuelle d'un environnement est également crucial, et notre taxinomie ne saurait l'ignorer. S'il dépend fortement de la densité de l'environnement, on ne peut établir de lien d'équivalence entre celle-ci et celui-là. En effet, pour une densité donnée, le niveau d'occultation peut être très élevé si les cibles sont très grosses et opaques ; si, en revanche, elles sont relativement petites, voire semi-transparentes, l'occultation peut être assez faible. En outre, la \og taille \fg{} des cibles ne peut pas forcément s'exprimer de façon adéquate avec une valeur scalaire. En effet, si la taille d'une cible sphérique est correctement exprimée par son seul rayon, il en va autrement d'un objet d'une forme quelconque, et \emph{a fortiori} complexe.
+    
+    Pour ces raisons et d'autres, l'estimation du niveau d'occultation est difficile, et mériterait peut-être à elle seule de faire l'objet d'une thèse de doctorat. Peut-être serait-il opportun de la quantifier par une estimation de la probabilité qu'un objet quelconque soit totalement occulté, ou suffisamment occulté pour qu'un utilisateur manque de le remarquer avec une certaine probabilité donnée.
+    
+    C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
 
     \subsection{Taxinomie obtenue}
     Résultats ; bidule OpenCV ?
