@@ -82,7 +82,553 @@
     	\item La fréquence $F$ des changements de $\vec{dir}$ ;
     	\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
     \end{enumerate}
+    
+    \subsection{Trajectoires obtenues}
+    Des exemples de trajectoires obtenues avec ce modèles sont fournis dans la figure~\ref{fig:motion1530} avec $A=15$ et $A=30$, dans la figure~\ref{fig:motion4560} avec $A=45$ et $A=60$, dans la figure~\ref{fig:motion7590} avec $A=75$ et $A=90$, dans la figure~\ref{fig:motion105120} avec $A=105$ et $A=120$, dans la figure~\ref{fig:motion135150} avec $A=135$ et $A=150$, et dans la figure~\ref{fig:motion165180} avec $A=165$ et $A=180$. Dans tous les cas, $S=2,19$, $F$ prend les valeurs 1, 4, 8, 16, 32 et 60, et le mouvement généré dure 20 secondes.
+    
+    Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{}. De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tous l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.
+    
+    \subsubsection{Impressions subjectives sur les trajectoires}
+    
+    
+   	\newcommand{\subImgWmo}{0.32\textwidth}
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_1}
+			\caption[$A = 15$, $F=1$]{$A = 15$, $F=1$}
+			\label{fig:synTraj_219_15_1	}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_4}
+			\caption[$A = 15$, $F=4$]{$A = 15$, $F=4$}
+			\label{fig:synTraj_219_15_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_8}
+			\caption[$A = 15$, $F=8$]{$A = 15$, $F=8$}
+			\label{fig:synTraj_219_15_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_16}
+			\caption[$A = 15$, $F=16$]{$A = 15$, $F=16$}
+			\label{fig:synTraj_219_15_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_32}
+			\caption[$A = 15$, $F=32$]{$A = 15$, $F=32$}
+			\label{fig:synTraj_219_15_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_60}
+			\caption[$A = 15$, $F=60$]{$A = 15$, $F=60$}
+			\label{fig:synTraj_219_15_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_30_1}
+			\caption[$A = 30$, $F=1$]{$A = 30$, $F=1$}
+			\label{fig:synTraj_219_30_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_30_4}
+			\caption[$A = 30$, $F=4$]{$A = 30$, $F=4$}
+			\label{fig:synTraj_219_30_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_30_8}
+			\caption[$A = 30$, $F=8$]{$A = 30$, $F=8$}
+			\label{fig:synTraj_219_30_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_30_16}
+			\caption[$A = 30$, $F=16$]{$A = 30$, $F=16$}
+			\label{fig:synTraj_219_30_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_30_32}
+			\caption[$A = 30$, $F=32$]{$A = 30$, $F=32$}
+			\label{fig:synTraj_219_30_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_30_60}
+			\caption[$A = 30$, $F=60$]{$A = 30$, $F=60$}
+			\label{fig:synTraj_219_30_60}
+		\end{subfigure}
+		\caption[Mouvements générés par notre modèle]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
+		\label{fig:motion1530}
+	\end{figure}
 
+
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_1}
+			\caption[$A = 45$, $F=1$]{$A = 45$, $F=1$}
+			\label{fig:synTraj_219_45_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_4}
+			\caption[$A = 45$, $F=4$]{$A = 45$, $F=4$}
+			\label{fig:synTraj_219_45_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_8}
+			\caption[$A = 45$, $F=8$]{$A = 45$, $F=8$}
+			\label{fig:synTraj_219_45_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_16}
+			\caption[$A = 45$, $F=16$]{$A = 45$, $F=16$}
+			\label{fig:synTraj_219_45_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_32}
+			\caption[$A = 45$, $F=32$]{$A = 45$, $F=32$}
+			\label{fig:synTraj_219_45_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_60}
+			\caption[$A = 45$, $F=60$]{$A = 45$, $F=60$}
+			\label{fig:synTraj_219_45_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_1}
+			\caption[$A = 60$, $F=1$]{$A = 60$, $F=1$}
+			\label{fig:synTraj_219_60_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_4}
+			\caption[$A = 60$, $F=4$]{$A = 60$, $F=4$}
+			\label{fig:synTraj_219_60_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_8}
+			\caption[$A = 60$, $F=8$]{$A = 60$, $F=8$}
+			\label{fig:synTraj_219_60_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_16}
+			\caption[$A = 60$, $F=16$]{$A = 60$, $F=16$}
+			\label{fig:synTraj_219_60_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_32}
+			\caption[$A = 60$, $F=32$]{$A = 60$, $F=32$}
+			\label{fig:synTraj_219_60_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_60}
+			\caption[$A = 60$, $F=60$]{$A = 60$, $F=60$}
+			\label{fig:synTraj_219_60_60}
+		\end{subfigure}
+		\caption[Mouvements générés par notre modèle -- II]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
+		\label{fig:motion4560}
+	\end{figure}
+	
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_1}
+			\caption[$A = 75$, $F=1$]{$A = 75$, $F=1$}
+			\label{fig:synTraj_219_75_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_4}
+			\caption[$A = 75$, $F=4$]{$A = 75$, $F=4$}
+			\label{fig:synTraj_219_75_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_8}
+			\caption[$A = 75$, $F=8$]{$A = 75$, $F=8$}
+			\label{fig:synTraj_219_75_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_16}
+			\caption[$A = 75$, $F=16$]{$A = 75$, $F=16$}
+			\label{fig:synTraj_219_75_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_32}
+			\caption[$A = 75$, $F=32$]{$A = 75$, $F=32$}
+			\label{fig:synTraj_219_75_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_60}
+			\caption[$A = 75$, $F=60$]{$A = 75$, $F=60$}
+			\label{fig:synTraj_219_75_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_1}
+			\caption[$A = 90$, $F=1$]{$A = 90$, $F=1$}
+			\label{fig:synTraj_219_90_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_4}
+			\caption[$A = 90$, $F=4$]{$A = 90$, $F=4$}
+			\label{fig:synTraj_219_90_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_8}
+			\caption[$A = 90$, $F=8$]{$A = 90$, $F=8$}
+			\label{fig:synTraj_219_90_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_16}
+			\caption[$A = 90$, $F=16$]{$A = 905$, $F=16$}
+			\label{fig:synTraj_219_90_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_32}
+			\caption[$A = 90$, $F=32$]{$A = 90$, $F=32$}
+			\label{fig:synTraj_219_90_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_60}
+			\caption[$A = 90$, $F=60$]{$A = 90$, $F=60$}
+			\label{fig:synTraj_219_90_60}
+		\end{subfigure}
+		\caption[Mouvements générés par notre modèle -- III]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
+		\label{fig:motion7590}
+	\end{figure}
+	
+	
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_1}
+			\caption[$A = 105$, $F=1$]{$A = 105$, $F=1$}
+			\label{fig:synTraj_219_105_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_4}
+			\caption[$A = 105$, $F=4$]{$A = 105$, $F=4$}
+			\label{fig:synTraj_219_105_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_8}
+			\caption[$A = 105$, $F=8$]{$A = 105$, $F=8$}
+			\label{fig:synTraj_219_105_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_16}
+			\caption[$A = 105$, $F=16$]{$A = 105$, $F=16$}
+			\label{fig:synTraj_219_105_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_32}
+			\caption[$A = 105$, $F=32$]{$A = 105$, $F=32$}
+			\label{fig:synTraj_219_105_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_60}
+			\caption[$A = 105$, $F=60$]{$A = 105$, $F=60$}
+			\label{fig:synTraj_219_105_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_1}
+			\caption[$A = 120$, $F=1$]{$A = 120$, $F=1$}
+			\label{fig:synTraj_219_120_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_4}
+			\caption[$A = 120$, $F=4$]{$A = 120$, $F=4$}
+			\label{fig:synTraj_219_120_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_8}
+			\caption[$A = 120$, $F=8$]{$A = 120$, $F=8$}
+			\label{fig:synTraj_219_120_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_16}
+			\caption[$A = 120$, $F=16$]{$A = 120$, $F=16$}
+			\label{fig:synTraj_219_120_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_32}
+			\caption[$A = 120$, $F=32$]{$A = 120$, $F=32$}
+			\label{fig:synTraj_219_120_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_60}
+			\caption[$A = 120$, $F=60$]{$A = 120$, $F=60$}
+			\label{fig:synTraj_219_120_60}
+		\end{subfigure}
+		\caption[Mouvements générés par notre modèle -- IV]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
+		\label{fig:motion105120}
+	\end{figure}
+	
+	
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_1}
+			\caption[$A = 135$, $F=1$]{$A = 135$, $F=1$}
+			\label{fig:synTraj_219_135_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_4}
+			\caption[$A = 135$, $F=4$]{$A = 135$, $F=4$}
+			\label{fig:synTraj_219_135_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_8}
+			\caption[$A = 135$, $F=8$]{$A = 135$, $F=8$}
+			\label{fig:synTraj_219_135_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_16}
+			\caption[$A = 135$, $F=16$]{$A = 135$, $F=16$}
+			\label{fig:synTraj_219_135_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_32}
+			\caption[$A = 135$, $F=32$]{$A = 135$, $F=32$}
+			\label{fig:synTraj_219_135_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_60}
+			\caption[$A = 135$, $F=60$]{$A = 135$, $F=60$}
+			\label{fig:synTraj_219_135_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_1}
+			\caption[$A = 150$, $F=1$]{$A = 150$, $F=1$}
+			\label{fig:synTraj_219_150_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_4}
+			\caption[$A = 150$, $F=4$]{$A = 150$, $F=4$}
+			\label{fig:synTraj_219_150_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_8}
+			\caption[$A = 150$, $F=8$]{$A = 150$, $F=8$}
+			\label{fig:synTraj_219_150_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_16}
+			\caption[$A = 150$, $F=16$]{$A = 150$, $F=16$}
+			\label{fig:synTraj_219_150_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_32}
+			\caption[$A = 150$, $F=32$]{$A = 150$, $F=32$}
+			\label{fig:synTraj_219_150_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_60}
+			\caption[$A = 150$, $F=60$]{$A = 150$, $F=60$}
+			\label{fig:synTraj_219_150_60}
+		\end{subfigure}
+		\caption[Mouvements générés par notre modèle -- V]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
+		\label{fig:motion135150}
+	\end{figure}
+	
+	
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_165_1}
+			\caption[$A = 165$, $F=1$]{$A = 165$, $F=1$}
+			\label{fig:synTraj_219_165_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_165_4}
+			\caption[$A = 165$, $F=4$]{$A = 165$, $F=4$}
+			\label{fig:synTraj_219_165_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_165_8}
+			\caption[$A = 165$, $F=8$]{$A = 165$, $F=8$}
+			\label{fig:synTraj_219_165_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_165_16}
+			\caption[$A = 165$, $F=16$]{$A = 165$, $F=16$}
+			\label{fig:synTraj_219_165_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_165_32}
+			\caption[$A = 165$, $F=32$]{$A = 165$, $F=32$}
+			\label{fig:synTraj_219_165_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_165_60}
+			\caption[$A = 165$, $F=60$]{$A = 165$, $F=60$}
+			\label{fig:synTraj_219_165_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_1}
+			\caption[$A = 180$, $F=1$]{$A = 180$, $F=1$}
+			\label{fig:synTraj_219_180_1}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_4}
+			\caption[$A = 180$, $F=4$]{$A = 180$, $F=4$}
+			\label{fig:synTraj_219_180_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_8}
+			\caption[$A = 180$, $F=1$]{$A = 180$, $F=8$}
+			\label{fig:synTraj_219_180_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_16}
+			\caption[$A = 180$, $F=16$]{$A = 1805$, $F=16$}
+			\label{fig:synTraj_219_180_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_32}
+			\caption[$A = 180$, $F=32$]{$A = 180$, $F=32$}
+			\label{fig:synTraj_219_180_32}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWmo}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_60}
+			\caption[$A = 180$, $F=60$]{$A = 180$, $F=60$}
+			\label{fig:synTraj_219_180_60}
+		\end{subfigure}
+		\caption[Mouvements générés par notre modèle -- VI]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
+		\label{fig:motion165180}
+	\end{figure}
+	
+	
     \subsection{Résultats}
     Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
 
