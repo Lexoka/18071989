@@ -89,7 +89,7 @@
     Les objets virtuels tels que ceux rencontrés dans les jeux vidéos ne sont soumis à aucune contrainte physique, et leurs directions peuvent changer de manière instantanée ou continue, selon les choix des développeurs ; dans certains cas, cette notion de fréquence aura donc du sens, et dans d'autres non.
     
     \paragraph{Cinématique discrète ou continue}
-    Afin, nous dirons que les objets dont les changements de direction sont instantanés sont de cinématique discrète, tandis que les autres sont de cinématique continue. Par  souci de concision, nous appellerons les premiés ciné-discrets et les second ciné-continus.
+    Afin, nous dirons que les objets dont les changements de direction sont instantanés sont de cinématique discrète, tandis que les autres sont de cinématique continue. Par  souci de concision, nous appellerons les premiés ciné-discrets et les second ciné-continus. Notons que dans la plupart des cas, les objets markoviens seront ciné-discrets et les objets autocorrélés seront ciné-continus, de telle sorte que ces termes sont presque interchangeables.
     
     \paragraph{Variabilité.}
     Comme pour la vitesse, il est bien entendu que la fréquence des changements de direction d'une cible ne sera pas nécessairement (ou même généralement) constante. De même que pour la vitesse, on tâchera donc d'obtenir un histogramme des valeurs, une moyenne, un écart-type, et un maximum.
@@ -335,7 +335,7 @@
 		\label{fig:motion4560}
 	\end{figure}
 	
-	\paragraph{Pseudo-entropie.}
+	\paragraph{Entropie.}
 	Dans ses travaux sur la thermodynamique, Rudolf Clausius définit l'entropie comme \og le contenu de tranformation [d'un] corps \fg{}~\cite{clausius1865verschiedene, clausius1865diverses}. Rapidement, Ludwig Boltzmann redéfinit l'entropie $S$ par l'équation $S = k\log(W)$, où $k$ est une constante et $W$ est le nombre d'états dans lequel un système peut se trouver~\cite{boltzmann1866mechanische, weisstein2004eric}.
 	
 	À partir de la définition de Boltzmann, Claude Shannon redéfinit à nouveau l'entropie~\cite{shannon1949communication} (qu'il préfère noter $H(X)$) d'une variable aléatoire discrète $X$ de valeurs possibles $\{x_{1}, \ldots{}, x_{n}\}$ par l'équation~\ref{eq:shannonEntropy}, où $P(x_{i})$ est la probabilité que $X=x_{i}$.
@@ -364,7 +364,27 @@
 	
 	Pour connaître l'entropie globale $E_{g}$ de la cible, on peut poser que $E_{g}$ est la moyenne des $E_{t}$ pour chaque instant $t$. Si l'on suppose que le temps est discrétisé de telle manière qu'un instant vaut $\frac{1}{60}$~s, alors $E_{g} = E_{t_{c}} \frac{F}{60}$ où $E_{t_{c}}$ est l'entropie de la cible à l'instant d'un changement de direction sûr.
 	
-	Plus $F$ est élevée, plus la direction change souvent. Plus $A$ est élevée, plus ces changements peuvent être importants. Par 
+	\subparagraph{Pseudo-entropie.}
+	Or, ce calcul d'entropie dépend d'hypothèses parfois très fortes :
+	
+	\begin{itemize}
+		\item $A$ est connue ;
+		\item $F$ est connue ;
+		\item Pour une valeur de $A$ donnée, tous les $\alpha$ sont équiprobables ;
+		\item La discrétisation de l'espace des $\alpha$ ne fausse pas l'estimation de l'entropie, c'est-à-dire qu'elle n'est ni trop fine ni trop grossière ;
+		\item La discrétisation du temps ne fausse pas l'estimation de l'entropie, c'est-à-dire qu'elle n'est ni trop fine ni trop grossière.
+	\end{itemize}
+	
+	Pour simplifier le problème, l'on peut simplement remarquer que :
+	\begin{itemize}
+		\item Plus $F$ est élevée, plus la direction change souvent,
+		\item Plus $A$ est élevée, plus ces changements peuvent être importants,
+		\item Les trajectoires observées sur les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} révèlent que, souvent, une trajectoire avec une valeur de $A$ relativement basse et une valeur de $F$ relativement haute sera subjectivement semblable à une trajectoire avec une valeur de $A$ relativement haute et une valeur de $F$ relativement basse.
+	\end{itemize}
+	
+	Il paraît donc raisonnable d'envisager le produit $AF$ comme une pseudo-entropie, et ce d'autant plus qu'il s'annule dès lors que $A=0$ ou $F=0$, de même que l'entropie. Il a en outre le mérite d'être très simple à calculer, d'autant que ce calcul est possible à partir de valeurs typiques et maximales estimées.
+	
+	Nous pouvons aisément déduire des observations faites plus haut sur la fréquence des changements de direction et leurs amplitudes que l'entropie et la pseudo-entropie pourront être très élevées pour les objets ciné-discrets mais tendront à être faibles pour les objets ciné-continus (après discrétisation).
 	
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
