@@ -54,9 +54,26 @@
     Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
     
     \subsubsection{Vitesse}
+    La vitesse des cibles est un critère essentiel de notre taxinomie, car cette valeur a une très forte influence sur la difficulté de sélection, comment le montrent notamment les résultats empiriques obtenus par Ortega~\cite{ortega2013hook} et présentés sur les figures~\ref{fig:hookRes2d} et~\ref{fig:hookRes3d}, ainsi que les travaux de Jagacinksi \emph{et al.}~\cite{jagacinski1980test} (résumés par l'équation~\ref{eq:jagacinski}) et ceux d'Al Harji \emph{et al.}~\cite{hajri2011moving} (résumés par les équations~\ref{eq:hajriC2} et~\ref{eq:hajriVW}). Comme on l'imagine aisément, plus une cible est rapide, plus elle est difficile à sélectionner. Nos propres mesures, sur lesquelles nous reviendrons en détail plus loin, le confirment.
     
-    % --- cette décision est éventuellement contrainte par les performances du système dans le cas d'une simulation interactive. Nous verrons plus loin qu'il s'agit d'un thème récurrent.
+    Il est important de noter que la vitesse \emph{réelle} de la cible n'est pas très importante, seule sa vitesse \emph{apparente} compte. Par exemple, la Terre effectue sa rotatio autour du Soleil à près de 30~km/s, soit 108~000~km/h. Cette vitesse réelle a pourtant peu de chances d'être un problème dans une application réelle car une telle application présenterait probablement la Terre à une échelle permettant d'observer toute son orbite (ou une grande partie de celle-ci). Or, la Terre mettant environ 365 jours à compléter son orbite, sa vitesse apparente à l'écran serait très faible, donc parfaitement gérable dans une tâche de sélection.
     
+    À l'inverse, une balle de tennis est comparativement lente ($\approx$~200~km/h), mais étant observée à l'échelle d'un court de tennis (environ 24~m) sa vitesse apparente est considérable. De même, un objet dans un jeu vidéo peut se déplacer très lentement, à quelques cm/s seulement ; mais si ce mouvement est observé à l'échelle 1, alors l'objet traversera un écran standard en seulement quelques secondes, voire moins.
+    
+    Or, notre taxinomie vise à classifier les cibles et leurs environnements selon les difficultés de sélection qu'ils présentent et non selon leurs caractéristiques absolues ; de fait, nous nous intéresserons aux vitesses apparentes des objets examinés.
+    
+    Ce choix (au demeurant inévitable) est lourd de conséquence car la vitesse apparente d'un objet d'une vitesse réelle donnée dépend évidemment des conditions dans lesquelles il est affiché, en particulier de l'échelle relative à la taille du dispositif d'affichage, et de ladite taille. Elle dépend également, pour tout ce qui n'est pas joué à vitesse réelle, de la vitesse choisie pour l'animation ou la simulation (avec dans ce dernier cas une contrainte supplémentaire imposée par les performances du système). Par exemple, une vidéo peut être jouée en accéléré.
+    
+	\paragraph{Variabilité}
+	Il serait partique de pouvoir résumer la vitesse à une variable scalaire, mais ce n'est malheureusement pas toujours possible. En effet, dans les applications identifiées le long du chapitre~\ref{chap1}, la vitesse des objets est généralement variable. L'on ne saurait donc la résumer par un simple nombre. Dans l'idéal, il serait bon de connaître toutes les vitesses atteintes par les objets de la scène, avec leurs fréquences d'occurrence ; cela nous permettrait d'en dresser un histogramme. Connaissant toutes ces valeurs, l'on pourrait les représenter de façon plus concise par une moyenne et un écart-type ; il serait sans doute opportun d'ajouter à cette représentation la vitesse maximale possible, afin de pouvoir caractériser le cas (potentiellement) le plus difficile.
+	
+	Pour certaines applications, il sera difficile voire impossible d'avoir des informations aussi précises. Dans ce cas, nous devrons nous contenter d'une estimation aussi précise que possible des valeurs sus-citées, par exemple d'une vitesse \og typique \fg{} et d'une vitesse maximale. Ce sera généralement suffisant pour caractériser des cibles.
+	
+	\subparagraph{Accélération}
+	Au-delà des valeurs moyennes/typiques ou maximales de la vitesse, il peut être judicieux d'examiner dans quelle mesure la vitesse peut varier en un court laps de temps, c'est-à-dire de détailler la façon dont les objets sont susceptibles d'accélérer. En effet, un objet se déplaçant relatiement lentement peut paraître aisé à sélectionner, mais s'avérer fort difficile s'il accélère brutalement, surtout si cette accélération a lieu précisément au moment où l'utilisateur effectue son mouvement de sélection.
+	
+	Là encore, l'idéal serait d'avoir un histogramme, ainsi qu'une moyenne, un écart-type et une valeur maximale. L'on devra plus souvent se contenter d'une valeur typique et d'une valeur maximale estimées. Ce sera généralement suffisant pour répondre à la question primordiale concernant l'accélération : \og la cible est-elle susceptible d'accélérer brusquement ? \fg{}. Sans nous répandre en détails ici, précisons simplement que les objets accélèrent généralement d'autant plus facilement qu'ils sont légers, et que les atomes peuvent le faire brusquement, y compris dans les simulations de dynamique moléculaire.
+   
     \subsubsection{Fréquence des changements de direction}
     Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer la cette fréquence comme étant soit nulle, soit infinie.
     
@@ -359,7 +376,7 @@
 		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_16}
-			\caption[$A = 90$, $F=16$]{$A = 905$, $F=16$}
+			\caption[$A = 90$, $F=16$]{$A = 90$, $F=16$}
 			\label{fig:synTraj_219_90_16}
 		\end{subfigure}
 		~
