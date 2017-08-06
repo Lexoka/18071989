@@ -53,6 +53,9 @@
     \subparagraph{Circularité.}
     Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
     
+    \subparagraph{Ellipticité.}
+    À défaut d'être exactement circulaire, un mouvement (pseudo-)périodique peut être elliptique. Nous considérerons en pratique que les implications pour la tâche de sélection sont presque identiques.
+    
     \subsubsection{Vitesse}
     La vitesse des cibles est un critère essentiel de notre taxinomie, car cette valeur a une très forte influence sur la difficulté de sélection, comment le montrent notamment les résultats empiriques obtenus par Ortega~\cite{ortega2013hook} et présentés sur les figures~\ref{fig:hookRes2d} et~\ref{fig:hookRes3d}, ainsi que les travaux de Jagacinksi \emph{et al.}~\cite{jagacinski1980test} (résumés par l'équation~\ref{eq:jagacinski}) et ceux d'Al Harji \emph{et al.}~\cite{hajri2011moving} (résumés par les équations~\ref{eq:hajriC2} et~\ref{eq:hajriVW}). Comme on l'imagine aisément, plus une cible est rapide, plus elle est difficile à sélectionner. Nos propres mesures, sur lesquelles nous reviendrons en détail plus loin, le confirment.
     
@@ -85,7 +88,26 @@
     
     Les objets virtuels tels que ceux rencontrés dans les jeux vidéos ne sont soumis à aucune contrainte physique, et leurs directions peuvent changer de manière instantanée ou continue, selon les choix des développeurs ; dans certains cas, cette notion de fréquence aura donc du sens, et dans d'autres non.
     
-
+    \paragraph{Cinématique discrète ou continue}
+    Afin, nous dirons que les objets dont les changements de direction sont instantanés sont de cinématique discrète, tandis que les autres sont de cinématique continue. Par  souci de concision, nous appellerons les premiés ciné-discrets et les second ciné-continus.
+    
+    \paragraph{Variabilité.}
+    Comme pour la vitesse, il est bien entendu que la fréquence des changements de direction d'une cible ne sera pas nécessairement (ou même généralement) constante. De même que pour la vitesse, on tâchera donc d'obtenir un histogramme des valeurs, une moyenne, un écart-type, et un maximum.
+    
+    Dans l'impossibilité de le faire, nous opterons pour une estimation des valeurs \og typique \fg{} et maximale. Illustrons simplement ce propos par l'exemple d'une automobile : sur autoroute, sa fréquence de changements de direction sera presque nulle ; en ville, elle sera bien plus élevée.
+    
+	\subsubsection{Amplitude des changements de direction}
+	Outre leur fréquence, les changements de direction doivent être examinés à travers leur amplitude. Concrètement, quand une cible change de direction, son vecteur direction subit une rotation. C'est l'angle de cette rotation que nous appelons \emph{l'amplitude} du changement de direction.
+	
+	Pour une fréquence donnée, si cette valeur est faible, la direction de l'objet changera relativement peu et sa trajectoire sera relativement \og lisse \fg{}, comme sur la plupart des exemples de la figure~\ref{fig:motion1530}, exception faite de ceux dont la fréquence est élevée ($geq$~16~Hz). Si elle est élevée, en revanche, la trajectoire sera très \og irrégulière \fg{}, comme on l'observe notamment sur la figure~\ref{fig:motion165180}, même à basse fréquence (notez que les amplitudes données dans ces figures sont des valeurs maximales --- nous y reviendrons).
+	
+	\paragraph{Nature discrète ou continue}
+	Comme mentionné plus haut, un changement de direction peut être considéré comme un événement instantané et discret, ou continu. Dans le premier cas, il aura une valeur en degrés : l'angle entre la direction avant et après le changement ; dans le second, il aura une valeur en degrés/seconde : le taux de changement de direction en fonction du temps. Comme nous y faisions brièvement référence au cours du chapitre~\ref{chap1}, cette mesure est couramment fournie pour les avions de combat.
+	
+	\paragraph{Variabilité.}
+	Ici, la question de la variabilité est peut-être plus importante encore que pour la vitesse d'une cible ou la fréquence de ses changements de direction. En effet, bien rares sont les cibles dont les changements de direction se font toujours selon (approximativement) le même angle, à l'exception des cibles aux mouvement circulaires (ou elliptiques) ; encore s'agit-il ici de changements continus.
+	
+	Là encore, il y a plusieurs façons de considérer la distribution de ces valeurs d'angles (après discrétisation en cas de mouvement continu) : un histogramme complet peut être retenu, une moyenne, un écart-type et une valeur maximale peuvent également servir de référence. Comme pour les autres variables, s'il est impossible d'obtenir ces mesures, une estimation des valeurs moyenne et maximale devra nous contenter.
 
     \subsubsection{Densité de l'environnement}
     Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continus mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
@@ -646,7 +668,7 @@
 		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_16}
-			\caption[$A = 180$, $F=16$]{$A = 1805$, $F=16$}
+			\caption[$A = 180$, $F=16$]{$A = 180$, $F=16$}
 			\label{fig:synTraj_219_180_16}
 		\end{subfigure}
 		~
