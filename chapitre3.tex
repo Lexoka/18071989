@@ -104,6 +104,11 @@
 	\paragraph{Nature discrète ou continue}
 	Comme mentionné plus haut, un changement de direction peut être considéré comme un événement instantané et discret, ou continu. Dans le premier cas, il aura une valeur en degrés : l'angle entre la direction avant et après le changement ; dans le second, il aura une valeur en degrés/seconde : le taux de changement de direction en fonction du temps. Comme nous y faisions brièvement référence au cours du chapitre~\ref{chap1}, cette mesure est couramment fournie pour les avions de combat.
 	
+	En règle générale, les objets ciné-discrets peuvent avoir des amplitudes de changements de direction très elévées (comme les atomes des simulations moléculaires, qui peuvent faire demi-tour d'une itération de la simulation à l'autre) tandis que les ojbets ciné-continus tendent à avoir des taux de changement de direction assez faibles, et ce d'autant plus qu'ils sont massifs. Pour un gros navire, par exemple, le rayon de giration minimal peut dépasser les 3~km\footnotemark{}.
+	
+	\footnotetext{Le rayon de giration est le rayon du cercle parcouru par un objet en mouvement circulaire uniforme. Pour l'exemple cité :
+	\url{http://www.container-transportation.com/world-largest-ship.html}}
+	
 	\paragraph{Variabilité.}
 	Ici, la question de la variabilité est peut-être plus importante encore que pour la vitesse d'une cible ou la fréquence de ses changements de direction. En effet, bien rares sont les cibles dont les changements de direction se font toujours selon (approximativement) le même angle, à l'exception des cibles aux mouvement circulaires (ou elliptiques) ; encore s'agit-il ici de changements continus.
 	
@@ -330,6 +335,28 @@
 		\label{fig:motion4560}
 	\end{figure}
 	
+	\paragraph{Pseudo-entropie.}
+	Dans ses travaux sur la thermodynamique, Rudolf Clausius définit l'entropie comme \og le contenu de tranformation [d'un] corps \fg{}~\cite{clausius1865verschiedene, clausius1865diverses}. Rapidement, Ludwig Boltzmann redéfinit l'entropie $S$ par l'équation $S = k\log(W)$, où $k$ est une constante et $W$ est le nombre d'états dans lequel un système peut se trouver~\cite{boltzmann1866mechanische, weisstein2004eric}.
+	
+	À partir de la définition de Boltzmann, Claude Shannon redéfinit à nouveau l'entropie~\cite{shannon1949communication} (qu'il préfère noter $H(X)$) d'une variable aléatoire discrète $X$ de valeurs possibles $\{x_{1}, \ldots{}, x_{n}\}$ par l'équation~\ref{eq:shannonEntropy}, où $P(x_{i})$ est la probabilité que $X=x_{i}$.
+	
+	\begin{equation}
+		\label{eq:shannonEntropy}
+		H(X) = -\sum_{i=1}^{n}P(x_{i})\log_{b}\left(P(x_{i})\right)
+	\end{equation}
+	
+	L'on peut toutefois écrire cette équation de façon plus succincte --- et peut-être plus parlante --- comme dans l'équation~\ref{eq:shaEnt}, où $I(X)$ est la quantité d'information de $X$, et $E[I(X)]$ est l'espérance de cette quantité. Notez que $I(e) = -\log\left(P(e)\right)$, où $e$ est un événement.
+	
+	\begin{equation}
+		\label{eq:shaEnt}
+		H(X) = E[I(X)]
+	\end{equation}
+	
+	En résumé, pour Shannon, l'entropie d'une variable croît avec sa quantité d'information, et celle-ci est d'autant plus grande que les événements possibles sont rares. Si l'on suppose qu'ils sont équiprobables, alors ils sont d'autant plus rares qu'ils sont nombreux.
+	
+	Dans le cas qui nous concerne, on peut donc dire qu'une cible est de forte entropie si, pour une position donnée à l'instant $t$, les positions possibles à l'instant $t+1$ sont nombreuses (en les supposant équiprobables).
+	
+	Plus $F$ est élevée, plus la direction change souvent. Plus $A$ est élevée, plus ces changements peuvent être importants. Par 
 	
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
