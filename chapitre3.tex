@@ -356,6 +356,14 @@
 	
 	Dans le cas qui nous concerne, on peut donc dire qu'une cible est de forte entropie si, pour une position donnée à l'instant $t$, les positions possibles à l'instant $t+1$ sont nombreuses (en les supposant équiprobables).
 	
+	Supposons donc une cible de position $pos$ et de vecteur direction $\vec{dir}$ à l'instant $t$. Si $F=0$ ou $A=0$, alors $pos_{t+1} = pos + S \times \vec{dir}$. Seul cet état est possible, donc la quantité d'information de la cible est nulle, et son entropie aussi. En revanche, s'il peut y avoir une rotation de $\vec{dir}$ à l'instant $t+1$, alors l'entropie sera non nulle, et dépendra de la probabilité de ce changement de direction, ainsi que du nombre de valeurs possibles pour le changement de direction $\alpha$.
+	
+	Si l'on considère $\alpha$ comme un nombre réel, en toute rigueur, le nombre de valeurs possibles est infini, et l'entropie aussi. L'on peut cependant considérer que pour un utilisateur, un changement de direction de 10,0001\textdegree{} ne sera généralement pas différent d'un changement de 10\textdegree{} ; aussi serait-il judicieux de discrétiser l'espace de $\alpha$. Une solution simple consiste à arrondir la valeur à l'entier le plus proche, ce qui réduit l'espace aux entiers contenus dans l'intervalle $[-180\degree{}, +180\degree{}]$, soit 360 valeurs (car $180 \equiv -180 \mod 360$).
+	
+	La portion de cet espace effectivement possible dépend de $A$ ; plus précicément, elle vaut $\frac{A}{180}$. L'on peut donc calculer l'entropie d'une cible si l'on connaît $A$ et si l'on sait qu'il y aura un changement de direction à l'instant suivant, mais ce calcul ne vaudra que sur une fenêtre temporelle limitée à deux \og instants \fg{} --- ce qui implique d'ailleurs une discrétisation du temps, potentiellement indésirable.
+	
+	Pour connaître l'entropie globale $E_{g}$ de la cible, on peut poser que $E_{g}$ est la moyenne des $E_{t}$ pour chaque instant $t$. Si l'on suppose que le temps est discrétisé de telle manière qu'un instant vaut $\frac{1}{60}$~s, alors $E_{g} = E_{t_{c}} \frac{F}{60}$ où $E_{t_{c}}$ est l'entropie de la cible à l'instant d'un changement de direction sûr.
+	
 	Plus $F$ est élevée, plus la direction change souvent. Plus $A$ est élevée, plus ces changements peuvent être importants. Par 
 	
 	\begin{figure}[htb]
