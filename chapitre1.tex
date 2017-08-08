@@ -33,7 +33,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch1/1KX2}
-		\caption[Une protéine en \emph{Hyperballs}]{Une protéine (un mono-hème ferrocytochrome~\cite{bartalesi2002solution}) produite avec le logiciel UnityMol~\cite{doutreligne2014unitymol}. Elle est relativement petite (81 acides aminés, vs. $\approx$~30~000 pour la titine). De plus, les atomes étant ici représentés avec un rayon inférieur à leur rayon de van der Walls, l'occultation est réduite, et les molécules du solvant ne sont pas représentées. Malgré tout, la densité d'objets et le niveau d'occultation demeurent très importants.}
+		\caption[Une protéine en \emph{Hyperballs}]{Une protéine (\cite{bartalesi2002solution}) représentée avec UnityMol~\cite{doutreligne2014unitymol}. Elle est assez petite (81 acides aminés, vs. $\approx$~30~000 pour la titine), les atomes sont représentés avec un rayon inférieur à leur rayon de vdW, l'occultation est réduite, et les molécules du solvant ne sont pas représentées. Malgré tout, le niveau d'occultation demeure très important.}
 		\label{fig:1KX2}
 	\end{wrapfigure}
 	
@@ -41,14 +41,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
 	\begin{figure}[htb]
-		\begin{subfigure}{.4\textwidth}
+		\begin{subfigure}{.39\textwidth}
 			\centering
 			\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}
-			\caption{Structure chimique d'un acide aminé.}
+			\caption{La structure chimique d'un acide aminé.}
 			\label{fig:amino_acid_structure}
 		\end{subfigure}
 		~
-		\begin{subfigure}{.6\textwidth}
+		\begin{subfigure}{.59\textwidth}
 			\centering
 			\includegraphics[height=4cm]{./figures/ch1/peptidic_bond.png}
 			\caption{Illustration d'une liaison peptidique entre deux acides aminés (à gauche et à droite de la ligne pointillée). Cette liaison est une liaison covalente entre l'azote (N) de l'acide aminé de droite et le carbone (C) de l'acide aminé de gauche.}
@@ -71,14 +71,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La traduction se fait selon le \emph{code génétique} illustré par la figure~\ref{fig:geneCode}. Ainsi, à chaque \emph{codon} (non-stop) est associé un acide aminé.
 	
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{0.45\textwidth}
+		\begin{subfigure}[t]{0.44\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch1/geneCode}
 			\caption[Le code génétique]{Ce diagramme illustre la correspondance entre un \emph{codon}, c'est-à-dire une suite de trois nucléotides (par exemple \texttt{UCG}) et l'acide aminé associé (dans le même exemple, la serine). On lit un codon du centre vers la périphérie du diagramme. Crédit : J\_{}Alves\footnotemark{}.}
 			\label{fig:geneCode}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.55\textwidth}
+		\begin{subfigure}[t]{0.54\textwidth}
 			\includegraphics[width=\textwidth]{figures/ch1/translation}
 			\caption[Traduction de l'ARN messager en protéine]{Traduction de l'ARN messager et synthèse d'une chaîne polypeptidique. Des ARN de transfert apportent les acides aminés au ribosome qui, en les liant aux bons codons sur le brin d'ARN messager, construit la chaîne polypeptidique dont la protéine finale sera constituée. Crédit : Liberty Voice\footnotemark{}.}
 			\label{fig:translation}
@@ -102,14 +102,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
 	
 	\begin{figure}[htb]
-		\begin{subfigure}[b]{.5\textwidth}
+		\begin{subfigure}[b]{.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/aHelix}
 			\caption[Hélices alpha, trois représentations différentes]{Une hélice alpha schématisée (gauche), avec du texte représentant les atomes (centre) et en représentation \og tout atome \fg{} (droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation de gauche est plus courante. Crédit : \emph{Bioinformatics -- An Introduction}, Bioinformatics Lab, AU\footnotemark.}
 			\label{fig:aHelix}
 		\end{subfigure}
 		~
-		\begin{subfigure}[b]{.5\textwidth}
+		\begin{subfigure}[b]{.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/bSheet}
 			\caption[Feuillets bêta]{Un feuillet bêta en représentation \og tout atome \fg{} (à gauche), sous forme schématique (au milieu), et en représentation \og tout atome \fg{} mixte (à droite). Lors d'un affichage \og en structures secondaires \fg{} la représentation du milieu est généralement choisie. Crédit : \emph{Department of Biology} -- PSU\footnotemark.}
@@ -124,7 +124,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\addtocounter{footnote}{1}
 	\footnotetext{\url{https://wikispaces.psu.edu/display/Biol230WCE/Properties+of+Macromolecules+I-Proteins}}
 		
-	De plus, ces représentations schématiques correspondent à des critères physico-chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée~\cite{richardson2002teaching}. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
+	De plus, ces représentations schématiques correspondent à des critères physiques ou chimiques précis et pertinents pour l'analyse des molécules concernées. La représentation en structures secondaires permet donc de simplifier la représentation tout en communicant efficacement des informations précises sur la molécule affichée~\cite{richardson2002teaching}. Le nombre d'objets différents (et de triangles, si des maillages sont utilisés) et très fortement réduit, ce qui améliore les performances d'affichage. Surtout, la molécule devient plus facile à observer, sa structure est plus lisible, et le niveau d'occultation des zones internes ou en arrière-plan de la molécule est considérablement diminué.
 		
 	Toutefois, l'utilisation de cette technique de visualisation implique une perte d'information. En effet, les atomes ne sont plus visibles, aussi la composition précise de la molécule n'est-elle plus perceptible. De fait, il devient difficile d'apprécier certaines propriétés du système, comme les champs électrostatiques, l'hydrophobicité, les cavités de la surface moléculaire et autres zones susceptibles de faciliter les interactions avec d'autres molécules. Il est cependant possible de représenter certaines de ces propriétés par des couleurs, par exemple.
 		
@@ -190,9 +190,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
 
 	
-	\begin{wrapfigure}{O}{0.5\textwidth}
+	\begin{wrapfigure}{O}{0.46\textwidth}
 		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch1/helium}
+		\includegraphics[width=0.44\textwidth]{figures/ch1/helium}
 		\caption[Un atome d'hélium avec son nuage électronique]{Un atome d'hélium, avec le noyau en rose et la distribution du nuage électronique en nuances de gris. Le noyau de l'hélium-4 est représenté de façon très schématisée. La barre noire en bas indique l'échelle, et mesure $0,1$ nanomètre. Le dessin d'une \og coque \fg{}  pour représenter un atome sous forme de sphère de rayon fini est un choix arbitraire, dont l'importance pour la sélection d'atomes est déterminante. Crédit : \emph{Wikimedia}.}
 		\label{fig:helium}
 	\end{wrapfigure}
@@ -300,7 +300,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_licorice}
-			\caption[Représentation en réglisse]{\textbf{Bâtons/réglisse/\emph{licorice} :} seules les liaisons covalentes sont visibles}
+			\caption[Représentation en réglisse]{\textbf{Bâtons, réglisse/\emph{licorice} :} seules les liaisons covalentes sont visibles.}
 			\label{fig:4awn_licorice}
 		\end{subfigure}
 		~
