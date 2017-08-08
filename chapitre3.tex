@@ -691,7 +691,7 @@
 		\label{fig:motion135150}
 	\end{figure}
 	
-	\subsubsection{Longeur et aire de l'enveloppe convexe}
+	\subsubsection{Longeur des trajectoires, aires des enveloppes convexes}
 	Pour rappel, toutes les trajectoires des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} furent générée par un mouvement de vitesse constante, 2,19~cm/s. Attendu qu'elles ont également été générées sur une même durée (20 secondes) elles ont toutes la même longueur, malgré les apparences dues aux variations d'échelle : $2,19~cm/s \times 20~s = 43,8~cm$.
 	
 	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut,	la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
@@ -786,7 +786,6 @@
 		\label{fig:motion165180}
 	\end{figure}
 	
-	\paragraph{Enveloppe convexe.}
 	Une façon d'estimer l'aire de la surface occupée par un ensemble de points (comme une trajectoire) consiste à calculer l'aire de son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Des exemples d'enveloppes convexes sont représentés sur la figure~\ref{fig:trajAreas}. On y remarque notamment une relation inverse entre la pseudo-entropie et l'aire de l'enveloppe convexe de la trajectoire. Les trajectoires de pseudo-entropie très faible, telle que celle de la figure~\ref{fig:areaTraj_219_1_16}, occupent un espace important, tandis que les trajectoires de très forte pseudo-entropie, comme celle de la figure~\ref{fig:areaTraj_219_180_240}, sont confinées à une toute petite zone.
 	
 	\newcommand{\subImgWarea}{0.42\textwidth}
@@ -836,6 +835,12 @@
 		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et l'aire de l'enveloppe convexe décroît.}
 		\label{fig:trajAreas}
 	\end{figure}
+	
+	L'on peut déduire de cette observation que si un utilisateur souhaite sélectionner une cible mobile de faible pseudo-entropie, il doit pouvoir atteindre, avec son curseur, tous les points d'une zone de taille importante, comme sur la figure~\ref{fig:areaTraj_219_1_16} ; si la pseudo-entropie est élevée, cependant, la zone sera plus petite, comme sur la figure~\ref{fig:areaTraj_219_180_240}). En cas de pseudo-entropie moyenne, enfin, la zone sera de taille intermédiaire, comme l'illustre la figure~\ref{fig:areaTraj_219_90_8}.
+	
+	Il serait tentant d'en déduire que la pseudo-entropie rend la sélection plus facile, mais n'oublions pas qu'elle implique un mouvement moins régulier, et donc plus imprévisible. Nous reviendrons en détail sur ce point plus loin, mais observons simplement pour le moment que les trajectoires des figures~\ref{fig:areaTraj_219_1_16}, \ref{fig:areaTraj_219_5_16} et \ref{fig:areaTraj_219_45_4} (de pseudo-entropie maximale 180) sont nettement plus régulières --- donc prévisibles --- que la trajectoire de la figure~\ref{fig:areaTraj_219_90_8}, de pseudo-entropie 720. Il serait donc très imprudent de supposer que cette dernière correspond à une cible plus facile à sélectionner.
+	
+	Remarquons cependant que quand la pseudo-entropie est très faible, la régularité de la trajectoire suggère une sélection relativement aisée ; quand elle est très élevée, la très petite zone couverte par la trajectoire laisse également supposer une sélection assez facile, du fait d'une distance (telle que définie par Fitts~\cite{fitts1954information}) très courte --- à partir du moment où le curseur atteint l'enveloppe convexe de la cible, du moins.
 	
 \section{Résultats}
 	Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
