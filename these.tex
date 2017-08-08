@@ -36,8 +36,11 @@
 \usepackage{siunitx}
 
 % =========== hyperref ============
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
-\Urlmuskip=0mu plus 1mu % Weird little command that adds space around some separation characters in URLs so that you avoid/mitigate bad boxes.
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\def\UrlBreaks{\do\/\do-}
+\Urlmuskip=0mu plus 4mu % Weird little command that adds space around some separation characters in URLs so that you avoid/mitigate bad boxes.
 
 %% met une couleur au texte pour chaque type de lien ; désactive pdfborder
 \hypersetup{colorlinks=true, linkcolor=blue}
