@@ -147,7 +147,7 @@
     
     Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{}. De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tous l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.    
     
-   	\newcommand{\subImgWmo}{0.32\textwidth}
+	\newcommand{\subImgWmo}{0.32\textwidth}
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
 			\centering
@@ -787,37 +787,53 @@
 	\end{figure}
 	
 	\paragraph{Enveloppe convexe.}
-	Une façon d'estimer l'aire de la surface occupée par un ensemble de points (comme une trajectoire) consiste à calculer l'aire de son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Bla~\ref{fig:trajAreas}.
+	Une façon d'estimer l'aire de la surface occupée par un ensemble de points (comme une trajectoire) consiste à calculer l'aire de son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Des exemples d'enveloppes convexes sont représentés sur la figure~\ref{fig:trajAreas}. On y remarque notamment une relation inverse entre la pseudo-entropie et l'aire de l'enveloppe convexe de la trajectoire. Les trajectoires de pseudo-entropie très faible, telle que celle de la figure~\ref{fig:areaTraj_219_1_16}, occupent un espace important, tandis que les trajectoires de très forte pseudo-entropie, comme celle de la figure~\ref{fig:areaTraj_219_180_240}, sont confinées à une toute petite zone.
 	
+	\newcommand{\subImgWarea}{0.42\textwidth}
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_1_16}
+			\caption[$A = 1$, $F=16$]{$A = 1$, $F=16$, $AF=16$. L'aire de l'enveloppe est d'environ 87~cm².}
+			\label{fig:areaTraj_219_1_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_5_16}
-			\caption[Enveloppe convexe, $A = 5$, $F=16$]{Enveloppe convexe, $A = 5$, $F=16$, $AF=80$. L'aire de l'enveloppe est d'environ 83~cm².}
+			\caption[Enveloppe convexe, $A = 5$, $F=16$]{$A = 5$, $F=16$, $AF=80$. L'aire de l'enveloppe est d'environ 83~cm².}
 			\label{fig:areaTraj_219_5_16}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_45_4}
-			\caption[Enveloppe convexe, $A = 45$, $F=4$]{Enveloppe convexe, $A = 45$, $F=4$, $AF=180$. L'aire de l'enveloppe est d'environ 48~cm².}
+			\caption[Enveloppe convexe, $A = 45$, $F=4$]{$A = 45$, $F=4$, $AF=180$. L'aire de l'enveloppe est d'environ 48~cm².}
 			\label{fig:areaTraj_219_45_4}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_90_8}
-			\caption[Enveloppe convexe, $A = 90$, $F=8$]{Enveloppe convexe, $A = 90$, $F=8$, $AF=720$. L'aire de l'enveloppe est d'environ 16,4~cm².}
+			\caption[Enveloppe convexe, $A = 90$, $F=8$]{$A = 90$, $F=8$, $AF=720$. L'aire de l'enveloppe est d'environ 16,4~cm².}
 			\label{fig:areaTraj_219_90_8}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_180_60}
-			\caption[Enveloppe convexe, $A = 180$, $F=60$]{Enveloppe convexe, $A = 180$, $F=60$, $AF=10~800$. L'aire de l'enveloppe est d'environ 3,25~cm².}
+			\caption[Enveloppe convexe, $A = 180$, $F=60$]{$A = 180$, $F=60$, $AF=10800$. L'aire de l'enveloppe est d'environ 3,25~cm².}
 			\label{fig:areaTraj_219_180_60}
 		\end{subfigure}
-		\caption[Enveloppes convexes]{Enveloppes convexes de quatre trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et l'aire de l'enveloppe convexe décroît.}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_180_240}
+			\caption[Enveloppe convexe, $A = 180$, $F=240$]{$A = 180$, $F=240$, $AF=43200$. L'aire de l'enveloppe est d'environ 1,85~cm².}
+			\label{fig:areaTraj_219_180_240}
+		\end{subfigure}
+		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et l'aire de l'enveloppe convexe décroît.}
 		\label{fig:trajAreas}
 	\end{figure}
 	
