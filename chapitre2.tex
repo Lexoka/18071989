@@ -222,7 +222,7 @@
 
 \section{\emph{DynaSpot}}
 	\subsection{Principe}
-	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci est une technique qui relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
+	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
 	\begin{figure}[H]
 		\centering
@@ -1156,7 +1156,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\label{tab:kepStable}
 	\end{table}
 		
-\section{\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)}
+\section{\emph{Speed Profile sEparation for Endpoint Divination} (\bsc{SPEED})}
 	\subsection{Principe}
 	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED base donc sa prédiction de cible sur la phase de décélération.
 	
@@ -1339,14 +1339,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien. Ce processus est illustré par la figure~\ref{fig:hookDir}.
 	
 	\begin{figure}[htb]
-		\begin{subfigure}{.3\textwidth}
+		\begin{subfigure}{.29\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/hookPic}
 			\caption[\emph{Hook} -- fonctionnement]{Fonctionnement de la technique \emph{Hook}. L'encombrement visuel de la technique est minimal : seul un cône semi-transparent et une mise en valeur de la cible prédite s'ajoutent au rendu. Crédit : \cite{ortega2013hook}.}
 			\label{fig:hookPic}
 		\end{subfigure}
 		~
-		\begin{subfigure}{.7\textwidth}
+		\begin{subfigure}{.69\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/hookDir}
 			\caption[\emph{Hook} -- mouvements des cibles]{Mouvements des cibles générés pour évaluer la technique \emph{Hook}. Le vecteur direction à l'instant $t$ subit une rotation de 10\textdegree{} par rapport à son orientation à $t-1$. Cette opération est effectuée à chaque image calculée. Ainsi, un mouvement imprévisible mais non brownien est généré. Crédit : \cite{ortega2013hook}.}
