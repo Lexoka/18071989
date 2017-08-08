@@ -28,35 +28,34 @@
 	\subsection{Critères subjectifs}
 	Nous verrons plus loin que des critères plus subjectifs --- quoique fondés sur des observations empiriques --- peuvent être plus pertinents pour estimer la difficulté d'une tâche de sélection, et nous proposerons une taxinomie révisée en conséquence.
 
-\section{Taxinomie des environnements de sélection}
-
-    \subsection{Critères de discrimination}
+\section{Critères de discrimination}
     L'établissement de notre taxinomie passe par le choix des critères qui nous permettront de d'établir des distinctions entre les types de mouvements des cibles et les environnements de sélection. Dans les sous-sections suivantes, nous allons détailler les critères que nous avons retenus.
 
-    \subsubsection{Autocorrélation}
-    Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quel que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
+    \subsection{Autocorrélation}
+    Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
     
     En effet, si ledit changement se fait selon un angle borné (entre -45\textdegree{} et +45\textdegree{}, par exemple) alors l'orientation du vecteur direction à l'instant $t$ dépendra de son orientation à $t-1$. Tant que le changement de direction à l'instant $t$, lui, est bien indépendant du changement à l'instant $t-1$ nous admettrons cet abus de langage et parlerons de mouvement markovien ; sinon, le mouvement sera dit autocorrélé. Par commodité, un objet dont les mouvements sont autocorrélés sera dit autocorrélé, et un objet dont les mouvements sont markoviens sera dit markovien.
     
     Concrètement, les objets macroscopiques dont les mouvements sont soumis aux lois de la physique newtonienne~\cite{newton1833philosophiae} ont des mouvements autocorrélés --- ce sera donc le cas de véhicules de tous types, des êtres vivants (athlètes compris) des projectiles, missiles, etc. Les objets nanoscopiques dont les mouvements sont soumis aux lois de la mécanique quantique ont des mouvements markoviens --- ce sera notamment le cas des particules dans les simulations moléculaires. Les objets pouvant être sélectionnés dans les jeux vidéo seront autocorrélés ou markoviens, selon les règles choisies par les développeurs.
 
-    \paragraph{Uniformité.}
+    \subsubsection{Uniformité}
     Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur direction de l'objet concerné change.
 
-    \paragraph{Périodicité.}
+    \subsubsection{Périodicité}
     Un mouvement sera dit périodique si les changements de directions sont tels que l'objet effectuera une trajectoire fermée qu'il répétera à intervalles réguliers. Plus formellement, un mouvement est périodique s'il admet une période $T$ telle que :
-    $\forall t,~Position_{t}~=~Position_{t+T}$ où $Position_{t}$ désigne la position de l'objet à l'instant $t$.
     
-    \subparagraph{Pseudo-périodicité.}
+    $\forall t,~Pos_{t}~=~Pos_{t+T}$ où $Pos_{t}$ désigne la position de l'objet à l'instant $t$.
+    
+    \paragraph{Pseudo-périodicité.}
     Nous appellerons pseudo-périodique un mouvement caractérisé par une trajectoire fermée et répétée à intervalles \emph{irréguliers}. Un tel mouvement ne satisfait pas la condition formalisée ci-dessus, mais admet un ensemble de positions limitées à une trajectoire donnée, et revisitées continuellement dans le même ordre --- simplement, à des vitesses pouvant varier.
 
-    \subparagraph{Circularité.}
+    \paragraph{Circularité.}
     Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
     
-    \subparagraph{Ellipticité.}
+    \paragraph{Ellipticité.}
     À défaut d'être exactement circulaire, un mouvement (pseudo-)périodique peut être elliptique. Nous considérerons en pratique que les implications pour la tâche de sélection sont presque identiques.
     
-    \subsubsection{Vitesse}
+    \subsection{Vitesse}
     La vitesse des cibles est un critère essentiel de notre taxinomie, car cette valeur a une très forte influence sur la difficulté de sélection, comment le montrent notamment les résultats empiriques obtenus par Ortega~\cite{ortega2013hook} et présentés sur les figures~\ref{fig:hookRes2d} et~\ref{fig:hookRes3d}, ainsi que les travaux de Jagacinksi \emph{et al.}~\cite{jagacinski1980test} (résumés par l'équation~\ref{eq:jagacinski}) et ceux d'Al Harji \emph{et al.}~\cite{hajri2011moving} (résumés par les équations~\ref{eq:hajriC2} et~\ref{eq:hajriVW}). Comme on l'imagine aisément, plus une cible est rapide, plus elle est difficile à sélectionner. Nos propres mesures, sur lesquelles nous reviendrons en détail plus loin, le confirment.
     
     Il est important de noter que la vitesse \emph{réelle} de la cible n'est pas très importante, seule sa vitesse \emph{apparente} compte. Par exemple, la Terre effectue sa rotatio autour du Soleil à près de 30~km/s, soit 108~000~km/h. Cette vitesse réelle a pourtant peu de chances d'être un problème dans une application réelle car une telle application présenterait probablement la Terre à une échelle permettant d'observer toute son orbite (ou une grande partie de celle-ci). Or, la Terre mettant environ 365 jours à compléter son orbite, sa vitesse apparente à l'écran serait très faible, donc parfaitement gérable dans une tâche de sélection.
@@ -67,17 +66,17 @@
     
     Ce choix (au demeurant inévitable) est lourd de conséquence car la vitesse apparente d'un objet d'une vitesse réelle donnée dépend évidemment des conditions dans lesquelles il est affiché, en particulier de l'échelle relative à la taille du dispositif d'affichage, et de ladite taille. Elle dépend également, pour tout ce qui n'est pas joué à vitesse réelle, de la vitesse choisie pour l'animation ou la simulation (avec dans ce dernier cas une contrainte supplémentaire imposée par les performances du système). Par exemple, une vidéo peut être jouée en accéléré.
     
-	\paragraph{Variabilité}
+	\subsubsection{Variabilité}
 	Il serait partique de pouvoir résumer la vitesse à une variable scalaire, mais ce n'est malheureusement pas toujours possible. En effet, dans les applications identifiées le long du chapitre~\ref{chap1}, la vitesse des objets est généralement variable. L'on ne saurait donc la résumer par un simple nombre. Dans l'idéal, il serait bon de connaître toutes les vitesses atteintes par les objets de la scène, avec leurs fréquences d'occurrence ; cela nous permettrait d'en dresser un histogramme. Connaissant toutes ces valeurs, l'on pourrait les représenter de façon plus concise par une moyenne et un écart-type ; il serait sans doute opportun d'ajouter à cette représentation la vitesse maximale possible, afin de pouvoir caractériser le cas (potentiellement) le plus difficile.
 	
 	Pour certaines applications, il sera difficile voire impossible d'avoir des informations aussi précises. Dans ce cas, nous devrons nous contenter d'une estimation aussi précise que possible des valeurs sus-citées, par exemple d'une vitesse \og typique \fg{} et d'une vitesse maximale. Ce sera généralement suffisant pour caractériser des cibles.
 	
-	\subparagraph{Accélération}
+	\paragraph{Accélération}
 	Au-delà des valeurs moyennes/typiques ou maximales de la vitesse, il peut être judicieux d'examiner dans quelle mesure la vitesse peut varier en un court laps de temps, c'est-à-dire de détailler la façon dont les objets sont susceptibles d'accélérer. En effet, un objet se déplaçant relatiement lentement peut paraître aisé à sélectionner, mais s'avérer fort difficile s'il accélère brutalement, surtout si cette accélération a lieu précisément au moment où l'utilisateur effectue son mouvement de sélection.
 	
 	Là encore, l'idéal serait d'avoir un histogramme, ainsi qu'une moyenne, un écart-type et une valeur maximale. L'on devra plus souvent se contenter d'une valeur typique et d'une valeur maximale estimées. Ce sera généralement suffisant pour répondre à la question primordiale concernant l'accélération : \og la cible est-elle susceptible d'accélérer brusquement ? \fg{}. Sans nous répandre en détails ici, précisons simplement que les objets accélèrent généralement d'autant plus facilement qu'ils sont légers, et que les atomes peuvent le faire brusquement, y compris dans les simulations de dynamique moléculaire.
    
-    \subsubsection{Fréquence des changements de direction}
+    \subsection{Fréquence des changements de direction}
     Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer la cette fréquence comme étant soit nulle, soit infinie.
     
     Dans certains cas, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un événément instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur direction est plus raisonnable.
@@ -88,20 +87,20 @@
     
     Les objets virtuels tels que ceux rencontrés dans les jeux vidéos ne sont soumis à aucune contrainte physique, et leurs directions peuvent changer de manière instantanée ou continue, selon les choix des développeurs ; dans certains cas, cette notion de fréquence aura donc du sens, et dans d'autres non.
     
-    \paragraph{Cinématique discrète ou continue}
+    \subsubsection{Cinématique discrète ou continue}
     Afin, nous dirons que les objets dont les changements de direction sont instantanés sont de cinématique discrète, tandis que les autres sont de cinématique continue. Par  souci de concision, nous appellerons les premiés ciné-discrets et les second ciné-continus. Notons que dans la plupart des cas, les objets markoviens seront ciné-discrets et les objets autocorrélés seront ciné-continus, de telle sorte que ces termes sont presque interchangeables.
     
-    \paragraph{Variabilité.}
+    \subsubsection{Variabilité}
     Comme pour la vitesse, il est bien entendu que la fréquence des changements de direction d'une cible ne sera pas nécessairement (ou même généralement) constante. De même que pour la vitesse, on tâchera donc d'obtenir un histogramme des valeurs, une moyenne, un écart-type, et un maximum.
     
     Dans l'impossibilité de le faire, nous opterons pour une estimation des valeurs \og typique \fg{} et maximale. Illustrons simplement ce propos par l'exemple d'une automobile : sur autoroute, sa fréquence de changements de direction sera presque nulle ; en ville, elle sera bien plus élevée.
     
-	\subsubsection{Amplitude des changements de direction}
+	\subsection{Amplitude des changements de direction}
 	Outre leur fréquence, les changements de direction doivent être examinés à travers leur amplitude. Concrètement, quand une cible change de direction, son vecteur direction subit une rotation. C'est l'angle de cette rotation que nous appelons \emph{l'amplitude} du changement de direction.
 	
 	Pour une fréquence donnée, si cette valeur est faible, la direction de l'objet changera relativement peu et sa trajectoire sera relativement \og lisse \fg{}, comme sur la plupart des exemples de la figure~\ref{fig:motion1530}, exception faite de ceux dont la fréquence est élevée ($geq$~16~Hz). Si elle est élevée, en revanche, la trajectoire sera très \og irrégulière \fg{}, comme on l'observe notamment sur la figure~\ref{fig:motion165180}, même à basse fréquence (notez que les amplitudes données dans ces figures sont des valeurs maximales --- nous y reviendrons).
 	
-	\paragraph{Nature discrète ou continue}
+	\subsubsection{Nature discrète ou continue}
 	Comme mentionné plus haut, un changement de direction peut être considéré comme un événement instantané et discret, ou continu. Dans le premier cas, il aura une valeur en degrés : l'angle entre la direction avant et après le changement ; dans le second, il aura une valeur en degrés/seconde : le taux de changement de direction en fonction du temps. Comme nous y faisions brièvement référence au cours du chapitre~\ref{chap1}, cette mesure est couramment fournie pour les avions de combat.
 	
 	En règle générale, les objets ciné-discrets peuvent avoir des amplitudes de changements de direction très elévées (comme les atomes des simulations moléculaires, qui peuvent faire demi-tour d'une itération de la simulation à l'autre) tandis que les ojbets ciné-continus tendent à avoir des taux de changement de direction assez faibles, et ce d'autant plus qu'ils sont massifs. Pour un gros navire, par exemple, le rayon de giration minimal peut dépasser les 3~km\footnotemark{}.
@@ -109,15 +108,15 @@
 	\footnotetext{Le rayon de giration est le rayon du cercle parcouru par un objet en mouvement circulaire uniforme. Pour l'exemple cité :
 	\url{http://www.container-transportation.com/world-largest-ship.html}}
 	
-	\paragraph{Variabilité.}
+	\subsubsection{Variabilité}
 	Ici, la question de la variabilité est peut-être plus importante encore que pour la vitesse d'une cible ou la fréquence de ses changements de direction. En effet, bien rares sont les cibles dont les changements de direction se font toujours selon (approximativement) le même angle, à l'exception des cibles aux mouvement circulaires (ou elliptiques) ; encore s'agit-il ici de changements continus.
 	
 	Là encore, il y a plusieurs façons de considérer la distribution de ces valeurs d'angles (après discrétisation en cas de mouvement continu) : un histogramme complet peut être retenu, une moyenne, un écart-type et une valeur maximale peuvent également servir de référence. Comme pour les autres variables, s'il est impossible d'obtenir ces mesures, une estimation des valeurs moyenne et maximale devra nous contenter.
 
-    \subsubsection{Densité de l'environnement}
+    \subsection{Densité de l'environnement}
     Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continus mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
     
-    \paragraph{Occultation.}
+    \subsubsection{Occultation}
     Le niveau d'occultation visuelle d'un environnement est également crucial, et notre taxinomie ne saurait l'ignorer. S'il dépend fortement de la densité de l'environnement, on ne peut établir de lien d'équivalence entre celle-ci et celui-là. En effet, pour une densité donnée, le niveau d'occultation peut être très élevé si les cibles sont très grosses et opaques ; si, en revanche, elles sont relativement petites, voire semi-transparentes, l'occultation peut être assez faible. Rappelons par exemple au lecteur que la même molécule est représentée sur la figure~\ref{fig:4awn_VdW} et sur la figure~\ref{fig:4awn_points}, mais que le niveau d'occultation est bien plus élevé dans le premier cas que dans le second.
 	
     En outre, la \og taille \fg{} des cibles ne peut pas forcément s'exprimer de façon adéquate avec une valeur scalaire. En effet, si la taille d'une cible sphérique est correctement exprimée par son seul rayon, il en va autrement d'un objet d'une forme quelconque, et \emph{a fortiori} complexe.
@@ -126,17 +125,16 @@
     
     C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
 
-    \subsection{Taxinomie obtenue}
-    Résultats ; appli OpenCV ?
+\section{Taxinomie obtenue}
+	Résultats ; appli OpenCV ?
 
 \section{Modèle de génération de mouvement}
-    \subsection{Motivations et principe}
-    \subsubsection{Générer du mouvement pour mener des évaluations}
+    \subsection{Générer du mouvement pour mener des évaluations}
     Afin d'étudier rigoureusement la sélection de cibles mobiles en fonction de la nature du mouvement, il est nécessaire de pouvoir générer différents types de mouvements avec le plus petit nombre de paramètres possible. Dans l'idéal, le modèle choisi pour la génération de mouvement devrait être capable d'en générer une très grande variété. Les objectifs de variétés et de petitesse du nombre de paramètres étant contradictoires, un compromis doit être atteint.
     
     Sans doute de nombreux modèles pourraient-ils être conçus, et sans doute pourraient-ils correspondre à des compromis ayant divers avantages et inconvénients. Dans le but d'obtenir un modèle relativement simple (donc utilisable dans des évaluations d'une durée raisonnable pour les sujets) nous avons choisi de nous limiter aux mouvements markoviens ; ce choix fut également motivé par le fait que ces mouvements sont intrinsèquement moins prévisibles et, par conséquent, plus difficiles à anticiper --- ils rendent de fait la sélection plus difficile.
     
-    \subsubsection{Trois paramètres pour le mouvement synthétique}
+    \subsection{Trois paramètres pour le mouvement synthétique}
     Nous avons opté pour un modèle limité à trois paramètres pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
     \begin{enumerate}
     	\item La vitesse $V$ à laquelle l'objet se déplace ;
@@ -144,7 +142,7 @@
     	\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
     \end{enumerate}
     
-    \subsection{Trajectoires obtenues}
+    \subsection{Examen des trajectoires obtenues}
     Des exemples de trajectoires obtenues avec ce modèles sont fournis dans la figure~\ref{fig:motion1530} avec $A=15$ et $A=30$, dans la figure~\ref{fig:motion4560} avec $A=45$ et $A=60$, dans la figure~\ref{fig:motion7590} avec $A=75$ et $A=90$, dans la figure~\ref{fig:motion105120} avec $A=105$ et $A=120$, dans la figure~\ref{fig:motion135150} avec $A=135$ et $A=150$, et dans la figure~\ref{fig:motion165180} avec $A=165$ et $A=180$. Dans tous les cas, $S=2,19$, $F$ prend les valeurs 1, 4, 8, 16, 32 et 60, et le mouvement généré dure 20 secondes.
     
     Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{}. De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tous l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.    
@@ -238,8 +236,7 @@
 		\label{fig:motion1530}
 	\end{figure}
 	
-    \subsubsection{Impressions subjectives sur les trajectoires}
-    \paragraph{Mouvement pseudo-autocorrélé.}
+    \subsubsection{Mouvement pseudo-autocorrélé}
     On notera (notamment sur la figure~\ref{fig:motion1530}, et dans une moindre mesure sur les autres) que quand les valeurs de $A$ ou $F$ sont faibles, ou \emph{a fortiori} quand les deux le sont, le mouvement semble présenter une certaine régularité, au point peut-être de donner l'illusion d'être autocorrélé. La figure~\ref{fig:synTraj_219_45_1}, malgré sa valeur de $A$ relativement élevée, en fournit un exemple.
     
     Cette observation est intéressante en ce que ce modèle conçu pour les objets markoviens peut fournir une approximation du mouvement autocorrélé qui, dans certains cas, peut être suffisante. C'est particulièremnt vrai sur une fenêtre temporelle plus restreinte, limitée à quelques secondes tout au plus --- mais une telle fenêtre peut être trop courte pour certaines applications.
@@ -335,7 +332,7 @@
 		\label{fig:motion4560}
 	\end{figure}
 	
-	\paragraph{Entropie.}
+	\subsubsection{Entropie}
 	Dans ses travaux sur la thermodynamique, Rudolf Clausius définit l'entropie comme \og le contenu de tranformation [d'un] corps \fg{}~\cite{clausius1865verschiedene, clausius1865diverses}. Rapidement, Ludwig Boltzmann redéfinit l'entropie $S$ par l'équation $S = k\log(W)$, où $k$ est une constante et $W$ est le nombre d'états dans lequel un système peut se trouver~\cite{boltzmann1866mechanische, weisstein2004eric}.
 	
 	À partir de la définition de Boltzmann, Claude Shannon redéfinit à nouveau l'entropie~\cite{shannon1949communication} (qu'il préfère noter $H(X)$) d'une variable aléatoire discrète $X$ de valeurs possibles $\{x_{1}, \ldots{}, x_{n}\}$ par l'équation~\ref{eq:shannonEntropy}, où $P(x_{i})$ est la probabilité que $X=x_{i}$.
@@ -364,7 +361,7 @@
 	
 	Pour connaître l'entropie globale $E_{g}$ de la cible, on peut poser que $E_{g}$ est la moyenne des $E_{t}$ pour chaque instant $t$. Si l'on suppose que le temps est discrétisé de telle manière qu'un instant vaut $\frac{1}{60}$~s, alors $E_{g} = E_{t_{c}} \frac{F}{60}$ où $E_{t_{c}}$ est l'entropie de la cible à l'instant d'un changement de direction sûr.
 	
-	\subparagraph{Pseudo-entropie.}
+	\paragraph{Pseudo-entropie.}
 	Or, ce calcul d'entropie dépend d'hypothèses parfois très fortes :
 	
 	\begin{itemize}
@@ -474,18 +471,19 @@
 		\label{fig:motion7590}
 	\end{figure}
 	
-	\paragraph{Examen détaillé des trajectoires.}
 	Nous proposons ici un examen détaillé de quelques trajectoires. Avant tout autre propos, que le lecteur nous permette d'attirer son attention sur le fait que les trajectoires illustrées sur les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} sont représentées à des échelles différentes. En effet, la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
 	
 	Il est donc inévitable de représenter ces trajectoires à des échelles adaptées si l'on souhaite qu'elles soient lisibles, mais il convient de faire attention à l'échelle et de garder à l'esprit que les trajectoires les plus irrégulières sont généralement représentées à une échelle bien plus fine.
 	
-	\subparagraph{Effet des angles.}
+	\subsubsection{Effet des angles}
 	Lorque $A$ est faible, comme sur la figure~\ref{fig:motion1530}, le mouvement est relativement lisse et régulier, avec des courbes infréquentes et douces, sauf quand la valeur de $F$ augmente beaucoup ; et encore les trajectoires apparaissent-elles relativement \og dénouées \fg{}, à l'exception de celle de la figure~\ref{fig:synTraj_219_30_60} dont les valeurs de $A$ et $F$ commencent à être élevées, avec 30\textdegree{} et 60~Hz respectivement.
 	
 	À mesure que $A$ augmente, comme le montrera un examen successif des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180}, les trajectoires sont de plus en plus irrégulières et \og nouées \fg{}.
 	
-	\subparagraph{Effet des fréquences.}
-	Un examen de n'importe quel bloc de six trajectoires pour une valeur de $A$ donnée montrera que plus $F$ est grande, plus les trajectoires sont irrégulières.
+	\subsubsection{Effet des fréquences}
+	Un examen de n'importe quel bloc de six trajectoires pour une valeur de $A$ donnée montrera que plus $F$ est grand, plus les trajectoires sont irrégulières. Cet effet est très net et tout aussi visible quand $A$ est petit (comme sur la figure~\ref{fig:motion1530}) que quand il est grand (comme sur la figure~\ref{fig:motion165180}).
+	
+	Toutefois, quand $A$ est très grand, même avec une petite valeur de $F$, la trajectoire présente d'importantes irrégularités, comme sur la figure~\ref{fig:synTraj_219_180_1}. Notez cependant d'une part que ce n'est vrai que parce que nous observons la trajectoire sur une fenêtre temporelle relativement longue (20 secondes) et d'autre part que nous aurions pu choisir une valeur de $F$ bien plus faible, comme 0,1~Hz, par exemple, voire moins. Si $F$ était strictement inférieure à 0,05~Hz, sur une fenêtre de 20 secondes, la trajectoire serait rectiligne.
 	
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
@@ -575,7 +573,35 @@
 		\label{fig:motion105120}
 	\end{figure}
 	
+	\subsubsection{Effet combiné des angles et fréquences}
+	L'effet des fréquences étant qualitativement comparable à celui des angles, on peut considérer que ces paramètres sont approximativement équivalents et, de fait, les regrouper en un seul par un produit. Ainsi, l'on peut s'intéresser non pas à leurs valeurs respectives mais au produit $AF$.
 	
+	Insistons sur le fait qu'il s'agit d'une approximation, mais notez que pour une valeur de $AF$ de 480, par exemple, on a les trajectoires de la figure~\ref{fig:synTraj_219_30_16} et celle de la figure~\ref{fig:synTraj_219_120_4}. Bien que visiblement distinctes, ces deux trajectoires présentent un niveau d'irrégularité grossièrement comparable. Pour $AF = 720$, les trajectoires des figures~\ref{fig:synTraj_219_90_8} et~\ref{fig:synTraj_219_45_16} sont également assez semblables.
+	
+	Notons tout de même que pour une valeur de $AF$ donnée, même si l'irrégularité globale est généralement comparable, une trajectoire générée par une valeur de $F$ relativement élevée tend à être plus lisse et courbée, tandis que quand $A$ domine, elle est plutôt \og saccadée \fg{}.
+	
+	Ce point sera particulièrement visible avec la même valeur de $AF$ de 180, mais en comparant les trajectoires présentées sur la figure~\ref{fig:trajsAF180}. En effet, si $180 \times 1 = 15 \times 12 = 180$, nous avons dans un cas un $A$ très grand avec un $F$ très petit, et dans l'autre des valeurs plus \og équilibrées \fg{}. Le résultat est une trajectoire très saccadée sur la première trajectoire (figure~\ref{fig:synTraj_219_180_1b}) et plutôt lisse et courbe sur la seconde (figure~\ref{fig:synTraj_219_15_12}).
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_1}
+			\caption[$A = 180$, $F=1$]{$A = 180$, $F=1$}
+			\label{fig:synTraj_219_180_1b}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_12}
+			\caption[$A = 15$, $F=12$]{$A = 15$, $F=12$}
+			\label{fig:synTraj_219_15_12}
+		\end{subfigure}
+		\caption[Trajectoires pour $AF = 180$]{Trajectoires pour $AF = 180$ et $S = 2,19~cm/s$. On observe que pour un produit $AF$ donné, si $A$ est particulièrement grand et $F$ particulièrement petit sur une trajectoire (et inversement sur l'autre) les résultats obtenus diffèrent significativement.}
+		\label{fig:trajsAF180}
+	\end{figure}
+	
+	
+	L'on pourra donc, dans certains cas, utiliser le produit $AF$ seul, pour simplifier l'étude des résultats, mais il convient de le faire en ayant à l'esprit que c'est une approximation, et qu'elle tend à être moins précises pour les valeurs de $A$ ou $F$ particulièrement faibles ou élevées.
 	
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
@@ -756,8 +782,8 @@
 	\end{figure}
 	
 	
-    \subsection{Résultats}
-    Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
+\section{Résultats}
+	Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
 
 
 \section{Conclusion}
