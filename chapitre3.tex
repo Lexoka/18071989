@@ -366,7 +366,7 @@
 	
 	\begin{itemize}
 		\item $A$ est connue ;
-		\item $F$ est connue ;
+		\item $F$ est connu ;
 		\item Pour une valeur de $A$ donnée, tous les $\alpha$ sont équiprobables ;
 		\item La discrétisation de l'espace des $\alpha$ ne fausse pas l'estimation de l'entropie, c'est-à-dire qu'elle n'est ni trop fine ni trop grossière ;
 		\item La discrétisation du temps ne fausse pas l'estimation de l'entropie, c'est-à-dire qu'elle n'est ni trop fine ni trop grossière.
@@ -374,8 +374,8 @@
 	
 	Pour simplifier le problème, l'on peut simplement remarquer que :
 	\begin{itemize}
-		\item Plus $F$ est élevée, plus la direction change souvent,
-		\item Plus $A$ est élevée, plus ces changements peuvent être importants,
+		\item Plus $F$ est élevé, plus la direction change souvent,
+		\item Plus $A$ est élevé, plus ces changements peuvent être importants,
 		\item Les trajectoires observées sur les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} révèlent que, souvent, une trajectoire avec une valeur de $A$ relativement basse et une valeur de $F$ relativement haute sera subjectivement semblable à une trajectoire avec une valeur de $A$ relativement haute et une valeur de $F$ relativement basse.
 	\end{itemize}
 	
@@ -574,7 +574,7 @@
 	\end{figure}
 	
 	\subsubsection{Effet combiné des angles et fréquences}
-	L'effet des fréquences étant qualitativement comparable à celui des angles, on peut considérer que ces paramètres sont approximativement équivalents et, de fait, les regrouper en un seul par un produit. Ainsi, l'on peut s'intéresser non pas à leurs valeurs respectives mais au produit $AF$.
+	L'effet des fréquences étant qualitativement comparable à celui des angles, on peut considérer que ces paramètres sont approximativement équivalents et, de fait, les regrouper en un seul par un produit. Ainsi, l'on peut s'intéresser non pas à leurs valeurs respectives mais au produit $AF$, que nous avons également baptisé \emph{pseudo-entropie}.
 	
 	Insistons sur le fait qu'il s'agit d'une approximation, mais notez que pour une valeur de $AF$ de 480, par exemple, on a les trajectoires de la figure~\ref{fig:synTraj_219_30_16} et celle de la figure~\ref{fig:synTraj_219_120_4}. Bien que visiblement distinctes, ces deux trajectoires présentent un niveau d'irrégularité grossièrement comparable. Pour $AF = 720$, les trajectoires des figures~\ref{fig:synTraj_219_90_8} et~\ref{fig:synTraj_219_45_16} sont également assez semblables.
 	
@@ -583,14 +583,14 @@
 	Ce point sera particulièrement visible avec la même valeur de $AF$ de 180, mais en comparant les trajectoires présentées sur la figure~\ref{fig:trajsAF180}. En effet, si $180 \times 1 = 15 \times 12 = 180$, nous avons dans un cas un $A$ très grand avec un $F$ très petit, et dans l'autre des valeurs plus \og équilibrées \fg{}. Le résultat est une trajectoire très saccadée sur la première trajectoire (figure~\ref{fig:synTraj_219_180_1b}) et plutôt lisse et courbe sur la seconde (figure~\ref{fig:synTraj_219_15_12}).
 	
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{0.5\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_180_1}
 			\caption[$A = 180$, $F=1$]{$A = 180$, $F=1$}
 			\label{fig:synTraj_219_180_1b}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.5\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_15_12}
 			\caption[$A = 15$, $F=12$]{$A = 15$, $F=12$}
@@ -691,7 +691,12 @@
 		\label{fig:motion135150}
 	\end{figure}
 	
+	\subsubsection{Longeur et aire de l'enveloppe convexe}
+	Pour rappel, toutes les trajectoires des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} furent générée par un mouvement de vitesse constante, 2,19~cm/s. Attendu qu'elles ont également été générées sur une même durée (20 secondes) elles ont toutes la même longueur, malgré les apparences dues aux variations d'échelle : $2,19~cm/s \times 20~s = 43,8~cm$.
 	
+	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut,	la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
+	
+	En règle générale, plus la pseudo-entropie est faible, plus la trajectoire parcourera une distance horizontale ou verticale importante, et plus la pseudo-entropie est élevée, plus ces distances sont faibles. Notez cependant que cela n'implique pas nécessairement qu'une trajectoire de faible pseudo-entropie occupera forcément une aire importante, car comme le montre la figure~\ref{fig:synTraj_219_30_1}, la distance parcourue sur un axe (vertical, en l'occurrence) peut être très faible.
 	
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
@@ -781,6 +786,40 @@
 		\label{fig:motion165180}
 	\end{figure}
 	
+	\paragraph{Enveloppe convexe.}
+	Une façon d'estimer l'aire de la surface occupée par un ensemble de points (comme une trajectoire) consiste à calculer l'aire de son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Bla~\ref{fig:trajAreas}.
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_5_16}
+			\caption[Enveloppe convexe, $A = 5$, $F=16$]{Enveloppe convexe, $A = 5$, $F=16$, $AF=80$. L'aire de l'enveloppe est d'environ 83~cm².}
+			\label{fig:areaTraj_219_5_16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_45_4}
+			\caption[Enveloppe convexe, $A = 45$, $F=4$]{Enveloppe convexe, $A = 45$, $F=4$, $AF=180$. L'aire de l'enveloppe est d'environ 48~cm².}
+			\label{fig:areaTraj_219_45_4}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_90_8}
+			\caption[Enveloppe convexe, $A = 90$, $F=8$]{Enveloppe convexe, $A = 90$, $F=8$, $AF=720$. L'aire de l'enveloppe est d'environ 16,4~cm².}
+			\label{fig:areaTraj_219_90_8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_180_60}
+			\caption[Enveloppe convexe, $A = 180$, $F=60$]{Enveloppe convexe, $A = 180$, $F=60$, $AF=10~800$. L'aire de l'enveloppe est d'environ 3,25~cm².}
+			\label{fig:areaTraj_219_180_60}
+		\end{subfigure}
+		\caption[Enveloppes convexes]{Enveloppes convexes de quatre trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et l'aire de l'enveloppe convexe décroît.}
+		\label{fig:trajAreas}
+	\end{figure}
 	
 \section{Résultats}
 	Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
