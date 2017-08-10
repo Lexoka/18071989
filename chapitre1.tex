@@ -41,6 +41,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Concrètement, une protéine est un une  chaîne d'acides aminés, reliés par des liaisons peptidiques, c'est-à-dire des liaisons covalentes entre une fonction carboxyle (–C(O)OH) et une fonction amine (un composé organique dérivé de l'ammoniac dont au moins un atome d'hydrogène a été remplacé par un groupe carboné). Ces chaînes d'acides aminés sont également appelées chaînes polypeptidiques, ou simplement polypeptides.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}{.39\textwidth}
 			\centering
 			\includegraphics[height=4cm]{./figures/ch1/amino_acid_structure}
@@ -71,6 +72,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La traduction se fait selon le \emph{code génétique} illustré par la figure~\ref{fig:geneCode}. Ainsi, à chaque \emph{codon} (non-stop) est associé un acide aminé.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.44\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch1/geneCode}
@@ -102,6 +104,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[b]{.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/aHelix}
@@ -137,54 +140,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{Rôles}
 	Les protéines sont impliquées dans la plupart des processus biologiques et, de fait, leurs rôles sont extrêmement divers. On peut toutefois les diviser en deux grandes parties : les fonctions cellulaires et les fonctions biochimiques. Les premières définissent le rôle de la protéine dans la cellule ou l'organisme, et peuvent être découpées en cinq groupes~\cite{lodish1995molecular} :
 	\begin{enumerate}
-		\item Les protéines des structures, qui permettent à la cellule de maintenir son intégrité physique et son organisation dans l'espace. C'est par exemple la fonction du collagène, la protéine la plus abondante chez les mammifères~\cite{di2002mapping}.%, illustrée par la figure~\ref{fig:collagen}.
-		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmiques, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine~\cite{crichton1987iron} ou d'ions à travers les membranes cellulaires, par les canaux ioniques. %(illustrée par la figure~\ref{fig:transferrin})
-		\item Les protéines régulatrices, qui inhibent ou stimulent l'activité d'autres protéines, ou la transcription de gènes, ce qui permet réguler divers processus biologiques.% Un exemple de réseau de régulation formé par plusieurs protéines est représenté par la figure~\ref{fig:regulation}.
-		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides), les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. C'est notamment le cas des récepteurs de l'insuline~\cite{gammeltoft1984insulin}. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. %C'est ainsi que fonctionnent les récepteurs d'œstrogène alpha, ou ER$\alpha$~\cite{dahlman2006international}, illustrés par la figure~\ref{fig:eralpha}.
-		\item Les protéines motrices, qui permettent aux cellules ou aux organismes de se mouvoir. On peut citer par exemple la myosine, essentielle à l'activité musculaire des vertébrés~\cite{pollard1973acanthamoeba}.%, et illustrée par la figure~\ref{fig:myosin}.
+		\item Les protéines des structures, qui permettent à la cellule de maintenir son intégrité physique et son organisation dans l'espace. C'est par exemple la fonction du collagène, la protéine la plus abondante chez les mammifères~\cite{di2002mapping}.
+		\item Les protéines de transport, qui acheminent les molécules nécessaires aux fonctions cellulaires au sein des cellules, mais aussi à travers les membranes nucélaires et plasmiques, ou hors des cellules. Cela inclut notamment le transport de dioxygène par l'hémoglobine, de fer par la transferrine~\cite{crichton1987iron} ou d'ions à travers les membranes cellulaires, par les canaux ioniques. 
+		\item Les protéines régulatrices, qui inhibent ou stimulent l'activité d'autres protéines, ou la transcription de gènes, ce qui permet réguler divers processus biologiques.
+		\item Les protéines de signalisation, qui reçoivent les signaux extérieurs (en se liant aux molécules qui les transmettent ou en réagissant à leur contact) et assurent leur transmission vers la cellule, ou vers une autre zone de l'organisme. Les protéines de signalisation permettent notamment de réagir aux hormones ; lorsque celles-ci sont hydrophiles (et donc incapables de traverser la membrane cellulaire, composée de lipides), les protéines réceptrices sont transmembranaires, leur extrémité extérieure permet la fixation de l'hormone, tandis que l'extrémité intérieure transmet le signal. C'est notamment le cas des récepteurs de l'insuline~\cite{gammeltoft1984insulin}. Lorsque les hormones sont lipophiles et peuvent traverser la membrane, la protéine réagit à la fixation de l'hormone par un changement conformationnel qui lui permettra de transmettre le signal. 
+		\item Les protéines motrices, qui permettent aux cellules ou aux organismes de se mouvoir. On peut citer par exemple la myosine, essentielle à l'activité musculaire des vertébrés~\cite{pollard1973acanthamoeba}.
 	\end{enumerate}	
 
-%	\begin{figure}[H]
-%		\begin{subfigure}[t]{.4\textwidth}
-%			\centering
-%			\includegraphics[height=7cm]{./figures/ch1/collagen}
-%			\caption[Collagène]{Collagène : structure en triple-hélice d'arginines ; structure cristallographique~\cite{okuyama2014preferred}.}
-%			\label{fig:collagen}
-%		\end{subfigure}
-%		~
-%		\begin{subfigure}[t]{.6\textwidth}
-%			\centering
-%			\includegraphics[height=7cm]{./figures/ch1/eralpha}
-%			\caption[Récepteur d'œstrogène alpha]{Récepteur d'œstrogène alpha, représenté par une isosurface de densité colorée en fonction des atomes sous-jacents~\cite{nwachukwu2016systems}.}
-%			\label{fig:eralpha}
-%		\end{subfigure}
-%		\caption[Protéines de structure et de communication]{Protéines de structure et de communication. Illustrations produites par \emph{UnityMol}.}
-%		\label{fig:prot_misc}
-%	\end{figure}
-	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=\textwidth]{figures/ch1/transferrin}
-%		\caption[Transferrine]{Illustration d'une protéine de transport : la transferrine humaine, ici liée à de l'ytterbium, et représentée par ses structures secondaires (hélices alpha en rouge et feuillets bêta en bleu). Illustration produite par \emph{UnityMol} à partir d'une structure de la \emph{Protein Data Bank}~\cite{wang2015anion}.}
-%		\label{fig:transferrin}
-%	\end{figure}
-%	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=\textwidth]{figures/ch1/myosin}
-%		\caption[Myosine]{Illustration d'une portion de myosine, une protéine essentielle à l'activité contractile des vertébrés, notamment dans les cellules musculaires. Illustration de David Goodsell, à partir d'une structure de la \emph{Protein Data Bank}~\cite{houdusse1999atomic}.}
-%		\label{fig:myosin}
-%	\end{figure}
-	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=\textwidth]{figures/ch1/regulation}
-%		\caption[Réseau de régulation]{Schéma représentant un réseau de régulation génétique (chez une espèce de riz hybride). Les ellipses roses-rouges représentent des protéines, et les disques roses représentent des facteurs de transcription\footnotemark. Les interactions sont multiples, et peuvent prendre la forme d'une liaison, d'une stimulation, d'une inhibition\ldots{} Les protéines sont impliquées à tous les niveaux du processus. Crédit :~\cite{song2010comparative}.}
-%		\label{fig:regulation}
-%	\end{figure}
-	
-%	\footnotetext{Un facteur de transcription est une protéine qui contrôle le taux de transcription d'une portion d'ADN en ARN messager~\cite{latchman1997transcription}.}
-	
 	
 	\subsection{Modes de représentation}
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
@@ -251,7 +213,8 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		
 	Enfin, les \emph{Hyperballs}, utilisées de la façon la plus \og classique \fg{} ou \og canonique \fg{} présentent des hyperboloïdes partiellement creusées, comme sur la figure~\ref{fig:4awn_HB}. Cette représentation est souvent appréciée pour ses qualités esthétiques, certes subjectives. D'un point de vue plus objectif, la représentation en \emph{Hyperballs} canoniques présentent à peu près les mêmes caractéristiques que la représentation en boules et bâtons. Les dimensions sont proches, même si les formes diffèrent. Les liaisons sont un peu plus épaisses près des atomes, et comparables, voire un peu plus fines au milieu. De fait, la perception de la structure de la molécule et de ses propriétés, ainsi que le niveau d'occultation visuelle, sont assez comparables. Par conséquent, la représentation en \emph{Hyperballs} canoniques est un cas d'application aussi pertinent pour la sélection de cibles mobiles que la représentation CPK, voire plus, car les bonnes performances des \emph{Hyperballs} permettent de gérer de très gros systèmes plus facilement.
 	
-	\subsubsection{Surface accessible au solvant et surface de Connolly} Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
+	\subsubsection{Surface accessible au solvant et surface de Connolly}
+	Plutôt que de représenter les atomes d'une molécule, ou ses liaisons covalentes, ou sa structure interne de façon schématique, il est possible de représenter sa \og surface \fg{}. Attendu qu'une molécule n'est pas un objet macroscopique, le concept de surface est nécessairement plus abstrait, et il convient donc de préciser de quoi il s'agit. On peut en effet définir la surface moléculaire de plusieurs façons.
 		
 	Un définition très courante est la surface de Connolly~\cite{connolly1983analytical}, parfois également appelée \emph{solvent excluded surface} dans la littérature anglo-saxonne. Il s'agit de l'ensemble des points auxquels la molécule et \og le solvant \fg{} (généralement une sphère représentant une molécule d'eau) peuvent entrer en contact, où le contact est défini par le rayon de van der Waals.
 	
@@ -264,10 +227,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La figure~\ref{fig:connolly} illustre plus clairement ce principe. Une autre surface très courante est la surface accessible au solvant~\cite{lee1971interpretation}, définie par l'ensemble des points parcouru par le centre de la sphère représentant le solvant quand elle est en contact avec la molécule. C'est également illustré par la figure~\ref{fig:connolly}. Enfin, la figure~\ref{fig:4awn_ses} montre une protéine entière représentée par sa surface de Connolly.
 		
-	\subsubsection{Isosurface de densité} On peut également représenter une molécule par sa surface en se fondant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}.%, illustré par la figure~\ref{fig:marchingCubes}.
-	L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
-		
-	%Les figures~\ref{fig:4awn_iso_0_2}, \ref{fig:4awn_iso_0_5}, \ref{fig:4awn_iso_1_0} et~\ref{fig:4awn_iso_1_5} représentent des isosurfaces de densité avec des valeurs de $D$ plus ou moins élevées ($0,2$, $0,5$, $1,0$ et $1,5$). Naturellement, plus la densité choisie est élevée, plus la surface sera proche des centres atomiques, et plus sa forme sera complexe, comme sur la figure~\ref{fig:4awn_iso_1_5} ; inversement, lorsque la densité est faible, la surface est loin des centres atomiques et sa forme est plus grossière, cf. la figure~\ref{fig:4awn_iso_0_2}.
+	\subsubsection{Isosurface de densité} On peut également représenter une molécule par sa surface en se fondant sur un seuil de densité moléculaire. On calcule, dans une grille tridimensionnelle d'une résolution arbitraire, la densité en chaque case --- on construit un champ scalaire. Ensuite, on choisit arbitrairement un seuil de densité, et l'on trace une isosurface de densité à partir de ce seuil. On utilise généralement pour ce faire l'algorithme des \emph{marching cubes}~\cite{lorensen1987marching}.	L'isosurface de densité $D$ correspond à l'ensemble des points de l'espace dont la densité moléculaire vaut $D$.
 	
 	Outre le fait qu'elle représente une grandeur physique concrète, l'isosurface de densité a l'avantage d'être relativement rapide à calculer. En effet, l'algorithme \emph{QuickSurf}~\cite{krone2012fast, roberts2013lattice, stone2013early, stone2013gpu, stone2014gpu, sener2014visualization}, par exemple, permet de calculer une isosurface de densité suffisamment vite pour la recalculer en temps réel lors d'une simulation de dynamique moléculaire. Cet algorithme est conçu pour être exécuté sur un GPU (un processeur graphique, particulièrement adapté aux calculs très parallèles) ce qui améliore ses performances d'un à deux ordres de grandeur. Il permet de plus d'ajuster plusieurs paramètres : la résolution spatiale générale, le rayon des atomes (utilisé pour générer la grille de densité, par somme de gaussiennes 3D), l'isovaleur de densité voulue, la résolution de la grille de densité, et la distance de coupure utilisée pour la gaussienne associée à chaque atome\footnote{\url{http://www.ks.uiuc.edu/Research/vmd/current/ug/node73.html}}.
 	
@@ -277,19 +237,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	On constate donc qu'une isosurface de densité peut présenter de nombreuses cibles mobiles, avec toutefois un niveau d'occultation réduit, puisque l'intérieur de la molécule n'est pas représenté. Les aspérités situées à \og l'arrière \fg{} de la molécule sont cependant totalement occultées. De plus, la représentation en isosurface est particulièrement prisée pour l'arrimage\footnote{\emph{docking}, en anglais} de protéines, qui implique au moins deux molécules et parfois beaucoup plus. Avec de nombreuses molécules, le nombre de cibles potentielles peut donc devenir très élevé, de même que la quantité de mouvement, puisqu'il faut ajouter au mouvement d'une aspérité d'une surface par rapport à elle-même le mouvement de toute la surface par rapport à l'environnement.
 	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=\textwidth]{figures/ch1/marchingCubes}
-%		\caption{Dans l'algorithme des \emph{marching cubes}, lorsque l'on considère une cellule, on lit la valeur du champ scalaire aux huit sommets du cube. On choisit ensuite un des quinze cubes ci-dessus, en fonction des valeurs lues. L'opération est répétée pour chaque cellule de la grille, et les cubes forment un maillage de triangles. Crédit : \emph{Wikimedia}.}
-%		\label{fig:marchingCubes}
-%	\end{figure}
-	
 	\subsubsection{Autres techniques de représentations}
-	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes couramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera}~\cite{pettersen2004ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara}, \emph{LigandScout}~\cite{wolber2005ligandscout} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
+	La liste des techniques de représentation fournie ci-dessus ne saurait être considérée comme exhaustive. En effet, les logiciels de visualisation moléculaires sont nombreux, et les possibilités qu'ils offrent le sont encore plus. Des programmes couramment utilisés, tels que \emph{UnityMol}~\cite{doutreligne2014unitymol}, VMD~\cite{humphrey1996vmd}, \emph{PyMol}~\cite{delano2002pymol}, \emph{QuteMol}~\cite{tarini2006ambient, tarini2006qutemol}, \emph{Chimera(X)}~\cite{pettersen2004ucsf, goddard2017ucsf}, ~\emph{Yasara}~\cite{krieger2014yasara}, \emph{LigandScout}~\cite{wolber2005ligandscout} ou \emph{Jmol}~\cite{herraez2006biomolecules} proposent des options très diverses. En outre, les divers modes de représentation proposés par ces outils peuvent être combinés librement, comme sur la figure~\ref{fig:transSS}.
 	
 	
 	\newcommand{\subImgW}{0.32\textwidth}
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{\subImgW}
 			\centering
 			\includegraphics[width=\textwidth]{./figures/ch1/4awn_points}
@@ -358,7 +312,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 
 	
 	\subsection{Dynamique moléculaire}
-	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système.% L'algorithme général est explicité (quoique sous forme schématique) sur la figure~\ref{fig:moldyn}.
+	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système.
 	
 	\subsubsection{Besoins} Il est difficile d'observer une macromolécule à l'état statique, et impossible de le faire \emph{in vivo}, lorsqu'elle est en mouvement dans son système naturel. Par conséquent, l'étude de phénomènes moléculaires complexes nécessite de passer par des simulations numériques, seules à même d'en rendre compte. En particulier, la biologie structurale s'intéresse à la \emph{dynamique conformationnelle} des macromolécules (c'est-à-dire à leur conformation tridimensionnelle dans le temps) et à leurs intéractions avec leur environnement --- par exemple le milieu cellulaire. La mise au point de ces simulations s'appuie néanmoins autant que possible sur des données expérimentales.
 	
@@ -366,13 +320,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Une simulation de dynamique moléculaire nécessite une phase d'initialisation : on assigne une position à chaque particule. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant, mais c'est plus compliqué pour les macromolécules dont la conformation est complexe. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Cette technique fut d'abord employée pour déterminer la structure de petits cristaux inorganiques~\cite{friedrich1912sitzungsberichte, bragg1914reflexion, bragg1913structure, dickinson1923crystal}, puis de molécules organiques et de protéines~\cite{de1925interpretation, crowfoot1935x, kendrew1958three}. Lorsque la cristallographie n'est pas possible, d'autres méthodes, souvent moins précises, peuvent être utilisées. Citons la spectroscopie de résonance magnétique nucléaire~\cite{clore1989determination, wuthrich1990protein, clore1991structures, wuthrich2001way}, ou la cryo-microscopie électronique~\cite{adrian1984cryo} (cryo-ME/\emph{cryo-EM}), de plus en plus utilisée~\cite{kuhlbrandt2014cryo, callaway2015revolution, dellisanti2015barrier, bartesaghi20152}.
 	
 	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. Ce procédé repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela s'appuie sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
-	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/moldyn}
-% 		\caption{Schéma simplifié de l'algorithme standard de simulation de dynamique moléculaire. En général, les forces utilisées sont sous forme de potentiels interatomiques classiques ($F = -\nabla V\left(r^{p}\right)$). Ici, $r^{i}$ représente une position à l'itération $i$, $v^{i}$ représente une vélocité à l'itération $i$, $a$ est l'accélération, $t$ est le temps, et $i$ est l'itération. Enfin, $\delta{}t$ est le pas de temps utilisé pour la simulation --- qui doit être suffisamment court pour gérer correctement les phénomènes les plus fugaces, tels que les oscillations des liaisons covalentes carbone-hydrogène, dont la période est de l'ordre de 10~fs ($10^{-14}$~s). Crédit : \emph{Wikimedia}.}
-% 		\label{fig:moldyn}
-% 	\end{figure}
 	
 	\begin{figure}[htb]
 		\centering
@@ -384,18 +331,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{Périodicité}
 	L'espace de simulation est généralement modélisé par ce qu'on appelle des conditions périodiques aux limites~\cite{cheatham1995molecular} (CPL, en anglais \emph{periodic boundary conditions} --- PBC). Elles constituent un ensemble de conditions aux limites utilisées afin de simuler un système pavé effectivement infini. En effet, si un système microscopique est simulé dans le vide, les molécules du système s'évaporeront, s'éloignant les unes des autres à moins d'être maintenues ensemble par une force restrictive externe. Si, au contraire, le système est simulé en utilisant des murs réflecteurs aux limites, des forces parasites sont introduites dans la simulation, pouvant donc créer un écart supplémentaire (en plus des approximations de simulation utilisées) par rapport au système réel.
 	
-	%, comme celui représenté sur la figure~\ref{fig:period} --- ce dernier est en deux dimensions, mais le principe en trois dimensions est le même. 
+
 	On optera donc généralement pour un système périodique. Il convient toutefois de prendre des précautions avec les conditions périodiques, afin d'éviter que des interactions \og artificielles \fg{} se produisent entre les \og bords \fg{} de l'espace de simulation, notamment entre les particules et leurs propres images si cela ne correspond pas au système étudié dans son état naturel~\cite{de1997effect}. L'utilisation de formes plus complexes que des parallélépipèdes peut permettre de minimiser ces effets indésirables pour un volume de simulation donné ; les octaèdres tronqués sont une des options possibles, comme l'illustre la figure~\ref{fig:octa}.
 	La périodicité introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
 	
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[width=\textwidth]{figures/ch1/period}
-%		\caption{Comportement par périodicité (2D) : la particule vert foncé (coin supérieur gauche de la boîte en traits pleins) possède une quantité de mouvement l'amenant à sortir de la boîte (flèche). Une fois sortie, la périodicité du système ramène une particule identique dans la boîte, avec la même quantité de mouvement. La particule subit l'influence de toutes les particules environnantes, y compris ses propres images. Crédit : \emph{Wikimedia}.}
-%		\label{fig:period}
-%	\end{figure}
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}{.49\textwidth}
 			\centering
 			\includegraphics[height=4cm]{./figures/ch1/truncOctahedron}
@@ -447,65 +389,17 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Le terme $E_{angle}$ représente l'énergie associée à la déformation des angles formés par les paires de liaisons covalentes impliquant le même atome.% cf. la figure~\ref{fig:e_angle}.
 	
-	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes.%, ce qu'explicite la figure~\ref{fig:e_dihedral}.
-	
-%  	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_bond}
-% 		\caption[Énergie de liaison]{Énergie d'élongation (ou compression) de liaison covalente. Lorsque la longueur de la liaison s'éloigne de son point d'équilibre noté $i_{0}$, l'énergie de liaison augmente. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_bond}
-% 	\end{figure}
-%	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_angle}
-% 		\caption[Énergie d'angle]{Énergie de déformation des angles formés par des paires de liaisons covalentes impliquant un même atome. Lorsque la valeur de l'angle s'éloigne de son point d'équilibre noté $\theta_{0}$, l'énergie d'angle augmente. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_angle}
-% 	\end{figure}
-	
-% 	\begin{figure}[H]
-% 		\begin{subfigure}{\textwidth}
-% 			\centering
-% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedral}
-% 			%\caption{}
-% 			\label{fig:e_dihedrala}
-% 		\end{subfigure}
-% 		~
-% 		\begin{subfigure}{\textwidth}
-% 			\centering
-% 			\includegraphics[width=0.8\textwidth]{./figures/ch1/e_dihedralb}
-% 			%\caption{}
-% 			\label{fig:e_dihedralb}
-% 		\end{subfigure}
-% 		\caption[Énergie de torsion, ou d'angles dièdres]{L'énergie de torsion, ou d'angle dièdre, correspond à la variation des angles illustrés ci-dessus par rapport à leurs valeurs à l'équilibre, qui sont ici multiples. Crédit : Patrick Fuchs.}
-% 		\label{fig:e_dihedral}
-% 	\end{figure}
+	Le terme $E_\text{angle\_{}dièdre}$ correspond à l'énergie associée à la \og torsion \fg{} des liaisons covalentes centrales dans des groupes de quatre atomes.
 	
 	\begin{equation}
 		\label{eq:nonbonded}
 		E_\text{non-liée} = E_\text{électrostatique} + E_{van der Waals}
 	\end{equation}
 	
-	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}.% Ce terme est détaillé par la figure~\ref{fig:e_electrostat}.
+	Le terme $E_\text{électrostatique}$ représente l'énergie des interactions électrostatiques entre les paires d'atomes ne partageant pas de liaison covalente, telle que la décrit la loi de Coulomb~\cite{coulomb1785premier}.
 	En pratique, une sommation d'Ewald, basée sur une transformation de Fourier, est souvent utilisée avec la loi de Coulomb pour le calcul des énergies électrostatiques~\cite{ewald1921berechnung, essmann1995smooth}.
 	
-	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut.%, et résumées par la figure~\ref{fig:e_vdw}.
-	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_electrostat}
-% 		\caption[Énergie liée aux interactions électrostatiques]{Énergie associée aux interactions électrostatiques entre les paires d'atomes non liés. Elle est inversement proportionnelle à la distance entre les atomes. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_electrostat}
-% 	\end{figure}
-%	
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[width=\textwidth]{figures/ch1/e_vdw}
-% 		\caption[Énergie liée aux forces de van der Waals]{Énergie associée aux forces de van der Waals entre les paires d'atomes non liés. Crédit : Patrick Fuchs\footnotemark.}
-% 		\label{fig:e_vdw}
-% 	\end{figure}
-%	
-%	\footnotetext{\url{http://www.dsimb.inserm.fr/~fuchs/M1BC2T/Cours1_FF.pdf}}
+	Le terme $E_\text{van der Waals}$ correspond à l'énergie associée aux forces de van der Waals, déjà décrites plus haut.
 	
 	Il existe de très nombreux champs de force, avec chacun ses avantages et inconvénients spécifiques, mais parmi les plus couramment utilisés, on peut citer \emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, ou encore \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
 	
@@ -523,7 +417,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\begin{displayquote}
 	    \textbf{Acception 1.} Dans le langage courant, le terme d'immersion est compris comme \emph{l'exposition de l'utilisateur à un EV au moyen de dispositifs occultant en partie la perception} (surtout visuelle) de l'environnement alentour, pour afficher en lieu et place une image du monde virtuel (visio-casque, salle immersive de type CAVE, etc.). Par extension, on parle d'immersion auditive, haptique, sensorielle etc. Au-delà d'un caractère informel, cette acception comporte deux ambiguïtés. D'une part, deux sémantiques différentes coexistent :
-	    %\renewcommand{\labelenumi}{\alph{enumi}} % small letters
 	    \begin{enumerate}
 	        \item l'immersion comme \emph{l'action d'exposer l'utilisateur à un environnement simulé numériquement},
 	        \item l'effet avéré ou supposé de cette exposition sur l'utilisateur.
@@ -542,7 +435,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	    Cette acception renvoie à la notion théorique analogue de \og fidélité du stimulus \fg{}~\cite{stoffregen2003nature} proposée pour être un indicateur de la distance entre le monde physique et sa simulation. Le concept d'immersion ainsi précisé ouvre vers la construction de métriques qui permettraient de quantifier, comparer et étudier systématiquement les effets de l'immersion sur la cognition, les performances et la satisfaction des utilisateurs.
 	\end{displayquote}
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/steeredPIT}
 		\caption[Dynamique moléculaire interactive en environnement virtuel]{Le logiciel de visualisation moléculaire VMD est utilisé avec les lunettes sétérographiques \emph{CrystalEyes} au sein du système \emph{Protein Interactive Theater} (PIT), qui permet l'immersion dans un environnement virtuel. Le PIT est par ailleurs couplé avec le module de simulation Sigma~\cite{mann2002sigma} pour permettre l'interaction avec la simulation. À gauche, une photo du PIT avec deux utilisateurs. À droite, un schéma de l'environnement virtuel tel qu'il est perçu par les utilisateurs. Crédit :~\cite{prins1999virtual}.}
@@ -552,6 +445,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch1/myoglobin}
@@ -571,7 +465,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/exaviz}
+		\includegraphics[width=0.9\textwidth]{figures/ch1/exaviz}
 		\caption[IMD en environnement virtuel avec retour haptique, \emph{Exaviz}]{Le système \emph{Exaviz}. À gauche, deux utilisateurs sont dans un CAVE\footnotemark, chacun avec son point de vue personnel en 3D, grâce au suivi de la tête ; ils peuvent ainsi désigner des objets du doigt et en discuter. À droite, l'utilisation du bras haptique permet d'interagir avec les objets de la scène en obtenant un retour de force. Crédit :~\cite{dreher2014exaviz}.}
 		\label{fig:exaviz}
 	\end{figure}
@@ -579,7 +473,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{Un \emph{Cave Automatic Virtual Environment}, un système permettant l'immersion dans un environnement virtuel à l'aide de vidéo-projecteurs dirigés vers trois à six des murs d'une salle parallélépipédique. Ce nom est également une référence à l'allégorie de la caverne de Platon, dans laquelle le philosophe médite et expose ses vues sur la perception, la réalité et l'illusion. Il s'agit ici du dispositif EVE de notre équipe, Venise.
 	\url{https://www.limsi.fr/index.php/fr/recherche/venise/menuitem-venise-demos-fr}}
 	
-	Pour améliorer la perception des propriétés mécaniques des molécules étudiées, et des forces qui s'exercent sur elle, un retour haptique est possible au cours d'une simulation de dynamique moléculaire interactive~\cite{stone2001system}. Si l'haptique concerne le toucher et les phénomènes kinesthésiques, en pratique on utilise en IMD des bras haptiques, qui fonctionnent par retour de force.%, comme celui de la figure~\ref{fig:virt6d}.
+	Pour améliorer la perception des propriétés mécaniques des molécules étudiées, et des forces qui s'exercent sur elle, un retour haptique est possible au cours d'une simulation de dynamique moléculaire interactive~\cite{stone2001system}. Si l'haptique concerne le toucher et les phénomènes kinesthésiques, en pratique on utilise en IMD des bras haptiques, qui fonctionnent par retour de force.
 	
 	Ceux-ci peuvent être utilisés de diverses façons, notamment pour percevoir les \og collisions \fg{} entre le curseur et les objets de la scène, ou entre un objet sélectionné par l'utilisateur et un autre objet de la scène, pour permettre à l'utilisateur de percevoir les forces qui s'exercent entre les composantes de la molécule, ou encore pour guider la sélection, en appliquant une force au périphérique haptique dans la direction de la cible présumée de l'utilisateur. Le choix du mode d'utilisation d'un périphérique haptique dans une simulation d'IMD dépend de l'effet recherché.
 	
@@ -590,7 +484,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\begin{figure}[htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/gluTrans}
+		\includegraphics[width=0.6\textwidth]{figures/ch1/gluTrans}
 		\caption[Transporteur de glutamate, très forte occultation]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
 		\label{fig:gluTrans}
 	\end{figure}
@@ -630,7 +524,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La nature de la tâche implique une quantité de données contextuelles très importante, puisque le logiciel permet d'afficher notamment le statut de chaque avion, ses codes d'identification, sa destination ou son origine, son retard éventuel, le statut de ses bagages ou de ses passagers, la liste des passagers en question, les pistes et emplacements de stationnement qui lui sont alloués ou disponibles, sa compagnie, son type, etc. La figure~\ref{fig:adp} fournit un exemple modéré de la quantité d'informations potentiellement affichées.
 	
-	\begin{figure}[H]
+	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/adp}
 		\caption[ADP -- Roissy]{Exemple de visualisation de l'aéroport de Paris--Charles-de-Gaulle (à Roissy) avec le logiciel utilisé par le groupe ADP. Seuls les véhicules terrestres sont affichés ici, et les informations contextuelles sont limitées ; pourtant, la densité de cibles est importante, de même que le niveau d'occultation visuelle. Crédit : Valtech.}
@@ -690,19 +584,29 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Par conséquent, l'on passe d'une seule cible (apparente) à plusieurs cibles d'abord très rapprochées, mais souvent rapidement divergentes. Parfois, les pilotes plongent vers le sol pour utiliser les retours radar du relief afin de masquer le leur ; ajoutons que c'est d'autant plus efficace que l'aéronef est furtif, et qu'il peut donc apparaître et disparaître des écrans radar à tout moment. Ce point est d'autant plus important que les technologies furtives se répandent progressivement et les aéronefs furtifs sont de plus en plus courants. Parmi les plus connus, on peut citer le Lockheed Martin F-117 \emph{Nighthawk} (déjà retiré du service), le Northrop Grumman B-2 \emph{Spirit}, ainsi que le F-22 \emph{Raptor} et le F-35 \emph{Lightning II}, tous deux produits par Lockheed Martin.
 	
+	
+	\newcommand{\subImgAircraftW}{0.74\textwidth}
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/B2}
-		\caption[Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif]{Le Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif états-unien. Sa forme d'aile volante, son alignement de plans jamais perpendiculaires à son axe longitudinal, le placement de ses moteurs sur son dos, enfouis dans le fuselage, l'utilisation de matériaux composites absorbants, etc., contribuent à réduire la signature de cet appareil dans plusieurs bandes électromagnétiques. Crédit : \emph{Wired}\footnotemark{}.}
-		\label{fig:B2}
+		\begin{subfigure}[t]{\subImgAircraftW}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/B2}
+			\caption[Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif]{Le Northrop Grumman B-2 \emph{Spirit}, un bombardier stratégique furtif états-unien. Sa forme d'aile volante, son alignement de plans jamais perpendiculaires à son axe longitudinal, le placement de ses moteurs sur son dos, enfouis dans le fuselage, l'utilisation de matériaux composites absorbants, etc., contribuent à réduire la signature de cet appareil dans plusieurs bandes électromagnétiques. Crédit : \emph{Wired}\footnotemark{}.}
+			\label{fig:B2}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/tigre}
-		\caption[Hélicoptère d'attaque \emph{Tigre}]{L'hélicoptère d'attaque \emph{Tigre} conçu et fabriqué par Airbus Helicopters. Cet aéronef est capable de voler jusqu'à 370~km/h en piqué, et il est assez manœuvrable pour changer de direction de vol (sans nécessairement changer l'orientation de l'engin, par exemple en volant latéralement) très rapidement, voler à très basse altitude en suivant le terrain, effectuer des tonneaux, \emph{loopings}, etc., notamment grâce à sa capacité de tolérer des accélérations allant jusqu'à 4g~\cite{tigre}. Crédit : \emph{Wikimedia}}
-		\label{fig:tigre}
+		\begin{subfigure}[t]{\subImgAircraftW}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/tigre}
+			\caption[Hélicoptère d'attaque \emph{Tigre}]{L'hélicoptère d'attaque \emph{Tigre} conçu et fabriqué par Airbus Helicopters. Cet aéronef est capable de voler jusqu'à 370~km/h en piqué, et il est assez manœuvrable pour changer de direction de vol (sans nécessairement changer l'orientation de l'engin, par exemple en volant latéralement) très rapidement, voler à très basse altitude en suivant le terrain, effectuer des tonneaux, \emph{loopings}, etc., notamment grâce à sa capacité de tolérer des accélérations allant jusqu'à 4g~\cite{tigre}. Crédit : \emph{Wikimedia}}
+			\label{fig:tigre}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgAircraftW}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/swarm}
+			\caption[Petit essaim de drones aériens]{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}\protect\footnotemark.}
+			\label{fig:swarm}
 		\end{subfigure}
 		\caption{Aéronefs militaires.}
 		\label{fig:coolAircraft}
@@ -750,10 +654,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Le \emph{Strategic Capabilities Office} du même département a déjà mené des essais avec des essaims d'une centaine de petits drones : \url{https://www.washingtonpost.com/news/checkpoint/wp/2016/03/08/watch-perdix-the-secretive-pentagon-program-dropping-tiny-drones-from-jets/} ; \url{https://www.defense.gov/Portals/1/Documents/pubs/Perdix\%20Fact\%20Sheet.pdf}.}
 	
 	\begin{figure}[htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/swarm}
-		\caption[Petit essaim de drones aériens]{Petit essaim de drones aériens. Ces engins simples et peu coûteux peuvent être produits et utilisés en très grand nombre. Ils sont souvent capables d'évoluer en formation serrée, donc de constituer un ensemble de cibles très dense. Crédit : \emph{International Business Times}\protect\footnotemark.}
-		\label{fig:swarm}
+		
 	\end{figure}
 	
 	\footnotetext{\url{http://www.ibtimes.com/}}
@@ -837,24 +738,25 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.40\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/channel}
-		\caption[Écran de contrôle maritime en Manche (SIA)]{Écran de contrôle représentant les navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : \emph{Arlo Maritime}\footnotemark.}
-		\label{fig:channel}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/channel}
+			\caption[Écran de contrôle maritime en Manche (SIA)]{Écran de contrôle représentant les navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : \emph{Arlo Maritime}\footnotemark.}
+			\label{fig:channel}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.58\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/lincoln}
-		\caption[Le groupe aéronaval de l'USS \emph{Abraham Lincoln}]{Même dans des eaux relativement vides, la densité de navires peut être élevée localement. C'est potentiellement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval de l'USS \emph{Abraham Lincoln}, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navires présents, compte tenu de leur importance militaire, sous-marins compris. On précisera toutefois qu'en situation réelle, les navires sont généralement plus espacés que cela. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
-		\label{fig:lincoln}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/lincoln}
+			\caption[Le groupe aéronaval de l'USS \emph{Abraham Lincoln}]{Même dans des eaux relativement vides, la densité de navires peut être élevée localement. C'est potentiellement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval de l'USS \emph{Abraham Lincoln}, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navires présents, compte tenu de leur importance militaire, sous-marins compris. On précisera toutefois qu'en situation réelle, les navires sont généralement plus espacés que cela. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
+			\label{fig:lincoln}
 		\end{subfigure}
 		\label{fig:muddyWaters}
 		\caption{Densité de cibles dans les espaces maritimes.}
 	\end{figure}
 	
-	\footnotetext{\url{http://www.arlomaritime.com/}}
+	\footnotetext{\url{http://www.arlomaritime.com}}
 	
 	\subsection{Difficultés}
 	La plupart des navires se déplacent à la surface de l'eau. Par conséquent, leur représentation dans le plan sur un écran de contrôle n'implique généralement pas de perte d'information significative, contrairement au cas aérien. Les sous-marins constituent toutefois une exception à cette règle, et peuvent plonger à plusieurs centaines de mètres. S'ils représentent une très petite minorité des navires en circulation, leur détection revêt une importance militaire critique.
@@ -878,7 +780,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Par ailleurs, une pratique consistant à utiliser un satellite pour se rapprocher le plus d'un autre afin de l'observer et d'espionner ses activités se développe de plus en plus. Nous sommes donc ici dans un cas où, sur un écran de surveillance --- à supposer que l'on puisse détecter cela --- les deux cibles (le satellite espion et le satellite espionné) apparaîtraient avec des trajectoires quasi identiques, et très, très proches l'une de l'autre, voire superposées, si un satellite est juste au-dessus de l'autre, par exemple.
 	
-	
 	\footnotetext{\emph{Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies} -- \url{http://disarmament.un.org/treaties/t/outer_space}}
 	
 	\subsection{Débris}
@@ -900,6 +801,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\emph{Congress gets report on giving FAA space traffic role} -- \url{http://spacenews.com/congress-gets-report-on-giving-faa-space-traffic-role}}
 	
 	\begin{figure}[htb]
+		%\centering
         \begin{subfigure}[t]{0.41\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/ch1/m51}
@@ -951,18 +853,19 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance devient difficile.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/crowdhk}
-		\caption[Foule de manifestants à Hong-Kong]{Foule de manifestants à Hong-Kong. Le mouvement des individus est en moyenne très faible, mais leur densité est très élevée. Crédit : \emph{ABC News}.}
-		\label{fig:crowdhk}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/crowdhk}
+			\caption[Foule de manifestants à Hong-Kong]{Foule de manifestants à Hong-Kong. Le mouvement des individus est en moyenne très faible, mais leur densité est très élevée. Crédit : \emph{ABC News}.}
+			\label{fig:crowdhk}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/crowdacdc}
-		\caption[Foule à un concert]{Foule à un concert du groupe AC/DC. Le mouvement presque nul, mais la densité de cibles est extrêmement élevée. Crédit : \emph{SHP Online}\footnotemark.}
-		\label{fig:crowdacdc}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/crowdacdc}
+			\caption[Foule à un concert]{Foule à un concert du groupe AC/DC. Le mouvement presque nul, mais la densité de cibles est extrêmement élevée. Crédit : \emph{SHP Online}\footnotemark.}
+			\label{fig:crowdacdc}
 		\end{subfigure}
 		\label{fig:crowds}
 		\caption{Foules.}
@@ -1059,18 +962,19 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Dans un jeu de tir à la première personne (FPS) la caméra est placée \og dans la tête \fg{} du personnage, selon un mode appelé \og vue subjective \fg{} ; dans un jeu de tir à la troisième personne (TPS) la caméra est placée hors du personnage, souvent derrière lui, un peu au-dessus et, parfois, avec un décalage sur le côté. On appelle parfois la vue d'un TPS \og objective \fg{}. Un FPS est présenté sur la figure~\ref{fig:bf1}, tandis qu'un exemple de TPS est fourni par la figure~\ref{fig:gears}.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/bf1}
-		\caption[Le FPS \emph{Battlefield 1}]{Extrait du jeu de tir à la première personne (FPS) \emph{Battlefield 1}. Le réticule de visée est bien visible ici. Aucune cible n'est visible sur cette image, mais des ennemis peuvent surgir n'importe quand, de n'importe où, et le joueur devra réagir avec vitesse et précision. Jeu développé par EA DICE et produit par Electronic Arts.}
-		\label{fig:bf1}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/bf1}
+			\caption[Le FPS \emph{Battlefield 1}]{Extrait du jeu de tir à la première personne (FPS) \emph{Battlefield 1}. Le réticule de visée est bien visible ici. Aucune cible n'est visible sur cette image, mais des ennemis peuvent surgir n'importe quand, de n'importe où, et le joueur devra réagir avec vitesse et précision. Jeu développé par EA DICE et produit par Electronic Arts.}
+			\label{fig:bf1}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/gears}
-		\caption[Le TPS \emph{Gears of War 4}]{Extrait du jeu de tir à la troisième personne (TPS) \emph{Gears of War 4}. La caméra est placée derrière le personnage, au-dessus et sur le côté. Jeu développé par The Coalition et produit par Microsoft Studios.}
-		\label{fig:gears}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/gears}
+			\caption[Le TPS \emph{Gears of War 4}]{Extrait du jeu de tir à la troisième personne (TPS) \emph{Gears of War 4}. La caméra est placée derrière le personnage, au-dessus et sur le côté. Jeu développé par The Coalition et produit par Microsoft Studios.}
+			\label{fig:gears}
 		\end{subfigure}
 		\label{fig:shooters}
 		\caption{Jeux de tir.}
@@ -1101,18 +1005,19 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/f4vats}
-		\caption[Système V.A.T.S permettant de faciliter les tirs dans \emph{Fallout 4}]{Dans l'ARPG \emph{Fallout 4}, le système V.A.T.S. permet ici au joueur de cibler tranquillement la tête de cette créature, pendant que le temps est ralenti. Le tir aura une probabilité de succès de 77~\%{}, dérivée des compétences de tir du personnage contrôlé, et des circonstances du combat à cet instant précis. Cette technique a cependant l'inconvénient majeur de ralentir le jeu, d'afficher beaucoup d'informations contextuelles, et ainsi de nuire doublement à la qualité de la sensation d'immersion. Jeu édité par Bethesda Softworks, et développé par ses propres studios.}
-		\label{fig:f4vats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/f4vats}
+			\caption[Système V.A.T.S permettant de faciliter les tirs dans \emph{Fallout 4}]{Dans l'ARPG \emph{Fallout 4}, le système V.A.T.S. permet ici au joueur de cibler tranquillement la tête de cette créature, pendant que le temps est ralenti. Le tir aura une probabilité de succès de 77~\%{}, dérivée des compétences de tir du personnage contrôlé, et des circonstances du combat à cet instant précis. Cette technique a cependant l'inconvénient majeur de ralentir le jeu, d'afficher beaucoup d'informations contextuelles, et ainsi de nuire doublement à la qualité de la sensation d'immersion. Jeu édité par Bethesda Softworks, et développé par ses propres studios.}
+			\label{fig:f4vats}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.53\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/assassin}
-		\caption[Système \emph{Eagle Vision} dans le jeu \emph{Assassin's Creed}] {Dans les jeux de la série \emph{Assassin's Creed}, le personnage jouable dispose d'une capacité appelée \emph{Eagle Vision} lui permettant de voir les personnages à travers les obstacles, et de connaître leur nature grâce à leur couleur. Surtout, elle permet au joueur de désigner la cible que le personnage attaquera ensuite de manière semi-automatique. C'est utile car si les cibles elles-mêmes ne sont pas très rapides ni très imprévisibles, à leurs mouvements absolus doivent s'ajouteur ceux du personnage contrôlé par le joueur. Ajoutons que celui-ci ne dispose généralement que d'un petit \emph{joystick} sous son pouce pour viser. Jeu édité par Ubisoft, et développé par ses propres studios.}
-		\label{fig:ac_ev}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/assassin}
+			\caption[Système \emph{Eagle Vision} dans le jeu \emph{Assassin's Creed}] {Dans les jeux de la série \emph{Assassin's Creed}, le personnage jouable dispose d'une capacité appelée \emph{Eagle Vision} lui permettant de voir les personnages à travers les obstacles, et de connaître leur nature grâce à leur couleur. Surtout, elle permet au joueur de désigner la cible que le personnage attaquera ensuite de manière semi-automatique. C'est utile car si les cibles elles-mêmes ne sont pas très rapides ni très imprévisibles, à leurs mouvements absolus doivent s'ajouteur ceux du personnage contrôlé par le joueur. Ajoutons que celui-ci ne dispose généralement que d'un petit \emph{joystick} sous son pouce pour viser. Jeu édité par Ubisoft, et développé par ses propres studios.}
+			\label{fig:ac_ev}
 		\end{subfigure}
 		\label{fig:gamesTargeting}
 		\caption{Techniques d'assistance à la visée ou sélection dans les jeux vidéo.}
@@ -1195,18 +1100,19 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\begin{figure}[htb]
+		%\centering
 		\begin{subfigure}[t]{0.52\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/lol}
-		\caption[Une partie du MOBA \emph{League of Legends}]{Une partie du MOBA \emph{League of Legends}. Les objets ne sont pas très nombreux, mais leurs mouvements sont vifs et imprévisibles. De plus, divers événements (sorts et autres effets magiques) peuvent créer des effets visuels qui, parfois, occultent une partie de l'écran. Pour autant, le jeu ne s'arrête pas pendant ces moments-là et il demeure nécessaire de pouvoir sélectionner des personnages. Jeu développé et édité par Riot Games.}
-		\label{fig:lol}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/lol}
+			\caption[Une partie du MOBA \emph{League of Legends}]{Une partie du MOBA \emph{League of Legends}. Les objets ne sont pas très nombreux, mais leurs mouvements sont vifs et imprévisibles. De plus, divers événements (sorts et autres effets magiques) peuvent créer des effets visuels qui, parfois, occultent une partie de l'écran. Pour autant, le jeu ne s'arrête pas pendant ces moments-là et il demeure nécessaire de pouvoir sélectionner des personnages. Jeu développé et édité par Riot Games.}
+			\label{fig:lol}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/dota2}
-		\caption[Une partie d'un MOBA, \emph{DOTA~2}]{Une partie d'un MOBA, \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Dans ce jeu comme dans \emph{League of Legends}, des effets visuels plus ou moins occultants peuvent survenir à tout moment, et gêner la sélection des cibles, pourtant critique. Les caractéristiques des personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
-		\label{fig:dota2}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/dota2}
+			\caption[Une partie d'un MOBA, \emph{DOTA~2}]{Une partie d'un MOBA, \emph{DOTA~2}. Les cibles sont assez nombreuses, mais surtout très denses et rapides. Dans ce jeu comme dans \emph{League of Legends}, des effets visuels plus ou moins occultants peuvent survenir à tout moment, et gêner la sélection des cibles, pourtant critique. Les caractéristiques des personnages les plus vifs sont dans le tableau~\ref{tab:dotamoves}. Jeu développé et édité par Valve Corporation.}
+			\label{fig:dota2}
 		\end{subfigure}
 		\label{fig:mobas}
 		\caption{Arènes de bataille en ligne multijoueur, ou MOBA.}
