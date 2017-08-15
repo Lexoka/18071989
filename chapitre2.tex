@@ -91,6 +91,24 @@
 		\label{fig:holdID}
 	\end{figure}
 	
+	Casallas~\cite{casallas2015prediction} a également développé un modèle de prédiction du temps de sélection pour les cibles mobiles, détaillé dans l'équation~\ref{eq:casallas}, où $MT$ est le temps de mouvement, $a_{V}$, $b_{V}$, $c_{V}$ et $d_{V}$ sont des coefficients dépendant linéairement de la vitesse $V$, $D_{m}$ et $D_{s}$ sont les longueurs des composantes orthogonales de $\vec{D}$, le vecteur du curseur à la cible (voir la figure~\ref{fig:casallas}).
+	
+	\begin{equation}
+		\label{eq:casallas}
+		MT = a_{V} + b_{V}\sqrt{D_{s}} +  c_{V}\sqrt{D_{m}} + d_{V} \log_{2} \left( \frac{2D_{m}}{W} \right)
+	\end{equation}
+	
+	Dans une évaluation en 3D, l'auteur observe d'une part que l'effet de la vitesse est plus fort que celui de toutes les autres variables, et d'autre part qu'elle réduit l'écart-type des temps de sélection mesurés à mesure qu'elle croît. Il mesure même un très bon ajustement de son modèle aux résultats mesurés, avec le coefficient de détermination $R^{2} \in [0,89 ; 0,96]$.
+	
+	Il convient cependant de noter un point très spécifique à cette évaluation : les cibles mobiles se dirigeaient toutes \emph{vers} l'utilisateur --- plus ou moins directement. De fait, l'augmentation de la vitesse \emph{diminue} le temps de sélection, puisqu'elle réduit la distance à parcourir pour l'utilisateur, dans un mouvement rectiligne, donc relativement aisé à prédire et anticiper. Ce résultat au demeurant intéressant ne saurait donc suffire à modéliser les performances de sélection pour les cibles mobiles de mouvements quelconques.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figures/ch2/casallas}
+		\caption[Paramètres du modèle de Casallas]{Paramètres du modèle de Casallas. Si $\vec{D}$ est le vecteur du curseur (rouge) à la cible (verte), $\vec{D} = \vec{D_{m}} + \vec{D_{s}}$ où $\vec{D_{m}}$ est la la projection de $\vec{V}$ sur $\vec{D}$, et $\vec{D_{s}}$ est la composante de $\vec{D}$ orthogonale à $\vec{D_{m}}$. $D_{m}$ est naturellement la norme de $\vec{D_{m}}$ et $D_{s}$ celle de $\vec{D_{s}}$. Crédit : \cite{casallas2015prediction}.}
+		\label{fig:casallas}
+	\end{figure}
+	
 	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles \og quelconques \fg{} --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
 	
 	Celle-ci demeure donc, à notre connaissance, incapable de modéliser la difficulté de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
