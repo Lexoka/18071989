@@ -145,8 +145,9 @@
     \subsection{Examen des trajectoires obtenues}
     Des exemples de trajectoires obtenues avec ce modèles sont fournis dans la figure~\ref{fig:motion1530} avec $A=15$ et $A=30$, dans la figure~\ref{fig:motion4560} avec $A=45$ et $A=60$, dans la figure~\ref{fig:motion7590} avec $A=75$ et $A=90$, dans la figure~\ref{fig:motion105120} avec $A=105$ et $A=120$, dans la figure~\ref{fig:motion135150} avec $A=135$ et $A=150$, et dans la figure~\ref{fig:motion165180} avec $A=165$ et $A=180$. Dans tous les cas, $S=2,19$, $F$ prend les valeurs 1, 4, 8, 16, 32 et 60, et le mouvement généré dure 20 secondes.
     
-    Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{}. De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tous l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.    
+    Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{} (voir la figure~\ref{fig:spEffect}). De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tous l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.    
     
+    \newcommand{\subImgWarea}{0.42\textwidth}
 	\newcommand{\subImgWmo}{0.32\textwidth}
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
@@ -475,6 +476,57 @@
 	
 	Il est donc inévitable de représenter ces trajectoires à des échelles adaptées si l'on souhaite qu'elles soient lisibles, mais il convient de faire attention à l'échelle et de garder à l'esprit que les trajectoires les plus irrégulières sont généralement représentées à une échelle bien plus fine.
 	
+	\subsubsection{Effet des vitesses}
+	Modifier la vitesse d'un objet ne change pas la \og nature \fg{} du mouvement ni, au sens strict, son entropie. En effet, pour des valeurs de $A$ et $F$ données et une position donnée à l'instant $t$, le nombre d'états possible à l'instant $t+1$ ne dépend pas de la vitesse. On observe cependant qu'à mesure que la vitesse croît, une \og dilatation \fg{} des trajectoires s'opère, comme l'illustre la figure~\ref{fig:spEffect}, comparant diverses trajectoires générées avec des vitesses différentes mais des valeurs de $A$ et $F$ constantes.
+	
+
+	\begin{figure}[htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spTraj_0_5_120_2}
+			\caption[$S = 0,5$]{$S = 0,5$~cm/s.}
+			\label{fig:spTraj_0_5_120_2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spTraj_1_0_120_2}
+			\caption[$S = 1$]{$S = 1$~cm/s.}
+			\label{fig:spTraj_1_0_120_2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spTraj_1_5_120_2}
+			\caption[$S = 1,5$]{$S = 1,5$~cm/s.}
+			\label{fig:spTraj_1_5_120_2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spTraj_2_0_120_2}
+			\caption[$S = 2,0$]{$S = 2,0$~cm/s.}
+			\label{fig:spTraj_2_0_120_2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spTraj_3_0_120_2}
+			\caption[$S = 3,0$]{$S = 3,0$~cm/s.}
+			\label{fig:spTraj_3_0_120_2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWarea}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spTraj_4_0_120_2}
+			\caption[$S = 4,0$]{$S = 4,0$~cm/s.}
+			\label{fig:spTraj_4_0_120_2}
+		\end{subfigure}
+		\caption[Effet des vitesses]{Trajectoires générées avec $A = 120\degree$ et $F = 2$~Hz, et des vitesses variables, de 0,5~cm/s à 4,0~cm/s. Notez que pour mieux observer le phénomène de \og dilatation \fg{} des trajectoires, et contrairement à la plupart des figures de ce type incluses dans ce manuscrit, l'échelle est constante pour toutes les sous-figures.}
+		\label{fig:spEffect}
+	\end{figure}
+	
 	\subsubsection{Effet des angles}
 	Lorque $A$ est faible, comme sur la figure~\ref{fig:motion1530}, le mouvement est relativement lisse et régulier, avec des courbes infréquentes et douces, sauf quand la valeur de $F$ augmente beaucoup ; et encore les trajectoires apparaissent-elles relativement \og dénouées \fg{}, à l'exception de celle de la figure~\ref{fig:synTraj_219_30_60} dont les valeurs de $A$ et $F$ commencent à être élevées, avec 30\textdegree{} et 60~Hz respectivement.
 	
@@ -788,7 +840,7 @@
 	
 	Une façon d'estimer l'aire de la surface occupée par un ensemble de points (comme une trajectoire) consiste à calculer l'aire de son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Des exemples d'enveloppes convexes sont représentés sur la figure~\ref{fig:trajAreas}. On y remarque notamment une relation inverse entre la pseudo-entropie et l'aire de l'enveloppe convexe de la trajectoire. Les trajectoires de pseudo-entropie très faible, telle que celle de la figure~\ref{fig:areaTraj_219_1_16}, occupent un espace important, tandis que les trajectoires de très forte pseudo-entropie, comme celle de la figure~\ref{fig:areaTraj_219_180_240}, sont confinées à une toute petite zone.
 	
-	\newcommand{\subImgWarea}{0.42\textwidth}
+	
 	\begin{figure}[htb]
 		\centering
 		\begin{subfigure}[t]{\subImgWarea}
