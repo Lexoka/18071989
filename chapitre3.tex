@@ -126,7 +126,25 @@
     C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
 
 \section{Taxinomie obtenue}
-	Résultats ; appli OpenCV ?
+	\subsection{Objets autocorrélés}
+	Parmi les objets dont les mouvements sont autocorrélés figurent tous les véhicules que nous avons évoqués au cours du chapitre~\ref{chap1} : les automobiles, navires, aéronefs, engins spatiaux, mais aussi les deux-roues, patins à roulettes, etc. Au sens strict, tout objet de masse non nulle et macroscopique devrait être autocorrélé, mais nous pouvons considérer que certains peuvent changer de direction de manière si vive et imprévisible qu'ils sont subjectivement markoviens. En règle générale, nous admettrons qu'un projectile (par exemple utilisé dans un sport) est autocorrélé, tout en gardant à l'esprit que dans certains cas il peut avoir un comportement subjectivement markovien.
+	
+	Le cas des jeux vidéo est quelque peu délicat en ce qu'il s'agit d'un domaine extrêmement vaste dans lequel il est possible de trouver des cibles de toutes natures. Néanmoins, quand ils sont modélisés de manière (subjectivement) réaliste, les objets qui sont autocorrélés dans le monde réel le sont aussi dans les environnements virtuels des jeux. Aussi pouvons-nous classer les aéronefs du jeu \emph{Digital Combat Simulator}\footnotemark{} dans la catégorie des objets autocorrélés, par exemple.
+	
+	\footnotetext{Développé par Eagle Dynamics et édité par The Fighter Collection.
+	\url{https://www.digitalcombatsimulator.com}}
+	
+	Enfin, il est possible de rencontrer dans un jeu vidéo n'importe quel type d'objet, réel ou imaginaire. Ceux de la seconde catégorie peuvent être autocorrélés comme markoviens ; il est impossible d'en dresser un inventaire exhaustif, mais disons simplement qu'ils existent, comme les disques du jeu \emph{Agar.io}, mentionné dans le premier chapitre, qui sont markoviens, ou diverses créatures fictives, généralement autocorrélées.
+	
+	\subsubsection{Objets de mouvement uniforme}
+	Du fait du focus de ce manuscrit sur les cibles mobiles, nous n'avons pas réellement abordés d'objets aux mouvements uniformes au cours du premier chapitre. Il va sans dire qu'ils existent pourtant. Remarquons néanmoins que si l'on restreint suffisamment la fenêtre temporelle au travers de laquelle on analse le mouvement d'un objet, l'on peut généralement aboutir à un mouvement loalement uniforme.
+	
+	Les exemples les plus évidents de ce type de situation sont fournis par les véhiules, et particulièrement par ceux qui couvrent de longues distances. Ainsi, les avions et les navires suivent généralement des géodésiques\footnotemark{}, et même une automobile sur une autoroute tend à suivre une trajectoire rectiligne si l'on n'en observe que quelques centaines de mètres, voire quelques kilomètres.
+	
+	\footnotetext{Une géodésique est une ligne droite sur une surface de géométrie quelconque. Sur une sphère, une géodésique est un \emph{grand cercle}, c'est-à-dire un cercle tracé sur la sphère et de même rayon qu'elle --- ou, de manière équivalente, de même centre. Projeté sur un plan, un grand cercle n'est généralement pas droit, sauf pour certains types de projection bien spécifiques, comme la projection gnomonique~\cite{snyder1987map}.}
+	
+	Même un piéton sur un trottoir ou un athlète sur une piste de course peut avoir une trajectoire localement uniforme. Les ayant des trajectoires balistiques, ils ne sont pas de mouvement uniforme, mais peuvent l'être si ce mouvement est projeté sur un plan horizontal, masquant les variations d'altitude.
+	
 
 \section{Modèle de génération de mouvement}
     \subsection{Générer du mouvement pour mener des évaluations}
