@@ -138,13 +138,27 @@
 	Enfin, il est possible de rencontrer dans un jeu vidéo n'importe quel type d'objet, réel ou imaginaire. Ceux de la seconde catégorie peuvent être autocorrélés comme markoviens ; il est impossible d'en dresser un inventaire exhaustif, mais disons simplement qu'ils existent, comme les disques du jeu \emph{Agar.io}, mentionné dans le premier chapitre, qui sont markoviens, ou diverses créatures fictives, généralement autocorrélées.
 	
 	\subsubsection{Objets de mouvement uniforme}
-	Du fait du focus de ce manuscrit sur les cibles mobiles, nous n'avons pas réellement abordés d'objets aux mouvements uniformes au cours du premier chapitre. Il va sans dire qu'ils existent pourtant. Remarquons néanmoins que si l'on restreint suffisamment la fenêtre temporelle au travers de laquelle on analse le mouvement d'un objet, l'on peut généralement aboutir à un mouvement loalement uniforme.
+	Du fait du focus de ce manuscrit sur les cibles mobiles, nous n'avons pas réellement abordé d'objets aux mouvements uniformes au cours du premier chapitre. Il va sans dire qu'ils existent pourtant. Remarquons néanmoins que si l'on restreint suffisamment la fenêtre temporelle au travers de laquelle on analyse le mouvement d'un objet, l'on peut généralement aboutir à un mouvement localement uniforme.
 	
 	Les exemples les plus évidents de ce type de situation sont fournis par les véhiules, et particulièrement par ceux qui couvrent de longues distances. Ainsi, les avions et les navires suivent généralement des géodésiques\footnotemark{}, et même une automobile sur une autoroute tend à suivre une trajectoire rectiligne si l'on n'en observe que quelques centaines de mètres, voire quelques kilomètres.
 	
 	\footnotetext{Une géodésique est une ligne droite sur une surface de géométrie quelconque. Sur une sphère, une géodésique est un \emph{grand cercle}, c'est-à-dire un cercle tracé sur la sphère et de même rayon qu'elle --- ou, de manière équivalente, de même centre. Projeté sur un plan, un grand cercle n'est généralement pas droit, sauf pour certains types de projection bien spécifiques, comme la projection gnomonique~\cite{snyder1987map}.}
 	
-	Même un piéton sur un trottoir ou un athlète sur une piste de course peut avoir une trajectoire localement uniforme. Les ayant des trajectoires balistiques, ils ne sont pas de mouvement uniforme, mais peuvent l'être si ce mouvement est projeté sur un plan horizontal, masquant les variations d'altitude.
+	Même un piéton sur un trottoir ou un athlète sur une piste de course peut avoir une trajectoire localement uniforme. Les projectiles ayant des trajectoires balistiques, ils ne sont pas de mouvement uniforme, mais peuvent l'être si ce mouvement est projeté sur un plan horizontal, masquant les variations d'altitude. Pour être tout à fait exact, un projectile tournant sur lui-même dans l'air (ou un autre fluide) est soumis à l'effet Magnus~\cite{magnus1853ueber, briggs1959effect} et n'a donc pas une trajectoire balistique ; selon l'axe de sa rotation, il peut donc ne pas avoir un mouvement rectiligne une fois sa trajectoire projetée sur un plan horizontal. C'est par exemple le cas d'un ballon de football suite à une \og frappe enroulée \fg{}.
+	
+	\subsubsection{Objets de mouvement périodique}
+	Là encore, du fait du focus de ce manuscrit, les objets de mouvement périodique ont peu été abordés au cours du premier chapitre. On les trouve cependant dans certains jeux vidéo, ainsi que dans des applications astronomiques, les objets célestes étant généralement en orbite autour d'un point de l'espace. Les débris spatiaux sont donc des exemples d'objets de mouvement périodique, même s'ils sont susceptibles d'être examinés sur des échelles temporelles trop courtes pour que cette périodicité soit perceptible.
+	
+	Ce n'est cependant pas nécessairement le cas, par exemple si l'on souhaite étudier ces objets dans leur ensemble et sur un temps relativement long, afin d'examiner les dangers qu'ils représentent. La densité de ces objets rend par ailleurs ce cas particulièrement intéressant ; en ceci, nous pouvons le rapprocher de l'étude des anneaux de certaines planètes, au premier rang desquelles figure Saturne\footnotemark{}.
+	
+	\footnotetext{Le cas de Saturne est d'autant plus intéressant qu'en plus d'être nombreux et très riches, ses anneaux ont été étudiés de très près et longuement par la sonde \emph{Cassini}, de sorte que nous avons des informations détaillées dessus.
+	
+	\url{https://saturn.jpl.nasa.gov/mission/grand-finale/grand-finale-orbit-guide}}
+	
+	\subsubsection{Objets de mouvement pseudo-périodique}
+	Les objets de mouvement pseudo-périodique sont très proches (subjectivement) de ceux de mouvement périodique. Ils sont également assez rares dans les applications impliquant une tâche de sélection de cible mobile. Nous pouvons néanmoins citer les véhicules de course sur circuit, du moins lorsque leur trajectoire est sensiblement la même à chaque tour de piste (mais pas forcément effectuée à la même vitesse).
+	
+	Compte tenu des durées des pseudo-périodes concernées, il est cependant peu probable que la pseudo-périodicité soit perceptible par un utilisateur, à moins bien sûr qu'il ne visionne un enregistrement (ou une animation) de la course en accéléré. Nous supposons néanmoins qu'une telle activité pourrait avoir de l'intérêt, par exemple pour une écurie de Formule~1 cherchant à analyser une course terminée pour en tirer des enseignements permettant d'améliorer ses performances.
 	
 
 \section{Modèle de génération de mouvement}
