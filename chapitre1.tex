@@ -27,7 +27,7 @@ De même, cette compréhension permet de rationaliser la conception et l'amélio
 
 Nous allons voir dans cette section que les approches computationnelles se fondent notamment sur des simulations qui, lorsqu'elles sont interactives, nécessitent la sélection de cibles mobiles particulièrement difficiles à saisir. Cette difficulté est la première motivation des travaux présentés dans ce manuscrit.
 	
-	\subsection{Protéines}
+	\FloatBarrier \subsection{Protéines}
 	Les protéines sont des macromolécules\footnote{Une macromolécule est une \og grosse \fg{} molécule, généralement un polymère ; elle est constituée de plusieurs milliers d'atomes.} que l'on retrouve dans les cellules de tous les organismes vivants. Elles assurent un très grand nombre de fonctions cellulaires (structuration de la cellule, mouvements et divisions cellulaires, communication intercellulaire, transport, par exemple de dioxygène, défense immunitaire) et biochimiques (liaison et fixations de molécules, catalyse de réactions biochimiques, etc.) au sein des cellules et des tissus~\cite{lodish2004molecular}. Elles participent aussi au conditionnement de l'acide désoxyribonucléique (ADN) et à la régulation de l'expression génétique. L'étude de leur fonctionnement est donc essentiel à la compréhension du vivant et de ses processus.
 	
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
@@ -103,7 +103,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		
 	Dans la majorité des cas, une structure secondaire est soit une hélice alpha, soit un feuillet bêta~\cite{pauling1951structure}, soit un segment sans architecture ni contrainte appelé boucle. Dans une représentation dite \og en structures secondaires \fg{} ces segments de molécule sont remplacés par des représentations plus schématiques. Un exemple pour une hélice alpha est présenté dans la figure~\ref{fig:aHelix}, et un exemple pour un feuillet bêta est fourni sur la figure~\ref{fig:bSheet}. L'utilisation de ces schématisations permet de considérablement simplifier la représentation de la molécule finale, comme l'illustre la figure~\ref{fig:4awn_ss}.
 	
-	\begin{figure}[htb]
+	\begin{figure}[H]
 		%\centering
 		\begin{subfigure}[b]{.49\textwidth}
 			\centering
@@ -148,7 +148,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\end{enumerate}	
 
 	
-	\subsection{Modes de représentation}
+	\FloatBarrier \subsection{Modes de représentation}
 	Un atome n'est pas un objet au sens où on l'entend communément, dans un contexte macroscopique. S'il est courant de représenter un atome par une sphère, il n'a pas de rayon, de \og coquille \fg{} et ce n'est qu'une représentation schématique de la réalité, utilisée pour communiquer une information. Autour du noyau de l'atome se trouve un nuage électronique où les électrons occupent de manière probabiliste certaines régions de l'espace. Pour représenter ce nuage électronique, on peut procéder comme sur la figure~\ref{fig:helium}.
 
 	
@@ -244,7 +244,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\newcommand{\subImgW}{0.32\textwidth}
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{\subImgW}
 			\centering
@@ -313,7 +313,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\end{figure}
 
 	
-	\subsection{Dynamique moléculaire}
+	\FloatBarrier \subsection{Dynamique moléculaire}
 	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système.
 	
 	\subsubsection{Besoins} Il est difficile d'observer une macromolécule à l'état statique, et impossible de le faire \emph{in vivo}, lorsqu'elle est en mouvement dans son système naturel. Par conséquent, l'étude de phénomènes moléculaires complexes nécessite de passer par des simulations numériques, seules à même d'en rendre compte. En particulier, la biologie structurale s'intéresse à la \emph{dynamique conformationnelle} des macromolécules (c'est-à-dire à leur conformation tridimensionnelle dans le temps) et à leurs interactions avec leur environnement --- par exemple le milieu cellulaire. Ces simulations sont devenues fiables en s'appuyant autant que possible sur des données expérimentales.
@@ -323,7 +323,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. Ce procédé repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela s'appuie sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/crystal}
 		\caption[Schéma très simplifié de la cristallographie aux rayons X]{Schéma très simplifié de la cristallographie aux rayons X. Ces rayons traversent un cristal (contenant une même molécule présente en grande quantité) qui les diffracte avant leur capture par un détecteur connecté à un ordinateur. Ce dernier, à l'aide d'un algorithme approprié, en déduit la conformation 3D de la molécule cristallisée. Crédit :~\cite{trellet2015exploration}.}
@@ -338,7 +338,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La périodicité introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
 	
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}{.49\textwidth}
 			\centering
@@ -373,7 +373,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		E_{totale} = E_\text{liée} + E_\text{non-liée}
 	\end{equation}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/ffterms}
 		\caption[Termes d'un champ de forces]{Résumé des termes liés et non liés d'un champ de forces typique. Crédit : Patrick Fuchs\footnotemark.}
@@ -406,7 +406,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Il existe de très nombreux champs de force, avec chacun ses avantages et inconvénients spécifiques, mais parmi les plus couramment utilisés, on peut citer \emph{Chemistry at HARvard Molecular Mechanics} (CHARMM)~\cite{brooks1983charmm, brooks2009charmm}, \emph{Assisted Model Building and Energy Refinement} (AMBER)~\cite{cornell1995second, wang2004development}, \emph{Optimized Potential for Liquid Simulations} (OPLS)~\cite{jorgensen1996development, kaminski2001evaluation}, ou encore \emph{GROningen MOlecular Simulation} (GROMOS)~\cite{scott1999gromos, oostenbrink2004biomolecular}.
 	
     
-	\subsection{Simulations interactives}
+	\FloatBarrier \subsection{Simulations interactives}
 	
 	\subsubsection{Limites des simulations non interactives}
 	Les processus biologiques dont l'étude nécessite l'emploi de simulations de dynamique moléculaire impliquent souvent des événements relativement longs ou rares, tels que de profonds changements de conformation, ou des transitions d'un état d'équilibre à un autre, comme la liaison ou la rupture de liaison avec un ligand. Or, les simulations de dynamique moléculaire étant généralement limitées à quelques dizaines de nanosecondes, ces phénomènes ne sont pas toujours observables ou reproductibles~\cite{phillips2005scalable}.
@@ -437,7 +437,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	    Cette acception renvoie à la notion théorique analogue de \og fidélité du stimulus \fg{}~\cite{stoffregen2003nature} proposée pour être un indicateur de la distance entre le monde physique et sa simulation. Le concept d'immersion ainsi précisé ouvre vers la construction de métriques qui permettraient de quantifier, comparer et étudier systématiquement les effets de l'immersion sur la cognition, les performances et la satisfaction des utilisateurs.
 	\end{displayquote}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/steeredPIT}
 		\caption[Dynamique moléculaire interactive en environnement virtuel]{Le logiciel de visualisation moléculaire VMD est utilisé avec les lunettes sétérographiques \emph{CrystalEyes} au sein du système \emph{Protein Interactive Theater} (PIT), qui permet l'immersion dans un environnement virtuel. Le PIT est par ailleurs couplé avec le module de simulation Sigma~\cite{mann2002sigma} pour permettre l'interaction avec la simulation. À gauche, une photo du PIT avec deux utilisateurs. À droite, un schéma de l'environnement virtuel tel qu'il est perçu par les utilisateurs. Crédit :~\cite{prins1999virtual}.}
@@ -446,7 +446,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
@@ -465,7 +465,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\caption{Représentations hybrides de molécules.}
 	\end{figure}	
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.9\textwidth]{figures/ch1/exaviz}
 		\caption[IMD en environnement virtuel avec retour haptique, \emph{Exaviz}]{Le système \emph{Exaviz}. À gauche, deux utilisateurs sont dans un CAVE\footnotemark, chacun avec son point de vue personnel en 3D, grâce au suivi de la tête ; ils peuvent ainsi désigner des objets du doigt et en discuter. À droite, l'utilisation du bras haptique permet d'interagir avec les objets de la scène en obtenant un retour de force. Crédit :~\cite{dreher2014exaviz}.}
@@ -484,7 +484,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Comme nous l'avons vu plus haut, cette occultation dépend également du mode de représentation utilisé. Le système représenté sur la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch1/gluTrans}
 		\caption[Transporteur de glutamate, très forte occultation]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
@@ -506,12 +506,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\section{Contrôle de l'espace aérien}
 	La biologie structurale n'est cependant pas le seul domaine caractérisé par un besoin d'interaction avec des cibles mobiles, loin s'en faut. La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détails plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions sont lents sur l'écran.
 	
-	\subsection{Applications civiles}
+	\FloatBarrier \subsection{Applications civiles}
 	
 	\subsubsection{Avions}
 	Un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h en vol de croisière. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et habituellement prévisibles car les pilotes tâchent d'emprunter des couloirs aériens, ou des trajectoires d'approches imposées aux abords des aéroports. Les avions sont néanmoins nombreux, en particulier près des aéroports, et la grande quantité d'informations pertinentes associées à chaque vol peut requérir un affichage contextuel important, d'où une forte densité d'informations, et des niveaux d'occultation parfois élevés. La figure~\ref{fig:atlanta} en fournit un exemple.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/atlanta}
 		\caption[Trafic aérien, Atlanta]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, trajectoire, altitude, pavillon de l'appareil, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée sur cette image, car aucun avion n'est sélectionné. Malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport. Enfin, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
@@ -526,7 +526,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La nature de la tâche implique une quantité de données contextuelles très importante, puisque le logiciel permet d'afficher notamment le statut de chaque avion, ses codes d'identification, sa destination ou son origine, son retard éventuel, le statut de ses bagages ou de ses passagers, la liste des passagers en question, les pistes et emplacements de stationnement qui lui sont alloués ou disponibles, sa compagnie, son type, etc. La figure~\ref{fig:adp} fournit un exemple modéré de la quantité d'informations potentiellement affichées.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/adp}
 		\caption[ADP -- Roissy]{Exemple de visualisation de l'aéroport de Paris--Charles-de-Gaulle (à Roissy) avec le logiciel utilisé par le groupe ADP. Seuls les véhicules terrestres sont affichés ici, et les informations contextuelles sont limitées ; pourtant, la densité de cibles est importante, de même que le niveau d'occultation visuelle. Crédit : Valtech.}
@@ -542,7 +542,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{Hélicoptères}
 	Comme les aéronefs à voilure fixe, les hélicoptères s'insèrent dans la circulation aérienne et il est nécessaire de les surveiller. Leurs caractéristiques de vol sont néanmoins quelque peu différentes de celles des avions, puisqu'ils peuvent faire demi-tour en environ quatre secondes, voire moins. Ils sont beaucoup plus lents que les avions : les modèles civils dépassent rarement les 300~km/h. La fréquence des changements de direction dépend considérablement de la mission, elle peut être très faible pour un simple transport d'un point A vers un point B, auquel cas la trajectoire de l'hélicoptère va tendre vers la ligne droite, plus importante dans le cadre d'une mission de secours en montagne, et plus importante encore pour un hélicoptère de police fournissant une assistance aérienne pendant une course-poursuite, ou pour un hélicoptère utilisé pour filmer un événement sportif, un documentaire animalier, une manifestation, des émeutes, etc.
 	
-	\subsection{Applications de sécurité et défense (surveillance de l'espace aérien)}
+	\FloatBarrier \subsection{Applications de sécurité et défense (surveillance de l'espace aérien)}
 	Les aéronefs militaires présentent des caractéristiques beaucoup plus variables, dans des intervalles nettement plus grands. C'est notamment dû à leur diversité, puisque l'on trouve des avions de tailles et usages divers, des drones de quelques grammes comme de plusieurs tonnes, des hélicoptères, des missiles, etc.
 	
 	\subsubsection{Avions de combat}
@@ -560,7 +560,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{Démonstration en vol : \url{https://www.youtube.com/watch?v=vo0ZN2_O29M}}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/AlFursan}
 		\caption[La patrouille acrobatique \emph{Al Fursan}]{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Des avions militaires peuvent avoir des trajectoires à la fois complexes, très proches les unes des autres, et parcourues à grande vitesse. Crédit : The National UAE\footnotemark.}
@@ -571,7 +571,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Il convient de noter que les avions de combat eux-mêmes ont des besoins similaires en matière de sélection de cibles mobiles, puisqu'ils ont, comme les stations au sol, pour rôle de contrôler l'espace aérien. Ils ont de plus la charge de mener des opérations de reconnaissance ou de bombardement de cibles au sol qui, si elles sont statiques, sont bien mobiles dans le référentiel de l'avion en vol, \emph{a fortiori} si elles sont filmées par des caméras mobiles. Par ailleurs, les cibles affichées sur les ordinateurs de bord des avions sont accompagnées de diverses informations tactiques qui augmentent fortement la densité d'informations, et potentiellement le niveau d'occultation, comme l'illustre la figure~\ref{fig:sitac}.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/sitac}
 		\caption[Situation tactique vue d'un \emph{Rafale}]{Cette image représente une situation tactique telle qu'affichée sur un écran dit \og visualisation tête moyenne \fg{} dans un \emph{Rafale}, un avion de chasse français produit par Dassault Aviation. Sur cette image très \og chargée \fg{} seuls deux petits symboles, que nous avons ici entourés en rouge, représentent des avions ennemis. Au-delà de la carte de fond, les autres symboles représentent diverses informations tactiques importantes : l'avion lui-même bien sûr, sa direction, une boussole, l'altitude maximale des obstacles terrestres, l'échelle, la vitesse de l'avion, le plan de vol, la ligne de front, une loupe, etc. Par conséquent, même avec un très petit nombre de cibles potentielles, l'affichage est complexe, dense, et potentiellement gênant pour la sélection. Crédit : Portail Aviation\footnotemark.}
@@ -588,7 +588,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\newcommand{\subImgAircraftW}{0.74\textwidth}
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\begin{subfigure}[t]{\subImgAircraftW}
 			\centering
@@ -655,10 +655,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Le \emph{Strategic Capabilities Office} du même département a déjà mené des essais avec des essaims d'une centaine de petits drones : \url{https://www.washingtonpost.com/news/checkpoint/wp/2016/03/08/watch-perdix-the-secretive-pentagon-program-dropping-tiny-drones-from-jets/} ; \url{https://www.defense.gov/Portals/1/Documents/pubs/Perdix\%20Fact\%20Sheet.pdf}.}
 	
-	\begin{figure}[htb]
-		
-	\end{figure}
-	
 	\footnotetext{\url{http://www.ibtimes.com/}}
 	
 	Dans une certaine mesure, le contrôle de la circulation des drones est également un enjeu pour le domaine civil, car ils peuvent évoluer (légalement ou non) près des aéroports. Cette pratique peut représenter un risque de sécurité, et des arrêtés ont été pris par le ministère de l'Écologie et du Développement durable pour les prévenir, comme le rappelle notamment l'Union des Aéroports Français\footnotemark. Par ailleurs, l'utilisation de drones au-dessus de sites sensibles tels que les centrales nucléaires ne va pas sans inquiéter EDF et les pouvoirs publics\footnotemark.
@@ -708,14 +704,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\addtocounter{footnote}{1}
 	\footnotetext{Abattu en Ukraine le 17 juillet 2014.}
 	
-	\subsection{Observations}
+	\FloatBarrier \subsection{Observations}
 	Qu'il s'agisse d'applications civiles ou militaires, cette tâche est critique, puisque de nombreuses vies sont en jeu. Selon l'application, il peut donc y avoir des contraintes fermes et spécifiques, soit sur le temps de sélection maximal acceptable (contrainte de temps-réel) soit sur le taux d'erreur, ou encore sur les niveaux de zoom, etc.
 
 	Les systèmes de contrôle aérien dont nous avons connaissance sont tous en deux dimensions. Pour des engins volants, cela implique nécessairement une perte d'informations. Une technique de sélection suffisamment performante pourrait rendre envisageable l'utilisation d'un système en 3D. Cela permettrait par exemple de mieux déterminer si deux avions qui paraissent dangereusement proches dans le plan le sont réellement dans l'espace, ou de pouvoir choisir un objet parmi plusieurs évoluant aux mêmes coordonnées 2D, mais à des altitudes différentes, ou tout simplement d'avoir une meilleure représentation et perception générales de la situation.
 	
 	L'utilisation d'un dispositif immersif présente \emph{a priori} des avantages intéressants, tant pour la perception et la représentation de l'environnement que pour l'interaction. Elle faciliterait par ailleurs l'affichage de données contextuelles plus détaillées que ce qu'un dispositif de rendu 2D traditionnel permet (sans mener à un niveau d'occultation intolérable). Dans un contexte militaire, on peut également imaginer permettre à l'utilisateur, via ses interactions avec l'environnement virtuel, de donner des instructions tactiques aux forces déployées sur terre, en mer ou dans les airs.
 
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/Radar-Scope-ZSE}
 		\caption[Écran de contrôle du trafic aérien, en 2D]{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}\footnotemark.}
@@ -726,7 +722,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 \section{Contrôle de l'espace maritime}
 
-	\subsection{Enjeux}
+	\FloatBarrier \subsection{Enjeux}
 	La figure~\ref{fig:channel} représente un écran de contrôle du trafic maritime en Manche. Fondamentalement, c'est un problème très similaire à celui du contrôle du trafic aérien, car il s'agit dans les deux cas de surveiller et d'organiser un espace fluide~\cite{henninger2012avant}. Comme dans les airs, les enjeux sont à la fois militaires et civils. Les bâtiments militaires (\emph{a fortiori} s'ils sont potentiellement hostiles) doivent en effet être détectés le plus tôt possible et suivis tant qu'ils sont dans un espace d'intérêt défini, mais il faut également surveiller les bâtiments civils.
 	
 	\subsubsection{Criminalité et terrorisme}
@@ -739,7 +735,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{http://eunavfor.eu/}}
 	
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
@@ -760,7 +756,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.arlomaritime.com}}
 	
-	\subsection{Difficultés}
+	\FloatBarrier \subsection{Difficultés}
 	La plupart des navires se déplacent à la surface de l'eau. Par conséquent, leur représentation dans le plan sur un écran de contrôle n'implique généralement pas de perte d'information significative, contrairement au cas aérien. Les sous-marins constituent toutefois une exception à cette règle, et peuvent plonger à plusieurs centaines de mètres. S'ils représentent une très petite minorité des navires en circulation, leur détection revêt une importance militaire critique.
 	
 	\subsubsection{Données 3D affichées en 2D}
@@ -775,7 +771,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La figure~\ref{fig:lincoln} illustre un cas de forte densité locale de navires, avec des cibles de haute importance stratégique de surcroît. Près des ports, la densité peut être plus élevée encore, même si les navires concernés sont moins préoccupants pour les autorités. Il leur est toutefois nécessaire de garantir la circulation fluide et sûre de ces navires, et de veiller à ce que personne ne tire parti de cette forte densité à des fins illicites ou criminelles.
 	
 	\section{Contrôle de l'espace extra-atmosphérique}
-	\subsection{Enjeux}
+	\FloatBarrier \subsection{Enjeux}
 	Le problème de la surveillance de l'espace extra-atmosphérique se pose de façon assez analogue à celui des espaces aérien et maritime. Là encore il s'agit d'une part de vérifier que les objets qui s'y meuvent le font de façon sûre, et d'identifier ce qui peut potentiellement représenter une menace (essentiellement militaire, car à ce jour aucune organisation criminelle connue n'a pu mettre un objet en orbite).
 	
 	Même si d'importantes restrictions sont en place sur l'utilisation de l'espace extra-atmosphérique à des fins militaires\footnotemark, les missiles balistiques, en particulier intercontinentaux, passent par ce milieu. Il est donc nécessaire aux systèmes de détection et de défense de pouvoir les distinguer rapidement des satellites. Compte tenu de l'extrême dangerosité de ces armes, et de leur vitesse foudroyante, tout système interactif permettant à un être humain d'examiner la situation afin de prendre une décision se doit d'être extrêmement performant, c'est-à-dire de permettre un examen approfondi de la cible visée par l'utilisateur aussi rapidement que possible, et en minimisant les erreurs de sélection. Un tel missile est représenté sur la figure~\ref{fig:m51}.
@@ -784,7 +780,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\emph{Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies} -- \url{http://disarmament.un.org/treaties/t/outer_space}}
 	
-	\subsection{Débris}
+	\FloatBarrier \subsection{Débris}
 	D'après l'Agence spatiale européenne (ASE ou ESA pour son sigle anglophone), l'orbite terrestre compterait environ 29~000 objets de plus de 10~cm, 670~000 objets de plus de 1~cm, et pas moins de 170 millions d'objets de plus de 1~mm\ldots{} La collision d'un satellite artificiel avec un objet de seulement un millimètre pourrait détruire un sous-système, tandis qu'un objet d'un centimètre détruirait généralement le satellite\footnotemark.
 	\footnotetext{\url{http://www.esa.int/Our_Activities/Space_Engineering_Technology/Clean_Space/How_many_space_debris_objects_are_currently_in_orbit}}
 	
@@ -802,7 +798,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\emph{Congress gets report on giving FAA space traffic role} -- \url{http://spacenews.com/congress-gets-report-on-giving-faa-space-traffic-role}}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
         \begin{subfigure}[t]{0.41\textwidth}
             \centering
@@ -836,10 +832,10 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Une des difficultés de cette application est le fait qu'une cible peut bouger non seulement de façon imprévisible, mais également de façon totalement indépendante des actions de l'utilisateur~\cite{ilich2010moving, silva2012real}.	
 	
-	\subsection{Piétons}
+	\FloatBarrier \subsection{Piétons}
 	La vitesse d'un être humain à pied est (généralement très) inférieure à 45~km/h. Les changements de direction peuvent aller jusqu'au demi-tour, et leur fréquence est très variable selon la tâche accomplie. On peut supposer que cette fréquence est au plus de l'ordre de quelques Hz, en pratique souvent bien moins.
 
-	\subsection{Véhicules motorisés}
+	\FloatBarrier \subsection{Véhicules motorisés}
 	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, exception faite de ceux qui enfreignent le code de la route. Mais, soit à cause de l'infraction en question, soit parce qu'ils l'enfreignent pour fuir après des délits ou crimes plus graves, ces véhicules-là peuvent justement faire l'objet d'une attention particulière de la part des forces de l'ordre. Dans ces cas-là, la vitesse d'un véhicule peut dépasser les 300~km/h\footnotemark.
 	
 	\footnotetext{\emph{Un chauffard roule à plus de 320~km/h sur l'A1} -- \url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-km-h-sur-l-a1.html}}
@@ -848,13 +844,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La fréquence des changements de direction dépend également de la vitesse, tant pour des raisons physiques que du fait du tracé des trajets communément effectués. En milieu urbain dense, on peut considérer qu'un véhicule va changer de direction, de façon plus ou moins prononcée, à une fréquence de l'ordre de 0,1~Hz, sachant qu'en cas de nécessité, cette fréquence peut être nettement plus élevée.
 	
-	\subsection{Véhicules divers}
+	\FloatBarrier \subsection{Véhicules divers}
 	En plus des piétons et des automobiles, la vidéo-surveillance s'applique à tous les véhicules et moyens de déplacement susceptibles d'être utilisés dans l'espace public : patins à roulettes, skateboards de tous types, bicyclettes, motocyclettes, etc. Les caractéristiques du mouvement de ces moyens de transport sont diverses, mais généralement comprises dans les intervalles formés par les piétons et les automobiles. Il est donc important qu'une technique de sélection puisse non seulement gérer les valeurs extrêmes de vitesse, d'angle et de fréquence de changements de direction, mais également les diverses combinaisons de ces valeurs qui peuvent se présenter simultanément.
 	
-	\subsection{Foules}
+	\FloatBarrier \subsection{Foules}
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance devient difficile.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
@@ -877,11 +873,11 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{http://www.shponline.co.uk/understanding-crowds-and-crowded-space-issues}}
 	
 	\section{Surveillance électromagnétique}
-	\subsection{Enjeux}
+	\FloatBarrier \subsection{Enjeux}
 	La surveillance s'applique également à la partie invisible du spectre électromagnétique, et notamment aux signaux émis par les téléphones portables.  Le objectifs de la surveillance de ce type sont multiples mais peuvent inclure la lutte contre la criminalité, le terrorisme, ou un adversaire militaire, mais aussi l'étude des usages afin d'adapter les réseaux de communication, de transport, etc.
 	
 	
-	\subsection{Moyens et méthodes}
+	\FloatBarrier \subsection{Moyens et méthodes}
 	La figure~\ref{fig:cellphones} fournit une illustration (tirée d'une œuvre de fiction) d'un tel système. S'il est présenté dans l'œuvre en question comme fondé sur des détections par satellite, en pratique les systèmes réels se fondent plutôt sur des capteurs aériens ou, plus simplement, sur les données fournies directement par les opérateurs téléphoniques, comme le permet par exemple l'article 20 de la loi de programmation militaire de décembre 2013, en France\footnotemark.
 	
 	\footnotetext{\url{https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028338825}}
@@ -896,19 +892,19 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.deveryware.com/savoir-faire/notre-expertise}}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cellphones}
 		\caption[Surveillance des signaux de téléphones portables]{Illustration d'un système de surveillance en temps réel des signaux émis par les téléphones portables, tiré de la série télévisée \emph{Le Bureau des légendes}, et inspiré de systèmes réels (dont les images ne sont pas publiques). Sur cette image représentant une vue de la ville d'Alger, chaque point coloré représente la position d'un téléphone portable dont le signal est capté et localisé. Le nombre de cibles potentielles est très élevé, et la densité peut être extrême par endroits. \OE{}uvre réalisée par Éric Rochant et produite par Canal+.}
 		\label{fig:cellphones}
 	\end{figure}
 	
-	\subsection{Hétérogénéité}
+	\FloatBarrier \subsection{Hétérogénéité}
 	L'on comprend aisément que la surveillance des signaux téléphoniques porte sur des cibles à peu près identiques à celles de la vidéo-surveillance. En effet, les téléphones sont généralement transportés par des gens à pied, en voiture, à vélo, dans les transports en commun, etc. Cependant, une difficulté s'ajoute puisque l'on surveille ici des espaces beaucoup plus grands, et donc plus hétérogènes.
 	
 	En sus de la quantité de cibles, il faut donc pouvoir gérer leur très forte densité, et l'hétérogénéité de leurs mouvements : un groupe de piétons peut potentiellement être à seulement quelques mètres d'un groupe de voyageurs dans un train à grande vitesse, d'automobilistes sur une autoroute, etc.
 	
-	\subsection{Informations complémentaires}
+	\FloatBarrier \subsection{Informations complémentaires}
 	Par ailleurs, il peut être souhaitable ou nécessaire d'afficher des informations complémentaires pour chaque signal localisé. L'identité ou la localisation de l'interlocuteur si un appel est en cours, la durée de l'appel, la fréquence à laquelle l'interlocuteur courant est appelé, la liste des interlocuteurs fréquents de la personne concernée, les localisations de ces interlocuteurs fréquents, leurs interlocuteurs à eux — en somme, le réseau social de la personne observée — ne sont que des exemples parmi d'autres.
 	
 	Ces informations pourraient être affichées sous forme de texte associé à un point, ou représentées par d'autres moyens graphiques : traits entre les signaux, clignotements, textures, etc. Dans tous les cas, la complexité visuelle et la densité de la vue présentée à l'utilisateur n'en seraient qu'accrues ; de fait, la difficulté de la tâche de sélection le serait aussi. Nous sommes donc face à une tâche de sélection de cibles mobiles très nombreuses, denses, hétérogènes dans un environnement visuel pouvant contenir de nombreuses informations complémentaires.
@@ -926,18 +922,18 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Les retransmissions d'événements sportifs présentent un potentiel d'interactivité intéressant, et nécessitent souvent la sélection de cibles mobiles~\cite{ilich2010moving}. Il peut être utile, par exemple, de sélectionner un joueur de football pour afficher ses statistiques. Pour les mêmes raisons, un ballon ou une balle peuvent être une cible, de même que certains éléments du terrain de jeu, qui sont physiquement fixes mais peuvent être mobiles à l'écran du fait des mouvements de caméra. La nature du mouvement de ces cibles varie nécessairement d'un sport ou d'un jeu à l'autre.
 	
-	\subsection{Athlètes}
+	\FloatBarrier \subsection{Athlètes}
 	
 	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pied obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc. Les athlètes peuvent donc avoir des mouvements nettement plus rapides que de simples piétons, jusqu'à plus de 160~km/h pour certains skieurs\footnotemark.
 	
 	\footnotetext{\emph{Ski alpin -- Une histoire de famille se termine au Lauberhorn} --- \url{http://www.swissinfo.ch/fre/societe/ski-alpin-_une-histoire-de-famille-se-termine-au-lauberhorn/37746484}}
 	
-	\subsection{Véhicules}
+	\FloatBarrier \subsection{Véhicules}
 	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens\footnotemark{} (une discipline récente et en plein essor) dans les sports mécaniques, l'on est alors face à un cas où les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
 	
 	\footnotetext{\url{https://thedroneracingleague.com}}
 	
-	\subsection{Projectiles}
+	\FloatBarrier \subsection{Projectiles}
 	Les divers projectiles utilisés dans les sports (balles, ballons, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficiles. Un palet de hockey sur glace, par exemple, peut dépasser les 180~km/h\footnotemark, une balle de baseball peut atteindre 199~km/h\footnotemark, tandis qu'une balle de tennis peut excéder 260~km/h\footnotemark. Dans le cas du hockey sur glace, les rebonds potentiellement nombreux du palet peuvent rendre sa trajectoire complexe et imprévisible. Dans une moindre mesure, c'est vrai d'une balle de baseball, voire d'un ballon de football, par exemple.
 	
 	Cependant, il n'y a généralement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié (éventuellement actionné à l'aide d'un contrôle spécifique) serait probablement une option préférable à l'utilisation d'une technique de sélection \og libre \fg{} , fût-elle assistée.
@@ -953,17 +949,17 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\section{Jeux vidéo}
-	\subsection{Une tâche centrale dans de nombreux genres}
+	\FloatBarrier \subsection{Une tâche centrale dans de nombreux genres}
 	La sélection ou le pointage de cibles mobiles est une tâche que l'on retrouve dans de très nombreux jeux vidéo, appartenant à un nombre important de catégories. On peut notamment citer les jeux de tir (\emph{First-person shooters}, ou FPS, comme \emph{Doom}, \emph{Counter-Strike}\ldots{} et \emph{Third-person shooters}, ou TPS, comme \emph{Max Payne}, \emph{Gears of War}\ldots{}), les jeux de rôle d'action (\emph{Action role-playing games}, ou ARPG, comme \emph{The Witcher}, \emph{The Elder Scrolls}, voire \emph{Deus Ex}\ldots{}) les jeux de gestion (\emph{Anno}, \emph{Civilization}\ldots{}) ou de stratégie et tactique militaire (la catégorie \emph{Real-time strategy} ou RTS, dans laquelle on trouve des jeux comme \emph{Starcraft} ou \emph{Age of Empires}, ainsi que \emph{Real-time tactics} ou RTT, avec \emph{Total War} ou \emph{World in Conflict}\ldots{}), les simulateurs de vol de combat (réalistes ou non, comme \emph{X-Plane}, \emph{IL-2 Sturmovik}, \emph{Elite: Dangerous}\ldots{}) ainsi que les jeux de type arène de bataille en ligne multijoueur (\emph{Multiplayer online battle arena}, ou MOBA, tels que \emph{League of Legends} ou \emph{DOTA~2}).
 	
 	D'un type de jeu à l'autre, la sélection de cibles varie à la fois du fait de la nature des cibles et parce que la tâche elle-même n'est pas vue de la même façon. Si elle est un élément essentiel des mécanismes du jeu dans certains genres, avec une valeur ludique propre, dans d'autres, elle est purement utilitaire, comme nous allons le voir dans les sous-sections suivantes.
 	
-	\subsection{Jeux de tir (FPS/TPS) et jeux de rôle d'action (ARPG)}
+	\FloatBarrier \subsection{Jeux de tir (FPS/TPS) et jeux de rôle d'action (ARPG)}
 	
 	\subsubsection{FPS/TPS}
 	Dans un jeu de tir à la première personne (FPS) la caméra est placée \og dans la tête \fg{} du personnage, selon un mode appelé \og vue subjective \fg{} ; dans un jeu de tir à la troisième personne (TPS) la caméra est placée hors du personnage, souvent derrière lui, un peu au-dessus et, parfois, avec un décalage sur le côté. On appelle parfois la vue d'un TPS \og objective \fg{}. Un FPS est présenté sur la figure~\ref{fig:bf1}, tandis qu'un exemple de TPS est fourni par la figure~\ref{fig:gears}.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
@@ -1006,7 +1002,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{0.45\textwidth}
 			\centering
@@ -1026,7 +1022,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\end{figure}
 	
 	
-	\subsection{Jeux de gestion, de stratégie (RTS) et de tactique (RTT)}
+	\FloatBarrier \subsection{Jeux de gestion, de stratégie (RTS) et de tactique (RTT)}
 	Dans ce que nous appellerons, pour simplifier, les jeux de gestion (en y incluant les RTS et RTT) le but est de mener un organisme (d'une petite entreprise à une civilisation) vers la prospérité, ou une armée vers la victoire. Ces genres mettent l'accent sur la réflexion tactique et stratégique, la gestion des ressources naturelles et humaines, l'organisation logistique, l'utilisation astucieuse du terrain, l'art de la feinte, etc. La figure~\ref{fig:cossacks2} présente un exemple de RTS.
 	
 	S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. Au contraire, la tâche de sélection est purement utilitaire et vue comme une banale nécessité, voire une corvée. Elle fait perdre du temps au joueur, du temps qui pourrait être utilisé pour organiser ses ressources et forces, ou tout simplement pour réfléchir.
@@ -1035,7 +1031,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
 		\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}]{Exemple d'une partie du RTS \emph{Cossacks~II: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Ce jeu est connu pour son nombre maximal d'unités particulièrement élevé : 64~000. La gestion de troupes si nombreuses est un défi particulièrement difficile qui n'est pas facilité par la pénibilité de la tâche de sélection dans un tel contexte. Jeu développé par GSC Game World et édité par CDV Software.}
@@ -1046,7 +1042,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Une telle technique allégerait le fardeau de la sélection, laissant les joueurs de RTS et RTT se concentrer sur le cœur du jeu, sur les éléments dont la valeur ludique est la plus élevée --- gestion, organisation tactique, choix stratégiques, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter les véhicules et pièces d'artillerie\ldots{}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
 		\caption[Énorme bataille dans le jeu \emph{EVE Online}]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
@@ -1054,7 +1050,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\end{figure}
 	
 
-	\subsection{Arènes de bataille en ligne multijoueur (MOBA/ARTS)}
+	\FloatBarrier \subsection{Arènes de bataille en ligne multijoueur (MOBA/ARTS)}
 	Les jeux de type arène de bataille en ligne (MOBA, ou ARTS pour \emph{action real-time strategy}) ont émergé comme un sous-genre de la catégorie RTS, dans lequel le joueur ne contrôle qu'un seul personnage, et est éventuellement aidé par des personnages non jouables\footnotemark dans sa lutte contre ses ennemis. Ces derniers sont souvent au nombre d'une poignée ou de quelques dizaines, et sont généralement caractérisés par leurs mouvements vifs. Les MOBA présentent donc un assez petit nombre de cibles potentielles (parfois très) rapides dont les mouvements sont fréquemment imprévisibles. Le jeu \emph{League of Legends} est un exemple de MOBA, illustré par la figure~\ref{fig:lol}.
 	
 	\footnotetext{PNJ : personnage non jouable, ou non-joueur, de l'anglais \emph{non-player character} (NPC). Désigne, dans un jeu vidéo, un personnage contrôlé exclusivement par l'ordinateur, qui peut être opposé au joueur, l'aider, ou avoir une position neutre.}
@@ -1068,7 +1064,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
 	\newcolumntype{Y}{>{\small}X}
 	\newcolumntype{Z}{>{\centering}X}
-	\begin{table}[htb]
+	\begin{table}[!htb]
 		\centering
 		\begin{tabularx}{\textwidth}{ Y X X X } % Putain j'entrave que dalle mais ça marche à peu près
 		Héros				&	Temps de virage à 180\textdegree(s)	&	Vitesse (unités arbitraires)	&	Vitesse affichée (cm/s)	\newrow
@@ -1101,7 +1097,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	% https://www.reddit.com/r/DotA2/comments/1vaklc/how_big_is_the_dota2_map_really/
 	
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		%\centering
 		\begin{subfigure}[t]{0.52\textwidth}
 			\centering
@@ -1120,14 +1116,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\caption{Arènes de bataille en ligne multijoueur, ou MOBA.}
 	\end{figure}
 	
-	\subsection{Richesse et diversité}
+	\FloatBarrier \subsection{Richesse et diversité}
 	L'univers vidéoludique est d'une richesse et d'une diversité considérables. Chaque genre, chaque sous-genre est très riche et divers, tandis que le nombre de ceux-ci est considérable et en constante croissance. Bien que les genres sus-cités (avec quelques autres qui ne nous intéressent pas ici) figurent parmi les plus connus, tout un foisonnement de créations vidéoludiques apparaît chaque année, parfois sous l'impulsion de gros éditeurs, souvent à l'initiative de développeurs indépendants.
 	
 	Il serait bien impossible dans ce manuscrit de faire un inventaire complet de cette diversité, dût-il être entièrement consacré à cet objectif. Contentons-nous simplement de mentionner un seul exemple, \emph{Agar.io}. Dans cette curieuse création de Matheus Valadares, le joueur contrôle un disque coloré qu'il doit nourrir pour le faire grossir au maximum, en dévorant ses adversaires.
 	
 	Le principe de ce jeu d'une complexité inattendue est illustré par la figure~\ref{fig:agario}. Pour avaler un adversaire, l'on peut soit le rattraper et l'englober, ce qui est difficile car il faut pour cela être significativement plus gros (et donc plus lent, selon le mécanisme du jeu) soit se diviser en deux et propulser une de ses moitiés sur lui, ce qui nécessite de viser très soigneusement, et d'autant plus prudemment qu'une fois scindé en deux, le joueur est beaucoup plus vulnérables à ses gros adversaires.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/agario}
 		\caption[\emph{Agar.io}]{Scène de jeu d'\emph{Agar.io}. Chaque ensemble de disques d'un même nom (par exemple MENT97) est contrôlé par un joueur, qui cherchera à dévorer les autres disques. Notez cependant que les disques à bords dentés sont des obstacles causant l'éclatement des joueurs qui les percutent vivement. Chaque tout petit disque sans texte est de la nourriture à attraper, chaque disque avec du texte est également une cible potentielle. Dans cette scène, celles-ci sont nombreuses et leur agancement est complexe, d'autant qu'elles ont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Crédit : GD Rentstr0m\footnotemark{} ; jeu développé et édité par Matheus Valadares.}
