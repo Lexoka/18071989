@@ -254,19 +254,28 @@
 	\subsection{Amplitude des changements de direction}
 	Comme pour les fréquences, l'étude de l'amplitude des changements de direction implique de faire une distinction entre les objets dont les changements de direction sont instantanés, ici appelés ciné-discrets, et ceux pour lesquels ils sont continus, dits ciné-continus.
 	
-	\subsection{Changements de faible amplitude}
+	\subsubsection{Changements de faible amplitude}
 	Les objets ciné-discrets dont les changements de direction sont de faible amplitude sont rares ; les jeux vidéo peuvent en produire, mais on en rencontrera raraement hors de telles applications.
 	
 	Les objets ciné-continus, en revanche, ont souvent des changements de direction de faible amplitude. C'est notamment le cas de nombreux véhicules, surtout lourds, d'engins spatiaux et d'objets célestes, ou encore des piétons, dans certains cas. Les athlètes de certaines disciplines peuvent également entrer dans cette catégorie, comme les skieurs, par exemple.
 	
 	Les projectiles suivant des trajectoires (approximativement) balistiques ont également des changements de direction de faible amplitude. Et bien sûr, on trouvera des objets de ce type dans les jeux vidéo, à commencer par les versions virtuelles des objets réels sus-cités.
 	
-	\subsection{Changements de forte amplitude}
+	\subsubsection{Changements de forte amplitude}
 	Les objets ciné-discrets dont les changement de direction sont de forte amplitude incluent en premier lieu les atomes des simulations moléculaires, qui peuvent changer de direction de manière totalement libre à chaque itération de la simulation.
 	
 	On trouvera également de tels objets dans les jeux vidéo, naturellement, ainsi que dans des jeux \og mécaniques \fg{}  comme le billard électrique (ou \emph{flipper}) mais surtout le billard (\emph{pool}, \emph{snooker}\ldots{}), qui outre sa plus grande densité d'objets, est couramment retransmis à la télévision.
 	
 	Parmi les objets ciné-continus, l'on peut trouver la plupart des petits véhicules agiles, mais aussi les piétons, les athlètes de nombreuses disciplines (basket-ball, handball, etc.) et bien sûr les objets de certains jeux vidéo.
+	
+	\subsection{Densité de l'environnement et occultation}
+	L'utilisation de la densité d'un environnement (et du niveau l'occultation, qui en résulte) implique là encore de discrétiser l'espace d'une variable réelle non bornée. Il y a donc encore une fois quelque chose de subjectif et d'arbitraire dans cette opération. Nous choisissons de définir (grossièrement) la limite entre un environnement de faible densité et un environnement de forte densité comme le nombre de cibles mobiles à partir duquel il devient difficile voire impossible pour l'utilisateur de les compter.
+	
+	Notez que le mouvement des cibles rend le comptage nettement plus difficile, et qu'il serait techniquement possible de compter n'importe quel nombre de cibles statiques, ce serait simplement très long.
+	
+	\subsubsection{Faibles densité et occultation}
+	
+	\subsubsection{Fortes densité et occultation}
 
 \section{Modèle de génération de mouvement}
     \subsection{Générer du mouvement pour mener des évaluations}
