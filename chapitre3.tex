@@ -30,6 +30,11 @@
 
 \section{Critères de discrimination}
     L'établissement de notre taxinomie passe par le choix des critères qui nous permettront de d'établir des distinctions entre les types de mouvements des cibles et les environnements de sélection. Dans les sous-sections suivantes, nous allons détailler les critères que nous avons retenus.
+    
+    \subsection{Dimensionnalité}
+    Les cibles et leurs environnements se caractérisent notamment par leur nombre de dimensions spatiales. En soi, ce nombre peut varier de un à trois, mais les applications à une seule dimension sont trop rares et trop spécifiques pour entrer dans le cadre de nos travaux.
+    
+    Deumeurent donc les objets évoluant dans des espaces à deux et trois dimensions\ldots{} ou presque. En pratique, la dimensionnalité de l'environnement \og écologique \fg{} des cibles ne correspond pas forcément à la dimensionnalité du dispositif d'affichage ou d'interaction. Les avions, par exemple, évoluent dans un espace tridimensionnel, mais sont généralement affichés sur un plan en 2D sur lequel ils sont projetés ; les périphériques de saisie permettant de les sélectionner sont aussi, généralement, limités à deux degrés de liberté.
 
     \subsection{Autocorrélation}
     Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
@@ -273,7 +278,10 @@
 	
 	Notez que le mouvement des cibles rend le comptage nettement plus difficile, et qu'il serait techniquement possible de compter n'importe quel nombre de cibles statiques, ce serait simplement très long.
 	
+	Précisons avant d'aller plus loin qu'une application donnée peut, selon les circonstances, présenter des niveaux de densité et d'occultation parfois très variables ; certaines d'entre elles pourront donc entrer dans les deux catégories à la fois.
+	
 	\subsubsection{Faibles densité et occultation}
+	
 	
 	\subsubsection{Fortes densité et occultation}
 
