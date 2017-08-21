@@ -19,6 +19,8 @@
 	
 	Ce focus a principalement deux motifs : premièrement, les chercheurs spécialisés dans la biologie structural tentant d'utiliser des techniques de simulation de dynamique moléculaire interactive (voir le chapitre~\ref{chap1}) nous ont exprimé leurs difficultés d'interaction avec leurs systèmes, et particulièrement de sélection.
 	
+	\subsection{Modèle de génération de mouvements (markoviens)}
+	
 	Deuxièmement, de rapides tests empiriques suggéraient que les mouvements de ce type causaient les plus grandes difficultés pour des tâches de sélection. Afin de tester cette hypothèse, nous avons conçu un modèle de génération de mouvement permettant, à l'aide d'un nombre de paramètres aussi petit que possible, de générer des mouvements aussi variés que possible dans leur nature. Pour rappel, il s'agit du modèle évoqué dans le chapitre~\ref{chap3}, et décrit par les paramètres suivants, pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
 	
     \begin{enumerate}
@@ -30,6 +32,15 @@
     Quelques observations s'imposent. La plus importante est que ce modèle ne peut générer que du mouvement markovien. En effet, à l'instant $t+1$, la rotation de $\vec{dir}$ générée est totalement indépendante de celle éventuellement générée à $t$, ou plus généralement de la dernière rotation générée, si elle existe. Cela ne signifie pas que $\vec{dir}_{t+1}$ soit indépendant de $\vec{dir}_{t}$, et il ne l'est pas, mais que le changement de direction à tout instant est indépendant du passé de l'objet concerné.
     
     Il en résulte que ce modèle ne peut générer du mouvement permettant d'étudier les performances de sélection sur des objets autocorrélés, tels que nous les avons définis et énumérés au cours du chapitre~\ref{chap3}. Ce choix reflète d'une part notre focus originel sur les simulations moléculaires (où il y a une demande claire émanant des utilisateurs) et découle d'autre part d'une volonté de conserver un modèle aussi simple que possible, afin de le rendre plus facile à utiliser, mais aussi pour pouvoir évaluer un échantillon représentatif des types de mouvement qu'il peut générer dans un laps de temps raisonnable pour une étude empirique, compte tenu notamment de la fatigue des sujets.
+    
+    localement blabla
+    
+    \subsection{Proposition de modèles de génération de mouvements autocorrélés}
+    Les objets autocorrélés présentent néanmoins un intérêt certain et, par conséquent, pourraient faire l'objet d'études spécifiques. Nous proposons donc ici deux modèles différents permettant de générer de tels mouvements.
+    
+    \subsubsection{Modèle $SFA$ à mémoire}
+    
+    \subsubsection{Modèle newtonien}
 
 \subsection{Characterizing Erratic Motion}
 In order to study performance when acquiring targets with erratic movements, we
