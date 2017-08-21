@@ -41,6 +41,14 @@
     Les objets autocorrélés présentent néanmoins un intérêt certain et, par conséquent, pourraient faire l'objet d'études spécifiques. Nous proposons donc ici deux modèles différents permettant de générer de tels mouvements.
     
     \subsubsection{Modèle $VFA$ à mémoire}
+    Une première option pour un modèle adapté aux objets autocorrélés serait d'adapter le modèle $VFA$ en lui ajoutant une mémoire, par exemple une mémoire du dernier changement de direction de l'objet concerné. L'on retiendrait ainsi l'angle du changement de direction à l'instant précédent ($\alpha_{t-T}$, avec $T = \frac{1}{F}$), et l'on pourrait appliquer un nouveau changement avec un angle plus ou moins proche de ce dernier, selon des paramètres. L'équation~\ref{eq:vfamem} présente une possibilité, où $\alpha$ est échantilloné entre $-A$ et $+A$, et $c_{ac} \in [0,1]$ est un coefficient d'autocorrélation.
+    
+    \begin{equation}
+		\alpha_{t} = \alpha_{t-T} c_{ac} + \alpha (1 - c_{ac})
+		\label{eq:vfamem}
+    \end{equation}
+    
+
     
     \subsubsection{Modèle newtonien}
 
