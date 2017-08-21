@@ -15,6 +15,17 @@
 	Sur la base des enseignements que nous en tirons, nous proposons un guide pour la conception de techniques de sélection spécifiquement orientées vers les cibles mobiles, en précisant comment la nature des mouvements influe sur les contraintes imposées par la tâche, et sur les solutions possibles.
 
 \section{Étude de l'aquisition de cibles mobiles erratiques}
+	Si notre objectif est de caractériser les performances de sélection pour des cibles mobiles en fonction de la nature de leurs mouvements, notre intérêt se porte plus particulièrement sur les cibles de mouvements \og erratiques \fg{}, \og imprévisibles \fg{}, ou rappelant ceux d'une mouche.
+	
+	Ce focus a principalement deux motifs : premièrement, les chercheurs spécialisés dans la biologie structural tentant d'utiliser des techniques de simulation de dynamique moléculaire interactive (voir le chapitre~\ref{chap1}) nous ont exprimé leurs difficultés d'interaction avec leurs systèmes, et particulièrement de sélection.
+	
+	Deuxièmement, de rapides tests empiriques suggéraient que les mouvements de ce type causaient les plus grandes difficultés pour des tâches de sélection. Afin de tester cette hypothèse, nous avons conçu un modèle de génération de mouvement permettant, à l'aide d'un nombre de paramètres aussi petit que possible, de générer des mouvements aussi variés que possible dans leur nature. Pour rappel, il s'agit du modèle évoqué dans le chapitre~\ref{chap3}, et décrit par les paramètres suivants, pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
+	
+    \begin{enumerate}
+    	\item La vitesse $V$ à laquelle l'objet se déplace ;
+    	\item La fréquence $F$ des changements de $\vec{dir}$ ;
+    	\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
+    \end{enumerate}
 
 \subsection{Characterizing Erratic Motion}
 In order to study performance when acquiring targets with erratic movements, we
