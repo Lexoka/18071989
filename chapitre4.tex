@@ -29,6 +29,8 @@
     	\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
     \end{enumerate}
     
+    Du fait de son fondement sur les paramètres $V$, $F$ et $A$, nous appellerons simplement ce modèle $VFA$.
+    
     Quelques observations s'imposent. La plus importante est que ce modèle ne peut générer que du mouvement markovien. En effet, à l'instant $t+1$, la rotation de $\vec{dir}$ générée est totalement indépendante de celle éventuellement générée à $t$, ou plus généralement de la dernière rotation générée, si elle existe. Cela ne signifie pas que $\vec{dir}_{t+1}$ soit indépendant de $\vec{dir}_{t}$, et il ne l'est pas, mais que le changement de direction à tout instant est indépendant du passé de l'objet concerné.
     
     Il en résulte que ce modèle ne peut générer du mouvement permettant d'étudier les performances de sélection sur des objets autocorrélés, tels que nous les avons définis et énumérés au cours du chapitre~\ref{chap3}. Ce choix reflète d'une part notre focus originel sur les simulations moléculaires (où il y a une demande claire émanant des utilisateurs) et découle d'autre part d'une volonté de conserver un modèle aussi simple que possible, afin de le rendre plus facile à utiliser, mais aussi pour pouvoir évaluer un échantillon représentatif des types de mouvement qu'il peut générer dans un laps de temps raisonnable pour une étude empirique, compte tenu notamment de la fatigue des sujets.
@@ -38,7 +40,7 @@
     \subsection{Proposition de modèles de génération de mouvements autocorrélés}
     Les objets autocorrélés présentent néanmoins un intérêt certain et, par conséquent, pourraient faire l'objet d'études spécifiques. Nous proposons donc ici deux modèles différents permettant de générer de tels mouvements.
     
-    \subsubsection{Modèle $SFA$ à mémoire}
+    \subsubsection{Modèle $VFA$ à mémoire}
     
     \subsubsection{Modèle newtonien}
 
