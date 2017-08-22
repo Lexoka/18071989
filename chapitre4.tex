@@ -104,16 +104,16 @@
     
     Le modèle nécessiterait un calibrage précis pour obtenir le comportement souhaité, notamment en ce qui concerne les masses des objets ou le coefficient de friction. Notons par ailleurs que, sauf dans certains cas particuliers (et après une période dynamique) les vitesses des objets ne seraient pas constantes pour une norme de $\vec{F}$ donnée, ce qui distinguerait ce modèle newtonien du nôtre (VFA). En soi, ce n'est pas nécessairement un problème --- et peut même être un avantage --- mais cela complique le contrôle des propriétés d'un environnement synthétique créé pour mener une étude empirique.
 
-\section{Expérience}
+\section{Expérience et protocole}
 We conducted an experiment with 13 right-handed participants, aged 14 to 56. They were asked to click with a mouse on a moving target displayed on a desktop monitor.
 
-\paragraph{Dispositif expérimental}
-The input device was a standard mouse without acceleration, moving a
+	\subsection{Dispositif expérimental}
+	The input device was a standard mouse without acceleration, moving a
 standard crosshair pointer on a Dell UltraSharp U2412M 24” display. The task was
 performed in a square window of 1000 pixels (about 23.87cm).
 
-\paragraph{Task and Conditions}
-The task consisted in selecting one circular target among 50,
+	\subsection{Task and Conditions}
+	The task consisted in selecting one circular target among 50,
 with a fixed diameter of 5.4mm. The 49 “distractors” were displayed in gray, and the
 target to select in red (see Figure 3(b)). Both the target and the distractors moved
 according to the current condition, defined by the S, F and A parameters, and bounced
@@ -135,7 +135,7 @@ We tested all combinations of the following (S,A,F) values, replicated 4 times:
  A: 0, 30, 60, 90, 120 and 180 degrees of arc (6 values).
 An additional baseline condition was added with static targets, which was replicated 20 times. When A = 0, targets move in straight lines. In summary, we tested a total of 3×6×7 + 1 = 127 conditions, and 524 trials (126×4 + 1×20) per participant.
 
-\paragraph{Procédure et collecte de données.}
+\subsection{Procédure et collecte de données}
 Each session lasted approximately 40 minutes, including a training phase of over 50 trials, after which participants felt comfortable
 with the task. Short breaks were allowed after 25\%{}, 50\%{} and 75\%{} of the trials were
 completed. At the end of the session, participants were administered a short question-
@@ -145,9 +145,8 @@ We collected Selection Time from the moment the target turned red to the success
 ful click, Erroneous Clicks (i.e. clicks outside of the target disk), and Failures (i.e.
 last erroneous clicks of the 5 tries).
 
-\section{Résultats et analyse}
-\subsection{Performance de sélection}
-All the values presented here are averaged across the subjects. Performance in the
+\section{Résultats : performances de sélection}
+	All the values presented here are averaged across the subjects. Performance in the
 easiest conditions was relatively stable across participants: our slowest participant
 was less than 4 times slower than the fastest one for straight motion. However, there
 was a considerable amount of variation for the most difficult conditions (by a factor
@@ -169,15 +168,15 @@ over the limits of null hypothesis significance testing for reporting and interp
 experimental results [1, 2], our discussions are based on effect sizes (reported as per-
 cent differences1).
 
-\paragraph{Vitesse}
-We observed that both selection time and error rate increase when speed in-
+	\subsection{Vitesse}
+	We observed that both selection time and error rate increase when speed in-
 creases, as illustrated in Figure 1(a): average ANST at the highest speed (37\%{}) is
 higher than in the lowest one (17\%{}) with a percent difference of 74\%{}. We observe
 that selection time and error rates are roughly affine functions of speed. We only in-
 cluded the plots for A = 90, but the results for all other values of A are very similar.
 
-\paragraph{Angle}
-Parameter A exhibits more complicated tendencies, with an interaction with
+	\subsection{Angle}
+	Parameter A exhibits more complicated tendencies, with an interaction with
 both S and F. At low speed, A has a small effect on selection times (for S = 0.73 and
 F = 4, when A = 0, ANST = 14\%{} and when A = 120, ANST = 20\%{}; percent differ-
 ence of 33\%{}, the highest observed at this speed) but a bigger effect at high speed (for
@@ -192,8 +191,8 @@ depends on F: as F increases, Apeak decreases.
 We also observed that the number of errors and failure rates follow the same trends
 and that at medium speed, these trends are similar but less pronounced.
 
-\paragraph{Fréquence}
-A similar pattern can be observed for frequency: F has a smaller effect on
+	\subsection{Fréquence}
+	A similar pattern can be observed for frequency: F has a smaller effect on
 selection time when speed is low, but a larger one at high speed. On Figure 1(d), we
 observe that for lower values of A, higher frequencies are correlated with higher se-
 lection time, but for higher values of A, the trend changes. When A is high, selection
@@ -202,8 +201,8 @@ value of Fpeak decreases as A increases. Trends for number of errors and failure
 are consistent with those observed for selection time, and as for angle widths, trends
 at medium speed are similar to those at high speed, although less pronounced.
 
-\subsection{Analyse exploratoire}
-We also considered our parameter space as a whole in order to identify general trends.
+\section{Analyse exploratoire}
+	We also considered our parameter space as a whole in order to identify general trends.
 The heat maps in figures 2(a) and 2(b) represent the ANSTs for medium and high
 speeds. In each of those heat maps, A stands on the horizontal axis, and F on the ver-
 tical one. Each intersection is thus the average of ANSTs for the corresponding condi-
@@ -218,8 +217,8 @@ wide angles with low frequencies, narrow angles with high frequencies, or medium
 angles with moderate frequencies.
 Figure 2 - Selection performance as a function of A and F, for different values of S.
 
-\paragraph{Prévisibilité selon les angles et fréquences}
-The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak,
+	\subsection{Prévisibilité selon les angles et fréquences}
+	The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak,
 which in our data is around 1,100, selection time is maximal. We suppose that AFpeak
 would vary in different conditions, e.g. target width or pointing distance as described
 by Fitts’ law, but it remains stable for the three different speeds we have tested, and
@@ -227,16 +226,16 @@ therefore probably independent of this parameter. As mentioned before, we observ
 error rate to be generally strongly correlated with selection time, and so to also de-
 pend on the A×F product.
 
-\paragraph{Impressions subjectives}
-The answers to our questionnaire were consistent with, and complementary to, our quantitative results. Indeed, 92\%{} of our participants were able to identify different categories of motion: 77\%{} of them identified at least three major categories, together with two or three corresponding selection strategies.
+	\subsection{Impressions subjectives}
+	The answers to our questionnaire were consistent with, and complementary to, our quantitative results. Indeed, 92\%{} of our participants were able to identify different categories of motion: 77\%{} of them identified at least three major categories, together with two or three corresponding selection strategies.
 Figure 3 - Selection time as a function of A×F. Screenshot of the application.
 
-\paragraph{Catégories et stratégies}
-Participants first described rather steady motion, in roughly straight lines, with few or small deviations. In the second case, they identified “jerky” or “erratic” motion that they characterized by frequent, significant changes in direction. In the third case, they described the motion as “Brownian”, or “oscillations” or “vibrations”. More interestingly, 92\%{} of them explained that they would try to anticipate the target’s movement and to intercept it, and those who had identified a steady category specifically linked this strategy to it. However, our participants had no “clever” way of catching jerky targets, and would simply try to be fast enough and click a lot, thus making many errors. For the vibrating category, 69\%{} of them said
+	\subsection{Catégories et stratégies}
+	Participants first described rather steady motion, in roughly straight lines, with few or small deviations. In the second case, they identified “jerky” or “erratic” motion that they characterized by frequent, significant changes in direction. In the third case, they described the motion as “Brownian”, or “oscillations” or “vibrations”. More interestingly, 92\%{} of them explained that they would try to anticipate the target’s movement and to intercept it, and those who had identified a steady category specifically linked this strategy to it. However, our participants had no “clever” way of catching jerky targets, and would simply try to be fast enough and click a lot, thus making many errors. For the vibrating category, 69\%{} of them said
 they would aim for the “average” position of the target over a short period of time, and either try to intercept it or just click and hope for the best.
 
-\paragraph{Interprétation}
-The steady category reflects how our participants perceived the con-
+	\subsection{Interprétation}
+	The steady category reflects how our participants perceived the con-
 ditions where both angle width and change frequency were low. The jerky category
 relates to the difficult diagonal of our heat maps, and the vibrating category is the one
 with both high frequency and angle width. The important observation is that the strat-
