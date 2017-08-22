@@ -33,9 +33,32 @@
     
     Quelques observations s'imposent. La plus importante est que ce modèle ne peut générer que du mouvement markovien. En effet, à l'instant $t+1$, la rotation de $\vec{dir}$ générée est totalement indépendante de celle éventuellement générée à $t$, ou plus généralement de la dernière rotation générée, si elle existe. Cela ne signifie pas que $\vec{dir}_{t+1}$ soit indépendant de $\vec{dir}_{t}$, et il ne l'est pas, mais que le changement de direction à tout instant est indépendant du passé de l'objet concerné.
     
-    Il en résulte que ce modèle ne peut générer du mouvement permettant d'étudier les performances de sélection sur des objets autocorrélés, tels que nous les avons définis et énumérés au cours du chapitre~\ref{chap3}. Ce choix reflète d'une part notre focus originel sur les simulations moléculaires (où il y a une demande claire émanant des utilisateurs) et découle d'autre part d'une volonté de conserver un modèle aussi simple que possible, afin de le rendre plus facile à utiliser, mais aussi pour pouvoir évaluer un échantillon représentatif des types de mouvement qu'il peut générer dans un laps de temps raisonnable pour une étude empirique, compte tenu notamment de la fatigue des sujets.
+    Il en résulte que ce modèle ne peut générer du mouvement permettant d'étudier les performances de sélection sur des objets autocorrélés, tels que nous les avons définis et énumérés au cours du chapitre~\ref{chap3}. Ce choix reflète d'une part notre focus originel sur les simulations moléculaires (où il y a une demande claire émanant des utilisateurs) et découle d'autre part d'une volonté de conserver un modèle aussi simple que possible, afin de le rendre plus facile à utiliser, mais aussi pour pouvoir évaluer un échantillon représentatif des types de mouvements qu'il peut générer dans un laps de temps raisonnable pour une étude empirique, compte tenu notamment de la fatigue des sujets.
     
-    localement blabla
+    Comme nous l'avons partiellement montré dans le chapitre~\ref{chap3}, le fait de varier les paramètres, en particulier $F$ et $A$, permet de générer des types de mouvement subjectivement très différents (voir les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180}), et d'enveloppes convexes de tailles très différentes également (voir la figure~\ref{fig:trajAreas}). Néanmoins, et outre le problème des objets autocorrélés, notre modèle repose notamment sur une vitesse constante, ce qui, de fait, exclut tous les objets susceptibles d'accélérer. Là encore, ce choix fut fait pour limiter le nombre de paramètres, toujours dans l'objectif d'atteindre un compromis entre la simplicité du modèle et sa capacité à générer des mouvements que nos sujets puissent percevoir comme fondamentalement différents.
+    
+	Nous souhaitions tout particulièrement pouvoir générer du mouvement perçu comme \og régulier \fg{} ou \og prévisible \fg{} ainsi que du mouvement \og irrégulier \fg{}, \og saccadé \fg{} ou \og imprévisible \fg{}.
+    
+	Remarquons tout de même qu'une trajectoire générée par notre modèle peut, temporairement (sur une ou deux secondes, par exemple) approximer un mouvement autocorrélé. Attendu qu'une tâche de sélection, pour peu qu'elle ne soit pas trop difficile, peut se dérouler sur une durée approximativement comparable, le modèle VFA n'est pas nécessairement inutile pour étudier les performances de sélection des objets autocorrélés. On privilégiera dans ce cas de très fortes valeurs de $F$ et de très faibles valeurs de $A$, par exemple. La figure~\ref{fig:autocorr} fournit deux exemples de telles trajectoires que nous proposons d'appeler pseudo-autocorrélées.
+	
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/ac_2_19_1_120a}
+			\caption[Mouvement pseudo-autocorrélé A]{Première trajectoire générée.}
+			\label{fig:acA}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/ac_2_19_1_120b}
+			\caption[Mouvement pseudo-autocorrélé B]{Deuxième trajectoire générée.}
+			\label{fig:acB}
+		\end{subfigure}
+		\caption{Trajectoires générées avec les mêmes valeurs $F = 120$~Hz et $A = 1\degree$. Ces trajectoires ressemblent à celles que l'on pourrait attendre d'objets autocorrélés, tels que des véhicules, par exemple.}
+		\label{fig:autocorr}
+	\end{figure}
     
     \subsection{Proposition de modèles de génération de mouvements autocorrélés}
     Les objets autocorrélés présentent néanmoins un intérêt certain et, par conséquent, pourraient faire l'objet d'études spécifiques. Nous proposons donc ici deux modèles différents permettant de générer de tels mouvements.
@@ -57,26 +80,8 @@
     
     Le modèle nécessiterait un calibrage précis pour obtenir le comportement souhaité, notamment en ce qui concerne les masses des objets ou le coefficient de friction. Notons par ailleurs que, sauf dans certains cas particuliers (et après une période dynamique) les vitesses des objets ne seraient pas constantes pour une norme de $\vec{F}$ donnée, ce qui distinguerait ce modèle newtonien du nôtre (VFA). En soi, ce n'est pas nécessairement un problème --- et peut même être un avantage --- mais cela complique le contrôle des propriétés d'un environnement synthétique créé pour mener une étude empirique.
 
-\subsection{Characterizing Erratic Motion}
-In order to study performance when acquiring targets with erratic movements, we
-need a quantifiable, controllable and replicable way to generate such motion. We
-propose to characterize the nature of motion with three parameters:
- S: the speed at which the target moves, in cm/s;
- F: the frequency at which the target's direction vector is rotated, in Hz;
- A: the maximum angle by which the direction vector of the target can be rotated:
-after every period T = 1/F, the direction vector of the target is rotated by the angle
-alpha which is pseudo-randomly sampled from [-A;+A] (with A in degrees of arc).
-These parameters (and their values in the following experiment) only capture a part
-of all possible types of motion, since simulating all of them would have been too
-complex and unmanageable, with too many parameters (e.g., acceleration, curvature,
-etc.). We rather chose a trade-off between simplicity and the potential to simulate
-types of motion that participants in our experiment would perceive as fundamentally
-different in nature. In particular, varying F and A allows the simulation of a wide
-range of movements, from regular to erratic.
-
 \subsection{Expérience}
-We conducted an experiment with 13 right-handed participants, aged 14 to 56. They
-were asked to click with a mouse on a moving target displayed on a desktop monitor.
+We conducted an experiment with 13 right-handed participants, aged 14 to 56. They were asked to click with a mouse on a moving target displayed on a desktop monitor.
 
 \paragraph{Dispositif expérimental}
 The input device was a standard mouse without acceleration, moving a
