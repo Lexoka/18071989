@@ -200,11 +200,61 @@
 	% Note that because of growing concerns in various research fields over the limits of null hypothesis significance testing for reporting and interpreting experimental results [1, 2], our discussions are based on effect sizes (reported as percent differences1).
 
 	\subsection{Vitesse}
-	We observed that both selection time and error rate increase when speed in-
+	Sans surprise, les temps de sélection et les taux d'erreurs croissent avec la vitesse des cibles, comme l'illustre la figure~\ref{fig:spEffectPerf}.
+	
 creases, as illustrated in Figure 1(a): average ANST at the highest speed (37\%{}) is
 higher than in the lowest one (17\%{}) with a percent difference of 74\%{}. We observe
 that selection time and error rates are roughly affine functions of speed. We only in-
 cluded the plots for A = 90, but the results for all other values of A are very similar.
+
+	\newcommand{\subImgWlineplot}{0.42\textwidth}
+	\begin{figure}[!htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/speed_angle_60_times}
+			\caption{MTSN pour $A = 60$.}
+			\label{fig:spEffect_t_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/speed_angle_60_errors}
+			\caption{Taux d'erreurs pour $A = 60$.}
+			\label{fig:spEffect_e_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/speed_angle_60_failures}
+			\caption{Taux d'échecs pour $A = 60$.}
+			\label{fig:spEffect_f_60}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/speed_angle_120_times}
+			\caption{MTSN pour $A = 120$.}
+			\label{fig:spEffect_t_120}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/speed_angle_120_errors}
+			\caption{Taux d'erreurs pour $A = 120$.}
+			\label{fig:spEffect_e_120}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/speed_angle_120_failures}
+			\caption{Taux d'échecs pour $A = 120$.}
+			\label{fig:spEffect_f_120}
+		\end{subfigure}
+		\caption[Effet de la vitesse sur les performances de sélection]{Effet de la vitesse sur les performances de sélection. Les MTSN, taux d'erreurs d'échecs sont présentés pour deux valeurs de A, et pour toutes les valeurs de F que nous avons testées.}
+		\label{fig:spEffectPerf}
+	\end{figure}
+
 
 	\subsection{Angle}
 	Parameter A exhibits more complicated tendencies, with an interaction with
