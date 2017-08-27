@@ -115,27 +115,36 @@
 	\footnotetext{\url{http://www.dell.com/en-us/work/shop/cty/pdp/spd/dell-u2412m}}
 
 	\subsection{Task and Conditions}
-	The task consisted in selecting one circular target among 50,
-with a fixed diameter of 5.4mm. The 49 “distractors” were displayed in gray, and the
-target to select in red (see Figure 3(b)). Both the target and the distractors moved
-according to the current condition, defined by the S, F and A parameters, and bounced
-off the edges of the window. To control the pointing amplitude, the motion of the
-distractors was constrained so that after selecting a target, the distance between the
-mouse cursor and the next target was constant (of about 7.96cm). When the participant successfully selected the red target, it briefly turned green while the next target to
-select turned red at the same time.
-Selection involves a trade-off between speed and accuracy [4], and users can adopt
-different approaches to this trade-off. In order to minimize such variation in selection
-strategy, participants were instructed to select the target as fast as possible but with at
-most 5 attempts. The number of remaining attempts for each trial was displayed in the
-top left corner of the window. After the last try, the word “failure” was displayed and
-the participant was asked to keep trying to select the target, but without trying to
-minimize errors. Thus, failures are not absolute, but indicate critical conditions for
-which selection is very difficult.
-We tested all combinations of the following (S,A,F) values, replicated 4 times:
- S: 0.73, 1.46 and 2.19 cm/s (3 values);
- F: 1, 2, 4, 8, 13, 20 and 30Hz (7 values);
- A: 0, 30, 60, 90, 120 and 180 degrees of arc (6 values).
-An additional baseline condition was added with static targets, which was replicated 20 times. When A = 0, targets move in straight lines. In summary, we tested a total of 3×6×7 + 1 = 127 conditions, and 524 trials (126×4 + 1×20) per participant.
+	La tâche consistait à sélectionner une cible parmi 50 objets identiques : des disques de 5,4~mm de diamètre. Les 49 \og distracteurs \fg{} étaient affichés en gris, et la cible à sélectionner était rouge, comme l'illustre la figure~\ref{fig:app}. Les distracteurs et la cible étaient mus selon les mêmes paramètres V, F et A de notre modèle, mais l'angle $\alpha$ échantillonné à chaque période T était échantillonné séparément pour chaque objet, donc généralement différent. Lorsqu'un disque \og percutait \fg{} le bord de la fenêtre, il \og rebondissait \fg{} dessus.
+	
+	Ce choix, qui altère ponctuellement le mouvement généré par le modèle VFA, fut fait pour d'une part éviter la disparition d'une cible hors de la fenêtre, pour éviter toute discontinuité (par exemple si la cible réapparaissait de l'autre côté de la fenêtre), et pour limiter la \og surprise \fg{} éprouvée par l'utilisateur en imitant un phénomène physique familier. Cela permet par ailleurs de garantir la constance la densité de l'environnement.
+	
+	Pour contrôler l'amplitude (telle que définie par Fitts~\cite{fitts1954information}) les mouvements des distracteurs étaient légèrement contraints, de telle sorte qu'après la sélection d'une cible, la distance entre le curseur et la cible suivante était à peu près constante (environ 7,96~cm).
+	
+	Quand une cible était sélectionnée avec succès, elle changeait brièvement de couleur pour devenir verte tandis que la cible suivante devenait rouge.
+	
+	La sélection de cibles implique un compromis entre vitesse et précision~\cite{guiard2011fitt}, et les utilisateurs sont généralement libres d'adopter différentes approches de ce compromis, privilégiant la première ou la seconde. Il peut en résulter, d'un utilisateur à l'autre, d'importants écarts de temps de sélection et de taux d'erreurs. Afin de minimiser ces variations, nos sujets avaient pour instruction de sélectionner leurs cibles le plus rapidement possible, mais avec un maximum de 5 tentatives.
+	
+	Le nombre de tentatives encore possible était affiché dans le coin supérieur gauche de la fenêtre (voir la figure~\ref{fig:app}). Après la dernière tentative, en cas d'échec le mot \emph{failure} était affiché à la place du nombre de tentatives, indiquant un échec. Mais les sujets avaient pour instruction de continuer à essayer de sélectionner la cible, sans plus chercher à minimiser les erreurs. Cette particularité de notre dispositif expérimental était nécessaire pour avoir suffisamment de données (en temps de sélection) pour les conditions les plus difficiles, qui généraient énormément d'erreurs.
+	
+	Elle a néanmoins l'inconvénient de réduire quelque peu les temps de sélection des conditions les plus difficiles, tout en augmentant leurs taux d'erreurs. Ainsi, les échecs ne sont pas absolus, mais indiquent les conditions pour lesquelles la sélection est (parfois extrêmement) difficile.
+	
+	Nous avons testé toutes les combinaisons des valeurs de V, F et A suivantes, avec 4 sélections par condition et par sujet :
+	
+	\begin{itemize}
+		\item[V :] 0,73, 1,46 et 2,19~cm/s, soit 3 valeurs ;
+		\item[F :] 1, 2, 4, 8, 13, 20 et 30~Hz, soit 7 valeurs ;
+		\item[A :] 0, 30, 60, 90, 120 et 180 degrés, soit 6 valeurs.
+	\end{itemize}
+	
+	À ceci s'ajoutait une condition de base avec des cibles statiques, répétée 20 fois. Naturellement, lorsque $A = 0$, les cibles se déplacent en ligne droite. Au total, nous avons évalué $3 \times 7 \times 6 + 1 = 127$ conditions ave 4 essais par condition dynamique et 20 essais pour la condition statique, soit un total de $126 \times 4 + 1 \times 120 = 524$ essais par participant, et $524 \times 13 = 6812$ essais au total.
+
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/app}
+		\caption[Application utilisée dans notre évaluation]{Application utilisée dans notre évaluation. Le curseur gris s'approche de la cible rouge (qui n'est pas sélectionnable ici, car le centre du curseur cruciforme n'est pas inclus dans le disque) et les distracteurs gris se déplacent dans la fenêtre. Le nombre de tentatives de sélection encore possibles pour la cible courante est affiché en haut à gauche --- 5 dans le cas présent. Le taux de complétion de l'expérience dans son ensemble est inscrit en bas à gauche.}
+		\label{fig:app}
+	\end{figure}
 
 \subsection{Procédure et collecte de données}
 Each session lasted approximately 40 minutes, including a training phase of over 50 trials, after which participants felt comfortable
