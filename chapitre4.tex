@@ -270,20 +270,59 @@
 
 
 	\subsection{Angle}
-	Parameter A exhibits more complicated tendencies, with an interaction with
-both S and F. At low speed, A has a small effect on selection times (for S = 0.73 and
-F = 4, when A = 0, ANST = 14\%{} and when A = 120, ANST = 20\%{}; percent differ-
-ence of 33\%{}, the highest observed at this speed) but a bigger effect at high speed (for
-S = 2.19, at the same A and F, ANSTs are respectively 21\%{} and 54\%{}; percent differ-
-ence of 90\%{}). A possible explanation is that at low speed, selection is almost as easy
-as with static targets, regardless of the nature of the motion. Figure 1(c) illustrates the
-effect of A at high speed. We observe that as long as frequency is low, higher values
-of A imply higher selection times. However, as F increases, the effect of A on selec-
-tion time is changed: after steadily increasing with A, selection time reaches a plateau,
-and then decreases. Furthermore, the value of A associated with this plateau (Apeak)
-depends on F: as F increases, Apeak decreases.
-We also observed that the number of errors and failure rates follow the same trends
-and that at medium speed, these trends are similar but less pronounced.
+	L'effet du paramètre d'angle est plus subtile à interpréter, notamment du fait d'intéractions avec la vitesse et la fréquence. À basse vitesse, l'effet de A sur les MTSN est faible : pour $V = 0,73$ et $F = 4$, quand $A= 0$, $MTSN = 14~\%{}$ alors que quand $A = 120$, $MTSN = 20~\%{}$, soit une différence de pourcentage de seulement 33~\%{}, et qui plus est la plus importante mesurée entre deux valeurs de A pour cette vitesse. En revanche, lorsque S vaut 2,19, alors les MTSN sont respectivement 21~\%{} et 54~\%{} pour les mêmes valeurs de A et F, ce qui représente une différence de pourcentage de 90~\%{}.
+	
+	L'inteprétation que nous proposons est qu'à basse vitesse, la sélection est de toute façon relativement facile, presque indépendamment de la nature du mouvement, ce qui n'est plus du tout vrai avec des cibles rapides.
+	
+	Figure 1(c) illustrates the effect of A at high speed. We observe that as long as frequency is low, higher values of A imply higher selection times. However, as F increases, the effect of A on selec-
+tion time is changed: after steadily increasing with A, selection time reaches a plateau, and then decreases. Furthermore, the value of A associated with this plateau (Apeak) depends on F: as F increases, Apeak decreases. We also observed that the number of errors and failure rates follow the same trends and that at medium speed, these trends are similar but less pronounced.
+
+	\begin{figure}[!htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/angle_speed_0_73_times}
+			\caption{MTSN pour $V = 0,73$.}
+			\label{fig:aEffect_t_073}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/angle_speed_0_73_errors}
+			\caption{Taux d'erreurs pour $V = 0,73$.}
+			\label{fig:aEffect_e_073}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/angle_speed_1_46_times}
+			\caption{MTSN pour $V = 1,46$.}
+			\label{fig:aEffect_t_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/angle_speed_1_46_errors}
+			\caption{Taux d'erreurs pour $V = 1,46$.}
+			\label{fig:aEffect_e_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/angle_speed_2_19_times}
+			\caption{MTSN pour $V = 2,19$.}
+			\label{fig:aEffect_t_219}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/angle_speed_2_19_errors}
+			\caption{Taux d'erreurs pour $V = 2,19$.}
+			\label{fig:aEffect_e_219}
+		\end{subfigure}
+		\caption[Effet du paramètre d'angle sur les performances de sélection]{Effet du paramètre d'angle sur les performances de sélection. Les MTSN et taux d'erreurs sont présentés pour toutes les valeurs de V et de F que nous avons testées. Comme on le voit, les interactions sont fortes entre les différents paramètres, et les effets de A et F sont d'autant plus marqués que V est grande.}
+		\label{fig:aEffectPerf}
+	\end{figure}
 
 	\subsection{Fréquence}
 	A similar pattern can be observed for frequency: F has a smaller effect on
