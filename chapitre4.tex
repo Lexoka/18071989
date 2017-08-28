@@ -378,20 +378,58 @@
 	\end{figure}
 
 \section{Analyse exploratoire}
-	We also considered our parameter space as a whole in order to identify general trends.
-The heat maps in figures 2(a) and 2(b) represent the ANSTs for medium and high
-speeds. In each of those heat maps, A stands on the horizontal axis, and F on the ver-
-tical one. Each intersection is thus the average of ANSTs for the corresponding condi-
-tion. The heat maps in figures 2(b), 2(c) and 2(d) present the highest speed we tested,
-since it resulted in the most pronounced effects of A and F. In Figure 2(b), we observe
-that a region of the heat map approximately centred on the main diagonal (from top-
-left to bottom-right) exhibits the highest selection times. Figure 2(c) displays the av-
-erage error rates for each condition, which are correlated with selection times. Finally,
-failure rates are presented in figure 2(d).
-These heat maps suggest that selection is especially difficult for combinations of
-wide angles with low frequencies, narrow angles with high frequencies, or medium
-angles with moderate frequencies.
+	Nous avons également porté un regard sur notre espace de paramètres entier afin d'identifier des tendances plus générales.
+
+	The heat maps in figures 2(a) and 2(b) represent the ANSTs for medium and high speeds. In each of those heat maps, A stands on the horizontal axis, and F on the vertical one. Each intersection is thus the average of ANSTs for the corresponding condition. The heat maps in figures 2(b), 2(c) and 2(d) present the highest speed we tested, since it resulted in the most pronounced effects of A and F. In Figure 2(b), we observe that a region of the heat map approximately centred on the main diagonal (from top-left to bottom-right) exhibits the highest selection times. Figure 2(c) displays the average error rates for each condition, which are correlated with selection times. Finally, failure rates are presented in figure 2(d).
+These heat maps suggest that selection is especially difficult for combinations of wide angles with low frequencies, narrow angles with high frequencies, or medium angles with moderate frequencies.
 Figure 2 - Selection performance as a function of A and F, for different values of S.
+
+	\begin{figure}[!htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/average_times_054}
+			\caption{MTSN pour $V = 1,46$.}
+			\label{fig:hmap_t_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/average_times_081}
+			\caption{MTSN pour $V = 2,19$.}
+			\label{fig:hmap_t_219}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/average_error_rates_054}
+			\caption{Taux d'erreurs pour $V = 1,46$.}
+			\label{fig:hmap_e_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/average_error_rates_081}
+			\caption{Taux d'erreurs pour $V = 2,19$.}
+			\label{fig:hmap_e_219}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/average_failure_rates_054}
+			\caption{Taux d'échecs pour $V = 2,19$.}
+			\label{fig:hmap_f_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/average_failure_rates_081}
+			\caption{Taux d'échecs pour $V = 2,19$.}
+			\label{fig:hmap_f_219}
+		\end{subfigure}
+		\caption[Effets combinés de F et A sur les performances de sélection]{Effets combinés de F et A sur les performances de sélection. Les MTSN, TERR et TECH sont présentés pour toutes les valeurs de F et de A que nous avons testées, à moyenne et haute vitesse.}
+		\label{fig:hmaps}
+	\end{figure}
 
 	\subsection{Prévisibilité selon les angles et fréquences}
 	The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak,
