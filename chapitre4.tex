@@ -80,7 +80,7 @@
 			\caption[Mouvement pseudo-autocorrélé B]{$F = 120$ et $A = 1$, ter.}
 			\label{fig:ac_1_120C}
 		\end{subfigure}
-		\caption{Trois trajectoires générées avec les mêmes valeurs $F = 120$~Hz et $A = 1\degree$, et une avec $F = 30$~Hz et $A = 2\degree$. Dans tous les cas, $V = 2,19$~cm/s. Ces trajectoires ressemblent à celles que l'on pourrait attendre d'objets autocorrélés, tels que des véhicules, par exemple.}
+		\caption[Mouvements pseudo-autocorrélés]{Trois trajectoires générées avec les mêmes valeurs $F = 120$~Hz et $A = 1\degree$, et une avec $F = 30$~Hz et $A = 2\degree$. Dans tous les cas, $V = 2,19$~cm/s. Ces trajectoires ressemblent à celles que l'on pourrait attendre d'objets autocorrélés, tels que des véhicules, par exemple.}
 		\label{fig:autocorr}
 	\end{figure}
     
@@ -326,14 +326,56 @@
 	De plus, la valeur de A associée à ce plateau ($A_{pic}$) dépend de A : plus F est grande, plus $A_{pic}$ est petit. Les erreurs et les échecs (omis ici) suivent la même tendance, mais les effets sont dépendants de la vitesse (d'autant plus forts qu'elle est élevée).
 
 	\subsection{Fréquence}
-	A similar pattern can be observed for frequency: F has a smaller effect on
-selection time when speed is low, but a larger one at high speed. On Figure 1(d), we
-observe that for lower values of A, higher frequencies are correlated with higher se-
-lection time, but for higher values of A, the trend changes. When A is high, selection
-time increases with F up to a certain peak (Fpeak) and then decreases. Furthermore, the
-value of Fpeak decreases as A increases. Trends for number of errors and failure rates
-are consistent with those observed for selection time, and as for angle widths, trends
-at medium speed are similar to those at high speed, although less pronounced.
+	Les tendances sont similaires pour la fréquence : F a un plus petit impact sur le temps de sélection lorsque la vitesse est basse, et plus grand quand elle est élevée. Sur la figure~\ref{fig:fEffectPerf}, on observe que lorsque A est faible, les fortes valeurs de F sont corrélées avec de longs temps de sélection. Mais pour de fortes valeurs de A, la tendance change : quand A est grand, la MTSN croît avec F jusqu'à une certaine valeur ($F_{pic}$), puis décroît. De plus, la valeur de $F_{pic}$ diminue quand A augmente. Les TERR et TECH suivent la même tendance que les MTSN.
+	
+	L'effet de F est donc approximativement symétrique de celui de A, et comme pour A, il est d'autant plus prononcé que la vitesse est élevée.
+
+	\begin{figure}[!htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/frequency_speed_0_73_times}
+			\caption{MTSN pour $V = 0,73$.}
+			\label{fig:fEffect_t_073}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/frequency_speed_0_73_errors}
+			\caption{Taux d'erreurs pour $V = 0,73$.}
+			\label{fig:fEffect_e_073}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/frequency_speed_1_46_times}
+			\caption{MTSN pour $V = 1,46$.}
+			\label{fig:fEffect_t_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/frequency_speed_1_46_errors}
+			\caption{Taux d'erreurs pour $V = 1,46$.}
+			\label{fig:fEffect_e_146}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/frequency_speed_2_19_times}
+			\caption{MTSN pour $V = 2,19$.}
+			\label{fig:fEffect_t_219}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/frequency_speed_2_19_errors}
+			\caption{Taux d'erreurs pour $V = 2,19$.}
+			\label{fig:fEffect_e_219}
+		\end{subfigure}
+		\caption[Effet de la fréquence sur les performances de sélection]{Effet de la fréquence sur les performances de sélection. Les MTSN et taux d'erreurs sont présentés pour toutes les valeurs de V et de A que nous avons testées. Comme on le voit, les interactions sont fortes entre les différents paramètres, et les effets de A et F sont d'autant plus marqués que V est grande.}
+		\label{fig:fEffectPerf}
+	\end{figure}
 
 \section{Analyse exploratoire}
 	We also considered our parameter space as a whole in order to identify general trends.

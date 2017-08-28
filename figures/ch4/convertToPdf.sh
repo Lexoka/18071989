@@ -2,5 +2,6 @@
 
 for FILE in *.eps
 do
-	convert $FILE "$(basename $FILE .eps).pdf"
+	#convert $FILE "$(basename $FILE .eps).pdf"
+	epstopdf $FILE
 done
