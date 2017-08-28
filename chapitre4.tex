@@ -198,13 +198,25 @@
 	Un échec survient lorsque pour une tâche de sélection, un sujet commet au moins 5 erreurs. 	Un taux d'échecs de 50~\%{} pour une condition donnée signifie que la moitié des essais pour cette condition ont mené à un échec (5 clics erronés ou plus) sur l'ensemble des sujets.
 	
 	Notez que du fait d'inquiétudes croissantes dans divers domaines de recherche concernant les limites des tests de significativité d'hypothèse nulle~\cite{dragicevic2014running, cumming2014new}, nos analyses se fondent principalement sur les tailles d'effets, rapportés ici sous forme de différences de pourcentage $p$, calculées selon la formule suivante, pour deux mesures $m_{1}$ et $m_{2}$ : $p = 100 \times \frac{\abs*{m_{2} - m_{1}}}{\frac{m_{1} + m_{2}}{2}}$.
-	
-	% Note that because of growing concerns in various research fields over the limits of null hypothesis significance testing for reporting and interpreting experimental results [1, 2], our discussions are based on effect sizes (reported as percent differences1).
 
 	\subsection{Vitesse}
-	Sans surprise, les temps de sélection et les taux d'erreurs croissent avec la vitesse des cibles, comme l'illustre la figure~\ref{fig:spEffectPerf}.
+	Sans surprise, les temps de sélection et les taux d'erreurs croissent avec la vitesse des cibles, comme l'illustre la figure~\ref{fig:spEffectPerf}. Ainsi, la moyenne des MTSN de toutes les conditions lentes (0,73~cm/s) est de
 	
-creases, as illustrated in Figure 1(a): average ANST at the highest speed (37\%{}) is
+%	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
+	\begin{table}
+		\centering
+		\begin{tabular}{c c | c c c}
+			Vitesse			&		& Basse	& Moyenne	& Haute	\bigstrut[b] \\
+							&		& 16,74	& 25,02		& 36,58	\bigstrut[b] \\ \hline
+			Basse			& 16,74	&		&			&		\bigstrut[t] \\
+			Moyenne			& 25,02	&		&			&		\\
+			Haute			& 36,58	&		&			&		\\
+		\end{tabular}
+		\caption[Performances selon la vitesse]{Performances de sélection (MTSN moyennes) selon la vitesse, et différences de pourcentages.}
+		\label{tab:spPerf}
+	\end{table}
+	
+ average ANST at the highest speed (37\%{}) is
 higher than in the lowest one (17\%{}) with a percent difference of 74\%{}. We observe
 that selection time and error rates are roughly affine functions of speed. We only in-
 cluded the plots for A = 90, but the results for all other values of A are very similar.
