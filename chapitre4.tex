@@ -380,9 +380,13 @@
 \section{Analyse exploratoire}
 	Nous avons également porté un regard sur notre espace de paramètres entier afin d'identifier des tendances plus générales.
 
-	The heat maps in figures 2(a) and 2(b) represent the ANSTs for medium and high speeds. In each of those heat maps, A stands on the horizontal axis, and F on the vertical one. Each intersection is thus the average of ANSTs for the corresponding condition. The heat maps in figures 2(b), 2(c) and 2(d) present the highest speed we tested, since it resulted in the most pronounced effects of A and F. In Figure 2(b), we observe that a region of the heat map approximately centred on the main diagonal (from top-left to bottom-right) exhibits the highest selection times. Figure 2(c) displays the average error rates for each condition, which are correlated with selection times. Finally, failure rates are presented in figure 2(d).
-These heat maps suggest that selection is especially difficult for combinations of wide angles with low frequencies, narrow angles with high frequencies, or medium angles with moderate frequencies.
-Figure 2 - Selection performance as a function of A and F, for different values of S.
+	Les cartes thermiques (\emph{heat maps}) sur les figures~\ref{fig:hmap_t_146} et~\ref{fig:hmap_t_219} présentent les MTSN pour toutes les combinaisons de A et F aux vitesses intermédiaire et élevée, respectivement. Sur chaque carte, A se lit sur l'axe des abscisses, et F sur celui des ordonnées. Les TERR et TECH sont également représentés sur la figure~\ref{fig:hmaps}.
+	
+	Nous remarquons sur toutes ces cartes de chaleur --- et plus clairement à 2,19~cm/s --- qu'une zone approximativement située sur la diagonale principale (du coin supérieur gauche au coin inférieur droit) est associé aux MTSN, TERR et TECH les plus élevés, donc aux conditions les plus difficiles.
+	
+	Si l'on suit cette diagonale et que l'on se rapporte aux axes des abscisses et des ordonnées, l'on peut remarquer qu'elle est caractérisée soit par une forte valeur de A associée à une faible valeur de F, soit l'inverse, soit à des valeurs de A et F simultanément intermédiaires.
+	
+	Inversement, lorsque A et F sont simultanément faibles (coin inférieur gauche) ou simultanément élevés (coin supérieur droit) la sélection est relativement aisée.
 
 	\begin{figure}[!htb]
 		\centering
@@ -427,18 +431,14 @@ Figure 2 - Selection performance as a function of A and F, for different values 
 			\caption{Taux d'échecs pour $V = 2,19$.}
 			\label{fig:hmap_f_219}
 		\end{subfigure}
-		\caption[Effets combinés de F et A sur les performances de sélection]{Effets combinés de F et A sur les performances de sélection. Les MTSN, TERR et TECH sont présentés pour toutes les valeurs de F et de A que nous avons testées, à moyenne et haute vitesse.}
+		\caption[Effets combinés de F et A sur les performances de sélection]{Effets combinés de F et A sur les performances de sélection. Les MTSN, TERR et TECH sont présentés pour toutes les valeurs de F et de A que nous avons testées, à moyenne et haute vitesse. Ces cartes thermiques (\emph{heat maps}) utilisent la couleur pour représenter une grandeur, selon l'échelle indiquée à leur droite. Les valeurs de A se lisent en abscisse, et celles de F en ordonnée. Ainsi, pour une vitesse données, toutes les combinaisons de A et F sont représentées.}
 		\label{fig:hmaps}
 	\end{figure}
 
 	\subsection{Prévisibilité selon les angles et fréquences}
-	The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak,
-which in our data is around 1,100, selection time is maximal. We suppose that AFpeak
-would vary in different conditions, e.g. target width or pointing distance as described
-by Fitts’ law, but it remains stable for the three different speeds we have tested, and
-therefore probably independent of this parameter. As mentioned before, we observed
-error rate to be generally strongly correlated with selection time, and so to also de-
-pend on the A×F product.
+	
+	
+	The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak, which in our data is around 1,100, selection time is maximal. We suppose that AFpeak would vary in different conditions, e.g. target width or pointing distance as described by Fitts’ law, but it remains stable for the three different speeds we have tested, and therefore probably independent of this parameter. As mentioned before, we observed error rate to be generally strongly correlated with selection time, and so to also depend on the A×F product.
 
 	\subsection{Impressions subjectives}
 	The answers to our questionnaire were consistent with, and complementary to, our quantitative results. Indeed, 92\%{} of our participants were able to identify different categories of motion: 77\%{} of them identified at least three major categories, together with two or three corresponding selection strategies.
@@ -449,37 +449,11 @@ Figure 3 - Selection time as a function of A×F. Screenshot of the application.
 they would aim for the “average” position of the target over a short period of time, and either try to intercept it or just click and hope for the best.
 
 	\subsection{Interprétation}
-	The steady category reflects how our participants perceived the con-
-ditions where both angle width and change frequency were low. The jerky category
-relates to the difficult diagonal of our heat maps, and the vibrating category is the one
-with both high frequency and angle width. The important observation is that the strat-
-egy of anticipation requires a certain degree of predictability, since one can only an-
-ticipate what one can predict. Likewise, aiming for the average position of a target is a
-prediction. On the other hand, the jerky category seems to be very difficult to predict.
-We therefore conclude that the steady and vibrating categories of moving targets
-are relatively easy to acquire because their movements are quite predictable, whereas
-jerky targets are more difficult because less predictable. Of course, the borders be-
-tween these categories are hard to determine formally and are likely to depend on the
-user perception of the movement.
+	The steady category reflects how our participants perceived the conditions where both angle width and change frequency were low. The jerky category relates to the difficult diagonal of our heat maps, and the vibrating category is the one with both high frequency and angle width. The important observation is that the strategy of anticipation requires a certain degree of predictability, since one can only anticipate what one can predict. Likewise, aiming for the average position of a target is a prediction. On the other hand, the jerky category seems to be very difficult to predict. We therefore conclude that the steady and vibrating categories of moving targets are relatively easy to acquire because their movements are quite predictable, whereas jerky targets are more difficult because less predictable. Of course, the borders between these categories are hard to determine formally and are likely to depend on the user perception of the movement.
 
 \section{Conclusion and perspectives}
-We have proposed a way to characterize the erratic behavior of moving targets with
-three parameters: speed, angle width and frequency, and tested pointing performance
-when varying these parameters. We have shown that the nature of target motion af-
-fects pointing performance, which is not captured by Fitts’ law’s index of difficulty.
-The latter can only describe the best case, and does not indicate that acquiring fast,
-highly erratic targets can be extremely difficult.
-Although the (S,A,F) set of parameters we have proposed models a continuum of
-target motion, our participants were able to distinguish at least three distinct catego-
-ries that we have characterized (steady, vibrating and jerky). Our results suggest that
-for erratic targets, predictability determines pointing performance. And while the
-steady and vibrating categories are relatively predictable, the jerky one is not.
-We have also observed that the A×F product might be a promising way to assess
-predictability, although we still need more data to deduce a predictive law for the
-acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward
-a more formal study of the acquisition of erratic targets, and introduces a way to bet-
-ter characterize or even control their movement. Ultimately, such a model could be
+We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that
+for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be
 instrumental in the design of new selection techniques.
-
 
 \clearpage
