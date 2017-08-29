@@ -7,12 +7,12 @@
 
 \section{Introduction : théorie du pointage et du mouvement ciblé}
 	\subsection{Pointage, sélection et loi de Fitts}
-	Le pointage et la sélection de cibles sont des problèmes de longue date. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
+	Le pointage et la sélection de cibles sont d'anciens problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/fitts}
-		\caption[Expérience de Paul M. Fitts]{Illustration de la première expérience ayant mené Paul Fitts à la  définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
+		\caption[Expérience de Paul M. Fitts]{Illustration de la première expérience ayant mené Paul Fitts à la définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
 		\label{fig:fitts}
 	\end{figure}
 	
@@ -320,7 +320,7 @@
 	\end{figure}
 	
 	\subsubsection{Impressions subjectives}
-	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
+	Zhai \emph{et al.} ont également recueilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
 
 	\begin{table}
 	\centering
@@ -411,7 +411,7 @@
 		\label{fig:as2dspeed}
 	\end{figure}
 	
-	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
+	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde augmente l'objet et en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
 
 	\begin{figure}[H]
 		\centering
@@ -427,7 +427,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/asRes}
-		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
+		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre par un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
 		\label{fig:asRes}
 	\end{figure}
 
@@ -447,7 +447,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 
 \section{\emph{Hold}}
 	\subsection{Principe et avantages}
-	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un boutons, et \og réactivées \fg{} en relâchant le bouton, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
+	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un bouton, et \og réactivées \fg{} en relâchant ce dernier, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
 	
 	\begin{figure}[ht]
 		\centering
@@ -458,7 +458,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Cela peut pallier le problème d'occultation inhérent à ce type de technique, qui survient si l'on stoppe le mouvement des objets lorsque la cible visée est occultée par un autre objet --- tout particulièrement dans un contexte 3D. On ajoutera que comme la plupart des techniques portant sur les cibles, \emph{Hold} peut être couplée à une technique de curseur, comme le \emph{Bubble Cursor} ou \emph{DynaSpot}, par exemple.
 	
-	En pratique, l'évaluation de la technique \emph{Hold} menée par Al Hajri \emph{et al.} montre qu'elle \emph{augmente} le temps de sélection, mais réduit le taux d'erreurs. Les sujets de l'évaluation ont expliqué aux auteurs qu'une fois la cible stoppée, ils ressentaient moins le besoin de se presser pour la sélectionner, vu que la tâche était devenue plus facile. De plus, \emph{Hold} nécessite de cliquer une première fois pour stopper la cible, puis de maintenir le bouton de la souris pressé jusqu'à le relâcher sur la cible, ce qui implique un effort supplémentaire et peut partiellemet expliquer ces résultats. Enfin, le nombre de clics montre que les sujets privilégient la rapidité sans \emph{Hold}, et la précision avec.
+	En pratique, l'évaluation de la technique \emph{Hold} menée par Al Hajri \emph{et al.} montre qu'elle \emph{augmente} le temps de sélection, mais réduit le taux d'erreurs. Les sujets de l'évaluation ont expliqué aux auteurs qu'une fois la cible stoppée, ils ressentaient moins le besoin de se presser pour la sélectionner, vu que la tâche était devenue plus facile. De plus, \emph{Hold} nécessite de cliquer une première fois pour stopper la cible, puis de maintenir le bouton de la souris pressé jusqu'à le relâcher sur la cible, ce qui implique un effort supplémentaire et peut partiellement expliquer ces résultats. Enfin, le nombre de clics montre que les sujets privilégient la rapidité sans \emph{Hold}, et la précision avec.
 	
 	On peut néanmoins se demander s'ils auraient été identiques si les utilisateurs avaient été plus encouragés à se dépêcher, par exemple en affichant un chronomètre, ou avec un système de points. Les temps de sélection mesurés en fonction des différents paramètres régissant le mouvement de la cible à sélectionner sont détaillés sur la figure~\ref{fig:holdRes}.
 	
@@ -487,16 +487,16 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdTech}
-		\caption[\emph{Hold} -- choix de la technique]{Les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction. Les résultats de la première ligne de graphiques correspondent aux essais en 1D, et ceux de la seconde, en 2D. On constate que les cibles \og faciles \fg{}  tendent à inciter au choix de \emph{Chase}, que les sujets décrivent comme plus rapide, tandis que les cibles plus difficiles à sélectionner encouragent le choix de \emph{Hold} ou \emph{Hybrid}. La taille et la vitesse sont les paramètres dont l'effet est le plus significatif. Les barres notées \emph{Error} correspondent simplement aux essais ratés, c'est-à-dire ceux pour lesquels le sujet à délenché la sélection hors de la cible. Crédit : \cite{hajri2011moving}.}
+		\caption[\emph{Hold} -- choix de la technique]{Les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction. Les résultats de la première ligne de graphiques correspondent aux essais en 1D, et ceux de la seconde, en 2D. On constate que les cibles \og faciles \fg{}  tendent à inciter au choix de \emph{Chase}, que les sujets décrivent comme plus rapide, tandis que les cibles plus difficiles à sélectionner encouragent le choix de \emph{Hold} ou \emph{Hybrid}. La taille et la vitesse sont les paramètres dont l'effet est le plus significatif. Les barres notées \emph{Error} correspondent simplement aux essais ratés, c'est-à-dire ceux pour lesquels le sujet a déclenché la sélection hors de la cible. Crédit : \cite{hajri2011moving}.}
 		\label{fig:holdTech}
 	\end{figure}
 	
-	La figure~\ref{fig:holdRatio} détaille la répartition entre l'utilisation de \emph{Chase} et \emph{Hold} dans une phase identifiée comme \emph{Hybrid}. Là encore, on constate que la difficultée est corrélée avec une utilisation accrue de la technique \emph{Hold.}
+	La figure~\ref{fig:holdRatio} détaille la répartition entre l'utilisation de \emph{Chase} et \emph{Hold} dans une phase identifiée comme \emph{Hybrid}. Là encore, on constate que la difficulté est corrélée avec une utilisation accrue de la technique \emph{Hold.}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdRatio}
-		\caption[\emph{Hold} -- répartition \emph{Hold/Chase} en mode \emph{Hybrid}]{épartition entre l'utilisation de \emph{Chase} et \emph{Hold} dans une phase identifiée comme \emph{Hybrid}. L'angle et la direction n'ont pas d'effet significatif mais la vitesse (à mesure qu'elle augmente) et la taille (à mesure qu'elle diminue) sont corrélées avec une utilisation accrue de la technique \emph{Hold}, malgré l'étape supplémentaire qu'elle implique. C'est résultats sont cohérents avec ceux observés hors du mode \emph{Hybrid}. Crédit : \cite{hajri2011moving}.}
+		\caption[\emph{Hold} -- répartition \emph{Hold/Chase} en mode \emph{Hybrid}]{Répartition entre l'utilisation de \emph{Chase} et \emph{Hold} dans une phase identifiée comme \emph{Hybrid}. L'angle et la direction n'ont pas d'effet significatif mais la vitesse (à mesure qu'elle augmente) et la taille (à mesure qu'elle diminue) sont corrélées avec une utilisation accrue de la technique \emph{Hold}, malgré l'étape supplémentaire qu'elle implique. Ces résultats sont cohérents avec ceux observés hors du mode \emph{Hybrid}. Crédit : \cite{hajri2011moving}.}
 		\label{fig:holdRatio}
 	\end{figure}
 	
@@ -517,7 +517,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{raycasting} ont été développées.
 	
-	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
+	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce type remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
 	
 	\begin{figure}[H]
 		\centering
@@ -563,7 +563,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
-		\caption[Performances du \emph{Shadow Cone} -- grande cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes. Crédit : \cite{steed20043d}.}
+		\caption[Performances du \emph{Shadow Cone} -- grande cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en rouge). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes. Crédit : \cite{steed20043d}.}
 		\label{fig:shadowSLarge}
 	\end{figure}
 	
@@ -572,7 +572,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
-		\caption[Performances du \emph{Shadow Cone} -- petite cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une petite cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon. Crédit : \cite{steed20043d}.}
+		\caption[Performances du \emph{Shadow Cone} -- petite cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une petite cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en rouge). Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon. Crédit : \cite{steed20043d}.}
 		\label{fig:shadowSSmall}
 	\end{figure}
 	
@@ -581,7 +581,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
-		\caption[Performances du \emph{Shadow Cone} -- paire de grands objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une paire de grands objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Aucune différence significative n'est mesurée entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas. Crédit : \cite{steed20043d}.}
+		\caption[Performances du \emph{Shadow Cone} -- paire de grands objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une paire de grands objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en rouge). Aucune différence significative n'est mesurée entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas. Crédit : \cite{steed20043d}.}
 		\label{fig:shadowPLarge}
 	\end{figure}
 	
@@ -595,14 +595,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
-		\caption[Performances du \emph{Shadow Cone} -- grappe de gros objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de gros objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}. Crédit : \cite{steed20043d}.}
+		\caption[Performances du \emph{Shadow Cone} -- grappe de gros objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de gros objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en rouge). Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}. Crédit : \cite{steed20043d}.}
 		\label{fig:shadowCLarge}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-		\caption[Performances du \emph{Shadow Cone} -- grappe de petits objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de petits objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Encore une fois, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. De plus, la sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, toujours avec suivi de la tête bien sûr. Crédit : \cite{steed20043d}.}
+		\caption[Performances du \emph{Shadow Cone} -- grappe de petits objets]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de petits objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en rouge). Encore une fois, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. De plus, la sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, toujours avec suivi de la tête bien sûr. Crédit : \cite{steed20043d}.}
 		\label{fig:shadowCSmall}
 	\end{figure}
 	
@@ -623,7 +623,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/depthRay}
-		\caption[Principe du \emph{Depth Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Depth Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible coupée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de sélectionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
 		\label{fig:depthRay}
 	\end{figure}
 	
@@ -651,9 +651,9 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsection{\emph{Smart Ray}}
 	\subsubsection{Principe}
-	Par définition, un rayon contient une infinité de points. Toutefois, si deux sont sécants, alors ils n'ont qu'un seul point en commun. Il donc possible d'utilier deux rayons pour effectuer une sélection par \emph{raycasting} sans aucune ambiguïté. Toutefois, cela nécessite deux périphériques de saisie et cela occupe les deux mains de l'utilisateur.
+	Par définition, un rayon contient une infinité de points. Toutefois, si deux sont sécants, alors ils n'ont qu'un seul point en commun. Il donc possible d'utiliser deux rayons pour effectuer une sélection par \emph{raycasting} sans aucune ambiguïté. Toutefois, cela nécessite deux périphériques de saisie et cela occupe les deux mains de l'utilisateur.
 	
-	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instant différents, selon un principe proche de celui du \emph{Shadow Cone}~\cite{steed20043d}. Chaque objet se voit attribuer un \og poids \fg{} qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
+	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instants différents, selon un principe proche de celui du \emph{Shadow Cone}~\cite{steed20043d}. Chaque objet se voit attribuer un \og poids \fg{} qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
 	
 	\begin{figure}[H]
 		\centering
