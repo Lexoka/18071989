@@ -539,6 +539,42 @@
 		\item[H1] : La phase de correction sera proportionnellement plus longue pour les cibles mobiles que pour les cibles statiques.
 		\item[H2] : La phase de correction sera proportionnellement plus longue quand le temps total de sélection est plus long --- c'est-à-dire pour les conditions précédemment identifiées comme \og difficiles \fg{} par rapport aux conditions \og faciles \fg{}.
 	\end{description}
+	
+	\subsection{Exemples}
+	Commençons par observer les profils de vitesse pour les conditions statiques. Pour illustrer nos propos, nous allons nous intéresser à quatre sujets, identifiés par de simple numéros (5, 6, 8 et 9) ; les sujets 6 et 8 sont assez performants, tandis que les sujets 5 et 9 le sont beaucoup moins, ce qui nous permet de varier les exemples.
+	
+	\begin{figure}[!htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_05_static_condition_smoothed}
+			\caption{Profil du sujet 5.}
+			\label{fig:staticProfile5}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_06_static_condition_smoothed}
+			\caption{Profil du sujet 6.}
+			\label{fig:staticProfile6}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_08_static_condition_smoothed}
+			\caption{Profil du sujet 8.}
+			\label{fig:staticProfile8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_09_static_condition_smoothed}
+			\caption{Profil du sujet 9.}
+			\label{fig:staticProfile9}
+		\end{subfigure}
+		\caption[Profils de vitesse du curseur.]{Profils de vitesse du curseur sur quatre sujets. Le temps est en abscisse et la vitesse en ordonnée.}
+		\label{fig:staticProfiles}
+	\end{figure}
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
