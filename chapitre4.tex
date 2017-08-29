@@ -470,13 +470,38 @@
 	Comme on le constate, les courbes se superposent --- ce qui est assez logique compte tenu de l'effet approximativement linéaire de la vitesse sur les MTSN observé plus haut. Pour une vitesse donnée, la pseudo-entropie paraît donc offrir un moyen d'estimer la difficulté de sélection, par exemple en calculant la distance entre le produit AF d'une condition et la valeur $AF_{pic}$, si elle est connue.
 	
 	Nous proposons également un modèle très simple permettant d'estimer le temps de sélection en fonction du produit AF, sous la forme d'un polynome cubique, illustré sur la figure~\ref{fig:tAF_smooth}. Il est cependant évident, du fait de la croissance de ce polynome après $AF \approx 3750$, que le champ d'application de ce modèle doit être limité à $AF \in [0, 3000]$, approximativement. L'on pourrait d'ailleurs se contenter d'un polynome quadratique sur cet intervalle, au prix d'une légère perte de précision ($R^{2} \approx 88,6~\%{}$).
+	
+	\subsubsection{Variations individuelles}
+	La discussion de ces résultats ne serait pas complète sans préciser que même si la \og diagonale de difficulté \fg{} est observable et stable dans les résultats de tous nos sujets, les conditions les plus difficiles ne sont pas toujours les mêmes, quoiqu'elles soient toujours sur ladite diagonale. La figure~\ref{fig:tVariation} illustre ces variations, en s'appuyant sur l'exemple de deux sujets.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/08_times_081}
+			\caption{Temps de sélection en fonction de A et F pour un sujet.}
+			\label{fig:08times}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/09_times_081}
+			\caption{Temps de sélection en fonction de A et F pour un autre sujet.}
+			\label{fig:09times}
+		\end{subfigure}
+		\caption[Variations entre les sujets]{Temps de sélection (en secondes) en fonction de A et F pour deux sujets différents, à vitesse élevée. Dans les deux cas, la \og diagonale de difficulté \fg{} est identifiable mais la condition la plus difficile pour le sujet de droite est relativement aisée pour celui de gauche, qui a eu plus de mal avec la partie basse de la diagonale.}
+		\label{fig:tVariation}
+	\end{figure}
+	
+	Dans les deux cas, des valeurs de AF intermédiaires (qui caractérisent la diagonale de difficulté) sont associés aux conditions les plus difficiles ; mais pour un sujet, ce sont les basses fréquences accompagnées de grands angles qui posent le plus de problèmes (figure~\ref{fig:08times}), tandis que pour l'autre, ce sont les hautes fréquences accompagnées de petits angles (figure~\ref{fig:09times}). Il est difficile de dire d'où proviennent ces différences.
+	
+	Observons cependant que le sujet de la figure~\ref{fig:08times} a obtenu, globalement, de bien meilleures performances que celui de la figure~\ref{fig:09times}. Cependant nos sujets les plus lents n'ont pas nécessairement rencontré leurs difficultés maximales sur cette zone de la diagonale de difficulté, et ne sont pas assez nombreux pour que nous puissions en tirer des résultats significatifs.
 
 	\subsection{Impressions subjectives}
 	Les réponses au questionnaire que nous avons soumis à nos sujets sont cohérentes avec nos mesures quantitatives, et apportent des précisions complémentaires. En effet, 92~\%{} des sujets furent capables d'identifier plusieurs catégories de mouvement, et 77~\%{} d'entre eux purent en identifier au moins trois, accompagnées de deux ou trois stratégies de sélection correspondantes.
 	
 	\subsubsection{Catégories et stratégies}
 	\paragraph{Catégories.}
-	Nos sujets ont d'abord décrit une première forme de mouvement \og stable \fg{} (et parfois qualifié de \og prévisible \fg{}), caractérisé par des lignes approximativement droites, avec des changements de directions faibles ou rares. Il est intéressant d'observer qu'un sujet précisa que les changements de direction survenaient \og toutes les deux secondes \fg{}, ce qui impliquerait $F = 0,5~Hz$ quand la valeur minimale de F testée était 1~Hz. Peut-être la concentration intense perturbe-t-elle la perception du temps\ldots{} Les descriptions détaillées fournies par nos sujets nous permettent de relier cette catégorie aux condition pour lesquelles AF est faible (les coins inférieurs gauches de nos cartes thermiques, figure~\ref{fig:hmaps}). Appelons cette catégorie \emph{stable}.
+	Nos sujets ont d'abord décrit une première forme de mouvement \og stable \fg{} (et parfois qualifié de \og prévisible \fg{}), caractérisé par des lignes approximativement droites, avec des changements de directions faibles ou rares. Il est intéressant d'observer qu'un sujet précisa que les changements de direction survenaient \og toutes les deux secondes \fg{}, ce qui impliquerait $F = 0,5$~Hz quand la valeur minimale de F testée était 1~Hz. Peut-être la concentration intense perturbe-t-elle la perception du temps\ldots{} Les descriptions détaillées fournies par nos sujets nous permettent de relier cette catégorie aux condition pour lesquelles AF est faible (les coins inférieurs gauches de nos cartes thermiques, figure~\ref{fig:hmaps}). Appelons cette catégorie \emph{stable}.
 	
 	Une seconde forme de mouvement fut identifiée, qualifiée de \og saccadée \fg{}, \og irrégulière \fg{} ou encore \og imprévisible \fg{}. Plus précisément, nos sujets mentionnèrent des changements de direction fréquents et importants. Ces indications nous permettent d'associer cette catégorie aux conditions de valeur AF intermédiaire, situées sur la \og diagonale de difficulté \fg{} de nos cartes thermiques. Appelons cette catégorie \emph{saccadée}.
 	
@@ -492,7 +517,15 @@
 	Pour la catégorie vibratoire, 69~\%{} de nos sujets expliquèrent qu'ils avaient cherché à identifier la position \og moyenne \fg{} de la cible sur une courte période, soit pour intercepter la cible au prochain passage espéré par cette position, soit pour cliquer beaucoup sur et autour de cette zone, dans l'espoir qu'une tentative fût fructueuse.
 
 	\subsubsection{Interprétation}
-	The steady category reflects how our participants perceived the conditions where both angle width and change frequency were low. The jerky category relates to the difficult diagonal of our heat maps, and the vibrating category is the one with both high frequency and angle width. The important observation is that the strategy of anticipation requires a certain degree of predictability, since one can only anticipate what one can predict. Likewise, aiming for the average position of a target is a prediction. On the other hand, the jerky category seems to be very difficult to predict. We therefore conclude that the steady and vibrating categories of moving targets are relatively easy to acquire because their movements are quite predictable, whereas jerky targets are more difficult because less predictable. Of course, the borders between these categories are hard to determine formally and are likely to depend on the user perception of the movement.
+	Comme précisé plus haut, la catégorie stable correspond aux faibles valeurs de AF, la catégorie saccadée aux valeurs intermédiaires, et la catégorie vibratoires aux fortes valeurs. Il s'agit respectivement des coins inférieurs gauches, de la diagonale principale, et des coins supérieurs droits de nos cartes thermiques.
+	
+	Ce qu'il est important de remarquer est qu'une stratégie d'anticipation/interception nécessite un certain degré de prévisibilité, car l'on ne peut anticiper de manière fiable que ce que l'on peut prédire. Or, le simple fait de viser la \og position moyenne \fg{} d'une cible sur une courte période est une prédiction en soi, c'est faire l'hypothèse que la cible repassera vite par cet endroit.
+	
+	En revanche, la catégorie saccadée semble très difficile à prédire, à tel point qu'aucun de nos sujets n'a rapporté avoir cherché à anticiper ou prédire de tels mouvements pour sélectionner une cible de cette catégorie. Nous en déduisons que les catégories stable et vibratoire sont caractérisées par des sélections relativement aisées du fait de la nature prévisible de leurs mouvements, tandis que la catégorie saccadée est caractérisée par des sélections difficiles du fait de la nature imprévisible de ses mouvements.
+	
+	Cette observation peut paraître quelque peu contre-intuitive pour la catégorie vibratoire, du fait de sa pseudo-entropie particulièrement élevée. L'on pourrait en effet supposer qu'une grande quantité de désordre dans le mouvement nuise à sa prévisibilité et donc gène considérablement la sélection, mais dans les faits, la nature \og contenue \fg{} du mouvement vibratoire semble en facilité la prévision, fût-elle approximative. Les cibles ayant une aire non-nulle, la prévision n'a en effet pas besoin d'être parfaite. Nous explorerons cette hypothèse plus avant dans une prochaine section de ce chapitre.
+	
+	Bien sûr, il faut préciser que les frontières entre ces trois catégories ne sont ni clairement délimitées ni absolues, comme le montrent nos cartes thermiques (figure~\ref{fig:hmaps}) ou encore les mesures de MTSN en fonction de AF (figure~\ref{fig:tAF}). Sans doutent dépendent-elles en plus des perceptions individuelles de chacun, mais elles fournissent un guide pour comprendre la difficulté de sélection des cibles mobiles en fonction de la nature de leurs mouvements.
 
 \section{Conclusion and perspectives}
 We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that
