@@ -436,9 +436,27 @@
 	\end{figure}
 
 	\subsection{Prévisibilité selon les angles et fréquences}
+	Les tendances observées ci-dessus suggèrent que le produit de A et F (appelé pseudo-entropie dans le chapitre~\ref{chap3}) pourrait prédire les performances de sélection de cibles mobiles avec quelque efficacité. Nous avons tracé un graphique de la MTSN en fonction du produit AF, mettant en lumière les tendances observées pour A et F séparément, et leurs interactions, voir la figure~\ref{fig:tAF}.
 	
+	Plus spécifiquement, lorsque AF atteint une certaine valeur $AF_{pic}$ (ici située autour de 1100), le temps de sélection est maximal. Nous supposons que $AF_{pic}$ pourrait dépendre de plusieurs paramètres, tels que la largeur ou l'amplitude de Fitts, mais cette valeur est stable aux trois vitesses que nous avons évaluées, aussi en est-elle probablement indépendante. Naturellement, les tendances observées pour les MTSN valent également pour les TERR et TECH, très fortement corrélés aux MTSN (le coefficient de corrélation de Pearson entre les MTSN et TERR est supérieur à 0,947, avec une \emph{p-value} inférieure à $10^{-62}$).
 	
-	The trends highlighted above suggest that the product A×F (angle width by frequency) might roughly predict selection performance for erratic targets. We plotted this product against selection time in figure3(a), and it reveals that an index of difficulty (or predictability) for irregular motion could be derived from A×F. Furthermore, when A×F reaches a certain value AFpeak, which in our data is around 1,100, selection time is maximal. We suppose that AFpeak would vary in different conditions, e.g. target width or pointing distance as described by Fitts’ law, but it remains stable for the three different speeds we have tested, and therefore probably independent of this parameter. As mentioned before, we observed error rate to be generally strongly correlated with selection time, and so to also depend on the A×F product.
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/time_vs_AF_all_speeds}
+			\caption{MTSN en fonction du produit AF, pour chaque vitesse.}
+			\label{fig:tAFallSp}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/time_vs_AF_all_speeds_normalized}
+			\caption{$MTSN/S$ en fonction du produit AF, à moyenne et haute vitesse.}
+			\label{fig:tAF_Spnorm}
+		\end{subfigure}
+		\caption[MTSN en fonction du produit AF]{MTSN en fonction du produit AF.}
+		\label{fig:tAF}
+	\end{figure}
 
 	\subsection{Impressions subjectives}
 	The answers to our questionnaire were consistent with, and complementary to, our quantitative results. Indeed, 92\%{} of our participants were able to identify different categories of motion: 77\%{} of them identified at least three major categories, together with two or three corresponding selection strategies.
