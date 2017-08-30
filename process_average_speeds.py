@@ -37,12 +37,21 @@ def ListSplit(contents):
 			liststatic.append(line)
 	return(liststatic, listlow, listmed, listhigh)
 
+def SaveList(list, tag):
+	with open("average_speeds_032_" + tag + ".csv", "w") as outfile:
+		for line in list:
+			outfile.write(line[0] + "\t" + str(line[1]) + "\n")
+
 def main():
 	contents = GetFile()
 	contents = RemoveCrap(contents)
 	#PrintList(contents)
 	liststatic, listlow, listmed, listhigh = ListSplit(contents)
-	PrintList(listmed)
+	#PrintList(listmed)
+	SaveList(liststatic, "static")
+	SaveList(listlow, "low")
+	SaveList(listmed, "med")
+	SaveList(listhigh, "high")
 
 if __name__ == "__main__":
 	main()
