@@ -17,6 +17,7 @@ def PrintList(ml):
 def RemoveCrap(contents):
 	for line in contents:
 		line[0] = line[0][20:] # get rid of folder and unnecessary subject_ part
+		line[0] = line[0][:-13] # get rid of _smoothed.csv at the end
 		line[1] = float(line[1])
 	return(contents)
 
@@ -27,12 +28,13 @@ def ListSplit(contents):
 	liststatic = []
 	for line in contents:
 		sp = line[0].split("_")
-		if sp[3] == "0.73":
-			listlow.append(line)
-		elif sp[3] == "1.46":
-			listmed.append(line)
-		elif sp[3] == "2.19":
-			listhigh.append(line)
+		if len(sp) > 3:
+			if sp[3] == "0.73":
+				listlow.append(line)
+			elif sp[3] == "1.46":
+				listmed.append(line)
+			else:
+				listhigh.append(line)
 		else:
 			liststatic.append(line)
 	return(liststatic, listlow, listmed, listhigh)
