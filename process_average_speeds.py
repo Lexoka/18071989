@@ -20,11 +20,29 @@ def RemoveCrap(contents):
 		line[1] = float(line[1])
 	return(contents)
 
+def ListSplit(contents):
+	listlow = []
+	listmed = []
+	listhigh = []
+	liststatic = []
+	for line in contents:
+		sp = line[0].split("_")
+		if sp[3] == "0.73":
+			listlow.append(line)
+		elif sp[3] == "1.46":
+			listmed.append(line)
+		elif sp[3] == "2.19":
+			listhigh.append(line)
+		else:
+			liststatic.append(line)
+	return(liststatic, listlow, listmed, listhigh)
+
 def main():
 	contents = GetFile()
 	contents = RemoveCrap(contents)
-	PrintList(contents)
-	#print(contents[0][0][20:])
+	#PrintList(contents)
+	liststatic, listlow, listmed, listhigh = ListSplit(contents)
+	PrintList(listmed)
 
 if __name__ == "__main__":
 	main()
