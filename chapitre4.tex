@@ -541,7 +541,7 @@
 	\end{description}
 	
 	\subsection{Exemples}
-	Commençons par observer les profils de vitesse pour les conditions statiques. Pour illustrer nos propos, nous allons nous intéresser à quatre sujets, identifiés par de simple numéros (5, 6, 8 et 9) ; les sujets 6 et 8 sont assez performants, tandis que les sujets 5 et 9 le sont beaucoup moins, ce qui nous permet de varier les exemples.
+	Commençons par observer les profils de vitesse pour les conditions statiques. Pour illustrer nos propos, nous allons nous intéresser à quatre sujets, identifiés par de simple numéros (5, 6, 8 et 9) ; les sujets 6 et 8 sont assez performants, tandis que les sujets 5 et 9 le sont beaucoup moins, ce qui nous permet de varier les exemples. Examinons donc les profils de la figure~\ref{fig:staticProfiles}, qui correspondent chacun à quatre sélections successives. Précisons avant toute chose que ces profils sont lissés, selon la méthode de la moyenne glissante (aussi appelée moyenne mobile). La taille de la fenêtre glissante choisie ici est de 16~ms ; cette valeur représente un bon compromis entre la lisibilité des graphiques et leur fidélité, et a le mérite de correspondre à une fréquence légèrement supérieure à 60~Hz, soit deux fois plus que la valeur maximale de F, ce qui est conforme aux recommandations qui découlent du théorème de Shannon-Nyquist~\cite{shannon1949communication}.
 	
 	\begin{figure}[!htb]
 		\centering
@@ -572,7 +572,7 @@
 			\caption{Profil du sujet 9.}
 			\label{fig:staticProfile9}
 		\end{subfigure}
-		\caption[Profils de vitesse du curseur.]{Profils lissés de vitesse du curseur sur quatre sujets. Le temps (en secondes) est en abscisse et la vitesse (en cm/s) est en ordonnée.}
+		\caption[Profils de vitesse du curseur.]{Profils lissés de vitesse du curseur pour quatre sujets. Le temps (en secondes) est en abscisse et la vitesse (en cm/s) est en ordonnée.}
 		\label{fig:staticProfiles}
 	\end{figure}
 
