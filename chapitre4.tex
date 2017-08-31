@@ -676,17 +676,30 @@
 	\begin{table}
 		\centering
 		\begin{tabular}{c | c c c | c c}
-					& \multicolumn{3}{c |}{Vitesses moyennes}		&							&						\bigstrut[b] \\
-			Sujet	& Statique		& Rectiligne	& Imprévisible	& Diff. \%{} stat--imp.		& Diff. \%{} rec-imp	\bigstrut[b] \\ \hline
-			5		& 11,10~cm/s	& 8,00~cm/s		& 5,89~cm/s		& 61,29~\%{}				& 30,36~\%{}			\bigstrut[t] \\
-			6		& 9,82~cm/s		& 8,57~cm/s		& 4,41~cm/s		& 76,14~\%{}				& 64,20~\%{}			\\
-			8		& 7,65~cm/s		& 7,05~cm/s		& 2,85~cm/s		& 91,33~\%{}				& 84,77~\%{}			\\
-			9		& 8,48~cm/s		& 6,46~cm/s		& 4,14~cm/s		& 68,79~\%{}				& 43,85~\%{}			\\
+					& \multicolumn{3}{c |}{Vitesses moyennes}		& \multicolumn{2}{c}{Différences de pourcentage}	\bigstrut[b] \\
+			Sujet	& Statique		& Rectiligne	& Imprévisible	& Stat--impr.		& Rect-impr						\bigstrut[b] \\ \hline
+			5		& 11,10~cm/s	& 8,00~cm/s		& 5,89~cm/s		& 61,29~\%{}		& 30,36~\%{}					\bigstrut[t] \\
+			6		& 9,82~cm/s		& 8,57~cm/s		& 4,41~cm/s		& 76,14~\%{}		& 64,20~\%{}					\\
+			8		& 7,65~cm/s		& 7,05~cm/s		& 2,85~cm/s		& 91,33~\%{}		& 84,77~\%{}					\\
+			9		& 8,48~cm/s		& 6,46~cm/s		& 4,14~cm/s		& 68,79~\%{}		& 43,85~\%{}					\\
 		\end{tabular}
-		\caption[Vitesses moyennes du curseur, cibles statiques, en mouvement rectiligne ou imprévisibles]{Vitesses moyennes (en cm/s) du curseur pour quatre sujets différents, au cours de sélections de cibles statiques, en mouvement rectiligne, ou imprévisibles. Les différences de pourcentages entre les conditions sont présentées dans les deux dernières colonnes (\emph{stat-imp} pour les différences entre cibles statiques et de mouvements imprévisibles, \emph{rec-imp} pour les différences entre cibles de mouvement rectiligne et imprévisibles).}
+		\caption[Vitesses moyennes du curseur, cibles statiques, en mouvement rectiligne ou imprévisibles]{Vitesses moyennes (en cm/s) du curseur pour quatre sujets différents, au cours de sélections de cibles statiques, en mouvement rectiligne, ou imprévisibles. Les différences de pourcentages entre les conditions sont présentées dans les deux dernières colonnes (\emph{stat-impr} pour les différences entre cibles statiques et de mouvements imprévisibles, \emph{rect-impr} pour les différences entre cibles de mouvement rectiligne et imprévisibles).}
 		\label{tab:cursorSpeedTough}
 	\end{table}
 	
+	\subsection{Prédominance de la phase de correction}
+	Si, pour des cibles statiques, les phases balistique et de correction sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase de correction dominant alors le temps total de sélection.
+	
+	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du niveau d'accélération possible sur cette portion.
+	
+	
+	
+	\begin{align}
+		\label{eq:amdahl}
+		S(s) &= \frac{1}{(1-p) + \frac{1}{s}} \\
+		\label{eq:amdahlLimit}
+		\lim_{s\to\infty} S(s) &= \frac{1}{1-p}
+	\end{align}
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
