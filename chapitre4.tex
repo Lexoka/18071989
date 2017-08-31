@@ -692,7 +692,7 @@
 	
 	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du niveau d'accélération possible sur cette portion.
 	
-	
+	Cette loi s'énonce formellement selon l'équation~\ref{eq:amdahl}, où $S(s)$ est l'accélération totale de la tâche (facteur sans unité), $p$ est la proportion (en temps) de la tâche qui peut être accélérée, et $s$ est l'accélération possible sur cette portion (facteur sans unité). Or, il est évident que cette loi implique la limite énoncée dans l'équation~\ref{eq:amdahlLimit}.
 	
 	\begin{align}
 		\label{eq:amdahl}
@@ -700,6 +700,17 @@
 		\label{eq:amdahlLimit}
 		\lim_{s\to\infty} S(s) &= \frac{1}{1-p}
 	\end{align}
+	
+	Cette limite quand $s$ tend vers l'infini correspond à l'accélération maximale qu'il serait possible d'obtenir avec une technique d'assistance à la sélection \og parfaite \fg{}, c'est-à-dire réduisant le temps de sélection à zéro, mais seulement sur une partie de la tâche représentant $p$~\%{} de son temps de complétion. La figure~\ref{fig:amdahl} en fournit une représentation graphique. Comme on le constate, pour de petites valeurs de $p$, l'accélération maximale théoriquement possible reste faible, si bien qu'il nous paraît déraisonnable de concentrer ses efforts sur une phase de la tâche de sélection représentant moins de 30~\%{} du temps total de la tâche.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/amdahl}
+		\caption[Loi d'Amdahl sous sa forme de limite]{Loi d'Amdahl sous sa forme de limite, quand le taux d'accélération de la sous-tâche tend vers l'infini.}
+		\label{fig:amdahl}
+	\end{figure}
+	
+	La phase de correction étant en revanche susceptible de représenter une très grande portion du temps de sélection (cela peut dépasser les 80~\%{} pour les conditions les plus difficiles) l'on voit bien que les gains potentiels sont considérables, si l'on parvient à obtenir une accélération $s$ importante sur cette phase.
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
