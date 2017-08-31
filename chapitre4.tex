@@ -541,7 +541,10 @@
 	\end{description}
 	
 	\subsection{Exemples}
-	Commençons par observer les profils de vitesse pour les conditions statiques. Pour illustrer nos propos, nous allons nous intéresser à quatre sujets, identifiés par de simple numéros (5, 6, 8 et 9) ; les sujets 6 et 8 sont assez performants, tandis que les sujets 5 et 9 le sont beaucoup moins, ce qui nous permet de varier les exemples. Examinons donc les profils de la figure~\ref{fig:staticProfiles}, qui correspondent chacun à quatre sélections successives. Précisons avant toute chose que ces profils sont lissés, selon la méthode de la moyenne glissante (aussi appelée moyenne mobile). La taille de la fenêtre glissante choisie ici est de 16~ms ; cette valeur représente un bon compromis entre la lisibilité des graphiques et leur fidélité, et a le mérite de correspondre à une fréquence légèrement supérieure à 60~Hz, soit deux fois plus que la valeur maximale de F, ce qui est conforme aux recommandations qui découlent du théorème de Shannon-Nyquist~\cite{shannon1949communication}.
+	Pour illustrer nos propos, nous allons nous intéresser à quatre sujets, identifiés par de simple numéros (5, 6, 8 et 9) ; les sujets 6 et 8 sont assez performants, tandis que les sujets 5 et 9 le sont beaucoup moins, ce qui nous permet de varier les exemples.
+	
+	\subsubsection{Cibles statiques}
+	Examinons donc les profils de la figure~\ref{fig:staticProfiles}, qui correspondent chacun à quatre sélections successives, avec des cibles statiques --- c'est-à-dire des cibles pour lesquelles la sélection est la plus facile. Précisons avant toute chose que ces profils sont lissés, selon la méthode de la moyenne glissante (aussi appelée moyenne mobile). La taille de la fenêtre glissante choisie ici est de 16~ms ; cette valeur représente un bon compromis entre la lisibilité des graphiques et leur fidélité, et a le mérite de correspondre à une fréquence légèrement supérieure à 60~Hz, soit deux fois plus que la valeur maximale de F, ce qui est conforme aux recommandations qui découlent du théorème de Shannon-Nyquist~\cite{shannon1949communication}.
 	
 	\begin{figure}[!htb]
 		\centering
@@ -578,6 +581,7 @@
 	
 	On constate sur ces profils que les phases balistiques et de correction sont relativement équilibrées, leurs part respectives du temps de sélection étant approximativement les mêmes. Précisions que la limite entre la phase balistique et la phase de correction n'est pas toujours délimitée de façon très précise, aussi est-il difficile d'en faire des mesures exactes. Mais il est possible de tirer des enseignements d'un examen visuel des profils, ainsi que de mesures quantitatives et précises de la vitesse du curseur.
 	
+	\subsubsection{Cibles en mouvement rectiligne}
 	Si l'on compare les profils de la figure~\ref{fig:staticProfiles}, enregistrés pendant des sélections de cibles statiques, à ceux de la figure~\ref{fig:rectProfiles}, issus de sélections de cibles de mouvement rectiligne, on remarque déjà des différences, alors que le mouvement rectiligne est celui qui génère le moins de difficultés. On observe en effet que les sélections sont plus longues, mais que la durée des phases balistiques n'est pas sensiblement modifiée. En revanche, les phases de correction sont rallongées, et leur forme change quelque peu, avec l'apparition d'oscillations dont l'amplitude peut atteindre --- voire dépasser --- les 10~cm/s.
 	
 	\begin{figure}[!htb]
@@ -630,6 +634,43 @@
 		\caption[Vitesses moyennes du curseur, cibles statiques ou en mouvement rectiligne]{Vitesses moyennes du curseur pour quatre sujets différents, au cours de sélections de cibles statiques d'une part, en mouvement rectiligne d'autre part. Les différences de pourcentages entre les deux conditions sont présentées dans la quatrième colonne.}
 		\label{tab:cursorSpeed}
 	\end{table}
+	
+	\subsubsection{Cibles aux mouvements imprévisibles}
+	Les choses deviennent beaucoup plus nettes lorsque l'on s'intéresse aux conditions les plus difficiles. Comme on le voit sur la figure~\ref{fig:hardProfiles}, les phases balistiques sont réduites à de courts sursauts de vitesse, et les phases de correction dominent largement le temps total de sélection.
+
+	\begin{figure}[!htb]
+		\centering
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_05_60_8_219_smoothed}
+			\caption{Profil du sujet 5.}
+			\label{fig:hardProfile5}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_06_60_13_219_smoothed}
+			\caption{Profil du sujet 6.}
+			\label{fig:hardProfile6}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_08_180_8_219_smoothed}
+			\caption{Profil du sujet 8.}
+			\label{fig:hardProfile8}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWlineplot}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/subject_09_30_30_219_smoothed}
+			\caption{Profil du sujet 9.}
+			\label{fig:hardProfile9}
+		\end{subfigure}
+		\caption[Profils de vitesse du curseur, conditions]{Profils lissés de vitesse du curseur pour quatre sujets, avec des cibles de mouvements imprévisibles à 2,19~cm/s. Le temps (en secondes) est en abscisse et la vitesse (en cm/s) est en ordonnée. Nous avons ici sélectionné des profils correspondant à des conditions difficiles pour chaque sujet.}
+		\label{fig:hardProfiles}
+	\end{figure}
+	
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
