@@ -1,9 +1,10 @@
-05_static_condition	378.260170728
-06_static_condition	361.521664019
-07_static_condition	330.95964473
-08_static_condition	221.475942061
-09_static_condition	261.628989475
-10_static_condition	221.492615704
-11_static_condition	394.043528331
-12_static_condition	319.624976718
-13_static_condition	353.031309054
+#Subject	Angle	Frequency	Speed	Average_cursor_speed
+05	static	condition	378.260170728
+06	static	condition	361.521664019
+07	static	condition	330.95964473
+08	static	condition	221.475942061
+09	static	condition	261.628989475
+10	static	condition	221.492615704
+11	static	condition	394.043528331
+12	static	condition	319.624976718
+13	static	condition	353.031309054

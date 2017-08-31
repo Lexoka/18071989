@@ -28,21 +28,27 @@ def ListSplit(contents):
 	liststatic = []
 	for line in contents:
 		sp = line[0].split("_")
+		concat = sp + [line[1]]
 		if len(sp) > 3:
 			if sp[3] == "0.73":
-				listlow.append(line)
+				listlow.append(concat)
 			elif sp[3] == "1.46":
-				listmed.append(line)
+				listmed.append(concat)
 			else:
-				listhigh.append(line)
+				listhigh.append(concat)
 		else:
-			liststatic.append(line)
+			liststatic.append(concat)
 	return(liststatic, listlow, listmed, listhigh)
 
 def SaveList(list, tag):
 	with open("average_speeds_032_" + tag + ".csv", "w") as outfile:
+		outfile.write("#Subject	Angle	Frequency	Speed	Average_cursor_speed\n")
 		for line in list:
-			outfile.write(line[0] + "\t" + str(line[1]) + "\n")
+			if len(line) == 4:
+				outfile.write(line[0] + "\t" + line[1] + "\t" + line[2] + "\t" + str(line[3]) + "\n")
+			else:
+				outfile.write(line[0] + "\t" + line[1] + "\t" + line[2] + "\t" + line[3] + "\t" + str(line[4]) + "\n")
+			#outfile.write(str(line) + "\n")
 
 def main():
 	contents = GetFile()
