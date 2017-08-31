@@ -45,7 +45,7 @@ def SaveList(list, tag):
 		outfile.write("#Subject	Angle	Frequency	Speed	Average_cursor_speed\n")
 		for line in list:
 			if len(line) == 4:
-				outfile.write(line[0] + "\t" + line[1] + "\t" + line[2] + "\t" + str(line[3]) + "\n")
+				outfile.write(line[0] + "	0	1	0	" + str(line[3]) + "\n")
 			else:
 				outfile.write(line[0] + "\t" + line[1] + "\t" + line[2] + "\t" + line[3] + "\t" + str(line[4]) + "\n")
 			#outfile.write(str(line) + "\n")
