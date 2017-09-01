@@ -717,6 +717,28 @@
 	
 	\subsection{L'aire : une fonction linéaire de la vitesse}
 	Si l'on considère une cible comme un object ponctuel --- donc d'aire nulle --- il est évident que si $V = 0$, la cible ne bougera pas et l'aire de son enveloppe convexe sera nulle. Dès lors, l'on peut formuler l'hypothèse que l'aire de l'enveloppe convexe d'une trajectoire générée par le modèle VFA est une fonction linéaire de la vitesse, c'est-à-dire que $\mathcal{A}(ec) = \gamma{}V$ où $\mathcal{A}(ec)$ est l'aire de l'enveloppe convexe $ec$, et $\gamma \in \mathbb{R}$.
+	
+	Nous avons évalué cette hypothèse en fixant les valeurs de A et F, et en faisant varier V pour mesurer l'impact sur $\mathcal{A}(ec)$. La figure~\ref{fig:avspeed} fournit une illustration de telles mesures, en l'occurrence avec $A = 120\degree$ et $F = 8$~Hz. Toutes nos mesures avec d'autres valeurs de A et F sont cohérentes. Notez que les aires utilisées pour ce graphique, correspondent à l'aire moyenne sur 400 trajectoires générées aléatoirement pour chaque valeur de V.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/areaVspeed}
+		\caption[Aire de l'enveloppe convexe en fonction de la vitesse]{Aire de l'enveloppe convexe d'une trajectoire (de 5 secondes) en fonction de la vitesse. Les paramètres A et F sont fixés (à respectivement 120\textdegree{} et 8~Hz) et la vitesse varie de 0,125~cm/s à 4~cm/s. Pour chaque valeur de V, on mesure l'aire moyenne de l'enveloppe convexe de la trajectoire génrée. Les mesures sont en bleu et une approximation linéaire est représentée en rouge, avec son équation et son coefficient de détermination $R^{2} > 0,9999$.}
+		\label{fig:avspeed}
+	\end{figure}
+	
+	Cependant, si l'on a bien $\mathcal{A}(ec) = \gamma{}V$ $\forall A$ et $\forall F$, la valeur de $\gamma$ n'est pas la même pour toutes les combinaisons de A et F. De fait, la vitesse ne peut être tenue pour totalement indépendante des autres paramètres. Nous avons donc cherché à déterminer la valeur de $\gamma$ en fonction de F et A, de manière à pouvoir étudier $\mathcal{A}(ec)$ en fonction de F et A.
+	
+	Pour ce faire, nous avons généré des trajectoires pour diverses combinaisons de F et A à de nombreuses valeurs de V, afin de déterminer la valeur de $\gamma$ correspondant à chaque couple (F,A). Encore une fois, pour chaque condition (V,F,A) nous avons généré de multiples trajectoires (50), afin d'obtenir des valeurs moyennes fiables. Les résultats sont présentés sous forme de carte thermique sur la figure~\ref{fig:gammmaVfa}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/linApprox}
+		\caption[Coefficients $\gamma$ en fonction de F et A]{Coefficients $\gamma$ en fonction de F et A.}
+		\label{fig:gammmaVfa}
+	\end{figure}
+	
+	Ces données nous fournissent un moyen d'obtenir, à partir d'une aire de référence pour un couple (F,A), l'aire réelle en fonction de V, simplement en multipliant l'aire de référence par $\gamma{}V$. Si le couple (F,A) en question n'est pas présent dans les données brutes ayant permis de générer la figure~\ref{fig:gammmaVfa}, la continuité de la fonction qui à un couple (F,A) associe une valeur de $\gamma$ nous autorise à approximer la valeur recherchée à l'aide d'une simple interpolation bilinéaire. Il serait bien entendu possible de calculer une grille de référence plus fine et plus précise.
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
