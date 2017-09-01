@@ -8,6 +8,7 @@ set output "asqrtFVgamma.png"
 set ylabel "Gamma"
 unset key
 
+#plot "linApprox.csv" u (sqrt(sqrt($1*sqrt($2)))):3 ps 1 lw 6
 plot "linApprox.csv" u ($1*sqrt($2)):3 ps 1 lw 6
 
 

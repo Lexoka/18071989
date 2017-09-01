@@ -778,6 +778,18 @@
 	\end{figure}
 	
 	Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
+	
+	\subsection{Aire en fonction de F et A}
+	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver l'aire de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f(A\sqrt{F}) = \gamma$. De fait, la formule de l'aire de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{A}_{base}(ec)$ est l'aire \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme l'aire de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
+
+	\begin{align}
+		\label{eq:areaVFAgamma}
+		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times \gamma{}V \\
+		\label{eq:areaVFAonly}
+		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times f(A\sqrt{F})
+	\end{align}
+	
+	Naturellement, pour pouvoir estimer l'aire de l'enveloppe convexe à partir de nos paramètres, il faut pouvoir calculer $\mathcal{A}_{base}(ec)$. Nous avons donc calculé l'aire moyenne des enveloppes convexes de trajectoires générées à partir de multiples couples (F,A) avec $V = 1$~cm/s, en générant de nombreuses trajectoires par condition (400) afin d'avoir des valeurs de référence fiables.
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
