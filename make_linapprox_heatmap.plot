@@ -10,10 +10,10 @@ unset key
 set pm3d map
 #set pm3d interpolate 30,30
 set pm3d interpolate 32,32
+set yrange [0.5:256]
 
 splot "linApprox.csv" u 1:2:3 w pm3d
 
 set output "linApprox_log.png"
 set logscale y
-set yrange [0.5:240]
 splot "linApprox.csv" u 1:2:3 w pm3d
