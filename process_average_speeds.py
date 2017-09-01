@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import sys
 
+# This script does little more than just reading the average cursor speeds, splitting them up according to target speed speed,
+# and then making neat little csv files. That's pretty much it.
 def GetFile():
 	with open("average_speeds_032.txt", "r") as infile:
 		contents = infile.readlines()
@@ -50,14 +52,11 @@ def SaveList(list, tag):
 				outfile.write(line[0] + "\t" + line[3] + "\t" + str(line[4]) + "\n")
 			else:
 				outfile.write(line[0] + "\t" + line[1] + "\t" + line[2] + "\t" + line[3] + "\t" + str(line[4]) + "\n")
-			#outfile.write(str(line) + "\n")
 
 def main():
 	contents = GetFile()
 	contents = RemoveCrap(contents)
-	#PrintList(contents)
 	liststatic, listlow, listmed, listhigh = ListSplit(contents)
-	#PrintList(listmed)
 	SaveList(liststatic, "static")
 	SaveList(listlow, "low")
 	SaveList(listmed, "med")
