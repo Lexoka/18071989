@@ -840,8 +840,13 @@
 		\label{eq:areaGammaV}
 		\mathcal{A}(ec) &= \gamma{}V \\
 		\label{eq:areaASQRTF}
-		\mathcal{A}(ec) &= f(A\sqrt{F})
+		\mathcal{A}(ec) &= f(A\sqrt{F})V
 	\end{align}
+	
+	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'aire de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f(A\sqrt{F})$, où la valeur de $f(A\sqrt{F})$ est obtenue par une simple interpolation sur les valeurs de référence que nous avons calculées. Ce procédé est très peu coûteux en temps de calcul, et nous avons développé un petit outil pour le mettre à la portée de chacun~\cite{myNiftyLittleToolThatIHaventActuallyDevelopedYetButShhhDontTellAnyone}.
+	
+\section{Enveloppes convexes et performances de sélection}
+	Bla
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
