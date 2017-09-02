@@ -7,11 +7,11 @@ import pandas as pd
 def FillDF(tidyDf, dirtyDf):
 	for index, row in dirtyDf.iterrows():
 		#print(row)
-		a = row[0]
-		f = row[1]
-		m = row[2]
-		tidyDf.loc[a,f] = m
-	tidyDf.to_csv("tidy_linapprox.csv",sep="\t")
+		f = row[0]
+		a = row[1]
+		area = row[3]
+		tidyDf.loc[a,f] = area
+	tidyDf.to_csv("tidy_areasFromF.csv",sep="\t")
 
 
 def main():
@@ -23,10 +23,11 @@ def main():
 		col_labels.sort()
 		row_labels.sort()
 		tidyDf = pd.DataFrame(index=row_labels, columns=col_labels)
+		#print(dirtyDf.head())
 		FillDF(tidyDf, dirtyDf)
 	else:
 		print("Usage: please provide the path to the linear approx file you wish to reshape, e.g.:")
-		print(sys.argv[0] + " linear_approx.csv")
+		print(sys.argv[0] + " areasFromAF.csv")
 
 
 if __name__ == "__main__":
