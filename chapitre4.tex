@@ -867,10 +867,23 @@
 		\includegraphics[width=\textwidth]{figures/ch4/perfVareaTimeNormedAll}
 		\caption[Temps de sélection/V en fonction de l'aire de l'enveloppe convexe]{Temps de sélection normalisé divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
 		\label{fig:perfVareaTimeNormedAll}
-	\end{figure}	
+	\end{figure}
 	
 	Sur cette figure, il apparaît plus clairement que les cibles de vitesse moyenne et élevée sont associées à peu près au même intervalle de temps de sélection. Il en va autrement des cibles lentes, dont les résultats sont beaucoup plus ramassés. Ce n'est pas étonnant, nous avions en effet noté dans les sections précédentes que les effets de nos paramètres F et A étaient bien plus faibles à basse vitesse. Ces cibles ne présentant de surcroît pas de grandes difficultés de sélection, nous les omettrons des discussions qui suivent.
 	
+	\subsection{Normalisation de l'aire par rapport à la vitesse}
+	Toutefois, si les courbes des cibles rapides et de vitesse moyenne se ressemblent, elles sont clairement distinctes, et plus précisément décalées en abscisse. Or, l'aire de l'enveloppe convexe est en abscisse, et nous savons que $mathcal{A}(ec) &= \gamma{}V$. Afin de comparer ce qui est comparable, il convient donc de diviser également les aires par la vitesse, ce que nous avons fait, et que nous illustrons par la figure~\ref{fig:perfVareaEverythingNormed}.
+
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/perfVareaEverythingNormed}
+		\caption[Temps de sélection/V en fonction de $mathcal{A}(ec)/V$]{Temps de sélection normalisé divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
+		\label{fig:perfVareaEverythingNormed}
+	\end{figure}
+
+	Après cette double normalisation par la vitesse, et après avoir écarté les résultats des sélections de cibles lentes, nous obtenons deux courbes qui se superposent bien mieux. Les résultats correspondant aux cibles en mouvement rectiligne sont (assez logiquement) à part, mais l'on constate que lorsque l'aire est petite, la sélection est relativement aisée ; lorsqu'elle croît, la sélection devient plus difficile\ldots{} puis commence à l'être de moins en moins, jusqu'à redevenir à peu près aussi aisée que lorsque l'aire est petite.
+	
+	Ce motif est relativement familier en ce qu'il rappelle ce que nous avions observé avec la pseudo-entropie (le produit AF) mais il est ici plus net.
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
