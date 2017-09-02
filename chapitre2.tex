@@ -842,7 +842,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad}
-		\caption[Fonctionnement de la technique SQUAD]{La technique SQUAD. À gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
+		\caption[Fonctionnement de la technique SQUAD]{La technique SQUAD. À gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre quadrants afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squad}
 	\end{figure}
 	
@@ -853,7 +853,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad2}
-		\caption[La technique SQUAD -- évaluation]{La technique SQUAD telle qu'elle fut évaluée dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge, ce qui la rend facile à repérer, notamment dans la seconde phase, à droite. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir la sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
+		\caption[La technique SQUAD -- évaluation]{La technique SQUAD telle qu'elle fut évaluée dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge, ce qui la rend facile à repérer, notamment dans la seconde phase, à droite. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squad2}
 	\end{figure}
 	
@@ -921,7 +921,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:dCanvasLayout}
 	\end{figure}
 	
-	Notez que les objets pré-sélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
+	Notez que les objets pré-sélectionnés sont agrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
 	
 	\begin{figure}[ht]
 		\centering
@@ -969,7 +969,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:dCanvasContext}
 	\end{figure}
 	
-	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemble, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles.
+	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemblent, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles.
 	
 	\subsection{Inconvénients généraux}
 	Les techniques de sélection en cascade pouvant prendre des formes très diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable.
@@ -1027,7 +1027,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 
 	Cette tendance est d'ailleurs mieux illustrée par la figure~\ref{fig:delphianTimesID}, qui met en évidence les différences de pentes entre les droites qui représentent le temps de sélection en fonction de l'indice de difficulté (ID) pour la sélection non assistée et pour le \emph{Delphian Desktop}. On peut supposer que, pour des cibles d'ID très élevé, celui-ci serait d'autant plus avantageux.
 	
-	Il convient néanmoins de remarquer que dasns l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
+	Il convient néanmoins de remarquer que dans l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
 
 	\begin{figure}[H]
 		\centering
@@ -1046,7 +1046,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\subsubsection{Erreurs}
-	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
+	Une technique de sélection s'évalue en fonction du temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fut pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
 	
 	\begin{table}
 	\centering
@@ -1063,11 +1063,11 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	L'inconvénient du \emph{Delphian Desktop} le plus évident est celui mis en lumière par les résultats présentés plus haut : pour les courtes distances, il est contre-productif. Attendu que cet inconvénient est connu et assez précisément quantifié, une solution pourrait être de simplement le désactiver dynamiquement lorsqu'il prédit une distance de mouvement inférieur à celle à partir de laquelle il est utile.
 	
-	Cela pourrait cependant être perturbateur pour les utilisateurs qui ne sauraient jamais pas toujours s'ils doivent s'attendre à un \og saut \fg{} ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
+	Cela pourrait cependant être perturbant pour les utilisateurs qui ne sauraient pas toujours s'ils doivent s'attendre à un \og saut \fg{} ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
 	
 	Par ailleurs, l'hypothèse de rectitude du mouvement est très forte et généralement fausse ; bien entendu, elle peut être assez proche de la réalité pour fournir de bons résultats, mais lorsque ce n'est pas le cas, il est difficile de régler le problème. Une solution potentielle serait d'appliquer une deuxième technique de curseur après le saut du \emph{Delphian Desktop}, par exemple le \emph{Bubble Cursor}.
 	
-	Toutefois, cette hypothèse de rectitude devient totalement caduque lorsque les cibles sont mobiles, \emph{a fortiori} quand leurs mouvements sont rapides et imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
+	Toutefois, cette hypothèse de rectitude devient totalement caduque lorsque les cibles sont mobiles, \emph{a fortiori} quand leurs mouvements sont rapides et imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, ou dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
 	
 	Il ne nous semble donc pas possible de retenir le \emph{Delphian Desktop} comme solution viable aux tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
 	
@@ -1079,7 +1079,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsubsection{Fondements théoriques et mathématiques}
 	\paragraph{Minimisation de l'à-coup.}
-	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
+	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. Le chemin entre deux points qui minimise l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équations~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
 	
 	\begin{align}
 		\label{eq:kepP}
@@ -1107,7 +1107,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\label{fig:kepQuad}
 	\end{figure}
 	
-	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
+	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de sur-apprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
 	
 	\begin{figure}[H]
 		\centering
@@ -1158,7 +1158,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer que KEP puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
 	
-	Ajoutons enfin que Ruiz et Lank~\cite{ruiz2009effects} ont proposé une amélioration de KEP faisant fi des coefficients de correction au profit d'un critère de stabilité : une prédiction n'est faite que si la valeur prédite à un instant $t$ est suffisamment proche de celle prédite à $t-1$. Les résultats de cette version améliorée de KEP sont présentés dans la table~\ref{tab:kepStable} et sont nettement meilleurs que ceux obtenus par Lank \emph{et al.} pour la version standard de KEP. Notez toutefois que les résultats de cette version améliorés sont très mauvais lorsque $s_{i}$ est faible, du fait de l'absence de coefficients de correction~\cite{ruiz2009effects}.
+	Ajoutons enfin que Ruiz et Lank~\cite{ruiz2009effects} ont proposé une amélioration de KEP faisant fi des coefficients de correction au profit d'un critère de stabilité : une prédiction n'est faite que si la valeur prédite à un instant $t$ est suffisamment proche de celle prédite à $t-1$. Les résultats de cette version améliorée de KEP sont présentés dans la table~\ref{tab:kepStable} et sont nettement meilleurs que ceux obtenus par Lank \emph{et al.} pour la version standard de KEP. Notez toutefois que les résultats de cette version améliorée sont très mauvais lorsque $s_{i}$ est faible, du fait de l'absence de coefficients de correction~\cite{ruiz2009effects}.
 	
 	\begin{table}
 	\centering
@@ -1170,7 +1170,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		90												& 51,4~\%{}	& 36,4~\%{}			\\
 		80 (Lank \emph{et al.})							& 42,4~\%{}	& 39,0~\%{}			\\
 	\end{tabular}
-	\caption[KEP stable -- fiabilité des prédictions]{Fiabilité des prédiction de point d'arrivée de KEP dans sa version améliorée, telle qu'elle est présentée par Ruiz et Lank. Données tirées de leur étude~\cite{ruiz2009effects}.}
+	\caption[KEP stable -- fiabilité des prédictions]{Fiabilité des prédictions de point d'arrivée de KEP dans sa version améliorée, telle qu'elle est présentée par Ruiz et Lank. Données tirées de leur étude~\cite{ruiz2009effects}.}
 	\label{tab:kepStable}
 	\end{table}
 		
@@ -1195,19 +1195,19 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\end{figure}
 	
 	\subsection{Performances}	
-	Cette technique fournit de bien meilleurs résultats de prédiction que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phase d'accélération et de décélération, comme l'illustre la table~\ref{tab:speedingPastKep} qui présente les résultats de SPEED face à ceux de KEP, précédemment la meilleure technique de prédiction de point d'arrivée.
+	Cette technique fournit de bien meilleurs résultats de prédiction que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phases d'accélération et de décélération, comme l'illustre la table~\ref{tab:speedingPastKep} qui présente les résultats de SPEED face à ceux de KEP, précédemment la meilleure technique de prédiction de point d'arrivée.
 	
 	\begin{table}
 	\centering
-	\begin{tabular}{l | c c c}
-				& \multicolumn{3}{c}{Distance}	\\
-		Taille	& 512					& 1024					& 1536					\bigstrut[b] \\ \hline
+	\begin{tabular}{l | c | c | c}
+		Taille		& \multicolumn{3}{c}{Distance (en pixels)}	\\
+		(en pixels)	& 512					& 1024					& 1536					\bigstrut[b] \\ \hline
 		16		& 32,1 / \emph{5,0}		& 30,8 / \emph{2,0}		& 26,2 / \emph{0,0}		\bigstrut[t] \\
 		32		& 43,0 / \emph{17,0}	& 38,1 / \emph{3,0}		& 35,1 / \emph{2,0}		\\
 		64		& 50,5 / \emph{35,0}	& 45,4 / \emph{16,0}	& 46,5 / \emph{10,0}	\\
 		128		& 74,3 / \emph{76,0}	& 60,9 / \emph{33,0}	& 47,9 / \emph{22,0}	\\
 	\end{tabular}
-	\caption[SPEED -- performances comparées à celles de KEP]{Fiabilité des prédictions de l'algorithme SPEED en fonction de la taille des cibles, variant de 16 à 128 pixels, et de la distance du mouvement à accomplir, variant de 512 à 1536 pixels. Les résultats sont présentés sous forme de pourcentages de prédictions correctes, avec les taux produits par SPEED en police romaine et ceux de KEP en italique. À l'exception d'une condition (celle d'indice de difficulté minimum), les prédiction de SPEED sont plus fiables que celles de KEP, et souvent de beaucoup. Données tirées de~\cite{wonner2011speed}.}
+	\caption[SPEED -- performances comparées à celles de KEP]{Fiabilité des prédictions de l'algorithme SPEED en fonction de la taille des cibles, variant de 16 à 128 pixels, et de la distance du mouvement à accomplir, variant de 512 à 1536 pixels. Les résultats sont présentés sous forme de pourcentages de prédictions correctes, avec les taux produits par SPEED en police romaine et ceux de KEP en italique. À l'exception d'une condition (celle d'indice de difficulté minimum), les prédictions de SPEED sont plus fiables que celles de KEP, et souvent de beaucoup. Données tirées de~\cite{wonner2011speed}.}
 	\label{tab:speedingPastKep}
 	\end{table}
 	
@@ -1216,7 +1216,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Inconvénients}
 	Si SPEED fournit de bien meilleurs résultats que KEP --- et donc que le \emph{Delphian Desktop} --- force est de constater qu'il fonctionne selon un principe très similaire, et qu'il est donc sujet aux mêmes limites fondamentales.
 	
-	En effet, l'hypothèse de rectitude du mouvement demeure essentielle au fonctionnement de cette technique. Or, comme nous l'avons expliqué plus haut, cette hypothèse ne saurait être valable avec des cibles mobiles, \emph{a fortiori} si leurs mouvement sont rapides et/ou imprévisibles.
+	En effet, l'hypothèse de rectitude du mouvement demeure essentielle au fonctionnement de cette technique. Or, comme nous l'avons expliqué plus haut, cette hypothèse ne saurait être valable avec des cibles mobiles, \emph{a fortiori} si leurs mouvements sont rapides et/ou imprévisibles.
 	
 	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer que SPEED puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
 
@@ -1260,12 +1260,12 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/intensMetric}
-		\caption[Métrique de \emph{scoring} de la technique \emph{IntenSelect}]{Schéma illustrant la métrique de \emph{scoring} de la technique \emph{IntenSelect}. Il s'agit du cône de sélection vu de côté, où la surface du cône est tracée en pointillés rouge et le rayon en noir. Un point P quelconque inclus dans le cône est placé ici à des fins purement illustratives. La valeur de la métrique est indiquée par la nuance de girs/bleu : en blanc, la métrique vaut 1 ; en noir, elle vaut 0. Crédit : \cite{de2005intenselect}.}
+		\caption[Métrique de \emph{scoring} de la technique \emph{IntenSelect}]{Schéma illustrant la métrique de \emph{scoring} de la technique \emph{IntenSelect}. Il s'agit du cône de sélection vu de côté, où la surface du cône est tracée en pointillés rouges et le rayon en noir. Un point P quelconque inclus dans le cône est placé ici à des fins purement d'illustration. La valeur de la métrique est indiquée par la nuance de girs/bleu : en blanc, la métrique vaut 1 ; en noir, elle vaut 0. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensMetric}
 	\end{figure}
 	
 	\subsubsection{Accumulation des scores}
-	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. L'équation~\ref{eq:intensContrib} décrit la contribution au score d'une cible donné à l'instant $t$, et l'équation~\ref{eq:intensTotal} définit le score total d'une cible. Pour les grandeurs de l'équation~\ref{eq:intensContrib}, on se référera à la figure~\ref{fig:intensCone} et à sa légende ; $k$ est une constante réelle.
+	Les contributions au score d'une cible donnée s'accumulent avec le temps dans un score global, qui décroît progressivement en l'absence de contributions suffisantes. L'équation~\ref{eq:intensContrib} décrit la contribution au score d'une cible donnée à l'instant $t$, et l'équation~\ref{eq:intensTotal} définit le score total d'une cible. Pour les grandeurs de l'équation~\ref{eq:intensContrib}, on se référera à la figure~\ref{fig:intensCone} et à sa légende ; $k$ est une constante réelle.
 	
 	Pour l'équation~\ref{eq:intensTotal}, on notera que $s_{total}(t)$ est le score total à l'instant $t$, $c_{s}$ est le taux de diminution naturelle du score, et $c_{g}$ est son taux de croissance ; ces deux constantes réelles sont déterminées empiriquement. De Haan \emph{et al.} précisent qu'elles représentent un compromis entre \emph{snappiness} et \emph{stickiness}, c'est-à-dire qu'elles déterminent l'inertie de la sélection.
 	
@@ -1276,7 +1276,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		s_{total}(t) &= s_{total}(t-1)c_{s} + s_{contrib}(t)c_{g}
 	\end{align}
 	
-	Un exemple synthétique d'accumulation de score par une cible d'abord hors du volume de sélection, puis dedans, puis à nouveau dehors est représenté sur la figure~\ref{fig:intensAccumul}.
+	Un exemple synthétique d'accumulation de score par une cible d'abord hors du volume de sélection, puis dedans, puis à nouveau dehors, est représenté sur la figure~\ref{fig:intensAccumul}.
 	
 	\begin{figure}[H]
 		\centering
@@ -1395,7 +1395,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Mais surtout, nous nous interrogeons sur les performances de \emph{Hook} lorsqu'il s'agit de sélectionner un objet dans un groupe dense dont les membres ont des mouvements corrélés. Nous pensons par exemple à un banc de poissons, un groupe d'oiseaux en formation ou une escadrille d'avions.
 	
-	En effet, dans ces situations, \emph{Hook} pourrait avoir du mal à distinguer la cible visée des objets environnants, puisque leurs positions seraient très proche et leurs mouvements très similaires.
+	En effet, dans ces situations, \emph{Hook} pourrait avoir du mal à distinguer la cible visée des objets environnants, puisque leurs positions seraient très proches et leurs mouvements très similaires.
 	
 	Néanmoins, cette technique présente suffisamment de qualités dans le contexte de la sélection de cibles mobiles en environnement dense pour retenir particulièrement notre attention, et il nous apparaît qu'elle forme le meilleur point de départ pour la conception d'une technique optimale pour cette classe de tâches.
 	
