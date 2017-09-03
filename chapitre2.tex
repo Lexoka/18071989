@@ -240,7 +240,7 @@
 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.7\textwidth]{figures/ch2/bubbleResults}
+		\includegraphics[width=0.6\textwidth]{figures/ch2/bubbleResults}
 		\caption[\emph{Bubble Cursor} --  performances]{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:bubbleResults}
 	\end{figure}
@@ -254,18 +254,18 @@
 	\subsection{Principe}
 	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
-	\begin{figure}[!htb]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/dynaSpot}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/dynaSpot}
 		\caption[\emph{DynaSpot} -- principe]{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, il est possible de sélectionner l'espace vide, par exemple pour ouvrir un menu contextuel. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaSpot}
-	\end{figure}
-	
+	\end{wrapfigure}
+
 	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
 	 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/dynaResults}
+		\includegraphics[width=0.75\textwidth]{figures/ch2/dynaResults}
 		\caption[\emph{DynaSpot} -- performances]{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaResults}
 	\end{figure}
@@ -297,14 +297,14 @@
 	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}). Comme le supposaient les auteurs, la semi-transparence du curseur permet une forte amélioration du temps de sélection, particulièrement avec un écran monoscopique. De plus, la stéréoscopie réduit le temps de sélection de façon significative, et ce même avec le \emph{Silk Cursor}.
 	
 	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.38\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silk}
 			\caption{Le \emph{Silk Cursor} : l'utilisateur est ici en train d'essayer de sélectionner un poisson, en l'englobant avec le volume du curseur. Quelques parties du poisson ne sont pas incluses dans le volume de sélection, et de fait il ne peut pas encore être sélectionné.}
 			\label{fig:silk}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.60\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
 			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. Notez que l'axe des ordonnées ne commence pas à 0.}
@@ -330,7 +330,7 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
-			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Concrètement, il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. Comme pour les taux d'erreurs et temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances, surtout la stéréoscopie. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Concrètement, il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkErrorMag}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
@@ -352,7 +352,7 @@
 		\emph{StereoWire}	& 				& 2		& 7			& 3		& 	 			\\
 		\emph{StereoSilk}	& 				& 		& 			& 3		& 9 			\\
 	\end{tabular}
-	\caption[\emph{Silk Cursor} -- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. \emph{MonoWire} et \emph{MonoSilk} sont les conditions monoscopiques en fil de fer et avec le \emph{Silk Cursor} respectivement, tandis que \emph{StereoWire} et \emph{StereoSilk} sont les équivalents respectifs en stéréoscopie. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Données tirées de~\cite{zhai1994silk}.}
+	\caption[\emph{Silk Cursor} -- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. \emph{MonoWire} et \emph{MonoSilk} sont les conditions monoscopiques en fil de fer et avec le \emph{Silk Cursor} respectivement ; \emph{StereoWire} et \emph{StereoSilk} sont les équivalents respectifs en stéréoscopie. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Source :~\cite{zhai1994silk}.}
 	\label{tab:silkImpr}
 	\end{table}
 	
@@ -365,9 +365,9 @@
 	\subsection{Principe et avantages}
 	\emph{Target Ghost}~\cite{hasan2011comet} est une technique qui repose sur un déclenchement délibéré. Quand elle est déclenchée par l'utilisateur, \emph{Target Ghost} duplique toutes les cibles potentielles. Une des copies devient statique et reste opaque, tandis que l'autre demeure mobile mais est rendue semi-transparente, comme l'illustre la figure~\ref{fig:targetGhost}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/targetGhost}
+		\includegraphics[width=0.6\textwidth]{figures/ch2/targetGhost}
 		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné relativement aisément. D'ailleurs, seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
 		\label{fig:targetGhost}
 	\end{figure}
