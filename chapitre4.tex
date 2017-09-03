@@ -159,7 +159,7 @@
 	Les valeurs de A résultent d'un constat similaire, mais moins marqué. Ainsi, les valeurs évaluées vont simplement de 0\textdegree{} à 180\textdegree{} par pas de 30\textdegree{} ; la valeur 150\textdegree{} est omise car trop similaire (subjectivement) aux valeurs 120\textdegree{} et 180\textdegree{}, et afin de limiter le nombre de conditions.
 
 	\subsection{Procédure et collecte de données}
-	\subsubsection{Description de la procédure}
+	\subsubsection{Descrption de la procédure}
 	Chaque session durait environ 40 minutes (selon les performances du sujet) dont une phase d'entraînement de plus de 50 essais, prenant fin au moment où le sujet se sentait suffisamment à l'aise pour commencer l'évaluation.
 	
 	Des pauses d'une durée laissée au choix du sujet étaient accordées à 25~\%{}, 50~\%{} et 75~\%{} de complétion de l'évaluation, afin de limiter les effets de la fatigue. Permettons-nous en effet d'insister sur le fait que la tâche nécessite une concentration intense et soutenue, en plus d'un effort physique non négligeable compte tenu de la rapidité et de la précision requises. Les pauses étaient donc généralement appréciées.
@@ -796,13 +796,13 @@
 	Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
 	
 	\subsection{Aire en fonction de F et A}
-	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver l'aire de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f(A\sqrt{F}) = \gamma$. De fait, la formule de l'aire de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{A}_{base}(ec)$ est l'aire \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme l'aire de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
+	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver l'aire de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f\left(A\sqrt{F}\right) = \gamma$. De fait, la formule de l'aire de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{A}_{base}(ec)$ est l'aire \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme l'aire de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
 
 	\begin{align}
 		\label{eq:areaVFAgamma}
 		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times \gamma{}V \\
 		\label{eq:areaVFAonly}
-		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times f(A\sqrt{F})
+		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times f\left(A\sqrt{F}\right)
 	\end{align}
 	
 	Naturellement, pour pouvoir estimer l'aire de l'enveloppe convexe à partir de nos paramètres, il faut pouvoir calculer $\mathcal{A}_{base}(ec)$. Nous avons donc calculé l'aire moyenne des enveloppes convexes de trajectoires générées à partir de multiples couples (F,A) avec $V = 1$~cm/s, en générant de nombreuses trajectoires par condition (100) afin d'avoir des valeurs de référence fiables. Dans un premier temps, nous avons calculé les aires des enveloppes convexes pour $V = 1$~cm/s, pour de nombreux couples (F,A). La figure~\ref{fig:afAreaLin} représente ces données sous forme de carte thermique, et la figure~\ref{fig:afAreaLog} les représente de la même façon, mais avec la fréquence sur une échelle logarithmique, pour plus de lisibilité.
@@ -856,10 +856,10 @@
 		\label{eq:areaGammaV}
 		\mathcal{A}(ec) &= \gamma{}V \\
 		\label{eq:areaASQRTF}
-		\mathcal{A}(ec) &= f(A\sqrt{F})V
+		\mathcal{A}(ec) &= f\left(A\sqrt{F}\right)V
 	\end{align}
 	
-	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'aire de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f(A\sqrt{F})$, où la valeur de $f(A\sqrt{F})$ est obtenue par une simple interpolation sur les valeurs de référence que nous avons calculées. Ce procédé est très peu coûteux en temps de calcul, et nous avons développé un petit outil pour le mettre à la portée de chacun~\cite{myNiftyLittleToolThatIHaventActuallyDevelopedYetButShhhDontTellAnyone}.
+	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'aire de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f\left(A\sqrt{F}\right)$, où la valeur de $f\left(A\sqrt{F}\right)$ est obtenue par une simple interpolation sur les valeurs de référence que nous avons calculées. Ce procédé est très peu coûteux en temps de calcul, et nous avons développé un petit outil pour le mettre à la portée de chacun~\cite{myNiftyLittleToolThatIHaventActuallyDevelopedYetButShhhDontTellAnyone}.
 	
 \section{Enveloppes convexes et performances de sélection}
 	Attendu que l'aire de l'enveloppe convexe d'une trajectoire correspond à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathcal{A}(ec)$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathcal{A}(ec)$ calculées pour des trajectoires de 2 secondes, comme dans la suite de nos travaux.
