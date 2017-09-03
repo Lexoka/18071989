@@ -1456,7 +1456,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     
     En examinant le profil de vitesse en fonction du temps d'un curseur, connaissant les lois qui gouvernent la forme de ces profils, et sur l'hypothèse d'une trajectoire à peu près rectiligne, l'on peut estimer avec une certaine précision le point d'arrivée d'un curseur. En pratique, les performances obtenues peuvent être bonnes, mais cette approche s'accommode assez mal des environnements particulièrement denses, mais surtout, il est fort douteux qu'elle puisse s'appliquer efficacement aux cibles mobiles.
     
-    En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou la position où l'utilisateur estime qu'elle sera à la fin du mouvement ?
+    En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou bien la position où l'utilisateur estime que la cible sera à la fin du mouvement ?
     
     Ces questions --- au demeurant très intéressantes --- sont à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
     
@@ -1465,14 +1465,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     
     Un des intérêts de la prédiction d'intention est de ne pas dépendre d'hypothèses telles que la rectitude de la trajectoire du curseur, particulièrement \og fragiles \fg{} avec des cibles mobiles. L'hypothèse généralement commune aux techniques de ce type est que l'utilisateur va chercher à \og suivre \fg{} sa cible pour la capturer, donc que ses mouvements seront corrélés à ceux de la cible. Cette corrélation est exploitée pour déterminer quel objet est visé par l'utilisateur.
     
-    En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesses des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
+    En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesse des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
     
     Observons par ailleurs que la prédiction de l'intention n'est pas incompatible avec d'autres approches mentionnées plus haut, telles que la sélection en cascade, par exemple.
     
     \subsection{Observations finales et perspectives}
     Les techniques d'assistance à la sélection de cibles visent généralement à optimiser les paramètres de la tâche de sélection connus depuis les travaux de Fitts~\cite{fitts1954information} : la taille effective de la cible, et la distance effective entre celle-ci et le curseur. Cette tendance générale illustre l'influence considérable de la loi de Fitts sur le développement de telles techniques.
     
-    De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, cependant, les bénéfices apportés par les techniques de ce typent tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
+    De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, cependant, les bénéfices apportés par les techniques de ce type tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
     
     Or, dans une tâche de sélection de cibles mobiles, le mouvement peut être bien plus déterminant que la taille ou la distance au curseur pour les performances, comme nous le verrons plus en détail dans un prochain chapitre. De fait, les approches traditionnelles, si elles peuvent être utiles avec les cibles mobiles, ne sont pas orientées dans leur conception par le facteur de difficulté principal.
     
