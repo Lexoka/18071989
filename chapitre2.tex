@@ -265,7 +265,7 @@
 	 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.70\textwidth]{figures/ch2/dynaResults}
+		\includegraphics[width=0.65\textwidth]{figures/ch2/dynaResults}
 		\caption[\emph{DynaSpot} -- performances]{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaResults}
 	\end{figure}
@@ -376,7 +376,7 @@
 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.9\textwidth]{figures/ch2/cometGhostPredictability}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/cometGhostPredictability}
 		\caption[\emph{Comet/Ghost}, prévisibilité et résultats]{Temps de complétion de la tâche, (a) : en fonction des types de curseur, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostPredictability}
 	\end{figure}
@@ -409,13 +409,13 @@
 \section{\emph{(Bubble) Comet}}
 	\subsection{Principe et avantages}
 	Avec \emph{Comet}~\cite{hasan2011comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même, comme le montre la figure~\ref{fig:comet}.
-	
-	\begin{figure}[!htb]
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=0.7\textwidth]{figures/ch2/comet}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/comet}
 		\caption[La technique \emph{Comet}]{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}.}
 		\label{fig:comet}
-	\end{figure}	
+	\end{wrapfigure}
 	
 	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreurs pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
@@ -428,18 +428,18 @@
 	\subsection{Principe et avantages}
 	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets \og fuyants \fg{} : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/as2dspeed}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/as2dspeed}
 		\caption[\emph{AttachedShock}, profil de vitesse]{Représentation de la vue d'un utilisateur utilisant un système de réalité augmentée dans une voiture, et fixant la route en face de lui. Des objets, ici représentés par des sphères vertes, attirent son attention. Ils sont fixés au sol, mais leur vitesse relative déterminée par rapport au référentiel de la voiture correspond à la vitesse de la voiture dans le référentiel terrestre. Si celle-ci est constante, alors la vitesse relative des objets l'est aussi ; pourtant, une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran, comme l'illustre la courbe sous l'image. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
 		\label{fig:as2dspeed}
 	\end{figure}
 	
 	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
 
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/asas}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/asas}
 		\caption[\emph{AttachedShock}, onde de choc]{À gauche, une représentation schématique de la réelle onde de choc d'un avion supersonique (un \emph{Concorde}). À droite, une cible mobile (la sphère verte) accompagnée de son onde de choc telle qu'elle est représentée par \emph{AttachedShock}. Cette onde vient augmenter la représentation visuelle de la cible afin d'en faciliter la sélection. Crédit : ~\cite{you2012attachedshock}.}
 		\label{fig:asas}
 	\end{figure}
@@ -447,20 +447,20 @@
 Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme \og naturelle \fg{} --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute. Les auteurs ont comparé \emph{AttachedShock} à d'autres techniques de référence, dont bien sûr un simple curseur ponctuel mais aussi un curseur zonal, ainsi que la technique \emph{Comet}, présentée plus haut.
 
 La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
-	
-	\begin{figure}[H]
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/asRes}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/asRes}
 		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
 		\label{fig:asRes}
-	\end{figure}
+	\end{wrapfigure}
 
 	\subsection{Inconvénients}
 	\emph{AttachedShock} n'est toutefois pas sans limite. En effet, la densité de cibles testée par les auteurs est très faible, comme le montre la figure~\ref{fig:asDensity}. La technique n'ayant pas été évaluée avec une grande densité de cibles, il est impossible d'affirmer qu'elle fonctionnerait bien dans de telles conditions, mais l'on peut en douter compte tenu du fait qu'elle repose sur la possibilité qu'a l'utilisateur de se \og contenter \fg{} de mouvements balistiques sans mouvements correctifs, ce qui serait bien difficile avec les nombreux obstacles que de nombreux distracteurs constitueraient.
 	
-	\begin{figure}[ht]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/asDensity}
+		\includegraphics[width=0.9\textwidth]{figures/ch2/asDensity}
 		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de \og traverser \fg{} leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
 		\label{fig:asDensity}
 	\end{figure}
@@ -473,9 +473,9 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Principe et avantages}
 	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un boutons, et \og réactivées \fg{} en relâchant le bouton, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
 	
-	\begin{figure}[ht]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/hold}
+		\includegraphics[width=0.60\textwidth]{figures/ch2/hold}
 		\caption[La technique \emph{Hold}]{Mode de fonctionnement de la technique \emph{Hold} telle qu'elle fut évaluée dans~\cite{hajri2011moving}. En haut (a,b) le système classique (baptisé \emph{Chase} par Al Hajri \emph{et al.}) : l'utilisateur positionne sa souris sur le flacon rouge pour déclencher la sélection, et doit ensuite cliquer sur le disque noir. Au milieu (c,d) la technique \emph{Hold} ; l'utilisateur doit cliquer sur le flacon bleu pour arrêter la cible, maintenir le bouton pressé, et ne le relâcher que sur le disque noir. En bas (e,f), l'utilisateur doit d'abord positionner sa souris sur le flacon vert, puis peut cliquer librement sur le disque, comme dans le premier cas, ou cliquer sur le flacon pour stopper la cible et relâcher le bouton dessus, comme dans le deuxième cas. Cette technique est appelée \emph{Hybrid} par les auteurs, et a l'avantage d'être plus flexible. En effet, elle permet à un utilisateur de laisser une cible se déplacer avant de la sélectionner, ce qui peut être avantageux si elle se dirige vers le curseur. Crédit : \cite{hajri2011moving}.}
 		\label{fig:hold}
 	\end{figure}
