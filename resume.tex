@@ -1,70 +1,29 @@
 %!TEX root = these.tex
 
-%\skiptoevenpage 
-%\addcontentsline{toc}{chapter}{Résumé / Abstract}
-% \backmatter 
 \chapter*{Résumé / Abstract}% si on enlève le \chapter , le lien dans le pdf revoit vers la biblio 
-\pagestyle{plain}
+%\pagestyle{plain}
 
-\setlength{\headheight}{0.pt}
 % \thispagestyle{empty} 
 %\pdfbookmark[0]{Résumé}{resume}   
 %~ % pour que la page soit la bonne dans la table des matière 
-        
-% \includegraphics[height=1.cm]{./figures/LogoUPSUD.pdf}\hfill
-% \includegraphics[height=1.cm]{./figures/limsilogo_vectoriel.pdf}\hfill
 
-
-% \begin{center}
-%  \textbf{Alexandre Kouyoudjian} \\
-%  \textbf{blabla}
-% \end{center}
-    
-%\fontsize{10}{12}
-%\selectfont
-\subsection*{Résumé}
-
-%\tiny
-%(minuscule)
-
-%\scriptsize
-%(très petit)
-
-%\footnotesize
-%(assez petit)
-
-%\small
-%(petit)
-
-%\normalsize
-% normal
-
-%\large
-%(grand)
-
-%\Large
-%(plus grand)
-
-%\LARGE
-%(très grand)
-
-%\huge
-%(énorme)
-
-%\normalsize
-
-\begin{otherlanguage}{english}
+%\begin{otherlanguage}{english}
 %  \vspace{1cm}
 %
 %  \begin{center} \rule{\textwidth/3}{1pt} \end{center}
 %  \vspace{1cm}
-\subsection*{Abstract}
-\end{otherlanguage} 
+%\subsection*{Abstract}
+%\end{otherlanguage}
 
-La sélection de cibles en mouvement est une tâche récurrente dans de nombreuses applications allant des jeux vidéo aux simulations moléculaires interactives, en passant par les interfaces dédiées au contrôle aérien. Si la sélection de cibles immobiles a fait l'objet de nombreuses études, la sélection de cibles en mouvement a été assez peu abordée dans la littérature scientifique, car les facteurs qui caractérisent ce mouvement peuvent être nombreux, variés et complexes : la rapidité des cibles, leur densité, leur occultation visuelle, l'imprévisibilité de leurs mouvements\ldots{} En effet, alors qu’avec des cibles immobiles, certains modèles tels que la loi de Fitts permettent d’estimer la difficulté de sélection, ils en sont incapables pour des cibles mobiles ; l'influence de facteurs décrivant le comportement dynamique d'une cible sur les performances de sélection reste à déterminer.
-Ces travaux de thèse ont d'abord consisté à formaliser le mouvement de cibles mobiles, à partir de paramètres du mouvement caractérisant l'aspect à la fois dynamique et imprévisible d'une cible mobile. Dans ce modèle, trois facteurs faciles à contrôler dans le cadre d'une simulation de cibles en mouvement ont été définis pour être compatibles avec une étude expérimentale : la vitesse (V), la période entre chaque changement de direction et la fréquence (F) correspondante, ainsi que l'amplitude angulaire maximale (A) de ces changements de direction périodiques. Ces paramètres ont aussi été choisis pour modéliser le comportement de cibles au mouvement erratique, comme les atomes dans le cadre de simulations moléculaires interactives — l’application à l’origine de la problématique abordée dans cette thèse.
-À partir de cette formalisation, une expérience a été menée pour connaître l'influence de ces paramètres sur les performances de sélection. Les résultats quantitatifs de cette expérience ont montré qu'il était difficile d'établir un modèle prédictif permettant de déterminer un indice de difficulté de la tâche de sélection, du fait d'une forte interaction entre ces paramètres. Des résultats qualitatifs nous ont indiqué par ailleurs que ce sont les combinaisons particulières de facteurs qui évoquent chez les sujets trois classes de mouvements, perçus comme « vibratoires » ou « browniens », « réguliers », ou « imprévisibles ». Ces catégories sont directement reliées à la difficulté de sélection et suscitent différentes stratégies d'anticipation.
+%\subsection*{Résumé}
+La sélection de cibles en mouvement est une tâche récurrente dans de nombreuses applications allant des jeux vidéo aux simulations moléculaires interactives, en passant par les interfaces dédiées au contrôle aérien. Si la sélection de cibles immobiles a fait l'objet de nombreuses études, la sélection de cibles en mouvement a été assez peu abordée dans la littérature scientifique, car les facteurs qui caractérisent ce mouvement peuvent être nombreux, variés et complexes : la rapidité des cibles, leur densité, leur occultation visuelle, l'imprévisibilité de leurs mouvements\ldots{} En effet, alors qu’avec des cibles immobiles, certains modèles tels que la loi de Fitts permettent d’estimer la difficulté de sélection, ils en sont incapables pour des cibles mobiles ; l'influence de facteurs décrivant le comportement dynamique d'une cible sur les performances de sélection reste à déterminer.
+
+Ces travaux de thèse ont d'abord consisté à formaliser le mouvement de cibles mobiles, à partir de paramètres du mouvement caractérisant l'aspect à la fois dynamique et imprévisible d'une cible mobile. Dans ce modèle, trois facteurs faciles à contrôler dans le cadre d'une simulation de cibles en mouvement ont été définis pour être compatibles avec une étude expérimentale : la vitesse (V), la période entre chaque changement de direction et la fréquence (F) correspondante, ainsi que l'amplitude angulaire maximale (A) de ces changements de direction périodiques. Ces paramètres ont aussi été choisis pour modéliser le comportement de cibles au mouvement erratique, comme les atomes dans le cadre de simulations moléculaires interactives — l’application à l’origine de la problématique abordée dans cette thèse.
+
+À partir de cette formalisation, une expérience a été menée pour connaître l'influence de ces paramètres sur les performances de sélection. Les résultats quantitatifs de cette expérience ont montré qu'il était difficile d'établir un modèle prédictif permettant de déterminer un indice de difficulté de la tâche de sélection, du fait d'une forte interaction entre ces paramètres. Des résultats qualitatifs nous ont indiqué par ailleurs que ce sont les combinaisons particulières de facteurs qui évoquent chez les sujets trois classes de mouvements, perçus comme « vibratoires » ou « browniens », « réguliers », ou « imprévisibles ». Ces catégories sont directement reliées à la difficulté de sélection et suscitent différentes stratégies d'anticipation.
+
 Ces résultats ont conduit à rechercher d'autres critères, notamment des descripteurs de trajectoires de cibles, qui dépendent des facteurs précédemment décrits, comme l'aire de la coque convexe de la trajectoire que parcourt la cible sur une période donnée. Ces critères permettent de mieux prédire les performances de sélection d'une cible mobile.
+
 Les résultats obtenus conduisent à la proposition de recommandations ergonomiques pour la conception de nouvelles techniques de sélection plus adaptées aux cibles en mouvement. Ceux-ci incluent l'utilisation d'une heuristique de prédiction de la cible visée par l’utilisateur qui, couplée à une assistance haptique ou pseudo-haptique, aurait pour objectif de faciliter cette difficile tâche de sélection de cibles mobiles, en permettant notamment de savoir comment adapter les aides à l'interaction en fonction des facteurs qui caractérisent la dynamique et le degré de prédictibilité du mouvement d'une cible.
  
 
