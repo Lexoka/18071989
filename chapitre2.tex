@@ -10,14 +10,14 @@
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.56\textwidth}
+		\begin{subfigure}[t]{0.57\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/fitts}
 			\caption{Illustration de la première expérience ayant mené Paul Fitts à la  définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
 			\label{fig:fitts}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.42\textwidth}
+		\begin{subfigure}[t]{0.41\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/theta}
 			\caption{Angle $\theta$ pris en compte par~\cite{murata2001extending} dans une version étendue de la loi de Fitts, présentée dans l'équation~\ref{eq:murata}. Le disque rouge représente le curseur, tandis que le rectangle vert représente la cible, située à une distance $D$ du curseur, avec sa largeur $W$ et sa hauteur $H$. Crédit : \cite{casallas2015prediction}.}
@@ -122,7 +122,7 @@
 	
 	Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figures/ch2/ballistic}
 		\caption[Profil de vitesse -- phases balistique et de correction]{Vitesse du pointeur en fonction du temps au cours d'un mouvement ciblé. La vitesse croît fortement puis décroît de même au cours de la phase balistique, puis connaît de petites oscillations au cours de la phase de correction. Crédit : \cite{liu2009designing}.}
@@ -153,7 +153,7 @@
 	\subsection{\emph{Prince}}
 	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figures/ch2/princeCursor}
 		\caption[\emph{Prince} et son curseur]{En haut, une représentation schématique de l'expérience de Fitts~\cite{fitts1954information} : un curseur ponctuel est déplacé pour atteindre deux cibles d'aire non nulle. En bas, l'expérience analogue menée dans~\cite{kabbash1995prince}, où le curseur est zonal et les cibles sont ponctuelles. Crédit : \cite{kabbash1995prince}.}
@@ -162,10 +162,10 @@
 	
 	Les auteurs ont pu constater que la loi de Fitts s'appliquait bien à cette configuration, de fait sensiblement identique à celle évaluée par Fitts. Naturellement, dans un environnement de bureau classique, les cibles ne sont pas ponctuelles, mais généralement des icônes ou des boutons d'aire non nulle, comme sur la figure~\ref{fig:princeSelection}, et ce quel que soit le curseur utilisé. De fait, en utilisant un curseur de largeur $W'$, c'est $W'$ qui détermine la difficulté de sélection et non plus la largeur $W$ de la cible (si $W' > w$). Avec un curseur suffisamment gros, l'indice de difficulté peut être considérablement réduit.
 	
-	\begin{figure}[ht]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch2/princeSelection}
-		\caption[\emph{Prince} dans un cas pratique]{Application de la technique \emph{Prince} à un cas de sélection pratique, avec pour cible une icône d'aire non nulle. Crédit : \cite{kabbash1995prince}.}
+		\caption[\emph{Prince} dans un cas pratique]{Application de la technique \emph{Prince} (à droite) à un cas de sélection pratique, avec pour cible une icône d'aire non nulle ; à gauche, un curseur classique est utilisé. Crédit : \cite{kabbash1995prince}.}
 		\label{fig:princeSelection}
 	\end{figure}
 	
@@ -175,9 +175,9 @@
 		\subsubsection{Adaptativité}
 	Une solution à ce problème d'ambiguïté est proposée par Worden \emph{et al.}~\cite{worden1997making} : lorsqu'un curseur zonal recouvre plusieurs cibles, le curseur devient en pratique un curseur ponctuel, et seul son centre est actif, comme l'illustre la figure~\ref{fig:areaCursor}.
 	
-	\begin{figure}[ht]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/areaCursor}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/areaCursor}
 		\caption[\emph{Area Cursor} avec \emph{hot spot}]{Un curseur zonal dont seul le centre, marqué par l'intersection de deux segments, demeure actif lorsque le curseur chevauche plusieurs cibles. Crédit : \cite{worden1997making}.}
 		\label{fig:areaCursor}
 	\end{figure}
