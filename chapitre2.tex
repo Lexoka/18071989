@@ -583,19 +583,23 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsection{Performances}
 	Steed et Parker ont évalué les temps de sélection du \emph{Shadow Cone}, comparé à la sélection par rayon ou par cône.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
-		\caption[Performances du \emph{Shadow Cone} -- grande cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowSLarge}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
-		\caption[Performances du \emph{Shadow Cone} -- petite cible]{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une petite cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowSSmall}
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
+			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes.}
+			\label{fig:shadowSLarge}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
+			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une petite cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en lie de vin). Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon.}
+			\label{fig:shadowSSmall}
+		\end{subfigure}
+		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone}.}
+		\label{fig:shadowConePerf}
 	\end{figure}
 	
 	Les temps de sélection mesurés pour les différentes techniques, avec et sans suivi de la tête, sont présentés sur la figure~\ref{fig:shadowSLarge} pour une grande cible seule, la figure~\ref{fig:shadowSSmall} pour une petite cible seule, la figure~\ref{fig:shadowPLarge} pour une grande cible avec un distracteur, la figure~\ref{fig:shadowPSmall} pour une petite cible avec un distracteur, la figure~\ref{fig:shadowCLarge} pour une grande cible avec de nombreux distracteurs, et enfin la figure~\ref{fig:shadowCSmall} pour une petite cible avec de nombreux distracteurs.
