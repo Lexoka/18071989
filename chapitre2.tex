@@ -1350,21 +1350,25 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Retour (\emph{feedback})}
 	À tout instant $t$, l'objet dont le score accumulé est maximal est considéré comme la cible choisie ou active. Le rayon est tracé à l'aide de la suite \emph{Virtual SprintTools}~\cite{koutek2001spring} qui détermine une courbe de Bézier atteignant la cible visée (ou du moins estimée). Ce fonctionnement est illustré sur la figure~\ref{fig:intenSnap}.
 
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/intenSnap}
-		\caption[\emph{IntenSelect} -- \emph{Snapping feedback}]{Schéma représentant la technique \emph{IntenSelect} en action. Le rayon de sélection est représenté par un mince trait noir, tandis que le rayon bordeaux se courbe pour atteindre la cible prédite. Crédit : \cite{de2005intenselect}.}
-		\label{fig:intenSnap}
-	\end{wrapfigure}
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/intenSnap}
+			\caption{\emph{IntenSelect} en action. Le rayon de sélection est représenté par un mince trait noir, tandis que le rayon bordeaux se courbe pour atteindre la cible prédite.}
+			\label{fig:intenSnap}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/intenSnap2}
+			\caption{\emph{IntenSelect} avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon, et même avec un cône, on peut la \og perdre \fg{} à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème.}
+			\label{fig:intenSnap2}
+		\end{subfigure}
+		\caption[\emph{IntenSelect}]{\emph{IntenSelect} en action. Crédit : \cite{de2005intenselect}.}
+		\label{fig:plop}
+	\end{figure}
 	
 	Tant que la cible prédite restera la même, le rayon s'adaptera pour se plier vers elle ; si elle change, le rayon sautera immédiatement vers la nouvelle. L'utilisation d'une heuristique avec une certaine \og inertie \fg{} rend la technique nettement plus robuste pour les sélections difficiles, particulièrement avec des cibles mouvantes (voir la figure~\ref{fig:intenSnap2}).
-	
-	\begin{figure}[htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/intenSnap2}
-		\caption[\emph{IntenSelect} -- \emph{Snapping feedback} II]{Schéma représentant la technique \emph{IntenSelect} en action avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon, et même avec un cône, on peut la \og perdre \fg{} à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème. Crédit : \cite{de2005intenselect}.}
-		\label{fig:intenSnap2}
-	\end{figure}
 	
 	\subsubsection{Flexibilité}
 	De Haan \emph{et al.} font remarquer que leur technique confère une certaine flexibilité, puisque les fonctions de calcul et accumulation du score peuvent être modifiées, non seulement pour chaque application, mais encore pour chaque objet. Ainsi, un objet ayant une plus forte probabilité d'intéresser l'utilisateur pourrait avoir un score croissant plus rapidement ; un objet ayant une sous-partie d'intérêt particulier (comme une porte et sa poignée) pourrait rediriger le score du tout vers la partie.
@@ -1374,9 +1378,9 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Performances}
 	Les perforances d'\emph{IntenSelect} sont bonnes et le sont particulièrement avec des cibles mobiles, comme l'on pouvait s'y attendre --- c'est du moins ce qu'indique l'étude empirique menée par de Haan \emph{et al.}~\cite{de2005intenselect}, qui mettent tout de même le lecteur en garde en précisant qu'ils n'avaient que 8 sujets. Quoi qu'il en soit, leurs résultats sont présentés sur la figure~\ref{fig:intensPerf}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/intensPerf}
+		\includegraphics[width=0.80\textwidth]{figures/ch2/intensPerf}
 		\caption[\emph{IntenSelect} -- performances]{Performances de la technique \emph{IntenSelect} en sélection de cibles statiques (à gauche) et mobiles (à droite), comparée au \emph{raycasting} et à la sélection par cône. Les résultats ne se démarquent pas de ceux de la sélection par cône avec des cibles statiques mais c'est le cas quand elles bougent. Les boîtes représentent les données entre le premier et le dernier quartile, avec la valeur médiane indiquée en rouge. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensPerf}
 	\end{figure}
@@ -1418,11 +1422,11 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsection{Performances}
 	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien. Ce processus est illustré par la figure~\ref{fig:hookDir}.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\begin{subfigure}{.29\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/hookPic}
-			\caption[\emph{Hook} -- fonctionnement]{Fonctionnement de la technique \emph{Hook}. L'encombrement visuel de la technique est minimal : seul un cône semi-transparent et une mise en valeur de la cible prédite s'ajoutent au rendu. Crédit : \cite{ortega2013hook}.}
+			\caption[\emph{Hook} -- fonctionnement]{\emph{Hook} : l'encombrement visuel est minimal : seul un cône semi-transparent et une mise en valeur de la cible prédite s'ajoutent au rendu. Crédit : \cite{ortega2013hook}.}
 			\label{fig:hookPic}
 		\end{subfigure}
 		~
@@ -1438,14 +1442,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	L'évaluation menée par Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4. Ces résultats valent en 2D (voir la figure~\ref{fig:hookRes2d}) comme en 3D (voir la figure~\ref{fig:hookRes3d}). La sélection non assistée était si inadéquate à la tâche que les sujets ne purent sélectionner les cibles en 3D à partir de la vitesse 3.
 
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/hookRes2d}
 		\caption[\emph{Hook} -- performances en 2D]{Performances de la technique \emph{Hook} en 2D. Temps de sélection (à gauche) et taux d'erreurs (à droite) en fonction de la vitesse. Crédit : \cite{ortega2013hook}.}
 		\label{fig:hookRes2d}
 	\end{figure}
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/hookRes3d}
 		\caption[\emph{Hook} -- performances en 2D]{Performances de la technique \emph{Hook} en 3D. Temps de sélection (à gauche) et taux d'erreurs (à droite) en fonction de la vitesse. Crédit : \cite{ortega2013hook}.}
