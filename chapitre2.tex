@@ -9,11 +9,22 @@
 	\subsection{Pointage, sélection et loi de Fitts}
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/fitts}
-		\caption[Expérience de Paul M. Fitts]{Illustration de la première expérience ayant mené Paul Fitts à la  définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
-		\label{fig:fitts}
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/fitts}
+			\caption{Illustration de la première expérience ayant mené Paul Fitts à la  définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
+			\label{fig:fitts}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/theta}
+			\caption{Angle $\theta$ pris en compte par~\cite{murata2001extending} dans une version étendue de la loi de Fitts, présentée dans l'équation~\ref{eq:murata}. Le disque rouge représente le curseur, tandis que le rectangle vert représente la cible, située à une distance $D$ du curseur, avec sa largeur $W$ et sa hauteur $H$. Crédit : \cite{casallas2015prediction}.}
+			\label{fig:theta}
+		\end{subfigure}
+		\caption{}
+		\label{fig:fittstheta}
 	\end{figure}
 	
 	Paul M. Fitts a donc pu déduire de cette étude la loi qui porte son nom, et que l'on peut décrire par les équations~\ref{eq:fitts} et~\ref{eq:fittsID}.
@@ -46,13 +57,6 @@
 		\label{eq:murata}
 		ID = \log_2\left(\frac{D}{W} + 1\right) + c \sin \theta
 	\end{equation}
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/theta}
-		\caption[Fitts et $\theta$]{Angle $\theta$ pris en compte par~\cite{murata2001extending} dans une version étendue de la loi de Fitts, présentée dans l'équation~\ref{eq:murata}. Le disque rouge représente le curseur, tandis que le rectangle vert représente la cible, située à une distance $D$ du curseur, avec sa largeur $W$ et sa hauteur $H$. Crédit : \cite{casallas2015prediction}.}
-		\label{fig:theta}
-	\end{figure}
 	
 	D'autres versions tiennent compte simultanément de la forme de la cible et de cet angle $\theta$~\cite{appert2008evaluation, grossman2004pointing}.
 	
@@ -102,12 +106,12 @@
 	
 	Il convient cependant de noter un point très spécifique à cette évaluation : les cibles mobiles se dirigeaient toutes \emph{vers} l'utilisateur --- plus ou moins directement. De fait, l'augmentation de la vitesse \emph{diminue} le temps de sélection, puisqu'elle réduit la distance à parcourir pour l'utilisateur, dans un mouvement rectiligne, donc relativement aisé à prédire et anticiper. Ce résultat au demeurant intéressant ne saurait donc suffire à modéliser les performances de sélection pour les cibles mobiles de mouvements quelconques.
 	
-	\begin{figure}[htb]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=0.6\textwidth]{figures/ch2/casallas}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/casallas}
 		\caption[Paramètres du modèle de Casallas]{Paramètres du modèle de Casallas. Si $\vec{D}$ est le vecteur du curseur (rouge) à la cible (verte), $\vec{D} = \vec{D_{m}} + \vec{D_{s}}$ où $\vec{D_{m}}$ est la la projection de $\vec{V}$ sur $\vec{D}$, et $\vec{D_{s}}$ est la composante de $\vec{D}$ orthogonale à $\vec{D_{m}}$. $D_{m}$ est naturellement la norme de $\vec{D_{m}}$ et $D_{s}$ celle de $\vec{D_{s}}$. Crédit : \cite{casallas2015prediction}.}
 		\label{fig:casallas}
-	\end{figure}
+	\end{wrapfigure}
 	
 	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles \og quelconques \fg{} --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
 	
@@ -120,7 +124,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/ballistic}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/ballistic}
 		\caption[Profil de vitesse -- phases balistique et de correction]{Vitesse du pointeur en fonction du temps au cours d'un mouvement ciblé. La vitesse croît fortement puis décroît de même au cours de la phase balistique, puis connaît de petites oscillations au cours de la phase de correction. Crédit : \cite{liu2009designing}.}
 		\label{fig:ballistic}
 	\end{figure}
@@ -1456,7 +1460,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     
     En examinant le profil de vitesse en fonction du temps d'un curseur, connaissant les lois qui gouvernent la forme de ces profils, et sur l'hypothèse d'une trajectoire à peu près rectiligne, l'on peut estimer avec une certaine précision le point d'arrivée d'un curseur. En pratique, les performances obtenues peuvent être bonnes, mais cette approche s'accommode assez mal des environnements particulièrement denses, mais surtout, il est fort douteux qu'elle puisse s'appliquer efficacement aux cibles mobiles.
     
-    En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou bien la position où l'utilisateur estime que la cible sera à la fin du mouvement ?
+    En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou la position où l'utilisateur estime qu'elle sera à la fin du mouvement ?
     
     Ces questions --- au demeurant très intéressantes --- sont à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
     
@@ -1465,14 +1469,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
     
     Un des intérêts de la prédiction d'intention est de ne pas dépendre d'hypothèses telles que la rectitude de la trajectoire du curseur, particulièrement \og fragiles \fg{} avec des cibles mobiles. L'hypothèse généralement commune aux techniques de ce type est que l'utilisateur va chercher à \og suivre \fg{} sa cible pour la capturer, donc que ses mouvements seront corrélés à ceux de la cible. Cette corrélation est exploitée pour déterminer quel objet est visé par l'utilisateur.
     
-    En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesse des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
+    En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesses des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
     
     Observons par ailleurs que la prédiction de l'intention n'est pas incompatible avec d'autres approches mentionnées plus haut, telles que la sélection en cascade, par exemple.
     
     \subsection{Observations finales et perspectives}
     Les techniques d'assistance à la sélection de cibles visent généralement à optimiser les paramètres de la tâche de sélection connus depuis les travaux de Fitts~\cite{fitts1954information} : la taille effective de la cible, et la distance effective entre celle-ci et le curseur. Cette tendance générale illustre l'influence considérable de la loi de Fitts sur le développement de telles techniques.
     
-    De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, cependant, les bénéfices apportés par les techniques de ce type tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
+    De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, cependant, les bénéfices apportés par les techniques de ce typent tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
     
     Or, dans une tâche de sélection de cibles mobiles, le mouvement peut être bien plus déterminant que la taille ou la distance au curseur pour les performances, comme nous le verrons plus en détail dans un prochain chapitre. De fait, les approches traditionnelles, si elles peuvent être utiles avec les cibles mobiles, ne sont pas orientées dans leur conception par le facteur de difficulté principal.
     
