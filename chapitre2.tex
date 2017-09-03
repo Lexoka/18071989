@@ -368,31 +368,35 @@
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch2/targetGhost}
-		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). La technique \emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale voit la saturation de sa couleur baisser (en tant que fantôme) mais elle poursuit sa trajectoire. Un proxy beaucoup plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné relativement aisément. D'ailleurs, seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
+		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). \emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale voit la saturation de sa couleur baisser (en tant que fantôme), mais poursuit sa trajectoire. Un proxy bien plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné plus aisément. Seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
 		\label{fig:targetGhost}
 	\end{figure}
 	
 	L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreurs, comme le montrent les graphiques des figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/cometGhostPredictability}
+		\includegraphics[width=0.9\textwidth]{figures/ch2/cometGhostPredictability}
 		\caption[\emph{Comet/Ghost}, prévisibilité et résultats]{Temps de complétion de la tâche, (a) : en fonction des types de curseur, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostPredictability}
 	\end{figure}
-	
-		\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
-		\caption[\emph{Comet/Ghost}, temps de sélection]{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
-		\label{fig:cometGhostTimes}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
-		\caption[\emph{Comet/Ghost}, taux d'erreurs]{Taux d'erreurs pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
-		\label{fig:cometGhostErrors}
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
+			\caption{Temps de complétion de la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleures performances. Il ne s'agit cependant ici que du temps de sélection. La technique \emph{Comet} est décrite dans la section suivante.}
+			\label{fig:cometGhostTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
+			\caption{Taux d'erreurs pour la tâche de sélection, avec plusieurs techniques (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. On constate que l'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. La technique \emph{Comet} est décrite dans la section suivante.}
+			\label{fig:cometGhostErrors}
+		\end{subfigure}
+		\caption[\emph{Comet Ghost} -- temps de sélection et taux d'erreurs]{\emph{Comet Ghost} -- performances. Crédit : \cite{hasan2011comet}.}
+		\label{fig:cometGhostTimeErrors}
 	\end{figure}
 		
 	De plus, cette technique n'affectant que les cibles, elle peut être combinée à une technique de curseur, ce qui fut d'ailleurs fait avec le \emph{Bubble Cursor}, pour une combinaison baptisée \emph{Bubble Ghost}~\cite{hasan2011comet}.
