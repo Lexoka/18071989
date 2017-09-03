@@ -154,20 +154,24 @@
 	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
 	
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/princeCursor}
-		\caption[\emph{Prince} et son curseur]{En haut, une représentation schématique de l'expérience de Fitts~\cite{fitts1954information} : un curseur ponctuel est déplacé pour atteindre deux cibles d'aire non nulle. En bas, l'expérience analogue menée dans~\cite{kabbash1995prince}, où le curseur est zonal et les cibles sont ponctuelles. Crédit : \cite{kabbash1995prince}.}
-		\label{fig:princeCursor}
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/princeCursor}
+			\caption{À gauche, une représentation schématique de l'expérience de Fitts~\cite{fitts1954information} : un curseur ponctuel est déplacé pour atteindre deux cibles d'aire non nulle. À droite, l'expérience analogue menée dans~\cite{kabbash1995prince}, où le curseur est zonal et les cibles sont ponctuelles.}
+			\label{fig:princeCursor}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/princeSelection}
+			\caption{\emph{Prince} dans un cas pratique]{Application de la technique \emph{Prince} (à droite) à un cas de sélection pratique, avec pour cible une icône d'aire non nulle ; à gauche, un curseur classique est utilisé.}
+			\label{fig:princeSelection}
+		\end{subfigure}
+		\caption[\emph{Prince}, curseur et sélection]{Crédit : \cite{kabbash1995prince}.}
+		\label{fig:princeCursorSelection}
 	\end{figure}
-	
+
 	Les auteurs ont pu constater que la loi de Fitts s'appliquait bien à cette configuration, de fait sensiblement identique à celle évaluée par Fitts. Naturellement, dans un environnement de bureau classique, les cibles ne sont pas ponctuelles, mais généralement des icônes ou des boutons d'aire non nulle, comme sur la figure~\ref{fig:princeSelection}, et ce quel que soit le curseur utilisé. De fait, en utilisant un curseur de largeur $W'$, c'est $W'$ qui détermine la difficulté de sélection et non plus la largeur $W$ de la cible (si $W' > w$). Avec un curseur suffisamment gros, l'indice de difficulté peut être considérablement réduit.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.6\textwidth]{figures/ch2/princeSelection}
-		\caption[\emph{Prince} dans un cas pratique]{Application de la technique \emph{Prince} (à droite) à un cas de sélection pratique, avec pour cible une icône d'aire non nulle ; à gauche, un curseur classique est utilisé. Crédit : \cite{kabbash1995prince}.}
-		\label{fig:princeSelection}
-	\end{figure}
 	
 	La technique \emph{Prince} présente également l'avantage de permettre la sélection de plusieurs cibles d'un coup si elles sont incluses dans le curseur, mais cet avantage reflète une limitation de \emph{Prince}, car il peut dans ces cas-là y avoir ambiguïté si l'utilisateur ne souhaite sélectionner qu'une seule cible.
 	
@@ -214,7 +218,7 @@
 	\subsection{Principe et avantages}
 	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci.	
 		
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/bubble}
 		\caption[La technique du \emph{Bubble Cursor}] {Illustration du fonctionnement de la technique \emph{Bubble Cursor} (a, c, d) par opposition à un curseur zonal (b). Dans le cas b, le curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Dans le cas (d), la cible n'est pas entièrement recouverte par le curseur, le disque du curseur, mais elle l'est partiellement, et pour représenter visuellement que c'est suffisant à sa sélection, le curseur est localement étendu pour l'englober. Crédit : \cite{grossman2005bubble}.}
