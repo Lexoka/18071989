@@ -902,27 +902,29 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Performances}
 	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
 	
-
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
-		\caption[SQUAD -- résultats : densité]{Performances de la technique SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting} classique. Les performances de cette dernière technique ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible. C'est assez logique car l'indice de difficulté n'est pas modifié par la densité de distracteurs, seul le temps de réaction peut l'être. En revanche, les performances de SQUAD sont fortement affectées, ce qui là encore est logique puisque le nombre d'étapes dans la seconde phase en dépend directement. En pratique, SQUAD brille particulièrement dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux. Crédit : \cite{kopper2011rapid}.}
-		\label{fig:squadDensity}
-	\end{figure}
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/squadSize}
-		\caption[SQUAD -- résultats : récapitulatif]{Performances de la technique SQUAD comparées avec celle du \emph{raycasting} classique, en fonction de la taille des cibles, et pour différentes densités de distracteurs. Notez que les performances du \emph{raycasting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. La technique SQUAD se montre clairement plus performante à faible densité, mais se montre capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est très intéressant pour certaines applications. Pour les cas les plus faciles avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées. Crédit : \cite{kopper2011rapid}.}
-		\label{fig:squadSize}
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
+			\caption{Performances de la technique SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting} classique. Les performances de cette dernière technique ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible. C'est assez logique car l'indice de difficulté n'est pas modifié par la densité de distracteurs, seul le temps de réaction peut l'être. En revanche, les performances de SQUAD sont fortement affectées, ce qui là encore est logique puisque le nombre d'étapes dans la seconde phase en dépend directement. En pratique, SQUAD brille particulièrement dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux.}
+			\label{fig:squadDensity}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/squadSize}
+			\caption{Performances de la technique SQUAD comparées avec celle du \emph{raycasting} classique, en fonction de la taille des cibles, et pour différentes densités de distracteurs. Notez que les performances du \emph{raycasting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. La technique SQUAD se montre clairement plus performante à faible densité, mais se montre capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est très intéressant pour certaines applications. Pour les cas les plus faciles avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
+			\label{fig:squadSize}
+		\end{subfigure}
+		\caption[Performances de SQUAD]{Performances de SQUAD. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squadPerf}
 	\end{figure}
 	
 	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Notons par ailleurs que le taux d'erreurs avec SQUAD était extrêmement faible, avec seulement 0,7~\%{}, ce qui est un atout notable pour cette technique. De fait, si l'on considérait non pas les temps de sélection, mais les temps de sélection normalisés par rapport aux erreurs, l'évaluation serait nettement plus favorable à SQUAD.
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/squadRecap}
+		\includegraphics[width=0.65\textwidth]{figures/ch2/squadRecap}
 		\caption[SQUAD -- résultats : taille]{Performances de la technique SQUAD en fonction de la taille de la cible, comparées avec celle du \emph{raycasting} classique. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, potentiellement expliquée par l'augmentation du temps de recherche visuelle pour trouver la cible quand elle est petite. C'est assez logique car l'indice de difficulté n'est pas modifié par la taille de la cible, puisque seul le quadrant qui la contient doit être sélectionné, mais le temps de réaction peut l'être. En revanche, les performances du \emph{raycasting} sont fortement affectées, ce qui là encore est logique puisqu'une petite cible a un indice de difficulté bien plus élevé. En pratique, SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadRecap}
 	\end{figure}
