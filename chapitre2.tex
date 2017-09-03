@@ -1079,7 +1079,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/delphianTimesErrors}
-			\caption{Temps de sélection en fonction de l'erreur de prédiction de la direction du mouvement. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur.}
+			\caption{Temps de sélection en fonction de l'erreur de prédiction de la direction du mouvement. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, car une grande erreur nécessite un plus grand mouvement correctif.}
 			\label{fig:delphianTimesErrors}
 		\end{subfigure}
 		\caption[\emph{Delphian Desktop} -- performances]{\emph{Delphian Desktop} -- performances. Crédit : \cite{asano2005predictive}.}
@@ -1093,7 +1093,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/delphianTimesID}
-		\caption[\emph{Delphian Desktop} -- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'indice de difficulté (ID), avec le \emph{Delphian Desktop} (\emph{Prediction}, en noir) et sans (\emph{Non-Prediction}, en blanc). Cette technique se montre contre-productive pour les faibles distances, mais bénéfiques quand les distances sont grandes. La droite qui estime son temps de sélection en fonction de l'ID est d'une pente nettement plus douce, ce qui est de bon augure pour d'hypothétiques cibles encore plus distantes. Crédit : \cite{asano2005predictive}.}
+		\caption[\emph{Delphian Desktop} -- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'ID, avec le \emph{Delphian Desktop} (\emph{Prediction}) et sans (\emph{Non-Prediction}). Cette technique est contre-productive pour les petites distances, mais bénéfique pour les grandes. La droite qui estime son temps de sélection en fonction de l'ID est d'une pente plus douce, ce qui est de bon augure pour d'hypothétiques cibles plus distantes. Crédit : \cite{asano2005predictive}.}
 		\label{fig:delphianTimesID}
 	\end{wrapfigure}
 	
@@ -1155,7 +1155,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/kepQuad}
-			\caption{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir. L'équation du polynôme et la valeur du coefficient de détermination $R^{2}$ sont également indiquées.}
+			\caption{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir.}
 			\label{fig:kepQuad}
 		\end{subfigure}
 		\caption[KEP -- vitesse du curseur et loi de l'à-coup minimum]{KEP -- vitesse du curseur et loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
@@ -1167,7 +1167,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/kepExtrapol}
 		\caption[KEP -- approximation quadratique et extrapolation]{En bleu, la vitesse en fonction de la distance, telle qu'elle est prédite par le modèle d'à-coup minimum. En noir, l'approximation quadratique choisie par Lank \emph{et al.} Ici sont présentées les extrapolations permises par cette approximation quadratique en fonction du pourcentage de distance parcourue à partir duquel l'extrapolation est faite. On constate que, du fait de l'imprécision de l'approximation, l'extrapolation est souvent incorrecte --- mais elle est bonne si elle est faite à 80~\%{} de la distance parcourue. Crédit : \cite{lank2007endpoint}.}
@@ -1200,7 +1200,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Précision de la prédiction}
 	Lank \emph{et al.} ont validé leur modèle en comparant les prédictions de KEP à des mesures empiriques. Les résultats de cette validation sont exposées dans les graphiques de la figure~\ref{fig:kepErrors}, pour des cibles de 15 à 75 pixels de diamètre.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/kepErrors}
 		\caption[KEP -- erreurs de prédiction]{Erreurs de prédiction du point d'arrivée par KEP en fonction du pourcentage de mouvement effectué ($s_{i}$) auquel l'extrapolation est effectuée. Chaque graphique correspond aux résultats obtenus avec des cibles circulaires d'un diamètre donné, mentionné au bas de chaque graphique (de 15 à 75 pixels, sur un écran de 1024~$\times$~768 pixels). Les meilleurs résultats sont obtenus pour $s_{i} = 85~\%{}$. Crédit : \cite{lank2007endpoint}.}
