@@ -721,7 +721,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/smartRayLocation}
-			\caption{Pour les cibles dont les identifiants sont faibles (plutôt situées vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont très mauvais pour les cibles dont les identifiants sont élevés (à droite). Or, tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite, et rencontrait beaucoup d'obstacles.}
+			\caption{Pour les cibles dont les identifiants sont faibles (plutôt situées vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont mauvais pour les cibles d'identifiant sont élevé (à droite). Tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite, et rencontrait beaucoup d'obstacles.}
 			\label{fig:smartRayLocation}
 		\end{subfigure}
 		\caption[Performances du \emph{raycasting} avec désambiguïsation]{Performances du \emph{raycasting} avec désambiguïsation. Crédit : \cite{grossman2006design}.}
@@ -892,10 +892,10 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad2}
-		\caption[La technique SQUAD -- évaluation]{La technique SQUAD telle qu'évaluée dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge, ce qui la rend facile à repérer, notamment dans la seconde phase, à droite. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir la sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
+		\caption[La technique SQUAD -- évaluation]{SQUAD tel qu'évalué dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squad2}
 	\end{figure}
 	
@@ -906,14 +906,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
-			\caption{Performances de SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting} classique. Les performances de ce dernier ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, peut-être due au rallongement de la recherche visuelle de la cible. En effet, l'ID n'est pas modifié par la densité, mais le temps de réaction peut l'être. Les performances de SQUAD sont fortement affectées, car le nombre d'étapes dépend de la densité. SQUAD brille dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux.}
+			\caption{Performances de SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting}. Les performances de ce dernier ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, peut-être due à la recherche visuelle de la cible. Les performances de SQUAD sont fortement affectées, car le nombre d'étapes dépend de la densité. SQUAD brille dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux.}
 			\label{fig:squadDensity}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/squadSize}
-			\caption{Performances de SQUAD comparées avec celles du \emph{raycasting}, en fonction de la taille des cibles, et pour différentes densités de distracteurs. Les performances du \emph{raycasting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. La technique SQUAD se montre plus performante à faible densité, et se montre capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est très intéressant pour certaines applications. Pour les cas les plus faciles avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
+			\caption{Performances de SQUAD comparées avec celles du \emph{raycasting}, en fonction de la taille des cibles, avec différentes densités de distracteurs. Les performances du \emph{raycasting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. SQUAD se montre plus performante à faible densité, et capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est intéressant pour certaines applications. Avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
 			\label{fig:squadSize}
 		\end{subfigure}
 		\caption[Performances de SQUAD]{Performances de SQUAD. Crédit : \cite{kopper2011rapid}.}
@@ -925,7 +925,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.65\textwidth]{figures/ch2/squadRecap}
-		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due au rallongement de la recherche visuelle de la cible quand elle est petite. En effet, l'ID n'est pas modifié par la taille de la cible, mais le temps de réaction peut l'être. En revanche, les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
+		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due à la recherche visuelle de la cible quand elle est petite. En revanche, les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadRecap}
 	\end{figure}
 	
@@ -942,7 +942,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Principe et avantages}
 	La technique du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est un autre exemple de technique de sélection en cascade, et est illustrée par la figure~\ref{fig:dCanvas}.
 		 
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
 		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (un rectangle semi-transparent) s'ouvre, les cibles pré-sélectionnées y sont disposées et agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie, ce qui permet à l'utilisateur de sélectionner la cible avec son pouce. Cette technique est compatible avec les HMD, et n'affiche pas le petit encadré en bas à gauche de chaque image, inséré ici à des fins illustratives. Crédit : \cite{debarba2013disambiguation}.}
@@ -996,7 +996,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.90\textwidth]{figures/ch2/dCanvasSPerf}
+		\includegraphics[width=0.85\textwidth]{figures/ch2/dCanvasSPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasSPerf}
 	\end{figure}
@@ -1037,7 +1037,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.44\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
-			\caption{Vitesse d'un curseur pendant une tâche de pointage. Il accélère au cours de la phase de balistique (\emph{Plan time}) puis décélère pendant la phase de correction (\emph{Adjustment time}).}
+			\caption{Vitesse du curseur. Il accélère au cours de la première phase (\emph{Plan time}) puis décélère (\emph{Adjustment time}).}
 			\label{fig:delphianPeak}
 		\end{subfigure}
 		~
@@ -1289,7 +1289,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.9\textwidth]{figures/ch2/intensMD}
+		\includegraphics[width=0.80\textwidth]{figures/ch2/intensMD}
 		\caption[Sélection d'un atome dans une simulation de dynamique moléculaire]{Schéma illustrant la sélection d'un atome dans une simulation de dynamique moléculaire. L'environnement très dense rend la tâche particulièrement difficile. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensMD}
 	\end{figure}
@@ -1309,20 +1309,20 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Test d'appartenance au volume de sélection}
 	Le volume de sélection est un simple cône, et pour chaque point donné, il suffit de vérifier s'il est dans le cône pour déterminer s'il est dans le volume de sélection, et donc s'il doit être pris en compte pour l'étape 2 de l'algorithme. Le détail du test d'appartenance est fourni par la figure~\ref{fig:intensCone}.
 	
-	\begin{figure}[H]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/intensCone}
-		\caption[\emph{IntenSelect} -- test d'appartenance au volume de sélection]{Schéma illustrant le test d'appartenance du point $P$ au volume de sélection d'\emph{IntenSelect}. Notez que $d_{perp}$ est la distance entre $P$ et sa projection sur le rayon, et $d_{proj}$ est la distance entre cette projection et l'origine du rayon. De plus, $\beta_{cone}$ est l'angle d'ouverture du cône de sélection, et $\alpha$ est l'angle formé par le rayon et la droite passant par l'origine du rayon et par $P$. Si $\alpha < \beta_{cone}$, alors $P$ est dans le volume de sélection. Crédit : \cite{de2005intenselect}.}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/intensCone}
+		\caption[\emph{IntenSelect} -- test d'appartenance au volume de sélection]{Test d'appartenance de $P$ au volume de sélection d'\emph{IntenSelect} : $d_{perp}$ est la distance entre $P$ et sa projection sur le rayon, et $d_{proj}$ est la distance entre cette projection et l'origine du rayon ; $\beta_{cone}$ est l'angle d'ouverture du cône de sélection, et $\alpha$ est l'angle formé par le rayon et la droite passant par l'origine du rayon et par $P$. Si $\alpha < \beta_{cone}$, $P$ est dans le volume de sélection. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensCone}
-	\end{figure}
+	\end{wrapfigure}
 	
 	\subsubsection{Métrique}
 	La métrique utilisée dans l'étape 2 est illustrée par la figure~\ref{fig:intensMetric}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/intensMetric}
-		\caption[Métrique de \emph{scoring} de la technique \emph{IntenSelect}]{Schéma illustrant la métrique de \emph{scoring} de la technique \emph{IntenSelect}. Il s'agit du cône de sélection vu de côté, où la surface du cône est tracée en pointillés rouge et le rayon en noir. Un point P quelconque inclus dans le cône est placé ici à des fins purement illustratives. La valeur de la métrique est indiquée par la nuance de girs/bleu : en blanc, la métrique vaut 1 ; en noir, elle vaut 0. Crédit : \cite{de2005intenselect}.}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/intensMetric}
+		\caption[Métrique de \emph{scoring} de la technique \emph{IntenSelect}]{Métrique de \emph{scoring} d'\emph{IntenSelect}. Il s'agit du cône de sélection vu de côté, où sa surface est tracée en pointillés rouge et le rayon en noir, avec un point P quelconque inclus dans le cône. La valeur de la métrique est indiquée par la nuance de gris/bleu : en blanc, elle vaut 1 ; en noir, 0. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensMetric}
 	\end{figure}
 	
@@ -1340,22 +1340,22 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Un exemple synthétique d'accumulation de score par une cible d'abord hors du volume de sélection, puis dedans, puis à nouveau dehors est représenté sur la figure~\ref{fig:intensAccumul}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/intensAccumul}
-		\caption[\emph{IntenSelect} -- accumulation de score]{Représentation d'un exemple synthétique d'accumulation de score pour une cible. À partir de $t = 60$, la cible est précisément sélectionnée par le cône et son score augmente ; à $t = 180$, elle n'est plus, et son score diminue rapidement. Crédit : \cite{de2005intenselect}.}
+		\includegraphics[width=0.75\textwidth]{figures/ch2/intensAccumul}
+		\caption[\emph{IntenSelect} -- accumulation de score]{Exemple d'accumulation de score pour une cible. À partir de $t = 60$, la cible est précisément sélectionnée par le cône et son score augmente ; à $t = 180$, elle n'est plus, et son score diminue rapidement. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensAccumul}
 	\end{figure}
 	
 	\subsubsection{Retour (\emph{feedback})}
 	À tout instant $t$, l'objet dont le score accumulé est maximal est considéré comme la cible choisie ou active. Le rayon est tracé à l'aide de la suite \emph{Virtual SprintTools}~\cite{koutek2001spring} qui détermine une courbe de Bézier atteignant la cible visée (ou du moins estimée). Ce fonctionnement est illustré sur la figure~\ref{fig:intenSnap}.
-	
-	\begin{figure}[H]
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/intenSnap}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/intenSnap}
 		\caption[\emph{IntenSelect} -- \emph{Snapping feedback}]{Schéma représentant la technique \emph{IntenSelect} en action. Le rayon de sélection est représenté par un mince trait noir, tandis que le rayon bordeaux se courbe pour atteindre la cible prédite. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intenSnap}
-	\end{figure}
+	\end{wrapfigure}
 	
 	Tant que la cible prédite restera la même, le rayon s'adaptera pour se plier vers elle ; si elle change, le rayon sautera immédiatement vers la nouvelle. L'utilisation d'une heuristique avec une certaine \og inertie \fg{} rend la technique nettement plus robuste pour les sélections difficiles, particulièrement avec des cibles mouvantes (voir la figure~\ref{fig:intenSnap2}).
 	
