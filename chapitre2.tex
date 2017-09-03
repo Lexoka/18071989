@@ -595,7 +595,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une petite cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon.}
+			\caption{Performances du \emph{Shadow Cone} avec une petite cible. Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon.}
 			\label{fig:shadowSSmall}
 		\end{subfigure}
 		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone}. Crédit : \cite{steed20043d}.}
@@ -610,14 +610,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une paire de grands objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Aucune différence significative n'est mesurée entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas.}
+			\caption{Performances du \emph{Shadow Cone} avec une paire de grands objets. Aucune différence significative n'est mesurable entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas.}
 			\label{fig:shadowPLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPSmall}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une paire de petits objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Le \emph{Shadow Cone} est ici plus lent que la sélection par cône, mais génère moins d'erreurs (0,2 par utilisateur contre 0,6) ; la sélection par rayon ne produisit aucune erreur, là encore avec suivi de la tête.}
+			\caption{Performances du \emph{Shadow Cone} avec une paire de petits objets. Le \emph{Shadow Cone} est ici plus lent que la sélection par cône, mais génère moins d'erreurs (0,2 par utilisateur contre 0,6) ; la sélection par rayon ne produisit aucune erreur, là encore avec suivi de la tête.}
 			\label{fig:shadowPSmall}
 		\end{subfigure}
 		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
@@ -629,14 +629,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de gros objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
+			\caption{Performances du \emph{Shadow Cone} avec une grappe de gros objets. Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
 			\label{fig:shadowCLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grappe de petits objets, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Encore une fois, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. De plus, la sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, toujours avec suivi de la tête bien sûr.}
+			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Là encore, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. De plus, la sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, toujours avec suivi de la tête.}
 			\label{fig:shadowCSmall}
 		\end{subfigure}
 		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
@@ -657,7 +657,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Principe}
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
-	\newcommand{\rayWidth}{0.65\textwidth}
+	\newcommand{\rayWidth}{0.60\textwidth}
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
