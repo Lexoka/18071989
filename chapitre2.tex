@@ -265,7 +265,7 @@
 	 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/dynaResults}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/dynaResults}
 		\caption[\emph{DynaSpot} -- performances]{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaResults}
 	\end{figure}
@@ -307,7 +307,7 @@
 		\begin{subfigure}[t]{0.60\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
-			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} désigne le \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. Notez que l'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkPerf}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor}]{\emph{Silk Cursor}. Crédit : \cite{zhai1994silk}}
@@ -323,14 +323,14 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
-			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. Notez que l'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkErrors}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
-			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Concrètement, il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. Notez que l'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkErrorMag}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
@@ -410,9 +410,9 @@
 	\subsection{Principe et avantages}
 	Avec \emph{Comet}~\cite{hasan2011comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même, comme le montre la figure~\ref{fig:comet}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/comet}
+		\includegraphics[width=0.7\textwidth]{figures/ch2/comet}
 		\caption[La technique \emph{Comet}]{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}.}
 		\label{fig:comet}
 	\end{figure}	
