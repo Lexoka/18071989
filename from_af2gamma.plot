@@ -15,3 +15,8 @@ plot "linApprox.csv" u ($1*sqrt($2)):3 ps 1 lw 6
 #set xlabel "A × F"
 set output "afVgamma.png"
 plot "linApprox.csv" u ($1*$2):3 ps 1 lw 6
+
+set output "asqrtFVgammaLog.png"
+set logscale x
+set xrange [0.2:4400]
+plot "linApprox.csv" u ($1*sqrt($2)):3 ps 1 lw 6

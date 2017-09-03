@@ -765,7 +765,7 @@
 	\subsection{Pseudo-entropie et valeur de $\gamma$}
 	Si la figure~\ref{fig:gammaVfaLin} suggère que l'augmentation de A et de F ont le même effet sur $\gamma$, à savoir en diminuer la valeur, la figure~\ref{fig:gammaVfaLog} montre que, dès lors que A atteint une valeur relativement élevée (autour de 50) la fréquence a un impact très important sur la valeur de $\gamma$. Inversement, lorsque A est en dessous de ce seuil, l'impact de F sur $\gamma$ est assez faible, voire presque nul pour de petites valeurs de A.
 	
-	On peut donc supposer que le produit AF ne serait pas un très bon prédicteur de $\gamma$, car le poids de F serait trop fort\ldots{} Mais une expression de la forme $A\times{}F^{k}$ avec $k \in [0,1]$ pourrait être plus appropriée. Des essais empiriques avec différentes valeurs de $k$ montrent que la meilleure est $k = \frac{1}{2}$, c'est-à-dire l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} confirme, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; la figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$.
+	On peut donc supposer que le produit AF ne serait pas un très bon prédicteur de $\gamma$, car le poids de F serait trop fort\ldots{} Mais une expression de la forme $A\times{}F^{k}$ avec $k \in [0,1]$ pourrait être plus appropriée. Des essais empiriques avec différentes valeurs de $k$ montrent que la meilleure est $k = \frac{1}{2}$, c'est-à-dire l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} confirme, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; la figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$, de même que la figure~\ref{fig:gammaASQRTFlog}, qui représente les mêmes résultats, mais sur une échelle logarithmique, bien plus lisibles pour les petites valeurs de $A\sqrt{F}$.
 
 	\begin{figure}[!htb]
 		\centering
@@ -784,6 +784,13 @@
 		\end{subfigure}
 		\caption[Coefficients $\gamma$ en fonction de F et A, bis]{Coefficients $\gamma$ en fonction de F et A. Les valeurs de $\gamma$ sont en ordonnée, et l'expression contenant A et F est en abscisse. On remarque que la seconde expression fondée sur la racine carrée de F correspond bien mieux aux valeurs de $\gamma$.}
 		\label{fig:gammaVentropy}
+	\end{figure}
+
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLog}
+		\caption[Coefficients $\gamma$ en fonction de F et A, ter (log)]{Coefficients $\gamma$ en fonction de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée, et $A\sqrt{F}$ est en abscisse, sur une échelle logarithmique.}
+		\label{fig:gammaASQRTFlog}
 	\end{figure}
 	
 	Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
@@ -930,7 +937,7 @@
 	
 	Par conséquent, si l'on doit estimer le temps de sélection en fonction de l'aire, il faut trouver une fonction $g : \mathbb{R}^{+} \to \mathbb{R}^{+}$, $g\left(\mathcal{A}(ec)\right) \mapsto y$ qui admette une borne inférieure, qui soit croissante sur $[0, \mathcal{A}_{pic}]$ et décroissante sur $[\mathcal{A}_{pic}, \infty]$. Naturellement, il faut aussi qu'elle puisse être ajustée à nos données.
 	
-	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $\sigma$, $a$ et $b$ sont des paramètres réels, qui valent respectivement 3, 2,65 et 1 ici, et $x$ représente $\mathcal{A}(ec)$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit}.
+	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $\sigma$, $a$ et $b$ sont des paramètres réels, qui valent respectivement 3, 2,65 et 1 ici, et $x$ représente $\mathcal{A}(ec)$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit} (sans les résultats correspondant aux cibles de mouvement rectiligne).
 	
 	\begin{equation}
 		g(x) = a\frac{x-b}{\sigma^{2}}e^{-\frac{(x-b)^{2}}{2\sigma^{2}} }
