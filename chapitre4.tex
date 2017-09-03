@@ -527,7 +527,7 @@
 	
 	Bien sûr, il faut préciser que les frontières entre ces trois catégories ne sont ni clairement délimitées ni absolues, comme le montrent nos cartes thermiques (figure~\ref{fig:hmaps}) ou encore les mesures de MTSN en fonction de AF (figure~\ref{fig:tAF}). Sans doutent dépendent-elles en plus des perceptions individuelles de chacun, mais elles fournissent un guide pour comprendre la difficulté de sélection des cibles mobiles en fonction de la nature de leurs mouvements.
 	
-\section{Profils de vitesse}
+\section{Profils de vitesse du curseur}
 	Comme nous le soulignions lors du chapitre~\ref{chap2}, un mouvement de sélection est généralement divisée en une première phase, rapide, de longue distance et dite \emph{balistique}, et une seconde phase, lente, de courte distance et communément appelée \emph{de correction}~\cite{mackenzie1987three, crossman1983feedback}. Ce principe est illustré par la figure~\ref{fig:ballistic}.
 	
 	Nous notions alors que, d'après divers travaux, une sélection difficile rallonge la phase de correction, et avancions que les difficultés présentées par le caractère mobile des cibles qui nous intéressent pouvait mener à une observation similaire.
@@ -688,7 +688,7 @@
 	\end{table}
 	
 	\subsection{Prédominance de la phase de correction}
-	Si, pour des cibles statiques, les phases balistique et de correction sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase de correction dominant alors le temps total de sélection.
+	Si, pour des cibles statiques, les phases balistique et de correction sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase de correction dominant alors le temps total de sélection, conformément à nos hypothèses de départ.
 	
 	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du niveau d'accélération possible sur cette portion.
 	
@@ -934,6 +934,15 @@
 	Ensuite, il est possible de déterminer dans quel sens les paramètres A et F doivent évoluer, de préférence de concert, mais agir sur un seul d'entre eux suffit à obtenir un effet tout à fait significatif, comme le montrent les figures~\ref{fig:aEffectPerf} et~\ref{fig:fEffectPerf}.
 
 \section{Conclusion}
+	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
+	
+	Nous avons détaillé le protocole d'une évaluation empirique visant à caractériser les performances de sélection de cibles mobiles en fonction de la nature de leurs mouvements, et avons détaillé l'impact des paramètres V, F, et A de notre modèle sur les performances de sélection, d'abord séparément, puis ensemble.
+	
+	Nous avons ainsi montré que les performances étaient relativement bonnes avec des mouvements \og stables \fg{} et prévisibles, ou \og vibratoires \fg{} et relativement prévisibles, mais mauvaises avec des mouvements \og saccadés \fg{}, imprévisibles. Nous avons relié ces familles de mouvements à des valeurs particulières de couples de paramètres (F,A). Nous avons par ailleurs proposé le produit FA comme prédicteur de la difficulté de sélection, pour une vitesse donnée.
+	
+	Nous avons analysé les profils de vitesse du curseur lors des tâches de sélection, en fonction de la nature des mouvements de la cible. Nous avons ainsi observé que les phases balistique et de correction étaient relativement équilibrées pour les cibles statiques, mais que pour les cibles mobiles, la phase de correction dominait d'autant plus que la condition était difficile --- cible rapide aux mouvements imprévisibles. Nous en avons déduit une recommandation selon laquelle une technique d'assistance à la sélection devrait se concentrer sur la facilitation de la phase de correction, afin de maximiser le gain de temps.
+	
+	Nous nous sommes ensuite intéressés aux aires des enveloppes convexes associées aux trajectoires de nos cibles, en fonction des paramètres de leurs mouvements. Ces aires décrivent l'espace qu'une cible est susceptible d'occuper en un temps donné.  
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
