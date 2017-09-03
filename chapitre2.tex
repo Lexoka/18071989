@@ -10,14 +10,14 @@
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.57\textwidth}
+		\begin{subfigure}[t]{0.58\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/fitts}
 			\caption{Illustration de la première expérience ayant mené Paul Fitts à la  définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
 			\label{fig:fitts}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.41\textwidth}
+		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/theta}
 			\caption{Angle $\theta$ pris en compte par~\cite{murata2001extending} dans une version étendue de la loi de Fitts, présentée dans l'équation~\ref{eq:murata}. Le disque rouge représente le curseur, tandis que le rectangle vert représente la cible, située à une distance $D$ du curseur, avec sa largeur $W$ et sa hauteur $H$. Crédit : \cite{casallas2015prediction}.}
@@ -154,17 +154,17 @@
 	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
 	
 	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.56\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/princeCursor}
 			\caption{À gauche, une représentation schématique de l'expérience de Fitts~\cite{fitts1954information} : un curseur ponctuel est déplacé pour atteindre deux cibles d'aire non nulle. À droite, l'expérience analogue menée dans~\cite{kabbash1995prince}, où le curseur est zonal et les cibles sont ponctuelles.}
 			\label{fig:princeCursor}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.42\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/princeSelection}
-			\caption{\emph{Prince} dans un cas pratique]{Application de la technique \emph{Prince} (à droite) à un cas de sélection pratique, avec pour cible une icône d'aire non nulle ; à gauche, un curseur classique est utilisé.}
+			\caption{Application de la technique \emph{Prince} (à droite) à un cas de sélection pratique, avec pour cible une icône d'aire non nulle ; à gauche, un curseur classique est utilisé.}
 			\label{fig:princeSelection}
 		\end{subfigure}
 		\caption[\emph{Prince}, curseur et sélection]{Crédit : \cite{kabbash1995prince}.}
@@ -181,7 +181,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/areaCursor}
+		\includegraphics[width=0.75\textwidth]{figures/ch2/areaCursor}
 		\caption[\emph{Area Cursor} avec \emph{hot spot}]{Un curseur zonal dont seul le centre, marqué par l'intersection de deux segments, demeure actif lorsque le curseur chevauche plusieurs cibles. Crédit : \cite{worden1997making}.}
 		\label{fig:areaCursor}
 	\end{figure}
@@ -240,7 +240,7 @@
 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/bubbleResults}
+		\includegraphics[width=0.7\textwidth]{figures/ch2/bubbleResults}
 		\caption[\emph{Bubble Cursor} --  performances]{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:bubbleResults}
 	\end{figure}
@@ -254,18 +254,18 @@
 	\subsection{Principe}
 	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
+		\includegraphics[width=0.75\textwidth]{figures/ch2/dynaSpot}
 		\caption[\emph{DynaSpot} -- principe]{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, il est possible de sélectionner l'espace vide, par exemple pour ouvrir un menu contextuel. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaSpot}
 	\end{figure}
 	
 	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
 	 
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/dynaResults}
 		\caption[\emph{DynaSpot} -- performances]{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaResults}
 	\end{figure}
