@@ -588,7 +588,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon (\emph{ray}) et par cône (\emph{cone}). Chaque technique est évaluée avec suivi de la tête (TRK, en bleu) et sans (N\_{}TRK, en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes.}
+			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon et par cône. Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes.}
 			\label{fig:shadowSLarge}
 		\end{subfigure}
 		~
@@ -636,7 +636,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Là encore, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. De plus, la sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, toujours avec suivi de la tête.}
+			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Le \emph{raycasting} se montre plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. La sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, avec suivi de la tête.}
 			\label{fig:shadowCSmall}
 		\end{subfigure}
 		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
@@ -661,7 +661,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
-		\caption[Principe du \emph{Depth Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Depth Ray}]{Fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
 		\label{fig:depthRay}
 	\end{figure}
 	
@@ -672,7 +672,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/lockRay}
-		\caption[Principe du \emph{Lock Ray}]{Illustration du fonctionnement du \emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur. (b) Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton. Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Lock Ray}]{Fonctionnement du \emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur. (b) Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton. Crédit : \cite{grossman2006design}.}
 		\label{fig:lockRay}
 	\end{figure}
 	
@@ -683,7 +683,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/flowerRay}
-		\caption[Principe du \emph{Flower Ray}]{Illustration du fonctionnement du \emph{Depth Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant. (c) L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Flower Ray}]{Fonctionnement du \emph{Depth Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant. (c) L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
 		\label{fig:flowerRay}
 	\end{figure}
 	
@@ -1048,7 +1048,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 			\label{fig:delphianSpeedDist}
 		\end{subfigure}
 		\caption[\emph{Delphian Desktop} : vitesse du curseur]{\emph{Delphian Desktop} : vitesse du curseur. Crédit : \cite{asano2005predictive}.}
-		\label{fig:plop}
+		\label{fig:delphianCursor}
 	\end{figure}
 	
 	Cette croissance est quant à elle illustrée par la figure~\ref{fig:delphianSpeedDist}.
@@ -1083,7 +1083,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 			\label{fig:delphianTimesErrors}
 		\end{subfigure}
 		\caption[\emph{Delphian Desktop} -- performances]{\emph{Delphian Desktop} -- performances. Crédit : \cite{asano2005predictive}.}
-		\label{fig:plop}
+		\label{fig:delphianPerf}
 	\end{figure}
 
 	Cette tendance est d'ailleurs mieux illustrée par la figure~\ref{fig:delphianTimesID}, qui met en évidence les différences de pentes entre les droites qui représentent le temps de sélection en fonction de l'indice de difficulté (ID) pour la sélection non assistée et pour le \emph{Delphian Desktop}. On peut supposer que, pour des cibles d'ID très élevé, celui-ci serait d'autant plus avantageux.
@@ -1159,7 +1159,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 			\label{fig:kepQuad}
 		\end{subfigure}
 		\caption[KEP -- vitesse du curseur et loi de l'à-coup minimum]{KEP -- vitesse du curseur et loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
-		\label{fig:plop}
+		\label{fig:kep}
 	\end{figure}
 	
 	\paragraph{Approximation quadratique.}
@@ -1251,7 +1251,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 			\label{fig:speedExplained}
 		\end{subfigure}
 		\caption[SPEED -- fonctionnement]{SPEED -- fonctionnement. Crédit : \cite{wonner2011speed}.}
-		\label{fig:plop}
+		\label{fig:speedCursor}
 	\end{figure}
 	
 	L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, SPEED utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Ce fonctionnement, au demeurant très proche de celui de KEP, est expliqué sur la figure~\ref{fig:speedExplained}.
