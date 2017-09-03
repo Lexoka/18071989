@@ -1144,22 +1144,26 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Ces équations sont représentées graphiquement sur la figure~\ref{fig:kepPS}.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/kepPS}
-		\caption[À-coup minimum -- position et vitesse du curseur vs. temps]{Position et vitesse du curseur en fonction du temps, prédites par la loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
-		\label{fig:kepPS}
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/kepPS}
+			\caption{Position et vitesse du curseur en fonction du temps, prédites par la loi de l'à-coup minimum.}
+			\label{fig:kepPS}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/kepQuad}
+			\caption{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir. L'équation du polynôme et la valeur du coefficient de détermination $R^{2}$ sont également indiquées.}
+			\label{fig:kepQuad}
+		\end{subfigure}
+		\caption[KEP -- vitesse du curseur et loi de l'à-coup minimum]{KEP -- vitesse du curseur et loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:plop}
 	\end{figure}
 	
 	\paragraph{Approximation quadratique.}
 	Toutefois, pour prédire le point d'arrivée d'un mouvement, il est plus utile de connaître la vitesse en fonction de la distance. Lank \emph{et al.} ont donc transposé le modèle de l'à-coup minimum pour obtenir le profil tracé en bleu sur la figure~\ref{fig:kepQuad}, ainsi qu'une approximation donnée par un polynôme quadratique en noir sur la même figure.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/kepQuad}
-		\caption[À-coup minimum -- vitesse du curseur vs. temps, approximation quadratique]{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir. L'équation du polynôme et la valeur du coefficient de détermination $R^{2}$ sont également indiquées. Crédit : \cite{lank2007endpoint}.}
-		\label{fig:kepQuad}
-	\end{figure}
 	
 	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
 	
