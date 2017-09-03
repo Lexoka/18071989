@@ -319,21 +319,25 @@
 	\subsubsection{Taux et amplitude des erreurs}
 	Les auteurs ont également évalué les performances du \emph{Silk Cursor} sous l'angle des erreurs, tant leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
 	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
-		\caption[Taux d'erreurs du \emph{Silk Cursor}]{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence à pas $0$.. Crédit : \cite{zhai1994silk}.}
-		\label{fig:silkErrors}
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
+			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence pas à 0.}
+			\label{fig:silkErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
+			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Concrètement, il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. Comme pour les taux d'erreurs et temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances, surtout la stéréoscopie. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence pas à 0.}
+			\label{fig:silkErrorMag}
+		\end{subfigure}
+		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
+		\label{fig:SilkErrorsErrMag}
 	\end{figure}
 	
 	Enfin, cette étude menée par Zhai \emph{et al.}~\cite{zhai1994silk} confirme l'intérêt du rendu stéréoscopique pour de telles tâches, et vérifie qu'il apporte toujours un bénéfice tangible lorsqu'il est combiné au \emph{Silk Cursor}.
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
-		\caption[Amplitude des erreurs du \emph{Silk Cursor}]{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Concrètement, il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. Comme pour les taux d'erreurs et temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances, surtout la stéréoscopie. Les conditions sont indiquées ainsi : pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} indique l'utilisation du \emph{Silk Cursor} tandis que \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). Notez que l'axe des ordonnées ne commence à pas $0$.. Crédit : \cite{zhai1994silk}.}
-		\label{fig:silkErrorMag}
-	\end{figure}
 	
 	\subsubsection{Impressions subjectives}
 	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
