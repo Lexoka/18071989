@@ -737,13 +737,13 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\subsubsection{Distance parcourue par le périphérique}
 	Les auteurs ont par ailleurs mesuré la distance parcourue par le périphérique de pointage au cours d'une tâche de sélection, pour chaque technique évaluée. C'est un résultat important car il est déterminant pour la fatigue ressentie par un utilisateur sur une durée significative. Ici encore, le \emph{Smart Ray} déçoit, tandis que les autres techniques permettent de réduire la distance à parcourir par rapport au curseur ponctuel, comme l'illustre la figure~\ref{fig:rayFootprint}.
-
-	\begin{figure}[!htb]
+	
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/rayFootprint}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/rayFootprint}
 		\caption[\emph{Raycasting} et désambiguïsation -- distance parcourue par le périphérique]{Distance parcourue par le périphérique de pointage avec les diverses techniques de \emph{raycasting} évaluées. Les \emph{Depth, Lock} et\emph{Flower Rays} font mieux que le curseur ponctuel, au contraire du \emph{Smart Ray} qui affiche en outre un écart-type considérable. Crédit : \cite{grossman2006design}.}
 		\label{fig:rayFootprint}
-	\end{figure}
+	\end{wrapfigure}
 	
 	Là encore on peut s'interroger sur la solidité des distances mesurées sur \emph{Smart Ray} attendu que dans un contexte \og réel \fg{} les utilisateurs seraient libres de se déplacer. Naturellement, la quantité de mouvement absolue du pointeur pourrait s'en trouver accrue, mais sa quantité de mouvement relatif à l'utilisateur pourrait diminuer. Il resterait à déterminer s'il est plus fatigant de bouger beaucoup son bras, ou un peu son corps et un peu son bras. Cette question est à notre connaissance ouverte.
 	
@@ -835,16 +835,16 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\item \textbf{\emph{Gaze-supported Expanded Target Selection} semi-fixe :} Contrairement à la technique précédente, la lentille cesse de bouger une fois activée, et l'utilisateur déplace le curseur au sein de la zone de zoom à l'aide de son regard, avant d'activer la sélection avec son écran tactile. Si son regard quitte la zone de zoom, alors la lentille se déplace. Voir la figure~\ref{fig:lookandtouch2}, vignettes de gauche et de droite.
 	\end{enumerate}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
 		\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
 		\label{fig:lookandtouch}
 	\end{figure}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch2}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
 		\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
 		\label{fig:lookandtouch2}
 	\end{figure}
@@ -854,14 +854,14 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances dans la plupart des cas, avec peut-être un léger avantage global à la technique \emph{MAGIC tab}. Du moins cette tendance est-elle confirmée par les impressions sujectives recueillies par Stellmach \emph{et al.}, et exposées sur la figure~\ref{fig:latSubj}.
 
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/latRes}
 		\caption[\emph{Look \&{} Touch -- performances}]{Performances obtenues pour les diverses techniques de type \emph{Look \&{} Touch}. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances. Crédit : \cite{stellmach2012look}.}
 		\label{fig:latRes}
 	\end{figure}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/latSubj}
 		\caption[\emph{Look \&{} Touch -- impressions subjectives}]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation des techniques \emph{Look \&{} Touch}. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête. Crédit : \cite{stellmach2012look}.}
@@ -881,7 +881,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
 
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad}
 		\caption[Fonctionnement de la technique SQUAD]{La technique SQUAD. À gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
