@@ -657,7 +657,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Principe}
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
-	\newcommand{\rayWidth}{0.75\textwidth}
+	\newcommand{\rayWidth}{0.65\textwidth}
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
@@ -709,25 +709,29 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Temps de sélection}
 	
 	Les temps de sélection mesurés par les auteurs pour les différentes techniques sont représentés sur la figure~\ref{fig:rayTimes}.
-
+	
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/rayTimes}
-		\caption[Évaluation des techniques de \emph{raycasting} avec désambiguïsation]{Évaluation des techniques de \emph{raycasting} avec désambiguïsation en environnement dense. Les résultats présentés sont les temps de sélection. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel. Crédit : \cite{grossman2006design}.}
-		\label{fig:rayTimes}
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/rayTimes}
+			\caption{Évaluation des techniques de \emph{raycasting} avec désambiguïsation en environnement dense. Les résultats présentés sont les temps de sélection. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel.}
+			\label{fig:rayTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/smartRayLocation}
+			\caption{Pour les cibles dont les identifiants sont faibles (plutôt situées vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont très mauvais pour les cibles dont les identifiants sont élevés (plutôt à droite). Or, tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite. De fait, il rencontrait beaucoup d'obstacles dans ce cas.}
+			\label{fig:smartRayLocation}
+		\end{subfigure}
+		\caption[Performances du \emph{raycasting} avec désambiguïsation]{Performances du \emph{raycasting} avec désambiguïsation. Crédit : \cite{grossman2006design}.}
+		\label{fig:rayPerf}
 	\end{figure}
 
 	Le premier constat est que le curseur ponctuel offre de très bonnes performances par rapport aux techniques de \emph{raycasting}, ce qui peut surprendre compte tenu des performances généralement supérieures de ces dernières~\cite{bowman2001testbed}. Mais le niveau d'occultation avec de nombreux distracteurs est tel que les performances de cette classe de techniques chutent. Toutefois, le \emph{Depth Ray} fournit de très bons résultats, meilleurs que ceux du curseur ponctuel. Il profite selon toute probabilité de l'intégration des phases de sélection et de désambiguïsation. Grossman \emph{et al.} remarquent au passage que le temps de désambiguïsation du \emph{Flower Ray} est relativement constant en fonction de l'emplacement de la cible, alors que celui du \emph{Lock Ray} varie beaucoup ; sans doute le menu radial du premier a-t-il un effet lisseur sur cette valeur.
 
 	\subsubsection{Performances en fontion de l'emplacement de la cible}
 	Les performances du \emph{Smart Ray} paraissent décevantes. Un examen plus poussé des résultats montre toutefois une forte interaction entre le temps de sélection et l'emplacement de la cible avec cette technique (voir la figure~\ref{fig:smartRayLocation}). Pour les cibles situées à droite, les performances s'effondrent, car le rayon part également de la droite (tous les sujets étant droitiers) donc rencontre beaucoup d'obstacles. Dans ces conditions, l'heuristique de prédiction du \emph{Smart Ray} échoue plus souvent.
-
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/smartRayLocation}
-		\caption[\emph{Smart Ray} et emplacement des cibles]{Pour les cibles dont les identifiants sont faibles (plutôt situées vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont très mauvais pour les cibles dont les identifiants sont élevés (plutôt à droite). Or, tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite. De fait, il rencontrait beaucoup d'obstacles dans ce cas. Crédit : \cite{grossman2006design}.}
-		\label{fig:smartRayLocation}
-	\end{figure}
 
 	Ces mauvais résultats du \emph{Smart Ray} sont toutefois à nuancer, puisque les sujets avaient pour instruction de ne pas bouger leurs pieds ; s'ils avaient pu se déplacer, les résultats auraient probablement été meilleurs, à condition que leur temps de déplacement ne soit pas assez long pour annuler le bénéfice du déplacement.
 	
