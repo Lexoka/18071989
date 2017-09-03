@@ -945,7 +945,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
-		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}, une technique de sélection en cascade. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (c'est-à-dire un rectangle partiellement transparent) s'ouvre et les cibles pré-sélectionnées y sont disposées après avoir été agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie (un \emph{smartphone}, en l'occurrence, mais cela pourrait être une tablette) ce qui permet à l'utilisateur de sélectionner l'objet désiré avec son pouce. Notez que cette technique est compatible avec les HMD et qu'elle n'affiche pas le petit encadré représentant la main de l'utilisateur en bas à gauche de chaque image ; ces encadrés sont présents ici à des fins purement illustratives. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (un rectangle semi-transparent) s'ouvre, les cibles pré-sélectionnées y sont disposées et agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie, ce qui permet à l'utilisateur de sélectionner la cible avec son pouce. Cette technique est compatible avec les HMD, et n'affiche pas le petit encadré en bas à gauche de chaque image, inséré ici à des fins illustratives. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvas}
 	\end{figure}
 	
@@ -962,17 +962,17 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dCanvasLayout}
-		\caption[\emph{Disambiguation Canvas} -- calibrage]{En (a), une étape de calibrage pour la deuxième phase du \emph{Disambiguation Canvas}. On demande ici à l'utilisateur de faire le tour de l'écran avec son pouce, en essayant de s'approcher des bords. Il en résulte un motif fermé représentant l'espace que l'utilisateur peut atteindre confortablement. En (b), cet espace est utilisé pour répartir les objets parmi lesquels figure la cible, que l'utilisateur pourra donc sélectionner aisément. Par défaut, l'emplacement où se trouve le curseur est laissé vide, pour éviter les sélections accidentelles et pour faciliter l'annulation en cas d'erreur au cours de la première phase. Crédit : \cite{debarba2013disambiguation}.}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/dCanvasLayout}
+		\caption[\emph{Disambiguation Canvas} -- calibrage]{(a) : étape de calibrage pour la deuxième phase du \emph{Disambiguation Canvas}. On demande ici à l'utilisateur de faire le tour de l'écran avec son pouce, en essayant de s'approcher des bords. Il en résulte un motif fermé représentant l'espace que l'utilisateur peut atteindre confortablement. (b) : cet espace est utilisé pour répartir les objets, dont la cible, que l'utilisateur pourra ainsi sélectionner aisément. Par défaut, l'emplacement du le curseur est laissé vide, pour éviter les sélections accidentelles et faciliter l'annulation en cas d'erreur au cours de la première phase. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasLayout}
 	\end{figure}
 	
 	Notez que les objets pré-sélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
 	
-	\begin{figure}[ht]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasDensity}
-		\caption[\emph{Disambiguation Canvas} -- densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. À gauche (a), 25 objets peuvent être sélectionnés, et sont de fait assez gros ; au milieu (b), ils sont 97, et de taille moyenne ; à droite (c) ils sont 224 et nettement plus petits. La loi de Fitts s'applique et nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas} -- densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. (a) : 25 objets peuvent être sélectionnés, et sont de fait assez gros ; (b) : ils sont 97, et de taille moyenne ; (c) : ils sont 224 et nettement plus petits. La loi de Fitts nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasDensity}
 	\end{figure}
 	
@@ -981,10 +981,10 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
-		\caption[\emph{Disambiguation Canvas} -- performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting} classique, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
+		\caption[\emph{Disambiguation Canvas} -- performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting}, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasRCPerf}
 	\end{figure}
 
