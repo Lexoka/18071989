@@ -994,9 +994,9 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, sans appel. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objets colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées avec une pression du pouce.	
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dCanvasSPerf}
+		\includegraphics[width=0.90\textwidth]{figures/ch2/dCanvasSPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasSPerf}
 	\end{figure}
@@ -1008,7 +1008,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon \og douce \fg{} et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
 		\caption[\emph{Disambiguation Canvas} -- animation de transition]{Animation pendant la transition entre la phase de pré-sélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
@@ -1032,22 +1032,26 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Le \emph{Delphian Desktop}~\cite{asano2005predictive} est une technique de prédiction de l'intention de l'utilisateur, qui analyse la position du curseur dans le temps pour essayer de déterminer si un pic de vélocité pour le mouvement en cours a été atteint. Il s'inspire d'observations sur les systèmes perceptif et moteur de l'humain, issues de diverses études de psychologie et kinésiologie~\cite{accot2003refining, graham1995pointing, graham1996physical, mackenzie1992extending, mackenzie1994prediction, takagi2002fundamental, walker1993spatial}.
 	
 	On sait en effet depuis un étude de Walker \emph{et al.}~\cite{walker1993spatial} que la hauteur du pic de vitesse d'un curseur croît avec la distance entre la cible et lui-même, avec un profil typique illustré par la figure~\ref{fig:delphianPeak}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
-		\caption[Profil de vitesse d'un curseur pendant une tâche de pointage]{Profil de vitesse d'un curseur pendant une tâche de pointage. Le curseur accélère au cours de la phase de balistique (\emph{Plan time}) puis décélère pendant la phase de correction (\emph{Adjustment time}). Crédit : \cite{asano2005predictive}.}
-		\label{fig:delphianPeak}
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
+			\caption{Profil de vitesse d'un curseur pendant une tâche de pointage. Le curseur accélère au cours de la phase de balistique (\emph{Plan time}) puis décélère pendant la phase de correction (\emph{Adjustment time}).}
+			\label{fig:delphianPeak}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/delphianSpeedDist}
+			\caption{Pic de vitesse du curseur en fonction de la distance à parcourir..}
+			\label{fig:delphianSpeedDist}
+		\end{subfigure}
+		\caption[\emph{Delphian Desktop} : vitesse du curseur]{\emph{Delphian Desktop} : vitesse du curseur. Crédit : \cite{asano2005predictive}.}
+		\label{fig:plop}
 	\end{figure}
 	
 	Cette croissance est quant à elle illustrée par la figure~\ref{fig:delphianSpeedDist}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/delphianSpeedDist}
-		\caption[Pic de vitesse du curseur en fonction de la distance à parcourir]{Pic de vitesse du curseur en fonction de la distance à parcourir. Crédit : \cite{asano2005predictive}.}
-		\label{fig:delphianSpeedDist}
-	\end{figure}
 	
 	Le fonctionnement du \emph{Delphian Desktop} est basé sur les hypothèses suivantes :
 	

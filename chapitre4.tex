@@ -33,13 +33,13 @@
     Du fait de son fondement sur les paramètres $V$, $F$ et $A$, nous appellerons simplement ce modèle $VFA$.
     
     \subsection{VFA en 3D}
-    Quelques observations s'imposent. Tout d'abord, bien que décrit ici pour deux dimensions, ce modèle est naturellement extensible à l'espace tridimensionnel. En effet, les paramètres $V$, $F$ et $A$ ne changent pas ; seul un ajustement est nécessaire : la rotation du vecteur direction de l'objet animé doit se faire selon un axe qui, pour que la rotation effective soit toujours la même pour un angle donné, doit être orthogonal à $\vec{dir}$. Notre modèle étendu VFA3D fonctionne donc comme le modèle VFA, mais avec un axe de rotation orthogonal à $\vec{dir}$ choisi aléatoirement.
+    Quelques observations s'imposent. Tout d'abord, bien que décrit ici pour deux dimensions, ce modèle est naturellement extensible à l'espace tridimensionnel. En effet, les paramètres $V$, $F$ et $A$ ne changent pas ; seule un ajustement est nécessaire : la rotation du vecteur direction de l'objet animé doit se faire selon un axe qui, pour que la rotation effective soit toujours la même pour un angle donné, doit être orthogonal à $\vec{dir}$. Notre modèle étendu VFA3D fonctionne donc comme le modèle VFA, mais avec un axe de rotation orthogonal à $\vec{dir}$ choisi aléatoirement.
     
     \subsection{Un modèle puissant mais limité}
-	Les capacités offertes par le modèle VFA sont très nombreuses, mais demeurent limitées, et ne peuvent couvrir tous les besoins possibles en matière de génération de mouvement aléatoire.
+	Les capacités offertes par le modèle VFA sont très nombreuses, mais demeurent limitées, et ne peuvent couvrir tous les besoins possible en matière de génération de mouvement aléatoire.
     
     \subsubsection{Vitesse constante}
-    Comme nous l'avons partiellement montré dans le chapitre~\ref{chap3}, le fait de varier les paramètres, en particulier $F$ et $A$, permet de générer des types de mouvements subjectivement très différents (voir les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180}), et d'enveloppes convexes de tailles très différentes également (voir la figure~\ref{fig:trajAreas}). Néanmoins, et outre le problème des objets autocorrélés, notre modèle repose notamment sur une vitesse constante, ce qui, de fait, exclut tous les objets susceptibles d'accélérer. Là encore, ce choix fut fait pour limiter le nombre de paramètres, toujours dans l'objectif d'atteindre un compromis entre la simplicité du modèle et sa capacité à générer des mouvements que nos sujets puissent percevoir comme fondamentalement différents.
+    Comme nous l'avons partiellement montré dans le chapitre~\ref{chap3}, le fait de varier les paramètres, en particulier $F$ et $A$, permet de générer des types de mouvement subjectivement très différents (voir les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180}), et d'enveloppes convexes de tailles très différentes également (voir la figure~\ref{fig:trajAreas}). Néanmoins, et outre le problème des objets autocorrélés, notre modèle repose notamment sur une vitesse constante, ce qui, de fait, exclut tous les objets susceptibles d'accélérer. Là encore, ce choix fut fait pour limiter le nombre de paramètres, toujours dans l'objectif d'atteindre un compromis entre la simplicité du modèle et sa capacité à générer des mouvements que nos sujets puissent percevoir comme fondamentalement différents.
     
 	Nous souhaitions tout particulièrement pouvoir générer du mouvement perçu comme \og régulier \fg{} ou \og prévisible \fg{} ainsi que du mouvement \og irrégulier \fg{}, \og saccadé \fg{} ou \og imprévisible \fg{}.
     
@@ -85,7 +85,7 @@
 	\end{figure}
     
     \subsection{Proposition de modèles de génération de mouvements autocorrélés}
-    Les objets autocorrélés présentent néanmoins un intérêt certain, et les trajectoires pseudo-autocorrélées ne sont que des approximations qui peuvent s'avérer insuffisantes. Ces objets pourraient faire l'objet d'études spécifiques pour lesquelles de telles approximations ne seraient pas suffisantes. Nous proposons donc ici deux modèles différents permettant de générer des mouvements réellement autocorrélés.
+    Les objets autocorrélés présentent néanmoins un intérêt certain, et les trajectoires pseudo-autocorrélées ne sont que des approximations qui peuvent s'avérer unsuffisantes. Ces objets pourraient faire l'objet d'études spécifiques pour lequelles de telles approximations ne seraient pas suffisantes. Nous proposons donc ici deux modèles différents permettant de générer des mouvements réellement autocorrélés.
     
     \subsubsection{Modèle VFA à mémoire}
     Une première option pour un modèle adapté aux objets autocorrélés serait d'adapter le modèle VFA en lui ajoutant une mémoire, par exemple une mémoire du dernier changement de direction de l'objet concerné. L'on retiendrait ainsi l'angle du changement de direction à l'instant précédent ($\alpha_{t-T}$, avec $T = \frac{1}{F}$), et l'on pourrait appliquer un nouveau changement avec un angle plus ou moins proche de ce dernier, selon des paramètres. L'équation~\ref{eq:vfamem} présente une possibilité, où $\alpha$ est échantilloné entre $-A$ et $+A$, et $c_{ac} \in [0,1]$ est un coefficient d'autocorrélation.
@@ -134,7 +134,7 @@
 	\subsubsection{Erreurs et échecs}
 	La sélection de cibles implique un compromis entre vitesse et précision~\cite{guiard2011fitt}, et les utilisateurs sont généralement libres d'adopter différentes approches de ce compromis, privilégiant le premier ou le second objectif. Il peut en résulter, d'un utilisateur à l'autre, d'importants écarts de temps de sélection et de taux d'erreurs. Afin de minimiser ces variations, nos sujets avaient pour instruction de sélectionner leurs cibles le plus rapidement possible, mais avec un maximum de 5 tentatives.
 	
-	Le nombre de tentatives encore possibles était affiché dans le coin supérieur gauche de la fenêtre (voir la figure~\ref{fig:app}). Après la dernière tentative, en cas d'échec le mot \emph{failure} était affiché à la place du nombre de tentatives, indiquant un échec. Mais les sujets avaient pour instruction de continuer à essayer de sélectionner la cible, sans plus chercher à minimiser les erreurs. Cette particularité de notre dispositif expérimental était nécessaire pour avoir suffisamment de données (en temps de sélection) pour les conditions les plus difficiles, qui généraient énormément d'erreurs.
+	Le nombre de tentatives encore possible était affiché dans le coin supérieur gauche de la fenêtre (voir la figure~\ref{fig:app}). Après la dernière tentative, en cas d'échec le mot \emph{failure} était affiché à la place du nombre de tentatives, indiquant un échec. Mais les sujets avaient pour instruction de continuer à essayer de sélectionner la cible, sans plus chercher à minimiser les erreurs. Cette particularité de notre dispositif expérimental était nécessaire pour avoir suffisamment de données (en temps de sélection) pour les conditions les plus difficiles, qui généraient énormément d'erreurs.
 	
 	Elle a néanmoins l'inconvénient de réduire quelque peu les temps de sélection des conditions les plus difficiles, tout en augmentant leurs taux d'erreurs. Ainsi, les échecs ne sont pas absolus, mais indiquent les conditions pour lesquelles la sélection est (parfois extrêmement) difficile.
 	
@@ -147,7 +147,7 @@
 		\item[A :] 0, 30, 60, 90, 120 et 180 degrés, soit 6 valeurs.
 	\end{description}
 	
-	À ceci s'ajoutait une condition de base avec des cibles statiques, répétée 20 fois. Naturellement, lorsque $A = 0$, les cibles se déplacent en ligne droite. Au total, nous avons évalué $3 \times 7 \times 6 + 1 = 127$ conditions avec 4 essais par condition dynamique et 20 essais pour la condition statique, soit un total de $126 \times 4 + 1 \times 120 = 524$ essais par participant, et $524 \times 13 = 6812$ essais au total.
+	À ceci s'ajoutait une condition de base avec des cibles statiques, répétée 20 fois. Naturellement, lorsque $A = 0$, les cibles se déplacent en ligne droite. Au total, nous avons évalué $3 \times 7 \times 6 + 1 = 127$ conditions ave 4 essais par condition dynamique et 20 essais pour la condition statique, soit un total de $126 \times 4 + 1 \times 120 = 524$ essais par participant, et $524 \times 13 = 6812$ essais au total.
 	
 	La conception de ce protocole impliquait un compromis difficile entre plusieurs objectifs contradictoires : avoir suffisamment de conditions pour évaluer un échantillon représentatif des types de mouvements possibles, avoir suffisamment de données par condition pour avoir des résultats fiables, limiter l'évaluation dans le temps et dans l'intensité pour limiter la fatigue des sujets et ne pas les décourager.
 	
@@ -181,7 +181,7 @@
 	Les valeurs présentées ici sont des moyennes calculées sur l'ensemble de nos sujets.
 	
 	\subsection{Temps de sélection}
-	Les performances de sélection dans les conditions les plus faciles étaient relativement stables d'un sujet à l'autre : le plus lent fut moins de quatre fois plus lent que le plus rapide pour le mouvement rectiligne. Cependant, pour les conditions les plus difficiles, les écarts peuvent être considérables, d'un facteur supérieur à 18 du sujet le plus rapide au plus lent.
+	Les performances de sélection dans les conditions les plus faciles étaient relativement stable d'un sujet à l'autre : le plus lent fut moins de quatre fois plus lent que le plus rapide pour le mouvement rectiligne. Cependant, pour les conditions les plus difficiles, les écarts peuvent être considérables, d'un facteur supérieur à 18 du sujet le plus rapide au plus lent.
 	
 	\subsubsection{Temps de sélection normalisés}
 	Par conséquent, et pour éviter d'accorder trop de poids aux sujets les plus lents, nous avons choisi de normaliser les temps de sélection par sujet. Ainsi, pour chaque sujet, le temps de sélection normalisé (TSN) est la moyenne des temps de sélection par condition, normalisée selon la condition la plus difficile \emph{pour le sujet en question}.
@@ -197,7 +197,7 @@
 	\subsubsection{Échecs}
 	Un échec survient lorsque pour une tâche de sélection, un sujet commet au moins 5 erreurs. 	Un taux d'échecs (TECH) de 50~\%{} pour une condition donnée signifie que la moitié des essais pour cette condition ont mené à un échec (5 clics erronés ou plus) sur l'ensemble des sujets.
 	
-	Notez que du fait d'inquiétudes croissantes dans divers domaines de recherche concernant les limites des tests de significativité d'hypothèse nulle~\cite{dragicevic2014running, cumming2014new}, nos analyses se fondent principalement sur les tailles d'effets, rapportées ici sous forme de différences de pourcentage $p$, calculées selon la formule suivante, pour deux mesures $m_{1}$ et $m_{2}$ : $p = 100 \times \frac{\abs*{m_{2} - m_{1}}}{\frac{m_{1} + m_{2}}{2}}$.
+	Notez que du fait d'inquiétudes croissantes dans divers domaines de recherche concernant les limites des tests de significativité d'hypothèse nulle~\cite{dragicevic2014running, cumming2014new}, nos analyses se fondent principalement sur les tailles d'effets, rapportés ici sous forme de différences de pourcentage $p$, calculées selon la formule suivante, pour deux mesures $m_{1}$ et $m_{2}$ : $p = 100 \times \frac{\abs*{m_{2} - m_{1}}}{\frac{m_{1} + m_{2}}{2}}$.
 
 	\subsection{Vitesse}
 	Sans surprise, les temps de sélection et les taux d'erreurs croissent avec la vitesse des cibles, comme l'illustre la figure~\ref{fig:spEffectPerf}. Ainsi, la moyenne des MTSN de toutes les conditions lentes (0,73~cm/s) est de 16,74~\%{}, celle des conditions de vitesse intermédiaire est de 25,02~\%{}, et celle des conditions rapides est de 36,58~\%{}. Les différences de pourcentages croisées entre ces conditions sont présentées dans le tableau~\ref{tab:spPerf}.
@@ -218,7 +218,7 @@
 		\label{tab:spPerf}
 	\end{table}
 	
-	On observe que les MTSN et TERR sont approximativement des fonctions affines de la vitesse, pour une pseudo-entropie (i.e., le produit AF) donnée. Les TECH tendent à croître de façon super-linéaire, probablement du fait de l'effet de seuil introduit par notre définition (arbitraire) d'un échec.
+	On observe que les MTSN et TERR sont approximativement des fonctions affine de la vitesse, pour une pseudo-entropie (i.e., le produit AF) donnée. Les TECH tendent à croître de façon super-linéaire, probablement du fait de l'effet de seuil introduit par notre définition (arbitraire) d'un échec.
 
 	\newcommand{\subImgWlineplot}{0.48\textwidth}
 	\begin{figure}[!htb]
@@ -272,7 +272,7 @@
 	\subsection{Angle}
 	L'effet du paramètre d'angle est plus subtile à interpréter, notamment du fait d'intéractions avec la vitesse et la fréquence. À basse vitesse, l'effet de A sur les MTSN est faible : pour $V = 0,73$ et $F = 4$, quand $A= 0$, $MTSN = 14~\%{}$ alors que quand $A = 120$, $MTSN = 20~\%{}$, soit une différence de pourcentage de seulement 33~\%{}, et qui plus est la plus importante mesurée entre deux valeurs de A pour cette vitesse. En revanche, lorsque S vaut 2,19, alors les MTSN sont respectivement 21~\%{} et 54~\%{} pour les mêmes valeurs de A et F, ce qui représente une différence de pourcentage de 90~\%{}.
 	
-	L'inteprétation que nous proposons est qu'à basse vitesse, la sélection est de toute façon relativement facile, presque indépendamment de la nature du mouvement, ce qui n'est plus du tout vrai avec des cibles rapides. Ces résultats sont illustrés par la figure~\ref{fig:aEffectPerf}.
+	L'inteprétation que nous proposons est qu'à basse vitesse, la sélection est de toute façon relativement facile, presque indépendamment de la nature du mouvement, ce qui n'est plus du tout vrai avec des cibles rapides. Ces résultats sont illstrés par la figure~\ref{fig:aEffectPerf}.
 
 	\begin{figure}[!htb]
 		\centering
@@ -378,7 +378,7 @@
 	\end{figure}
 
 \section{Analyse exploratoire}
-	Nous avons également porté un regard sur notre espace de paramètres entiers afin d'identifier des tendances plus générales.
+	Nous avons également porté un regard sur notre espace de paramètres entier afin d'identifier des tendances plus générales.
 
 	Les cartes thermiques (\emph{heat maps}) sur les figures~\ref{fig:hmap_t_146} et~\ref{fig:hmap_t_219} présentent les MTSN pour toutes les combinaisons de A et F aux vitesses intermédiaire et élevée, respectivement. Sur chaque carte, A se lit sur l'axe des abscisses, et F sur celui des ordonnées. Les TERR et TECH sont également représentés sur la figure~\ref{fig:hmaps}.
 	
@@ -431,7 +431,7 @@
 			\caption{Taux d'échecs pour $V = 2,19$.}
 			\label{fig:hmap_f_219}
 		\end{subfigure}
-		\caption[Effets combinés de F et A sur les performances de sélection]{Effets combinés de F et A sur les performances de sélection. Les MTSN, TERR et TECH sont présentés pour toutes les valeurs de F et de A que nous avons testées, à moyenne et haute vitesse. Ces cartes thermiques (\emph{heat maps}) utilisent la couleur pour représenter une grandeur, selon l'échelle indiquée à leur droite. Les valeurs de A se lisent en abscisse, et celles de F en ordonnée. Ainsi, pour une vitesse donnée, toutes les combinaisons de A et F sont représentées.}
+		\caption[Effets combinés de F et A sur les performances de sélection]{Effets combinés de F et A sur les performances de sélection. Les MTSN, TERR et TECH sont présentés pour toutes les valeurs de F et de A que nous avons testées, à moyenne et haute vitesse. Ces cartes thermiques (\emph{heat maps}) utilisent la couleur pour représenter une grandeur, selon l'échelle indiquée à leur droite. Les valeurs de A se lisent en abscisse, et celles de F en ordonnée. Ainsi, pour une vitesse données, toutes les combinaisons de A et F sont représentées.}
 		\label{fig:hmaps}
 	\end{figure}
 
@@ -460,16 +460,16 @@
 		\begin{subfigure}[t]{\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/MTSNvAF}
-			\caption{MTSN sur les cibles rapides en fonction du produit AF après lissage, et approximation polynomiale (cubique). Le coefficient de détermination est légèrement supérieur à 92~\%{}, mais la croissance du polynôme à partir de $AF \approx 3750$ montre bien que ce modèle ne peut être utile que sur un intervalle borné.}
+			\caption{MTSN sur les cibles rapides en fonction du produit AF après lissage, et approximation polynomiale (cubique). Le coefficient de détermination est légèrement supérieur à 92~\%{}, mais la croissance du polynome à partir de $AF \approx 3750$ montre bien que ce modèle ne peut être utile que sur un intervalle borné.}
 			\label{fig:tAF_smooth}
 		\end{subfigure}
 		\caption[MTSN en fonction du produit AF]{MTSN en fonction du produit AF.}
 		\label{fig:tAF}
 	\end{figure}
 	
-	Comme on le constate, les courbes se superposent --- ce qui est assez logique compte tenu de l'effet approximativement linéaire de la vitesse sur les MTSN observées plus haut. Pour une vitesse donnée, la pseudo-entropie paraît donc offrir un moyen d'estimer la difficulté de sélection, par exemple en calculant la distance entre le produit AF d'une condition et la valeur $AF_{pic}$, si elle est connue.
+	Comme on le constate, les courbes se superposent --- ce qui est assez logique compte tenu de l'effet approximativement linéaire de la vitesse sur les MTSN observé plus haut. Pour une vitesse donnée, la pseudo-entropie paraît donc offrir un moyen d'estimer la difficulté de sélection, par exemple en calculant la distance entre le produit AF d'une condition et la valeur $AF_{pic}$, si elle est connue.
 	
-	Nous proposons également un modèle très simple permettant d'estimer le temps de sélection en fonction du produit AF, sous la forme d'un polynôme cubique, illustré sur la figure~\ref{fig:tAF_smooth}. Il est cependant évident, du fait de la croissance de ce polynôme après $AF \approx 3750$, que le champ d'application de ce modèle doit être limité à $AF \in [0, 3000]$, approximativement. L'on pourrait d'ailleurs se contenter d'un polynôme quadratique sur cet intervalle, au prix d'une légère perte de précision ($R^{2} \approx 88,6~\%{}$).
+	Nous proposons également un modèle très simple permettant d'estimer le temps de sélection en fonction du produit AF, sous la forme d'un polynome cubique, illustré sur la figure~\ref{fig:tAF_smooth}. Il est cependant évident, du fait de la croissance de ce polynome après $AF \approx 3750$, que le champ d'application de ce modèle doit être limité à $AF \in [0, 3000]$, approximativement. L'on pourrait d'ailleurs se contenter d'un polynome quadratique sur cet intervalle, au prix d'une légère perte de précision ($R^{2} \approx 88,6~\%{}$).
 	
 	\subsubsection{Variations individuelles}
 	La discussion de ces résultats ne serait pas complète sans préciser que même si la \og diagonale de difficulté \fg{} est observable et stable dans les résultats de tous nos sujets, les conditions les plus difficiles ne sont pas toujours les mêmes, quoiqu'elles soient toujours sur ladite diagonale. La figure~\ref{fig:tVariation} illustre ces variations, en s'appuyant sur l'exemple de deux sujets.
@@ -492,7 +492,7 @@
 		\label{fig:tVariation}
 	\end{figure}
 	
-	Dans les deux cas, des valeurs de AF intermédiaires (qui caractérisent la diagonale de difficulté) sont associées aux conditions les plus difficiles ; mais pour un sujet, ce sont les basses fréquences accompagnées de grands angles qui posent le plus de problèmes (figure~\ref{fig:08times}), tandis que pour l'autre, ce sont les hautes fréquences accompagnées de petits angles (figure~\ref{fig:09times}). Il est difficile de dire d'où proviennent ces différences.
+	Dans les deux cas, des valeurs de AF intermédiaires (qui caractérisent la diagonale de difficulté) sont associés aux conditions les plus difficiles ; mais pour un sujet, ce sont les basses fréquences accompagnées de grands angles qui posent le plus de problèmes (figure~\ref{fig:08times}), tandis que pour l'autre, ce sont les hautes fréquences accompagnées de petits angles (figure~\ref{fig:09times}). Il est difficile de dire d'où proviennent ces différences.
 	
 	Observons cependant que le sujet de la figure~\ref{fig:08times} a obtenu, globalement, de bien meilleures performances que celui de la figure~\ref{fig:09times}. Cependant nos sujets les plus lents n'ont pas nécessairement rencontré leurs difficultés maximales sur cette zone de la diagonale de difficulté, et ne sont pas assez nombreux pour que nous puissions en tirer des résultats significatifs.
 
@@ -501,7 +501,7 @@
 	
 	\subsubsection{Catégories et stratégies}
 	\paragraph{Catégories.}
-	Nos sujets ont d'abord décrit une première forme de mouvement \og stable \fg{} (et parfois qualifié de \og prévisible \fg{}), caractérisé par des lignes approximativement droites, avec des changements de directions faibles ou rares. Il est intéressant d'observer qu'un sujet précisa que les changements de direction survenaient \og toutes les deux secondes \fg{}, ce qui impliquerait $F = 0,5$~Hz quand la valeur minimale de F testée était 1~Hz. Peut-être la concentration intense perturbe-t-elle la perception du temps\ldots{} Les descriptions détaillées fournies par nos sujets nous permettent de relier cette catégorie aux conditions pour lesquelles AF est faible (les coins inférieurs gauches de nos cartes thermiques, figure~\ref{fig:hmaps}). Appelons cette catégorie \emph{stable}.
+	Nos sujets ont d'abord décrit une première forme de mouvement \og stable \fg{} (et parfois qualifié de \og prévisible \fg{}), caractérisé par des lignes approximativement droites, avec des changements de directions faibles ou rares. Il est intéressant d'observer qu'un sujet précisa que les changements de direction survenaient \og toutes les deux secondes \fg{}, ce qui impliquerait $F = 0,5$~Hz quand la valeur minimale de F testée était 1~Hz. Peut-être la concentration intense perturbe-t-elle la perception du temps\ldots{} Les descriptions détaillées fournies par nos sujets nous permettent de relier cette catégorie aux condition pour lesquelles AF est faible (les coins inférieurs gauches de nos cartes thermiques, figure~\ref{fig:hmaps}). Appelons cette catégorie \emph{stable}.
 	
 	Une seconde forme de mouvement fut identifiée, qualifiée de \og saccadée \fg{}, \og irrégulière \fg{} ou encore \og imprévisible \fg{}. Plus précisément, nos sujets mentionnèrent des changements de direction fréquents et importants. Ces indications nous permettent d'associer cette catégorie aux conditions de valeur AF intermédiaire, situées sur la \og diagonale de difficulté \fg{} de nos cartes thermiques. Appelons cette catégorie \emph{saccadée}.
 	
@@ -523,12 +523,12 @@
 	
 	En revanche, la catégorie saccadée semble très difficile à prédire, à tel point qu'aucun de nos sujets n'a rapporté avoir cherché à anticiper ou prédire de tels mouvements pour sélectionner une cible de cette catégorie. Nous en déduisons que les catégories stable et vibratoire sont caractérisées par des sélections relativement aisées du fait de la nature prévisible de leurs mouvements, tandis que la catégorie saccadée est caractérisée par des sélections difficiles du fait de la nature imprévisible de ses mouvements.
 	
-	Cette observation peut paraître quelque peu contre-intuitive pour la catégorie vibratoire, du fait de sa pseudo-entropie particulièrement élevée. L'on pourrait en effet supposer qu'une grande quantité de désordre dans le mouvement nuise à sa prévisibilité et donc gène considérablement la sélection, mais dans les faits, la nature \og contenue \fg{} du mouvement vibratoire semble en faciliter la prévision, fût-elle approximative. Les cibles ayant une aire non-nulle, la prévision n'a en effet pas besoin d'être parfaite. Nous explorerons cette hypothèse plus avant dans une prochaine section de ce chapitre.
+	Cette observation peut paraître quelque peu contre-intuitive pour la catégorie vibratoire, du fait de sa pseudo-entropie particulièrement élevée. L'on pourrait en effet supposer qu'une grande quantité de désordre dans le mouvement nuise à sa prévisibilité et donc gène considérablement la sélection, mais dans les faits, la nature \og contenue \fg{} du mouvement vibratoire semble en facilité la prévision, fût-elle approximative. Les cibles ayant une aire non-nulle, la prévision n'a en effet pas besoin d'être parfaite. Nous explorerons cette hypothèse plus avant dans une prochaine section de ce chapitre.
 	
-	Bien sûr, il faut préciser que les frontières entre ces trois catégories ne sont ni clairement délimitées ni absolues, comme le montrent nos cartes thermiques (figure~\ref{fig:hmaps}) ou encore les mesures de MTSN en fonction de AF (figure~\ref{fig:tAF}). Sans doute dépendent-elles en plus des perceptions individuelles de chacun, mais elles fournissent un guide pour comprendre la difficulté de sélection des cibles mobiles en fonction de la nature de leurs mouvements.
+	Bien sûr, il faut préciser que les frontières entre ces trois catégories ne sont ni clairement délimitées ni absolues, comme le montrent nos cartes thermiques (figure~\ref{fig:hmaps}) ou encore les mesures de MTSN en fonction de AF (figure~\ref{fig:tAF}). Sans doutent dépendent-elles en plus des perceptions individuelles de chacun, mais elles fournissent un guide pour comprendre la difficulté de sélection des cibles mobiles en fonction de la nature de leurs mouvements.
 	
 \section{Profils de vitesse du curseur}
-	Comme nous le soulignions lors du chapitre~\ref{chap2}, un mouvement de sélection est généralement divisé en une première phase, rapide, de longue distance et dite \emph{balistique}, et une seconde phase, lente, de courte distance et communément appelée \emph{de correction}~\cite{mackenzie1987three, crossman1983feedback}. Ce principe est illustré par la figure~\ref{fig:ballistic}.
+	Comme nous le soulignions lors du chapitre~\ref{chap2}, un mouvement de sélection est généralement divisée en une première phase, rapide, de longue distance et dite \emph{balistique}, et une seconde phase, lente, de courte distance et communément appelée \emph{de correction}~\cite{mackenzie1987three, crossman1983feedback}. Ce principe est illustré par les figures~\ref{fig:ballistic} et~\ref{fig:delphianPeak}.
 	
 	Nous notions alors que, d'après divers travaux, une sélection difficile rallonge la phase de correction, et avancions que les difficultés présentées par le caractère mobile des cibles qui nous intéressent pouvait mener à une observation similaire.
 	
@@ -579,7 +579,7 @@
 		\label{fig:staticProfiles}
 	\end{figure}
 	
-	On constate sur ces profils que les phases balistique et de correction sont relativement équilibrées, leur part respective du temps de sélection étant approximativement les mêmes. Précisons que la limite entre la phase balistique et la phase de correction n'est pas toujours délimitée de façon très précise, aussi est-il difficile d'en faire des mesures exactes. Mais il est possible de tirer des enseignements d'un examen visuel des profils, ainsi que de mesures quantitatives et précises de la vitesse du curseur.
+	On constate sur ces profils que les phases balistiques et de correction sont relativement équilibrées, leurs part respectives du temps de sélection étant approximativement les mêmes. Précisions que la limite entre la phase balistique et la phase de correction n'est pas toujours délimitée de façon très précise, aussi est-il difficile d'en faire des mesures exactes. Mais il est possible de tirer des enseignements d'un examen visuel des profils, ainsi que de mesures quantitatives et précises de la vitesse du curseur.
 	
 	\subsubsection{Cibles en mouvement rectiligne}
 	Si l'on compare les profils de la figure~\ref{fig:staticProfiles}, enregistrés pendant des sélections de cibles statiques, à ceux de la figure~\ref{fig:rectProfiles}, issus de sélections de cibles de mouvement rectiligne, on remarque déjà des différences, alors que le mouvement rectiligne est celui qui génère le moins de difficultés. On observe en effet que les sélections sont plus longues, mais que la durée des phases balistiques n'est pas sensiblement modifiée. En revanche, les phases de correction sont rallongées, et leur forme change quelque peu, avec l'apparition d'oscillations dont l'amplitude peut atteindre --- voire dépasser --- les 10~cm/s.
@@ -723,7 +723,7 @@
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/areaVspeed}
-		\caption[Aire de l'enveloppe convexe en fonction de la vitesse]{Aire de l'enveloppe convexe d'une trajectoire (de 5 secondes) en fonction de la vitesse. Les paramètres A et F sont fixés (à respectivement 120\textdegree{} et 8~Hz) et la vitesse varie de 0,125~cm/s à 4~cm/s. Pour chaque valeur de V, on mesure l'aire moyenne de l'enveloppe convexe de la trajectoire générée. Les mesures sont en bleu et une approximation linéaire est représentée en rouge, avec son équation et son coefficient de détermination $R^{2} > 0,9999$.}
+		\caption[Aire de l'enveloppe convexe en fonction de la vitesse]{Aire de l'enveloppe convexe d'une trajectoire (de 5 secondes) en fonction de la vitesse. Les paramètres A et F sont fixés (à respectivement 120\textdegree{} et 8~Hz) et la vitesse varie de 0,125~cm/s à 4~cm/s. Pour chaque valeur de V, on mesure l'aire moyenne de l'enveloppe convexe de la trajectoire génrée. Les mesures sont en bleu et une approximation linéaire est représentée en rouge, avec son équation et son coefficient de détermination $R^{2} > 0,9999$.}
 		\label{fig:avspeed}
 	\end{figure}
 	
@@ -873,10 +873,10 @@
 
 	En considérant tous les points uniformément, les résultats sont difficiles à lire, mais les couleurs que nous avons utilisées permettent de distinguer les résultats en fonction de la vitesse de la cible sélectionnée, et nous apportent quelques informations. Tout d'abord, chaque sous-ensemble de points associé à une vitesse donnée forme une courbe \og en cloche \fg{} distincte des autres.
 	
-	Notez que les points situés en bas à gauche de la figure correspondent aux cibles de mouvements rectilignes. Leurs aires ne sont pas nulles car nous avons assimilé (par approximation) les cibles à de petits carrés, donc un mouvement rectiligne est associé à un rectangle très allongé. Concrètement, l'effet est négligeable par rapport à des cibles ponctuelles.
+	Notez que les points situés en bas à gauche de la figure correspondent aux cibles de mouvements rectilignes. Leurs aires ne sont pas nulles car nous avons assimilés (par approximation) les cibles à de petits carrés, donc un mouvement rectiligne est associé à un rectangle très allongé. Concrètement, l'effet est négligeable par rapport à des cibles ponctuelles.
 	
 	\subsection{Normalisation du temps par rapport à la vitesse}
-	Il apparaît donc que la vitesse est un critère déterminant pour interpréter les performances de sélection en fonction de l'aire de l'enveloppe convexe. Or, les résultats présentés dans les sections précédentes montraient déjà un effet approximativement linéaire de la vitesse sur le temps de sélection. Nous pouvons donc examiner les MTSN divisées par la vitesse en fonction de $\mathcal{A}(ec)$. Ces résultats sont présentés sur la figure~\ref{fig:perfVareaTimeNormedAll}.
+	Il apparaît donc que la vitesse est un critère déterminant pour interpréter les performances de sélection en fonction de l'aire de l'enveloppe convexe. Or, les résultats présentés dans les sections précédentes montraient déjà un effet approximativement linéaire de la vitesse sur le temps de sélection. Nous pouvons donc examiner les MTSN divisés par la vitesse en fonction de $\mathcal{A}(ec)$. Ces résultats sont présentés sur la figure~\ref{fig:perfVareaTimeNormedAll}.
 	
 	\begin{figure}[!htb]
 		\centering
@@ -910,7 +910,7 @@
 	\subsection{Interprétation}
 	Ce motif est relativement familier en ce qu'il rappelle ce que nous avions observé avec la pseudo-entropie (le produit AF) mais il est ici plus net.
 	
-	Comme nous l'avons vu dans les sections précédentes, en particulier sur la figure~\ref{fig:gammaASQRTF}, $\mathcal{A}(ec)$ est grande quand $A\sqrt{F}$ est petit et décroît en fonction de $A\sqrt{F}$. Ce qui est vrai pour $A\sqrt{F}$ l'est également pour AF, or nous savons que de grandes valeurs de AF correspondent à de courts temps de sélection, car elles sont associées à des conditions vibratoires --- donc relativement prévisibles. De même, nous savons que les plus petites valeurs de AF correspondent à des conditions quasi-rectilignes, prévisibles et associées à de courts temps de sélection. Enfin, nous savons que les valeurs intermédiaires de AF correspondent aux conditions saccadées --- les plus difficiles.
+	Comme nous l'avons vu dans les sections précédentes, en particulier sur la figure~\ref{fig:gammaASQRTF}, $\mathcal{A}(ec)$ est grande quand $A\sqrt{F}$ est petit et décroît en fonction de $A\sqrt{F}$. Ce qui est vrai pour $A\sqrt{F}$ l'est également pour AF, or nous savons que de grandes valeurs de AF correspondent à de courts temps de sélection, car elles sont associées à des conditions vibratoires --- donc relativement prévisibles. De même, nous savons que les plus petites valeurs de AF correspondent à des conditions quasi-rectilignes, prévisibles et associées à de courts temps de sélection. Enfin, nous avons que les valeurs intermédiaires de AF correspondent aux conditions saccadées --- les plus difficiles.
 	
 	De fait, nous pouvons interpréter ces courbes de la façon suivante :
 	\begin{itemize}
@@ -926,7 +926,7 @@
 	En pratique, il est difficile de trouver une modélisation de $\frac{MTSN}{V}$ en fonction de $mathcal{A}(ec)/V$, mais nous pouvons faire quelques observations :
 	
 	\begin{itemize}
-		\item lorsque l'aire est très grande (mouvements prévisibles) la MTSN est basse mais admet une borne inférieure (déterminée par le temps de sélection d'une cible statique) ;
+		\item lorsque l'aire est très grande (mouvements prévisibles) la MTSN est basse mais admet une borne inférieure (déterminé par le temps de sélection d'une cible statique) ;
 		\item lorsque l'aire atteint une certaine valeur, que nous pouvons nommer $\mathcal{A}_{pic}(ec)$, la MTSN est maximale ($MTSN_{max}$) ;
 		\item quand $\mathcal{A}(ec) < \mathcal{A}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
 		\item quand $\mathcal{A}(ec) > \mathcal{A}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
@@ -953,7 +953,7 @@
 	
 	Ce modèle permet d'estimer la MTSN à partir de $\mathcal{A}(ec)/V$, dont nous avons montré précédemment qu'elle pouvait être estimée à partir de V, F et A. Ces trois paramètres peuvent donc être utilisés pour estimer les performances lors d'une tâche de sélection d'une cible mue en fonction d'eux.
 	
-	Quoique utile, ce modèle a un inconvénient qu'il faut garder à l'esprit : il est fondé sur une fonction qui n'est pas monotone, ce qui le distingue nettement du modèle de Fitts. En effet, dans celui-ci, le sens vers lequel les paramètres doivent être modifiés pour réduire l'indice de difficulté est toujours le même : il est préférable de réduire l'amplitude (effective) du mouvement, et d'augmenter la largeur (effective) de la cible. Ces recommandations peuvent guider la conception de techniques d'aide à la sélection, ou tout simplement de modes d'interaction et d'interfaces.
+	Quoique utile, ce modèle a un inconvénient qu'il faut garder à l'esprit : il est fondé sur une fonction qui n'est pas monotone, ce qui le distingue nettement du modèle de Fitts. En effet, dans celui-ci, le sens vers lequel les paramètres doivent être modifiés pour réduire l'indice de difficulté est toujours le même : il est préférable de réduire l'amplitude (effective) du mouvement, et d'augmenter la largeur (effective) de la cible. Ces recommandations peuvent guider la conception de technique d'aide à la sélection, ou tout simplement de modes d'interaction et d'interfaces.
 	
 	Les choses sont ici plus subtiles. Si un objet donné est associé à une certaine valeur de $\mathcal{A}(ec)$, faut-il l'augmenter ou la réduire pour faciliter la sélection ? Cela dépend : si $\mathcal{A}(ec) < \mathcal{A}_{pic}(ec)$, il faut la réduire ; si $\mathcal{A}(ec) > \mathcal{A}_{pic}(ec)$, il faut l'augmenter, si $\mathcal{A}(ec) = \mathcal{A}_{pic}(ec)$, les deux options sont bénéfiques. Il faut dans tous les cas chercher à \og s'éloigner \fg{} du pic\ldots{} ce qui suppose de le connaître. À défaut de le connaître avec certitude, si l'on connaît certains couples $\left( \mathcal{A}(ec), MTSN\right)$, il est possible de trouver une fonction de la forme de celle de l'équation~\ref{eq:pdfModel} correspondant aux données, et permettant d'estimer la valeur de $\mathcal{A}_{pic}(ec)$.
 	
@@ -972,7 +972,7 @@
 	
 	Nous avons montré que les performances de sélection dépendaient de $\mathcal{A}(ec)$, à condition de prendre soin de normaliser d'une part ces aires, et d'autre part les temps de sélection par rapport à la vitesse des cibles. On obtient alors une relation non linéaire (et non monotone) entre $\mathcal{A}(ec)$ et les performances de sélection, qu'il s'agisse des temps de sélection ou des taux d'erreurs.
 	
-	Après avoir relié les différentes valeurs de $\mathcal{A}(ec)$ aux classes de mouvement que nous avions déjà identifiées, nous avons proposé un modèle prédictif des performances de sélection en fonction des aires des enveloppes convexes et de la vitesse. Comme il est possible d'estimer $\mathcal{A}(ec)$ en fonction de V, F et A, il devient donc possible d'estimer les performances de sélection à partir de ces paramètres, donc de prédire la difficulté d'une tâche, et de la réduire en jouant sur V, F et A, si les circonstances le permettent.
+	Après avoir relié les différentes valeurs de $\mathcal{A}(ec)$ aux classes de mouvement que nous avions déjà itentifiées, nous avons proposé un modèle prédictif des performances de sélection en fonction des aires des enveloppes convexes et de la vitesse. Comme il est possible d'estimer $\mathcal{A}(ec)$ en fonction de V, F et A, il devient donc possible d'estimer les performances de sélection à partir de ces paramètres, donc de prédire la difficulté d'une tâche, et de la réduire en jouant sur V, F et A, si les circonstances le permettent.
 
 %\section{Conclusion and perspectives}
 %We have proposed a way to characterize the erratic behavior of moving targets with three parameters: speed, angle width and frequency, and tested pointing performance when varying these parameters. We have shown that the nature of target motion affects pointing performance, which is not captured by Fitts’ law’s index of difficulty. The latter can only describe the best case, and does not indicate that acquiring fast, highly erratic targets can be extremely difficult. Although the (S,A,F) set of parameters we have proposed models a continuum of target motion, our participants were able to distinguish at least three distinct categories that we have characterized (steady, vibrating and jerky). Our results suggest that for erratic targets, predictability determines pointing performance. And while the steady and vibrating categories are relatively predictable, the jerky one is not. We have also observed that the A×F product might be a promising way to assess predictability, although we still need more data to deduce a predictive law for the acquisition of erratic targets. Nevertheless, this preliminary work is a first step toward a more formal study of the acquisition of erratic targets, and introduces a way to better characterize or even control their movement. Ultimately, such a model could be instrumental in the design of new selection techniques.
