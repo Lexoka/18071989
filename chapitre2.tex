@@ -846,6 +846,245 @@
 
 	\subsubsection{Augmentation et\ldots{} encombrement visuel}
 	Les techniques fondées sur l'augmentation ont un inconvénient commun : l'encombrement visuel significativement accru, et les deux techniques évaluées ici ne font pas exception. De plus, elles modifient la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Naturellement, le haut niveau d'encombrement visuel est d'autant plus problématique que l'environnement de départ est dense et présente un haut degré d'occultation.
+	
+	\subsection{Techniques de prédiction de la trajectoire du curseur}
+	Une classe de techniques consiste à analyser une partie du mouvement du curseur de sélection pour tenter d'estimer son point d'arrivée, donc la cible visée par l'utilisateur, et ainsi accélérer la sélection. Nous allons ici en analyser quelques-unes.
+	
+	\subsubsection{Le \emph{Delphian Desktop}}
+	Le \emph{Delphian Desktop}~\cite{asano2005predictive} est une technique de prédiction de la trajectoire du curseur, qui analyse sa position dans le temps pour essayer de déterminer si un pic de vélocité pour le mouvement en cours a été atteint. Il s'inspire d'observations sur les systèmes perceptif et moteur de l'humain, issues de diverses études de psychologie et kinésiologie~\cite{accot2003refining, graham1995pointing, graham1996physical, mackenzie1992extending, mackenzie1994prediction, takagi2002fundamental, walker1993spatial}.
+	
+	On sait en effet depuis une étude de Walker \emph{et al.}~\cite{walker1993spatial} que la hauteur du pic de vitesse d'un curseur croît avec la distance entre la cible et lui-même, avec un profil typique illustré par la figure~\ref{fig:delphianPeak}.
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.44\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
+			\caption{Vitesse du curseur. Il accélère au cours de la première phase (\emph{Plan time}) puis décélère (\emph{Adjustment time}).}
+			\label{fig:delphianPeak}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.54\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/delphianSpeedDist}
+			\caption{Pic de vitesse du curseur en fonction de la distance à parcourir.}
+			\label{fig:delphianSpeedDist}
+		\end{subfigure}
+		\caption[\emph{Delphian Desktop} : vitesse du curseur]{\emph{Delphian Desktop} : vitesse du curseur. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianCursor}
+	\end{figure}
+	
+	Cette croissance est quant à elle illustrée par la figure~\ref{fig:delphianSpeedDist}.
+	
+	Le fonctionnement du \emph{Delphian Desktop} est basé sur les hypothèses suivantes :
+	
+	\begin{enumerate}
+		\item Le curseur suit une ligne approximativement droite vers la cible ;
+		\item La relation entre la distance à parcourir et le pic de vitesse du curseur est linéaire : $D = aPV + b$ où $D$ est la distance, $PV$ est le pic de vitesse, $a$ et $b$ sont des constantes.
+	\end{enumerate}
+	
+	Ainsi, à partir du moment où l'on détermine que $PV$ a été atteint, si les constantes $a$ et $b$ sont correctement calibrées, il est possible de calculer D, et puisque le mouvement du curseur est supposé rectiligne, l'on peut estimer le point de destination du curseur. Ces constantes peuvent se calibrer par régression linéaire à partir d'enregistrement de trajectoires de curseur pour un individu donné --- en effet, pour des résultats optimaux, on calibrera les constantes différemment pour chaque personne.
+	
+	Dès lors que le \emph{Delphian Desktop} détermine que $PV$ est atteint, il déplace le curseur directement vers la position estimée. L'utilisateur n'a plus alors qu'à sélectionner la cible s'il est déjà dessus, ou effectuer le déplacement nécessaire (en principe petit) avant de le faire. Il est toutefois possible de modifier ce système afin que le curseur se déplace directement et automatiquement vers la cible la plus proche de la position finale estimée.
+	
+	\paragraph{Temps de sélection.}
+	Les résultats obtenus par Asano \emph{et al.}~\cite{asano2005predictive} sont présentés sur la figure~\ref{fig:delphianTimes}. On y constate que le \emph{Delphian Desktop} est plus lent que la sélection non assistée lorsque les cibles sont proches, mais plus rapides quand elles sont distantes.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/delphianTimes}
+			\caption{Temps de sélection en fonction de la distance entre le curseur et la cible, avec le \emph{Delphian Desktop} (\emph{Prediction}, en gris) et sans (\emph{Non-Prediction}, en blanc). Cette technique se montre contre-productive pour les faibles distances, mais bénéfiques quand les distances sont grandes.}
+			\label{fig:delphianTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/delphianTimesErrors}
+			\caption{Temps de sélection en fonction de l'erreur de prédiction de la direction du mouvement. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, car une grande erreur nécessite un plus grand mouvement correctif.}
+			\label{fig:delphianTimesErrors}
+		\end{subfigure}
+		\caption[\emph{Delphian Desktop} -- performances]{\emph{Delphian Desktop} -- performances. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianPerf}
+	\end{figure}
+
+	Cette tendance est d'ailleurs mieux illustrée par la figure~\ref{fig:delphianTimesID}, qui met en évidence les différences de pentes entre les droites qui représentent le temps de sélection en fonction de l'indice de difficulté (ID) pour la sélection non assistée et pour le \emph{Delphian Desktop}. On peut supposer que, pour des cibles d'ID très élevé, celui-ci serait d'autant plus avantageux.
+	
+	Il convient néanmoins de remarquer que dasns l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+		\centering
+		\includegraphics[width=0.46\textwidth]{figures/ch2/delphianTimesID}
+		\caption[\emph{Delphian Desktop} -- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'ID, avec le \emph{Delphian Desktop} (\emph{Prediction}) et sans (\emph{Non-Prediction}). Cette technique est contre-productive pour les petites distances, mais bénéfique pour les grandes. La droite qui estime son temps de sélection en fonction de l'ID est d'une pente plus douce, ce qui est de bon augure pour d'hypothétiques cibles plus distantes. Crédit : \cite{asano2005predictive}.}
+		\label{fig:delphianTimesID}
+	\end{wrapfigure}
+	
+	Asano \emph{et al.} ont par ailleurs mesuré les erreurs de prédiction de la direction du mouvement, c'est-à-dire l'écart angulaire entre la direction estimée par le \emph{Delphian Desktop} et la droite passant par le point de départ du curseur et par le centre de la cible. La figure~\ref{fig:delphianTimesErrors} présente les résultats obtenus. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur.
+	
+	\paragraph{Erreurs.}
+	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
+	
+	\begin{table}
+	\centering
+	\begin{tabular}{c | c c }
+		Type d'erreur						& Quantité d'erreur	\bigstrut[b] \\ \hline
+		Erreur de prédiction de direction	& 3,89\textdegree	\bigstrut[t] \\
+		Taux d'erreurs						& 6,59~\%{}			\\
+		Ratio d'erreur de distance			& 15,4~\%{}			\\
+	\end{tabular}
+	\caption[\emph{Delphian Desktop} -- erreurs]{Différentes erreurs mesurées pour le \emph{Delphian Desktop}, toutes conditions confondues. Données tirées de~\cite{asano2005predictive}.}
+	\label{tab:delphianErrors}
+	\end{table}
+	
+	\paragraph{Faiblesse sur les courtes distances.}
+	L'inconvénient du \emph{Delphian Desktop} le plus évident est mis en lumière par les résultats présentés plus haut : pour les courtes distances, il est contre-productif. Attendu que cet inconvénient est connu et assez précisément quantifié, une solution pourrait être de simplement désactiver la technique dynamiquement lorsqu'elle prédit une distance de mouvement inférieure à celle à partir de laquelle elle est utile. Cela pourrait cependant être perturbant pour les utilisateurs qui ne sauraient pas toujours s'ils doivent s'attendre à un \og saut \fg{} ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
+	
+	\subsubsection{\emph{Kinematic Endpoint Prediction}}
+	La technique \emph{Kinematic Endpoint Prediction}, ou KEP~\cite{lank2007endpoint}, vise à améliorer le \emph{Delphian Desktop} à l'aide d'un modèle théorique de prédiction de point d'arrivée du mouvement, inspiré de la loi de l'à-coup minimum~\cite{hogan1984organizing, richardson2002comparing}\footnotemark{}, et du modèle stochastique du sous-mouvement optimisé~\cite{meyer1990speed}. Lank \emph{et al.} (les auteurs de KEP) font valoir que leur algorithme est deux fois plus précis que les techniques existantes.
+	
+	\footnotetext{L'à-coup, aussi appelé \emph{jerk} ou \emph{jolt} dans la littérature anglo-saxonne, est le vecteur quantifiant le changement d'accélération d'un objet. Mathématiquement, il s'agit de la dérivée de l'accélération par rapport au temps --- c'est-à-dire de la dérivée seconde de la vitesse, ou troisième de la position, toujours par rapport au temps.}
+	
+	\paragraph{Fondements théoriques et mathématiques.}
+	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
+	
+	\begin{align}
+		\label{eq:kepP}
+		x(t) &= 6t^{5} - 15t^{4} + 10t^{3} \\
+		\label{eq:kepV}
+		v(t) &= 30t^{2}(t - 1)^{2}
+	\end{align}
+	
+	Ces équations sont représentées graphiquement sur la figure~\ref{fig:kepPS}.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/kepPS}
+			\caption{Position et vitesse du curseur en fonction du temps, prédites par la loi de l'à-coup minimum.}
+			\label{fig:kepPS}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/kepQuad}
+			\caption{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir.}
+			\label{fig:kepQuad}
+		\end{subfigure}
+		\caption[KEP -- vitesse du curseur et loi de l'à-coup minimum]{KEP -- vitesse du curseur et loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:kep}
+	\end{figure}
+	
+	\subparagraph{Approximation quadratique.}
+	Toutefois, pour prédire le point d'arrivée d'un mouvement, il est plus utile de connaître la vitesse en fonction de la distance. Lank \emph{et al.} ont donc transposé le modèle de l'à-coup minimum pour obtenir le profil tracé en bleu sur la figure~\ref{fig:kepQuad}, ainsi qu'une approximation donnée par un polynôme quadratique en noir sur la même figure.
+	
+	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/kepExtrapol}
+		\caption[KEP -- approximation quadratique et extrapolation]{En bleu, la vitesse en fonction de la distance, telle qu'elle est prédite par le modèle d'à-coup minimum. En noir, l'approximation quadratique choisie par Lank \emph{et al.} Ici sont présentées les extrapolations permises par cette approximation quadratique en fonction du pourcentage de distance parcourue à partir duquel l'extrapolation est faite. On constate que, du fait de l'imprécision de l'approximation, l'extrapolation est souvent incorrecte --- mais elle est bonne si elle est faite à 80~\%{} de la distance parcourue. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:kepExtrapol}
+	\end{figure}
+	
+	En effet, les résultats ne sont réellement satisfaisants que si l'extrapolation est faite après 80~\%{} du mouvement. Attendu que les 10~\%{} finaux (en distance) du mouvement représentent jusqu'à 50~\%{} du temps de sélection~\cite{mackenzie1987three, graham1996physical}, ce n'est pas nécessairement un problème majeur.
+	
+	\subparagraph{Coefficients de correction.}
+	En pratique, Lank \emph{et al.} ont simplement calculé des coefficients de correction, par lesquels il suffit de multiplier la distance estimée fournie par l'approximation quadratique pour obtenir la distance estimée par le modèle d'à-coup minimum, pour un pourcentage de mouvement effectué $s_{i}$ donné. Un échantillon de ces coefficients est présenté par la table~\ref{tab:kepCoeffs}.
+	
+	\begin{table}
+	\centering
+	\begin{tabular}{c c}
+		Pourcentage de mouvement effectué ($s_{i}$)	& Coefficient	\bigstrut[b] \\ \hline
+		30												& 2,01			\bigstrut[t] \\
+		40												& 1,58			\\
+		50												& 1,36			\\
+		60												& 1,20			\\
+		70												& 1,09			\\
+		80												& 1,02			\\
+		90												& 0,97			\\		
+	\end{tabular}
+	\caption[KEP -- coefficients de correction]{Échantillon des coefficients de correction utilisés par KEP pour obtenir une meilleure estimation de la distance totale du mouvement que celle fournie par l'approximation quadratique. Données tirées de~\cite{lank2007endpoint}.}
+	\label{tab:kepCoeffs}
+	\end{table}
+	
+	Ainsi, pour prédire le point d'arrivée du mouvement d'un utilisateur à partir d'un mouvement partiel, il faut premièrement ajuster un polynôme quadratique aux données $(x, v(x))$ du mouvement partiel. Naturellement, ce polynôme admet une racine en $(0,0)$, mais aussi une autre en $x_{calc}$. Il faut trouver la véritable racine, $x_{v\acute{e}ritable}$. Pour cela, il faut déterminer le bon coefficient de correction. Or, cela nécessite de connaître $s_{i}$. Autrement dit, il faut savoir où l'on en est du mouvement en cours. Il faut pour cela résoudre l'équation $d = s_{i}c_{c}x_{calc}$ où $d$ est la distance parcourue, et $c_{c}$ est le coefficient de correction. Or, $c_{c}$ est fonction de $s_{i}$, donc l'équation peut être résolue numériquement, en environ une milliseconde d'après Lank \emph{et al.}~\cite{lank2007endpoint}.
+	
+	\paragraph{Précision de la prédiction.}
+	Lank \emph{et al.} ont validé leur modèle en comparant les prédictions de KEP à des mesures empiriques. Les résultats de cette validation sont exposées dans les graphiques de la figure~\ref{fig:kepErrors}, pour des cibles de 15 à 75 pixels de diamètre.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/kepErrors}
+		\caption[KEP -- erreurs de prédiction]{Erreurs de prédiction du point d'arrivée par KEP en fonction du pourcentage de mouvement effectué ($s_{i}$) auquel l'extrapolation est effectuée. Chaque graphique correspond aux résultats obtenus avec des cibles circulaires d'un diamètre donné, mentionné au bas de chaque graphique (de 15 à 75 pixels, sur un écran de 1024~$\times$~768 pixels). Les meilleurs résultats sont obtenus pour $s_{i} = 85~\%{}$. Crédit : \cite{lank2007endpoint}.}
+		\label{fig:kepErrors}
+	\end{figure}
+	
+	Compte tenu de ces résultats, les auteurs ont opté pour une valeur optimale de $s_{i}$ de 80~\%{}, soit environ 67~\%{} de la durée du sous-mouvement. Ils notent qu'ainsi 42,4~\%{} des prédictions de point d'arrivée sont bien à l'intérieur de la cible.
+	
+	\paragraph{KEP stable.}
+	Ruiz et Lank~\cite{ruiz2009effects} ont proposé une amélioration de KEP faisant fi des coefficients de correction au profit d'un critère de stabilité : une prédiction n'est faite que si la valeur prédite à un instant $t$ est suffisamment proche de celle prédite à $t-1$. Les résultats de cette version améliorée de KEP sont présentés dans la table~\ref{tab:kepStable} et sont nettement meilleurs que ceux obtenus par Lank \emph{et al.} pour la version standard de KEP. Notez toutefois que les résultats de cette version améliorés sont très mauvais lorsque $s_{i}$ est faible, du fait de l'absence de coefficients de correction~\cite{ruiz2009effects}.
+	
+	\begin{table}
+	\centering
+	\begin{tabular}{l | c c}
+														& \multicolumn{2}{c}{Prédiction}	\\
+		Pourcentage de mouvement effectué ($s_{i}$)	& Correcte	& Cible adjacente	\bigstrut[b] \\ \hline
+		80												& 49,3~\%{}	& 34,1~\%{}			\bigstrut[t] \\
+		85												& 51,0~\%{}	& 35,8~\%{}			\\
+		90												& 51,4~\%{}	& 36,4~\%{}			\\
+		80 (Lank \emph{et al.})							& 42,4~\%{}	& 39,0~\%{}			\\
+	\end{tabular}
+	\caption[KEP stable -- fiabilité des prédictions]{Fiabilité des prédiction de point d'arrivée de KEP dans sa version améliorée, telle qu'elle est présentée par Ruiz et Lank. Données tirées de leur étude~\cite{ruiz2009effects}.}
+	\label{tab:kepStable}
+	\end{table}
+		
+	\subsubsection{\emph{Speed Profile sEparation for Endpoint Divination}}
+	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED base donc sa prédiction de cible sur la phase de décélération.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/speedProfile}
+			\caption{Profil de vitesse obtenu au cours d'un mouvement de pointage. $V_{0}$ est le seuil à partir duquel SPEED considère que le mouvement commence ; il est fixé empiriquement. La vitesse croît, atteint un pic, puis redescend jusqu'à s'annuler. La courbe n'est cependant pas symétrique.}
+			\label{fig:speedProfile}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/speedExplained}
+			\caption{Vitesse $v$ du curseur en fonction de la distance $d$ parcourue. Lorsque le pic global de vitesse $d_picg$ est atteint, la phase de décélération commence, et les points $(d_{i}, v_{i})$ mesurés au cours de celle-ci sont utilisés pour y ajuster une fonction quadratique.}
+			\label{fig:speedExplained}
+		\end{subfigure}
+		\caption[SPEED -- fonctionnement]{SPEED -- fonctionnement. Crédit : \cite{wonner2011speed}.}
+		\label{fig:speedCursor}
+	\end{figure}
+	
+	L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, SPEED utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Ce fonctionnement, au demeurant très proche de celui de KEP, est expliqué sur la figure~\ref{fig:speedExplained}.
+	
+	\paragraph{Performances.}
+	Cette technique fournit de bien meilleurs résultats de prédiction que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phase d'accélération et de décélération, comme l'illustre la table~\ref{tab:speedingPastKep} qui présente les résultats de SPEED face à ceux de KEP, précédemment la meilleure technique de prédiction de point d'arrivée.
+	
+	\begin{table}
+	\centering
+	\begin{tabular}{l | c c c}
+				& \multicolumn{3}{c}{Distance}	\\
+		Taille	& 512					& 1024					& 1536					\bigstrut[b] \\ \hline
+		16		& 32,1 / \emph{5,0}		& 30,8 / \emph{2,0}		& 26,2 / \emph{0,0}		\bigstrut[t] \\
+		32		& 43,0 / \emph{17,0}	& 38,1 / \emph{3,0}		& 35,1 / \emph{2,0}		\\
+		64		& 50,5 / \emph{35,0}	& 45,4 / \emph{16,0}	& 46,5 / \emph{10,0}	\\
+		128		& 74,3 / \emph{76,0}	& 60,9 / \emph{33,0}	& 47,9 / \emph{22,0}	\\
+	\end{tabular}
+	\caption[SPEED -- performances comparées à celles de KEP]{Fiabilité des prédictions de l'algorithme SPEED en fonction de la taille des cibles, variant de 16 à 128 pixels, et de la distance du mouvement à accomplir, variant de 512 à 1536 pixels. Les résultats sont présentés sous forme de pourcentages de prédictions correctes, avec les taux produits par SPEED en police romaine et ceux de KEP en italique. À l'exception d'une condition (celle d'indice de difficulté minimum), les prédiction de SPEED sont plus fiables que celles de KEP, et souvent de beaucoup. Données tirées de~\cite{wonner2011speed}.}
+	\label{tab:speedingPastKep}
+	\end{table}
+	
+	On observera notamment que les résultats de SPEED sont corrects même avec un indice de difficulté élevé, tandis que KEP tend à s'effondrer dans ces cas-là, avec un taux de prédiction nul pour des cibles de 16 pixels de largeur à une distance de 1536 pixels, contre 26,2~\%{} pour SPEED.
+	
+	\subsubsection{L'hypothèse de rectitude et les cibles mobiles}
+	Les techniques de prédiction de la trajectoire du curseur admettent un point faible commun : leur hypothèse de base selon laquelle la trajectoire du curseur est rectiligne. Quoique raisonnable pour les cibles statiques, cette hypothèse ne tient pas quand elles sont mobiles, surtout si elles sont rapides et leurs mouvements sont imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
+	
+	Il ne nous semble donc pas possible de retenir ces techniques pour les tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
+	
+	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer qu'une telle technique puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
 
 \section{Techniques pour la sélection de cibles mobiles}
 	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.
@@ -994,263 +1233,7 @@
 	
 	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utiliser des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} impliquerait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations.
 	
-	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
-	
-\section{Le \emph{Delphian Desktop}}
-	\subsection{Principe et avantages}
-	Le \emph{Delphian Desktop}~\cite{asano2005predictive} est une technique de prédiction de l'intention de l'utilisateur, qui analyse la position du curseur dans le temps pour essayer de déterminer si un pic de vélocité pour le mouvement en cours a été atteint. Il s'inspire d'observations sur les systèmes perceptif et moteur de l'humain, issues de diverses études de psychologie et kinésiologie~\cite{accot2003refining, graham1995pointing, graham1996physical, mackenzie1992extending, mackenzie1994prediction, takagi2002fundamental, walker1993spatial}.
-	
-	On sait en effet depuis un étude de Walker \emph{et al.}~\cite{walker1993spatial} que la hauteur du pic de vitesse d'un curseur croît avec la distance entre la cible et lui-même, avec un profil typique illustré par la figure~\ref{fig:delphianPeak}.
-
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.44\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
-			\caption{Vitesse du curseur. Il accélère au cours de la première phase (\emph{Plan time}) puis décélère (\emph{Adjustment time}).}
-			\label{fig:delphianPeak}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.54\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/delphianSpeedDist}
-			\caption{Pic de vitesse du curseur en fonction de la distance à parcourir.}
-			\label{fig:delphianSpeedDist}
-		\end{subfigure}
-		\caption[\emph{Delphian Desktop} : vitesse du curseur]{\emph{Delphian Desktop} : vitesse du curseur. Crédit : \cite{asano2005predictive}.}
-		\label{fig:delphianCursor}
-	\end{figure}
-	
-	Cette croissance est quant à elle illustrée par la figure~\ref{fig:delphianSpeedDist}.
-	
-	Le fonctionnement du \emph{Delphian Desktop} est basé sur les hypothèses suivantes :
-	
-	\begin{enumerate}
-		\item Le curseur suit une ligne approximativement droite vers la cible ;
-		\item La relation entre la distance à parcourir et le pic de vitesse du curseur est linéaire : $D = aPV + b$ où $D$ est la distance, $PV$ est le pic de vitesse, $a$ et $b$ sont des constantes.
-	\end{enumerate}
-	
-	Ainsi, à partir du moment où l'on détermine que $PV$ a été atteint, si les constantes $a$ et $b$ sont correctement calibrées, il est possible de calculer D, et puisque le mouvement du curseur est supposé rectiligne, l'on peut estimer le point de destination du curseur. Ces constantes peuvent se calibrer par régression linéaire à partir d'enregistrement de trajectoires de curseur pour un individu donné --- en effet, pour des résultats optimaux, on calibrera les constantes différemment pour chaque personne.
-	
-	Dès lors que le \emph{Delphian Desktop} détermine que $PV$ est atteint, il déplace le curseur directement vers la position estimée. L'utilisateur n'a plus alors qu'à sélectionner la cible s'il est déjà dessus, ou effectuer le déplacement nécessaire (en principe petit) avant de le faire. Il est toutefois possible de modifier ce système afin que le curseur se déplace directement et automatiquement vers la cible la plus proche de la position finale estimée.
-	
-	\subsection{Performances}
-	\subsubsection{Temps de sélection}
-	Les résultats obtenus par Asano \emph{et al.}~\cite{asano2005predictive} sont présentés sur la figure~\ref{fig:delphianTimes}. On y constate que le \emph{Delphian Desktop} est plus lent que la sélection non assistée lorsque les cibles sont proches, mais plus rapides quand elles sont distantes.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/delphianTimes}
-			\caption{Temps de sélection en fonction de la distance entre le curseur et la cible, avec le \emph{Delphian Desktop} (\emph{Prediction}, en gris) et sans (\emph{Non-Prediction}, en blanc). Cette technique se montre contre-productive pour les faibles distances, mais bénéfiques quand les distances sont grandes.}
-			\label{fig:delphianTimes}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/delphianTimesErrors}
-			\caption{Temps de sélection en fonction de l'erreur de prédiction de la direction du mouvement. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, car une grande erreur nécessite un plus grand mouvement correctif.}
-			\label{fig:delphianTimesErrors}
-		\end{subfigure}
-		\caption[\emph{Delphian Desktop} -- performances]{\emph{Delphian Desktop} -- performances. Crédit : \cite{asano2005predictive}.}
-		\label{fig:delphianPerf}
-	\end{figure}
-
-	Cette tendance est d'ailleurs mieux illustrée par la figure~\ref{fig:delphianTimesID}, qui met en évidence les différences de pentes entre les droites qui représentent le temps de sélection en fonction de l'indice de difficulté (ID) pour la sélection non assistée et pour le \emph{Delphian Desktop}. On peut supposer que, pour des cibles d'ID très élevé, celui-ci serait d'autant plus avantageux.
-	
-	Il convient néanmoins de remarquer que dasns l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
-
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/delphianTimesID}
-		\caption[\emph{Delphian Desktop} -- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'ID, avec le \emph{Delphian Desktop} (\emph{Prediction}) et sans (\emph{Non-Prediction}). Cette technique est contre-productive pour les petites distances, mais bénéfique pour les grandes. La droite qui estime son temps de sélection en fonction de l'ID est d'une pente plus douce, ce qui est de bon augure pour d'hypothétiques cibles plus distantes. Crédit : \cite{asano2005predictive}.}
-		\label{fig:delphianTimesID}
-	\end{wrapfigure}
-	
-	Asano \emph{et al.} ont par ailleurs mesuré les erreurs de prédiction de la direction du mouvement, c'est-à-dire l'écart angulaire entre la direction estimée par le \emph{Delphian Desktop} et la droite passant par le point de départ du curseur et par le centre de la cible. La figure~\ref{fig:delphianTimesErrors} présente les résultats obtenus. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur.
-	
-	\subsubsection{Erreurs}
-	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
-	
-	\begin{table}
-	\centering
-	\begin{tabular}{c | c c }
-		Type d'erreur						& Quantité d'erreur	\bigstrut[b] \\ \hline
-		Erreur de prédiction de direction	& 3,89\textdegree	\bigstrut[t] \\
-		Taux d'erreurs						& 6,59~\%{}			\\
-		Ratio d'erreur de distance			& 15,4~\%{}			\\
-	\end{tabular}
-	\caption[\emph{Delphian Desktop} -- erreurs]{Différentes erreurs mesurées pour le \emph{Delphian Desktop}, toutes conditions confondues. Données tirées de~\cite{asano2005predictive}.}
-	\label{tab:delphianErrors}
-	\end{table}
-	
-	\subsection{Inconvénients}
-	L'inconvénient du \emph{Delphian Desktop} le plus évident est celui mis en lumière par les résultats présentés plus haut : pour les courtes distances, il est contre-productif. Attendu que cet inconvénient est connu et assez précisément quantifié, une solution pourrait être de simplement le désactiver dynamiquement lorsqu'il prédit une distance de mouvement inférieur à celle à partir de laquelle il est utile.
-	
-	Cela pourrait cependant être perturbateur pour les utilisateurs qui ne sauraient jamais pas toujours s'ils doivent s'attendre à un \og saut \fg{} ou non. Du reste, cette distance critique n'est pas nécessairement la même pour chaque personne. Il faudrait donc soit la calibrer individuellement, soit accepter un fonctionnement sub-optimal.
-	
-	Par ailleurs, l'hypothèse de rectitude du mouvement est très forte et généralement fausse ; bien entendu, elle peut être assez proche de la réalité pour fournir de bons résultats, mais lorsque ce n'est pas le cas, il est difficile de régler le problème. Une solution potentielle serait d'appliquer une deuxième technique de curseur après le saut du \emph{Delphian Desktop}, par exemple le \emph{Bubble Cursor}.
-	
-	Toutefois, cette hypothèse de rectitude devient totalement caduque lorsque les cibles sont mobiles, \emph{a fortiori} quand leurs mouvements sont rapides et imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
-	
-	Il ne nous semble donc pas possible de retenir le \emph{Delphian Desktop} comme solution viable aux tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
-	
-\section{\emph{Kinematic Endpoint Prediction}}
-	\subsection{Principe}
-	La technique \emph{Kinematic Endpoint Prediction}, ou KEP~\cite{lank2007endpoint}, vise à améliorer le \emph{Delphian Desktop} à l'aide d'un modèle théorique de prédiction de point d'arrivée du mouvement, inspiré de la loi de l'à-coup minimum~\cite{hogan1984organizing, richardson2002comparing}\footnotemark{}, et du modèle stochastique du sous-mouvement optimisé~\cite{meyer1990speed}. Lank \emph{et al.} (les auteurs de KEP) font valoir que leur algorithme est deux fois plus précis que les techniques existantes.
-	
-	\footnotetext{L'à-coup, aussi appelé \emph{jerk} ou \emph{jolt} dans la littérature anglo-saxonne, est le vecteur quantifiant le changement d'accélération d'un objet. Mathématiquement, il s'agit de la dérivée de l'accélération par rapport au temps --- c'est-à-dire de la dérivée seconde de la vitesse, ou troisième de la position, toujours par rapport au temps.}
-	
-	\subsubsection{Fondements théoriques et mathématiques}
-	\paragraph{Minimisation de l'à-coup.}
-	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
-	
-	\begin{align}
-		\label{eq:kepP}
-		x(t) &= 6t^{5} - 15t^{4} + 10t^{3} \\
-		\label{eq:kepV}
-		v(t) &= 30t^{2}(t - 1)^{2}
-	\end{align}
-	
-	Ces équations sont représentées graphiquement sur la figure~\ref{fig:kepPS}.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/kepPS}
-			\caption{Position et vitesse du curseur en fonction du temps, prédites par la loi de l'à-coup minimum.}
-			\label{fig:kepPS}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/kepQuad}
-			\caption{Vitesse du curseur en fonction du temps, prédite par la loi de l'à-coup minimum en bleu, et approximée par un polynôme quadratique en noir.}
-			\label{fig:kepQuad}
-		\end{subfigure}
-		\caption[KEP -- vitesse du curseur et loi de l'à-coup minimum]{KEP -- vitesse du curseur et loi de l'à-coup minimum. Crédit : \cite{lank2007endpoint}.}
-		\label{fig:kep}
-	\end{figure}
-	
-	\paragraph{Approximation quadratique.}
-	Toutefois, pour prédire le point d'arrivée d'un mouvement, il est plus utile de connaître la vitesse en fonction de la distance. Lank \emph{et al.} ont donc transposé le modèle de l'à-coup minimum pour obtenir le profil tracé en bleu sur la figure~\ref{fig:kepQuad}, ainsi qu'une approximation donnée par un polynôme quadratique en noir sur la même figure.
-	
-	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/kepExtrapol}
-		\caption[KEP -- approximation quadratique et extrapolation]{En bleu, la vitesse en fonction de la distance, telle qu'elle est prédite par le modèle d'à-coup minimum. En noir, l'approximation quadratique choisie par Lank \emph{et al.} Ici sont présentées les extrapolations permises par cette approximation quadratique en fonction du pourcentage de distance parcourue à partir duquel l'extrapolation est faite. On constate que, du fait de l'imprécision de l'approximation, l'extrapolation est souvent incorrecte --- mais elle est bonne si elle est faite à 80~\%{} de la distance parcourue. Crédit : \cite{lank2007endpoint}.}
-		\label{fig:kepExtrapol}
-	\end{figure}
-	
-	En effet, les résultats ne sont réellement satisfaisants que si l'extrapolation est faite après 80~\%{} du mouvement. Attendu que les 10~\%{} finaux (en distance) du mouvement représentent jusqu'à 50~\%{} du temps de sélection~\cite{mackenzie1987three, graham1996physical}, ce n'est pas nécessairement un problème majeur.
-	
-	\paragraph{Coefficients de correction.}
-	En pratique, Lank \emph{et al.} ont simplement calculé des coefficients de correction, par lesquels il suffit de multiplier la distance estimée fournie par l'approximation quadratique pour obtenir la distance estimée par le modèle d'à-coup minimum, pour un pourcentage de mouvement effectué $s_{i}$ donné. Un échantillon de ces coefficients est présenté par la table~\ref{tab:kepCoeffs}.
-	
-	\begin{table}
-	\centering
-	\begin{tabular}{c c}
-		Pourcentage de mouvement effectué ($s_{i}$)	& Coefficient	\bigstrut[b] \\ \hline
-		30												& 2,01			\bigstrut[t] \\
-		40												& 1,58			\\
-		50												& 1,36			\\
-		60												& 1,20			\\
-		70												& 1,09			\\
-		80												& 1,02			\\
-		90												& 0,97			\\		
-	\end{tabular}
-	\caption[KEP -- coefficients de correction]{Échantillon des coefficients de correction utilisés par KEP pour obtenir une meilleure estimation de la distance totale du mouvement que celle fournie par l'approximation quadratique. Données tirées de~\cite{lank2007endpoint}.}
-	\label{tab:kepCoeffs}
-	\end{table}
-	
-	Ainsi, pour prédire le point d'arrivée du mouvement d'un utilisateur à partir d'un mouvement partiel, il faut premièrement ajuster un polynôme quadratique aux données $(x, v(x))$ du mouvement partiel. Naturellement, ce polynôme admet une racine en $(0,0)$, mais aussi une autre en $x_{calc}$. Il faut trouver la véritable racine, $x_{v\acute{e}ritable}$. Pour cela, il faut déterminer le bon coefficient de correction. Or, cela nécessite de connaître $s_{i}$. Autrement dit, il faut savoir où l'on en est du mouvement en cours. Il faut pour cela résoudre l'équation $d = s_{i}c_{c}x_{calc}$ où $d$ est la distance parcourue, et $c_{c}$ est le coefficient de correction. Or, $c_{c}$ est fonction de $s_{i}$, donc l'équation peut être résolue numériquement, en environ une milliseconde d'après Lank \emph{et al.}~\cite{lank2007endpoint}.
-	
-	\subsubsection{Précision de la prédiction}
-	Lank \emph{et al.} ont validé leur modèle en comparant les prédictions de KEP à des mesures empiriques. Les résultats de cette validation sont exposées dans les graphiques de la figure~\ref{fig:kepErrors}, pour des cibles de 15 à 75 pixels de diamètre.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/kepErrors}
-		\caption[KEP -- erreurs de prédiction]{Erreurs de prédiction du point d'arrivée par KEP en fonction du pourcentage de mouvement effectué ($s_{i}$) auquel l'extrapolation est effectuée. Chaque graphique correspond aux résultats obtenus avec des cibles circulaires d'un diamètre donné, mentionné au bas de chaque graphique (de 15 à 75 pixels, sur un écran de 1024~$\times$~768 pixels). Les meilleurs résultats sont obtenus pour $s_{i} = 85~\%{}$. Crédit : \cite{lank2007endpoint}.}
-		\label{fig:kepErrors}
-	\end{figure}
-	
-	Compte tenu de ces résultats, les auteurs ont opté pour une valeur optimale de $s_{i}$ de 80~\%{}, soit environ 67~\%{} de la durée du sous-mouvement. Ils notent qu'ainsi 42,4~\%{} des prédictions de point d'arrivée sont bien à l'intérieur de la cible.	
-	
-	\subsection{Inconvénients}
-	Si KEP semble plus précis que le \emph{Delphian Desktop}~\cite{asano2005predictive} présenté plus haut, il est malheureux que ses auteurs n'aient pas mesuré ses performances en temps de sélection et taux d'erreurs, afin de pouvoir présenter des résultats plus facilement comparables. Quoi qu'il en soit, l'apport théorique de l'étude de Lank \emph{et al.}~\cite{lank2007endpoint} est très précieux.
-	
-	Néanmoins, KEP souffre des mêmes inconvénients majeurs que le \emph{Delphian Desktop}, en particulier sa dépendance à une hypothèse très forte, celle de la rectitude du mouvement. Comme nous l'expliquions plus haut, cette hypothèse ne saurait tenir pour des cibles mobiles, \emph{a fortiori} si leurs mouvements sont rapides et/ou imprévisibles. De fait, pour les mêmes raisons que le \emph{Delphian Desktop}, nous ne pouvons retenir KEP sous sa forme existante.
-	
-	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer que KEP puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
-	
-	Ajoutons enfin que Ruiz et Lank~\cite{ruiz2009effects} ont proposé une amélioration de KEP faisant fi des coefficients de correction au profit d'un critère de stabilité : une prédiction n'est faite que si la valeur prédite à un instant $t$ est suffisamment proche de celle prédite à $t-1$. Les résultats de cette version améliorée de KEP sont présentés dans la table~\ref{tab:kepStable} et sont nettement meilleurs que ceux obtenus par Lank \emph{et al.} pour la version standard de KEP. Notez toutefois que les résultats de cette version améliorés sont très mauvais lorsque $s_{i}$ est faible, du fait de l'absence de coefficients de correction~\cite{ruiz2009effects}.
-	
-	\begin{table}
-	\centering
-	\begin{tabular}{l | c c}
-														& \multicolumn{2}{c}{Prédiction}	\\
-		Pourcentage de mouvement effectué ($s_{i}$)	& Correcte	& Cible adjacente	\bigstrut[b] \\ \hline
-		80												& 49,3~\%{}	& 34,1~\%{}			\bigstrut[t] \\
-		85												& 51,0~\%{}	& 35,8~\%{}			\\
-		90												& 51,4~\%{}	& 36,4~\%{}			\\
-		80 (Lank \emph{et al.})							& 42,4~\%{}	& 39,0~\%{}			\\
-	\end{tabular}
-	\caption[KEP stable -- fiabilité des prédictions]{Fiabilité des prédiction de point d'arrivée de KEP dans sa version améliorée, telle qu'elle est présentée par Ruiz et Lank. Données tirées de leur étude~\cite{ruiz2009effects}.}
-	\label{tab:kepStable}
-	\end{table}
-		
-\section{\emph{Speed Profile sEparation for Endpoint Divination}}
-	\subsection{Principe}
-	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED base donc sa prédiction de cible sur la phase de décélération.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/speedProfile}
-			\caption{Profil de vitesse obtenu au cours d'un mouvement de pointage. $V_{0}$ est le seuil à partir duquel SPEED considère que le mouvement commence ; il est fixé empiriquement. La vitesse croît, atteint un pic, puis redescend jusqu'à s'annuler. La courbe n'est cependant pas symétrique.}
-			\label{fig:speedProfile}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/speedExplained}
-			\caption{Vitesse $v$ du curseur en fonction de la distance $d$ parcourue. Lorsque le pic global de vitesse $d_picg$ est atteint, la phase de décélération commence, et les points $(d_{i}, v_{i})$ mesurés au cours de celle-ci sont utilisés pour y ajuster une fonction quadratique.}
-			\label{fig:speedExplained}
-		\end{subfigure}
-		\caption[SPEED -- fonctionnement]{SPEED -- fonctionnement. Crédit : \cite{wonner2011speed}.}
-		\label{fig:speedCursor}
-	\end{figure}
-	
-	L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, SPEED utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Ce fonctionnement, au demeurant très proche de celui de KEP, est expliqué sur la figure~\ref{fig:speedExplained}.
-	
-	\subsection{Performances}	
-	Cette technique fournit de bien meilleurs résultats de prédiction que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phase d'accélération et de décélération, comme l'illustre la table~\ref{tab:speedingPastKep} qui présente les résultats de SPEED face à ceux de KEP, précédemment la meilleure technique de prédiction de point d'arrivée.
-	
-	\begin{table}
-	\centering
-	\begin{tabular}{l | c c c}
-				& \multicolumn{3}{c}{Distance}	\\
-		Taille	& 512					& 1024					& 1536					\bigstrut[b] \\ \hline
-		16		& 32,1 / \emph{5,0}		& 30,8 / \emph{2,0}		& 26,2 / \emph{0,0}		\bigstrut[t] \\
-		32		& 43,0 / \emph{17,0}	& 38,1 / \emph{3,0}		& 35,1 / \emph{2,0}		\\
-		64		& 50,5 / \emph{35,0}	& 45,4 / \emph{16,0}	& 46,5 / \emph{10,0}	\\
-		128		& 74,3 / \emph{76,0}	& 60,9 / \emph{33,0}	& 47,9 / \emph{22,0}	\\
-	\end{tabular}
-	\caption[SPEED -- performances comparées à celles de KEP]{Fiabilité des prédictions de l'algorithme SPEED en fonction de la taille des cibles, variant de 16 à 128 pixels, et de la distance du mouvement à accomplir, variant de 512 à 1536 pixels. Les résultats sont présentés sous forme de pourcentages de prédictions correctes, avec les taux produits par SPEED en police romaine et ceux de KEP en italique. À l'exception d'une condition (celle d'indice de difficulté minimum), les prédiction de SPEED sont plus fiables que celles de KEP, et souvent de beaucoup. Données tirées de~\cite{wonner2011speed}.}
-	\label{tab:speedingPastKep}
-	\end{table}
-	
-	On observera notamment que les résultats de SPEED sont corrects même avec un indice de difficulté élevé, tandis que KEP tend à s'effondrer dans ces cas-là, avec un taux de prédiction nul pour des cibles de 16 pixels de largeur à une distance de 1536 pixels, contre 26,2~\%{} pour SPEED.
-			
-	\subsection{Inconvénients}
-	Si SPEED fournit de bien meilleurs résultats que KEP --- et donc que le \emph{Delphian Desktop} --- force est de constater qu'il fonctionne selon un principe très similaire, et qu'il est donc sujet aux mêmes limites fondamentales.
-	
-	En effet, l'hypothèse de rectitude du mouvement demeure essentielle au fonctionnement de cette technique. Or, comme nous l'avons expliqué plus haut, cette hypothèse ne saurait être valable avec des cibles mobiles, \emph{a fortiori} si leurs mouvement sont rapides et/ou imprévisibles.
-	
-	Remarquons toutefois que même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut raisonnablement supposer que SPEED puisse l'accélérer, afin de gagner un peu de temps. Malheureusement, plus les cibles sont rapides et imprévisibles, plus la phase de correction domine la phase balistique (en temps) comme nous le verrons plus loin.
-
+	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.	
 
 \section{\emph{IntenSelect}}
 	\subsection{Motivations}
