@@ -148,10 +148,10 @@
 \section{Techniques pour la sélection de cibles statiques}
 	Commençons par examiner les techniques conçues pour les cibles statiques, mais précisons au préalable qu'elles sont toutes utilisables avec des cibles mobiles, avec divers degrés d'efficacité.
 
-\section{Curseurs zonaux}
+\subsection{Curseurs zonaux}
 	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{kabbash1995prince, worden1997making}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance effective entre le curseur et la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
 	
-	\subsection{\emph{Prince}}
+	\subsubsection{\emph{Prince}}
 	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
 	
 	\begin{figure}[!htb]
@@ -176,7 +176,7 @@
 	
 	La technique \emph{Prince} présente également l'avantage de permettre la sélection de plusieurs cibles d'un coup si elles sont incluses dans le curseur, mais cet avantage reflète une limitation de \emph{Prince}, car il peut dans ces cas-là y avoir ambiguïté si l'utilisateur ne souhaite sélectionner qu'une seule cible.
 	
-	\subsection{\emph{(Sticky) Area Cursor}, \emph{stickiness} et adaptativité}
+	\subsubsection{\emph{(Sticky) Area Cursor}, \emph{stickiness} et adaptativité}
 	Une solution à ce problème d'ambiguïté est proposée par Worden \emph{et al.}~\cite{worden1997making} : lorsqu'un curseur zonal recouvre plusieurs cibles, le curseur devient en pratique un curseur ponctuel, et seul son centre est actif, comme l'illustre la figure~\ref{fig:areaCursor}.
 	
 	\begin{figure}[!htb]
@@ -188,7 +188,7 @@
 	
 	Cette technique simple permet de tirer parti des avantages d'un curseur zonal quand la densité de cibles est suffisamment faibles, sans pour autant souffrir de ses inconvénients lorsqu'elle est élevée, puisque l'on revient alors à un simple curseur ponctuel.
 	
-		\subsubsection{\emph{Stickiness}}
+	\paragraph{\emph{Stickiness}.}
 	À cette solution, Worden \emph{et al.} ont ajouté l'usage de \emph{stickiness} adaptative pour les icônes. Un curseur est dit \emph{sticky} si, lorsqu'il s'approche d'une icône, celle-ci devient \og collante \fg{}. En pratique, le ratio de sensibilité du curseur (la quantité du curseur par rapport à la quantité de mouvement du périphérique de saisie) diminue, ce qui permet d'une part de ralentir le curseur automatiquement, et d'autre part d'affiner les mouvements correctifs permettant la sélection d'une cible lors de son approche.
 	
 	Le problème des cibles collantes est que lorsque leur densité est élevée, donc en présence de nombreux distracteurs, la trajectoire du curseur se trouve fortement perturbée par ceux-ci, ce qui peut être contre-productif, ou du moins limiter les bénéfices de cette technique. La solution proposée par Worden \emph{et al.} est de ne rendre les cibles collantes que lorsque le curseur est à moins de 30~\%{} de la vitesse maximale qu'il a atteinte au cours de la tâche de sélection courante. L'hypothèse est qu'une sélection commence par une phase de mouvement très rapide et ample, suivie de petits mouvements correctifs plus lents, et que le curseur sera donc relativement lent près de la cible réellement visée par l'utilisateur.
@@ -211,7 +211,7 @@
 	\label{tab:areaCursor}
 	\end{table}
 
-	\subsection{\emph{Bubble Cursor}}
+	\subsubsection{\emph{Bubble Cursor}}
 	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci.	
 
 	\begin{figure}[!htb]
@@ -241,12 +241,12 @@
 	
 	Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.
 
-	\subsubsection{Instabilité}
+	\paragraph{Instabilité.}
 	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides.
 	
 	Un autre inconvénient (potentiellement majeur) du \emph{Bubble Cursor} est intrinsèquement lié à son mode de fonctionnement : il partage l'espace de sélection en un diagramme de Voronoï, où toute partie de l'espace fait partie de la zone de sélection d'une cible. Par conséquent, il n'existe plus d'espace \og vide \fg{} dans lequel on pourrait utiliser le périphérique de saisie pour effectuer une opération indépendante des cibles, par exemple ouvrir un menu contextuel.
 	
-	\subsection{\emph{Silk Cursor}}
+	\subsubsection{\emph{Silk Cursor}}
 	Le \emph{Silk Cursor}~\cite{zhai1994silk} est analogue aux curseurs zonaux décrits plus haut, mais étendu à la 3D. Il s'agit donc d'un volume semi-transparent que l'utilisateur peut utiliser pour sélectionner un objet en déplaçant le volume de telle sorte que l'objet soit dedans.
 	
 	Tel qu'il fut évalué dans~\cite{zhai1994silk}, le \emph{Silk Cursor} doit entièrement englober un objet pour pouvoir le sélectionner ; ainsi, dans l'illustration de la figure~\ref{fig:silk}, le poisson ne peut pas encore être sélectionné. Celui-ci était animé par une combinaison de fonctions sinusoïdales agissant indépendamment sur chacune de ses coordonnées (x,y,z). Ces fonctions sont détaillées par les équations~\ref{eq:silkMotion0}, \ref{eq:silkMotion1} et~\ref{eq:silkMotion2} où $t$ est le temps, $A = 4,55$~cm, $p = 2$, $f_{0} = 0,02$~Hz, 	$\phi_{x}(i)$, $\phi_{y}(i)$ et $\phi_{z}(i)$ sont des nombres pseudo-aléatoires, échantillonés uniformément entre $0$ et $2\pi$. Ces fonctions ont pour but de produire un mouvement lisse (\emph{smooth}) et subjectivement imprévisible~\cite{zhai1993human}.
@@ -260,7 +260,6 @@
 		z(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{z}(i) \right) - 7.8
 	\end{align}
 	
-	\subsubsection{Perfomances}
 	\paragraph{Temps de sélection.}
 	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}). Comme le supposaient les auteurs, la semi-transparence du curseur permet une forte amélioration du temps de sélection, particulièrement avec un écran monoscopique. De plus, la stéréoscopie réduit le temps de sélection de façon significative, et ce même avec le \emph{Silk Cursor}.
 	
@@ -324,8 +323,118 @@
 	\label{tab:silkImpr}
 	\end{table}
 
-	\subsection{Inconvénients}
+	\subsubsection{Inconvénients}
 	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
+	
+	\subsection{Techniques de lancer de rayon (\emph{raycasting})}
+\section{\emph{Raycasting}}
+	Certaines techniques substituent aux curseurs classiques des rayons ou volumes projetés depuis un point contrôlé par l'utilisateur. Nous allons ici les examiner ensemble.
+
+	\subsubsection{Lancer de rayon (\emph{raycasting}) pur}
+	Le \emph{raycasting} est une technique de sélection conceptuellement très simple : un périphérique est utilisé pour lancer un rayon virtuel, généralement le long d'un axe du périphérique. Le rayon peut ensuite croiser un objet, ce qui permet de le sélectionner. Cette technique est parfois appelée \emph{laser gun}~\cite{liang1994jdcad}, et elle est illustrée par la figure~\ref{fig:dCanvas2}.
+	
+	Elle a plusieurs avantages : elle permet de sélectionner un objet à n'importe quelle distance, sans avoir à se déplacer ; on peut sélectionner un objet très éloigné de la position initiale du curseur sans avoir à faire de grand mouvement, puisqu'il suffit de changer l'orientation du périphérique de pointage, donc d'un simple mouvement de poignet.
+	
+	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{raycasting} ont été développées.
+	
+	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
+	
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+		\centering
+		\includegraphics[width=0.46\textwidth]{figures/ch2/spotlight}
+		\caption[Cône de sélection : \emph{Spotlight}]{Illustration d'une technique de sélection par cône, baptisée \emph{Spotlight}. Les objets qui se trouvent dans le cône sont des candidats à la sélection : quand il y en a plusieurs, le plus proche de l'axe de révolution du cône est choisi ; en cas de proximité égale, le plus proche du périphérique de pointage est choisi. Crédit : \cite{liang1994jdcad}.}
+		\label{fig:spotlight}
+	\end{wrapfigure}
+	
+	Cela facilite la sélection, puisque les gestes n'ont plus besoin d'être aussi précis, mais peut ajouter de l'ambiguïté si deux objets se trouvent dans le cône de sélection. Le cas échéant, cette ambiguïté peut être levée de plusieurs façon, en fonction de la proximité à l'axe de révolution du cône, en fonction de la distance au périphérique de pointage, ou via une intervention directe de l'utilisateur.
+	
+	Le choix de l'angle du cône est important : plus il sera grand, plus la sélection sera facile mais potentiellement ambiguë ; plus il sera petit, plus la sélection sera difficile mais spécifique. Le choix de cet angle peut éventuellement être paramétrable, permettant à l'utilisateur de choisir ce qui lui convient le mieux, voire de l'ajuster à la volée en cours d'utilisation. Cet ajustement pourrait également être géré automatiquement par le système interactif, par exemple de façon analogue à ce qui est fait avec des pointeurs classiques dans le \emph{Bubble Cursor}~\cite{grossman2005bubble} ou \emph{DynaSpot}~\cite{chapuis2009dynaspot}.
+	
+	\subsubsection{\emph{Shadow Cone}}
+	Le \emph{Shadow Cone}~\cite{steed20043d} est une technique développée spécifiquement pour les \emph{spatially immersive displays} (SID) tels que les CAVE. L'idée est de permettre non seulement une sélection performante dans des conditions \og normales \fg{} mais également de sélectionner des objets lorsque l'utilisateur n'est pas suivi par le SID, et que le rendu n'est pas adapté à sa position, donc incorrect.
+	
+	Steed et Parker~\cite{steed20043d} identifient ce besoin en partant du constat qu'un SID ne permet généralement de suivre et d'adapter le rendu graphique qu'à une seule personne (mais pas toujours\footnotemark), ce qui implique qu'un deuxième utilisateur ne peut bénéficier d'un rendu adapté, et rencontrera donc des difficultés pour accomplir des tâches collaboratives nécessitant une étape de sélection.
+	
+	\footnotetext{Le système EVE (Environnement Virtuel Evolutif), permet d'étudier à la fois les aspects multisensoriels et collaboratifs des interactions humaines au sein de mondes virtuels. Les spécificités du système EVE, comme ses dimensions très grandes, une stéréoscopie multi-utilisateurs haute qualité, des rendus haptiques et audio 3D, en font un dispositif unique au monde à la pointe de la technologie dans le domaine de la réalité virtuelle.
+	\url{https://www.limsi.fr/index.php/fr/recherche/venise/menuitem-venise-demos-fr}}
+	
+	Le \emph{Shadow Cone} fonctionne comme un cône de sélection, mais avec une désambiguïsation explicite : lorsque l'utilisateur presse le bouton de son périphérique de pointage, tous les objets dans le cône sont pré-sélectionnés ; puis, l'utilisateur déplace le périphérique et son cône avec, de telle sorte que certains des objets pré-sélectionnés ne sont plus dans le cône. Dès lors qu'ils en sortent, ils ne sont plus pré-sélectionnés, et aucun objet n'est ajouté à la pré-sélection. Quand l'utilisateur relâche le bouton de son périphérique, tous les objets se trouvant encore dans le cône --- et l'ayant toujours été --- sont sélectionnés. Ce fonctionnement est illustré par la figure~\ref{fig:shadow}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.9\textwidth]{figures/ch2/shadow}
+		\caption[Fonctionnement du \emph{Shadow Cone}]{\emph{Shadow Cone}. (a) Sélection par \emph{raycasting} classique : le premier objet croisé par le rayon est sélectionné (A ici). (b) Sélection par cône : l'objet le plus proche de l'axe de révolution du cône est sélectionné (D ici). (c) \emph{Shadow Cone} : l'objet sélectionné est celui qui est inclus dans le cône de sélection à tous les instants entre la pression du bouton du périphérique et son relâchement (G ici). Crédit : \cite{steed20043d}.}
+		\label{fig:shadow}
+	\end{figure}
+	
+	\paragraph{Performances.}
+	Steed et Parker ont évalué les temps de sélection du \emph{Shadow Cone}, comparé à la sélection par rayon ou par cône.
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
+			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon et par cône. Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes.}
+			\label{fig:shadowSLarge}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
+			\caption{Performances du \emph{Shadow Cone} avec une petite cible. Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon.}
+			\label{fig:shadowSSmall}
+		\end{subfigure}
+		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone}. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowConePerf}
+	\end{figure}
+	
+	Les temps de sélection mesurés pour les différentes techniques, avec et sans suivi de la tête, sont présentés sur la figure~\ref{fig:shadowSLarge} pour une grande cible seule, la figure~\ref{fig:shadowSSmall} pour une petite cible seule, la figure~\ref{fig:shadowPLarge} pour une grande cible avec un distracteur, la figure~\ref{fig:shadowPSmall} pour une petite cible avec un distracteur, la figure~\ref{fig:shadowCLarge} pour une grande cible avec de nombreux distracteurs, et enfin la figure~\ref{fig:shadowCSmall} pour une petite cible avec de nombreux distracteurs.
+	
+	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
+			\caption{Performances du \emph{Shadow Cone} avec une paire de grands objets. Aucune différence significative n'est mesurable entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas.}
+			\label{fig:shadowPLarge}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowPSmall}
+			\caption{Performances du \emph{Shadow Cone} avec une paire de petits objets. Le \emph{Shadow Cone} est ici plus lent que la sélection par cône, mais génère moins d'erreurs (0,2 par utilisateur contre 0,6) ; la sélection par rayon ne produisit aucune erreur, là encore avec suivi de la tête.}
+			\label{fig:shadowPSmall}
+		\end{subfigure}
+		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowConePerf2}
+	\end{figure}
+
+		
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
+			\caption{Performances du \emph{Shadow Cone} avec une grappe de gros objets. Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
+			\label{fig:shadowCLarge}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
+			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Le \emph{raycasting} est le plus performant avec suivi de la tête. Dans cette condition, l'écart entre les autres techniques n'est pas significatif. La sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} a un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, avec suivi de la tête.}
+			\label{fig:shadowCSmall}
+		\end{subfigure}
+		\caption[Performances du \emph{Shadow Cone} -- III]{Performances du \emph{Shadow Cone} -- III. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowConePerf3}
+	\end{figure}
+	
+	\subsubsection{Le problème de l'ambiguïté en environnement dense}
+	Lorsque l'environnement est particulièrement dense, la sélection par rayon ou cône devient difficile~\cite{kopper2011rapid}, car la précision requise devient très élevée, tant pour l'utilisateur que pour le système de suivi du périphérique de pointage. L'utilisation d'un cône facilite la sélection de petites cibles, mais ajoute un risque d'ambiguïté. Une solution pourrait être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon qu'il lance, ce qui peut être très troublant, et ingérable avec des cibles mobiles, surtout rapides.
+	
+	Et si diverses techniques peuvent aider à lever l'ambiguïté, leur utilisation est d'autant plus difficile que les cibles situées dans le volume du cône sont nombreuses, petites et\ldots{} mobiles. En effet, la mobilité des cibles nécessite d'effectuer des mouvements plus rapides pour les pointer, donc d'exercer plus de force, et de fait, d'être moins précis~\cite{schmidt1979motor}. En particulier, le \emph{Shadow Cone} impose de maintenir la cible visée à l'intérieur du cône pendant toute la phase de désambiguïsation, ce qui peut s'avérer extrêmement difficile avec une cible en mouvement, \emph{a fortiori} si ses mouvements sont rapides et/ou imprévisibles. Par conséquent, nous ne pouvons retenir cette technique pour les applications qui nous intéressent.
+	
+	Néanmoins, observons qu'en assouplissant quelque peu cette contrainte, le \emph{Shadow Cone} fournirait potentiellement de meilleurs résultats avec les cibles mobiles. C'est en substance ce que propose le \emph{Smart Ray}~\cite{grossman2006design}, décrit plus bas.
 
 \section{Techniques pour la sélection de cibles mobiles}
 	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.
@@ -537,122 +646,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
 	
-\section{\emph{Raycasting}}
-	\subsection{Principe et avantages}
-	Le \emph{raycasting} est une technique de sélection conceptuellement très simple : un périphérique est utilisé pour lancer un rayon virtuel, généralement le long d'un axe du périphérique. Le rayon peut ensuite croiser un objet, ce qui permet de le sélectionner. Cette technique est parfois appelée \emph{laser gun}~\cite{liang1994jdcad}, et elle est illustrée par la figure~\ref{fig:dCanvas2}.
 	
-	Elle a plusieurs avantages : elle permet de sélectionner un objet à n'importe quelle distance, sans avoir à se déplacer ; on peut sélectionner un objet très éloigné de la position initiale du curseur sans avoir à faire de grand mouvement, puisqu'il suffit de changer l'orientation du périphérique de pointage, donc d'un simple mouvement de poignet.
-	
-	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{raycasting} ont été développées.
-	
-	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
-	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/spotlight}
-		\caption[Cône de sélection : \emph{Spotlight}]{Illustration d'une technique de sélection par cône, baptisée \emph{Spotlight}. Les objets qui se trouvent dans le cône sont des candidats à la sélection : quand il y en a plusieurs, le plus proche de l'axe de révolution du cône est choisi ; en cas de proximité égale, le plus proche du périphérique de pointage est choisi. Crédit : \cite{liang1994jdcad}.}
-		\label{fig:spotlight}
-	\end{wrapfigure}
-	
-	Cela facilite la sélection, puisque les gestes n'ont plus besoin d'être aussi précis, mais peut ajouter de l'ambiguïté si deux objets se trouvent dans le cône de sélection. Le cas échéant, cette ambiguïté peut être levée de plusieurs façon, en fonction de la proximité à l'axe de révolution du cône, en fonction de la distance au périphérique de pointage, ou via une intervention directe de l'utilisateur.
-	
-	Le choix de l'angle du cône est important : plus il sera grand, plus la sélection sera facile mais potentiellement ambiguë ; plus il sera petit, plus la sélection sera difficile mais spécifique. Le choix de cet angle peut éventuellement être paramétrable, permettant à l'utilisateur de choisir ce qui lui convient le mieux, voire de l'ajuster à la volée en cours d'utilisation. Cet ajustement pourrait également être géré automatiquement par le système interactif, par exemple de façon analogue à ce qui est fait avec des pointeurs classiques dans le \emph{Bubble Cursor}~\cite{grossman2005bubble} ou \emph{DynaSpot}~\cite{chapuis2009dynaspot}.
-	
-	\subsection{Inconvénients}
-	Lorsque l'environnement est particulièrement dense, la sélection par rayon ou cône devient difficile~\cite{kopper2011rapid}, car la précision requise devient très élevée, tant pour l'utilisateur que pour le système de suivi du périphérique de pointage. L'utilisation d'un cône facilite la sélection de petites cibles, mais ajoute un risque d'ambiguïté.
-	
-	Or, si diverses techniques peuvent aider à lever l'ambiguïté, leur utilisation est d'autant plus difficile que les cibles situées dans le volume du cône sont nombreuses, petites et\ldots{} mobiles. En effet, la mobilité des cibles nécessite d'effectuer des mouvements plus rapides pour les pointer, donc d'exercer plus de force, et de fait, d'être moins précis~\cite{schmidt1979motor}.
-	
-	Une solution à certains de ces problèmes peut être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon qu'il lance, ce qui peut être très troublant. En outre, cette solution pourrait être difficile à adapter aux cibles mobiles, surtout si elles sont rapides.
-	
-	Par conséquent, la sélection par rayon ou par cône ne saurait, à elle seule, être une option viable pour sélectionner de nombreuses et petites cibles~\cite{steed20043d}, \emph{a fortiori} si elles sont mobiles, rapides, et si leurs mouvements sont imprévisibles.
-	
-\section{\emph{Shadow Cone}}
-	\subsection{Principe et avantages}
-	Le \emph{Shadow Cone}~\cite{steed20043d} est une technique développée spécifiquement pour les \emph{spatially immersive displays} (SID) tels que les CAVE. L'idée est de permettre non seulement une sélection performante dans des conditions \og normales \fg{} mais également de sélectionner des objets lorsque l'utilisateur n'est pas suivi par le SID, et que le rendu n'est pas adapté à sa position, donc incorrect.
-	
-	Steed et Parker~\cite{steed20043d} identifient ce besoin en partant du constat qu'un SID ne permet généralement de suivre et d'adapter le rendu graphique qu'à une seule personne (mais pas toujours\footnotemark), ce qui implique qu'un deuxième utilisateur ne peut bénéficier d'un rendu adapté, et rencontrera donc des difficultés pour accomplir des tâches collaboratives nécessitant une étape de sélection.
-	
-	\footnotetext{Le système EVE (Environnement Virtuel Evolutif), permet d'étudier à la fois les aspects multisensoriels et collaboratifs des interactions humaines au sein de mondes virtuels. Les spécificités du système EVE, comme ses dimensions très grandes, une stéréoscopie multi-utilisateurs haute qualité, des rendus haptiques et audio 3D, en font un dispositif unique au monde à la pointe de la technologie dans le domaine de la réalité virtuelle.
-	\url{https://www.limsi.fr/index.php/fr/recherche/venise/menuitem-venise-demos-fr}}
-	
-	Le \emph{Shadow Cone} fonctionne comme un cône de sélection, mais avec une désambiguïsation explicite : lorsque l'utilisateur presse le bouton de son périphérique de pointage, tous les objets dans le cône sont pré-sélectionnés ; puis, l'utilisateur déplace le périphérique et son cône avec, de telle sorte que certains des objets pré-sélectionnés ne sont plus dans le cône. Dès lors qu'ils en sortent, ils ne sont plus pré-sélectionnés, et aucun objet n'est ajouté à la pré-sélection. Quand l'utilisateur relâche le bouton de son périphérique, tous les objets se trouvant encore dans le cône --- et l'ayant toujours été --- sont sélectionnés. Ce fonctionnement est illustré par la figure~\ref{fig:shadow}.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.9\textwidth]{figures/ch2/shadow}
-		\caption[Fonctionnement du \emph{Shadow Cone}]{\emph{Shadow Cone}. (a) Sélection par \emph{raycasting} classique : le premier objet croisé par le rayon est sélectionné (A ici). (b) Sélection par cône : l'objet le plus proche de l'axe de révolution du cône est sélectionné (D ici). (c) \emph{Shadow Cone} : l'objet sélectionné est celui qui est inclus dans le cône de sélection à tous les instants entre la pression du bouton du périphérique et son relâchement (G ici). Crédit : \cite{steed20043d}.}
-		\label{fig:shadow}
-	\end{figure}
-	
-	\subsection{Performances}
-	Steed et Parker ont évalué les temps de sélection du \emph{Shadow Cone}, comparé à la sélection par rayon ou par cône.
-
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon et par cône. Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes.}
-			\label{fig:shadowSLarge}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une petite cible. Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon.}
-			\label{fig:shadowSSmall}
-		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone}. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowConePerf}
-	\end{figure}
-	
-	Les temps de sélection mesurés pour les différentes techniques, avec et sans suivi de la tête, sont présentés sur la figure~\ref{fig:shadowSLarge} pour une grande cible seule, la figure~\ref{fig:shadowSSmall} pour une petite cible seule, la figure~\ref{fig:shadowPLarge} pour une grande cible avec un distracteur, la figure~\ref{fig:shadowPSmall} pour une petite cible avec un distracteur, la figure~\ref{fig:shadowCLarge} pour une grande cible avec de nombreux distracteurs, et enfin la figure~\ref{fig:shadowCSmall} pour une petite cible avec de nombreux distracteurs.
-	
-	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
-
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
-			\caption{Performances du \emph{Shadow Cone} avec une paire de grands objets. Aucune différence significative n'est mesurable entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas.}
-			\label{fig:shadowPLarge}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/shadowPSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une paire de petits objets. Le \emph{Shadow Cone} est ici plus lent que la sélection par cône, mais génère moins d'erreurs (0,2 par utilisateur contre 0,6) ; la sélection par rayon ne produisit aucune erreur, là encore avec suivi de la tête.}
-			\label{fig:shadowPSmall}
-		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowConePerf2}
-	\end{figure}
-
-		
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
-			\caption{Performances du \emph{Shadow Cone} avec une grappe de gros objets. Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
-			\label{fig:shadowCLarge}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Le \emph{raycasting} est le plus performant avec suivi de la tête. Dans cette condition, l'écart entre les autres techniques n'est pas significatif. La sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} a un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, avec suivi de la tête.}
-			\label{fig:shadowCSmall}
-		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone} -- III]{Performances du \emph{Shadow Cone} -- III. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowConePerf3}
-	\end{figure}
-	
-	\subsection{Inconvénients}
-	Force est de constater tout d'abord que les performances du \emph{Shadow Cone} ne sont pas, en moyenne, particulièrement meilleures que celles du \emph{raycasting} ou de la sélection par cône, même si certains contextes mettent en avant ses qualités.
-	
-	Mais le principal inconvénient concerne probablement les cibles mobiles, puisque le \emph{Shadow Cone} impose de maintenir la cible visée à l'intérieur du cône pendant toute la phase de désambiguïsation, ce qui peut s'avérer extrêmement difficile avec une cible en mouvement, \emph{a fortiori} si ses mouvements sont rapides et/ou imprévisibles. Par conséquent, nous ne pouvons retenir cette technique pour les applications qui nous intéressent.
-	
-	Néanmoins, observons qu'en assouplissant quelque peu cette contrainte, le \emph{Shadow Cone} fournirait potentiellement de meilleurs résultats avec les cibles mobiles. C'est en substance ce que propose le \emph{Smart Ray}~\cite{grossman2006design}, décrit dans la section suivante.	
 	
 \section{\emph{Raycasting} avec désambiguïsation}
 	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
