@@ -13,7 +13,7 @@
 		\begin{subfigure}[t]{0.58\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/fitts}
-			\caption{Illustration de la première expérience ayant mené Paul Fitts à la  définition empirique  de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
+			\caption{La première expérience ayant mené Paul Fitts à la  définition empirique de la loi du même nom. Deux triplets de plaques étaient séparés d'une certaine distance. Les sujets devaient, avec leur stylet \og tapoter \fg{} alternativement les deux plaques centrales de chaque triplet, hachurées sur ce schéma, sans toucher les plaques adjacentes. On pouvait faire varier la largeur des plaques ciblées, ainsi que la distance entre elles. Crédit : Paul M. Fitts~\cite{fitts1954information}.}
 			\label{fig:fitts}
 		\end{subfigure}
 		~
@@ -109,7 +109,7 @@
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/casallas}
-		\caption[Paramètres du modèle de Casallas]{Paramètres du modèle de Casallas. Si $\vec{D}$ est le vecteur du curseur (rouge) à la cible (verte), $\vec{D} = \vec{D_{m}} + \vec{D_{s}}$ où $\vec{D_{m}}$ est la la projection de $\vec{V}$ sur $\vec{D}$, et $\vec{D_{s}}$ est la composante de $\vec{D}$ orthogonale à $\vec{D_{m}}$. $D_{m}$ est naturellement la norme de $\vec{D_{m}}$ et $D_{s}$ celle de $\vec{D_{s}}$. Crédit : \cite{casallas2015prediction}.}
+		\caption[Paramètres du modèle de Casallas]{Modèle de Casallas. $\vec{D}$ est le vecteur du curseur (rouge) à la cible (verte), $\vec{D} = \vec{D_{m}} + \vec{D_{s}}$ où $\vec{D_{m}}$ est la projection de $\vec{V}$ sur $\vec{D}$, et $\vec{D_{s}}$ est la composante de $\vec{D}$ orthogonale à $\vec{D_{m}}$. Crédit : \cite{casallas2015prediction}.}
 		\label{fig:casallas}
 	\end{wrapfigure}
 	
@@ -181,7 +181,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/areaCursor}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/areaCursor}
 		\caption[\emph{Area Cursor} avec \emph{hot spot}]{Un curseur zonal dont seul le centre, marqué par l'intersection de deux segments, demeure actif lorsque le curseur chevauche plusieurs cibles. Crédit : \cite{worden1997making}.}
 		\label{fig:areaCursor}
 	\end{figure}
@@ -222,14 +222,14 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/bubble}
-			\caption{Illustration du fonctionnement de la technique \emph{Bubble Cursor} (a, c, d) par opposition à un curseur zonal (b). Dans le cas b, le curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Dans le cas (d), la cible n'est pas entièrement recouverte par le curseur, le disque du curseur, mais elle l'est partiellement, et pour représenter visuellement que c'est suffisant à sa sélection, le curseur est localement étendu pour l'englober.}
+			\caption{\emph{Bubble Cursor} en (a, c, d) par opposition à un curseur zonal (b). Dans le cas (b), le curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). Dans le cas (d), la cible n'est pas entièrement recouverte par le disque du curseur, mais elle l'est partiellement, et pour représenter visuellement que c'est suffisant à sa sélection, le curseur est localement étendu pour l'englober.}
 			\label{fig:bubble}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/voronoi}
-			\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. Un diagramme de Voronoï est un découpage du plan (pavage) en cellules à partir d'un ensemble discret de points appelés \og germes \fg{}. Chaque cellule enferme un seul germe, et forme l'ensemble des points du plan plus proches de ce germe que de tous les autres. La cellule représente en quelque sorte la \og zone de proximité \fg{} du germe. Ici, les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule.}
+			\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. C'est un découpage du plan (pavage) en cellules à partir d'un ensemble discret de points (\emph{germes}). Chaque cellule enferme un seul germe, et forme l'ensemble des points plus proches de ce germe que des autres. Ici, les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule.}
 			\label{fig:voronoi}
 		\end{subfigure}
 		\caption[\emph{Bubble Cursor}]{\emph{Bubble Cursor}. Crédit : \cite{grossman2005bubble}.}
@@ -265,8 +265,8 @@
 	 
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.65\textwidth]{figures/ch2/dynaResults}
-		\caption[\emph{DynaSpot} -- performances]{Les performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'indice de difficulté. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, mais en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
+		\includegraphics[width=0.60\textwidth]{figures/ch2/dynaResults}
+		\caption[\emph{DynaSpot} -- performances]{Performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'ID. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
 		\label{fig:dynaResults}
 	\end{figure}
 
@@ -307,7 +307,7 @@
 		\begin{subfigure}[t]{0.60\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
-			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} désigne le \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} désigne le \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. L'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkPerf}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor}]{\emph{Silk Cursor}. Crédit : \cite{zhai1994silk}}
@@ -323,14 +323,14 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
-			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkErrors}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
-			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. Notez que l'axe des ordonnées ne commence pas à 0.}
+			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
 			\label{fig:silkErrorMag}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
@@ -427,13 +427,13 @@
 \section{\emph{AttachedShock}}
 	\subsection{Principe et avantages}
 	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets \og fuyants \fg{} : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
-	
-	\begin{figure}[!htb]
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=0.70\textwidth]{figures/ch2/as2dspeed}
-		\caption[\emph{AttachedShock}, profil de vitesse]{Représentation de la vue d'un utilisateur utilisant un système de réalité augmentée dans une voiture, et fixant la route en face de lui. Des objets, ici représentés par des sphères vertes, attirent son attention. Ils sont fixés au sol, mais leur vitesse relative déterminée par rapport au référentiel de la voiture correspond à la vitesse de la voiture dans le référentiel terrestre. Si celle-ci est constante, alors la vitesse relative des objets l'est aussi ; pourtant, une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran, comme l'illustre la courbe sous l'image. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/as2dspeed}
+		\caption[\emph{AttachedShock}, profil de vitesse]{Vue d'un utilisateur dans une voiture, fixant la route. Des objets (sphères vertes) attirent son attention. Ils sont fixés au sol, mais leur vitesse relative (par rapport au référentiel de la voiture) est celle de la voiture dans le référentiel terrestre. Une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
 		\label{fig:as2dspeed}
-	\end{figure}
+	\end{wrapfigure}
 	
 	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
 
@@ -451,7 +451,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/asRes}
-		\caption[\emph{AttachedShock}, performance]{Présentation des résultats obtenus par les auteurs d'\emph{AttachedShock} au cours de leur évaluation de cette technique. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. Une technique idéale serait donc à l'origine. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal (\emph{Area}) en temps de sélection, mais s'illustre pas un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats bruts tirés de~\cite{you2012attachedshock}.}
+		\caption[\emph{AttachedShock}, performance]{Résultats de l'évaluation d'\emph{AttachedShock}. Le taux d'erreurs est en abscisse, et le temps de sélection en ordonnée. \emph{AttachedShock} ne fait pas beaucoup mieux qu'un curseur zonal en temps de sélection, mais s'illustre pas un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, même s'il est très proche de celui du curseur zonal. Résultats tirés de~\cite{you2012attachedshock}.}
 		\label{fig:asRes}
 	\end{wrapfigure}
 
@@ -721,7 +721,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/smartRayLocation}
-			\caption{Pour les cibles dont les identifiants sont faibles (plutôt situées vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont mauvais pour les cibles d'identifiant sont élevé (à droite). Tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite, et rencontrait beaucoup d'obstacles.}
+			\caption{Pour les cibles dont les identifiants sont faibles (vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont mauvais pour les cibles d'identifiant sont élevé (à droite). Tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite, et rencontrait beaucoup d'obstacles.}
 			\label{fig:smartRayLocation}
 		\end{subfigure}
 		\caption[Performances du \emph{raycasting} avec désambiguïsation]{Performances du \emph{raycasting} avec désambiguïsation. Crédit : \cite{grossman2006design}.}
