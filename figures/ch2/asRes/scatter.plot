@@ -1,4 +1,4 @@
-set terminal svg size 2560,1440 fname 'Verdana' fsize 72
+set terminal svg size 2560,1440 fname 'Verdana' fsize 76
 set output 'asRes.svg'
 
 set style fill solid 1.0 border

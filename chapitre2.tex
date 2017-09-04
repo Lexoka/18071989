@@ -88,7 +88,7 @@
 	
 	Les corrélations entre ces indices de difficulté et les temps de sélection mesurés par Al Hajri \emph{et al.} sont présentées sur la figure~\ref{fig:holdID}, où l'on observera qu'elles sont très fortes. Néanmoins, ces travaux ne portent que sur des cibles dont la vitesse et la direction sont constantes.
 	
-	\begin{figure}[H]
+	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdID}
 		\caption[ID vs. nature du mouvement et temps de sélection]{Temps de sélection en fonction des indices de difficulté développés par Al Harji \emph{et al.} Les deux indices sont très fortement corrélés avec les temps de sélection mesurés (sans aucune assistance à la sélection). Crédit : \cite{hajri2011moving}.}
@@ -236,14 +236,14 @@
 		\label{fig:bubbleVoronoi}
 	\end{figure}
 	
-	Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.
-
-	\begin{figure}[!htb]
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=0.6\textwidth]{figures/ch2/bubbleResults}
-		\caption[\emph{Bubble Cursor} --  performances]{Temps mesuré pour atteindre la cible avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ représente la largeur réelle de la cible, et $EW$ sa largeur effective, c'est-à-dire la taille de sa cellule de Voronoï. On constate que le \emph{Bubble Cursor} améliore les performances, et qu'il dépend de la largeur effective des cibles bien plus que de leur largeur réelle. Crédit : \cite{grossman2005bubble}.}
+		\includegraphics[width=0.46\textwidth]{figures/ch2/bubbleResults}
+		\caption[\emph{Bubble Cursor} --  performances]{Temps de pointage avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ est la largeur réelle de la cible, et $EW$ sa largeur effective. Le \emph{Bubble Cursor} améliore les performances, dépend de $EW$ bien plus que de $W$. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:bubbleResults}
-	\end{figure}
+	\end{wrapfigure}
+	
+	Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.
 
 	\subsection{Inconvénients}
 	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides.
@@ -254,21 +254,25 @@
 	\subsection{Principe}
 	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/dynaSpot}
-		\caption[\emph{DynaSpot} -- principe]{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, il est possible de sélectionner l'espace vide, par exemple pour ouvrir un menu contextuel. Crédit : \cite{chapuis2009dynaspot}.}
-		\label{fig:dynaSpot}
-	\end{wrapfigure}
-
-	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
-	 
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.60\textwidth]{figures/ch2/dynaResults}
-		\caption[\emph{DynaSpot} -- performances]{Performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (dans deux versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'ID. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}. Crédit : \cite{chapuis2009dynaspot}.}
-		\label{fig:dynaResults}
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
+			\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, on peut sélectionner l'espace vide.}
+			\label{fig:dynaSpot}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
+			\caption{Performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (2 versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'ID. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}.}
+			\label{fig:dynaResults}
+		\end{subfigure}
+		\caption[\emph{DynaSpot} -- principe et performances]{\emph{DynaSpot} -- principe et performances. Crédit : \cite{chapuis2009dynaspot}.}
+		\label{fig:plop}
 	\end{figure}
+	
+	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
 
 	Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur. En cela, cette technique permet de pallier deux autres inconvénients du \emph{Bubble Cursor}.
 
@@ -431,12 +435,12 @@
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/as2dspeed}
-		\caption[\emph{AttachedShock}, profil de vitesse]{Vue d'un utilisateur dans une voiture, fixant la route. Des objets (sphères vertes) attirent son attention. Ils sont fixés au sol, mais leur vitesse relative (par rapport au référentiel de la voiture) est celle de la voiture dans le référentiel terrestre. Une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
+		\caption[\emph{AttachedShock}, profil de vitesse]{Vue d'un utilisateur dans une voiture, fixant la route. Des objets attirent son attention. Ils sont fixés au sol, mais leur vitesse relative (par rapport au référentiel de la voiture) est celle de la voiture dans le référentiel terrestre. Une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
 		\label{fig:as2dspeed}
 	\end{wrapfigure}
 	
 	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
-
+	
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.70\textwidth]{figures/ch2/asas}
@@ -576,8 +580,8 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/shadow}
-		\caption[Fonctionnement du \emph{Shadow Cone}]{Fonctionnement du \emph{Shadow Cone}. (a) Sélection par \emph{raycasting} classique : le premier objet croisé par le rayon est sélectionné (A ici). (b) Sélection par cône : l'objet le plus proche de l'axe de révolution du cône est sélectionné (D ici). (c) \emph{Shadow Cone} : l'objet sélectionné est celui qui est inclus dans le cône de sélection à tous les instants entre la pression du bouton du périphérique et son relâchement (G ici). Crédit : \cite{steed20043d}.}
+		\includegraphics[width=0.9\textwidth]{figures/ch2/shadow}
+		\caption[Fonctionnement du \emph{Shadow Cone}]{\emph{Shadow Cone}. (a) Sélection par \emph{raycasting} classique : le premier objet croisé par le rayon est sélectionné (A ici). (b) Sélection par cône : l'objet le plus proche de l'axe de révolution du cône est sélectionné (D ici). (c) \emph{Shadow Cone} : l'objet sélectionné est celui qui est inclus dans le cône de sélection à tous les instants entre la pression du bouton du périphérique et son relâchement (G ici). Crédit : \cite{steed20043d}.}
 		\label{fig:shadow}
 	\end{figure}
 	
