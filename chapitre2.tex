@@ -323,7 +323,37 @@
 	\label{tab:silkImpr}
 	\end{table}
 
-	\subsubsection{Inconvénients}
+	\subsubsection{\emph{DynaSpot}}
+	Cette lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
+			\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, on peut sélectionner l'espace vide.}
+			\label{fig:dynaSpot}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
+			\caption{Performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (2 versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'ID. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}.}
+			\label{fig:dynaResults}
+		\end{subfigure}
+		\caption[\emph{DynaSpot} -- principe et performances]{\emph{DynaSpot} -- principe et performances. Crédit : \cite{chapuis2009dynaspot}.}
+		\label{fig:dynaSpotRes}
+	\end{figure}
+	
+	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
+
+	Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur. En cela, cette technique permet de pallier deux autres inconvénients du \emph{Bubble Cursor}.
+
+	\paragraph{Ambiguïté et ralentissements.}
+	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
+
+	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un \og dézoom \fg{} avant que la sélection finale ne puisse avoir lieu.
+
+	\subsubsection{La densité : un écueil pour les curseurs zonaux}
 	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
 	
 	\subsection{Techniques de lancer de rayon (\emph{raycasting})}
@@ -1088,41 +1118,6 @@
 
 \section{Techniques pour la sélection de cibles mobiles}
 	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.
-
-	\subsection{Curseurs zonaux}
-	Les curseurs zonaux génériques tels que le \emph{Bubble Cursor} peuvent être utilisés pour des cibles mobiles, mais sont peu adaptés à ce type de tâche. Cette technique souffre par exemple d'un problème d'instabilité quand les cibles bougent.
-	
-	\subsection{\emph{DynaSpot}}
-	Cette lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
-			\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, on peut sélectionner l'espace vide.}
-			\label{fig:dynaSpot}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
-			\caption{Performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (2 versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'ID. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}.}
-			\label{fig:dynaResults}
-		\end{subfigure}
-		\caption[\emph{DynaSpot} -- principe et performances]{\emph{DynaSpot} -- principe et performances. Crédit : \cite{chapuis2009dynaspot}.}
-		\label{fig:dynaSpotRes}
-	\end{figure}
-	
-	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
-
-	Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur. En cela, cette technique permet de pallier deux autres inconvénients du \emph{Bubble Cursor}.
-
-	\subsubsection{Ambiguïté et ralentissements}
-	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
-
-	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un \og dézoom \fg{} avant que la sélection finale ne puisse avoir lieu.
-	
-
 	
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
