@@ -5,8 +5,18 @@
 \label{chap2}
 \cleardoublepage
 
-\section{Introduction : théorie du pointage et du mouvement ciblé}
-	\subsection{Pointage, sélection et loi de Fitts}
+\section{Introduction}
+	Dans le présent chapitre, nous ferons d'abord quelques rappels sur la théorie de la sélection de cibles, et un bref état de l'art des modèles existants, en particulier lorsqu'ils sont dédiés aux cibles mobiles. Puis, nous nous attacherons à établir une taxinomie des techniques de sélection les plus connues et/ou performantes. Il ne s'agit pas, là non plus, d'être exhaustif, mais de tâcher d'être représentatif, de mentionner et d'analyser les mérites et limites des principales techniques de sélection.
+	
+	Notez cependant que cette taxinomie n'a pas vocation à avoir un intérêt universel pour la sélection de cibles, mais qu'elle est établie dans l'optique de la sélection de cibles \emph{mobiles}, et en particulier de cibles mobiles dans des environnements particulièrement difficiles : denses, avec beaucoup d'occultation, de mouvements vifs et imprévisibles, etc. Par conséquent, nos observations sur les différentes techniques citées plus bas seront orientées par la problématique qui nous intéresse, et ne sauraient être prises pour des évaluations absolues des techniques concernées.
+	
+	De fait, nous séparerons les techniques selon qu'elles seront conçues pour des cibles statiques ou mobiles, tout en admettant qu'une technique appartenant à une catégorie peut généralement être utilisée pour les cibles de l'autre. Dans cette optique, nous discuterons des techniques de sélection fondées sur un curseur zonal (surfacique ou volumique), sur l'augmentation ou la transoformation des cibles, sur l'altération du temps, sur le lancer de rayon ou la projection conique, sur la sélection à plusieurs étapes (dite en cascade), ainsi que sur la prédiction de l'intention de l'utilisateur.
+	
+	Remarquez que ces catégories ne sont pas mutuellement exclusives, loin s'en faut, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâcherons de d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, en fonction de ce qui nous paraît être son principe fondamental.
+	
+	Outre les principes de fonctionnement et mérites apparents des techniques que nous analyserons dans ce chapitre, nous nous attacherons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles. Nous nous attellerons donc à en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur. Que celui-ci soit néanmoins averti et conscient des limites de cette démarche.
+
+\section{Pointage, sélection et loi de Fitts}
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas qui nous intéressent, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[!htb]
@@ -135,19 +145,10 @@
 	
 	Nous reviendrons dans les chapitres suivants sur cette hypothèse.
 	
-	\subsection{État de l'art et taxinomie des techniques de sélection}
-	Dans le présent chapitre, nous nous attacherons à établir une taxinomie des techniques de sélection les plus connues et/ou performantes. Il ne s'agit pas, là non plus, d'être exhaustif, mais de tâcher d'être représentatif, de mentionner et d'analyser les mérites et limites des principales techniques de sélection.
-	
-	Notez cependant que cette taxinomie n'a pas vocation à avoir un intérêt universel pour la sélection de cibles, mais qu'elle est établie dans l'optique de la sélection de cibles \emph{mobiles}, et en particulier de cibles mobiles dans des environnements particulièrement difficiles : denses, avec beaucoup d'occultation, de mouvements vifs et imprévisibles, etc. Par conséquent, nos observations sur les différentes techniques citées plus bas seront orientées par la problématique qui nous intéresse, et ne sauraient être prises pour des évaluations absolues des techniques concernées.
-	
-	Dans cette optique, nous discuterons donc des techniques de sélection fondées sur un curseur zonal (surfacique ou volumique), sur l'augmentation ou la transoformation des cibles, sur l'altération du temps, sur le lancer de rayon ou la projection conique, sur la sélection à plusieurs étapes (dite en cascade), ainsi que sur la prédiction de l'intention de l'utilisateur.
-	
-	Remarquez que ces catégories ne sont pas mutuellement exclusives, loin s'en faut, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâcherons de d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, en fonction de ce qui nous paraît être son principe fondamental.
-	
-	Outre les principes de fonctionnement et mérites apparents des techniques que nous analyserons dans ce chapitre, nous nous attacherons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles. Nous nous attellerons donc à en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur. Que celui-ci soit néanmoins averti et conscient des limites de cette démarche.
+\section{Techniques pour la sélection de cibles statiques}
+	Commençons par examiner les techniques conçues pour les cibles statiques, mais précisons au préalable qu'elles sont toutes utilisables avec des cibles mobiles, avec divers degrés d'efficacité.
 
 \section{Curseurs zonaux}
-	\subsection{Principe et avantages généraux}
 	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{kabbash1995prince, worden1997making}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance effective entre le curseur et la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
 	
 	\subsection{\emph{Prince}}
@@ -176,7 +177,6 @@
 	La technique \emph{Prince} présente également l'avantage de permettre la sélection de plusieurs cibles d'un coup si elles sont incluses dans le curseur, mais cet avantage reflète une limitation de \emph{Prince}, car il peut dans ces cas-là y avoir ambiguïté si l'utilisateur ne souhaite sélectionner qu'une seule cible.
 	
 	\subsection{\emph{(Sticky) Area Cursor}, \emph{stickiness} et adaptativité}
-		\subsubsection{Adaptativité}
 	Une solution à ce problème d'ambiguïté est proposée par Worden \emph{et al.}~\cite{worden1997making} : lorsqu'un curseur zonal recouvre plusieurs cibles, le curseur devient en pratique un curseur ponctuel, et seul son centre est actif, comme l'illustre la figure~\ref{fig:areaCursor}.
 	
 	\begin{figure}[!htb]
@@ -210,12 +210,8 @@
 	\caption[\emph{Area cursor} -- performances]{Performances mesurées pour un \emph{Area cursor} avec des cibles collantes, ainsi qu'avec des cibles collantes et un gain adaptatif en fonction de la vitesse du curseur. Les résultats sont comparés avec un curseur ponctuel dans les mêmes conditions, avec des sujets jeunes (23,4 ans en moyenne) et plus âgés (70,1 ans en moyenne). Les performances sont rapportées par le temps de sélection ainsi que le taux de succès (pourcentage de sélections réussies). Le curseur zonal avec cibles collantes et gain adaptatif permet les meilleures performances, tant avec des sujets jeunes que plus âgés, mais c'est au sein du second groupe que l'apport est le plus important. Données tirées de~\cite{worden1997making}.}
 	\label{tab:areaCursor}
 	\end{table}
-	
-	\subsection{Inconvénients}
-	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
 
-\section{\emph{Bubble Cursor}}
-	\subsection{Principe et avantages}
+	\subsection{\emph{Bubble Cursor}}
 	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci.	
 
 	\begin{figure}[!htb]
@@ -245,14 +241,100 @@
 	
 	Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.
 
-	\subsection{Inconvénients}
+	\subsubsection{Instabilité}
 	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides.
 	
 	Un autre inconvénient (potentiellement majeur) du \emph{Bubble Cursor} est intrinsèquement lié à son mode de fonctionnement : il partage l'espace de sélection en un diagramme de Voronoï, où toute partie de l'espace fait partie de la zone de sélection d'une cible. Par conséquent, il n'existe plus d'espace \og vide \fg{} dans lequel on pourrait utiliser le périphérique de saisie pour effectuer une opération indépendante des cibles, par exemple ouvrir un menu contextuel.
+	
+	\subsection{\emph{Silk Cursor}}
+	Le \emph{Silk Cursor}~\cite{zhai1994silk} est analogue aux curseurs zonaux décrits plus haut, mais étendu à la 3D. Il s'agit donc d'un volume semi-transparent que l'utilisateur peut utiliser pour sélectionner un objet en déplaçant le volume de telle sorte que l'objet soit dedans.
+	
+	Tel qu'il fut évalué dans~\cite{zhai1994silk}, le \emph{Silk Cursor} doit entièrement englober un objet pour pouvoir le sélectionner ; ainsi, dans l'illustration de la figure~\ref{fig:silk}, le poisson ne peut pas encore être sélectionné. Celui-ci était animé par une combinaison de fonctions sinusoïdales agissant indépendamment sur chacune de ses coordonnées (x,y,z). Ces fonctions sont détaillées par les équations~\ref{eq:silkMotion0}, \ref{eq:silkMotion1} et~\ref{eq:silkMotion2} où $t$ est le temps, $A = 4,55$~cm, $p = 2$, $f_{0} = 0,02$~Hz, 	$\phi_{x}(i)$, $\phi_{y}(i)$ et $\phi_{z}(i)$ sont des nombres pseudo-aléatoires, échantillonés uniformément entre $0$ et $2\pi$. Ces fonctions ont pour but de produire un mouvement lisse (\emph{smooth}) et subjectivement imprévisible~\cite{zhai1993human}.
+	
+	\begin{align}
+		\label{eq:silkMotion0}
+		x(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{x}(i) \right) \\
+		\label{eq:silkMotion1}
+		y(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{y}(i) \right) \\
+		\label{eq:silkMotion2}
+		z(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{z}(i) \right) - 7.8
+	\end{align}
+	
+	\subsubsection{Perfomances}
+	\paragraph{Temps de sélection.}
+	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}). Comme le supposaient les auteurs, la semi-transparence du curseur permet une forte amélioration du temps de sélection, particulièrement avec un écran monoscopique. De plus, la stéréoscopie réduit le temps de sélection de façon significative, et ce même avec le \emph{Silk Cursor}.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.38\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/silk}
+			\caption{Le \emph{Silk Cursor} : l'utilisateur est ici en train d'essayer de sélectionner un poisson, en l'englobant avec le volume du curseur. Quelques parties du poisson ne sont pas incluses dans le volume de sélection, et de fait il ne peut pas encore être sélectionné.}
+			\label{fig:silk}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.60\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
+			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} désigne le \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. L'axe des ordonnées ne commence pas à 0.}
+			\label{fig:silkPerf}
+		\end{subfigure}
+		\caption[\emph{Silk Cursor}]{\emph{Silk Cursor}. Crédit : \cite{zhai1994silk}}
+		\label{fig:silkCursorPerf}
+	\end{figure}
+	
+	On observera toutefois que la conception de l'évaluation pourrait favoriser ce dernier de façon artificielle, en ce qu'il est nécessaire que l'objet visé soit intégralement inclus dans le curseur volumique, ce qui ne paraît pas indispensable dans l'absolu. Or, en fil de fer, vérifier cela visuellement paraît très difficile, tandis que s'assurer qu'une partie de l'objet est dans le curseur semble plus aisé ; on peut supposer que la différence de difficulté entre ces deux tâches est moindre avec le \emph{Silk Cursor} grâce aux indications fournies par la semi-transparence.
+	
+	\paragraph{Taux et amplitude des erreurs.}
+	Les auteurs ont également évalué les performances du \emph{Silk Cursor} sous l'angle des erreurs, tant leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
+			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
+			\label{fig:silkErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
+			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
+			\label{fig:silkErrorMag}
+		\end{subfigure}
+		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
+		\label{fig:SilkErrorsErrMag}
+	\end{figure}
+	
+	Enfin, cette étude menée par Zhai \emph{et al.}~\cite{zhai1994silk} confirme l'intérêt du rendu stéréoscopique pour de telles tâches, et vérifie qu'il apporte toujours un bénéfice tangible lorsqu'il est combiné au \emph{Silk Cursor}.
+	
+	\paragraph{Impressions subjectives.}
+	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
 
-\section{\emph{DynaSpot}}
-	\subsection{Principe}
-	Cette dernière lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
+	\begin{table}
+	\centering
+	\begin{tabular}{c | c c c c c}
+							& \multicolumn{5}{c}{Impressions subjectives} \\
+		Condition			& Très basse	& Basse	& Moyenne	& Haute	& Très haute \bigstrut[b] \\ \hline
+		\emph{MonoWire}		& 8				& 2		& 1			&		& \bigstrut[t]	\\
+		\emph{MonoSilk}		& 				& 		& 4			& 4		& 4 			\\
+		\emph{StereoWire}	& 				& 2		& 7			& 3		& 	 			\\
+		\emph{StereoSilk}	& 				& 		& 			& 3		& 9 			\\
+	\end{tabular}
+	\caption[\emph{Silk Cursor} -- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. \emph{MonoWire} et \emph{MonoSilk} sont les conditions monoscopiques en fil de fer et avec le \emph{Silk Cursor} respectivement ; \emph{StereoWire} et \emph{StereoSilk} sont les équivalents respectifs en stéréoscopie. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Source :~\cite{zhai1994silk}.}
+	\label{tab:silkImpr}
+	\end{table}
+
+	\subsection{Inconvénients}
+	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
+
+\section{Techniques pour la sélection de cibles mobiles}
+	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.
+
+\section{Curseurs zonaux}
+	Les curseurs zonaux génériques tels que le \emph{Bubble Cursor} peuvent être utilisés pour des cibles mobiles, mais sont peu adaptés à ce type de tâche. Cette technique souffre par exemple d'un problème d'instabilité quand les cibles bougent.
+	
+	\subsection{\emph{DynaSpot}}
+	Cette lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{0.49\textwidth}
@@ -276,94 +358,12 @@
 
 	Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur. En cela, cette technique permet de pallier deux autres inconvénients du \emph{Bubble Cursor}.
 
-	\subsection{Inconvénients}
+	\subsubsection{Ambiguïté et ralentissements}
 	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
 
 	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un \og dézoom \fg{} avant que la sélection finale ne puisse avoir lieu.
 	
-\section{\emph{Silk Cursor}}
-	\subsection{Principe et avantages}
-	Le \emph{Silk Cursor}~\cite{zhai1994silk} est analogue aux curseurs zonaux décrits plus haut, mais étendu à la 3D. Il s'agit donc d'un volume semi-transparent que l'utilisateur peut utiliser pour sélectionner un objet en déplaçant le volume de telle sorte que l'objet soit dedans.
-	
-	Tel qu'il fut évalué dans~\cite{zhai1994silk}, le \emph{Silk Cursor} doit entièrement englober un objet pour pouvoir le sélectionner ; ainsi, dans l'illustration de la figure~\ref{fig:silk}, le poisson ne peut pas encore être sélectionné. Celui-ci était animé par une combinaison de fonctions sinusoïdales agissant indépendamment sur chacune de ses coordonnées (x,y,z). Ces fonctions sont détaillées par les équations~\ref{eq:silkMotion0}, \ref{eq:silkMotion1} et~\ref{eq:silkMotion2} où $t$ est le temps, $A = 4,55$~cm, $p = 2$, $f_{0} = 0,02$~Hz, 	$\phi_{x}(i)$, $\phi_{y}(i)$ et $\phi_{z}(i)$ sont des nombres pseudo-aléatoires, échantillonés uniformément entre $0$ et $2\pi$. Ces fonctions ont pour but de produire un mouvement lisse (\emph{smooth}) et subjectivement imprévisible~\cite{zhai1993human}.
-	
-	\begin{align}
-		\label{eq:silkMotion0}
-		x(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{x}(i) \right) \\
-		\label{eq:silkMotion1}
-		y(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{y}(i) \right) \\
-		\label{eq:silkMotion2}
-		z(t) &= \sum_{i=0}^{5} Ap^{-i} \sin \left( 2\pi{}f_{0}p^{i}t + \phi_{z}(i) \right) - 7.8
-	\end{align}
-	
-	\subsection{Perfomances}
-	\subsubsection{Temps de sélection}
-	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}). Comme le supposaient les auteurs, la semi-transparence du curseur permet une forte amélioration du temps de sélection, particulièrement avec un écran monoscopique. De plus, la stéréoscopie réduit le temps de sélection de façon significative, et ce même avec le \emph{Silk Cursor}.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.38\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/silk}
-			\caption{Le \emph{Silk Cursor} : l'utilisateur est ici en train d'essayer de sélectionner un poisson, en l'englobant avec le volume du curseur. Quelques parties du poisson ne sont pas incluses dans le volume de sélection, et de fait il ne peut pas encore être sélectionné.}
-			\label{fig:silk}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.60\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
-			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} désigne le \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. L'axe des ordonnées ne commence pas à 0.}
-			\label{fig:silkPerf}
-		\end{subfigure}
-		\caption[\emph{Silk Cursor}]{\emph{Silk Cursor}. Crédit : \cite{zhai1994silk}}
-		\label{fig:silkCursorPerf}
-	\end{figure}
-	
-	On observera toutefois que la conception de l'évaluation pourrait favoriser ce dernier de façon artificielle, en ce qu'il est nécessaire que l'objet visé soit intégralement inclus dans le curseur volumique, ce qui ne paraît pas indispensable dans l'absolu. Or, en fil de fer, vérifier cela visuellement paraît très difficile, tandis que s'assurer qu'une partie de l'objet est dans le curseur semble plus aisé ; on peut supposer que la différence de difficulté entre ces deux tâches est moindre avec le \emph{Silk Cursor} grâce aux indications fournies par la semi-transparence.
-	
-	\subsubsection{Taux et amplitude des erreurs}
-	Les auteurs ont également évalué les performances du \emph{Silk Cursor} sous l'angle des erreurs, tant leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
-			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
-			\label{fig:silkErrors}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
-			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
-			\label{fig:silkErrorMag}
-		\end{subfigure}
-		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
-		\label{fig:SilkErrorsErrMag}
-	\end{figure}
-	
-	Enfin, cette étude menée par Zhai \emph{et al.}~\cite{zhai1994silk} confirme l'intérêt du rendu stéréoscopique pour de telles tâches, et vérifie qu'il apporte toujours un bénéfice tangible lorsqu'il est combiné au \emph{Silk Cursor}.
-	
-	\subsubsection{Impressions subjectives}
-	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
 
-	\begin{table}
-	\centering
-	\begin{tabular}{c | c c c c c}
-							& \multicolumn{5}{c}{Impressions subjectives} \\
-		Condition			& Très basse	& Basse	& Moyenne	& Haute	& Très haute \bigstrut[b] \\ \hline
-		\emph{MonoWire}		& 8				& 2		& 1			&		& \bigstrut[t]	\\
-		\emph{MonoSilk}		& 				& 		& 4			& 4		& 4 			\\
-		\emph{StereoWire}	& 				& 2		& 7			& 3		& 	 			\\
-		\emph{StereoSilk}	& 				& 		& 			& 3		& 9 			\\
-	\end{tabular}
-	\caption[\emph{Silk Cursor} -- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. \emph{MonoWire} et \emph{MonoSilk} sont les conditions monoscopiques en fil de fer et avec le \emph{Silk Cursor} respectivement ; \emph{StereoWire} et \emph{StereoSilk} sont les équivalents respectifs en stéréoscopie. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Source :~\cite{zhai1994silk}.}
-	\label{tab:silkImpr}
-	\end{table}
-	
-	\subsection{Inconvénients}
-	Malgré les bons résultats commentés plus haut, le \emph{Silk Cursor} n'est pas exempt de défauts. En tant que curseur volumique, il s'agit en substance de l'extension à l'espace tridimensionnel d'un curseur zonal classique, comme ceux décrits plus haut dans un contexte 2D. Par conséquent, cette technique souffre des mêmes inconvénients que ses analogues bidimensionnels.
-	
-	En particulier, les solutions de ce type voient leur performances chuter quand la densité de cibles est élevée, car le curseur a tendance à \og saisir \fg{} plusieurs objets à la fois, y compris des distracteurs. Un curseur volumique ne peut donc être viable en environnement dense qu'avec une bonne solution de désambiguïsation.
 	
 \section{\emph{Target/Bubble Ghost}}
 	\subsection{Principe et avantages}
