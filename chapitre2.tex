@@ -640,7 +640,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Le \emph{raycasting} se montre plus performant que les autres techniques avec suivi de la tête. Dans cette condition, l'écart entre ces deux dernières n'est pas significatif. La sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} souffre d'un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, avec suivi de la tête.}
+			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Le \emph{raycasting} est le plus performant avec suivi de la tête. Dans cette condition, l'écart entre les autres techniques n'est pas significatif. La sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} a un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, avec suivi de la tête.}
 			\label{fig:shadowCSmall}
 		\end{subfigure}
 		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
@@ -661,7 +661,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\subsubsection{Principe}
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
-	\newcommand{\rayWidth}{0.60\textwidth}
+	\newcommand{\rayWidth}{0.55\textwidth}
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
@@ -917,7 +917,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/squadSize}
-			\caption{Performances de SQUAD comparées avec celles du \emph{raycasting}, en fonction de la taille des cibles, avec différentes densités de distracteurs. Les performances du \emph{raycasting} sont une moyenne de ses performances sur toutes les densités, puisqu'elles n'en dépendent pas. SQUAD se montre plus performante à faible densité, et capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est intéressant pour certaines applications. Avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
+			\caption{Performances de SQUAD comparées avec celles du \emph{raycasting}, en fonction de la taille des cibles, avec différentes densités de distracteurs. SQUAD est plus performante à faible densité, et capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est intéressant pour certaines applications. Avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
 			\label{fig:squadSize}
 		\end{subfigure}
 		\caption[Performances de SQUAD]{Performances de SQUAD. Crédit : \cite{kopper2011rapid}.}
@@ -929,7 +929,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=0.65\textwidth]{figures/ch2/squadRecap}
-		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due à la recherche visuelle de la cible quand elle est petite. En revanche, les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
+		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due à la recherche visuelle de la cible quand elle est petite. Les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadRecap}
 	\end{figure}
 	
@@ -975,7 +975,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dCanvasDensity}
+		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvasDensity}
 		\caption[\emph{Disambiguation Canvas} -- densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. (a) : 25 objets peuvent être sélectionnés, et sont de fait assez gros ; (b) : ils sont 97, et de taille moyenne ; (c) : ils sont 224 et nettement plus petits. La loi de Fitts nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasDensity}
 	\end{figure}
@@ -1236,7 +1236,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	\label{tab:kepStable}
 	\end{table}
 		
-\section{\emph{Speed Profile sEparation for Endpoint Divination} (\bsc{SPEED})}
+\section{\emph{Speed Profile sEparation for Endpoint Divination}}
 	\subsection{Principe}
 	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED base donc sa prédiction de cible sur la phase de décélération.
 	
@@ -1293,7 +1293,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.65\textwidth]{figures/ch2/intensMD}
+		\includegraphics[width=0.60\textwidth]{figures/ch2/intensMD}
 		\caption[Sélection d'un atome dans une simulation de dynamique moléculaire]{Schéma illustrant la sélection d'un atome dans une simulation de dynamique moléculaire. L'environnement très dense rend la tâche particulièrement difficile. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensMD}
 	\end{figure}
@@ -1325,7 +1325,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.65\textwidth]{figures/ch2/intensMetric}
+		\includegraphics[width=0.60\textwidth]{figures/ch2/intensMetric}
 		\caption[Métrique de \emph{scoring} de la technique \emph{IntenSelect}]{Métrique de \emph{scoring} d'\emph{IntenSelect}. Il s'agit du cône de sélection vu de côté, où sa surface est tracée en pointillés rouge et le rayon en noir, avec un point P quelconque inclus dans le cône. La valeur de la métrique est indiquée par la nuance de gris/bleu : en blanc, elle vaut 1 ; en noir, 0. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensMetric}
 	\end{figure}
@@ -1346,7 +1346,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.70\textwidth]{figures/ch2/intensAccumul}
+		\includegraphics[width=0.65\textwidth]{figures/ch2/intensAccumul}
 		\caption[\emph{IntenSelect} -- accumulation de score]{Exemple d'accumulation de score pour une cible. À partir de $t = 60$, la cible est précisément sélectionnée par le cône et son score augmente ; à $t = 180$, elle n'est plus, et son score diminue rapidement. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensAccumul}
 	\end{figure}
@@ -1365,7 +1365,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/intenSnap2}
-			\caption{\emph{IntenSelect} avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon, et même avec un cône, on peut la \og perdre \fg{} à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème.}
+			\caption{\emph{IntenSelect} avec une cible mobile, comparée au \emph{raycasting} et à la sélection par cône. Il est difficile de saisir la cible avec un rayon ; même avec un cône, on peut la \og perdre \fg{} à tout instant ; l'heuristique de prédiction d'\emph{IntenSelect} permet de pallier ce problème.}
 			\label{fig:intenSnap2}
 		\end{subfigure}
 		\caption[\emph{IntenSelect}]{\emph{IntenSelect} en action. Crédit : \cite{de2005intenselect}.}
@@ -1384,7 +1384,7 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/intensPerf}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/intensPerf}
 		\caption[\emph{IntenSelect} -- performances]{Performances de la technique \emph{IntenSelect} en sélection de cibles statiques (à gauche) et mobiles (à droite), comparée au \emph{raycasting} et à la sélection par cône. Les résultats ne se démarquent pas de ceux de la sélection par cône avec des cibles statiques mais c'est le cas quand elles bougent. Les boîtes représentent les données entre le premier et le dernier quartile, avec la valeur médiane indiquée en rouge. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensPerf}
 	\end{figure}
