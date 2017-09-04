@@ -557,6 +557,237 @@
 	
 	Ainsi, les inconvénients principaux de cette technique, à savoir la distance parcourue par le périphérique et l'occultation pourraient être atténués, tandis que l'heuristique de prédiction pourrait \emph{mieux} fonctionner qu'avec des cibles statiques. Nous verrons plus loin que la technique \emph{IntenSelect}~\cite{de2005intenselect} fonctionne à peu près sur ce principe, de même que \emph{Hook}~\cite{ortega2013hook}, qui fait cependant usage d'un curseur ponctuel.
 
+	\subsection{Sélection en cascade, grossière, puis fine}
+	Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur (ou autre medium de sélection) peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection (plus) fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé, ou bien affine encore l'espace de sélection, jusqu'à ce qu'une phase finale permette la sélection effective de la cible.
+	 
+	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain \og coût cognitif \fg{} lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
+	
+	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreurs qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
+	
+	\subsubsection{Utilisation du regard}
+	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. C'est généralement dans cette seconde fonction que l'on trouve cette technique, selon le principe \og le regard suggère, le toucher confirme \fg{}~\cite{stellmach2012look}.
+
+	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
+	
+	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête. Ces techniques sont toutefois destinées à traiter des données vidéo brutes.
+	
+	Or, dans le cas qui nous intéressent, il est généralement possible d'installer des marqueurs sur la tête d'un utilisateur pour connaître plus précisément sa \emph{pose}, en s'appuyant également sur des caméras de \emph{tracking}, comme par exemple les systèmes d'Advanced Realtime Tracking\footnotemark{}. Outre sa précision, ce système est autrement plus robuste que les techniques sans marqueurs.
+	
+	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
+	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
+	
+	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux~\cite{monden2005evaluation, vspakov2011comparison}. Dans uen certaine mesure, ces derniers peuvent être filtrés, mais cela ne règle que partiellement le problème~\cite{zhang2008improving}.
+	
+	Par ailleurs, il peut être très déroutant pour un utilisateur de \og charger \fg{} un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
+	
+	\footnotetext{Remarquons cependant que le regard, quand il est contrôlé de façon délibérée, peut être utilisé pour communiquer, par exemple lorsqu'une personne en invite une autre, oralement, à regarder quelque chose qu'elle désigne du regard. Lever les yeux au ciel peut communiquer de l'agacement ou du dédain, etc.}
+	
+	Dès lors, il serait tentant de rejeter cette technique, et \emph{a fortiori} l'estimation de la \emph{pose} de la tête ne tenant pas compte des yeux, puisque c'est forcément beaucoup moins précis. Mais ce serait faire fi un peu trop rapidement des avantages du suivi des yeux, et en particulier de sa rapidité inégalée. Certes, il ne peut suffire à lui seul à sélectionner un objet d'indice de difficulté élevé ; il n'est pas inutile pour autant, loin s'en faut.
+
+	En effet, des études ont en effet montré que le regard permettait de faire mieux que les périphériques de saisie traditionnels pour des tâches de sélection~\cite{stellmach2012look, ware1987evaluation, smith2000hand, bieg2010eye}.
+	
+	\paragraph{Suivi des yeux : une tâche ardue.}
+
+	Cependant, le suivi des yeux présente en pratique des difficultés qui peuvent être considérables, dont au moins les suivantes :
+	
+	\begin{itemize}
+		\item Les performances peuvent dépendre de la couleur des yeux ;
+		\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;
+		\item Les lunettes peuvent nuire aux performances du système ;
+		\item Les lunettes stéréoscopiques, en particulier, occultent partiellement les yeux pour les \emph{trackers} oculaires, et réduisent la luminosité du blanc des yeux.
+	\end{itemize}
+
+	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
+	
+	Du reste, même quand le suivi des yeux est impossible et seule la tête peut être pris en compte, les informations captées demeurent précieuses. En effet, 40~\%{} à 70~\%{} de l'orientation du regard est déterminée par la rotation de la tête, tandis que les 60~\%{} à 30~\%{} restants (respectivement) dépendent des mouvements oculaires~\cite{gauthier1991short}. On peut donc, le plus souvent, obtenir une bonne estimation de la direction du regard en se fondant uniquement sur l'orientation de la tête.
+	
+	\subsubsection{\emph{Look \&{} Touch}}
+	Stellmach \emph{et al.}~\cite{stellmach2012look} ont développé et évalué plusieurs techniques fondées sur le principe de la sélection en cascade avec une phase grossière dirigée par le regard, et une phase fine s'appuyant sur un périphérique doté d'un écran tactile, tel qu'un \emph{smartphone}.
+	
+	\begin{enumerate}
+		\item \textbf{\emph{Gaze-directed cursor} :} Ce mode très simple peut à peine être considéré comme une cascade : l'utilisateur suit sa cible des yeux, puis appuie sur un écran tactile et le relâche pour effectuer la sélection. Voir la figure~\ref{fig:lookandtouch}, à gauche.
+		\item \textbf{\emph{MAGIC touch} absolue :} Cette technique est analogue à la précédente, mais le curseur peut être déplacé en fonction de la position absolue du doigt de l'utilisateur sur son écran tactile. Voir la figure~\ref{fig:lookandtouch}, deuxième vignette.
+		\item \textbf{\emph{MAGIC touch} relative :} Cette technique est identique à la précédente, mais le curseur positionnement du curseur dépend des mouvements relatifs du doigt de l'utilisateur par rapport à son point de départ. Voir la figure~\ref{fig:lookandtouch}, troisième vignette.
+		\item \textbf{\emph{MAGIC tab} :} Cette technique demeure similaire aux précédentes, mais le curseur ne bouge pas ; en revanche, l'utilisateur peut parcourir les objets comme dans un menu, en faisant glisser son doigt. Ce procédé s'inspire de la touche \emph{tabulation} d'un clavier. Voir la figure~\ref{fig:lookandtouch}, à droite.
+		\item \textbf{\emph{Gaze-supported Expanded Target Selection} asservie au regard :} Le regard contrôle une lentille de zoom, inactive par défaut, mais activée en appuyant sur l'écran tactile. Une nouvelle pression permet de sélectionner la cible, tandis qu'un geste de glissement vertical permet d'ajuster le niveau de zoom. Cette technique est illustrée par la figure~\ref{fig:lookandtouch2}, à gauche et au milieu.
+		\item \textbf{\emph{Gaze-supported Expanded Target Selection} semi-fixe :} Contrairement à la technique précédente, la lentille cesse de bouger une fois activée, et l'utilisateur déplace le curseur au sein de la zone de zoom à l'aide de son regard, avant d'activer la sélection avec son écran tactile. Si son regard quitte la zone de zoom, alors la lentille se déplace. Voir la figure~\ref{fig:lookandtouch2}, vignettes de gauche et de droite.
+	\end{enumerate}
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
+		\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
+		\label{fig:lookandtouch}
+	\end{figure}
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
+		\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
+		\label{fig:lookandtouch2}
+	\end{figure}
+	
+	\paragraph{De bons résultats, sans vainqueur clair.}
+	Stellmach \emph{et al.} ont évalué les variantes de \emph{Look \&{} Touch} sus-citées dans trois blocs de tâches : T1, avec des objets disjoints sur une grille 2D ; T2, avec une ligne d'objets 2D se chevauchant ; et T3, avec des objets 2D de tailles diverses se chevauchant.
+	
+	Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances dans la plupart des cas, avec peut-être un léger avantage global à la technique \emph{MAGIC tab}. Du moins cette tendance est-elle confirmée par les impressions sujectives recueillies par Stellmach \emph{et al.}, et exposées sur la figure~\ref{fig:latSubj}.
+
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/latRes}
+		\caption[\emph{Look \&{} Touch -- performances}]{Performances obtenues pour les diverses techniques de type \emph{Look \&{} Touch}. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances. Crédit : \cite{stellmach2012look}.}
+		\label{fig:latRes}
+	\end{figure}
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/latSubj}
+		\caption[\emph{Look \&{} Touch -- impressions subjectives}]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation des techniques \emph{Look \&{} Touch}. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête. Crédit : \cite{stellmach2012look}.}
+		\label{fig:latSubj}
+	\end{figure}
+	
+	\paragraph{\emph{MAGIC tab} et le problème de linéarité.}
+	Si, comme l'on vient de le voir, la technique \emph{MAGIC tab} sort légèrement du lot et se hisse en tête des résultats objectifs et subjectifs, elle souffre d'une limitation inhérente à sa nature : le temps de sélection dans la phase fine dépend de façon approximativement linéaire du nombre d'objets à parcourir, puisque l'utilisateur est contraint de faire ce parcours de façon linéaire.
+	
+	En comparaison, la plupart des processus de sélection sont accompagnés d'une relation logarithmique entre le nombre d'objets et le temps de sélection~\cite{hick1952rate, hyman1953stimulus}. L'on peut donc émettre des doutes sur la robustesse de \emph{MAGIC tab} dans des environnements très denses.
+	
+	Ajoutons que le comportement de cette technique avec des cibles mobiles pose question, puisque le menu contiendrait des objets n'étant plus nécessairement dans l'espace de pré-sélection au moment où l'utilisateur les parcourt. Cette perte de contexte spatial pourrait, dans le cas de cibles visuellement très proches (ou identiques) rendre la sélection impossible.
+	
+	\subsubsection{\emph{Sphere-casting refined by QUAD-menu
+(SQUAD)}}
+	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
+(SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
+
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squad}
+		\caption[Fonctionnement de la technique SQUAD]{SQUAD : à gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squad}
+	\end{figure}
+	
+	Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets pré-sélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de pré-sélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
+	
+	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/squad2}
+		\caption[La technique SQUAD -- évaluation]{SQUAD tel qu'évalué dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squad2}
+	\end{figure}
+	
+	\paragraph{Performances.}
+	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
+			\caption{Performances de SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting}. Les performances de ce dernier ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, peut-être due à la recherche visuelle de la cible. Les performances de SQUAD sont fortement affectées, car le nombre d'étapes dépend de la densité. SQUAD brille dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux.}
+			\label{fig:squadDensity}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/squadSize}
+			\caption{Performances de SQUAD comparées avec celles du \emph{raycasting}, en fonction de la taille des cibles, avec différentes densités de distracteurs. SQUAD est plus performante à faible densité, et capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est intéressant pour certaines applications. Avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
+			\label{fig:squadSize}
+		\end{subfigure}
+		\caption[Performances de SQUAD]{Performances de SQUAD. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squadPerf}
+	\end{figure}
+	
+	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Notons par ailleurs que le taux d'erreurs avec SQUAD était extrêmement faible, avec seulement 0,7~\%{}, ce qui est un atout notable pour cette technique. De fait, si l'on considérait non pas les temps de sélection, mais les temps de sélection normalisés par rapport aux erreurs, l'évaluation serait nettement plus favorable à SQUAD.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.65\textwidth]{figures/ch2/squadRecap}
+		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due à la recherche visuelle de la cible quand elle est petite. Les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
+		\label{fig:squadRecap}
+	\end{figure}
+	
+	\subsubsection{\emph{Disambiguation Canvas}}
+	La technique du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est un autre exemple de technique de sélection en cascade, et est illustrée par la figure~\ref{fig:dCanvas}.
+		 
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
+		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (un rectangle semi-transparent) s'ouvre, les cibles pré-sélectionnées y sont disposées et agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie, ce qui permet à l'utilisateur de sélectionner la cible avec son pouce. Cette technique est compatible avec les HMD, et n'affiche pas le petit encadré en bas à gauche de chaque image, inséré ici à des fins illustratives. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvas}
+	\end{figure}
+	
+	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une pré-sélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets pré-sélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvas2}
+		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Comme dans l'évaluation originale de SQUAD, les petites sphères sont réparties sur la surface d'une grande sphère invisible~\cite{kopper2011rapid}, ce qui permet d'uniformiser leurs tailles apparentes. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvas2}
+	\end{figure}
+	
+	Pour définir un agencement optimal des objets dans la deuxième phase, dite de désambiguïsation, Debarba \emph{et al.} ont opté pour une étape de calibrage présentée sur la figure~\ref{fig:dCanvasLayout}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figures/ch2/dCanvasLayout}
+		\caption[\emph{Disambiguation Canvas} -- calibrage]{(a) : étape de calibrage pour la deuxième phase du \emph{Disambiguation Canvas}. On demande ici à l'utilisateur de faire le tour de l'écran avec son pouce, en essayant de s'approcher des bords. Il en résulte un motif fermé représentant l'espace que l'utilisateur peut atteindre confortablement. (b) : cet espace est utilisé pour répartir les objets, dont la cible, que l'utilisateur pourra ainsi sélectionner aisément. Par défaut, l'emplacement du le curseur est laissé vide, pour éviter les sélections accidentelles et faciliter l'annulation en cas d'erreur au cours de la première phase. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasLayout}
+	\end{figure}
+	
+	Notez que les objets pré-sélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvasDensity}
+		\caption[\emph{Disambiguation Canvas} -- densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. (a) : 25 objets peuvent être sélectionnés, et sont de fait assez gros ; (b) : ils sont 97, et de taille moyenne ; (c) : ils sont 224 et nettement plus petits. La loi de Fitts nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasDensity}
+	\end{figure}
+	
+	\paragraph{Performances.}
+	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
+	
+	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
+		\caption[\emph{Disambiguation Canvas} -- performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting}, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasRCPerf}
+	\end{figure}
+
+	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
+	
+	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape \og d'affichage \fg{} une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
+	
+	Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, sans appel. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objets colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées avec une pression du pouce.	
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=0.85\textwidth]{figures/ch2/dCanvasSPerf}
+		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasSPerf}
+	\end{figure}
+	
+	Au-delà des temps de sélection, les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Sur l'intervalle de tailles testé, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, mais ce dernier résultat reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques.
+		 
+	\subsubsection{Le problème de la perte du contexte}
+	Les techniques de sélection en cascade pouvant prendre des formes diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable.
+	
+	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
+	
+	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon \og douce \fg{} et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
+		\caption[\emph{Disambiguation Canvas} -- animation de transition]{Animation pendant la transition entre la phase de pré-sélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
+		\label{fig:dCanvasContext}
+	\end{figure}
+	
+	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemblent, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles, tout comme SQUAD.
+	
+	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ.
+
 \section{Techniques pour la sélection de cibles mobiles}
 	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.
 
@@ -766,257 +997,6 @@ La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres
 	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utiliser des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} impliquerait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations.
 	
 	Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés.
-
-\section{Sélection en cascade, grossière, puis fine}
-	\subsection{Principe général et avantages}
-	Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur (ou autre medium de sélection) peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection (plus) fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé, ou bien affine encore l'espace de sélection, jusqu'à ce qu'une phase finale permette la sélection effective de la cible.
-	 
-	Du point de vue de la loi de Fitts, au cours d'une phase grossière, la cible bénéficie d'une largeur accrue (car c'est toute une zone autour de la cible qui est visée) tandis que la phase finale offre une distance réduite, puisque le curseur se trouve déjà près de la cible. Quoiqu'il y ait probablement un certain \og coût cognitif \fg{} lié au basculement d'une phase à l'autre, et en tout cas un coût temporel associé à la pression d'un bouton ou à toute autre action permettant de passer à la phase suivante, les techniques de sélection en cascade peuvent améliorer significativement les performances de sélection, même pour les tâches dont l'indice de difficulté est élevé~\cite{kopper2011rapid}.
-	
-	La sélection en cascade revient, en substance, à préférer une série de tâches très rapides et faciles à une seule tâche nécessitant une précision élevée, prenant du temps et pouvant être source d'erreur plus ou moins fréquentes. Observons que la sélection en cascade, du fait de la réduction du taux d'erreurs qu'elle permet, présente un intérêt particulier pour les tâches critiques, celles pour lesquelles une erreur peut avoir des conséquences graves.
-	
-	\subsection{Utilisation du regard}
-	\subsubsection{Une rapidité inégalée}
-	Une estimation de la direction du regard de l'utilisateur peut être utilisée soit pour sélectionner directement la cible (ce qui peut nécessiter beaucoup de précision, quand la cible est petite) soit pour sélectionner une zone d'intérêt, dans la phase grossière d'une sélection en cascade. C'est généralement dans cette seconde fonction que l'on trouve cette technique, selon le principe \og le regard suggère, le toucher confirme \fg{}~\cite{stellmach2012look}.
-
-	L'estimation de la direction du regard d'autrui faite par un individu est basée sur la combinaison de la position de la tête de la personne observée, de l'orientation de sa tête, et de l'orientation de ses yeux~\cite{langton2004influence}, mais elle est fortement biaisée par l'orientation de la tête~\cite{wollaston1824apparent}.
-	
-	Sur l'hypothèse que l'estimation de la direction du regard faite instinctivement par les êtres humains se base sur une méthode efficace, on peut en déduire qu'une méthode artificielle devrait procéder de la même façon, c'est-à-dire en estimant la position et la direction de la tête d'une part, et la direction des yeux de l'autre. Murphy Chutorian et Trivedi~\cite{murphy2009head} proposent une taxinomie et un inventaire détaillés des techniques d'estimation de la \emph{pose}\footnote{C'est-à-dire de la position \emph{et} de l'orientation.} de la tête. Ces techniques sont toutefois destinées à traiter des données vidéo brutes.
-	
-	Or, dans le cas qui nous intéressent, il est généralement possible d'installer des marqueurs sur la tête d'un utilisateur pour connaître plus précisément sa \emph{pose}, en s'appuyant également sur des caméras de \emph{tracking}, comme par exemple les systèmes d'Advanced Realtime Tracking\footnotemark{}. Outre sa précision, ce système est autrement plus robuste que les techniques sans marqueurs.
-	
-	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
-	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
-	
-	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux~\cite{monden2005evaluation, vspakov2011comparison}. Dans uen certaine mesure, ces derniers peuvent être filtrés, mais cela ne règle que partiellement le problème~\cite{zhang2008improving}.
-	
-	Par ailleurs, il peut être très déroutant pour un utilisateur de \og charger \fg{} un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
-	
-	\footnotetext{Remarquons cependant que le regard, quand il est contrôlé de façon délibérée, peut être utilisé pour communiquer, par exemple lorsqu'une personne en invite une autre, oralement, à regarder quelque chose qu'elle désigne du regard. Lever les yeux au ciel peut communiquer de l'agacement ou du dédain, etc.}
-	
-	Dès lors, il serait tentant de rejeter cette technique, et \emph{a fortiori} l'estimation de la \emph{pose} de la tête ne tenant pas compte des yeux, puisque c'est forcément beaucoup moins précis. Mais ce serait faire fi un peu trop rapidement des avantages du suivi des yeux, et en particulier de sa rapidité inégalée. Certes, il ne peut suffire à lui seul à sélectionner un objet d'indice de difficulté élevé ; il n'est pas inutile pour autant, loin s'en faut.
-
-	En effet, des études ont en effet montré que le regard permettait de faire mieux que les périphériques de saisie traditionnels pour des tâches de sélection~\cite{stellmach2012look, ware1987evaluation, smith2000hand, bieg2010eye}.
-	
-	\subsubsection{Suivi des yeux : une tâche ardue}
-
-	Cependant, le suivi des yeux présente en pratique des difficultés qui peuvent être considérables, dont au moins les suivantes :
-	
-	\begin{itemize}
-		\item Les performances peuvent dépendre de la couleur des yeux ;
-		\item Le suivi des yeux ne fonctionne pas toujours bien en environnement sombre, par exemple dans un CAVE ;
-		\item Les lunettes peuvent nuire aux performances du système ;
-		\item Les lunettes stéréoscopiques, en particulier, occultent partiellement les yeux pour les \emph{trackers} oculaires, et réduisent la luminosité du blanc des yeux.
-	\end{itemize}
-
-	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
-	
-	Du reste, même quand le suivi des yeux est impossible et seule la tête peut être pris en compte, les informations captées demeurent précieuses. En effet, 40~\%{} à 70~\%{} de l'orientation du regard est déterminée par la rotation de la tête, tandis que les 60~\%{} à 30~\%{} restants (respectivement) dépendent des mouvements oculaires~\cite{gauthier1991short}. On peut donc, le plus souvent, obtenir une bonne estimation de la direction du regard en se fondant uniquement sur l'orientation de la tête.
-	
-	\subsection{\emph{Look \&{} Touch}}
-	\subsubsection{Le regard suggère, le toucher confirme}
-	Stellmach \emph{et al.}~\cite{stellmach2012look} ont développé et évalué plusieurs techniques fondées sur le principe de la sélection en cascade avec une phase grossière dirigée par le regard, et une phase fine s'appuyant sur un périphérique doté d'un écran tactile, tel qu'un \emph{smartphone}.
-	
-	\begin{enumerate}
-		\item \textbf{\emph{Gaze-directed cursor} :} Ce mode très simple peut à peine être considéré comme une cascade : l'utilisateur suit sa cible des yeux, puis appuie sur un écran tactile et le relâche pour effectuer la sélection. Voir la figure~\ref{fig:lookandtouch}, à gauche.
-		\item \textbf{\emph{MAGIC touch} absolue :} Cette technique est analogue à la précédente, mais le curseur peut être déplacé en fonction de la position absolue du doigt de l'utilisateur sur son écran tactile. Voir la figure~\ref{fig:lookandtouch}, deuxième vignette.
-		\item \textbf{\emph{MAGIC touch} relative :} Cette technique est identique à la précédente, mais le curseur positionnement du curseur dépend des mouvements relatifs du doigt de l'utilisateur par rapport à son point de départ. Voir la figure~\ref{fig:lookandtouch}, troisième vignette.
-		\item \textbf{\emph{MAGIC tab} :} Cette technique demeure similaire aux précédentes, mais le curseur ne bouge pas ; en revanche, l'utilisateur peut parcourir les objets comme dans un menu, en faisant glisser son doigt. Ce procédé s'inspire de la touche \emph{tabulation} d'un clavier. Voir la figure~\ref{fig:lookandtouch}, à droite.
-		\item \textbf{\emph{Gaze-supported Expanded Target Selection} asservie au regard :} Le regard contrôle une lentille de zoom, inactive par défaut, mais activée en appuyant sur l'écran tactile. Une nouvelle pression permet de sélectionner la cible, tandis qu'un geste de glissement vertical permet d'ajuster le niveau de zoom. Cette technique est illustrée par la figure~\ref{fig:lookandtouch2}, à gauche et au milieu.
-		\item \textbf{\emph{Gaze-supported Expanded Target Selection} semi-fixe :} Contrairement à la technique précédente, la lentille cesse de bouger une fois activée, et l'utilisateur déplace le curseur au sein de la zone de zoom à l'aide de son regard, avant d'activer la sélection avec son écran tactile. Si son regard quitte la zone de zoom, alors la lentille se déplace. Voir la figure~\ref{fig:lookandtouch2}, vignettes de gauche et de droite.
-	\end{enumerate}
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
-		\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
-		\label{fig:lookandtouch}
-	\end{figure}
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
-		\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
-		\label{fig:lookandtouch2}
-	\end{figure}
-	
-	\subsubsection{De bons résultats, sans vainqueur clair}
-	Stellmach \emph{et al.} ont évalué les variantes de \emph{Look \&{} Touch} sus-citées dans trois blocs de tâches : T1, avec des objets disjoints sur une grille 2D ; T2, avec une ligne d'objets 2D se chevauchant ; et T3, avec des objets 2D de tailles diverses se chevauchant.
-	
-	Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances dans la plupart des cas, avec peut-être un léger avantage global à la technique \emph{MAGIC tab}. Du moins cette tendance est-elle confirmée par les impressions sujectives recueillies par Stellmach \emph{et al.}, et exposées sur la figure~\ref{fig:latSubj}.
-
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/latRes}
-		\caption[\emph{Look \&{} Touch -- performances}]{Performances obtenues pour les diverses techniques de type \emph{Look \&{} Touch}. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances. Crédit : \cite{stellmach2012look}.}
-		\label{fig:latRes}
-	\end{figure}
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/latSubj}
-		\caption[\emph{Look \&{} Touch -- impressions subjectives}]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation des techniques \emph{Look \&{} Touch}. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête. Crédit : \cite{stellmach2012look}.}
-		\label{fig:latSubj}
-	\end{figure}
-	
-	\subsubsection{\emph{MAGIC tab} et le problème de linéarité}
-	Si, comme l'on vient de le voir, la technique \emph{MAGIC tab} sort légèrement du lot et se hisse en tête des résultats objectifs et subjectifs, elle souffre d'une limitation inhérente à sa nature : le temps de sélection dans la phase fine dépend de façon approximativement linéaire du nombre d'objets à parcourir, puisque l'utilisateur est contraint de faire ce parcours de façon linéaire.
-	
-	En comparaison, la plupart des processus de sélection sont accompagnés d'une relation logarithmique entre le nombre d'objets et le temps de sélection~\cite{hick1952rate, hyman1953stimulus}. L'on peut donc émettre des doutes sur la robustesse de \emph{MAGIC tab} dans des environnements très denses.
-	
-	Ajoutons que le comportement de cette technique avec des cibles mobiles pose question, puisque le menu contiendrait des objets n'étant plus nécessairement dans l'espace de pré-sélection au moment où l'utilisateur les parcourt. Cette perte de contexte spatial pourrait, dans le cas de cibles visuellement très proches (ou identiques) rendre la sélection impossible.
-	
-	\subsection{\emph{Sphere-casting refined by QUAD-menu
-(SQUAD)}}
-	\subsubsection{Principe et avantages}
-	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
-(SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
-
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/squad}
-		\caption[Fonctionnement de la technique SQUAD]{SQUAD : à gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
-		\label{fig:squad}
-	\end{figure}
-	
-	Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets pré-sélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de pré-sélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
-	
-	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/squad2}
-		\caption[La technique SQUAD -- évaluation]{SQUAD tel qu'évalué dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
-		\label{fig:squad2}
-	\end{figure}
-	
-	\subsubsection{Performances}
-	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
-	
-	\begin{figure}[!htb]
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
-			\caption{Performances de SQUAD en fonction de la densité de distracteurs, comparées avec celle du \emph{raycasting}. Les performances de ce dernier ne sont pas significativement modifiées par la densité, même si une légère corrélation est visible, peut-être due à la recherche visuelle de la cible. Les performances de SQUAD sont fortement affectées, car le nombre d'étapes dépend de la densité. SQUAD brille dans les conditions de faible densité, mais se montre désavantageuse quand les distracteurs sont nombreux.}
-			\label{fig:squadDensity}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/squadSize}
-			\caption{Performances de SQUAD comparées avec celles du \emph{raycasting}, en fonction de la taille des cibles, avec différentes densités de distracteurs. SQUAD est plus performante à faible densité, et capable de gérer de très petites cibles sans augmentation notable du temps de sélection, ce qui est intéressant pour certaines applications. Avec de grosses cibles, on préférera le \emph{raycasting}, en particulier dans ses formes améliorées.}
-			\label{fig:squadSize}
-		\end{subfigure}
-		\caption[Performances de SQUAD]{Performances de SQUAD. Crédit : \cite{kopper2011rapid}.}
-		\label{fig:squadPerf}
-	\end{figure}
-	
-	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Notons par ailleurs que le taux d'erreurs avec SQUAD était extrêmement faible, avec seulement 0,7~\%{}, ce qui est un atout notable pour cette technique. De fait, si l'on considérait non pas les temps de sélection, mais les temps de sélection normalisés par rapport aux erreurs, l'évaluation serait nettement plus favorable à SQUAD.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.65\textwidth]{figures/ch2/squadRecap}
-		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due à la recherche visuelle de la cible quand elle est petite. Les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
-		\label{fig:squadRecap}
-	\end{figure}
-	
-	\subsubsection{Inconvénients}
-	La chute des performances de SQUAD en cas de forte densité de distracteurs est certes un inconvénient de la technique, mais ce n'est peut-être pas le principal. En effet, au cours de la seconde phase, les objets sont répartis uniformément et aléatoirement dans quatre quadrants, pour que l'utilisateur sélectionne le bon. Celui-ci doit donc être capable de l'identifier visuellement le plus rapidement possible.
-	
-	Or, dans certains cas de figure, la cible n'est pas intrinsèquement différente des distracteurs, mais est choisie en fonction de sa position dans l'espace, par exemple. C'est notamment le cas le plus fréquent pour des simulations moléculaires, dans lesquels l'utilisateur peut vouloir sélectionner un atome d'un certain type (par exemple du carbone) parce qu'il se situe à un endroit spécifique, au sein d'une structure spécifique. Si tous les atomes étaient répartis dans des quadrants, il deviendrait impossible de distinguer cet atome de carbone des milliers d'autres.
-	
-	De plus, la technique SQUAD telle qu'elle existe fait l'hypothèse de cibles statiques, ce qui n'est pas le cas dans les applications qui nous intéressent. Certes, des cibles mobiles pourraient le rester dans leur quadrant, mais ce mouvement serait hors contexte et il est douteux qu'il puisse conserver du sens ou transmettre une information de valeur à l'utilisateur.
-	
-	Il nous apparaît donc que la technique SQUAD ne peut fournir de résultats satisfaisants qu'avec de petites cibles statiques dans des environnements de densité modérée, et à condition que la cible soit très distincte des distracteurs, suffisamment pour pouvoir être identifiée visuellement le plus rapidement possible.
-	
-	\subsection{\emph{Disambiguation Canvas}}
-	\subsubsection{Principe et avantages}
-	La technique du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est un autre exemple de technique de sélection en cascade, et est illustrée par la figure~\ref{fig:dCanvas}.
-		 
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
-		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (un rectangle semi-transparent) s'ouvre, les cibles pré-sélectionnées y sont disposées et agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie, ce qui permet à l'utilisateur de sélectionner la cible avec son pouce. Cette technique est compatible avec les HMD, et n'affiche pas le petit encadré en bas à gauche de chaque image, inséré ici à des fins illustratives. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvas}
-	\end{figure}
-	
-	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une pré-sélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets pré-sélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvas2}
-		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Comme dans l'évaluation originale de SQUAD, les petites sphères sont réparties sur la surface d'une grande sphère invisible~\cite{kopper2011rapid}, ce qui permet d'uniformiser leurs tailles apparentes. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvas2}
-	\end{figure}
-	
-	Pour définir un agencement optimal des objets dans la deuxième phase, dite de désambiguïsation, Debarba \emph{et al.} ont opté pour une étape de calibrage présentée sur la figure~\ref{fig:dCanvasLayout}.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/dCanvasLayout}
-		\caption[\emph{Disambiguation Canvas} -- calibrage]{(a) : étape de calibrage pour la deuxième phase du \emph{Disambiguation Canvas}. On demande ici à l'utilisateur de faire le tour de l'écran avec son pouce, en essayant de s'approcher des bords. Il en résulte un motif fermé représentant l'espace que l'utilisateur peut atteindre confortablement. (b) : cet espace est utilisé pour répartir les objets, dont la cible, que l'utilisateur pourra ainsi sélectionner aisément. Par défaut, l'emplacement du le curseur est laissé vide, pour éviter les sélections accidentelles et faciliter l'annulation en cas d'erreur au cours de la première phase. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvasLayout}
-	\end{figure}
-	
-	Notez que les objets pré-sélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvasDensity}
-		\caption[\emph{Disambiguation Canvas} -- densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. (a) : 25 objets peuvent être sélectionnés, et sont de fait assez gros ; (b) : ils sont 97, et de taille moyenne ; (c) : ils sont 224 et nettement plus petits. La loi de Fitts nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvasDensity}
-	\end{figure}
-	
-	\subsubsection{Performances}
-	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
-	
-	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
-		\caption[\emph{Disambiguation Canvas} -- performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting}, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvasRCPerf}
-	\end{figure}
-
-	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
-	
-	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape \og d'affichage \fg{} une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
-	
-	Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, sans appel. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objets colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées avec une pression du pouce.	
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.85\textwidth]{figures/ch2/dCanvasSPerf}
-		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvasSPerf}
-	\end{figure}
-	
-	Au-delà des temps de sélection, les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Sur l'intervalle de tailles testé, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, mais ce dernier résultat reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques.
-		 
-	\subsubsection{Inconvénients}
-	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
-	
-	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon \og douce \fg{} et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
-		\caption[\emph{Disambiguation Canvas} -- animation de transition]{Animation pendant la transition entre la phase de pré-sélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
-		\label{fig:dCanvasContext}
-	\end{figure}
-	
-	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemble, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles.
-	
-	\subsection{Inconvénients généraux}
-	Les techniques de sélection en cascade pouvant prendre des formes très diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable.
-	
-	Notons que la phase grossière ne se fait pas nécessairement avec le même périphérique que la phase fine ; elle peut par exemple se baser sur une estimation de la direction du regard de l'utilisateur, voire se faire automatiquement, par exemple lorsque l'utilisateur focalise son regard sur une zone approximativement constante pendant un certain laps de temps.
-	
-	En revanche, on retrouve couramment avec les techniques de sélection en cascade une dégradation, voire une perte du contexte spatial lorsque l'on passe de la phase grossière à la phase fine~\cite{kopper2011rapid, debarba2013disambiguation}. C'est potentiellement plus problématique que la perte de correspondance entre l'espace moteur et l'espace virtuel, et d'autant plus gênant que la phase fine est généralement peu adaptée à des cibles mobiles, qui nous intéressent particulièrement dans ces travaux.
-	
-	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ.	
-
 	
 \section{Le \emph{Delphian Desktop}}
 	\subsection{Principe et avantages}
