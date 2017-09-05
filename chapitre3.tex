@@ -33,9 +33,9 @@
 	Demeurent donc les objets évoluant dans des espaces à deux et trois dimensions\ldots{} ou presque. En pratique, la dimensionnalité de l'environnement \og écologique \fg{} des cibles ne correspond pas forcément à la dimensionnalité du dispositif d'affichage ou d'interaction. Les avions, par exemple, évoluent dans un espace tridimensionnel, mais sont généralement affichés sur un plan en 2D sur lequel ils sont projetés ; les périphériques de saisie permettant de les sélectionner sont aussi, généralement, limités à deux degrés de liberté.
 	
 	\subsubsection{Environnements purement 2D}
-	Le contrôle de la circulation routière et des espaces maritimes (exception faite des sous-marins) sont des exemples d'environnements purement bidimensionnels, si l'on néglige par exemple les variations d'altitude sur les routes, les ponts et échangeurs, etc. La surveillance des signaux électromagnétiques entre également dans cette catégorie.
+	Le contrôle de la circulation routière et des espaces maritimes (exception faite des sous-marins) sont des exemples d'environnements purement bidimensionnels, si l'on néglige les variations d'altitude sur les routes, les ponts et échangeurs, etc. La surveillance des signaux électromagnétiques entre également dans cette catégorie.
 	
-	Les jeux vidéos tels qu'\emph{Agar.io} (voir figure~\ref{fig:agario}) peuvent également présenter des environnements de ce type.
+	Les jeux vidéos tels qu'\emph{Agar.io} (voir figure~\ref{fig:agario}) peuvent aussi présenter des environnements de ce type.
 	
 	\subsubsection{Environnements 3D projetés sur un plan}
 	De nombreux types d'objets évoluent dans des environnements tridimensionnels mais sont couramment visualisés et sélectionnés à l'aide de systèmes bidimensionnels. Notez que c'est un choix, qu'il est généralement possible d'utiliser des systèmes 3D, et que pour certaines applications, c'est occasionnellement le cas.
@@ -45,7 +45,7 @@
 	\subsubsection{Environnements 3D}
 	Parfois, l'on peut interagir avec un environnement 3D à l'aide d'un dispositif de visualisation immersif et un périphérique de saisie adapté, ayant généralement au moins trois degrés de liberté.
 	
-	C'est parfois le cas des simulations moléculaires et autres applications scientifiques, de certains jeux vidéo, et potentiellement de toutes les applications mentionnées dans la catégorie \og 3D projetée en 2D \fg{}, même si nous n'avons pas connaissance, par exemple, de tels systèmes actuellement utilisés pour le contrôle de l'espace aérien.
+	C'est occasionnellement le cas des simulations moléculaires et autres applications scientifiques, de certains jeux vidéo, et potentiellement de toutes les applications mentionnées dans la catégorie \og 3D projetée en 2D \fg{}, même si nous n'avons pas connaissance, par exemple, de tels systèmes actuellement utilisés pour le contrôle de l'espace aérien.
 
 	\subsection{Autocorrélation}
 	Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
