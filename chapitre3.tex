@@ -145,6 +145,38 @@
 	
 	Dans l'impossibilité de le faire, nous opterons pour une estimation des valeurs \og typique \fg{} et maximale. Illustrons simplement ce propos par l'exemple d'une automobile : sur autoroute, sa fréquence de changements de direction sera presque nulle ; en ville, elle sera bien plus élevée.
 	
+	\subsubsection{Objets ciné-continus}
+	En règle générale, les objets auto-corrélés sont ciné-continus. C'est donc le cas de la plupart des objets macroscopiques : véhicules, projectiles, objets célestes, etc. Certains objets vidéoludiques sont également ciné-continus.
+	
+	\subsubsection{Objets ciné-discrets}
+	Les objets markoviens sont généralement ciné-discrets. Nous trouvons donc dans cette catégorie les atomes des simulations moléculaires, divers objets de jeux vidéo\ldots{} Mais précisons que bien qu'ils soient, au sens strict, incapables de changer de direction \emph{instantanément}, certains objets peuvent le faire de façon suffisamment subjectivement soudaine pour que nous les considérions comme ciné-discrets.
+	
+	C'est par exemple le cas des êtres humains en mouvement, et \emph{a fortiori} de plus petits animaux plus vifs, dont l'exemple le plus emblématique est peut-être la mouche, connue pour ses trajectoires saccadées, avec des changements de direction d'environ 90\textdegree{} en moins de 100~ms~\cite{tammero2002influence, collett1975visual, wagner1986flight, schilstra1999blowfly} --- nous reviendrons plus loin sur cette classe de mouvement.
+	
+	\subsubsection{Objets changeant de direction à basse fréquence}
+	Considérons qu'un objet ciné-discret change de direction à basse fréquence si celle-ci est inférieure ou égale à 1~Hz. Si l'objet est ciné-continu, nous dirons que sa fréquence est basse (par un abus de langage) si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est faible.
+	
+	Il va sans dire qu'il y a là encore quelque chose d'arbitraire, voire de subjectif, mais c'est probablement inévitable pour dresser une taxinomie pertinente.
+	
+	Quoi qu'il en soit, nous pouvons classer dans cette catégorie les véhicules (ou les missiles) \og en croisière \fg{}, c'est-à-dire les avions de ligne, les gros navires et automobiles sur autoroute, ainsi que la plupart des gros véhicules même lors de déplacements plus courts. En effet, une automobile, par exemple, satisfera généralement les critères définissant cette catégorie, exception faite des déplacements particulièrement rapides ou irréguliers, par exemple sur des routes sinueuses ou dans des environnements urbains exigus mais avec peu de circulation.
+	
+	Les piétons et les plus petits véhicules pourront éventuellement entrer dans cette catégorie, selon la nature précise de leurs déplacements. Les athlètes, eux, n'en feront partie que pour certaines disciplines bien précises --- courses d'endurance ou cyclisme dans certains cas, notamment.
+	
+	Comme d'habitude avec les jeux vidéo, certains objets qui les peuplent feront partie de cette catégorie, et d'autres non.
+	
+	\subsubsection{Objets changeant de direction à haute fréquence}
+	Un objet ciné-discret change de direction à haute fréquence si celle-ci est supérieure à 1~Hz. Si l'objet est ciné-continu, sa fréquence sera dite haute si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est élevée.
+	
+	Les objets de haute fréquence par excellence sont les atomes des simulations moléculaires. Ils peuvent changer de direction à chaque itération de la simulation, ce qui peut aisément atteindre --- voire dépasser --- 60~Hz, selon la vitesse à laquelle une simulation interactive est executée, ou une trajectoire est jouée après avoir été déterminée par simulation.
+	
+	Parmi les objets ciné-continus, de nombreux véhicules peuvent également entrer dans cette catégorie, notamment les petits bateaux, les automobiles et surtout les aéronefs de combat, en particulier pendant les phases de combat, justement. En effet, dans ces situations, ils tendent à changer de direction en permanence, de préférence de manière imprévisible pour les ennemis. Les missiles, hors de leur éventuelle phase de croisière (ou balistique), présentent des caractéristiques similaires.
+	
+	Même un piéton se frayant un chemin à travers une foule ou sur un trottoir à une heure de grande affluence peut avoir des changements de direction très fréquents\ldots{} en particulier s'il cherche à échapper aux forces de l'ordre le poursuivant ou l'observant à travers des caméras de surveillance.
+	
+	Dans la plupart des cas, les athlètes auront des changements de direction fréquents, en particulier dans les sports \og vifs \fg{} tels que le basket-ball, le handball, etc.	Les projectiles, notamment ceux utilisés dans ces sports, ont en principe des trajectoires balistiques (donc courbées) voire plus irrégulières encore, et sont donc dans cette catégorie également.
+	
+	Enfin, les jeux vidéo regorgent d'objets de ce type, notamment de créatures (humaines ou non) jouant le rôle d'antagonistes dans des titres contenant des tâches de visée ou de sélection. Les exemples sont extrêmement nombreux et présents dans bien des genres différents.
+	
 	\subsection{Amplitude des changements de direction}
 	Outre leur fréquence, les changements de direction doivent être examinés à travers leur amplitude. Concrètement, quand une cible change de direction, son vecteur direction subit une rotation. C'est l'angle de cette rotation que nous appelons \emph{l'amplitude} du changement de direction.
 	
@@ -162,21 +194,7 @@
 	Ici, la question de la variabilité est peut-être plus importante encore que pour la vitesse d'une cible ou la fréquence de ses changements de direction. En effet, bien rares sont les cibles dont les changements de direction se font toujours selon (approximativement) le même angle, à l'exception des cibles aux mouvements circulaires (ou elliptiques) ; encore s'agit-il ici de changements continus.
 	
 	Là encore, il y a plusieurs façons de considérer la distribution de ces valeurs d'angles (après discrétisation en cas de mouvement continu) : un histogramme complet peut être retenu, une moyenne, un écart-type et une valeur maximale peuvent également servir de référence. Comme pour les autres variables, s'il est impossible d'obtenir ces mesures, une estimation des valeurs moyenne et maximale devra nous contenter.
-
-	\subsection{Densité de l'environnement}
-	Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continu mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
 	
-	\subsubsection{Occultation}
-	Le niveau d'occultation visuelle d'un environnement est également crucial, et notre taxinomie ne saurait l'ignorer. S'il dépend fortement de la densité de l'environnement, on ne peut établir de lien d'équivalence entre celle-ci et celui-là. En effet, pour une densité donnée, le niveau d'occultation peut être très élevé si les cibles sont très grosses et opaques ; si, en revanche, elles sont relativement petites, voire semi-transparentes, l'occultation peut être assez faible. Rappelons par exemple au lecteur que la même molécule est représentée sur la figure~\ref{fig:4awn_VdW} et sur la figure~\ref{fig:4awn_points}, mais que le niveau d'occultation est bien plus élevé dans le premier cas que dans le second.
-	
-	En outre, la \og taille \fg{} des cibles ne peut pas forcément s'exprimer de façon adéquate avec une valeur scalaire. En effet, si la taille d'une cible sphérique est correctement exprimée par son seul rayon, il en va autrement d'un objet d'une forme quelconque, et \emph{a fortiori} complexe.
-	
-	Pour ces raisons et d'autres, l'estimation du niveau d'occultation est difficile, et mériterait peut-être à elle seule de faire l'objet d'une thèse de doctorat. Peut-être serait-il opportun de la quantifier par une estimation de la probabilité qu'un objet quelconque soit totalement occulté, ou suffisamment occulté pour qu'un utilisateur manque de le remarquer avec une certaine probabilité donnée.
-	
-	C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
-
-\section{Taxinomie obtenue}	
-	\subsection{Vitesse}
 	La taxinomie que nous proposons implique de faire des choix. La vitesse des objets est un critère de discrimination essentiel, qui impose de discrétiser un espace continu. Dans un souci de simplicité, nous avons choisi de le réduire à deux catégories : les objets rapides et les objets lents.
 	
 	Cette décision a nécessairement quelque chose d'arbitraire et de subjectif, mais elle est nécessaire et nous semble d'autant plus justifiée que c'est justement l'impression subjective des utilisateurs face à un certain type de mouvement qui nous intéresse, car nous faisons l'hypothèse (sur laquelle nous reviendrons plus loin) que cette impression subjective prédit les performances de sélection.
@@ -223,41 +241,27 @@
 	\footnotetext{\url{https://www.blurbusters.com/faq/120hz-monitors}}
 	
 	Quand bien même cette limite technique n'existerait pas, il est douteux qu'un humain puisse percevoir une différence à l'œil nu entre les quelque 10~000~$g$ d'un coup de squille (ou crevette-mante)~\cite{patek2004biomechanics} et les 100~000~$g$ d'une morsure de fourmi \emph{Odontomachus}~\cite{patek2006multifunctionality}. Contentons-nous donc d'observer que ces objets peuvent accélérer de manière extrêmement vive.
+
+	\subsection{Densité de l'environnement}
+	Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continu mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
+	
+	\subsubsection{Occultation}
+	Le niveau d'occultation visuelle d'un environnement est également crucial, et notre taxinomie ne saurait l'ignorer. S'il dépend fortement de la densité de l'environnement, on ne peut établir de lien d'équivalence entre celle-ci et celui-là. En effet, pour une densité donnée, le niveau d'occultation peut être très élevé si les cibles sont très grosses et opaques ; si, en revanche, elles sont relativement petites, voire semi-transparentes, l'occultation peut être assez faible. Rappelons par exemple au lecteur que la même molécule est représentée sur la figure~\ref{fig:4awn_VdW} et sur la figure~\ref{fig:4awn_points}, mais que le niveau d'occultation est bien plus élevé dans le premier cas que dans le second.
+	
+	En outre, la \og taille \fg{} des cibles ne peut pas forcément s'exprimer de façon adéquate avec une valeur scalaire. En effet, si la taille d'une cible sphérique est correctement exprimée par son seul rayon, il en va autrement d'un objet d'une forme quelconque, et \emph{a fortiori} complexe.
+	
+	Pour ces raisons et d'autres, l'estimation du niveau d'occultation est difficile, et mériterait peut-être à elle seule de faire l'objet d'une thèse de doctorat. Peut-être serait-il opportun de la quantifier par une estimation de la probabilité qu'un objet quelconque soit totalement occulté, ou suffisamment occulté pour qu'un utilisateur manque de le remarquer avec une certaine probabilité donnée.
+	
+	C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
+
+\section{Taxinomie obtenue}	
+	\subsection{Vitesse}
+
 	
 	\subsection{Fréquence des changements de direction}
 	Comme nous l'avons vu précédemment, les objets dont les changements de direction sont instantanés sont ici appelés ciné-discrets, tandis que les autres sont dits ciné-continus.
 	
-	\subsubsection{Objets ciné-continus}
-	En règle générale, les objets auto-corrélés sont ciné-continus. C'est donc le cas de la plupart des objets macroscopiques : véhicules, projectiles, objets célestes, etc. Certains objets vidéoludiques sont également ciné-continus.
-	
-	\subsubsection{Objets ciné-discrets}
-	Les objets markoviens sont généralement ciné-discrets. Nous trouvons donc dans cette catégorie les atomes des simulations moléculaires, divers objets de jeux vidéo\ldots{} Mais précisons que bien qu'ils soient, au sens strict, incapables de changer de direction \emph{instantanément}, certains objets peuvent le faire de façon suffisamment subjectivement soudaine pour que nous les considérions comme ciné-discrets.
-	
-	C'est par exemple le cas des êtres humains en mouvement, et \emph{a fortiori} de plus petits animaux plus vifs, dont l'exemple le plus emblématique est peut-être la mouche, connue pour ses trajectoires saccadées, avec des changements de direction d'environ 90\textdegree{} en moins de 100~ms~\cite{tammero2002influence, collett1975visual, wagner1986flight, schilstra1999blowfly} --- nous reviendrons plus loin sur cette classe de mouvement.
-	
-	\subsubsection{Objets changeant de direction à basse fréquence}
-	Considérons qu'un objet ciné-discret change de direction à basse fréquence si celle-ci est inférieure ou égale à 1~Hz. Si l'objet est ciné-continu, nous dirons que sa fréquence est basse (par un abus de langage) si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est faible.
-	
-	Il va sans dire qu'il y a là encore quelque chose d'arbitraire, voire de subjectif, mais c'est probablement inévitable pour dresser une taxinomie pertinente.
-	
-	Quoi qu'il en soit, nous pouvons classer dans cette catégorie les véhicules (ou les missiles) \og en croisière \fg{}, c'est-à-dire les avions de ligne, les gros navires et automobiles sur autoroute, ainsi que la plupart des gros véhicules même lors de déplacements plus courts. En effet, une automobile, par exemple, satisfera généralement les critères définissant cette catégorie, exception faite des déplacements particulièrement rapides ou irréguliers, par exemple sur des routes sinueuses ou dans des environnements urbains exigus mais avec peu de circulation.
-	
-	Les piétons et les plus petits véhicules pourront éventuellement entrer dans cette catégorie, selon la nature précise de leurs déplacements. Les athlètes, eux, n'en feront partie que pour certaines disciplines bien précises --- courses d'endurance ou cyclisme dans certains cas, notamment.
-	
-	Comme d'habitude avec les jeux vidéo, certains objets qui les peuplent feront partie de cette catégorie, et d'autres non.
-	
-	\subsubsection{Objets changeant de direction à haute fréquence}
-	Un objet ciné-discret change de direction à haute fréquence si celle-ci est supérieure à 1~Hz. Si l'objet est ciné-continu, sa fréquence sera dite haute si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est élevée.
-	
-	Les objets de haute fréquence par excellence sont les atomes des simulations moléculaires. Ils peuvent changer de direction à chaque itération de la simulation, ce qui peut aisément atteindre --- voire dépasser --- 60~Hz, selon la vitesse à laquelle une simulation interactive est executée, ou une trajectoire est jouée après avoir été déterminée par simulation.
-	
-	Parmi les objets ciné-continus, de nombreux véhicules peuvent également entrer dans cette catégorie, notamment les petits bateaux, les automobiles et surtout les aéronefs de combat, en particulier pendant les phases de combat, justement. En effet, dans ces situations, ils tendent à changer de direction en permanence, de préférence de manière imprévisible pour les ennemis. Les missiles, hors de leur éventuelle phase de croisière (ou balistique), présentent des caractéristiques similaires.
-	
-	Même un piéton se frayant un chemin à travers une foule ou sur un trottoir à une heure de grande affluence peut avoir des changements de direction très fréquents\ldots{} en particulier s'il cherche à échapper aux forces de l'ordre le poursuivant ou l'observant à travers des caméras de surveillance.
-	
-	Dans la plupart des cas, les athlètes auront des changements de direction fréquents, en particulier dans les sports \og vifs \fg{} tels que le basket-ball, le handball, etc.	Les projectiles, notamment ceux utilisés dans ces sports, ont en principe des trajectoires balistiques (donc courbées) voire plus irrégulières encore, et sont donc dans cette catégorie également.
-	
-	Enfin, les jeux vidéo regorgent d'objets de ce type, notamment de créatures (humaines ou non) jouant le rôle d'antagonistes dans des titres contenant des tâches de visée ou de sélection. Les exemples sont extrêmement nombreux et présents dans bien des genres différents.
+
 	
 	\subsection{Amplitude des changements de direction}
 	Comme pour les fréquences, l'étude de l'amplitude des changements de direction implique de faire une distinction entre les objets dont les changements de direction sont instantanés, ici appelés ciné-discrets, et ceux pour lesquels ils sont continus, dits ciné-continus.
