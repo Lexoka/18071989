@@ -1422,33 +1422,18 @@
 	\subsubsection{Erreurs de prédiction et frustration}
 	Toutefois, il convient de ne pas négliger les faiblesses des approches de prédiction intentionnelle, au premier rang desquelles figurent les erreurs de prédiction, et la frustration qu'elles peuvent causer chez les utilisateurs, qui peuvent rapidement être très agacés de ne pouvoir obtenir du système le comportement qu'ils attendent. Les heuristiques utilisées doivent donc être soigneusement calibrées d'une part pour minimiser les erreurs de prédiction, et d'autre part pour éviter de (trop) nuire aux performances de sélection, le cas échéant. Ce point peut être primordial pour les applications nécessitant un temps de sélection borné, ou imposant des contraintes sur les taux d'erreurs.
 	
-\section{Conclusion}
-    Comme nous venons de le voir, les techniques d'aide à la sélection sont de natures diverses. Elles consistent souvent à faciliter la sélection d'une cible en augmentant sa taille effective, ou en réduisant la distance effective entre elle et le curseur, selon les recommandations que l'on peut déduire de la loi de Fitts.
+\section{Taxinomie des techniques de sélection}
+    Comme nous venons de le voir, les techniques d'aide à la sélection sont de natures diverses. Elles consistent souvent à faciliter la sélection d'une cible en augmentant sa taille effective, ou en réduisant la distance effective entre elle et le curseur, selon les recommandations que l'on peut déduire de la loi de Fitts. Nous allons ici présenter nos réflexions sur la taxinomie des techniques de sélection présentée au cours de ce chapitre, et fournir un schéma récapitulatif.
     
-	\paragraph*{}
+    \subsection{Techniques pour cibles statiques}
+	\subsubsection{Curseurs zonaux}
     Les curseurs zonaux, qu'ils soient surfaciques ou volumiques, ont pour but d'augmenter la taille effective des cibles en y ajoutant celle du curseur. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} pousse ce concept à sa conclusion logique en transformant chaque point de l'espace en un proxy permettant de sélectionner la cible la plus proche ; ce principe fonctionne en 2D comme en 3D. \emph{DynaSpot}~\cite{chapuis2009dynaspot} adopte une approche similaire mais dépendant de la vitesse du curseur, et non de connaissances \emph{a priori} sur les positions des cibles.
     
     Le propre de ces systèmes est de dépendre de la densité de l'environnement : plus celle-ci est faible, plus ils sont efficaces, et inversement. En outre, ils ne tiennent pas compte du mouvement des cibles et ne sont pas particulièrement aptes à faciliter la sélection de cibles mobiles.
     
     De fait, nous ne saurions les recommander pour de telles cibles en environnement dense. Cependant, attendu qu'ils peuvent être combinés à d'autres techniques, les curseurs zonaux sont loin d'être dénués d'intérêt pour les applications qui nous intéressent.
     
-    \paragraph*{}
-    D'autres techniques, spécifiquement développées pour la sélection de cibles mobiles, augmentent les objets d'un appendice, comme pour \emph{Comet}~\cite{hasan2011comet}, ou d'une onde de choc, comme pour \emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. Il s'agit là encore d'augmenter la taille effective des cibles, mais en tenant compte de leur nature mobile.
-    
-    Bien que souvent efficaces, et ce d'autant plus qu'elles peuvent être combinées à un curseur zonal, ces techniques souffrent du même inconvénient que les curseurs zonaux : la densité réduit considérablement leur intérêt, d'une part à cause du chevauchement potentiel des cibles augmentées, et d'autre part à cause de l'encombrement visuel impliqué par l'augmentation.
-    
-    Celle-ci peut en effet être désagréable, occulter des éléments importants, ou poser de graves problèmes esthétiques, particulièrement dans des contextes d'une nature (au moins partiellement) artistique, tels que les jeux vidéo.
-    
-    Quand les environnements sont denses, quand une charte graphique doit être respectée, ou quand l'encombrement visuel doit être minimisé, ces techniques devraient selon nous être écartées.
-    
-	\paragraph*{}
-    Les techniques spécifiquement pensées pour les cibles mobiles adoptent parfois une solution radicale : les rendre statiques. C'est notamment le cas d'une technique simplement appelée \emph{Hold}~\cite{hajri2011moving}, qui se contente de stopper tous les objets pendant la phase de sélection, mais aussi de \emph{Target Ghost}~\cite{hasan2011comet}, qui crée des copies statiques des cibles qui, elles, demeurent mobiles, mais semi-transparentes. Cette dernière technique a l'avantage de ne pas perdre le contexte dynamique.
-    
-    Mais elle a aussi l'inconvénient de doubler le nombre d'objets affichés, et ceux qui sont voués à être sélectionnés (les copies statiques) demeurent détachés de leur contexte dynamique. Pis, si les objets ne sont pas visuellement différents les uns des autres, il peut être impossible pour l'utilisateur de relier une copie statique à l'objet qui l'a engendré.
-    
-    Là encore, les applications à forte densité ne peuvent se satisfaire d'une technique de ce type, et ce d'autant plus que le contexte dynamique est important, ou que les objets sont visuellement similaires.
-    
-	\paragraph*{}
+	\subsubsection{\emph{Raycasting}, ou lancer de rayon}
     Une approche radicalement différente consiste à lancer un rayon dans l'espace virtuel pour pouvoir sélectionner un objet en le \og touchant \fg{} avec ce rayon. Le principe n'est pas récent~\cite{liang1994jdcad}, et se retrouve sous de nombreuses formes, notamment avec un cône au lieu d'un rayon~\cite{steed20043d}, afin de faciliter la sélection de cibles de petite taille apparente.
     
     Cependant, le lancer de rayon --- et plus encore sous sa forme conique --- souffre d'un problème majeur : l'ambiguïté lorsque plusieurs objets sont traversés par le rayon ou le cône. Pour pallier ce défaut, des solutions de désambiguïsation sont régulièrement mises en place~\cite{grossman2006design}. Elles sont diverses et leurs efficacités respectives varient, notamment selon les circonstances.
@@ -1457,7 +1442,7 @@
     
     Observons néanmoins qu'une heuristique de prédiction de l'intention de l'utilisateur peut apporter des gains significatifs. Nous reviendrons sur ce point plus bas. Contentons-nous ici d'observer que le \emph{raycasting} pur, ou même accompagné d'une solution de désambiguïsation efficace, est assez mal adapté aux environnements denses et surtout dynamiques.
     
-	\paragraph*{}
+	\subsubsection{Sélection en cascade}
     Pour gérer la difficulté d'une tâche de sélection, celle-ci peut être divisée en sous-tâches, dans une approche dite de sélection en cascade. Le principe est de pré-sélectionner une zone de l'espace virtuel afin d'éliminer tout le reste (et tous les objets s'y trouvant) avant de procéder à une seconde phase de sélection, plus fine, et pouvant éventuellement être de nouveau subdivisée.
     
     La sélection en cascade peut fournir de bons temps de sélection, et permet souvent une réduction drastique du taux d'erreurs~\cite{kopper2011rapid}. Les techniques de sélection en cascade font souvent usage d'une première phase grossière tirant parti d'une estimation de la direction du regard de l'utilisateur, notamment parce que cela permet d'accomplir cette phase très rapidement~\cite{debarba2013disambiguation}.
@@ -1473,8 +1458,8 @@
     Cela aurait pour effet de réduire la densité effective de l'environnement d'un point de vue moteur, et éventuellement visuel, mais sans perdre (totalement) le contexte dynamique. L'efficacité pratique d'un tel filtrage repose néanmoins sur la capacité de l'effectuer rapidement et de manière fiable. L'usage de commandes vocales est particulièrement tentant pour une telle sous-tâche, mais présente les inconvénients inhérents au traitement du signal habituels --- erreurs et imprécisions de reconnaissance, latence, coût, complexité, etc.
     
     En somme, le principe de sélection en cascade est fort intéressant, à condition de pouvoir effectuer la phase grossière de pré-sélection très rapidement, et de ne pas perdre le contexte dynamique.
-    
-	\paragraph*{}
+
+	\subsubsection{Prédiction de la trajectoire du curseur}
     Plutôt que de chercher à optimiser les paramètres de la tâche de sélection (taille ou distance effectives) il est possible d'analyser la trajectoire du curseur pendant la tâche, et d'essayer de prédire son point d'arrivée à l'avance, afin d'accélérer la sélection. \emph{Kinematic Endpoint Prediction} (KEP)~\cite{lank2007endpoint} ou encore \emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} fonctionnent sur ce principe.
     
     En examinant le profil de vitesse en fonction du temps d'un curseur, connaissant les lois qui gouvernent la forme de ces profils, et sur l'hypothèse d'une trajectoire à peu près rectiligne, l'on peut estimer avec une certaine précision le point d'arrivée d'un curseur. En pratique, les performances obtenues peuvent être bonnes, mais cette approche s'accommode assez mal des environnements particulièrement denses, mais surtout, il est fort douteux qu'elle puisse s'appliquer efficacement aux cibles mobiles.
@@ -1482,8 +1467,25 @@
     En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou la position où l'utilisateur estime qu'elle sera à la fin du mouvement ?
     
     Ces questions --- au demeurant très intéressantes --- sont à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
+
+    \subsection{Techniques pour cibles mobiles}
+	\subsubsection{Augmentation des objets}
+    D'autres techniques, spécifiquement développées pour la sélection de cibles mobiles, augmentent les objets d'un appendice, comme pour \emph{Comet}~\cite{hasan2011comet}, ou d'une onde de choc, comme pour \emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. Il s'agit là encore d'augmenter la taille effective des cibles, mais en tenant compte de leur nature mobile.
     
-	\paragraph*{}
+    Bien que souvent efficaces, et ce d'autant plus qu'elles peuvent être combinées à un curseur zonal, ces techniques souffrent du même inconvénient que les curseurs zonaux : la densité réduit considérablement leur intérêt, d'une part à cause du chevauchement potentiel des cibles augmentées, et d'autre part à cause de l'encombrement visuel impliqué par l'augmentation.
+    
+    Celle-ci peut en effet être désagréable, occulter des éléments importants, ou poser de graves problèmes esthétiques, particulièrement dans des contextes d'une nature (au moins partiellement) artistique, tels que les jeux vidéo.
+    
+    Quand les environnements sont denses, quand une charte graphique doit être respectée, ou quand l'encombrement visuel doit être minimisé, ces techniques devraient selon nous être écartées.
+    
+	\subsubsection{Manipulation du temps}
+    Les techniques spécifiquement pensées pour les cibles mobiles adoptent parfois une solution radicale : les rendre statiques. C'est notamment le cas d'une technique simplement appelée \emph{Hold}~\cite{hajri2011moving}, qui se contente de stopper tous les objets pendant la phase de sélection, mais aussi de \emph{Target Ghost}~\cite{hasan2011comet}, qui crée des copies statiques des cibles qui, elles, demeurent mobiles, mais semi-transparentes. Cette dernière technique a l'avantage de ne pas perdre le contexte dynamique.
+    
+    Mais elle a aussi l'inconvénient de doubler le nombre d'objets affichés, et ceux qui sont voués à être sélectionnés (les copies statiques) demeurent détachés de leur contexte dynamique. Pis, si les objets ne sont pas visuellement différents les uns des autres, il peut être impossible pour l'utilisateur de relier une copie statique à l'objet qui l'a engendré.
+    
+    Là encore, les applications à forte densité ne peuvent se satisfaire d'une technique de ce type, et ce d'autant plus que le contexte dynamique est important, ou que les objets sont visuellement similaires.
+    
+	\subsubsection{Prédiction intensionnelle}
     Une autre approche prédictive consiste à observer le comportement de l'utilisateur pour essayer de deviner son intention, et plus précisément pour déterminer quel objet il souhaite sélectionner. C'est ainsi que fonctionnent \emph{IntenSelect}~\cite{de2005intenselect} (est une forme de lancer de rayon) et \emph{Hook}~\cite{ortega2013hook} (qui fait usage d'un curseur ponctuel).
     
     Un des intérêts de la prédiction d'intention est de ne pas dépendre d'hypothèses telles que la rectitude de la trajectoire du curseur, particulièrement \og fragiles \fg{} avec des cibles mobiles. L'hypothèse généralement commune aux techniques de ce type est que l'utilisateur va chercher à \og suivre \fg{} sa cible pour la capturer, donc que ses mouvements seront corrélés à ceux de la cible. Cette corrélation est exploitée pour déterminer quel objet est visé par l'utilisateur.
@@ -1492,7 +1494,21 @@
     
     Observons par ailleurs que la prédiction de l'intention n'est pas incompatible avec d'autres approches mentionnées plus haut, telles que la sélection en cascade, par exemple.
     
-	\paragraph*{}
+    \subsection{Schéma récapitulatif}
+	Nous proposons un schéma récapitulatif de la taxinomie proposée ici sur la figure~\ref{fig:selTaxi}.
+    
+    \begin{landscape}
+    
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\linewidth]{figures/ch2/selTechTree}
+		\caption[Taxinomie des techniques de sélection de cibles]{Notre proposition de taxinomie des techniques de sélection de cibles. Les catégories et sous-catégories sont représentées par des rectangles arrondis de couleur (???) et les techniques de sélection sont représentées par les rectangles verts. Une technique peut appartenir à différentes catégories à la fois, comme \emph{IntenSelect}, par exemple.}
+		\label{fig:selTaxi}
+	\end{figure}	    
+    
+    \end{landscape}
+    
+\section{Conclusion}
     Les techniques d'assistance à la sélection de cibles visent généralement à optimiser les paramètres de la tâche de sélection connus depuis les travaux de Fitts~\cite{fitts1954information} : la taille effective de la cible, et la distance effective entre celle-ci et le curseur. Cette tendance générale illustre l'influence considérable de la loi de Fitts sur le développement de telles techniques.
     
     De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, cependant, les bénéfices apportés par les techniques de ce type tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
