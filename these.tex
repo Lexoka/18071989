@@ -144,8 +144,8 @@
     chapitre2,
     chapitre3,
     chapitre4,
-    conclusion,
-    appendix
+    conclusion%,
+%    appendix
 } 
 % Commenter tous les fichiers sauf celui en cours, pour compiler plus vite.
 
@@ -177,7 +177,7 @@
 \addtocontents{toc}{\bigskip}% rajoute un espace dans la table des matières
 
 \include{conclusion}
-\include{appendix}
+%\include{appendix}
 
 \bookmarksetup{startatroot}% package bookmark --> pour sortir de la "part" précédente (pour les liens pdfbookmark dans le pdf)
 \addtocontents{toc}{\bigskip}% rajoute un espace dans la table des matières
@@ -186,7 +186,7 @@
 \mtcaddchapter % pour éviter décalage de minitoc
 \listoffigures      % Liste des figures
 \mtcaddchapter % pour éviter décalage de minitoc
-\include{notations}
+%\include{notations}
 
 % =============== BIBLIOGRAPHIE ================
 \bibliographystyle{alpha}
