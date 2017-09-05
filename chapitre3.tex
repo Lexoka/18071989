@@ -125,6 +125,47 @@
 	Au-delà des valeurs moyennes/typiques ou maximales de la vitesse, il peut être judicieux d'examiner dans quelle mesure la vitesse peut varier en un court laps de temps, c'est-à-dire de détailler la façon dont les objets sont susceptibles d'accélérer. En effet, un objet se déplaçant relativement lentement peut paraître aisé à sélectionner, mais s'avérer fort difficile s'il accélère brutalement, surtout si cette accélération a lieu précisément au moment où l'utilisateur effectue son mouvement de sélection.
 	
 	Là encore, l'idéal serait d'avoir un histogramme, ainsi qu'une moyenne, un écart-type et une valeur maximale. L'on devra plus souvent se contenter d'une valeur typique et d'une valeur maximale estimées. Ce sera généralement suffisant pour répondre à la question primordiale concernant l'accélération : \og la cible est-elle susceptible d'accélérer brusquement ? \fg{}. Sans nous répandre en détails ici, précisons simplement que les objets accélèrent généralement d'autant plus facilement qu'ils sont légers, et que les atomes peuvent le faire brusquement, y compris dans les simulations de dynamique moléculaire.
+	
+	\subsubsection{Objets lents}
+	Selon le mode de visualisation, de nombreux véhicules peuvent apparaître comme lents, voire très lents. C'est généralement le cas des navires mais, à certaines échelles, également des avions, ou des automobiles. En règle générale, les piétons observés dans des enregistrements de manifestations et autres mouvements de foule sont également assez lents, exception faite des émeutes, où les mouvements se font plus vifs (et imprévisibles).
+	
+	Observés à grande échelle, les véhicules et objets spatiaux peuvent également apparaître comme lents, en dépit de leur très grande vitesse réelle. Certains objets tirés de contextes vidéoludiques sont également lents, mais il est impossible de généraliser, tant la diversité est grande dans ce domaine.
+	
+	Si la lenteur d'une cible mobile rend sa sélection plus aisée, n'oublions pas que des objets lents peuvent néanmoins être petits, distants, présents dans des environnements très denses, partiellement ou totalement occultés, et caractérisés par des mouvements imprévisibles. Il serait donc imprudent de considérer qu'ils sont \og faciles \fg{} à sélectionner sur la seule base de leur lenteur, ou qu'ils sont indignes de notre intérêt.
+	
+	\subsubsection{Objets rapides}
+	Selon le mode de visualisation, des véhicules peuvent apparaître comme lents\ldots{} ou rapides. En particulier, les aéronefs, les automobiles, les deux-roues et autres petits véhicules (motorisés ou non) ainsi que les missiles seront généralement rapides tels que visualisés.
+	
+	Dans la grande majorité des cas, les particules des simulations moléculaires sont rapides à l'écran, voire très rapides. Les athlètes peuvent également être assez rapides (les skieurs ou patineurs de vitesse, par exemple) mais c'est encore plus vrai des projectiles qu'ils utilisent (les balles de tennis, par exemple).
+	
+	Enfin, les jeux vidéo regorgent d'objets rapides, voire extrêmement rapides. Comme pour les simulations moléculaires (pouvant être animées à n'importe quelle vitesse apparente) il n'y a pas de borne maximale pratique à la vitesse des objets vidéoludiques, si ce n'est la volonté des développeurs.
+	
+	\subsubsection{Objets de vitesse constante}
+	Les objets de vitesse \emph{strictement} constante sont rares, mais pas inexistants. La table~\ref{tab:dotamoves}, par exemple, fournit les vitesses des personnages les plus vifs d'un jeu vidéo, et ces vitesses sont constantes (sauf effets magiques ou autres perturbations exogènes). Certains des objets mentionnés dans la catégorie du mouvement circulaire ont également une vitesse constante, mais comme nous le précisions, ils n'ont que peu d'intérêt dans le contexte de ces travaux de thèse.
+	
+	Cependant, si l'on assouplit quelque peu notre critère pour inclure, d'une part, les objets de vitesse \emph{approximativement} constante et, d'autre part, les objets de vitesse constante sur une partie (significative) de leur trajectoire, alors nous pouvons en ajouter un nombre important.
+	
+	En effet, de nombreux véhicules tombent alors dans cette catégorie, en particulier les avions de ligne et les navires, voire les automobiles, quand une vitesse dite de croisière est maintenue pendant un temps relativement long. De même, nous pouvons inclure les objets célestes, pour peu que l'excentricité de leur orbite ne soit pas trop élevée --- car de celle-ci dépendent les variations de vitesse.
+	
+	La Terre, dans son orbite autour du Soleil, peut donc être considérée comme un objet de vitesse constante, en tolérant cette approximation. Nous pouvons également ajouter les piétons en marche, ou les athlètes pendant une course d'endurance.
+	
+	\subsubsection{Objets susceptibles d'accélérer vivement}
+	Comme la vitesse, l'accélération est une quantité réelle. De fait, son utilisation comme critère de discrimination implique de la discrétiser. Ici nous ferons simplement la différence entre les objets dont l'accélération est négligeable et ceux dont elle l'est clairement. Si elle est particulièrement élevée, nous le préciserons. Ajoutons que nous définissons ici l'accélération comme la dérivée de la \emph{vitesse} et non de la \emph{vélocité}. Nous partons donc du principe qu'un objet changeant brusquement de direction tout en maintenant une vitesse constante a une \og accélération \fg{} nulle.
+	
+	Nous avons vu que beaucoup d'objets sont susceptibles d'avoir une vitesse constante. Pour la plupart, ils sont également susceptibles d'accélérer de façon plus ou moins vive, selon les circonstances. À vrai dire, c'est même le cas des personnages de jeux vidéo cités plus haut, car ils peuvent passer d'une vitesse nulle à leur vitesse maximale de façon presque instantanée, et dans bien des jeux, cette accélération se fait en l'espace d'une \emph{frame}, c'est-à-dire (grossièrement) d'une itération de la boucle de jeu, soit un peu moins de 17~ms dans la plupart des cas.
+	
+	Les véhicules, par définition, sont également capables d'accélérer, dans des mesures diverses : bien en dessous d'un $g$ pour une automobile ordinaire ou un gros navire, environ $1~g$ pour un avion de chasse (ou Usain Bolt\footnotemark{}), ou plusieurs dizaines de $g$ pour certains missiles\footnotemark{}.
+	
+	\addtocounter{footnote}{-1}
+	\footnotetext{\url{http://io9.gizmodo.com/the-physics-of-usain-bolts-world-record-100-meter-dash-924744818}}
+	\addtocounter{footnote}{1}
+	\footnotetext{\url{http://www.designation-systems.net/dusrm/app4/sprint.html}}
+	
+	Les objets nanoscopiques tels que les atomes peuvent accélérer si vivement qu'une tentative de quantifier cette accélération en $g$ n'aurait que peu de sens, surtout du point de vue d'une interface homme-machine nécessairement limitée par la fréquence de rafraîchissement de son dispositif d'affichage, probablement située autour de 60~Hz, voire 240~Hz au mieux\footnotemark{}.
+	
+	\footnotetext{\url{https://www.blurbusters.com/faq/120hz-monitors}}
+	
+	Quand bien même cette limite technique n'existerait pas, il est douteux qu'un humain puisse percevoir une différence à l'œil nu entre les quelque 10~000~$g$ d'un coup de squille (ou crevette-mante)~\cite{patek2004biomechanics} et les 100~000~$g$ d'une morsure de fourmi \emph{Odontomachus}~\cite{patek2006multifunctionality}. Contentons-nous donc d'observer que ces objets peuvent accélérer de manière extrêmement vive.
    
 	\subsection{Fréquence des changements de direction}
 	Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer la cette fréquence comme étant soit nulle, soit infinie.
@@ -201,46 +242,7 @@
 	
 	Rappelons tout de même avant de continuer que la vitesse perçue subjectivement est la vitesse d'un objet telle qu'elle est communiquée à l'utilisateur (principalement par le canal visuel, en général) et qu'elle n'est pas nécessairement comparable à la vitesse \emph{réelle} de l'objet concerné, si tant est que l'objet lui-même soit réel.
 	
-	\subsubsection{Objets lents}
-	Selon le mode de visualisation, de nombreux véhicules peuvent apparaître comme lents, voire très lents. C'est généralement le cas des navires mais, à certaines échelles, également des avions, ou des automobiles. En règle générale, les piétons observés dans des enregistrements de manifestations et autres mouvements de foule sont également assez lents, exception faite des émeutes, où les mouvements se font plus vifs (et imprévisibles).
-	
-	Observés à grande échelle, les véhicules et objets spatiaux peuvent également apparaître comme lents, en dépit de leur très grande vitesse réelle. Certains objets tirés de contextes vidéoludiques sont également lents, mais il est impossible de généraliser, tant la diversité est grande dans ce domaine.
-	
-	Si la lenteur d'une cible mobile rend sa sélection plus aisée, n'oublions pas que des objets lents peuvent néanmoins être petits, distants, présents dans des environnements très denses, partiellement ou totalement occultés, et caractérisés par des mouvements imprévisibles. Il serait donc imprudent de considérer qu'ils sont \og faciles \fg{} à sélectionner sur la seule base de leur lenteur, ou qu'ils sont indignes de notre intérêt.
-	
-	\subsubsection{Objets rapides}
-	Selon le mode de visualisation, des véhicules peuvent apparaître comme lents\ldots{} ou rapides. En particulier, les aéronefs, les automobiles, les deux-roues et autres petits véhicules (motorisés ou non) ainsi que les missiles seront généralement rapides tels que visualisés.
-	
-	Dans la grande majorité des cas, les particules des simulations moléculaires sont rapides à l'écran, voire très rapides. Les athlètes peuvent également être assez rapides (les skieurs ou patineurs de vitesse, par exemple) mais c'est encore plus vrai des projectiles qu'ils utilisent (les balles de tennis, par exemple).
-	
-	Enfin, les jeux vidéo regorgent d'objets rapides, voire extrêmement rapides. Comme pour les simulations moléculaires (pouvant être animées à n'importe quelle vitesse apparente) il n'y a pas de borne maximale pratique à la vitesse des objets vidéoludiques, si ce n'est la volonté des développeurs.
-	
-	\subsubsection{Objets de vitesse constante}
-	Les objets de vitesse \emph{strictement} constante sont rares, mais pas inexistants. La table~\ref{tab:dotamoves}, par exemple, fournit les vitesses des personnages les plus vifs d'un jeu vidéo, et ces vitesses sont constantes (sauf effets magiques ou autres perturbations exogènes). Certains des objets mentionnés dans la catégorie du mouvement circulaire ont également une vitesse constante, mais comme nous le précisions, ils n'ont que peu d'intérêt dans le contexte de ces travaux de thèse.
-	
-	Cependant, si l'on assouplit quelque peu notre critère pour inclure, d'une part, les objets de vitesse \emph{approximativement} constante et, d'autre part, les objets de vitesse constante sur une partie (significative) de leur trajectoire, alors nous pouvons en ajouter un nombre important.
-	
-	En effet, de nombreux véhicules tombent alors dans cette catégorie, en particulier les avions de ligne et les navires, voire les automobiles, quand une vitesse dite de croisière est maintenue pendant un temps relativement long. De même, nous pouvons inclure les objets célestes, pour peu que l'excentricité de leur orbite ne soit pas trop élevée --- car de celle-ci dépendent les variations de vitesse.
-	
-	La Terre, dans son orbite autour du Soleil, peut donc être considérée comme un objet de vitesse constante, en tolérant cette approximation. Nous pouvons également ajouter les piétons en marche, ou les athlètes pendant une course d'endurance.
-	
-	\subsubsection{Objets susceptibles d'accélérer vivement}
-	Comme la vitesse, l'accélération est une quantité réelle. De fait, son utilisation comme critère de discrimination implique de la discrétiser. Ici nous ferons simplement la différence entre les objets dont l'accélération est négligeable et ceux dont elle l'est clairement. Si elle est particulièrement élevée, nous le préciserons. Ajoutons que nous définissons ici l'accélération comme la dérivée de la \emph{vitesse} et non de la \emph{vélocité}. Nous partons donc du principe qu'un objet changeant brusquement de direction tout en maintenant une vitesse constante a une \og accélération \fg{} nulle.
-	
-	Nous avons vu que beaucoup d'objets sont susceptibles d'avoir une vitesse constante. Pour la plupart, ils sont également susceptibles d'accélérer de façon plus ou moins vive, selon les circonstances. À vrai dire, c'est même le cas des personnages de jeux vidéo cités plus haut, car ils peuvent passer d'une vitesse nulle à leur vitesse maximale de façon presque instantanée, et dans bien des jeux, cette accélération se fait en l'espace d'une \emph{frame}, c'est-à-dire (grossièrement) d'une itération de la boucle de jeu, soit un peu moins de 17~ms dans la plupart des cas.
-	
-	Les véhicules, par définition, sont également capables d'accélérer, dans des mesures diverses : bien en dessous d'un $g$ pour une automobile ordinaire ou un gros navire, environ $1~g$ pour un avion de chasse (ou Usain Bolt\footnotemark{}), ou plusieurs dizaines de $g$ pour certains missiles\footnotemark{}.
-	
-	\addtocounter{footnote}{-1}
-	\footnotetext{\url{http://io9.gizmodo.com/the-physics-of-usain-bolts-world-record-100-meter-dash-924744818}}
-	\addtocounter{footnote}{1}
-	\footnotetext{\url{http://www.designation-systems.net/dusrm/app4/sprint.html}}
-	
-	Les objets nanoscopiques tels que les atomes peuvent accélérer si vivement qu'une tentative de quantifier cette accélération en $g$ n'aurait que peu de sens, surtout du point de vue d'une interface homme-machine nécessairement limitée par la fréquence de rafraîchissement de son dispositif d'affichage, probablement située autour de 60~Hz, voire 240~Hz au mieux\footnotemark{}.
-	
-	\footnotetext{\url{https://www.blurbusters.com/faq/120hz-monitors}}
-	
-	Quand bien même cette limite technique n'existerait pas, il est douteux qu'un humain puisse percevoir une différence à l'œil nu entre les quelque 10~000~$g$ d'un coup de squille (ou crevette-mante)~\cite{patek2004biomechanics} et les 100~000~$g$ d'une morsure de fourmi \emph{Odontomachus}~\cite{patek2006multifunctionality}. Contentons-nous donc d'observer que ces objets peuvent accélérer de manière extrêmement vive.
+
 
 	\subsection{Densité de l'environnement}
 	Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continu mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
