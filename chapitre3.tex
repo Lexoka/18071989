@@ -6,71 +6,90 @@
 \cleardoublepage
 
 \section{Introduction}
-
-	\subsection{Nature des cibles}
 	Au cours du premier chapitre de ce manuscrit, nous avons identifié un certain nombre de besoins associés à des applications précises. Nous nous sommes également attachés à caractériser la nature des cibles mobiles que l'on rencontre dans ces applications, afin de permettre au lecteur d'apprécier d'une part l'ensemble des difficultés inhérentes aux tâches de sélection dans ces applications, et d'autre part la nécessité d'une assistance à la sélection.
 	
-	Si nous avons jusqu'ici énuméré et caractérisé ces types de cibles, avec une attention toute particulière à leur contexte applicatif, nous n'avons pas procédé à une classification systématique des cibles selon la nature de leur mouvement, définie selon des critères objectifs et des mesures quantitatives.
+	Si nous avons jusqu'ici énuméré et caractérisé ces types de cibles, avec une attention toute particulière à leur contexte applicatif, nous n'avons pas procédé à une classification systématique des cibles selon la nature de leur mouvement, définie selon des critères objectifs et des mesures quantitatives. Or, il nous apparaît que pour réellement comprendre les enjeux et défis liés à la sélection de cibles mobiles, une telle classification est nécessaire.
 	
-	Or, il nous apparaît que pour réellement comprendre les enjeux et défis liés à la sélection de cibles mobiles, une telle classification est nécessaire. L'objectif de ce chapitre est donc d'établir une taxinomie des cibles mobiles selon des critères objectifs et, dans la mesure du possible, permettant une quantification des valeurs auxquelles ils se rapportent.
+	L'objectif de ce chapitre est donc d'établir une taxinomie des cibles mobiles selon des critères objectifs et, dans la mesure du possible, permettant une quantification des valeurs auxquelles ils se rapportent. Nous commencerons par exposer nos réflexions sur les critères à retenir pour établir cette taxinomie, puis nous confronterons les cibles et leurs environnements à ces critères. Nous présenterons ensuite un modèle que nous avons développé pour décrire et générer du mouvement pseudo-aléatoire, régi par des paramètres finement contrôlés. Nous nous appuierons sur ce modèle pour compléter notre taxinomie par des mesures quantitatives et objectives.
 	
-	\subsection{Nature des environnements}
+	
+	\section{Critères de discrimination et nature du mouvement}
 	Bien qu'une \og simple \fg{} taxinomie des cibles mobiles en fonction de la nature de leur mouvement ait beaucoup d'intérêt, elle ne saurait fournir suffisamment d'informations pour guider la conception de techniques de sélection sans tenir compte de l'\emph{environnement} de sélection. En effet, la cible la plus petite, la plus rapide et la plus imprévisible imaginable est triviale à sélectionner s'il s'agit du seul objet d'intérêt dans l'environnement : il n'y a qu'une sélection possible, donc la technique de sélection optimale --- ou du moins suffisante --- consiste à permettre la sélection de la cible par la simple pression d'un bouton, ou activation d'un quelconque périphérique de saisie.
 	
 	En effet, du point de vue de la théorie de l'information de Shannon~\cite{shannon2001mathematical}, un seul bit d'information est à transmettre de l'utilisateur au système, correspondant à la réponse à la question suivante : \og la cible doit-elle être sélectionnée ? \fg{}. Si la réponse est négative, l'utilisateur ne fait rien et le système non plus ; si elle est positive, une seule action est nécessaire de la part de l'utilisateur, et le système, qui connaît la position de la cible, n'a qu'à la sélectionner sans requérir de précision de la part de l'utilisateur.
 	
-	Même dans un cas où il y aurait plusieurs objets de ce type, mais en petit nombre, la sélection demeurerait relativement aisée avec une technique telle que le \emph{Bubble Cursor}, analysée au cours du deuxième chapitre. En effet, cette technique illustrée par la figure~\ref{fig:bubble} partage l'espace en plusieurs cellules, selon un diagramme de Voronoï (voire figure~\ref{fig:voronoi}). De fait, avec par exemple quatre cibles (éventuellement très petites, rapides et imprévisibles) l'espace virtuel serait partagé en quatre parties qui, la plupart du temps, serait très grandes. La loi de Fitts ne s'appliquerait pas directement, car ces zones de sélection seraient mobiles, mais l'on voit bien que la sélection ne serait pas très difficile.
+	Même dans un cas où il y aurait plusieurs objets de ce type, mais en petit nombre, la sélection demeurerait relativement aisée avec une technique telle que le \emph{Bubble Cursor}, analysée au cours du deuxième chapitre. En effet, cette technique illustrée par la figure~\ref{fig:bubble} partage l'espace en plusieurs cellules, selon un diagramme de Voronoï (voir la figure~\ref{fig:voronoi}). De fait, avec par exemple quatre cibles (éventuellement très petites, rapides et imprévisibles) l'espace virtuel serait partagé en quatre parties qui, la plupart du temps, seraient très grandes. La loi de Fitts ne s'appliquerait pas directement, car ces zones de sélection seraient mobiles, mais l'on voit bien que la sélection ne serait pas très difficile.
 	
 	À l'inverse, avec des cibles aussi petites, rapides et imprévisibles, mais extrêmement nombreuses, l'on comprend aisément que l'intérêt du \emph{Bubble Cursor} serait très fortement diminué car les cellules de Voronoï de chaque cible deviendraient fort petites, et pas nécessairement significativement plus grandes que les cibles elles-mêmes.
 	
 	Il apparaît donc clairement que la difficulté d'une tâche de sélection ne peut être évaluée qu'en tenant compte de l'environnement dans lequel l'objet ciblé est sélectionné. De fait, les besoins et contraintes devant orienter la conception d'une technique d'assistance doivent également en tenir compte. Aussi notre taxinomie tiendra-t-elle compte de l'environnement global, et non seulement de la cible à sélectionner et de la nature de ses mouvements.
+
+
+	L'établissement de notre taxinomie passe par le choix des critères qui nous permettront d'établir des distinctions entre les types de mouvements des cibles et les environnements de sélection. Dans les sous-sections suivantes, nous allons détailler les critères que nous avons retenus.
 	
-	\subsection{Critères subjectifs}
-	Nous verrons plus loin que des critères plus subjectifs --- quoique fondés sur des observations empiriques --- peuvent être plus pertinents pour estimer la difficulté d'une tâche de sélection, et nous proposerons une taxinomie révisée en conséquence.
+	\subsection{Dimensionnalité}
+	Les cibles et leurs environnements se caractérisent notamment par leur nombre de dimensions spatiales. En soi, ce nombre peut varier de un à trois, mais les applications à une seule dimension sont trop rares et trop spécifiques pour entrer dans le cadre de nos travaux.
+	
+	Demeurent donc les objets évoluant dans des espaces à deux et trois dimensions\ldots{} ou presque. En pratique, la dimensionnalité de l'environnement \og écologique \fg{} des cibles ne correspond pas forcément à la dimensionnalité du dispositif d'affichage ou d'interaction. Les avions, par exemple, évoluent dans un espace tridimensionnel, mais sont généralement affichés sur un plan en 2D sur lequel ils sont projetés ; les périphériques de saisie permettant de les sélectionner sont aussi, généralement, limités à deux degrés de liberté.
+	
+	\subsubsection{Environnements purement 2D}
+	Le contrôle de la circulation routière et des espaces maritimes (exception faite des sous-marins) sont des exemples d'environnements purement bidimensionnels, si l'on néglige par exemple les variations d'altitude sur les routes, les ponts et échangeurs, etc. La surveillance des signaux électromagnétiques entre également dans cette catégorie.
+	
+	Les jeux vidéos tels qu'\emph{Agar.io} (voir figure~\ref{fig:agario}) peuvent également présenter des environnements de ce type.
+	
+	\subsubsection{Environnements 3D projetés sur un plan}
+	De nombreux types d'objets évoluent dans des environnements tridimensionnels mais sont couramment visualisés et sélectionnés à l'aide de systèmes bidimensionnels. Notez que c'est un choix, qu'il est généralement possible d'utiliser des systèmes 3D, et que pour certaines applications, c'est occasionnellement le cas.
+	
+	Nous nous contentons ici de faire l'inventaire des applications pouvant entrer dans la catégorie \og 3D projetée en 2D \fg{}. Citons donc les simulations moléculaires, le contrôle de l'espace aérien ou extra-atmosphérique, le contrôle de l'espace maritime quand les sous-marins sont pris en compte, la vidéo-surveillance quand les environnements présentent de forts écarts d'altitude (comme dans un simple bâtiment à plusieurs étages), les retransmissions d'événements sportifs (généralement réduits à une vidéo 2D), et enfin la plupart des jeux vidéo dits \og en 3D \fg{} --- à ne pas confondre avec la 3D au sens de \emph{stéréoscopie}.
+	
+	\subsubsection{Environnements 3D}
+	Parfois, l'on peut interagir avec un environnement 3D à l'aide d'un dispositif de visualisation immersif et un périphérique de saisie adapté, ayant généralement au moins trois degrés de liberté.
+	
+	C'est parfois le cas des simulations moléculaires et autres applications scientifiques, de certains jeux vidéo, et potentiellement de toutes les applications mentionnées dans la catégorie \og 3D projetée en 2D \fg{}, même si nous n'avons pas connaissance, par exemple, de tels systèmes actuellement utilisés pour le contrôle de l'espace aérien.
 
-\section{Critères de discrimination}
-    L'établissement de notre taxinomie passe par le choix des critères qui nous permettront d'établir des distinctions entre les types de mouvements des cibles et les environnements de sélection. Dans les sous-sections suivantes, nous allons détailler les critères que nous avons retenus.
-    
-    \subsection{Dimensionnalité}
-    Les cibles et leurs environnements se caractérisent notamment par leur nombre de dimensions spatiales. En soi, ce nombre peut varier de un à trois, mais les applications à une seule dimension sont trop rares et trop spécifiques pour entrer dans le cadre de nos travaux.
-    
-    Demeurent donc les objets évoluant dans des espaces à deux et trois dimensions\ldots{} ou presque. En pratique, la dimensionnalité de l'environnement \og écologique \fg{} des cibles ne correspond pas forcément à la dimensionnalité du dispositif d'affichage ou d'interaction. Les avions, par exemple, évoluent dans un espace tridimensionnel, mais sont généralement affichés sur un plan en 2D sur lequel ils sont projetés ; les périphériques de saisie permettant de les sélectionner sont aussi, généralement, limités à deux degrés de liberté.
+	\subsection{Autocorrélation}
+	Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
+	
+	En effet, si ledit changement se fait selon un angle borné (entre -45\textdegree{} et +45\textdegree{}, par exemple) alors l'orientation du vecteur direction à l'instant $t$ dépendra de son orientation à $t-1$. Tant que le changement de direction à l'instant $t$, lui, est bien indépendant du changement à l'instant $t-1$ nous admettrons cet abus de langage et parlerons de mouvement markovien ; sinon, le mouvement sera dit autocorrélé. Par commodité, un objet dont les mouvements sont autocorrélés sera dit autocorrélé, et un objet dont les mouvements sont markoviens sera dit markovien.
 
-    \subsection{Autocorrélation}
-    Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-t$ même si le changement d'orientation n'en dépend pas.
-    
-    En effet, si ledit changement se fait selon un angle borné (entre -45\textdegree{} et +45\textdegree{}, par exemple) alors l'orientation du vecteur direction à l'instant $t$ dépendra de son orientation à $t-1$. Tant que le changement de direction à l'instant $t$, lui, est bien indépendant du changement à l'instant $t-1$ nous admettrons cet abus de langage et parlerons de mouvement markovien ; sinon, le mouvement sera dit autocorrélé. Par commodité, un objet dont les mouvements sont autocorrélés sera dit autocorrélé, et un objet dont les mouvements sont markoviens sera dit markovien.
-    
-    Concrètement, les objets macroscopiques dont les mouvements sont soumis aux lois de la physique newtonienne~\cite{newton1833philosophiae} ont des mouvements autocorrélés --- ce sera donc le cas de véhicules de tous types, des êtres vivants (athlètes compris) des projectiles, missiles, etc. Les objets nanoscopiques dont les mouvements sont soumis aux lois de la mécanique quantique ont des mouvements markoviens --- ce sera notamment le cas des particules dans les simulations moléculaires. Les objets pouvant être sélectionnés dans les jeux vidéo seront autocorrélés ou markoviens, selon les règles choisies par les développeurs.
+	Parmi les objets dont les mouvements sont autocorrélés figurent tous les véhicules que nous avons évoqués au cours du chapitre~\ref{chap1} : les automobiles, navires, aéronefs, engins spatiaux, mais aussi les deux-roues, patins à roulettes, etc. Au sens strict, tout objet de masse non nulle et macroscopique devrait être autocorrélé, mais nous pouvons considérer que certains peuvent changer de direction de manière si vive et imprévisible qu'ils sont subjectivement markoviens. En règle générale, nous admettrons qu'un projectile (par exemple utilisé dans un sport) est autocorrélé, tout en gardant à l'esprit que dans certains cas il peut avoir un comportement subjectivement markovien.
+	
+	Le cas des jeux vidéo est quelque peu délicat en ce qu'il s'agit d'un domaine extrêmement vaste dans lequel il est possible de trouver des cibles de toutes natures. Néanmoins, quand ils sont modélisés de manière (subjectivement) réaliste, les objets qui sont autocorrélés dans le monde réel le sont aussi dans les environnements virtuels des jeux. Aussi pouvons-nous classer les aéronefs du jeu \emph{Digital Combat Simulator}\footnotemark{} dans la catégorie des objets autocorrélés, par exemple.
+	
+	\footnotetext{Développé par Eagle Dynamics et édité par The Fighter Collection.
+	
+	\url{https://www.digitalcombatsimulator.com}}
+	
+	Enfin, il est possible de rencontrer dans un jeu vidéo n'importe quel type d'objet, réel ou imaginaire. Ceux de la seconde catégorie peuvent être autocorrélés comme markoviens ; il est impossible d'en dresser un inventaire exhaustif, mais disons simplement qu'ils existent, comme les disques du jeu \emph{Agar.io}, mentionné dans le premier chapitre, qui sont markoviens, ou diverses créatures fictives, généralement autocorrélées.
 
-    \subsubsection{Uniformité}
-    Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur direction de l'objet concerné change.
+	\subsubsection{Uniformité}
+	Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur direction de l'objet concerné change.
 
-    \subsubsection{Périodicité}
-    Un mouvement sera dit périodique si les changements de directions sont tels que l'objet effectuera une trajectoire fermée qu'il répétera à intervalles réguliers. Plus formellement, un mouvement est périodique s'il admet une période $T$ telle que :
-    
-    $\forall t,~Pos_{t}~=~Pos_{t+T}$ où $Pos_{t}$ désigne la position de l'objet à l'instant $t$.
-    
-    \paragraph{Pseudo-périodicité.}
-    Nous appellerons pseudo-périodique un mouvement caractérisé par une trajectoire fermée et répétée à intervalles \emph{irréguliers}. Un tel mouvement ne satisfait pas la condition formalisée ci-dessus, mais admet un ensemble de positions limitées à une trajectoire donnée, et revisitées continuellement dans le même ordre --- simplement, à des vitesses pouvant varier.
+	\subsubsection{Périodicité}
+	Un mouvement sera dit périodique si les changements de directions sont tels que l'objet effectuera une trajectoire fermée qu'il répétera à intervalles réguliers. Plus formellement, un mouvement est périodique s'il admet une période $T$ telle que :
+	
+	$\forall t,~Pos_{t}~=~Pos_{t+T}$ où $Pos_{t}$ désigne la position de l'objet à l'instant $t$.
+	
+	\paragraph{Pseudo-périodicité.}
+	Nous appellerons pseudo-périodique un mouvement caractérisé par une trajectoire fermée et répétée à intervalles \emph{irréguliers}. Un tel mouvement ne satisfait pas la condition formalisée ci-dessus, mais admet un ensemble de positions limitées à une trajectoire donnée, et revisitées continuellement dans le même ordre --- simplement, à des vitesses pouvant varier.
 
-    \paragraph{Circularité.}
-    Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
-    
-    \paragraph{Ellipticité.}
-    À défaut d'être exactement circulaire, un mouvement (pseudo-)périodique peut être elliptique. Nous considérerons en pratique que les implications pour la tâche de sélection sont presque identiques.
-    
-    \subsection{Vitesse}
-    La vitesse des cibles est un critère essentiel de notre taxinomie, car cette valeur a une très forte influence sur la difficulté de sélection, comme le montrent notamment les résultats empiriques obtenus par Ortega~\cite{ortega2013hook} et présentés sur les figures~\ref{fig:hookRes2d} et~\ref{fig:hookRes3d}, ainsi que les travaux de Jagacinksi \emph{et al.}~\cite{jagacinski1980test} (résumés par l'équation~\ref{eq:jagacinski}) et ceux d'Al Harji \emph{et al.}~\cite{hajri2011moving} (résumés par les équations~\ref{eq:hajriC2} et~\ref{eq:hajriVW}). Comme on l'imagine aisément, plus une cible est rapide, plus elle est difficile à sélectionner. Nos propres mesures, sur lesquelles nous reviendrons en détail plus loin, le confirment.
-    
-    Il est important de noter que la vitesse \emph{réelle} de la cible n'est pas très importante, seule sa vitesse \emph{apparente} compte. Par exemple, la Terre effectue sa rotation autour du Soleil à près de 30~km/s, soit 108~000~km/h. Cette vitesse réelle a pourtant peu de chances d'être un problème dans une application réelle car une telle application présenterait probablement la Terre à une échelle permettant d'observer toute son orbite (ou une grande partie de celle-ci). Or, la Terre mettant environ 365 jours à compléter son orbite, sa vitesse apparente à l'écran serait très faible, donc parfaitement gérable dans une tâche de sélection.
-    
-    À l'inverse, une balle de tennis est comparativement lente ($\approx$~200~km/h), mais étant observée à l'échelle d'un court de tennis (environ 24~m) sa vitesse apparente est considérable. De même, un objet dans un jeu vidéo peut se déplacer très lentement, à quelques cm/s seulement ; mais si ce mouvement est observé à l'échelle 1, alors l'objet traversera un écran standard en seulement quelques secondes, voire moins.
-    
-    Or, notre taxinomie vise à classifier les cibles et leurs environnements selon les difficultés de sélection qu'ils présentent et non selon leurs caractéristiques absolues ; de fait, nous nous intéresserons aux vitesses apparentes des objets examinés.
-    
-    Ce choix (au demeurant inévitable) est lourd de conséquences car la vitesse apparente d'un objet d'une vitesse réelle donnée dépend évidemment des conditions dans lesquelles il est affiché, en particulier de l'échelle relative à la taille du dispositif d'affichage, et de ladite taille. Elle dépend également, pour tout ce qui n'est pas joué à vitesse réelle, de la vitesse choisie pour l'animation ou la simulation (avec dans ce dernier cas une contrainte supplémentaire imposée par les performances du système). Par exemple, une vidéo peut être jouée en accéléré.
-    
+	\paragraph{Circularité.}
+	Le mouvement circulaire est un cas particulier du mouvement périodique. Comme son nom l'indique assez clairement, il s'agit d'un mouvement suivant une trajectoire circulaire. Il peut également être pseudo-périodique.
+	
+	\paragraph{Ellipticité.}
+	À défaut d'être exactement circulaire, un mouvement (pseudo-)périodique peut être elliptique. Nous considérerons en pratique que les implications pour la tâche de sélection sont presque identiques.
+	
+	\subsection{Vitesse}
+	La vitesse des cibles est un critère essentiel de notre taxinomie, car cette valeur a une très forte influence sur la difficulté de sélection, comme le montrent notamment les résultats empiriques obtenus par Ortega~\cite{ortega2013hook} et présentés sur les figures~\ref{fig:hookRes2d} et~\ref{fig:hookRes3d}, ainsi que les travaux de Jagacinksi \emph{et al.}~\cite{jagacinski1980test} (résumés par l'équation~\ref{eq:jagacinski}) et ceux d'Al Harji \emph{et al.}~\cite{hajri2011moving} (résumés par les équations~\ref{eq:hajriC2} et~\ref{eq:hajriVW}). Comme on l'imagine aisément, plus une cible est rapide, plus elle est difficile à sélectionner. Nos propres mesures, sur lesquelles nous reviendrons en détail plus loin, le confirment.
+	
+	Il est important de noter que la vitesse \emph{réelle} de la cible n'est pas très importante, seule sa vitesse \emph{apparente} compte. Par exemple, la Terre effectue sa rotation autour du Soleil à près de 30~km/s, soit 108~000~km/h. Cette vitesse réelle a pourtant peu de chances d'être un problème dans une application réelle car une telle application présenterait probablement la Terre à une échelle permettant d'observer toute son orbite (ou une grande partie de celle-ci). Or, la Terre mettant environ 365 jours à compléter son orbite, sa vitesse apparente à l'écran serait très faible, donc parfaitement gérable dans une tâche de sélection.
+	
+	À l'inverse, une balle de tennis est comparativement lente ($\approx$~200~km/h), mais étant observée à l'échelle d'un court de tennis (environ 24~m) sa vitesse apparente est considérable. De même, un objet dans un jeu vidéo peut se déplacer très lentement, à quelques cm/s seulement ; mais si ce mouvement est observé à l'échelle 1, alors l'objet traversera un écran standard en seulement quelques secondes, voire moins.
+	
+	Or, notre taxinomie vise à classifier les cibles et leurs environnements selon les difficultés de sélection qu'ils présentent et non selon leurs caractéristiques absolues ; de fait, nous nous intéresserons aux vitesses apparentes des objets examinés.
+	
+	Ce choix (au demeurant inévitable) est lourd de conséquences car la vitesse apparente d'un objet d'une vitesse réelle donnée dépend évidemment des conditions dans lesquelles il est affiché, en particulier de l'échelle relative à la taille du dispositif d'affichage, et de ladite taille. Elle dépend également, pour tout ce qui n'est pas joué à vitesse réelle, de la vitesse choisie pour l'animation ou la simulation (avec dans ce dernier cas une contrainte supplémentaire imposée par les performances du système). Par exemple, une vidéo peut être jouée en accéléré.
+	
 	\subsubsection{Variabilité}
 	Il serait pratique de pouvoir résumer la vitesse à une variable scalaire, mais ce n'est malheureusement pas toujours possible. En effet, dans les applications identifiées le long du chapitre~\ref{chap1}, la vitesse des objets est généralement variable. L'on ne saurait donc la résumer par un simple nombre. Dans l'idéal, il serait bon de connaître toutes les vitesses atteintes par les objets de la scène, avec leurs fréquences d'occurrence ; cela nous permettrait d'en dresser un histogramme. Connaissant toutes ces valeurs, l'on pourrait les représenter de façon plus concise par une moyenne et un écart-type ; il serait sans doute opportun d'ajouter à cette représentation la vitesse maximale possible, afin de pouvoir caractériser le cas (potentiellement) le plus difficile.
 	
@@ -81,25 +100,25 @@
 	
 	Là encore, l'idéal serait d'avoir un histogramme, ainsi qu'une moyenne, un écart-type et une valeur maximale. L'on devra plus souvent se contenter d'une valeur typique et d'une valeur maximale estimées. Ce sera généralement suffisant pour répondre à la question primordiale concernant l'accélération : \og la cible est-elle susceptible d'accélérer brusquement ? \fg{}. Sans nous répandre en détails ici, précisons simplement que les objets accélèrent généralement d'autant plus facilement qu'ils sont légers, et que les atomes peuvent le faire brusquement, y compris dans les simulations de dynamique moléculaire.
    
-    \subsection{Fréquence des changements de direction}
-    Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer la cette fréquence comme étant soit nulle, soit infinie.
-    
-    Dans certains cas, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un événément instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur direction est plus raisonnable.
-    
-    Les objets nanoscopiques, du moins tels qu'ils sont généralement simulés, tendant à changer de direction de manière abrupte, et la notion de fréquence de changement de direction a généralement du sens. Précisions tout de même que cette fréquence ne saurait être mesurée en temps véritable mais dans le temps de l'animation : en clair, si un atome peut changer de direction de très nombreuses fois par nanoseconde (d'où une fréquence extrêmement élevée) ce qui nous intéresse ici est la fréquence des changements de direction dans l'animation présentée à un utilisateur, car nous ne nous préoccupons que de ce qu'un utilisateur perçoit et de la mesure dans laquelle cela influe sur ses performances de sélection.
-    
-    Il en résulte que dans les simulations moléculaires, par exemple, cette fréquence dépend de la vitesse à laquelle on décide de jouer une animation, ou d'afficher une simulation, comme pour la vitesse des cibles.
-    
-    Les objets virtuels tels que ceux rencontrés dans les jeux vidéo ne sont soumis à aucune contrainte physique, et leurs directions peuvent changer de manière instantanée ou continue, selon les choix des développeurs ; dans certains cas, cette notion de fréquence aura donc du sens, et dans d'autres non.
-    
-    \subsubsection{Cinématique discrète ou continue}
-    Afin de les différencier, nous dirons que les objets dont les changements de direction sont instantanés sont de cinématique discrète, tandis que les autres sont de cinématique continue. Par souci de concision, nous appellerons les premiers ciné-discrets et les seconds ciné-continus. Notons que dans la plupart des cas, les objets markoviens seront ciné-discrets et les objets autocorrélés seront ciné-continus, de telle sorte que ces termes sont presque interchangeables.
-    
-    \subsubsection{Variabilité}
-    Comme pour la vitesse, il est bien entendu que la fréquence des changements de direction d'une cible ne sera pas nécessairement (ou même généralement) constante. De même que pour la vitesse, on tâchera donc d'obtenir un histogramme des valeurs, une moyenne, un écart-type, et un maximum.
-    
-    Dans l'impossibilité de le faire, nous opterons pour une estimation des valeurs \og typique \fg{} et maximale. Illustrons simplement ce propos par l'exemple d'une automobile : sur autoroute, sa fréquence de changements de direction sera presque nulle ; en ville, elle sera bien plus élevée.
-    
+	\subsection{Fréquence des changements de direction}
+	Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer la cette fréquence comme étant soit nulle, soit infinie.
+	
+	Dans certains cas, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un événément instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur direction est plus raisonnable.
+	
+	Les objets nanoscopiques, du moins tels qu'ils sont généralement simulés, tendant à changer de direction de manière abrupte, et la notion de fréquence de changement de direction a généralement du sens. Précisions tout de même que cette fréquence ne saurait être mesurée en temps véritable mais dans le temps de l'animation : en clair, si un atome peut changer de direction de très nombreuses fois par nanoseconde (d'où une fréquence extrêmement élevée) ce qui nous intéresse ici est la fréquence des changements de direction dans l'animation présentée à un utilisateur, car nous ne nous préoccupons que de ce qu'un utilisateur perçoit et de la mesure dans laquelle cela influe sur ses performances de sélection.
+	
+	Il en résulte que dans les simulations moléculaires, par exemple, cette fréquence dépend de la vitesse à laquelle on décide de jouer une animation, ou d'afficher une simulation, comme pour la vitesse des cibles.
+	
+	Les objets virtuels tels que ceux rencontrés dans les jeux vidéo ne sont soumis à aucune contrainte physique, et leurs directions peuvent changer de manière instantanée ou continue, selon les choix des développeurs ; dans certains cas, cette notion de fréquence aura donc du sens, et dans d'autres non.
+	
+	\subsubsection{Cinématique discrète ou continue}
+	Afin de les différencier, nous dirons que les objets dont les changements de direction sont instantanés sont de cinématique discrète, tandis que les autres sont de cinématique continue. Par souci de concision, nous appellerons les premiers ciné-discrets et les seconds ciné-continus. Notons que dans la plupart des cas, les objets markoviens seront ciné-discrets et les objets autocorrélés seront ciné-continus, de telle sorte que ces termes sont presque interchangeables.
+	
+	\subsubsection{Variabilité}
+	Comme pour la vitesse, il est bien entendu que la fréquence des changements de direction d'une cible ne sera pas nécessairement (ou même généralement) constante. De même que pour la vitesse, on tâchera donc d'obtenir un histogramme des valeurs, une moyenne, un écart-type, et un maximum.
+	
+	Dans l'impossibilité de le faire, nous opterons pour une estimation des valeurs \og typique \fg{} et maximale. Illustrons simplement ce propos par l'exemple d'une automobile : sur autoroute, sa fréquence de changements de direction sera presque nulle ; en ville, elle sera bien plus élevée.
+	
 	\subsection{Amplitude des changements de direction}
 	Outre leur fréquence, les changements de direction doivent être examinés à travers leur amplitude. Concrètement, quand une cible change de direction, son vecteur direction subit une rotation. C'est l'angle de cette rotation que nous appelons \emph{l'amplitude} du changement de direction.
 	
@@ -118,48 +137,21 @@
 	
 	Là encore, il y a plusieurs façons de considérer la distribution de ces valeurs d'angles (après discrétisation en cas de mouvement continu) : un histogramme complet peut être retenu, une moyenne, un écart-type et une valeur maximale peuvent également servir de référence. Comme pour les autres variables, s'il est impossible d'obtenir ces mesures, une estimation des valeurs moyenne et maximale devra nous contenter.
 
-    \subsection{Densité de l'environnement}
-    Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continu mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
-    
-    \subsubsection{Occultation}
-    Le niveau d'occultation visuelle d'un environnement est également crucial, et notre taxinomie ne saurait l'ignorer. S'il dépend fortement de la densité de l'environnement, on ne peut établir de lien d'équivalence entre celle-ci et celui-là. En effet, pour une densité donnée, le niveau d'occultation peut être très élevé si les cibles sont très grosses et opaques ; si, en revanche, elles sont relativement petites, voire semi-transparentes, l'occultation peut être assez faible. Rappelons par exemple au lecteur que la même molécule est représentée sur la figure~\ref{fig:4awn_VdW} et sur la figure~\ref{fig:4awn_points}, mais que le niveau d'occultation est bien plus élevé dans le premier cas que dans le second.
+	\subsection{Densité de l'environnement}
+	Une caractérisation précise d'un environnement de sélection doit inclure une estimation de sa densité. Celle-ci peut se calculer en nombre d'objets pouvant être sélectionnés par unité de surface (pour un espace en 2D, ou un plan sur lequel un espace 3D serait projeté) ou par unité de volume. L'espace des densités est continu mais, pour les besoins de la taxinomie, on peut le discrétiser en un nombre fini de niveaux, définis par des intervalles de densité mutuellement disjoints.
 	
-    En outre, la \og taille \fg{} des cibles ne peut pas forcément s'exprimer de façon adéquate avec une valeur scalaire. En effet, si la taille d'une cible sphérique est correctement exprimée par son seul rayon, il en va autrement d'un objet d'une forme quelconque, et \emph{a fortiori} complexe.
-    
-    Pour ces raisons et d'autres, l'estimation du niveau d'occultation est difficile, et mériterait peut-être à elle seule de faire l'objet d'une thèse de doctorat. Peut-être serait-il opportun de la quantifier par une estimation de la probabilité qu'un objet quelconque soit totalement occulté, ou suffisamment occulté pour qu'un utilisateur manque de le remarquer avec une certaine probabilité donnée.
-    
-    C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
+	\subsubsection{Occultation}
+	Le niveau d'occultation visuelle d'un environnement est également crucial, et notre taxinomie ne saurait l'ignorer. S'il dépend fortement de la densité de l'environnement, on ne peut établir de lien d'équivalence entre celle-ci et celui-là. En effet, pour une densité donnée, le niveau d'occultation peut être très élevé si les cibles sont très grosses et opaques ; si, en revanche, elles sont relativement petites, voire semi-transparentes, l'occultation peut être assez faible. Rappelons par exemple au lecteur que la même molécule est représentée sur la figure~\ref{fig:4awn_VdW} et sur la figure~\ref{fig:4awn_points}, mais que le niveau d'occultation est bien plus élevé dans le premier cas que dans le second.
+	
+	En outre, la \og taille \fg{} des cibles ne peut pas forcément s'exprimer de façon adéquate avec une valeur scalaire. En effet, si la taille d'une cible sphérique est correctement exprimée par son seul rayon, il en va autrement d'un objet d'une forme quelconque, et \emph{a fortiori} complexe.
+	
+	Pour ces raisons et d'autres, l'estimation du niveau d'occultation est difficile, et mériterait peut-être à elle seule de faire l'objet d'une thèse de doctorat. Peut-être serait-il opportun de la quantifier par une estimation de la probabilité qu'un objet quelconque soit totalement occulté, ou suffisamment occulté pour qu'un utilisateur manque de le remarquer avec une certaine probabilité donnée.
+	
+	C'est à regret que nous sommes contraints d'écarter cette proposition pour le moment et de nous contenter d'une estimation subjective de l'occultation, que nous exprimerons par un ensemble fini de niveaux. Quoi qu'il en soit, attendu qu'il est généralement nécessaire de voir ou d'avoir vu un objet pour le sélectionner, il s'agit d'un critère extrêmement important.
 
 \section{Taxinomie obtenue}
-	
-	\subsection{Dimensionnalité}
-	Commençons par classer les objets et leurs environnements en fonction de leur dimensionnalité, et de la dimensionnalité des systèmes de visualisation et interaction qui leur sont associés.
-	
-	\subsubsection{Environnements purement 2D}
-	Le contrôle de la circulation routière et des espaces maritimes (exception faite des sous-marins) sont des exemples d'environnements purement bidimensionnels, si l'on néglige par exemple les variations d'altitude sur les routes, les ponts et échangeurs, etc. La surveillance des signaux électromagnétiques entre également dans cette catégorie.
-	
-	Les jeux vidéos tels qu'\emph{Agar.io} (voir figure~\ref{fig:agario}) peuvent également présenter des environnements de ce type.
-	
-	\subsubsection{Environnements 3D projetés sur un plan}
-	De nombreux types d'objets évoluent dans des environnements tridimensionnels mais sont couramment visualisés et sélectionnés à l'aide de systèmes bidimensionnels. Notez que c'est un choix, qu'il est généralement possible d'utiliser des systèmes 3D, et que pour certaines applications, c'est occasionnellement le cas.
-	
-	Nous nous contentons ici de faire l'inventaire des applications pouvant entrer dans la catégorie \og 3D projetée en 2D \fg{}. Citons donc les simulations moléculaires, le contrôle de l'espace aérien ou extra-atmosphérique, le contrôle de l'espace maritime quand les sous-marins sont pris en compte, la vidéo-surveillance quand les environnements présentent de forts écarts d'altitude (comme dans un simple bâtiment à plusieurs étages), les retransmissions d'événements sportifs (généralement réduits à une vidéo 2D), et enfin la plupart des jeux vidéo dits \og en 3D \fg{} --- à ne pas confondre avec la 3D au sens de \emph{stéréoscopie}.
-	
-	\subsubsection{Environnements 3D}
-	Parfois, l'on peut interagir avec un environnement 3D à l'aide d'un dispositif de visualisation immersif et un périphérique de saisie adapté, ayant généralement au moins trois degrés de liberté.
-	
-	C'est parfois le cas des simulations moléculaires et autres applications scientifiques, de certains jeux vidéo, et potentiellement de toutes les applications mentionnées dans la catégorie \og 3D projetée en 2D \fg{}, même si nous n'avons pas connaissance, par exemple, de tels systèmes actuellement utilisés pour le contrôle de l'espace aérien.
 
 	\subsection{Objets autocorrélés}
-	Parmi les objets dont les mouvements sont autocorrélés figurent tous les véhicules que nous avons évoqués au cours du chapitre~\ref{chap1} : les automobiles, navires, aéronefs, engins spatiaux, mais aussi les deux-roues, patins à roulettes, etc. Au sens strict, tout objet de masse non nulle et macroscopique devrait être autocorrélé, mais nous pouvons considérer que certains peuvent changer de direction de manière si vive et imprévisible qu'ils sont subjectivement markoviens. En règle générale, nous admettrons qu'un projectile (par exemple utilisé dans un sport) est autocorrélé, tout en gardant à l'esprit que dans certains cas il peut avoir un comportement subjectivement markovien.
-	
-	Le cas des jeux vidéo est quelque peu délicat en ce qu'il s'agit d'un domaine extrêmement vaste dans lequel il est possible de trouver des cibles de toutes natures. Néanmoins, quand ils sont modélisés de manière (subjectivement) réaliste, les objets qui sont autocorrélés dans le monde réel le sont aussi dans les environnements virtuels des jeux. Aussi pouvons-nous classer les aéronefs du jeu \emph{Digital Combat Simulator}\footnotemark{} dans la catégorie des objets autocorrélés, par exemple.
-	
-	\footnotetext{Développé par Eagle Dynamics et édité par The Fighter Collection.
-	
-	\url{https://www.digitalcombatsimulator.com}}
-	
-	Enfin, il est possible de rencontrer dans un jeu vidéo n'importe quel type d'objet, réel ou imaginaire. Ceux de la seconde catégorie peuvent être autocorrélés comme markoviens ; il est impossible d'en dresser un inventaire exhaustif, mais disons simplement qu'ils existent, comme les disques du jeu \emph{Agar.io}, mentionné dans le premier chapitre, qui sont markoviens, ou diverses créatures fictives, généralement autocorrélées.
 	
 	\subsubsection{Objets de mouvement uniforme}
 	Du fait du focus de ce manuscrit sur les cibles mobiles, nous n'avons pas réellement abordé d'objets aux mouvements uniformes au cours du premier chapitre. Il va sans dire qu'ils existent pourtant. Remarquons néanmoins que si l'on restreint suffisamment la fenêtre temporelle au travers de laquelle on analyse le mouvement d'un objet, l'on peut généralement aboutir à un mouvement localement uniforme.
@@ -312,25 +304,25 @@
 	Précisons tout de même que malgré la très forte corrélation entre densité et occultation, certains environnements très denses, s'ils sont strictement bidimensionnels et observés selon une direction orthogonale à leur plan, peuvent n'avoir aucune occultation. Ce serait par exemple le cas d'une foule observée depuis le ciel, directement au-dessus.
 
 \section{Modèle de génération de mouvement}
-    \subsection{Générer du mouvement pour mener des évaluations}
-    Afin d'étudier rigoureusement la sélection de cibles mobiles en fonction de la nature du mouvement, il est nécessaire de pouvoir générer différents types de mouvements avec le plus petit nombre de paramètres possible. Dans l'idéal, le modèle choisi pour la génération de mouvement devrait être capable d'en générer une très grande variété. Les objectifs de variétés et de petitesse du nombre de paramètres étant contradictoires, un compromis doit être atteint.
-    
-    Sans doute de nombreux modèles pourraient-ils être conçus, et sans doute pourraient-ils correspondre à des compromis ayant divers avantages et inconvénients. Dans le but d'obtenir un modèle relativement simple (donc utilisable dans des évaluations d'une durée raisonnable pour les sujets) nous avons choisi de nous limiter aux mouvements markoviens ; ce choix fut également motivé par le fait que ces mouvements sont intrinsèquement moins prévisibles et, par conséquent, plus difficiles à anticiper --- ils rendent de fait la sélection plus difficile.
-    
-    \subsection{Trois paramètres pour le mouvement synthétique}
-    Nous avons opté pour un modèle limité à trois paramètres pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
-    \begin{enumerate}
-    	\item La vitesse $V$ à laquelle l'objet se déplace ;
-    	\item La fréquence $F$ des changements de $\vec{dir}$ ;
-    	\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
-    \end{enumerate}
-    
-    \subsection{Examen des trajectoires obtenues}
-    Des exemples de trajectoires obtenues avec ce modèle sont fournis dans la figure~\ref{fig:motion1530} avec $A=15$ et $A=30$, dans la figure~\ref{fig:motion4560} avec $A=45$ et $A=60$, dans la figure~\ref{fig:motion7590} avec $A=75$ et $A=90$, dans la figure~\ref{fig:motion105120} avec $A=105$ et $A=120$, dans la figure~\ref{fig:motion135150} avec $A=135$ et $A=150$, et dans la figure~\ref{fig:motion165180} avec $A=165$ et $A=180$. Dans tous les cas, $S=2,19$, $F$ prend les valeurs 1, 4, 8, 16, 32 et 60, et le mouvement généré dure 20 secondes.
-    
-    Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{} (voir la figure~\ref{fig:spEffect}). De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tout l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.    
-    
-    \newcommand{\subImgWarea}{0.42\textwidth}
+	\subsection{Générer du mouvement pour mener des évaluations}
+	Afin d'étudier rigoureusement la sélection de cibles mobiles en fonction de la nature du mouvement, il est nécessaire de pouvoir générer différents types de mouvements avec le plus petit nombre de paramètres possible. Dans l'idéal, le modèle choisi pour la génération de mouvement devrait être capable d'en générer une très grande variété. Les objectifs de variétés et de petitesse du nombre de paramètres étant contradictoires, un compromis doit être atteint.
+	
+	Sans doute de nombreux modèles pourraient-ils être conçus, et sans doute pourraient-ils correspondre à des compromis ayant divers avantages et inconvénients. Dans le but d'obtenir un modèle relativement simple (donc utilisable dans des évaluations d'une durée raisonnable pour les sujets) nous avons choisi de nous limiter aux mouvements markoviens ; ce choix fut également motivé par le fait que ces mouvements sont intrinsèquement moins prévisibles et, par conséquent, plus difficiles à anticiper --- ils rendent de fait la sélection plus difficile.
+	
+	\subsection{Trois paramètres pour le mouvement synthétique}
+	Nous avons opté pour un modèle limité à trois paramètres pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
+	\begin{enumerate}
+		\item La vitesse $V$ à laquelle l'objet se déplace ;
+		\item La fréquence $F$ des changements de $\vec{dir}$ ;
+		\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
+	\end{enumerate}
+	
+	\subsection{Examen des trajectoires obtenues}
+	Des exemples de trajectoires obtenues avec ce modèle sont fournis dans la figure~\ref{fig:motion1530} avec $A=15$ et $A=30$, dans la figure~\ref{fig:motion4560} avec $A=45$ et $A=60$, dans la figure~\ref{fig:motion7590} avec $A=75$ et $A=90$, dans la figure~\ref{fig:motion105120} avec $A=105$ et $A=120$, dans la figure~\ref{fig:motion135150} avec $A=135$ et $A=150$, et dans la figure~\ref{fig:motion165180} avec $A=165$ et $A=180$. Dans tous les cas, $S=2,19$, $F$ prend les valeurs 1, 4, 8, 16, 32 et 60, et le mouvement généré dure 20 secondes.
+	
+	Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{} (voir la figure~\ref{fig:spEffect}). De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tout l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.	
+	
+	\newcommand{\subImgWarea}{0.42\textwidth}
 	\newcommand{\subImgWmo}{0.32\textwidth}
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
@@ -420,12 +412,12 @@
 		\label{fig:motion1530}
 	\end{figure}
 	
-    \subsubsection{Mouvement pseudo-autocorrélé}
-    On notera (notamment sur la figure~\ref{fig:motion1530}, et dans une moindre mesure sur les autres) que quand les valeurs de $A$ ou $F$ sont faibles, ou \emph{a fortiori} quand les deux le sont, le mouvement semble présenter une certaine régularité, au point peut-être de donner l'illusion d'être autocorrélé. La figure~\ref{fig:synTraj_219_45_1}, malgré sa valeur de $A$ relativement élevée, en fournit un exemple.
-    
-    Cette observation est intéressante en ce que ce modèle conçu pour les objets markoviens peut fournir une approximation du mouvement autocorrélé qui, dans certains cas, peut être suffisante. C'est particulièremnt vrai sur une fenêtre temporelle plus restreinte, limitée à quelques secondes tout au plus --- mais une telle fenêtre peut être trop courte pour certaines applications.
-    
-    À défaut d'être réellement autocorrélés, les mouvements générés par ces conditions (que l'on peut résumer par une valeur de $A \times F$ faible) engendrent des trajectoires suffisamment \og régulières \fg{} pour être relativement prévisibles à court terme (sur une ou deux secondes). Nous reviendrons plus loin sur l'importance de la prévisibilité pour une tâche de sélection. Contentons-nous pour le moment de remarquer qu'un objet dont les changements de direction sont rares et/ou de faible amplitude tend à avoir une trajectoire relativement \og lisse \fg{} et, de fait, prévisible.
+	\subsubsection{Mouvement pseudo-autocorrélé}
+	On notera (notamment sur la figure~\ref{fig:motion1530}, et dans une moindre mesure sur les autres) que quand les valeurs de $A$ ou $F$ sont faibles, ou \emph{a fortiori} quand les deux le sont, le mouvement semble présenter une certaine régularité, au point peut-être de donner l'illusion d'être autocorrélé. La figure~\ref{fig:synTraj_219_45_1}, malgré sa valeur de $A$ relativement élevée, en fournit un exemple.
+	
+	Cette observation est intéressante en ce que ce modèle conçu pour les objets markoviens peut fournir une approximation du mouvement autocorrélé qui, dans certains cas, peut être suffisante. C'est particulièremnt vrai sur une fenêtre temporelle plus restreinte, limitée à quelques secondes tout au plus --- mais une telle fenêtre peut être trop courte pour certaines applications.
+	
+	À défaut d'être réellement autocorrélés, les mouvements générés par ces conditions (que l'on peut résumer par une valeur de $A \times F$ faible) engendrent des trajectoires suffisamment \og régulières \fg{} pour être relativement prévisibles à court terme (sur une ou deux secondes). Nous reviendrons plus loin sur l'importance de la prévisibilité pour une tâche de sélection. Contentons-nous pour le moment de remarquer qu'un objet dont les changements de direction sont rares et/ou de faible amplitude tend à avoir une trajectoire relativement \og lisse \fg{} et, de fait, prévisible.
 
 
 	\begin{figure}[htb]
