@@ -819,19 +819,7 @@
 	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ.
 	
 	\subsection{Techniques fondées sur l'augmentation des objets}
-	Certaines techniques se fondent sur la loi de Fitts et son énoncé de l'importance de la largeur de la cible pour faciliter la sélection en augmentant les cibles, de façon à les agrandir. Attardons-nous sur deux d'entre elles.
-	
-	\subsubsection{\emph{(Bubble) Comet}}
-	Avec \emph{Comet}~\cite{hasan2011comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même, comme le montre la figure~\ref{fig:comet}.
-
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/comet}
-		\caption[La technique \emph{Comet}]{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}.}
-		\label{fig:comet}
-	\end{wrapfigure}
-	
-	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreurs pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
+	Certaines techniques se fondent sur la loi de Fitts et son énoncé de l'importance de la largeur de la cible pour faciliter la sélection en augmentant les cibles, de façon à les agrandir. Attardons-nous sur l'une d'entre elles\ldots{} avant d'en examiner un autre, dédiée aux cibles mobiles, dans la section suivante.
 
 	\subsubsection{\emph{AttachedShock}}
 	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets \og fuyants \fg{} : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
@@ -1224,6 +1212,23 @@
 	Les techniques de manipulation du temps impliquent d'arrêter (ou altérer) l'animation ou la simulation à la source des mouvements des cibles, ce qui est inacceptable dans bon nombre d'applications, comme la plupart des jeux vidéo, par exemple. Pour les simulations moléculaires ou encore le contrôle des espaces aérien, maritime, terrestre, les retransmissions d'événements sportifs, etc., cela implique une perte de connexion avec le réel, qui peut dans certains cas être inacceptable.
 	
 	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utiliser des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} impliquerait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations. Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés. Il est vrai que \emph{Target/Bubble Ghost} propose un palliatif, mais il n'est que partiellement efficace, et au prix d'un encombrement visuel presque doublé.
+	
+	\subsection{Techniques fondées sur l'augmentation des objets}
+	Comme nous l'avons vu précédemment, certaines techniques visent à agrandir les objets en les augmentant d'un élement visuel donné. Elles peuvent être conçues pour les cibles statiques comme pour les cibles mobiles. Analysons ici un exemple de la seconde catégorie.
+	\subsubsection{\emph{(Bubble) Comet}}
+	Avec \emph{Comet}~\cite{hasan2011comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même, comme le montre la figure~\ref{fig:comet}.
+
+	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+		\centering
+		\includegraphics[width=0.46\textwidth]{figures/ch2/comet}
+		\caption[La technique \emph{Comet}]{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}.}
+		\label{fig:comet}
+	\end{wrapfigure}
+	
+	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreurs pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
+	
+	\subsubsection{Encombrement visuel et déformation}
+	Comme pour les techniques de cette famille conçues pour les cibles statiques, l'inconvénient majeur est l'encombrement visuel, sensiblement accru. Par ailleurs, la déformation des cibles ou autres modifications de leur apparence peuvent poser problème selon le contexte.
 
 	\subsection{Techniques de prédiction intentionnelle}
 	Les techniques de prédiction intentionnelle cherchent à prédire l'intention de l'utilisateur à partir de ses actions ; en \og devinant \fg{} quelle cible il souhaite choisir, l'on peut lui proposer de le faire de façon très accélérée. Nous allons ici examiner deux techniques de ce type, mais précisons avant de procéder que le \emph{Smart Ray}, décrit plus haut dans la catégorie \emph{raycasting} avec désambiguïsation, pourrait tout à fait être considéré comme une technique de prédiction intentionnelle.
