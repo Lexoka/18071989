@@ -1112,6 +1112,16 @@
 	Deuxièmement, les angles les plus fréquents peuvent être autour de 100\textdegree{} (figure~\ref{fig:148L_all_angles}), 130\textdegree{} (figure~\ref{fig:snare_tmd_gg_all_angles}), 140\textdegree{} (figure~\ref{fig:gk_extension_all_angles}) ou seulement 25\textdegree{} (figure~\ref{fig:02_DA_all_angles}).
 	
 	Par conséquent, l'interaction avec les (résultats de) simulations de dynamique moléculaire nécessite de pouvoir gérer des angles de rotation de n'importe quelle valeur, et même de s'adapter à des distributions pouvant être très différentes, avec des valeurs d'occurrrence maximale pouvant au sein d'un intervalle s'étendant au moins de 25\textdegree{} à 140\textdegree{}. Sur une autre simulation à très haute fréquence (non présentée ici), nous avons même observé un histogramme entièrement borné par les valeurs 15\textdegree{} et 18\textdegree{}.
+	
+	Bien qu'il soit envisageable d'effectuer de telles analyses sur un très gros échantillon représentatif de \emph{trajectoires} de dynamique moléculaire, afin d'obtenir des statistiques détaillées, ce serait superflu par rapports à nos besoins, qui consistent à caractériser les besoins de la tâche. Or, il apparaît que, si l'on examine cette application au travers du prisme de notre modèle VFA :
+	
+	\begin{itemize}
+		\item toutes les valeurs de V sont possibles, selon le mode d'affichage choisi,
+		\item toutes les valeurs de F sont possibles, selon le mode d'affichage choisi,
+		\item toutes les valeurs de A sont possibles, selon la nature du système et les paramètres de la simulation.
+	\end{itemize}
+	
+	Par conséquent, les simulations de dynamique moléculaire peuvent potentiellement entrer dans toutes les catégories de mouvement markovien --- voire autocorrélé si la fréquence est suffisamment élevée. Mais surtout, les mouvements susceptibles de poser les plus grandes difficultés de sélection sont possibles dans cette application.
 
 \section{Conclusion}
 
