@@ -1054,8 +1054,23 @@
 	Remarquons cependant que quand la pseudo-entropie est très faible, la régularité de la trajectoire suggère une sélection relativement aisée ; quand elle est très élevée, la très petite zone couverte par la trajectoire laisse également supposer une sélection assez facile, du fait d'une distance (telle que définie par Fitts~\cite{fitts1954information}) très courte --- à partir du moment où le curseur atteint l'enveloppe convexe de la cible, du moins.
 	
 \section{Résultats}
-	Dynamique moléculaire. Foules ? Jeux vidéo ? Autres ?
+	Pour étayer notre taxinomie des cibles mobiles et de leurs environnements, nous nous sommes appuyés sur des mesures quantitatives et objectives des critères les plus importants que nous avons retenus. Nous avons pour cela adopté deux approches complémentaires :
+	
+	\begin{itemize}
+		\item Premièrement, nous avons développé une suite d'outils permettant de traiter des résultats de simulations de dynamique moléculaire (appelés \emph{trajectoires}) afin de mesurer les angles de rotation des vecteurs direction des atomes, et d'analyser les résultats ;
+		\item Deuxièmement, nous avons développé une suite d'outils permettant d'annoter des vidéos contenant des cibles sur lesquelles l'utilisateur peut cliquer afin de marquer leurs positions dans le temps, et d'analyser les résultats.
+	\end{itemize}
 
+	Dans le premier cas, de très grandes quantités de données peuvent être traitées, en mesurant les angles en 3D, mais uniquement pour des simulations moléculaires. Dans le second, les vidéos peuvent représenter n'importe quel type de cible, mais nécessitent --- pour le moment --- un traitement manuel. L'ajout d'une méthode de reconnaissance d'objet permettrait de se passer de l'intervention d'un humain, mais devrait être très fiable pour être efficace.
+	
+	\subsection{Analyses de \emph{trajectoires} de dynamique moléculaire}
+	Une simulation de dynamique moléculaire cherche à déterminer le comportement d'un système sur une durée \emph{réelle} donnée, généralement de l'ordre de la nanoseconde. L'état du système (notamment les positions des atomes) est déterminé pour chaque pas de temps. En pratique, les résultats de la simulation peuvent ensuite être affichés avec un nombre de pas de temps par seconde arbitraire, ce qui implique que les vitesses des cibles dépendent du choix fait pour la visualisation.
+	
+	De même, les atomes sont susceptibles de changer de direction à chaque pas de temps, et c'est généralement le cas. La fréquence des changements de direction dépend donc égalemement du nombre de pas par seconde lors de l'affichage des résultats.
+	
+	Les valeurs des angles de rotation des vecteurs direction, elles, sont indépendantes de ce choix, puisqu'il s'agit simplement, pour chaque atome, de l'écart entre son vecteur direction d'un pas à l'autre. C'est donc sur cette valeur que nous nous sommes concentrés, en gardant à l'esprit que la vitesse des cibles et la fréquence des changements de direction sont variables et dépendent du mode d'affichage choisi.
+	
+	Nous avons ainsi analysé plusieurs systèmes en mesurant tous les angles de rotation, pour chaque pas de la simulation. Pour chaque système, nous avons ensuite dressé un histogramme de toutes ces valeurs, afin d'avoir une représentation complète de toute la gamme d'angles possibles, et des proportions dans lesquelles ils apparaissent.
 
 \section{Conclusion}
 
