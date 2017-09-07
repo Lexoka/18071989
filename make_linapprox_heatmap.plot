@@ -9,7 +9,7 @@ unset key
 
 set pm3d map
 set pm3d interpolate 32,32
-set yrange [0.5:512]
+set yrange [0.5:4096]
 
 splot "linApprox.csv" u 1:2:3 w pm3d
 
