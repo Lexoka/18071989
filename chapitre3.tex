@@ -1070,7 +1070,7 @@
 	
 	Les valeurs des angles de rotation des vecteurs direction, elles, sont indépendantes de ce choix, puisqu'il s'agit simplement, pour chaque atome, de l'écart entre son vecteur direction d'un pas à l'autre. C'est donc sur cette valeur que nous nous sommes concentrés, en gardant à l'esprit que la vitesse des cibles et la fréquence des changements de direction sont variables et dépendent du mode d'affichage choisi.
 	
-	Nous avons ainsi analysé plusieurs systèmes en mesurant tous les angles de rotation, pour chaque pas de la simulation. Pour chaque système, nous avons ensuite dressé un histogramme de toutes ces valeurs, afin d'avoir une représentation complète de toute la gamme d'angles possibles, et des proportions dans lesquelles ils apparaissent.
+	Nous avons ainsi analysé plusieurs systèmes en mesurant tous les angles de rotation, pour chaque pas de la simulation. Pour chaque système, nous avons ensuite dressé un histogramme de toutes ces valeurs, afin d'avoir une représentation complète de toute la gamme d'angles possibles, et des proportions dans lesquelles ils apparaissent. Ces histogrammes sont présentés sur la figure~\ref{fig:dynMolAngles}.
 	
 	\newcommand{\subImgWaStats}{0.49\textwidth}
 	\begin{figure}[htb]
@@ -1105,6 +1105,13 @@
 		\label{fig:dynMolAngles}
 	\end{figure}	
 
+	Sur cette figure, l'on constate que les angles mesurés ont généralement une distribution asymétrique, avec un cas particulier sur la figure~\ref{fig:02_DA_all_angles}, dont l'histogramme admet deux pics. Les lois mathématiques précises régissant ces distributions importent moins que leurs conséquences pratiques, qui découlent d'une part de l'intervalle des valeurs possibles ([0,180] sur tous les systèmes que nous avons étudiés), et d'autre part de leurs fréquences d'occurrence respectives.
+	
+	Premièrement, tous les angles possibles peuvent apparaître, et ce jusqu'à 180\textdegree{}. Non seulement ces très grands angles (assimilables à des demi-tours) ne sont pas rares, mais sur les systèmes des figures~\ref{fig:148L_all_angles} et~\ref{fig:snare_tmd_gg_all_angles}, ils sont même très fréquents, avec des pics très marqués à cet endroit de leurs histogrammes respectifs.
+	
+	Deuxièmement, les angles les plus fréquents peuvent être autour de 100\textdegree{} (figure~\ref{fig:148L_all_angles}), 130\textdegree{} (figure~\ref{fig:snare_tmd_gg_all_angles}), 140\textdegree{} (figure~\ref{fig:gk_extension_all_angles}) ou seulement 25\textdegree{} (figure~\ref{fig:02_DA_all_angles}).
+	
+	Par conséquent, l'interaction avec les (résultats de) simulations de dynamique moléculaire nécessite de pouvoir gérer des angles de rotation de n'importe quelle valeur, et même de s'adapter à des distributions pouvant être très différentes, avec des valeurs d'occurrrence maximale pouvant au sein d'un intervalle s'étendant au moins de 25\textdegree{} à 140\textdegree{}. Sur une autre simulation à très haute fréquence (non présentée ici), nous avons même observé un histogramme entièrement borné par les valeurs 15\textdegree{} et 18\textdegree{}.
 
 \section{Conclusion}
 
