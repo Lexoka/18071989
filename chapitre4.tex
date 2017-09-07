@@ -797,7 +797,33 @@
 		\label{fig:gammaASQRTFlog}
 	\end{figure}
 	
-	Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
+	Si l'on examine les valeurs de $\gamma$ en fonction de $A\sqrt{F}$ sur une échelle \emph{log-log}, on remarque qu'une portion des données, correspondant à peu près à celles définies sur $A\sqrt{F} \in [180,\infty[$, la représentation graphique des valeurs de $\gamma$ est rectiligne, indiquant une loi de puissance. La figure~\ref{fig:powerLawFit} l'illustre, avec $R^{2} > 0,994$.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/powerLawFit}
+		\caption[Coefficients $\gamma$ en fonction de F et A, quater (log-log)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$ à partir de 180. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance est en rouge. Son équation est représentée, de même que son coefficient de détermination.}
+		\label{fig:powerLawFit}
+	\end{figure}
+	
+	%Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
+	
+	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $M$ est la valeur maximale atteinte, et $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure. L'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}.
+	
+	\begin{align}
+		\label{eq:brokenPower}
+		f(x) &= M \left( 1 + \left( \frac{x}{x_{n}} \right) ^{2} \right)^{-\frac{1}{2}} \\
+		\label{eq:brokenPowerNum}
+		f(x) &= 9,9979731306 \left( 1 + \left( \frac{x}{150} \right) ^{2} \right)^{-\frac{1}{2}}
+	\end{align}
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLogLogPowerFit}
+		\caption[Coefficients $\gamma$ vs. F et A, quinquies (log-log et loi de puissance)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance courbée est en vert.}
+		\label{fig:asqrtFVgammaLogLogPowerFit}
+	\end{figure}
+	
 	
 	\subsection{Aire en fonction de F et A}
 	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver l'aire de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f\left(A\sqrt{F}\right) = \gamma$. De fait, la formule de l'aire de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{A}_{base}(ec)$ est l'aire \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme l'aire de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
