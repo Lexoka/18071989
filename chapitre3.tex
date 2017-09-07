@@ -1071,6 +1071,40 @@
 	Les valeurs des angles de rotation des vecteurs direction, elles, sont indépendantes de ce choix, puisqu'il s'agit simplement, pour chaque atome, de l'écart entre son vecteur direction d'un pas à l'autre. C'est donc sur cette valeur que nous nous sommes concentrés, en gardant à l'esprit que la vitesse des cibles et la fréquence des changements de direction sont variables et dépendent du mode d'affichage choisi.
 	
 	Nous avons ainsi analysé plusieurs systèmes en mesurant tous les angles de rotation, pour chaque pas de la simulation. Pour chaque système, nous avons ensuite dressé un histogramme de toutes ces valeurs, afin d'avoir une représentation complète de toute la gamme d'angles possibles, et des proportions dans lesquelles ils apparaissent.
+	
+	\newcommand{\subImgWaStats}{0.49\textwidth}
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/02_DA_all_angles}
+			\caption{}
+			\label{fig:02_DA_all_angles}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/148L_all_angles}
+			\caption{}
+			\label{fig:148L_all_angles}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/snare_tmd_gg_all_angles}
+			\caption{}
+			\label{fig:snare_tmd_gg_all_angles}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/gk_extension_all_angles}
+			\caption{}
+			\label{fig:gk_extension_all_angles}
+		\end{subfigure}
+		\caption[Angles de rotation, dynamique moléculaire]{Angles de rotation des vecteurs direction des atomes de simulations de dynamique moléculaire.}
+		\label{fig:dynMolAngles}
+	\end{figure}	
+
 
 \section{Conclusion}
 
