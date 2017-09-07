@@ -15,4 +15,6 @@ splot "linApprox.csv" u 1:2:3 w pm3d
 
 set output "linApprox_log.png"
 set logscale y
+set logscale x
+set xrange [0.5:180]
 splot "linApprox.csv" u 1:2:3 w pm3d
