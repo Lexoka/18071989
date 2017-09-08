@@ -1278,7 +1278,7 @@
 	\label{tab:concordeA_stats}
 \end{table}
 
-	Nous soulignions au cours du chapitre~\ref{chap1} l'intérêt des mouvements de foule --- manifestations, émeutes, etc. Aussi avons-nous annoté deux vidéos d'émeutes, dont les histogrammes sont représentés sur la figure~\ref{fig:riots}, et dont les résultats synthétiques sont sur les tables~\ref{tab:riot_stats} et \ref{tab:riot2a_stats}.
+	Nous soulignions au cours du chapitre~\ref{chap1} l'intérêt des mouvements de foule --- manifestations, émeutes, etc. Aussi avons-nous annoté deux vidéos d'émeutes, dont les histogrammes sont représentés sur la figure~\ref{fig:histRiots}, et dont les résultats synthétiques sont sur les tables~\ref{tab:riot_stats} et \ref{tab:riot2a_stats}.
 
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWaStats}
@@ -1323,7 +1323,7 @@
 			\label{fig:riot2a_angle}
 		\end{subfigure}
 		\caption[Histogrammes, émeutes]{}
-		\label{fig:riots}
+		\label{fig:histRiots}
 	\end{figure}
 
 	Encore une fois les vitesses sont essentiellement faibles, avec quelques pics essentiellement liés aux charges et autres courses rapides. Les fréquences sont plutôt faibles et les angles distribués de façon approximativement uniforme, exception faite des petits angles, surreprésentés comme souvent.
@@ -1350,6 +1350,76 @@
 	\end{tabular}
 	\caption[Statistiques pour la vidéo d'émeute 2]{Statistiques pour la vidéo d'émeute 2.}
 	\label{tab:riot2a_stats}
+\end{table}
+
+	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
+	
+	\begin{figure}
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/mhA_speed}
+			\caption{Vitesses pour le contrôle du trafic aérien 1.}
+			\label{fig:mhA_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/mhA_frequency}
+			\caption{Fréquences pour le contrôle du trafic aérien 1.}
+			\label{fig:mhA_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/mhA_angle}
+			\caption{Angles pour le contrôle du trafic aérien 1.}
+			\label{fig:mhA_angle}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_speed}
+			\caption{Vitesses pour le contrôle du trafic aérien 2.}
+			\label{fig:germanwingsA_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_frequency}
+			\caption{Fréquences pour le contrôle du trafic aérien 2.}
+			\label{fig:germanwingsA_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_angle}
+			\caption{Angles pour le contrôle du trafic aérien 2.}
+			\label{fig:germanwingsA_angle}
+		\end{subfigure}
+		\caption[Histogrammes, contrôle du trafic aérien]{}
+		\label{fig:histAirControl}
+	\end{figure}
+	
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		39.69		& 0.43				& 1.56			& 10.00		& 4.23				& 3.13			& 180.00	& 52.68				& 56.62			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo X]{Statistiques pour la vidéo X.}
+	\label{tab:mhA_stats}
+\end{table}
+
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		7.42		& 0.91				& 1.88			& 10.00		& 3.60				& 2.34			& 180.00	& 37.76				& 45.05			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo X]{Statistiques pour la vidéo X.}
+	\label{tab:germanwingsA_stats}
 \end{table}
 
 \section{Conclusion}
