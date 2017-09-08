@@ -1352,7 +1352,7 @@
 	\label{tab:riot2a_stats}
 \end{table}
 
-	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
+	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
 	
 	\begin{figure}
 		\begin{subfigure}[t]{\subImgWaStats}
@@ -1397,7 +1397,7 @@
 			\label{fig:germanwingsA_angle}
 		\end{subfigure}
 		\caption[Histogrammes, contrôle du trafic aérien]{}
-		\label{fig:histAirControl}
+		\label{fig:histAirControl12}
 	\end{figure}
 	
 	Les vitesses sont généralement très basses et stables, ce qui est logique puisque les avions sont observés sur une très grande échelle, et en vol de croisière. Toutefois, elles sont parfois très élevées, en particulier quand le point de vue est déplacé ou en cas de zoom.
@@ -1424,6 +1424,76 @@
 	\end{tabular}
 	\caption[Statistiques pour la vidéo de trafic aérien 2]{Statistiques pour la vidéo de trafic aérien 2.}
 	\label{tab:germanwingsA_stats}
+\end{table}
+
+	Nous avons annoté deux vidéos de plus pour le trafic aérien, dont les histogrammes sont sur la figure~\ref{fig:histAirControl34} et les statistiques synthétiques sur les tables~\ref{tab:hkg_stats} et \ref{tab:flightradar2a_stats}.
+	
+	\begin{figure}
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/hkg_speed}
+			\caption{Vitesses pour le trafic aérien 3.}
+			\label{fig:hkg_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/hkg_frequency}
+			\caption{Fréquences pour le trafic aérien 3.}
+			\label{fig:hkg_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/hkg_angle}
+			\caption{Angles pour le trafic aérien 3.}
+			\label{fig:hkg_angle}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_speed}
+			\caption{Vitesses pour le trafic aérien 4.}
+			\label{fig:flightradar2a_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_frequency}
+			\caption{Fréquences pour le trafic aérien 4.}
+			\label{fig:flightradar2a_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_angle}
+			\caption{Angles pour le trafic aérien 4.}
+			\label{fig:flightradar2a_angle}
+		\end{subfigure}
+		\caption[Histogrammes, contrôle du trafic aérien, bis]{}
+		\label{fig:histAirControl34}
+	\end{figure}
+	
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		4.21		& 0.07				& 0.39			& 30.00		& 3.29				& 4.85			& 176.63	& 53.24				& 52.95			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo  de trafic aérien 3]{Statistiques pour la vidéo  de trafic aérien 3.}
+	\label{tab:hkg_stats}
+\end{table}
+
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		120.00		& 0.06				& 1.34			& 10.00		& 1.30				& 1.96			& 180.00	& 54.65				& 47.58			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo  de trafic aérien 4]{Statistiques pour la vidéo  de trafic aérien 4.}
+	\label{tab:flightradar2a_stats}
 \end{table}
 
 \section{Conclusion}
