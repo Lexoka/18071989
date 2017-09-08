@@ -1,5 +1,5 @@
-set term png size 2560, 1440 font arial 38
-set output "asqrtf2area.png"
+set term svg size 2560, 1440 fsize 42
+set output "asqrtf2area.svg"
 
 set ylabel "Aire"
 unset key
