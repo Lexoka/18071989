@@ -1250,6 +1250,8 @@
 		\label{fig:histChinaConcorde}
 	\end{figure}
 
+	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_speed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats.
+	
 \begin{table}
 	\centering
 	\begin{tabular}{c c c c c c c c c}
@@ -1260,8 +1262,6 @@
 	\caption[Statistiques pour de l'avion de ligne]{Statistiques pour la vidéo de l'avion de ligne.}
 	\label{tab:chinaA_stats}
 \end{table}
-
-	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_speed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats.
 	
 	Ici encore et pour les mêmes raisons, les vitesses sont généralement faibles, et les angles le plus souvent petits mais parfois beaucoup plus élevés. Ici encore, les valeurs proches de 180\textdegree{} s'expliquent par le fait que la caméra peut se déplacer plus vite que la cible.	
 	
@@ -1474,6 +1474,8 @@
 		\label{fig:histAirControl34}
 	\end{figure}
 	
+	Les résultats sont cohérents avec ceux des vidéos précédentes, ce qui nous fournit une caractérisation assez complète et précise des tâches de sélection de cibles mobiles pour le contrôle du trafic aérien. Certes, ces vidéos sont issues d'outils publics tels que \emph{FlightRadar24} plutôt que d'applications professionnelles, mais le fonctionnement des premiers est proche de celui des secondes.
+	
 \begin{table}
 	\centering
 	\begin{tabular}{c c c c c c c c c}
@@ -1485,6 +1487,8 @@
 	\label{tab:hkg_stats}
 \end{table}
 
+	Il ressort de ces observations que les cibles ne sont pas intrinsèquement très difficiles à sélectionner avec ces outils, mais par leur nombre, la densité et l'occultation qui en résultent, elles peuvent présenter des difficultés significatives. Ajoutons, après avoir consulté la table~\ref{tab:flightradar2a_stats}, que les vitesses maximales peuvent être élevées, notamment lors de modifications du point de vue ou zooms.
+
 \begin{table}
 	\centering
 	\begin{tabular}{c c c c c c c c c}
@@ -1495,6 +1499,8 @@
 	\caption[Statistiques pour la vidéo  de trafic aérien 4]{Statistiques pour la vidéo  de trafic aérien 4.}
 	\label{tab:flightradar2a_stats}
 \end{table}
+
+	Outre l'effet perturbant que de tels pics de vitesse peuvent avoir, notamment par la discontinuité qu'ils introduisent, ils rendent une éventuelle tâche de sélection bien plus difficile, ne serait-ce que ponctuellement.
 
 \section{Conclusion}
 
