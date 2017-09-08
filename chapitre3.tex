@@ -1103,7 +1103,7 @@
 		\end{subfigure}
 		\caption[Angles de rotation, dynamique moléculaire]{Angles de rotation des vecteurs direction des atomes de simulations de dynamique moléculaire.}
 		\label{fig:dynMolAngles}
-	\end{figure}	
+	\end{figure}
 
 	Sur cette figure, l'on constate que les angles mesurés ont généralement une distribution asymétrique, avec un cas particulier sur la figure~\ref{fig:02_DA_all_angles}, dont l'histogramme admet deux pics. Les lois mathématiques précises régissant ces distributions importent moins que leurs conséquences pratiques, qui découlent d'une part de l'intervalle des valeurs possibles ([0,180] sur tous les systèmes que nous avons étudiés), et d'autre part de leurs fréquences d'occurrence respectives.
 	
@@ -1126,6 +1126,57 @@
 	\subsection{Analyses des mouvements d'objets divers}
 	Au cours de cette phase, nous avons annoté des vidéos de types très divers pour caractériser quantitativement et objectivement le mouvement de cibles variées. Nous avons ensuite analysé les résultats pour comptabiliser tous les angles de rotation de vecteur direction, toutes les fréquences de rotation, et toutes les vitesses. Nous avons donc pu construire des histogrammes pour chacune de ces grandeurs, mais aussi en calculer la moyenne, l'écart-type, et en noter la valeur maximale.
 	
+	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_speed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
+	
+	Nous avons aussi annoté une vidéo de course de billes, dont les histogrammes sont présentés sur les figures~\ref{fig:bille_speed}, \ref{fig:bille_frequency}, et \ref{fig:bille_angle}, et les statistiques synthétiques sur la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquences, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.	
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/atom_speed}
+			\caption{Vitesses pour la dynamique moléculaire.}
+			\label{fig:atom_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/atom_frequency}
+			\caption{Fréquences pour la dynamique moléculaire.}
+			\label{fig:atom_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/atom_angle}
+			\caption{Angles pour la dynamique moléculaire.}
+			\label{fig:atom_angle}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bille_speed}
+			\caption{Vitesses pour la course de billes.}
+			\label{fig:bille_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bille_frequency}
+			\caption{Fréquences pour la course de billes.}
+			\label{fig:bille_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bille_angle}
+			\caption{Angles pour la course de billes.}
+			\label{fig:bille_angle}
+		\end{subfigure}
+		\caption[Histogrammes, dynamique moléculaire et course de billes]{}
+		\label{fig:histAtomBille}
+	\end{figure}
+
+	
 \begin{table}
 	\centering
 	\begin{tabular}{c c c c c c c c c}
@@ -1135,6 +1186,17 @@
 	\end{tabular}
 	\caption[Statistiques pour la vidéo de dynamique moléculaire]{Statistiques pour la vidéo de dynamique moléculaire.}
 	\label{tab:atom_stats}
+\end{table}
+
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		533.74		& 5.69				& 17.36			& 50.00		& 22.75				& 13.58			& 180.00	& 41.91				& 48.75			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo de course de billes]{Statistiques pour la vidéo de course de billes.}
+	\label{tab:bille_stats}
 \end{table}
 
 \section{Conclusion}
