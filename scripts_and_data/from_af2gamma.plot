@@ -1,9 +1,6 @@
 set term svg size 2560, 1440 fsize 42
 set output "asqrtFVgamma.svg"
 
-#set term png size 2560, 1440 font arial 38
-#set output "asqrtFVgamma.png"
-
 set ylabel "Gamma"
 unset key
 
