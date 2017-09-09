@@ -1132,52 +1132,58 @@
 	
 	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_speed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
 	
-	Nous avons aussi annoté une vidéo de course de billes, dont les histogrammes sont présentés sur les figures~\ref{fig:bille_speed}, \ref{fig:bille_frequency}, et \ref{fig:bille_angle}, et les statistiques synthétiques sur la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquences, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.	
+	\newcommand{\subImgWclicks}{0.32\textwidth}
 	
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/atom_speed}
-			\caption{Vitesses pour la dynamique moléculaire.}
+			\caption{Vitesses.}
 			\label{fig:atom_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/atom_frequency}
-			\caption{Fréquences pour la dynamique moléculaire.}
+			\caption{Fréquences.}
 			\label{fig:atom_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/atom_angle}
-			\caption{Angles pour la dynamique moléculaire.}
+			\caption{Angles.}
 			\label{fig:atom_angle}
 		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\caption[Histogrammes pour la dynamique moléculaire]{Histogrammes pour la dynamique moléculaire.}
+		\label{fig:histAtoms}
+	\end{figure}
+	
+	Nous avons aussi annoté une vidéo de course de billes, dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques sur la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquences, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.
+	
+	\begin{figure}[htb]		
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/bille_speed}
-			\caption{Vitesses pour la course de billes.}
+			\caption{Vitesses.}
 			\label{fig:bille_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/bille_frequency}
-			\caption{Fréquences pour la course de billes.}
+			\caption{Fréquences.}
 			\label{fig:bille_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/bille_angle}
-			\caption{Angles pour la course de billes.}
+			\caption{Angles.}
 			\label{fig:bille_angle}
 		\end{subfigure}
-		\caption[Histogrammes, dynamique moléculaire et course de billes]{}
-		\label{fig:histAtomBille}
+		\caption[Histogrammes pour la course de billes]{Histogrammes pour la course de billes.}
+		\label{fig:histBille}
 	\end{figure}
 	
 \begin{table}
@@ -1218,42 +1224,42 @@
 	Les vitesses sont essentiellement très faibles, car la caméra suit la cible, mais quelques saccades mènent à des valeurs très élevées. La plupart des angles sont faibles mais l'abondance de saccades mène à une distribution assez \og plate \fg{} une fois les petits angles écartés.
 
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/chinaA_speed}
 			\caption{Vitesses pour l'avion de ligne.}
 			\label{fig:chinaA_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/chinaA_frequency}
 			\caption{Fréquences pour l'avion de ligne.}
 			\label{fig:chinaA_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/chinaA_angle}
 			\caption{Angles pour l'avion de ligne.}
 			\label{fig:chinaA_angle}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/concordeA_speed}
 			\caption{Vitesses pour le \emph{Concorde}.}
 			\label{fig:concordeA_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/concordeA_frequency}
 			\caption{Fréquences pour le \emph{Concorde}.}
 			\label{fig:concordeA_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/concordeA_angle}
 			\caption{Angles pour le \emph{Concorde}.}
@@ -1283,42 +1289,42 @@
 	Nous soulignions au cours du chapitre~\ref{chap1} l'intérêt des mouvements de foule --- manifestations, émeutes, etc. Aussi avons-nous annoté deux vidéos d'émeutes, dont les histogrammes sont représentés sur la figure~\ref{fig:histRiots}, et dont les résultats synthétiques sont sur les tables~\ref{tab:riot_stats} et \ref{tab:riot2a_stats}.
 
 	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot_speed}
 			\caption{Vitesses pour l'émeute 1.}
 			\label{fig:riot_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot_frequency}
 			\caption{Fréquences pour l'émeute 1.}
 			\label{fig:riot_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot_angle}
 			\caption{Angles pour l'émeute 1.}
 			\label{fig:riot_angle}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot2a_speed}
 			\caption{Vitesses pour l'émeute 2.}
 			\label{fig:riot2a_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot2a_frequency}
 			\caption{Fréquences pour l'émeute 2.}
 			\label{fig:riot2a_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot2a_angle}
 			\caption{Angles pour l'émeute 2.}
@@ -1357,42 +1363,42 @@
 	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
 	
 	\begin{figure}
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/mhA_speed}
 			\caption{Vitesses pour le trafic aérien 1.}
 			\label{fig:mhA_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/mhA_frequency}
 			\caption{Fréquences pour le trafic aérien 1.}
 			\label{fig:mhA_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/mhA_angle}
 			\caption{Angles pour le trafic aérien 1.}
 			\label{fig:mhA_angle}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_speed}
 			\caption{Vitesses pour le trafic aérien 2.}
 			\label{fig:germanwingsA_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_frequency}
 			\caption{Fréquences pour le trafic aérien 2.}
 			\label{fig:germanwingsA_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_angle}
 			\caption{Angles pour le trafic aérien 2.}
@@ -1431,42 +1437,42 @@
 	Nous avons annoté deux vidéos de plus pour le trafic aérien, dont les histogrammes sont sur la figure~\ref{fig:histAirControl34} et les statistiques synthétiques sur les tables~\ref{tab:hkg_stats} et \ref{tab:flightradar2a_stats}.
 	
 	\begin{figure}
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/hkg_speed}
 			\caption{Vitesses pour le trafic aérien 3.}
 			\label{fig:hkg_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/hkg_frequency}
 			\caption{Fréquences pour le trafic aérien 3.}
 			\label{fig:hkg_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/hkg_angle}
 			\caption{Angles pour le trafic aérien 3.}
 			\label{fig:hkg_angle}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_speed}
 			\caption{Vitesses pour le trafic aérien 4.}
 			\label{fig:flightradar2a_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_frequency}
 			\caption{Fréquences pour le trafic aérien 4.}
 			\label{fig:flightradar2a_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_angle}
 			\caption{Angles pour le trafic aérien 4.}
@@ -1507,42 +1513,42 @@
 	Les avions ne sont pas les seuls objets volants pouvant faire l'objet d'une tâche de sélection, et c'est pourquoi nous avons aussi annoté une vidéo de la navette spatiale américaine (\emph{Space shuttle} ou \emph{Space Transportation System}, STS). Les histogrammes correspondants sont sur les figures~\ref{fig:spaceA_speed}, \ref{fig:spaceA_frequency}, et \ref{fig:spaceA_angle}, tandis que les statistiques synthétiques sont dans la table~\ref{tab:spaceA_stats}.
 	
 	\begin{figure}
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spaceA_speed}
 			\caption{Vitesses pour la navette spatiale.}
 			\label{fig:spaceA_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spaceA_frequency}
 			\caption{Fréquences pour la navette spatiale.}
 			\label{fig:spaceA_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spaceA_angle}
 			\caption{Angles pour la navette spatiale.}
 			\label{fig:spaceA_angle}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/oiseau_speed}
 			\caption{Vitesses pour l'oiseau.}
 			\label{fig:oiseau_speed}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/oiseau_frequency}
 			\caption{Fréquences pour l'oiseau.}
 			\label{fig:oiseau_frequency}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWaStats}
+		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/oiseau_angle}
 			\caption{Angles pour l'oiseau.}
