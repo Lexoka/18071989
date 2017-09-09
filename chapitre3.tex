@@ -1134,7 +1134,7 @@
 	
 	\newcommand{\subImgWclicks}{0.32\textwidth}
 	
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/atom_speed}
@@ -1161,7 +1161,7 @@
 	
 	Nous avons aussi annoté une vidéo de course de billes, dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques sur la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquences, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.
 	
-	\begin{figure}[htb]		
+	\begin{figure}[!htb]	
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/bille_speed}
@@ -1223,7 +1223,7 @@
 	
 	Les vitesses sont essentiellement très faibles, car la caméra suit la cible, mais quelques saccades mènent à des valeurs très élevées. La plupart des angles sont faibles mais l'abondance de saccades mène à une distribution assez \og plate \fg{} une fois les petits angles écartés.
 
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/chinaA_speed}
@@ -1250,7 +1250,7 @@
 
 	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_speed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats.
 		
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/concordeA_speed}
@@ -1292,7 +1292,7 @@
 
 	Nous soulignions au cours du chapitre~\ref{chap1} l'intérêt des mouvements de foule --- manifestations, émeutes, etc. Aussi avons-nous annoté deux vidéos d'émeutes, dont les histogrammes sont représentés sur la figure~\ref{fig:histRiots}, et dont les résultats synthétiques sont sur les tables~\ref{tab:riot_stats} et \ref{tab:riot2a_stats}.
 
-	\begin{figure}[htb]
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/riot_speed}
@@ -1366,7 +1366,7 @@
 
 	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
 	
-	\begin{figure}
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/mhA_speed}
@@ -1440,7 +1440,7 @@
 
 	Nous avons annoté deux vidéos de plus pour le trafic aérien, dont les histogrammes sont sur la figure~\ref{fig:histAirControl34} et les statistiques synthétiques sur les tables~\ref{tab:hkg_stats} et \ref{tab:flightradar2a_stats}.
 	
-	\begin{figure}
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/hkg_speed}
@@ -1508,61 +1508,38 @@
 
 		120.00		& 0.06				& 1.34			& 10.00		& 1.30				& 1.96			& 180.00	& 54.65				& 47.58			\bigstrut[t] \\
 	\end{tabular}
-	\caption[Statistiques pour la vidéo  de trafic aérien 4]{Statistiques pour la vidéo  de trafic aérien 4.}
+	\caption[Statistiques pour la vidéo  de trafic aérien 4]{Statistiques pour la vidéo de trafic aérien 4.}
 	\label{tab:flightradar2a_stats}
 \end{table}
 
 	Outre l'effet perturbant que de tels pics de vitesse peuvent avoir, notamment par la discontinuité qu'ils introduisent, ils rendent une éventuelle tâche de sélection bien plus difficile, ne serait-ce que ponctuellement.
 	
-	Les avions ne sont pas les seuls objets volants pouvant faire l'objet d'une tâche de sélection, et c'est pourquoi nous avons aussi annoté une vidéo de la navette spatiale américaine (\emph{Space shuttle} ou \emph{Space Transportation System}, STS). Les histogrammes correspondants sont sur les figures~\ref{fig:spaceA_speed}, \ref{fig:spaceA_frequency}, et \ref{fig:spaceA_angle}, tandis que les statistiques synthétiques sont dans la table~\ref{tab:spaceA_stats}.
+	Les avions ne sont pas les seuls objets volants pouvant faire l'objet d'une tâche de sélection, et c'est pourquoi nous avons aussi annoté une vidéo de la navette spatiale américaine (\emph{Space shuttle} ou \emph{Space Transportation System}, STS). Les histogrammes correspondants sont sur la figure~\ref{fig:histSpace}, tandis que les statistiques synthétiques sont dans la table~\ref{tab:spaceA_stats}.
 	
-	\begin{figure}
+	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spaceA_speed}
-			\caption{Vitesses pour la navette spatiale.}
+			\caption{Vitesses.}
 			\label{fig:spaceA_speed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spaceA_frequency}
-			\caption{Fréquences pour la navette spatiale.}
+			\caption{Fréquences.}
 			\label{fig:spaceA_frequency}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spaceA_angle}
-			\caption{Angles pour la navette spatiale.}
+			\caption{Angles.}
 			\label{fig:spaceA_angle}
 		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_speed}
-			\caption{Vitesses pour l'oiseau.}
-			\label{fig:oiseau_speed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_frequency}
-			\caption{Fréquences pour l'oiseau.}
-			\label{fig:oiseau_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_angle}
-			\caption{Angles pour l'oiseau.}
-			\label{fig:oiseau_angle}
-		\end{subfigure}
-		\caption[Histogrammes, navette spatiale et oiseau]{}
-		\label{fig:histSpaceOiseau}
+		\caption[Histogrammes pour la navette spatiale]{Histogrammes pour la navette spatiale.}
+		\label{fig:histSpace}
 	\end{figure}
-	
-	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs avec grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
 	
 \begin{table}
 	\centering
@@ -1574,8 +1551,35 @@
 	\caption[Statistiques pour la vidéo de la navette spatiale]{Statistiques pour la vidéo de la navette spatiale.}
 	\label{tab:spaceA_stats}
 \end{table}
-
-	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau, dont les histogrammes sont sur les figures~\ref{fig:oiseau_speed}, \ref{fig:oiseau_frequency}, et \ref{fig:oiseau_angle}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}.
+	
+	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs avec grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
+	
+	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau, dont les histogrammes sont sur la figure~\ref{fig:histOiseau}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}.
+		
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_speed}
+			\caption{Vitesses.}
+			\label{fig:oiseau_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_frequency}
+			\caption{Fréquences.}
+			\label{fig:oiseau_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_angle}
+			\caption{Angles.}
+			\label{fig:oiseau_angle}
+		\end{subfigure}
+		\caption[Histogrammes pour l'oiseau]{Histogrammes pour l'oiseau.}
+		\label{fig:histOiseau}
+	\end{figure}
 	
 \begin{table}
 	\centering
