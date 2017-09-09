@@ -1126,6 +1126,10 @@
 	\subsection{Analyses des mouvements d'objets divers}
 	Au cours de cette phase, nous avons annoté des vidéos de types très divers pour caractériser quantitativement et objectivement le mouvement de cibles variées. Nous avons ensuite analysé les résultats pour comptabiliser tous les angles de rotation de vecteur direction, toutes les fréquences de rotation, et toutes les vitesses. Nous avons donc pu construire des histogrammes pour chacune de ces grandeurs, mais aussi en calculer la moyenne, l'écart-type, et en noter la valeur maximale.
 	
+	Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement.
+	
+	De plus, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif.
+	
 	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_speed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
 	
 	Nous avons aussi annoté une vidéo de course de billes, dont les histogrammes sont présentés sur les figures~\ref{fig:bille_speed}, \ref{fig:bille_frequency}, et \ref{fig:bille_angle}, et les statistiques synthétiques sur la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquences, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.	
@@ -1175,10 +1179,6 @@
 		\caption[Histogrammes, dynamique moléculaire et course de billes]{}
 		\label{fig:histAtomBille}
 	\end{figure}
-
-	Avant d'exposer et commenter nos résultats plus avant, il convient de noter que les fréquences de changements de direction mesurées ici sont très largement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement.
-	
-	De plus, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif.
 	
 \begin{table}
 	\centering
@@ -1341,7 +1341,7 @@
 	\label{tab:riot_stats}
 \end{table}
 
-	Les deux vidéos produisent des résultats assez cohérents entre eux, ce qui est logique attendu qu'ils s'agit d'événements du même types, même si chaque toute émeute est différente des autres.
+	Les deux vidéos produisent des résultats assez cohérents entre eux, ce qui est logique attendu qu'ils s'agit d'événements du même types, même si toute émeute est différente des autres.
 
 \begin{table}
 	\centering
