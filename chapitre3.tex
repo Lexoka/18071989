@@ -1593,6 +1593,31 @@
 \end{table}
 
 	Suivi par la caméra, le volatile génère surtout de très petites vitesses, d'autant que la vidéo est au ralenti. Ses distributions de fréquences et d'angles indiquent un mouvement de faible pseudo-entropie, donc relativement prévisible.
+	
+	
+	\begin{landscape}
+
+	\begin{table}[]
+		\centering
+		\begin{adjustbox}{max width=\linewidth}
+		\begin{tabular}{l|lll|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l}
+		Objet & \multicolumn{3}{c|}{Autocorrélé}                   & Mark. & 2D & 3D/2D & 3D & v & V & V const. & Acc. vives & Cd & Cc & f & F & a & A & d & D \\
+    & Uni. & \multicolumn{1}{c}{Pér.} & Autre &         &    &       &    &   &   &          &            &           &           &   &   &   &   &   &  \bigstrut[b] \\ \hline
+		Nanoscopique   &          &                                &       & O       &    & O     & O  &   & O &          & O          & O         &           &   & O &   & O & O & O \bigstrut[t] \\
+		Volant         & O        &                                & O     &         &    & O     & O  & O & O & O        & O          &           & O         & O & O & O & O & O & O \\
+		Flottant       & O        &                                & O     &         & O  & O     &    & O & O & O        &            &           & O         & O &   & O & O & O & O \\
+		Roulant        & O        & O                              & O     &         & O  & O     &    & O & O & O        & O          & O         & O         & O &   & O & O & O & O \\
+		Spatial        &          & O                              & O     &         &    & O     & O  & O & O & O        & O          &           & O         & O &   & O &   & O & O \\
+		Vivant         & O        &                                & O     &         & O  & O     & O  & O &   & O        & O          & O         & O         & O & O & O & O & O & O \\
+		Vidéoludique   & O        & O                              & O     & O       & O  & O     & O  & O & O & O        & O          & O         & O         & O & O & O & O & O & O
+		\end{tabular}
+		\end{adjustbox}
+		\caption{My caption}
+		\label{tab:recapSelEnvs}
+	\end{table}
+
+	\end{landscape}
+
 
 \section{Conclusion}
 	Au cours de ce chapitre, nous avons établi une liste structurée de critères permettant de classifier les cibles mobiles en fonction de leurs mouvements, et des environnements de sélection au sein desquels on peut les trouver.
