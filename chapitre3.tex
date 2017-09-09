@@ -1501,6 +1501,65 @@
 \end{table}
 
 	Outre l'effet perturbant que de tels pics de vitesse peuvent avoir, notamment par la discontinuité qu'ils introduisent, ils rendent une éventuelle tâche de sélection bien plus difficile, ne serait-ce que ponctuellement.
+	
+	Les avions ne sont pas les seuls objets volants pouvant faire l'objet d'une tâche de sélection, et c'est pourquoi nous avons aussi annoté une vidéo de la navette spatiale américaine (\emph{Space shuttle} ou \emph{Space Transportation System}, STS). Les histogrammes correspondants sont sur les figures~\ref{fig:spaceA_speed}, \ref{fig:spaceA_frequency}, et \ref{fig:spaceA_angle}, tandis que les statistiques synthétiques sont dans la table~\ref{tab:spaceA_stats}.
+	
+	\begin{figure}
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spaceA_speed}
+			\caption{Vitesses pour la navette spatiale.}
+			\label{fig:spaceA_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spaceA_frequency}
+			\caption{Fréquences pour la navette spatiale.}
+			\label{fig:spaceA_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/spaceA_angle}
+			\caption{Angles pour la navette spatiale.}
+			\label{fig:spaceA_angle}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_speed}
+			\caption{Vitesses pour l'oiseau.}
+			\label{fig:oiseau_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_frequency}
+			\caption{Fréquences pour l'oiseau.}
+			\label{fig:oiseau_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWaStats}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_angle}
+			\caption{Angles pour l'oiseau.}
+			\label{fig:oiseau_angle}
+		\end{subfigure}
+		\caption[Histogrammes, navette spatiale et oiseau]{}
+		\label{fig:histSpaceOiseau}
+	\end{figure}
+	
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		382.43		& 2.79				& 12.03			& 29.97		& 8.05				& 7.98			& 180.00	& 65.52				& 55.93			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo X]{Statistiques pour la vidéo X.}
+	\label{tab:spaceA_stats}
+\end{table}
 
 \section{Conclusion}
 	Au cours de ce chapitre, nous avons établi une liste structurée de critères permettant de classifier les cibles mobiles en fonction de leurs mouvements, et des environnements de sélection au sein desquels on peut les trouver.
