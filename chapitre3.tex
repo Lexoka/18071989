@@ -1130,16 +1130,16 @@
 	
 	De plus, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif.
 	
-	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_speed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
+	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_filteredSpeed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
 	
 	\newcommand{\subImgWclicks}{0.32\textwidth}
 	
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/atom_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/atom_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:atom_speed}
+			\label{fig:atom_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1175,9 +1175,9 @@
 	\begin{figure}[!htb]	
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/bille_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:bille_speed}
+			\label{fig:bille_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1208,14 +1208,14 @@
 	\label{tab:bille_stats}
 \end{table}
 
-	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil tenue à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_speed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
+	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil tenue à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_filteredSpeed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
 
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/chinaA_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/chinaA_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:chinaA_speed}
+			\label{fig:chinaA_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1248,14 +1248,14 @@
 
 	Les vitesses sont essentiellement très faibles, car la caméra suit la cible, mais quelques saccades mènent à des valeurs très élevées. La plupart des angles sont faibles mais l'abondance de saccades mène à une distribution assez \og plate \fg{} une fois les petits angles écartés.
 
-	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_speed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats.
+	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_filteredSpeed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats.
 		
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/concordeA_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/concordeA_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:concordeA_speed}
+			\label{fig:concordeA_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1295,9 +1295,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/riot_filteredSpeed}
 			\caption{Vitesses pour l'émeute 1.}
-			\label{fig:riot_speed}
+			\label{fig:riot_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1316,9 +1316,9 @@
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot2a_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/riot2a_filteredSpeed}
 			\caption{Vitesses pour l'émeute 2.}
-			\label{fig:riot2a_speed}
+			\label{fig:riot2a_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1369,9 +1369,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/mhA_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/mhA_filteredSpeed}
 			\caption{Vitesses, trafic aérien 1.}
-			\label{fig:mhA_speed}
+			\label{fig:mhA_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1390,9 +1390,9 @@
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_filteredSpeed}
 			\caption{Vitesses, trafic aérien 2.}
-			\label{fig:germanwingsA_speed}
+			\label{fig:germanwingsA_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1443,9 +1443,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/hkg_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/hkg_filteredSpeed}
 			\caption{Vitesses, trafic aérien 3.}
-			\label{fig:hkg_speed}
+			\label{fig:hkg_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1464,9 +1464,9 @@
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_filteredSpeed}
 			\caption{Vitesses, trafic aérien 4.}
-			\label{fig:flightradar2a_speed}
+			\label{fig:flightradar2a_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1519,9 +1519,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/spaceA_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/spaceA_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:spaceA_speed}
+			\label{fig:spaceA_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1559,9 +1559,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/oiseau_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:oiseau_speed}
+			\label{fig:oiseau_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1599,9 +1599,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bird_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/bird_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:bird_speed}
+			\label{fig:bird_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1639,9 +1639,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/poisson_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/poisson_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:poisson_speed}
+			\label{fig:poisson_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1679,9 +1679,9 @@
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/spider_speed}
+			\includegraphics[width=\textwidth]{figures/ch3/spider_filteredSpeed}
 			\caption{Vitesses.}
-			\label{fig:spider_speed}
+			\label{fig:spider_filteredSpeed}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWclicks}
