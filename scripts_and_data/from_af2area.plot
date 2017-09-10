@@ -1,8 +1,10 @@
-set term svg size 2560, 1440 fsize 42
+set term svg size 2560, 1440 fsize 46
 set output "asqrtf2area.svg"
 
 set ylabel "Aire (cm²)"
 unset key
+
+set yrange [0.1:10.5]
 
 plot "areasFromAF.csv" u (sqrt($1)*$2):4
 
