@@ -13,4 +13,4 @@ fit f(x) "areaVspeed.csv" u 1:4 via a
 stats "areaVspeed.csv" u 4:(f($1)) name "A"
 
 plot "areaVspeed.csv" u 1:4 ps 2 title "Données",\
-	f(x) title "Approximation linéaire : 3,66442×V" w l lw 6
+	f(x) title "Approximation linéaire : y = 3,66442x" w l lw 6

@@ -151,7 +151,7 @@
 </g>
 	<g id="gnuplot_plot_1" ><title>Données</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(1433.2,150.5)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
+	<g transform="translate(1497.4,150.5)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >Données</tspan></text>
 	</g>
 </g>
@@ -173,19 +173,19 @@
 	<use xlink:href='#gpPt0' transform='translate(2186.3,283.1) scale(34.50)' color='rgb(148,   0, 211)'/>
 	<use xlink:href='#gpPt0' transform='translate(2325.0,221.7) scale(34.50)' color='rgb(148,   0, 211)'/>
 	<use xlink:href='#gpPt0' transform='translate(2463.6,171.1) scale(34.50)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(1546.7,133.3) scale(34.50)' color='rgb(148,   0, 211)'/>
+	<use xlink:href='#gpPt0' transform='translate(1610.9,133.3) scale(34.50)' color='rgb(148,   0, 211)'/>
 </g>
 	</g>
-	<g id="gnuplot_plot_2" ><title>Approximation linéaire : 3,66442×V</title>
+	<g id="gnuplot_plot_2" ><title>Approximation linéaire : y = 3,66442x</title>
 <g fill="none" color="white" stroke="rgb(148,   0, 211)" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(1433.2,219.5)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >Approximation linéaire : 3,66442×V</tspan></text>
+	<g transform="translate(1497.4,219.5)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
+		<text><tspan font-family="Arial" >Approximation linéaire : y = 3,66442x</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0, 158, 115)'  d='M1465.3,202.3 L1628.2,202.3 M314.8,1186.1 L336.5,1175.8 L358.2,1165.4 L379.9,1155.1 L401.6,1144.7 L423.3,1134.4
+	<path stroke='rgb(  0, 158, 115)'  d='M1529.5,202.3 L1692.4,202.3 M314.8,1186.1 L336.5,1175.8 L358.2,1165.4 L379.9,1155.1 L401.6,1144.7 L423.3,1134.4
 		L445.0,1124.0 L466.7,1113.7 L488.5,1103.3 L510.2,1093.0 L531.9,1082.6 L553.6,1072.3 L575.3,1061.9 L597.0,1051.5
 		L618.7,1041.2 L640.4,1030.8 L662.1,1020.5 L683.8,1010.1 L705.5,999.8 L727.2,989.4 L748.9,979.1 L770.6,968.7
 		L792.3,958.4 L814.0,948.0 L835.7,937.7 L857.4,927.3 L879.1,917.0 L900.8,906.6 L922.6,896.3 L944.3,885.9
