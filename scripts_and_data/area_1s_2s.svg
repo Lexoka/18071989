@@ -146,7 +146,7 @@
 </g>
 	<g id="gnuplot_plot_1" ><title>Données</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(1694.7,137.6)" stroke="none" fill="black" font-family="Arial" font-size="42.00"  text-anchor="end">
+	<g transform="translate(1518.3,137.6)" stroke="none" fill="black" font-family="Arial" font-size="42.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >Données</tspan></text>
 	</g>
 </g>
@@ -189,31 +189,31 @@
 	<use xlink:href='#gpPt0' transform='translate(918.9,987.1) scale(31.50)' color='rgb(148,   0, 211)'/>
 	<use xlink:href='#gpPt0' transform='translate(774.3,1047.4) scale(31.50)' color='rgb(148,   0, 211)'/>
 	<use xlink:href='#gpPt0' transform='translate(709.3,1070.1) scale(31.50)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(1798.6,121.9) scale(31.50)' color='rgb(148,   0, 211)'/>
+	<use xlink:href='#gpPt0' transform='translate(1622.2,121.9) scale(31.50)' color='rgb(148,   0, 211)'/>
 </g>
 	</g>
-	<g id="gnuplot_plot_2" ><title>Approx. quadratique : y = 0,425551 x² + 0,93232 x</title>
+	<g id="gnuplot_plot_2" ><title>Approximation quadratique : y = 0,790813 x²</title>
 <g fill="none" color="white" stroke="rgb(148,   0, 211)" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(1694.7,200.6)" stroke="none" fill="black" font-family="Arial" font-size="42.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >Approx. quadratique : y = 0,425551 x² + 0,93232 x</tspan></text>
+	<g transform="translate(1518.3,200.6)" stroke="none" fill="black" font-family="Arial" font-size="42.00"  text-anchor="end">
+		<text><tspan font-family="Arial" >Approximation quadratique : y = 0,790813 x²</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0, 158, 115)'  d='M1724.1,184.9 L1873.2,184.9 M261.1,1223.9 L280.5,1219.3 L300.0,1214.7 L319.4,1209.9 L338.8,1205.0 L358.3,1200.0
-		L377.7,1194.9 L397.2,1189.7 L416.6,1184.4 L436.1,1178.9 L455.5,1173.4 L474.9,1167.7 L494.4,1161.9 L513.8,1156.0
-		L533.3,1150.0 L552.7,1143.9 L572.1,1137.7 L591.6,1131.4 L611.0,1124.9 L630.5,1118.3 L649.9,1111.7 L669.4,1104.9
-		L688.8,1098.0 L708.2,1091.0 L727.7,1083.8 L747.1,1076.6 L766.6,1069.3 L786.0,1061.8 L805.5,1054.2 L824.9,1046.5
-		L844.3,1038.7 L863.8,1030.8 L883.2,1022.8 L902.7,1014.7 L922.1,1006.4 L941.5,998.1 L961.0,989.6 L980.4,981.0
-		L999.9,972.3 L1019.3,963.5 L1038.8,954.6 L1058.2,945.6 L1077.6,936.4 L1097.1,927.2 L1116.5,917.8 L1136.0,908.4
-		L1155.4,898.8 L1174.9,889.1 L1194.3,879.2 L1213.7,869.3 L1233.2,859.3 L1252.6,849.1 L1272.1,838.9 L1291.5,828.5
-		L1310.9,818.0 L1330.4,807.4 L1349.8,796.7 L1369.3,785.9 L1388.7,774.9 L1408.2,763.9 L1427.6,752.7 L1447.0,741.5
-		L1466.5,730.1 L1485.9,718.6 L1505.4,707.0 L1524.8,695.2 L1544.3,683.4 L1563.7,671.5 L1583.1,659.4 L1602.6,647.2
-		L1622.0,635.0 L1641.5,622.6 L1660.9,610.1 L1680.3,597.4 L1699.8,584.7 L1719.2,571.9 L1738.7,558.9 L1758.1,545.8
-		L1777.6,532.7 L1797.0,519.4 L1816.4,506.0 L1835.9,492.5 L1855.3,478.8 L1874.8,465.1 L1894.2,451.2 L1913.7,437.3
-		L1933.1,423.2 L1952.5,409.0 L1972.0,394.7 L1991.4,380.3 L2010.9,365.8 L2030.3,351.1 L2049.8,336.4 L2069.2,321.5
-		L2088.6,306.6 L2108.1,291.5 L2127.5,276.3 L2147.0,261.0 L2166.4,245.6 L2185.8,230.0  '/></g>
+	<path stroke='rgb(  0, 158, 115)'  d='M1547.7,184.9 L1696.8,184.9 M261.1,1237.2 L280.5,1236.4 L300.0,1235.4 L319.4,1234.2 L338.8,1232.7 L358.3,1231.1
+		L377.7,1229.2 L397.2,1227.2 L416.6,1224.9 L436.1,1222.4 L455.5,1219.7 L474.9,1216.8 L494.4,1213.7 L513.8,1210.4
+		L533.3,1206.9 L552.7,1203.2 L572.1,1199.3 L591.6,1195.1 L611.0,1190.8 L630.5,1186.2 L649.9,1181.4 L669.4,1176.5
+		L688.8,1171.3 L708.2,1165.9 L727.7,1160.3 L747.1,1154.5 L766.6,1148.5 L786.0,1142.2 L805.5,1135.8 L824.9,1129.1
+		L844.3,1122.3 L863.8,1115.2 L883.2,1108.0 L902.7,1100.5 L922.1,1092.8 L941.5,1084.9 L961.0,1076.8 L980.4,1068.5
+		L999.9,1060.0 L1019.3,1051.2 L1038.8,1042.3 L1058.2,1033.2 L1077.6,1023.8 L1097.1,1014.3 L1116.5,1004.5 L1136.0,994.5
+		L1155.4,984.3 L1174.9,973.9 L1194.3,963.3 L1213.7,952.5 L1233.2,941.5 L1252.6,930.3 L1272.1,918.8 L1291.5,907.2
+		L1310.9,895.3 L1330.4,883.3 L1349.8,871.0 L1369.3,858.5 L1388.7,845.8 L1408.2,832.9 L1427.6,819.8 L1447.0,806.5
+		L1466.5,793.0 L1485.9,779.3 L1505.4,765.3 L1524.8,751.2 L1544.3,736.8 L1563.7,722.3 L1583.1,707.5 L1602.6,692.5
+		L1622.0,677.4 L1641.5,662.0 L1660.9,646.4 L1680.3,630.5 L1699.8,614.5 L1719.2,598.3 L1738.7,581.9 L1758.1,565.2
+		L1777.6,548.4 L1797.0,531.3 L1816.4,514.0 L1835.9,496.5 L1855.3,478.9 L1874.8,461.0 L1894.2,442.9 L1913.7,424.5
+		L1933.1,406.0 L1952.5,387.3 L1972.0,368.4 L1991.4,349.2 L2010.9,329.9 L2030.3,310.3 L2049.8,290.5 L2069.2,270.5
+		L2088.6,250.4 L2108.1,230.0 L2127.5,209.4 L2147.0,188.5 L2166.4,167.5 L2185.8,146.3  '/></g>
 	</g>
 <g fill="none" color="white" stroke="rgb(  0, 158, 115)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
