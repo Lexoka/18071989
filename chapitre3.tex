@@ -1057,11 +1057,11 @@
 	Pour étayer notre taxinomie des cibles mobiles et de leurs environnements, nous nous sommes appuyés sur des mesures quantitatives et objectives des critères les plus importants que nous avons retenus. Nous avons pour cela adopté deux approches complémentaires :
 	
 	\begin{itemize}
-		\item Premièrement, nous avons développé une suite d'outils permettant de traiter des résultats de simulations de dynamique moléculaire (appelés \emph{trajectoires}) afin de mesurer les angles de rotation des vecteurs direction des atomes, et d'analyser les résultats ;
+		\item Premièrement, nous avons développé une suite d'outils permettant de traiter des résultats bruts de simulations de dynamique moléculaire (appelés \emph{trajectoires}) afin de mesurer les angles de rotation des vecteurs direction des atomes, et d'analyser ces mesures ;
 		\item Deuxièmement, nous avons développé une suite d'outils permettant d'annoter des vidéos contenant des cibles sur lesquelles l'utilisateur peut cliquer afin de marquer leurs positions dans le temps, et d'analyser les résultats.
 	\end{itemize}
 
-	Dans le premier cas, de très grandes quantités de données peuvent être traitées, en mesurant les angles en 3D, mais uniquement pour des simulations moléculaires. Dans le second, les vidéos peuvent représenter n'importe quel type de cible, mais nécessitent --- pour le moment --- un traitement manuel. L'ajout d'une méthode de reconnaissance d'objet permettrait de se passer de l'intervention d'un humain, mais devrait être très fiable pour être efficace.
+	Dans le premier cas, de très grandes quantités de données peuvent être traitées, en mesurant les angles en 3D, mais uniquement pour des simulations moléculaires. Dans le second, les vidéos peuvent représenter n'importe quel type de cible, mais nécessitent --- pour le moment --- un traitement manuel. L'ajout d'une méthode de reconnaissance d'objet permettrait de se passer de l'intervention d'un humain, mais devrait être très fiable pour être utilisable.
 	
 	\subsection{Analyses de \emph{trajectoires} de dynamique moléculaire}
 	Une simulation de dynamique moléculaire cherche à déterminer le comportement d'un système sur une durée \emph{réelle} donnée, généralement de l'ordre de la nanoseconde. L'état du système (notamment les positions des atomes) est déterminé pour chaque pas de temps. En pratique, les résultats de la simulation peuvent ensuite être affichés avec un nombre de pas de temps par seconde arbitraire, ce qui implique que les vitesses des cibles dépendent du choix fait pour la visualisation.
@@ -1111,7 +1111,7 @@
 	
 	Deuxièmement, les angles les plus fréquents peuvent être autour de 100\textdegree{} (figure~\ref{fig:148L_all_angles}), 130\textdegree{} (figure~\ref{fig:snare_tmd_gg_all_angles}), 140\textdegree{} (figure~\ref{fig:gk_extension_all_angles}) ou seulement 25\textdegree{} (figure~\ref{fig:02_DA_all_angles}).
 	
-	Par conséquent, l'interaction avec les (résultats de) simulations de dynamique moléculaire nécessite de pouvoir gérer des angles de rotation de n'importe quelle valeur, et même de s'adapter à des distributions pouvant être très différentes, avec des valeurs d'occurrrence maximale pouvant au sein d'un intervalle s'étendant au moins de 25\textdegree{} à 140\textdegree{}. Sur une autre simulation à très haute fréquence (non présentée ici), nous avons même observé un histogramme entièrement borné par les valeurs 15\textdegree{} et 18\textdegree{}.
+	Par conséquent, l'interaction avec les (résultats de) simulations de dynamique moléculaire nécessite de pouvoir gérer des angles de rotation de n'importe quelle valeur, et même de s'adapter à des distributions pouvant être très différentes, avec des valeurs d'occurrrence maximale pouvant prendre n'importe quelle valeur au sein d'un intervalle s'étendant au moins de 25\textdegree{} à 140\textdegree{}. Sur une autre simulation à très haute fréquence (non présentée ici), nous avons même observé un histogramme entièrement borné par les valeurs 15\textdegree{} et 18\textdegree{}.
 	
 	Bien qu'il soit envisageable d'effectuer de telles analyses sur un très gros échantillon représentatif de \emph{trajectoires} de dynamique moléculaire, afin d'obtenir des statistiques détaillées, ce serait superflu par rapports à nos besoins, qui consistent à caractériser les besoins de la tâche. Or, il apparaît que, si l'on examine cette application au travers du prisme de notre modèle VFA :
 	
