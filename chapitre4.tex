@@ -762,7 +762,7 @@
 	
 	Ces données nous fournissent un moyen d'obtenir, à partir d'une aire de référence pour un couple (F,A), l'aire réelle en fonction de V, simplement en multipliant l'aire de référence par $\gamma{}V$. Si le couple (F,A) en question n'est pas présent dans les données brutes ayant permis de générer la figure~\ref{fig:gammaVfa}, la continuité de la fonction qui à un couple (F,A) associe une valeur de $\gamma$ nous autorise à approximer la valeur recherchée à l'aide d'une simple interpolation bilinéaire (et il serait bien entendu possible de calculer une grille de référence plus fine et plus précise) ou d'un modèle analytique.
 	
-	\subsection{Pseudo-entropie et valeur de $\gamma$}
+	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\gamma$}{gamma}}
 	Si la figure~\ref{fig:gammaVfaLin} suggère que l'augmentation de A et de F ont le même effet sur $\gamma$, à savoir en diminuer la valeur, la figure~\ref{fig:gammaVfaLog} montre que, dès lors que A atteint une valeur relativement élevée (autour de 50) la fréquence a un impact très important sur la valeur de $\gamma$. Inversement, lorsque A est en dessous de ce seuil, l'impact de F sur $\gamma$ est assez faible, voire presque nul pour de petites valeurs de A.
 	
 	On peut donc supposer que le produit AF ne serait pas un très bon prédicteur de $\gamma$, car le poids de F serait trop fort\ldots{} Mais une expression de la forme $A\times{}F^{k}$ avec $k \in [0,1]$ pourrait être plus appropriée. Des essais empiriques avec différentes valeurs de $k$ montrent que la meilleure est $k = \frac{1}{2}$, c'est-à-dire l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} confirme, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; et en effet --- nous obtenons un coefficient de corrélation de Pearson de seulement -0,601 entre le produit AF et $\gamma$, avec une \emph{p-value} inférieure à $10^{-53}$ toutefois). La figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$, de même que la figure~\ref{fig:gammaASQRTFlog}, qui représente les mêmes résultats, mais sur une échelle logarithmique, bien plus lisible pour les petites valeurs de $A\sqrt{F}$ ; nous obtenons ici un coefficient de corrélation de -0,768, avec une \emph{p-value} inférieure à $10^{-105}$.
@@ -954,7 +954,7 @@
 	Il apparaît donc que $\mathcal{A}(ec)/V$ pourrait être un prédicteur efficace du temps de sélection (divisé par V, mais il suffit d'une multiplication pour le retrouver) à condition de pouvoir faire une estimation fiable.
 	
 	
-	\subsection{Modélisation de la MTSN en fonction de $\mathcal{A}(ec)$}
+	\subsection{Modélisation de la MTSN en fonction de \texorpdfstring{$\mathcal{A}(ec)$}{A(ec)}}
 	En pratique, il est difficile de trouver une modélisation de $\frac{MTSN}{V}$ en fonction de $mathcal{A}(ec)/V$, mais nous pouvons faire quelques observations :
 	
 	\begin{itemize}
