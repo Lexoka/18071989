@@ -1168,45 +1168,7 @@
 	\end{tabular}
 	\caption[Statistiques pour la vidéo de dynamique moléculaire]{Statistiques pour la vidéo de dynamique moléculaire.}
 	\label{tab:atom_stats}
-\end{table}
-	
-	Nous avons aussi annoté une vidéo de course de billes (voir le chapitre~\ref{chap1}), dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques dans la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquents, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.
-	
-	\begin{figure}[!htb]	
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:bille_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_frequency}
-			\caption{Fréquences.}
-			\label{fig:bille_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_angle}
-			\caption{Angles.}
-			\label{fig:bille_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour la course de billes]{Histogrammes pour la course de billes.}
-		\label{fig:histBille}
-	\end{figure}
-
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		533,74		& 19,89				& 27,77			& 50,00		& 22,75				& 13,58			& 180,00	& 41,91				& 48,75			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo de course de billes]{Statistiques pour la vidéo de course de billes.}
-	\label{tab:bille_stats}
-\end{table}
+\end{table}	
 
 	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil tenue à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_filteredSpeed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
 
@@ -1755,6 +1717,46 @@
 	\caption[Statistiques pour la vidéo du jeu \emph{World of Warcraft}]{Statistiques pour la vidéo du jeu \emph{World of Warcraft}.}
 	\label{tab:wow_stats}
 \end{table}
+
+	Nous avons aussi annoté une vidéo de course de billes (voir le chapitre~\ref{chap1}), dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques dans la table~\ref{tab:bille_stats}.
+	
+	\begin{figure}[!htb]	
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bille_filteredSpeed}
+			\caption{Vitesses.}
+			\label{fig:bille_filteredSpeed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bille_frequency}
+			\caption{Fréquences.}
+			\label{fig:bille_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bille_angle}
+			\caption{Angles.}
+			\label{fig:bille_angle}
+		\end{subfigure}
+		\caption[Histogrammes pour la course de billes]{Histogrammes pour la course de billes.}
+		\label{fig:histBille}
+	\end{figure}
+
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		533,74		& 19,89				& 27,77			& 50,00		& 22,75				& 13,58			& 180,00	& 41,91				& 48,75			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo de course de billes]{Statistiques pour la vidéo de course de billes.}
+	\label{tab:bille_stats}
+\end{table}
+
+	Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquents, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.
 	
 	\subsection{Tableau de classification}
 	Ces mesures quantitatives appuient les réflexions présentées plus haut et nous permettent de dresser la table~\ref{tab:recapSelEnvs} qui formalise notre classification des cibles mobiles et de leurs environnements de sélection.
