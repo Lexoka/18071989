@@ -808,11 +808,13 @@
 	
 	%Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
 	
-	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $M$ est la valeur maximale atteinte, et $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure. L'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}.
+	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $x$ représente $A\sqrt{F}$, $M$ est la valeur maximale atteinte, et $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure. Cette fonction peut donc s'écrire également sous la forme de l'équation~\ref{eq:brokenPowerAF}, et l'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}.
 	
 	\begin{align}
 		\label{eq:brokenPower}
 		f(x) &= M \left( 1 + \left( \frac{x}{x_{n}} \right) ^{2} \right)^{-\frac{1}{2}} \\
+		\label{eq:brokenPowerAF}
+		f(A\sqrt{F}) &= M \left( 1 + \left( \frac{A\sqrt{F}}{A\sqrt{F}_{n}} \right) ^{2} \right)^{-\frac{1}{2}} \\
 		\label{eq:brokenPowerNum}
 		f(x) &= 10 \left( 1 + \left( \frac{x}{150} \right) ^{2} \right)^{-\frac{1}{2}}
 	\end{align}
@@ -889,7 +891,7 @@
 		\mathcal{A}(ec) &= f\left(A\sqrt{F}\right)V
 	\end{align}
 	
-	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'aire de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f\left(A\sqrt{F}\right)$, où la valeur de $f\left(A\sqrt{F}\right)$ est obtenue par une simple interpolation sur les valeurs de référence que nous avons calculées. Ce procédé est très peu coûteux en temps de calcul, et nous avons développé un petit outil pour le mettre à la portée de chacun~\cite{myNiftyLittleToolThatIHaventActuallyDevelopedYetButShhhDontTellAnyone}.
+	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'espérance de l'aire de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f\left(A\sqrt{F}\right)$, où la valeur de $f\left(A\sqrt{F}\right)$ est obtenue à l'aide du modèle que nous avons présenté dans les équations~\ref{eq:brokenPower}, \ref{eq:brokenPowerAF}, et \ref{eq:brokenPowerNum}.
 	
 \section{Enveloppes convexes et performances de sélection}
 	Attendu que l'aire de l'enveloppe convexe d'une trajectoire correspond à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathcal{A}(ec)$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathcal{A}(ec)$ calculées pour des trajectoires de 2 secondes, comme dans la suite de nos travaux.
