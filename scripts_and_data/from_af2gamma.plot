@@ -9,6 +9,8 @@ f(x) = 10.0 * (	1 + (x/150)**2	)**(-0.5)
 
 #g(x) = 10.0 * (1 + (x/150)**s)**(1.0/s)
 
+set yrange [0.1:10.5]
+
 plot "linApproxSorted.csv" u 5:3
 
 set output "afVgamma.svg"
