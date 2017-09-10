@@ -1554,7 +1554,7 @@
 	
 	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
 	
-	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau, dont les histogrammes sont sur la figure~\ref{fig:histOiseau}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}. Les oiseaux en particulier, et les animaux en général pourraient faire l'objet de tâches de sélection de cible mobile dans des applications de réalité augmentée permettant de choisir un individu pour que le système reconnaisse automatiquement son espèce, sa race, et affiche des informations complémentaires tirées d'une base de données, voire d'une encyclopédie en ligne.
+	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau (un pigeon), dont les histogrammes sont sur la figure~\ref{fig:histOiseau}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}. Les oiseaux en particulier, et les animaux en général pourraient faire l'objet de tâches de sélection de cible mobile dans des applications de réalité augmentée permettant de choisir un individu pour que le système reconnaisse automatiquement son espèce, sa race, et affiche des informations complémentaires tirées d'une base de données, voire d'une encyclopédie en ligne.
 		
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1577,7 +1577,7 @@
 			\caption{Angles.}
 			\label{fig:oiseau_angle}
 		\end{subfigure}
-		\caption[Histogrammes pour l'oiseau]{Histogrammes pour l'oiseau.}
+		\caption[Histogrammes pour le pigeon]{Histogrammes pour le pigeon.}
 		\label{fig:histOiseau}
 	\end{figure}
 	
@@ -1588,13 +1588,53 @@
 
 		37,77		& 0,76				& 2,99			& 29,97		& 5,10				& 3,90			& 180,00	& 50,36				& 50,74			\bigstrut[t] \\
 	\end{tabular}
-	\caption[Statistiques pour la vidéo de l'oiseau]{Statistiques pour la vidéo de l'oiseau.}
+	\caption[Statistiques pour la vidéo de le pigeon]{Statistiques pour la vidéo de le pigeon.}
 	\label{tab:oiseau_stats}
 \end{table}
 
 	Suivi par la caméra, le volatile génère surtout de très petites vitesses, d'autant que la vidéo est au ralenti. Ses distributions de fréquences et d'angles indiquent un mouvement de faible pseudo-entropie, donc relativement prévisible.
 	
-	Dans la même veine que l'oiseau, et pour les mêmes raisons, nous avons annoté une vidéo d'un poisson dans un aquarium, face à une caméra fixe. Les histogrammes sont présentés sur la figure~\ref{fig:histPoisson}, et les statistiques synthétiques peuvent être consultées dans la table~\ref{tab:poisson_stats}.
+	Pour compléter ces données, nous avons annoté une deuxième courte vidéo du même type : le décollage d'un petit oiseau au ralenti. Les histogrammes sont sur la figure~\ref{fig:histBird}, et les statistiques synthétiques dans la table~\ref{tab:bird_stats}.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bird_speed}
+			\caption{Vitesses.}
+			\label{fig:bird_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bird_frequency}
+			\caption{Fréquences.}
+			\label{fig:bird_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/bird_angle}
+			\caption{Angles.}
+			\label{fig:bird_angle}
+		\end{subfigure}
+		\caption[Histogrammes pour le petit oiseau]{Histogrammes pour le petit oiseau.}
+		\label{fig:histBird}
+	\end{figure}
+	
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		37,52		& 1,03				& 3,95			& 23,98		& 9,92				& 9,74			& 171,44	& 60,51				& 50,82			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo du petit oiseau]{Statistiques pour la vidéo du petit oiseau.}
+	\label{tab:bird_stats}
+\end{table}
+
+	Les résultats sont tout à fait cohérents avec ceux du pigeon, ce qui est logique attendu que les deux vidéos montrent un décollage, sont courtes, et filmées au ralenti.
+
+	Dans la même veine que les oiseaux, et pour les mêmes raisons, nous avons annoté une vidéo d'un poisson dans un aquarium, face à une caméra fixe. Les histogrammes sont présentés sur la figure~\ref{fig:histPoisson}, et les statistiques synthétiques peuvent être consultées dans la table~\ref{tab:poisson_stats}.
 	
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
