@@ -1672,7 +1672,48 @@
 	\label{tab:poisson_stats}
 \end{table}
 
-	Sans surprise, les vitesses sont généralement faibles, mais on constate une part non négligeable de vitesses relativement élevées (au-delà de 20~cm/s) intéressantes en ce qu'elles ne peuvent être imputées aux mouvements de la caméra, attendu que celle-ci était statique. Malgré une majorité de petits angles, on en trouve beaucoup de grands, encore une fois uniquement liés aux mouvements du poisson.
+	Sans surprise, les vitesses sont généralement faibles, mais on constate une part non négligeable de vitesses relativement élevées (au-delà de 20~cm/s) intéressantes en ce qu'elles ne peuvent être imputées aux mouvements de la caméra, attendu que celle-ci était statique. Malgré une majorité de petits angles, on en trouve beaucoup de grands, encore une fois uniquement liés aux mouvements du poisson.	
+	
+	Le jeu vidéo fait partie des principales applications impliquant de difficiles tâches de sélection de cibles mobiles ; aussi en avons-nous annoté quelques vidéos, en commençant par une scène d'\emph{Empires of the Undergrowth}. Les histogrammes correspondants sont sur la figure~\ref{fig:histSpider}, et les statistiques de synthèse dans la table~\ref{tab:spider_stats}.
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/araignée_speed}
+			\caption{Vitesses.}
+			\label{fig:araignée_speed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/araignée_frequency}
+			\caption{Fréquences.}
+			\label{fig:araignée_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/araignée_angle}
+			\caption{Angles.}
+			\label{fig:araignée_angle}
+		\end{subfigure}
+		\caption[Histogrammes pour le jeu \emph{Empires of the Undergrowth}]{Histogrammes pour le jeu \emph{Empires of the Undergrowth.}
+		\label{fig:histSpider}
+	\end{figure}
+	
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		232,18		& 2,36				& 9,29			& 29,97		& 17,94				& 11,29			& 180,00	& 68,62				& 63,39			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo X]{Statistiques pour la vidéo X.}
+	\label{tab:spider_stats}
+\end{table}
+
+	Si les vitesses ne sont pas énormes, elles dépassent occasionnellement la dizaine de cm/s (ce qui peut être dû à un déplacement du point de vue du joueur) avec de rares valeurs très élevées. Les fréquences sont dominées par un pic à 30~Hz, lié au taux d'images par seconde de la vidéo, et les angles sont caractérisés par deux pics, un à 0\textdegree{} et un à 180\textdegree{}, avec des deux côtés une douce décroissance vers le minimum, autour de 100\textdegree{}. Cela s'explique par les mouvements des créatures de ce jeu, principalement rectilignes avec des virages nets, qui sont le plus souvent des demi-tours. C'est un motif courant chez les objets animés par des algorithmes ou heuristiques de plus court chemin tels que l'\emph{A*}~\cite{dijkstra1959note, hart1968formal}.
+
 	
 	\subsection{Tableau de classification}
 	Ces mesures quantitatives appuient les réflexions présentées plus haut et nous permettent de dresser la table~\ref{tab:recapSelEnvs} qui formalise notre classification des cibles mobiles et de leurs environnements de sélection.
