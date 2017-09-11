@@ -37,6 +37,12 @@
 % Paquet pour les unités et exponentielles,etc...
 \usepackage{siunitx}
 
+\usepackage{silence}
+% Those warnings are due to hyperref, but known to be innocuous.
+\WarningFilter{minitoc(hints)}{W0023}
+\WarningFilter{minitoc(hints)}{W0028}
+\WarningFilter{minitoc(hints)}{W0030}
+
 % =========== hyperref ============
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[breaklinks]{hyperref}
