@@ -907,7 +907,7 @@
 	
 	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut,	la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
 	
-	En règle générale, plus la pseudo-entropie est faible, plus la trajectoire parcourera une distance horizontale ou verticale importante, et plus la pseudo-entropie est élevée, plus ces distances sont faibles. Notez cependant que cela n'implique pas nécessairement qu'une trajectoire de faible pseudo-entropie occupera forcément une aire importante, car comme le montre la figure~\ref{fig:synTraj_219_30_1}, la distance parcourue sur un axe (vertical, en l'occurrence) peut être très faible.
+	En règle générale, plus la pseudo-entropie est faible, plus la trajectoire parcourra une distance horizontale ou verticale importante, et plus la pseudo-entropie est élevée, plus ces distances sont faibles. Notez cependant que cela n'implique pas nécessairement qu'une trajectoire de faible pseudo-entropie occupera forcément une aire importante, car comme le montre la figure~\ref{fig:synTraj_219_30_1}, la distance parcourue sur un axe (vertical, en l'occurrence) peut être très faible.
 	
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
@@ -1126,9 +1126,9 @@
 	\subsection{Analyses des mouvements d'objets divers}
 	Au cours de cette phase, nous avons annoté des vidéos de types très divers pour caractériser quantitativement et objectivement le mouvement de cibles variées. Nous avons ensuite analysé les résultats pour comptabiliser tous les angles de rotation de vecteur direction, toutes les fréquences de rotation, et toutes les vitesses. Nous avons donc pu construire des histogrammes pour chacune de ces grandeurs, mais aussi en calculer la moyenne, l'écart-type, et en noter la valeur maximale.
 	
-	Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement.
+	Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées, si elles dépassent 12~Hz ou 15~Hz, respectivement. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement ; cette réserve ne s'applique pas aux vitesses, et nettement moins aux angles.
 	
-	De plus, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif.
+	Par ailleurs, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif.
 	
 	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_filteredSpeed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
 	
@@ -1170,7 +1170,7 @@
 	\label{tab:atom_stats}
 \end{table}	
 
-	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil tenu à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_filteredSpeed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
+	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil, tenue à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_filteredSpeed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
 
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1326,7 +1326,7 @@
 	\label{tab:riot2a_stats}
 \end{table}
 
-	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
+	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique ; c'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
 	
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1514,7 +1514,7 @@
 	\label{tab:spaceA_stats}
 \end{table}
 	
-	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvements assez diversifiées.
+	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
 	
 	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau (un pigeon), dont les histogrammes sont sur la figure~\ref{fig:histOiseau}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}. Les oiseaux en particulier, et les animaux en général pourraient faire l'objet de tâches de sélection de cible mobile dans des applications de réalité augmentée permettant de choisir un individu pour que le système reconnaisse automatiquement son espèce, sa race, et affiche des informations complémentaires tirées d'une base de données, voire d'une encyclopédie en ligne.
 		
@@ -1676,7 +1676,7 @@
 
 	Si les vitesses ne sont pas énormes, elles dépassent occasionnellement la dizaine de cm/s (ce qui peut être dû à un déplacement du point de vue du joueur) avec de rares valeurs très élevées. Les fréquences sont dominées par un pic à 30~Hz, lié au taux d'images par seconde de la vidéo, et les angles sont caractérisés par deux pics, un à 0\textdegree{} et un à 180\textdegree{}, avec des deux côtés une douce décroissance vers le minimum, autour de 100\textdegree{}. Cela s'explique par les mouvements des créatures de ce jeu, principalement rectilignes avec des virages nets, qui sont le plus souvent des demi-tours. C'est un motif courant chez les objets animés par des algorithmes ou heuristiques de plus court chemin tels que l'\emph{A*}~\cite{dijkstra1959note, hart1968formal}.
 	
-	Nous avons annoté une vidéo d'un deuxième jeu, \emph{World of Warcraft}, un jeu de rôle massivement multijoueurs. Les histogrammes sont présentés sur la figure~\ref{fig:histWow}, et les statistiques synthétiques dans la table~\ref{tab:wow_stats}.
+	Nous avons annoté une vidéo d'un deuxième jeu, \emph{World of Warcraft}, un jeu de rôle massivement multijoueur. Les histogrammes sont présentés sur la figure~\ref{fig:histWow}, et les statistiques synthétiques dans la table~\ref{tab:wow_stats}.
 
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
