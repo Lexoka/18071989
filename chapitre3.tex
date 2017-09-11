@@ -173,7 +173,7 @@
 	\subsection{Fréquence des changements de direction}
 	Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer cette fréquence comme étant soit nulle (car il n'y a jamais de changement brusque), soit infinie (car il y a un changement constant). Dans les deux cas, ce n'est guère utile pour caractériser le mouvement.
 	
-	Parfois, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un événément instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur direction est plus raisonnable, compte tenu de la perception subjective d'un utilisateur.
+	Parfois, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un évènement instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur direction est plus raisonnable, compte tenu de la perception subjective d'un utilisateur.
 	
 	Les objets nanoscopiques, du moins tels qu'ils sont généralement simulés, tendant à changer de direction de manière abrupte, et la notion de fréquence de changement de direction a généralement du sens. Précisions tout de même que cette fréquence ne saurait être mesurée en temps véritable mais dans le temps de l'animation : en clair, si un atome peut changer de direction de très nombreuses fois par nanoseconde (d'où une fréquence extrêmement élevée) ce qui nous intéresse ici est la fréquence des changements de direction dans l'animation présentée à un utilisateur, car nous ne nous préoccupons que de ce qu'un utilisateur perçoit et de la mesure dans laquelle cela influe sur ses performances de sélection.
 	
@@ -211,7 +211,7 @@
 	\subsubsection{Objets changeant de direction à haute fréquence}
 	Un objet ciné-discret change de direction à haute fréquence si celle-ci est supérieure à 1~Hz. Si l'objet est ciné-continu, sa fréquence sera dite haute si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est élevée.
 	
-	Les objets de haute fréquence par excellence sont les atomes des simulations moléculaires. Ils peuvent changer de direction à chaque itération de la simulation, ce qui peut aisément atteindre --- voire dépasser --- 60~Hz, selon la vitesse à laquelle une simulation interactive est executée, ou une trajectoire est jouée après avoir été déterminée par simulation.
+	Les objets de haute fréquence par excellence sont les atomes des simulations moléculaires. Ils peuvent changer de direction à chaque itération de la simulation, ce qui peut aisément atteindre --- voire dépasser --- 60~Hz, selon la vitesse à laquelle une simulation interactive est exécutée, ou une trajectoire est jouée après avoir été déterminée par simulation.
 	
 	Parmi les objets ciné-continus, de nombreux véhicules peuvent également entrer dans cette catégorie, notamment les petits bateaux, les automobiles et surtout les aéronefs de combat, en particulier pendant les phases de combat, justement. En effet, dans ces situations, ils tendent à changer de direction en permanence, de préférence de manière imprévisible pour les ennemis. Les missiles, hors de leur éventuelle phase de croisière (ou balistique), présentent des caractéristiques similaires.
 	
@@ -902,7 +902,7 @@
 		\label{fig:motion135150}
 	\end{figure}
 	
-	\subsubsection{Longeur des trajectoires, aires des enveloppes convexes}
+	\subsubsection{Longueur des trajectoires, aires des enveloppes convexes}
 	Pour rappel, toutes les trajectoires des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} furent générées par un mouvement de vitesse constante, 2,19~cm/s. Attendu qu'elles ont également été générées sur une même durée (20 secondes) elles ont toutes la même longueur, malgré les apparences dues aux variations d'échelle : $2,19~cm/s \times 20~s = 43,8~cm$.
 	
 	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut,	la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
@@ -1066,7 +1066,7 @@
 	\subsection{Analyses de \emph{trajectoires} de dynamique moléculaire}
 	Une simulation de dynamique moléculaire cherche à déterminer le comportement d'un système sur une durée \emph{réelle} donnée, généralement de l'ordre de la nanoseconde. L'état du système (notamment les positions des atomes) est déterminé pour chaque pas de temps. En pratique, les résultats de la simulation peuvent ensuite être affichés avec un nombre de pas de temps par seconde arbitraire, ce qui implique que les vitesses des cibles dépendent du choix fait pour la visualisation.
 	
-	De même, les atomes sont susceptibles de changer de direction à chaque pas de temps, et c'est généralement le cas. La fréquence des changements de direction dépend donc égalemement du nombre de pas par seconde lors de l'affichage des résultats.
+	De même, les atomes sont susceptibles de changer de direction à chaque pas de temps, et c'est généralement le cas. La fréquence des changements de direction dépend donc également du nombre de pas par seconde lors de l'affichage des résultats.
 	
 	Les valeurs des angles de rotation des vecteurs direction, elles, sont indépendantes de ce choix, puisqu'il s'agit simplement, pour chaque atome, de l'écart entre son vecteur direction d'un pas à l'autre. C'est donc sur cette valeur que nous nous sommes concentrés, en gardant à l'esprit que la vitesse des cibles et la fréquence des changements de direction sont variables et dépendent du mode d'affichage choisi.
 	
@@ -1111,9 +1111,9 @@
 	
 	Deuxièmement, les angles les plus fréquents peuvent être autour de 100\textdegree{} (figure~\ref{fig:148L_all_angles}), 130\textdegree{} (figure~\ref{fig:snare_tmd_gg_all_angles}), 140\textdegree{} (figure~\ref{fig:gk_extension_all_angles}) ou seulement 25\textdegree{} (figure~\ref{fig:02_DA_all_angles}).
 	
-	Par conséquent, l'interaction avec les (résultats de) simulations de dynamique moléculaire nécessite de pouvoir gérer des angles de rotation de n'importe quelle valeur, et même de s'adapter à des distributions pouvant être très différentes, avec des valeurs d'occurrrence maximale pouvant prendre n'importe quelle valeur au sein d'un intervalle s'étendant au moins de 25\textdegree{} à 140\textdegree{}. Sur une autre simulation à très haute fréquence (non présentée ici), nous avons même observé un histogramme entièrement borné par les valeurs 15\textdegree{} et 18\textdegree{}.
+	Par conséquent, l'interaction avec les (résultats de) simulations de dynamique moléculaire nécessite de pouvoir gérer des angles de rotation de n'importe quelle valeur, et même de s'adapter à des distributions pouvant être très différentes, avec des valeurs d'occurrence maximale pouvant prendre n'importe quelle valeur au sein d'un intervalle s'étendant au moins de 25\textdegree{} à 140\textdegree{}. Sur une autre simulation à très haute fréquence (non présentée ici), nous avons même observé un histogramme entièrement borné par les valeurs 15\textdegree{} et 18\textdegree{}.
 	
-	Bien qu'il soit envisageable d'effectuer de telles analyses sur un très gros échantillon représentatif de \emph{trajectoires} de dynamique moléculaire, afin d'obtenir des statistiques détaillées, ce serait superflu par rapports à nos objectifs, qui consistent à caractériser les besoins de la tâche. Or, il apparaît que si l'on examine cette application au travers du prisme de notre modèle VFA :
+	Bien qu'il soit envisageable d'effectuer de telles analyses sur un très gros échantillon représentatif de \emph{trajectoires} de dynamique moléculaire, afin d'obtenir des statistiques détaillées, ce serait superflu par rapport à nos objectifs, qui consistent à caractériser les besoins de la tâche. Or, il apparaît que si l'on examine cette application au travers du prisme de notre modèle VFA :
 	
 	\begin{itemize}
 		\item toutes les valeurs de V sont possibles, selon le mode d'affichage choisi,
@@ -1170,7 +1170,7 @@
 	\label{tab:atom_stats}
 \end{table}	
 
-	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil tenue à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_filteredSpeed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
+	Ensuite, nous avons annoté un enregistrement vidéo d'un avion de ligne, filmé depuis le sol avec une caméra suivant l'appareil tenu à la main, ce qui implique de fréquentes saccades. Les histogrammes correspondants sont sur les figures~\ref{fig:chinaA_filteredSpeed}, \ref{fig:chinaA_frequency}, et \ref{fig:chinaA_angle} ; la table~\ref{tab:chinaA_stats} synthétise ces résultats.
 
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1300,7 +1300,7 @@
 		\label{fig:histRiots}
 	\end{figure}
 
-	Sur ces vidéos, les vitesses sont un peu plus faibles, les valeurs plus élevées étant généralement liées aux charges et autres courses rapides. Les fréquences sont plutôt basses et les angles distribués de façon approximativement uniforme, exception faite des petits angles, surreprésentés, comme c'est souvent le cas.
+	Sur ces vidéos, les vitesses sont un peu plus faibles, les valeurs plus élevées étant généralement liées aux charges et autres courses rapides. Les fréquences sont plutôt basses et les angles distribués de façon approximativement uniforme, exception faite des petits angles, sur-représentés, comme c'est souvent le cas.
 	
 \begin{table}
 	\centering
@@ -1326,7 +1326,7 @@
 	\label{tab:riot2a_stats}
 \end{table}
 
-	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
+	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique. C'est pourquoi nous avons choisi d'annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
 	
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1514,7 +1514,7 @@
 	\label{tab:spaceA_stats}
 \end{table}
 	
-	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
+	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvements assez diversifiées.
 	
 	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau (un pigeon), dont les histogrammes sont sur la figure~\ref{fig:histOiseau}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}. Les oiseaux en particulier, et les animaux en général pourraient faire l'objet de tâches de sélection de cible mobile dans des applications de réalité augmentée permettant de choisir un individu pour que le système reconnaisse automatiquement son espèce, sa race, et affiche des informations complémentaires tirées d'une base de données, voire d'une encyclopédie en ligne.
 		
@@ -1676,7 +1676,7 @@
 
 	Si les vitesses ne sont pas énormes, elles dépassent occasionnellement la dizaine de cm/s (ce qui peut être dû à un déplacement du point de vue du joueur) avec de rares valeurs très élevées. Les fréquences sont dominées par un pic à 30~Hz, lié au taux d'images par seconde de la vidéo, et les angles sont caractérisés par deux pics, un à 0\textdegree{} et un à 180\textdegree{}, avec des deux côtés une douce décroissance vers le minimum, autour de 100\textdegree{}. Cela s'explique par les mouvements des créatures de ce jeu, principalement rectilignes avec des virages nets, qui sont le plus souvent des demi-tours. C'est un motif courant chez les objets animés par des algorithmes ou heuristiques de plus court chemin tels que l'\emph{A*}~\cite{dijkstra1959note, hart1968formal}.
 	
-	Nous avons annoté une vidéo d'un deuxième jeu, \emph{World of Warcraft}, un jeu de rôle massivement multijoueur. Les histogrammes sont présentés sur la figure~\ref{fig:histWow}, et les statistiques synthétiques dans la table~\ref{tab:wow_stats}.
+	Nous avons annoté une vidéo d'un deuxième jeu, \emph{World of Warcraft}, un jeu de rôle massivement multijoueurs. Les histogrammes sont présentés sur la figure~\ref{fig:histWow}, et les statistiques synthétiques dans la table~\ref{tab:wow_stats}.
 
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{\subImgWclicks}
@@ -1756,7 +1756,7 @@
 	\label{tab:pacmannA_stats}
 \end{table}
 
-	Les vitesses mesurées sont généralement basses, avec des valeurs élevées correspondant à des phases particulières du jeu, plus rapides, ou aux niveaux supérieurs, au cours desquels le jeu s'accélère. Les rares valeurs extrêmement élevées sont dues à une particularité de ce jeu : lorsque l'on sort du cadre par la droite, on y rentre par la gauche à l'image suivante. De fait, d'une image à l'autre, un objet traverse l'écran. Les fréquences et les angles sont quelque peu bruités par les petits changements de direction dus à l'imparfaite précision des annotation, inhérente à tout processus humain, mais l'on distingue un pic d'angles à 90\textdegree{}, comme attendu pour un jeu caractérisé pour ses virages à angle droit.	
+	Les vitesses mesurées sont généralement basses, avec des valeurs élevées correspondant à des phases particulières du jeu, plus rapides, ou aux niveaux supérieurs, au cours desquels le jeu s'accélère. Les rares valeurs extrêmement élevées sont dues à une particularité de ce jeu : lorsque l'on sort du cadre par la droite, on y rentre par la gauche à l'image suivante. De fait, d'une image à l'autre, un objet traverse l'écran. Les fréquences et les angles sont quelque peu bruités par les petits changements de direction dus à l'imparfaite précision des annotations, inhérente à tout processus humain, mais l'on distingue un pic d'angles à 90\textdegree{}, comme attendu pour un jeu caractérisé pour ses virages à angle droit.	
 
 	Nous avons aussi annoté une vidéo de course de billes (voir le chapitre~\ref{chap1}), dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques dans la table~\ref{tab:bille_stats}.
 	
@@ -1853,6 +1853,6 @@
 	
 	Deuxièmement, nous avons développé une autre suite d'outils permettant d'annoter des vidéos afin de suivre les cibles qui s'y meuvent, et d'analyser leurs trajectoires, toujours par rapport au modèle VFA. Nous nous sommes appuyés sur cette seconde suite d'outils pour obtenir des statistiques sur les mouvements d'un grand nombre de cibles mobiles de types variés, et à nouveau étayer nos impressions. Ces résultats (présentés en partie dans ce chapitre, et en annexe) complètent nos réflexions antérieures et nous ont permis de proposer une classification des cibles mobiles et de leurs environnements en fonction de leurs caractéristiques et de l'influence de celles-ci sur la difficulté de la tâche de sélection.
 	
-	Cet outil d'annotation et d'évaluation statistique, conjugé à notre modèle VFA, nous permet de caractériser quantitativement un mouvement quelconque (pour peu qu'il soit filmé, ou même simulé), et d'en tirer des statistiques présentables sous forme d'histogrammes et de valeurs synthétiques. Nous verrons dans le chapitre suivant comment ces données peuvent être exploitées pour prédire la difficulté d'une tâche de sélection.
+	Cet outil d'annotation et d'évaluation statistique, conjugué à notre modèle VFA, nous permet de caractériser quantitativement un mouvement quelconque (pour peu qu'il soit filmé, ou même simulé), et d'en tirer des statistiques présentables sous forme d'histogrammes et de valeurs synthétiques. Nous verrons dans le chapitre suivant comment ces données peuvent être exploitées pour prédire la difficulté d'une tâche de sélection.
 
 \clearpage
