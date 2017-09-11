@@ -5,10 +5,17 @@ set ylabel "Temps de sélection moyen normalisé/V"
 
 set output "timeVareaFit.svg"
 
-f(x) = x-1
-sigma = 3
 
-g(x) = 2.65*(f(x)/sigma**2)*exp( (-f(x)*f(x))/(2*sigma**2) ) + 0.15
+# RayleighPdf(x, a, b, sigma, d)
+
+
+a = 1.74346771
+b = 1.49387322
+d = 0.27334901
+sigma = 2.45413832
+
+f(x) = x-b
+g(x) = a*(f(x)/sigma**2)*exp( (-f(x)*f(x))/(2*sigma**2) ) + d
 
 #fit g(x) "areaTimeFit.csv" u 1:2 via sigma # Helps, but not enough to justify deviating from the neat little 3
 # Try scipy.

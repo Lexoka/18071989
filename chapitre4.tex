@@ -970,18 +970,18 @@
 	
 	Par conséquent, si l'on doit estimer le temps de sélection en fonction de l'aire, il faut trouver une fonction $g : \mathbb{R}^{+} \to \mathbb{R}^{+}$, $g\left(\mathcal{A}(ec)\right) \mapsto y$ qui admette une borne inférieure, qui soit croissante sur $[0, \mathcal{A}_{pic}]$ et décroissante sur $[\mathcal{A}_{pic}, \infty]$. Naturellement, il faut aussi qu'elle puisse être ajustée à nos données.
 	
-	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $\sigma$, $a$ et $b$ sont des paramètres réels, qui valent respectivement 3, 2,65 et 1 ici, et $x$ représente $\mathcal{A}(ec)$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit} (sans les résultats correspondant aux cibles de mouvement rectiligne).
+	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $a$, $b$, $d$, et $\sigma$ sont des paramètres réels, qui valent respectivement environ 1,74, 1,49, 0,27 et 2,45 ici, et $x$ représente $\mathcal{A}(ec)$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit} (sans les résultats correspondant aux cibles de mouvement rectiligne).
 	
 	% Probability density function of a Rayleigh distribution; kind of.
 	\begin{equation}
-		g(x) = a\frac{x-b}{\sigma^{2}}e^{-\frac{(x-b)^{2}}{2\sigma^{2}} }
+		g(x) = a\frac{x-b}{\sigma^{2}}e^{-\frac{(x-b)^{2}}{2\sigma^{2}} } + d
 		\label{eq:pdfModel}
 	\end{equation}
 	
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/timeVareaFit}
-		\caption[Temps de sélection/V en fonction de $\mathcal{A}(ec)/V$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,838.}
+		\caption[Temps de sélection/V en fonction de $\mathcal{A}(ec)/V$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,846.}
 		\label{fig:timeVareaFit}
 	\end{figure}
 	
