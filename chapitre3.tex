@@ -1718,6 +1718,46 @@
 	\label{tab:wow_stats}
 \end{table}
 
+	Ensuite, nous avons annoté une vidéo du célèbre jeu \emph{Pac-Man}. Les histogrammes sont sur la figure~\ref{fig:histPacmann}, et les statistiques synthétiques dans la table~\ref{tab:pacmannA_stats}.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/pacmann_filteredSpeed}
+			\caption{Vitesses.}
+			\label{fig:pacmann_filteredSpeed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/pacmann_frequency}
+			\caption{Fréquences.}
+			\label{fig:pacmann_frequency}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\subImgWclicks}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch3/pacmann_angle}
+			\caption{Angles.}
+			\label{fig:pacmann_angle}
+		\end{subfigure}
+		\caption[Histogrammes pour le jeu \emph{Pac-Man}]{Histogrammes pour le jeu \emph{Pac-Man}.}
+		\label{fig:histPacmann}
+	\end{figure}
+	
+\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+
+		158,16		& 4,99				& 5,78			& 24,19		& 9,78				& 4,90			& 180,00	& 32,54				& 47,09			\bigstrut[t] \\
+	\end{tabular}
+	\caption[Statistiques pour la vidéo du jeu \emph{Pac-Man}]{Statistiques pour la vidéo du jeu \emph{Pac-Man}.}
+	\label{tab:pacmannA_stats}
+\end{table}
+
+	Les vitesses mesurées sont généralement basses, avec des valeurs élevées correspondant à des phases particulières du jeu, plus rapides, ou aux niveaux supérieurs, au cours desquels le jeu s'accélère. Les rares valeurs extrêmement élevées sont dues à une particularité de ce jeu : lorsque l'on sort du cadre par la droite, on y rentre par la gauche à l'image suivante. De fait, d'une image à l'autre, un objet traverse l'écran. Les fréquences et les angles sont quelque peu bruités par les petits changements de direction dus à l'imparfaite précision des annotation, inhérente à tout processus humain, mais l'on distingue un pic d'angles à 90\textdegree{}, comme attendu pour un jeu caractérisé pour ses virages à angle droit.	
+
 	Nous avons aussi annoté une vidéo de course de billes (voir le chapitre~\ref{chap1}), dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques dans la table~\ref{tab:bille_stats}.
 	
 	\begin{figure}[!htb]	
