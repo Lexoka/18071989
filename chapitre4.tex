@@ -993,7 +993,7 @@
 	Ensuite, il est possible de déterminer dans quel sens les paramètres A et F doivent évoluer, de préférence de concert, mais agir sur un seul d'entre eux suffit à obtenir un effet tout à fait significatif, comme le montrent les figures~\ref{fig:aEffectPerf} et~\ref{fig:fEffectPerf}.
 	
 	\subsection{Modélisation de la MTSN en fonction de \texorpdfstring{$A\sqrt{F}$}{A* racine carrée de F}}
-	Ce que nous avons appris sur le pouvoir prédictif de $A\sqrt{F}$ pour les aires des enveloppes convexes --- donc indirectement pour les performances de sélection --- suggère qu'une tentative de modélisation des temps de sélection sans l'intermédiaire des $\mathcal{A}(ec)$ pourrait fonctionner, en s'appuyant sur $A\sqrt{F}$ plutôt que sur le simple produit AF. Nous proposons donc, avec la même approche, un modèle de la MTSN en fonction de $A\sqrt{F}$. Ce modèle est de la forme décrite par l'équation~\ref{eq:pdfModel}, avec $a$ = 0,3 ; $b$ = 0,1 ; $\sigma = 0,6$ ; et $d$ = 0,3.
+	Ce que nous avons appris sur le pouvoir prédictif de $A\sqrt{F}$ pour les aires des enveloppes convexes --- donc indirectement pour les performances de sélection --- suggère qu'une tentative de modélisation des temps de sélection sans l'intermédiaire des $\mathcal{A}(ec)$ pourrait fonctionner, en s'appuyant sur $A\sqrt{F}$ plutôt que sur le simple produit AF. Nous proposons donc, avec la même approche, un modèle de la MTSN en fonction de $A\sqrt{F}$. Ce modèle est de la forme décrite par l'équation~\ref{eq:pdfModel}, avec $a$ = 0,3 ; $b$ = 0,1 ; $\sigma = 0,6$ ; et $d$ = 0,3. Une représentation graphique en est fournie sur la figure~\ref{fig:timeVafFit}.
 	
 	\begin{equation}
 		g(x) = a\frac{cx-b}{\sigma^{2}}e^{-\frac{(cx-b)^{2}}{2\sigma^{2}} } + d
@@ -1006,6 +1006,8 @@
 		\caption[Temps de sélection/V en fonction de $A\sqrt{F}$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction de $A\sqrt{F}$, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,854.}
 		\label{fig:timeVafFit}
 	\end{figure}
+	
+	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire de l'aire de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathcal{A}(ec)$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur l'aire nous paraît plus approprié dans la majorité de cas.
 
 \section{Conclusion}
 	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
