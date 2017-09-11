@@ -10,8 +10,7 @@
 	
 	Si nous avons jusqu'ici énuméré et caractérisé ces types de cibles, avec une attention toute particulière à leur contexte applicatif, nous n'avons pas procédé à une classification systématique des cibles selon la nature de leur mouvement, définie selon des critères objectifs et des mesures quantitatives. Or, il nous apparaît que pour réellement comprendre les enjeux et défis liés à la sélection de cibles mobiles, une telle classification est nécessaire.
 	
-	L'objectif de ce chapitre est donc d'établir une taxinomie des cibles mobiles selon des critères objectifs et, dans la mesure du possible, permettant une quantification des valeurs auxquelles ils se rapportent. Nous commencerons par exposer nos réflexions sur les critères à retenir pour établir cette taxinomie, puis nous confronterons les cibles et leurs environnements à ces critères. Nous présenterons ensuite un modèle que nous avons développé pour décrire et générer du mouvement pseudo-aléatoire, régi par des paramètres finement contrôlés. Nous nous appuierons sur ce modèle pour compléter notre taxinomie par des mesures quantitatives et objectives.
-	
+	L'objectif de ce chapitre est donc d'établir une taxinomie des cibles mobiles selon des critères objectifs et, dans la mesure du possible, permettant une quantification des valeurs auxquelles ils se rapportent. Nous commencerons par exposer nos réflexions sur les critères à retenir pour établir cette taxinomie, puis nous confronterons les cibles et leurs environnements à ces critères. Nous présenterons ensuite un modèle que nous avons développé pour décrire et générer du mouvement pseudo-aléatoire, régi par des paramètres finement contrôlés. Nous nous appuierons sur ce modèle pour compléter notre taxinomie par des mesures quantitatives et objectives de différents cas applicatifs mobilisant une activité de sélection de cible mobile.	
 	
 	\section{Critères de discrimination et nature du mouvement}
 	Bien qu'une \og simple \fg{} taxinomie des cibles mobiles en fonction de la nature de leur mouvement ait beaucoup d'intérêt, elle ne saurait fournir suffisamment d'informations pour guider la conception de techniques de sélection sans tenir compte de l'\emph{environnement} de sélection. En effet, la cible la plus petite, la plus rapide et la plus imprévisible imaginable est triviale à sélectionner s'il s'agit du seul objet d'intérêt dans l'environnement : il n'y a qu'une sélection possible, donc la technique de sélection optimale --- ou du moins suffisante --- consiste à permettre la sélection de la cible par la simple pression d'un bouton, ou activation d'un quelconque périphérique de saisie.
@@ -54,16 +53,19 @@
 
 	Parmi les objets dont les mouvements sont autocorrélés figurent tous les véhicules que nous avons évoqués au cours du chapitre~\ref{chap1} : les automobiles, navires, aéronefs, engins spatiaux, mais aussi les deux-roues, patins à roulettes, etc. Au sens strict, tout objet de masse non nulle et macroscopique devrait être autocorrélé, mais nous pouvons considérer que certains peuvent changer de direction de manière si vive et imprévisible qu'ils sont subjectivement markoviens. En règle générale, nous admettrons qu'un projectile (par exemple utilisé dans un sport) est autocorrélé, tout en gardant à l'esprit que dans certains cas il peut avoir un comportement subjectivement markovien.
 	
-	Le cas des jeux vidéo est quelque peu délicat en ce qu'il s'agit d'un domaine extrêmement vaste dans lequel il est possible de trouver des cibles de toutes natures. Néanmoins, quand ils sont modélisés de manière (subjectivement) réaliste, les objets qui sont autocorrélés dans le monde réel le sont également dans les environnements virtuels des jeux. Aussi pouvons-nous classer les aéronefs du jeu \emph{Digital Combat Simulator}\footnotemark{} dans la catégorie des objets autocorrélés, par exemple.
+	Le cas des jeux vidéo est quelque peu délicat en ce qu'il s'agit d'un domaine extrêmement vaste dans lequel il est possible de trouver des cibles de toutes natures. Néanmoins, quand ils sont modélisés de manière (subjectivement) réaliste, les objets qui sont autocorrélés dans le monde réel le sont également dans les environnements virtuels des jeux. Aussi pouvons-nous classer les aéronefs du jeu \emph{Digital Combat Simulator}\footnotemark{}, les voitures des jeux \emph{Project CARS}\footnotemark{} et \emph{Gran Turismo}\footnotemark{} dans la catégorie des objets autocorrélés, par exemple.
 	
-	\footnotetext{Développé par Eagle Dynamics et édité par The Fighter Collection.
-	
-	\url{https://www.digitalcombatsimulator.com}}
+	\addtocounter{footnote}{-2}
+	\footnotetext{Développé par Eagle Dynamics, et édité par The Fighter Collection.}
+	\addtocounter{footnote}{1}
+	\footnotetext{Développé et édité par Slightly Mad Studios.}
+	\addtocounter{footnote}{1}
+	\footnotetext{Développé par Polophony Digital, et édité par Sony Interactive Entertainment.}
 	
 	Enfin, il est possible de rencontrer dans un jeu vidéo n'importe quel type d'objet, réel ou imaginaire. Ceux de la seconde catégorie peuvent être autocorrélés comme markoviens ; il est impossible d'en dresser un inventaire exhaustif, mais disons simplement qu'ils existent --- comme les disques du jeu \emph{Agar.io}, mentionné dans le premier chapitre, qui sont markoviens. On trouvera aussi, parmi les objets imaginaires, diverses créatures fictives, généralement autocorrélées.
 
 	\subsubsection{Uniformité}
-	Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur direction de l'objet concerné change.
+	Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur vitesse de l'objet concerné change.
 	
 	Du fait du focus de ce manuscrit sur les cibles mobiles de sélection difficile, nous n'avons pas réellement abordé d'objets aux mouvements uniformes au cours du premier chapitre. Il va sans dire qu'ils existent pourtant. Remarquons néanmoins que si l'on restreint suffisamment la fenêtre temporelle au travers de laquelle on analyse le mouvement d'un objet, l'on peut généralement aboutir à un mouvement localement uniforme.
 	
@@ -118,7 +120,7 @@
 	
 	Cette décision a nécessairement quelque chose d'arbitraire et de subjectif, mais elle est nécessaire et nous semble d'autant plus justifiée que c'est justement l'impression subjective des utilisateurs face à un certain type de mouvement qui nous intéresse, car nous faisons l'hypothèse (sur laquelle nous reviendrons plus loin) que cette impression subjective prédit les performances de sélection.
 	
-	\subsubsection{Variabilité}
+	\subsubsection{Variabilité de la vitesse}
 	Il serait pratique de pouvoir résumer la vitesse à une variable scalaire, mais ce n'est malheureusement pas toujours possible. En effet, dans les applications identifiées le long du chapitre~\ref{chap1}, la vitesse des objets est généralement variable. L'on ne saurait donc la résumer par un simple nombre. Dans l'idéal, il serait bon de connaître toutes les vitesses atteintes par les objets de la scène, avec leurs fréquences d'occurrence ; cela nous permettrait d'en dresser un histogramme. Connaissant toutes ces valeurs, l'on pourrait les représenter de façon plus concise par une moyenne et un écart-type ; il serait sans doute opportun d'ajouter à cette représentation la vitesse maximale possible, afin de pouvoir caractériser le cas (potentiellement) le plus difficile.
 	
 	Pour certaines applications, il sera difficile voire impossible d'avoir des informations aussi précises. Dans ce cas, nous devrons nous contenter d'une estimation aussi précise que possible des valeurs sus-citées, par exemple d'une vitesse \og typique \fg{} et d'une vitesse maximale. Ce sera généralement suffisant pour caractériser des cibles.
@@ -128,7 +130,7 @@
 	
 	Observés à grande échelle, les véhicules et objets spatiaux peuvent également apparaître comme lents, en dépit de leur très grande vitesse réelle. Certains objets tirés de contextes vidéoludiques sont également lents, mais il est impossible de généraliser, tant la diversité est grande dans ce domaine.
 	
-	Si la lenteur d'une cible mobile rend sa sélection plus aisée, n'oublions pas que des objets lents peuvent néanmoins être petits, distants, présents dans des environnements très denses, partiellement ou totalement occultés, et caractérisés par des mouvements imprévisibles. Il serait donc imprudent de considérer qu'ils sont \og faciles \fg{} à sélectionner sur la seule base de leur lenteur, ou qu'ils sont indignes de notre intérêt.
+	Si la lenteur d'une cible mobile rend sa sélection plus aisée, n'oublions pas que des objets lents peuvent néanmoins être petits, distants, présents dans des environnements très denses, partiellement ou totalement occultés, et caractérisés par des mouvements imprévisibles. Il serait donc imprudent de considérer qu'ils sont \og faciles \fg{} à sélectionner sur la seule base de leur lenteur.
 	
 	\subsubsection{Objets rapides}
 	Selon le mode de visualisation, des véhicules peuvent apparaître comme lents\ldots{} ou rapides. En particulier, les aéronefs, les automobiles, les deux-roues et autres petits véhicules (motorisés ou non) ainsi que les missiles seront généralement rapides tels que visualisés.
@@ -164,7 +166,7 @@
 	\addtocounter{footnote}{1}
 	\footnotetext{\url{http://www.designation-systems.net/dusrm/app4/sprint.html}}
 	
-	Les objets nanoscopiques tels que les atomes peuvent accélérer si vivement qu'une tentative de quantifier cette accélération en $g$ n'aurait que peu de sens, surtout du point de vue d'une interface homme-machine nécessairement limitée par la fréquence de rafraîchissement de son dispositif d'affichage, probablement située autour de 60~Hz, voire 240~Hz au mieux\footnotemark{}.
+	Les objets nanoscopiques tels que les atomes peuvent accélérer si vivement qu'une tentative de quantifier cette accélération en $g$ n'aurait que peu de sens, surtout du point de vue d'une interface homme-machine nécessairement limitée par la fréquence de rafraîchissement de son dispositif d'affichage, probablement située entre 60~Hz et 240~Hz au mieux\footnotemark{}.
 	
 	\footnotetext{\url{https://www.blurbusters.com/faq/120hz-monitors}}
 	
@@ -240,7 +242,7 @@
 	Là encore, il y a plusieurs façons de considérer la distribution de ces valeurs d'angles (après discrétisation en cas de mouvement continu) : un histogramme complet peut être retenu, une moyenne, un écart-type et une valeur maximale peuvent également servir de référence. Comme pour les autres variables, s'il est impossible d'obtenir ces mesures, une estimation des valeurs moyenne et maximale devra nous contenter.
 	
 	\subsubsection{Changements de faible amplitude}
-	Les objets ciné-discrets dont les changements de direction sont de faible amplitude sont rares ; les jeux vidéo peuvent en produire, mais on en rencontrera raraement hors de telles applications.
+	Les objets ciné-discrets dont les changements de direction sont de faible amplitude sont rares ; les jeux vidéo peuvent en produire, mais on en rencontrera rarement hors de telles applications.
 	
 	Les objets ciné-continus, en revanche, ont souvent des changements de direction de faible amplitude. C'est notamment le cas de nombreux véhicules, surtout lourds, d'engins spatiaux et d'objets célestes, ou encore des piétons, dans certains cas. Les athlètes de certaines disciplines peuvent également entrer dans cette catégorie, comme les skieurs, par exemple.
 	
@@ -295,7 +297,7 @@
 	\begin{enumerate}
 		\item La vitesse $V$ à laquelle l'objet se déplace ;
 		\item La fréquence $F$ des changements de $\vec{dir}$ ;
-		\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ échantillonné uniformément dans l'intervalle $[-A, +A]$.
+		\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ choisi aléatoirement et échantillonné uniformément dans l'intervalle $[-A, +A]$.
 	\end{enumerate}
 	
 	\subsection{Examen des trajectoires obtenues}
@@ -396,7 +398,7 @@
 	\subsubsection{Mouvement pseudo-autocorrélé}
 	On notera (notamment sur la figure~\ref{fig:motion1530}, et dans une moindre mesure sur les autres) que quand les valeurs de $A$ ou $F$ sont faibles, ou \emph{a fortiori} quand les deux le sont, le mouvement semble présenter une certaine régularité, au point peut-être de donner l'illusion d'être autocorrélé. La figure~\ref{fig:synTraj_219_45_1}, malgré sa valeur de $A$ relativement élevée, en fournit un exemple.
 	
-	Cette observation est intéressante en ce que ce modèle conçu pour les objets markoviens peut fournir une approximation du mouvement autocorrélé qui, dans certains cas, peut être suffisante. C'est particulièremnt vrai sur une fenêtre temporelle plus restreinte, limitée à quelques secondes tout au plus --- mais une telle fenêtre peut être trop courte pour certaines applications.
+	Cette observation est intéressante en ce que ce modèle conçu pour les objets markoviens peut fournir une approximation du mouvement autocorrélé qui, dans certains cas, peut être suffisante. C'est particulièrement vrai sur une fenêtre temporelle plus restreinte, limitée à quelques secondes tout au plus --- mais une telle fenêtre peut être trop courte pour certaines applications.
 	
 	À défaut d'être réellement autocorrélés, les mouvements générés par ces conditions (que l'on peut résumer par une valeur de $A \times F$ faible) engendrent des trajectoires suffisamment \og régulières \fg{} pour être relativement prévisibles à court terme (sur une ou deux secondes). Nous reviendrons plus loin sur l'importance de la prévisibilité pour une tâche de sélection. Contentons-nous pour le moment de remarquer qu'un objet dont les changements de direction sont rares et/ou de faible amplitude tend à avoir une trajectoire relativement \og lisse \fg{} et, de fait, prévisible.
 
@@ -490,7 +492,7 @@
 	\end{figure}
 	
 	\subsubsection{Entropie}
-	Dans ses travaux sur la thermodynamique, Rudolf Clausius définit l'entropie comme \og le contenu de tranformation [d'un] corps \fg{}~\cite{clausius1865verschiedene, clausius1865diverses}. Rapidement, Ludwig Boltzmann redéfinit l'entropie $S$ par l'équation $S = k\log(W)$, où $k$ est une constante et $W$ est le nombre d'états dans lequel un système peut se trouver~\cite{boltzmann1866mechanische, weisstein2004eric}.
+	Dans ses travaux sur la thermodynamique, Rudolf Clausius définit l'entropie comme \og le contenu de transformation [d'un] corps \fg{}~\cite{clausius1865verschiedene, clausius1865diverses}. Rapidement, Ludwig Boltzmann redéfinit l'entropie $S$ par l'équation $S = k\log(W)$, où $k$ est une constante et $W$ est le nombre d'états dans lequel un système peut se trouver~\cite{boltzmann1866mechanische, weisstein2004eric}.
 	
 	À partir de la définition de Boltzmann, Claude Shannon redéfinit à nouveau l'entropie~\cite{shannon1949communication} (qu'il préfère noter $H(X)$) d'une variable aléatoire discrète $X$ de valeurs possibles $\{x_{1}, \ldots{}, x_{n}\}$ par l'équation~\ref{eq:shannonEntropy}, où $P(x_{i})$ est la probabilité que $X=x_{i}$.
 	
@@ -514,7 +516,7 @@
 	
 	Si l'on considère $\alpha$ comme un nombre réel, en toute rigueur, le nombre de valeurs possibles est infini, et l'entropie aussi. L'on peut cependant considérer que pour un utilisateur, un changement de direction de 10,0001\textdegree{} ne sera généralement pas différent d'un changement de 10\textdegree{} ; aussi serait-il judicieux de discrétiser l'espace de $\alpha$. Une solution simple consiste à arrondir la valeur à l'entier le plus proche, ce qui réduit l'espace aux entiers contenus dans l'intervalle $[-180\degree{}, +180\degree{}]$, soit 360 valeurs (car $180 \equiv -180 \mod 360$).
 	
-	La portion de cet espace effectivement possible dépend de $A$ ; plus précicément, elle vaut $\frac{A}{180}$. L'on peut donc calculer l'entropie d'une cible si l'on connaît $A$ et si l'on sait qu'il y aura un changement de direction à l'instant suivant, mais ce calcul ne vaudra que sur une fenêtre temporelle limitée à deux \og instants \fg{} --- ce qui implique d'ailleurs une discrétisation du temps, potentiellement indésirable.
+	La portion de cet espace effectivement possible dépend de $A$ ; plus précisément, elle vaut $\frac{A}{180}$. L'on peut donc calculer l'entropie d'une cible si l'on connaît $A$ et si l'on sait qu'il y aura un changement de direction à l'instant suivant, mais ce calcul ne vaudra que sur une fenêtre temporelle limitée à deux \og instants \fg{} --- ce qui implique d'ailleurs une discrétisation du temps, potentiellement indésirable.
 	
 	Pour connaître l'entropie globale $E_{g}$ de la cible, on peut poser que $E_{g}$ est la moyenne des $E_{t}$ pour chaque instant $t$. Si l'on suppose que le temps est discrétisé de telle manière qu'un instant vaut $\frac{1}{60}$~s, alors $E_{g} = E_{t_{c}} \frac{F}{60}$ où $E_{t_{c}}$ est l'entropie de la cible à l'instant d'un changement de direction sûr.
 	
@@ -687,7 +689,7 @@
 	\end{figure}
 	
 	\subsubsection{Effet des angles}
-	Lorque $A$ est faible, comme sur la figure~\ref{fig:motion1530}, le mouvement est relativement lisse et régulier, avec des courbes infréquentes et douces, sauf quand la valeur de $F$ augmente beaucoup ; et encore les trajectoires apparaissent-elles relativement \og dénouées \fg{}, à l'exception de celle de la figure~\ref{fig:synTraj_219_30_60} dont les valeurs de $A$ et $F$ commencent à être élevées, avec 30\textdegree{} et 60~Hz respectivement.
+	Lorsque $A$ est faible, comme sur la figure~\ref{fig:motion1530}, le mouvement est relativement lisse et régulier, avec des courbes infréquentes et douces, sauf quand la valeur de $F$ augmente beaucoup ; et encore les trajectoires apparaissent-elles relativement \og dénouées \fg{}, à l'exception de celle de la figure~\ref{fig:synTraj_219_30_60} dont les valeurs de $A$ et $F$ commencent à être élevées, avec 30\textdegree{} et 60~Hz respectivement.
 	
 	À mesure que $A$ augmente, comme le montrera un examen successif des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180}, les trajectoires sont de plus en plus irrégulières et \og nouées \fg{}.
 	
