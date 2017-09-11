@@ -19,7 +19,7 @@
 \section{Pointage, sélection et loi de Fitts}
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas sur lesquels nous nous concentrons, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.58\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/fitts}
@@ -98,7 +98,7 @@
 	
 	Les corrélations entre ces indices de difficulté et les temps de sélection mesurés par Al Hajri \emph{et al.} sont présentées sur la figure~\ref{fig:holdID}, où l'on observera qu'elles sont très fortes. Néanmoins, ces travaux ne portent que sur des cibles dont la vitesse et la direction sont constantes.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdID}
 		\caption[ID vs. nature du mouvement et temps de sélection]{Temps de sélection en fonction des indices de difficulté développés par Al Harji \emph{et al.} Les deux indices sont très fortement corrélés avec les temps de sélection mesurés (sans aucune assistance à la sélection). Crédit : \cite{hajri2011moving}.}
@@ -132,7 +132,7 @@
 	
 	Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.75\textwidth]{figures/ch2/ballistic}
 		\caption[Profil de vitesse -- phases balistique et de correction]{Vitesse du pointeur en fonction du temps au cours d'un mouvement ciblé. La vitesse croît fortement puis décroît de même au cours de la phase balistique, puis connaît de petites oscillations au cours de la phase de correction. Crédit : \cite{liu2009designing}.}
@@ -154,7 +154,7 @@
 	\subsubsection{\emph{Prince}}
 	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.56\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/princeCursor}
@@ -179,7 +179,7 @@
 	\subsubsection{\emph{(Sticky) Area Cursor}, \emph{stickiness} et adaptativité}
 	Une solution à ce problème d'ambiguïté est proposée par Worden \emph{et al.}~\cite{worden1997making} : lorsqu'un curseur zonal recouvre plusieurs cibles, le curseur devient en pratique un curseur ponctuel, et seul son centre est actif, comme l'illustre la figure~\ref{fig:areaCursor}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.70\textwidth]{figures/ch2/areaCursor}
 		\caption[\emph{Area Cursor} avec \emph{hot spot}]{Un curseur zonal dont seul le centre, marqué par l'intersection de deux segments, demeure actif lorsque le curseur chevauche plusieurs cibles. Crédit : \cite{worden1997making}.}
@@ -214,7 +214,7 @@
 	\subsubsection{\emph{Bubble Cursor}}
 	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci.	
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/bubble}
@@ -263,7 +263,7 @@
 	\paragraph{Temps de sélection.}
 	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}). Comme le supposaient les auteurs, la semi-transparence du curseur permet une forte amélioration du temps de sélection, particulièrement avec un écran monoscopique. De plus, la stéréoscopie réduit le temps de sélection de façon significative, et ce même avec le \emph{Silk Cursor}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.38\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silk}
@@ -286,7 +286,7 @@
 	\paragraph{Taux et amplitude des erreurs.}
 	Les auteurs ont également évalué les performances du \emph{Silk Cursor} sous l'angle des erreurs, tant leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
@@ -326,7 +326,7 @@
 	\subsubsection{\emph{DynaSpot}}
 	Cette lacune du \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
@@ -389,7 +389,7 @@
 	
 	Le \emph{Shadow Cone} fonctionne comme un cône de sélection, mais avec une désambiguïsation explicite : lorsque l'utilisateur presse le bouton de son périphérique de pointage, tous les objets dans le cône sont pré-sélectionnés ; puis, l'utilisateur déplace le périphérique et son cône avec, de telle sorte que certains des objets pré-sélectionnés ne sont plus dans le cône. Dès lors qu'ils en sortent, ils ne sont plus pré-sélectionnés, et aucun objet n'est ajouté à la pré-sélection. Quand l'utilisateur relâche le bouton de son périphérique, tous les objets se trouvant encore dans le cône --- et l'ayant toujours été --- sont sélectionnés. Ce fonctionnement est illustré par la figure~\ref{fig:shadow}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.9\textwidth]{figures/ch2/shadow}
 		\caption[Fonctionnement du \emph{Shadow Cone}]{\emph{Shadow Cone}. (a) Sélection par \emph{raycasting} classique : le premier objet croisé par le rayon est sélectionné (A ici). (b) Sélection par cône : l'objet le plus proche de l'axe de révolution du cône est sélectionné (D ici). (c) \emph{Shadow Cone} : l'objet sélectionné est celui qui est inclus dans le cône de sélection à tous les instants entre la pression du bouton du périphérique et son relâchement (G ici). Crédit : \cite{steed20043d}.}
@@ -399,7 +399,7 @@
 	\paragraph{Performances.}
 	Steed et Parker ont évalué les temps de sélection du \emph{Shadow Cone}, comparé à la sélection par rayon ou par cône.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
@@ -421,7 +421,7 @@
 	
 	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
@@ -440,7 +440,7 @@
 	\end{figure}
 
 		
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
@@ -472,7 +472,7 @@
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
 	\newcommand{\rayWidth}{0.55\textwidth}
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
 		\caption[Principe du \emph{Depth Ray}]{Fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
@@ -482,7 +482,7 @@
 	\subsubsection{\emph{Lock Ray}}
 	Le \emph{Lock Ray}~\cite{grossman2006design} fonctionne de la même façon que le \emph{Depth Ray}, si ce n'est qu'une fois que le rayon est positionné, il est \emph{verrouillé} --- d'où le nom --- afin de permettre à l'utilisateur de déplacer le marqueur de profondeur sans avoir à craindre de faire bouger le rayon par accident.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/lockRay}
 		\caption[Principe du \emph{Lock Ray}]{Fonctionnement du \emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur. (b) Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton. Crédit : \cite{grossman2006design}.}
@@ -492,7 +492,7 @@
 	\subsubsection{\emph{Flower Ray}}
 	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon \og s'épanouissent \fg{}  --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}. Dans le menu \og floral \fg{} les objets sont disposés par ordre de profondeur croissante dans le sens horaire, avec le plus proche en haut à droite.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/flowerRay}
 		\caption[Principe du \emph{Flower Ray}]{Fonctionnement du \emph{Depth Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant. (c) L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
@@ -504,7 +504,7 @@
 	
 	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instant différents, selon un principe proche de celui du \emph{Shadow Cone}~\cite{steed20043d}. Chaque objet se voit attribuer un \og poids \fg{} qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/smartRay}
 		\caption[Principe du \emph{Smart Ray}]{Utilisation du \emph{Smart Ray} pour sélectionner le petit carré. (a) Les poids des cibles sont basés sur la distance entre le rayon et la cible, et visualisés par de petites sphères au centre de chaque cible. À tout moment, la cible avec le plus gros poids peut être sélectionnée. (b,c) Le rayon peut être repositionné en continu pour augmenter le poids de la cible visée, même si elle est occultée. Crédit : \cite{grossman2006design}.}
@@ -521,7 +521,7 @@
 	
 	Les temps de sélection mesurés par les auteurs pour les différentes techniques sont représentés sur la figure~\ref{fig:rayTimes}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/rayTimes}
@@ -643,14 +643,14 @@
 		\item \textbf{\emph{Gaze-supported Expanded Target Selection} semi-fixe :} Contrairement à la technique précédente, la lentille cesse de bouger une fois activée, et l'utilisateur déplace le curseur au sein de la zone de zoom à l'aide de son regard, avant d'activer la sélection avec son écran tactile. Si son regard quitte la zone de zoom, alors la lentille se déplace. Voir la figure~\ref{fig:lookandtouch2}, vignettes de gauche et de droite.
 	\end{enumerate}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
 		\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
 		\label{fig:lookandtouch}
 	\end{figure}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
 		\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
@@ -662,14 +662,14 @@
 	
 	Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances dans la plupart des cas, avec peut-être un léger avantage global à la technique \emph{MAGIC tab}. Du moins cette tendance est-elle confirmée par les impressions sujectives recueillies par Stellmach \emph{et al.}, et exposées sur la figure~\ref{fig:latSubj}.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/latRes}
 		\caption[\emph{Look \&{} Touch -- performances}]{Performances obtenues pour les diverses techniques de type \emph{Look \&{} Touch}. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances. Crédit : \cite{stellmach2012look}.}
 		\label{fig:latRes}
 	\end{figure}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/latSubj}
 		\caption[\emph{Look \&{} Touch -- impressions subjectives}]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation des techniques \emph{Look \&{} Touch}. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête. Crédit : \cite{stellmach2012look}.}
@@ -688,7 +688,7 @@
 	Un exemple typique de méthode de sélection en cascade est la technique \emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}~\cite{kopper2011rapid}. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad}
 		\caption[Fonctionnement de la technique SQUAD]{SQUAD : à gauche, la première étape de sélection, au cours de laquelle l'utilisateur pré-sélectionne une portion de l'espace à l'aide d'une sphère. À droite, la phase suivante, permettant d'affiner la sélection. Les objets pré-sélectionnés avec la sphère sont uniformément répartis dans quatre quadrants d'un menu, et l'utilisateur n'a plus qu'à choisir le quadrant contenant l'objet qu'il souhaite sélectionner. Les autres quadrants se vident, puis les objets du quadrant sélectionné sont répartis dans les quatre afin de permettre, dans une nouvelle étape, d'affiner encore la sélection. L'opération est répétée jusqu'à ce qu'il n'y ait plus qu'un objet, qui est sélectionné. Crédit : \cite{kopper2011rapid}.}
@@ -699,7 +699,7 @@
 	
 	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/squad2}
 		\caption[La technique SQUAD -- évaluation]{SQUAD tel qu'évalué dans~\cite{kopper2011rapid}. Dans la première phase (à gauche) les petites sphères sont réparties sur la surface d'une grande sphère invisible centrée sur l'utilisateur, de sorte qu'elles sont toutes à la même distance de lui, afin qu'elles aient toutes une taille apparente égale une fois projetées sur l'écran. La cible à saisir est identifiée par sa couleur rouge. Seule l'orientation du périphérique de pointage était prise en compte dans la première phase, et les sujets avaient pour consigne de maintenir sa position dans une zone déterminée. Crédit : \cite{kopper2011rapid}.}
@@ -709,7 +709,7 @@
 	\paragraph{Performances.}
 	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity}. On constate que SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
@@ -729,7 +729,7 @@
 	
 	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap}. On constate que la technique SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Notons par ailleurs que le taux d'erreurs avec SQUAD était extrêmement faible, avec seulement 0,7~\%{}, ce qui est un atout notable pour cette technique. De fait, si l'on considérait non pas les temps de sélection, mais les temps de sélection normalisés par rapport aux erreurs, l'évaluation serait nettement plus favorable à SQUAD.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.65\textwidth]{figures/ch2/squadRecap}
 		\caption[SQUAD -- résultats : taille]{Performances de SQUAD en fonction de la taille de la cible, comparées avec celles du \emph{raycasting}. Les performances de SQUAD ne sont pas significativement modifiées par la taille, même si une légère corrélation négative est visible, peut-être due à la recherche visuelle de la cible quand elle est petite. Les performances du \emph{raycasting} sont fortement affectées, puisqu'une petite cible a un ID bien plus élevé. SQUAD brille particulièrement avec de petites cibles, mais se montre désavantageuse quand elles sont grandes. Crédit : \cite{kopper2011rapid}.}
@@ -739,7 +739,7 @@
 	\subsubsection{\emph{Disambiguation Canvas}}
 	La technique du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est un autre exemple de technique de sélection en cascade, et est illustrée par la figure~\ref{fig:dCanvas}.
 		 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvas}
 		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}. (a) : L'utilisateur pointe vers la région de l'espace où l'objet de son intérêt est situé ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection dans l'espace virtuel. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection (un rectangle semi-transparent) s'ouvre, les cibles pré-sélectionnées y sont disposées et agrandies. La toile de sélection correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie, ce qui permet à l'utilisateur de sélectionner la cible avec son pouce. Cette technique est compatible avec les HMD, et n'affiche pas le petit encadré en bas à gauche de chaque image, inséré ici à des fins illustratives. Crédit : \cite{debarba2013disambiguation}.}
@@ -748,7 +748,7 @@
 	
 	La figure~\ref{fig:dCanvas2} fournit une illustration supplémentaire et peut-être un peu plus claire de cette technique. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une pré-sélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets pré-sélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvas2}
 		\caption[\emph{Disambiguation Canvas}, bis]{Fonctionnement du \emph{Disambiguation Canvas}. En (a), une photo d'un utilisateur de la technique, équipé d'un HMD et d'un pointeur ; en (b), l'espace virtuel utilisé pour évaluer la technique. Comme dans l'évaluation originale de SQUAD, les petites sphères sont réparties sur la surface d'une grande sphère invisible~\cite{kopper2011rapid}, ce qui permet d'uniformiser leurs tailles apparentes. Crédit : \cite{debarba2013disambiguation}.}
@@ -757,7 +757,7 @@
 	
 	Pour définir un agencement optimal des objets dans la deuxième phase, dite de désambiguïsation, Debarba \emph{et al.} ont opté pour une étape de calibrage présentée sur la figure~\ref{fig:dCanvasLayout}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figures/ch2/dCanvasLayout}
 		\caption[\emph{Disambiguation Canvas} -- calibrage]{(a) : étape de calibrage pour la deuxième phase du \emph{Disambiguation Canvas}. On demande ici à l'utilisateur de faire le tour de l'écran avec son pouce, en essayant de s'approcher des bords. Il en résulte un motif fermé représentant l'espace que l'utilisateur peut atteindre confortablement. (b) : cet espace est utilisé pour répartir les objets, dont la cible, que l'utilisateur pourra ainsi sélectionner aisément. Par défaut, l'emplacement du le curseur est laissé vide, pour éviter les sélections accidentelles et faciliter l'annulation en cas d'erreur au cours de la première phase. Crédit : \cite{debarba2013disambiguation}.}
@@ -766,7 +766,7 @@
 	
 	Notez que les objets pré-sélectionnés sont aggrandis ou rapetissés pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes. De fait, la difficulté effective de sélection des objets dépend plus du nombre d'objets pré-sélectionnés (donc indirectement de la densité de distracteurs) que de la taille réelle de l'objet visé, comme le montre la figure~\ref{fig:dCanvasDensity}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.80\textwidth]{figures/ch2/dCanvasDensity}
 		\caption[\emph{Disambiguation Canvas} -- densité]{La difficulté de sélection avec le \emph{Disambiguation Canvas} dépend du nombre d'objets pré-sélectionnés dans la première étape. (a) : 25 objets peuvent être sélectionnés, et sont de fait assez gros ; (b) : ils sont 97, et de taille moyenne ; (c) : ils sont 224 et nettement plus petits. La loi de Fitts nous indique que les cibles seront plus difficiles à sélectionner en environnement dense, du fait de leur taille réduite. Crédit : \cite{debarba2013disambiguation}.}
@@ -778,7 +778,7 @@
 	
 	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting}, en fonction de la taille des cibles. Pour le \emph{Disambiguation Canvas}, les résultats sont séparés en fonction de la distance angulaire entre les cibles, c'est-à-dire en fonction de leur densité. Plus cette densité est élevée (i.e. plus les angles sont faibles) plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont affichés sur le graphique de gauche, et les erreurs sur celui de droite. Crédit : \cite{debarba2013disambiguation}.}
@@ -791,7 +791,7 @@
 	
 	Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, sans appel. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objets colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées avec une pression du pouce.	
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.85\textwidth]{figures/ch2/dCanvasSPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
@@ -807,7 +807,7 @@
 	
 	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon \og douce \fg{} et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasContext}
 		\caption[\emph{Disambiguation Canvas} -- animation de transition]{Animation pendant la transition entre la phase de pré-sélection du \emph{Disambiguation Canvas} et la phase de disambiguïsation. Les objets sont réarrangés \og en douceur \fg{} ce qui permet à l'utilisateur de suivre la cible des yeux afin de ne pas la perdre, et de préserver, dans une certaine mesure, le contexte spatial. Crédit : \cite{debarba2013disambiguation}.}
@@ -826,7 +826,7 @@
 	
 	On sait en effet depuis une étude de Walker \emph{et al.}~\cite{walker1993spatial} que la hauteur du pic de vitesse d'un curseur croît avec la distance entre la cible et lui-même, avec un profil typique illustré par la figure~\ref{fig:delphianPeak}.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.44\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/delphianPeak}
@@ -860,7 +860,7 @@
 	\paragraph{Temps de sélection.}
 	Les résultats obtenus par Asano \emph{et al.}~\cite{asano2005predictive} sont présentés sur la figure~\ref{fig:delphianTimes}. On y constate que le \emph{Delphian Desktop} est plus lent que la sélection non assistée lorsque les cibles sont proches, mais plus rapides quand elles sont distantes.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/delphianTimes}
@@ -926,7 +926,7 @@
 	
 	Ces équations sont représentées graphiquement sur la figure~\ref{fig:kepPS}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/kepPS}
@@ -949,7 +949,7 @@
 	
 	L'observateur attentif notera que l'approximation n'est pas des meilleures, et en déduira qu'un polynôme de degré supérieur pourrait avoir un meilleur coefficient de détermination ; néanmoins, un tel polynôme présenterait un très fort risque de surapprentissage. C'est pourquoi Lank \emph{et al.} optèrent pour une approximation quadratique. Cependant, celle-ci n'étant pas parfaite, elle ne fournit pas forcément de bons résultats lorsque l'on essaie de s'en servir pour extrapoler la distance totale parcourue par un curseur à partir d'un mouvement partiel, comme l'illustre la figure~\ref{fig:kepExtrapol}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/kepExtrapol}
 		\caption[KEP -- approximation quadratique et extrapolation]{En bleu, la vitesse en fonction de la distance, telle qu'elle est prédite par le modèle d'à-coup minimum. En noir, l'approximation quadratique choisie par Lank \emph{et al.} Ici sont présentées les extrapolations permises par cette approximation quadratique en fonction du pourcentage de distance parcourue à partir duquel l'extrapolation est faite. On constate que, du fait de l'imprécision de l'approximation, l'extrapolation est souvent incorrecte --- mais elle est bonne si elle est faite à 80~\%{} de la distance parcourue. Crédit : \cite{lank2007endpoint}.}
@@ -982,7 +982,7 @@
 	\paragraph{Précision de la prédiction.}
 	Lank \emph{et al.} ont validé leur modèle en comparant les prédictions de KEP à des mesures empiriques. Les résultats de cette validation sont exposées dans les graphiques de la figure~\ref{fig:kepErrors}, pour des cibles de 15 à 75 pixels de diamètre.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/kepErrors}
 		\caption[KEP -- erreurs de prédiction]{Erreurs de prédiction du point d'arrivée par KEP en fonction du pourcentage de mouvement effectué ($s_{i}$) auquel l'extrapolation est effectuée. Chaque graphique correspond aux résultats obtenus avec des cibles circulaires d'un diamètre donné, mentionné au bas de chaque graphique (de 15 à 75 pixels, sur un écran de 1024~$\times$~768 pixels). Les meilleurs résultats sont obtenus pour $s_{i} = 85~\%{}$. Crédit : \cite{lank2007endpoint}.}
@@ -1011,7 +1011,7 @@
 	\subsubsection{\emph{Speed Profile sEparation for Endpoint Divination}}
 	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED base donc sa prédiction de cible sur la phase de décélération.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/speedProfile}
@@ -1066,7 +1066,7 @@
 	\subsubsection{\emph{Hold}}
 	Le principe de \emph{Hold}~\cite{hajri2011moving} est très simple : sur déclenchement explicite de la part de l'utilisateur, les cibles deviennent statiques, ce qui facilite considérablement leur sélection puisque cela revient à une simple sélection statique, modélisée par la loi de Fitts. Une particularité de cette technique est que les cibles peuvent être stoppées à tout moment par la pression d'un boutons, et \og réactivées \fg{} en relâchant le bouton, à volonté. Ce fonctionnement est illustré par la figure~\ref{fig:hold}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/hold}
 		\caption[La technique \emph{Hold}]{La technique \emph{Hold} telle qu'évaluée dans~\cite{hajri2011moving}. (a,b) : le système classique (\emph{Chase}), où l'utilisateur positionne sa souris sur le flacon rouge pour déclencher la sélection, puis clique sur le disque noir. (c,d) : la technique \emph{Hold}, où l'utilisateur clique sur le flacon bleu pour arrêter la cible, maintient le bouton pressé, et ne le relâche que sur le disque noir. (e,f) : technique \emph{Hybrid}, où l'utilisateur positionne sa souris sur le flacon vert, puis peut cliquer librement sur le disque, ou sur le flacon pour stopper la cible et relâcher le bouton dessus. Cette technique est plus flexible : elle permet de laisser une cible se déplacer avant de la sélectionner, notamment si elle se dirige vers le curseur. Crédit : \cite{hajri2011moving}.}
@@ -1079,7 +1079,7 @@
 	
 	On peut néanmoins se demander s'ils auraient été identiques si les utilisateurs avaient été plus encouragés à se dépêcher, par exemple en affichant un chronomètre, ou avec un système de points. Les temps de sélection mesurés en fonction des différents paramètres régissant le mouvement de la cible à sélectionner sont détaillés sur la figure~\ref{fig:holdRes}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdRes}
 		\caption[\emph{Hold} -- évaluation]{Résultats de l'évaluation de la technique \emph{Hold}. En haut, les résultats en 1D ; en bas, en 2D. Comme le prédit la loi de Fitts, la difficulté de sélection décroît avec la taille des cibles, et comme d'autres études l'ont montré, elle croît naturellement avec leur vitesse.  Crédit : \cite{hajri2011moving}.}
@@ -1088,7 +1088,7 @@
 	
 	Toutefois, cette tendance générale s'inverse si l'on s'intéresse aux cibles les plus difficiles à sélectionner, c'est-à-dire celles qui sont rapides, petites, ou \emph{a fortiori} les deux à la fois, comme les résultats présentés sur la figure~\ref{fig:holdSFast} le montrent. C'est assez logique puisque la vitesse en particulier n'a que très peu d'incidence sur la difficulté de sélection avec \emph{Hold}, puisqu'elle s'annule dès que l'utilisateur délenche l'arrêt de la cible. La taille conserve son influence décrite par la loi de Fitts, mais son interaction avec la vitesse disparaît presque totalement.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.70\textwidth]{figures/ch2/holdSFast}
 		\caption[\emph{Hold} -- petites cibles rapides]{Résultats de l'évaluation de la technique \emph{Hold} en fonction de la taille et de la vitesse de la cible. En rouge (légende \emph{C}) sont notés les temps de sélection de la technique \emph{Chase}, c'est-à-dire la sélection classique ; en bleu (légende \emph{H}) figurent les temps de sélection de la technique \emph{Hold}. On remarque que dans le cas d'une sélection non assistée, la réduction de la taille de la cible ainsi que l'augmentation de sa vitesse rendent la sélection bien plus difficile. Ces effets sont nettement moins prononcés avec la technique \emph{Hold}, de sorte q'elle fournit de meilleurs résultats que la sélection non assistée pour les cas les plus difficiles. Crédit : \cite{hajri2011moving}.}
@@ -1101,7 +1101,7 @@
 	
 	La figure~\ref{fig:holdTech} présente les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdTech}
 		\caption[\emph{Hold} -- choix de la technique]{Les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction. Les résultats de la première ligne de graphiques correspondent aux essais en 1D, et ceux de la seconde, en 2D. On constate que les cibles \og faciles \fg{}  tendent à inciter au choix de \emph{Chase}, que les sujets décrivent comme plus rapide, tandis que les cibles plus difficiles à sélectionner encouragent le choix de \emph{Hold} ou \emph{Hybrid}. La taille et la vitesse sont les paramètres dont l'effet est le plus significatif. Les barres notées \emph{Error} correspondent simplement aux essais ratés, c'est-à-dire ceux pour lesquels le sujet à délenché la sélection hors de la cible. Crédit : \cite{hajri2011moving}.}
@@ -1110,7 +1110,7 @@
 	
 	La figure~\ref{fig:holdRatio} détaille la répartition entre l'utilisation de \emph{Chase} et \emph{Hold} dans une phase identifiée comme \emph{Hybrid}. Là encore, on constate que la difficultée est corrélée avec une utilisation accrue de la technique \emph{Hold.}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/holdRatio}
 		\caption[\emph{Hold} -- répartition \emph{Hold/Chase} en mode \emph{Hybrid}]{épartition entre l'utilisation de \emph{Chase} et \emph{Hold} dans une phase identifiée comme \emph{Hybrid}. L'angle et la direction n'ont pas d'effet significatif mais la vitesse (à mesure qu'elle augmente) et la taille (à mesure qu'elle diminue) sont corrélées avec une utilisation accrue de la technique \emph{Hold}, malgré l'étape supplémentaire qu'elle implique. C'est résultats sont cohérents avec ceux observés hors du mode \emph{Hybrid}. Crédit : \cite{hajri2011moving}.}
@@ -1120,7 +1120,7 @@
 	\subsubsection{\emph{Target/Bubble Ghost}}
 	\emph{Target Ghost}~\cite{hasan2011comet} est une technique qui repose sur un déclenchement délibéré. Quand elle est déclenchée par l'utilisateur, \emph{Target Ghost} duplique toutes les cibles potentielles. Une des copies devient statique et reste opaque, tandis que l'autre demeure mobile mais est rendue semi-transparente, comme l'illustre la figure~\ref{fig:targetGhost}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch2/targetGhost}
 		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). \emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale voit la saturation de sa couleur baisser (en tant que fantôme), mais poursuit sa trajectoire. Un proxy bien plus net de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et il peut être sélectionné plus aisément. Seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
@@ -1129,14 +1129,14 @@
 	
 	L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreurs, comme le montrent les graphiques des figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figures/ch2/cometGhostPredictability}
 		\caption[\emph{Comet/Ghost}, prévisibilité et résultats]{Temps de complétion de la tâche, (a) : en fonction des types de curseur, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostPredictability}
 	\end{figure}
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
@@ -1181,7 +1181,7 @@
 	
 	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.70\textwidth]{figures/ch2/asas}
 		\caption[\emph{AttachedShock}, onde de choc]{À gauche, une représentation schématique de la réelle onde de choc d'un avion supersonique (un \emph{Concorde}). À droite, une cible mobile (la sphère verte) accompagnée de son onde de choc telle qu'elle est représentée par \emph{AttachedShock}. Cette onde vient augmenter la représentation visuelle de la cible afin d'en faciliter la sélection. Crédit : ~\cite{you2012attachedshock}.}
@@ -1201,7 +1201,7 @@
 	
 	\emph{AttachedShock} n'est toutefois pas sans limite. En effet, la densité de cibles testée par les auteurs est très faible, comme le montre la figure~\ref{fig:asDensity}. La technique n'ayant pas été évaluée avec une grande densité de cibles, il est impossible d'affirmer qu'elle fonctionnerait bien dans de telles conditions, mais l'on peut en douter compte tenu du fait qu'elle repose sur la possibilité qu'a l'utilisateur de se \og contenter \fg{} de mouvements balistiques sans mouvements correctifs, ce qui serait bien difficile avec les nombreux obstacles que de nombreux distracteurs constitueraient.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.9\textwidth]{figures/ch2/asDensity}
 		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de \og traverser \fg{} leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
@@ -1252,7 +1252,7 @@
 	\paragraph{Métrique.}
 	La métrique utilisée dans l'étape 2 est illustrée par la figure~\ref{fig:intensMetric}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/intensMD}
@@ -1284,7 +1284,7 @@
 	
 	Un exemple synthétique d'accumulation de score par une cible d'abord hors du volume de sélection, puis dedans, puis à nouveau dehors est représenté sur la figure~\ref{fig:intensAccumul}.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/intensCone}
@@ -1305,7 +1305,7 @@
 	\paragraph{Retour (\emph{feedback}).}
 	À tout instant $t$, l'objet dont le score accumulé est maximal est considéré comme la cible choisie ou active. Le rayon est tracé à l'aide de la suite \emph{Virtual SprintTools}~\cite{koutek2001spring} qui détermine une courbe de Bézier atteignant la cible visée (ou du moins estimée). Ce fonctionnement est illustré sur la figure~\ref{fig:intenSnap}.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.46\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/intenSnap}
@@ -1333,7 +1333,7 @@
 	\paragraph{Performances.}
 	Les perforances d'\emph{IntenSelect} sont bonnes et le sont particulièrement avec des cibles mobiles, comme l'on pouvait s'y attendre --- c'est du moins ce qu'indique l'étude empirique menée par de Haan \emph{et al.}~\cite{de2005intenselect}, qui mettent tout de même le lecteur en garde en précisant qu'ils n'avaient que 8 sujets. Quoi qu'il en soit, leurs résultats sont présentés sur la figure~\ref{fig:intensPerf}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.70\textwidth]{figures/ch2/intensPerf}
 		\caption[\emph{IntenSelect} -- performances]{Performances de la technique \emph{IntenSelect} en sélection de cibles statiques (à gauche) et mobiles (à droite), comparée au \emph{raycasting} et à la sélection par cône. Les résultats ne se démarquent pas de ceux de la sélection par cône avec des cibles statiques mais c'est le cas quand elles bougent. Les boîtes représentent les données entre le premier et le dernier quartile, avec la valeur médiane indiquée en rouge. Crédit : \cite{de2005intenselect}.}
@@ -1376,7 +1376,7 @@
 	\paragraph{Performances.}
 	Ortega a évalué sa technique en 2D et en 3D, avec 100 objets mobiles, à 5 vitesses différentes~\cite{ortega2013hook}. On remarquera avec intérêt qu'à chaque étape de l'animation des objets, le vecteur direction de chaque objet subissait une rotation comprise dans un cône de 10\textdegree. Le but est de générer un mouvement relativement imprévisible, mais non brownien. Ce processus est illustré par la figure~\ref{fig:hookDir}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\begin{subfigure}{.29\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/hookPic}
@@ -1396,14 +1396,14 @@
 	
 	L'évaluation menée par Ortega montre que \emph{Hook} est non seulement plus rapide que le \emph{Bubble Cursor} en 2D comme en 3D, mais permet en plus des taux d'erreurs plus faibles. Lorsque les cibles sont rapides, le taux d'erreurs peut être moindre d'un facteur supérieur à 4. Ces résultats valent en 2D (voir la figure~\ref{fig:hookRes2d}) comme en 3D (voir la figure~\ref{fig:hookRes3d}). La sélection non assistée était si inadéquate à la tâche que les sujets ne purent sélectionner les cibles en 3D à partir de la vitesse 3.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/hookRes2d}
 		\caption[\emph{Hook} -- performances en 2D]{Performances de la technique \emph{Hook} en 2D. Temps de sélection (à gauche) et taux d'erreurs (à droite) en fonction de la vitesse. Crédit : \cite{ortega2013hook}.}
 		\label{fig:hookRes2d}
 	\end{figure}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/hookRes3d}
 		\caption[\emph{Hook} -- performances en 2D]{Performances de la technique \emph{Hook} en 3D. Temps de sélection (à gauche) et taux d'erreurs (à droite) en fonction de la vitesse. Crédit : \cite{ortega2013hook}.}

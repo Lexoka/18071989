@@ -243,7 +243,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\newcommand{\subImgW}{0.32\textwidth}
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{\subImgW}
 			\centering
@@ -322,7 +322,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. Ce procédé repose sur l'identification d'une ou plusieurs structures protéiques connues et proches de la séquence d'acides aminés recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela s'appuie sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/crystal}
 		\caption[Schéma très simplifié de la cristallographie aux rayons X]{Schéma très simplifié de la cristallographie aux rayons X. Ces rayons traversent un cristal (contenant une même molécule présente en grande quantité) qui les diffracte avant leur capture par un détecteur connecté à un ordinateur. Ce dernier, à l'aide d'un algorithme approprié, en déduit la conformation 3D de la molécule cristallisée. Crédit :~\cite{trellet2015exploration}.}
@@ -337,7 +337,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La périodicité introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
 	
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}{.49\textwidth}
 			\centering
@@ -372,7 +372,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		E_{totale} = E_\text{liée} + E_\text{non-liée}
 	\end{equation}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/ffterms}
 		\caption[Termes d'un champ de forces]{Résumé des termes liés et non liés d'un champ de forces typique. Crédit : Patrick Fuchs\footnotemark.}
@@ -436,7 +436,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	    Cette acception renvoie à la notion théorique analogue de \og fidélité du stimulus \fg{}~\cite{stoffregen2003nature} proposée pour être un indicateur de la distance entre le monde physique et sa simulation. Le concept d'immersion ainsi précisé ouvre vers la construction de métriques qui permettraient de quantifier, comparer et étudier systématiquement les effets de l'immersion sur la cognition, les performances et la satisfaction des utilisateurs.
 	\end{displayquote}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/steeredPIT}
 		\caption[Dynamique moléculaire interactive en environnement virtuel]{Le logiciel de visualisation moléculaire VMD est utilisé avec les lunettes sétérographiques \emph{CrystalEyes} au sein du système \emph{Protein Interactive Theater} (PIT), qui permet l'immersion dans un environnement virtuel. Le PIT est par ailleurs couplé avec le module de simulation Sigma~\cite{mann2002sigma} pour permettre l'interaction avec la simulation. À gauche, une photo du PIT avec deux utilisateurs. À droite, un schéma de l'environnement virtuel tel qu'il est perçu par les utilisateurs. Crédit :~\cite{prins1999virtual}.}
@@ -445,7 +445,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Pour gérer des données aussi complexes que celles impliquées dans une simulation de dynamique moléculaire, l'immersion présente plusieurs avantages. Comme l'expliquent M.~Dreher \emph{et al.}~\cite{dreher2014exaviz}, le rendu stéréoscopique (\og en 3D \fg{}) permet l'exploration de structures biologiques complexes qui sont intrinsèquement tridimensionnelles. De plus, la stéréoscopie avec suivi des mouvements de la tête permet à l'utilisateur de tourner autour d'objets 3D pour les examiner depuis différents points de vue, simplement en se déplaçant physiquement dans le système immersif, comme dans un contexte réel. Quand ce type de navigation n'est pas nécessaire, la stéréoscopie avec suivi de tête fournit à l'utilisateur la possibilité de se concentrer sur sa structure moléculaire et de l'étudier sous divers angles sans être distrait par les périphériques de navigation ou manipulation traditionnellement utilisés pour pallier le manque d'adaptation du rendu par rapport aux mouvements de tête.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
@@ -464,7 +464,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\caption{Représentations hybrides de molécules.}
 	\end{figure}	
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.9\textwidth]{figures/ch1/exaviz}
 		\caption[IMD en environnement virtuel avec retour haptique, \emph{Exaviz}]{Le système \emph{Exaviz}. À gauche, deux utilisateurs sont dans un CAVE\footnotemark, chacun avec son point de vue personnel en 3D, grâce au suivi de la tête ; ils peuvent ainsi désigner des objets du doigt et en discuter. À droite, l'utilisation du bras haptique permet d'interagir avec les objets de la scène en obtenant un retour de force. Crédit :~\cite{dreher2014exaviz}.}
@@ -483,7 +483,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Comme nous l'avons vu plus haut, cette occultation dépend également du mode de représentation utilisé. Le système représenté sur la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch1/gluTrans}
 		\caption[Transporteur de glutamate, très forte occultation]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
@@ -510,7 +510,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{Avions}
 	Un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h en vol de croisière. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et habituellement prévisibles car les pilotes tâchent d'emprunter des couloirs aériens, ou des trajectoires d'approches imposées aux abords des aéroports. Les avions sont néanmoins nombreux, en particulier près des aéroports, et la grande quantité d'informations pertinentes associées à chaque vol peut requérir un affichage contextuel important, d'où une forte densité d'informations, et des niveaux d'occultation parfois élevés. La figure~\ref{fig:atlanta} en fournit un exemple.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/atlanta}
 		\caption[Trafic aérien, Atlanta]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, trajectoire, altitude, pavillon de l'appareil, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée sur cette image, car aucun avion n'est sélectionné. Malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport. Enfin, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
@@ -525,7 +525,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La nature de la tâche implique une quantité de données contextuelles très importante, puisque le logiciel permet d'afficher notamment le statut de chaque avion, ses codes d'identification, sa destination ou son origine, son retard éventuel, le statut de ses bagages ou de ses passagers, la liste des passagers en question, les pistes et emplacements de stationnement qui lui sont alloués ou disponibles, sa compagnie, son type, etc. La figure~\ref{fig:adp} fournit un exemple modéré de la quantité d'informations potentiellement affichées.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/adp}
 		\caption[ADP -- Roissy]{Exemple de visualisation de l'aéroport de Paris--Charles-de-Gaulle (à Roissy) avec le logiciel utilisé par le groupe ADP. Seuls les véhicules terrestres sont affichés ici, et les informations contextuelles sont limitées ; pourtant, la densité de cibles est importante, de même que le niveau d'occultation visuelle. Crédit : Valtech.}
@@ -559,7 +559,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{Démonstration en vol : \url{https://www.youtube.com/watch?v=vo0ZN2_O29M}}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/AlFursan}
 		\caption[La patrouille acrobatique \emph{Al Fursan}]{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Des avions militaires peuvent avoir des trajectoires à la fois complexes, très proches les unes des autres, et parcourues à grande vitesse. Crédit : The National UAE\footnotemark.}
@@ -570,7 +570,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Il convient de noter que les avions de combat eux-mêmes ont des besoins similaires en matière de sélection de cibles mobiles, puisqu'ils ont, comme les stations au sol, pour rôle de contrôler l'espace aérien. Ils ont de plus la charge de mener des opérations de reconnaissance ou de bombardement de cibles au sol qui, si elles sont statiques, sont bien mobiles dans le référentiel de l'avion en vol, \emph{a fortiori} si elles sont filmées par des caméras mobiles. Par ailleurs, les cibles affichées sur les ordinateurs de bord des avions sont accompagnées de diverses informations tactiques qui augmentent fortement la densité d'informations, et potentiellement le niveau d'occultation, comme l'illustre la figure~\ref{fig:sitac}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/sitac}
 		\caption[Situation tactique vue d'un \emph{Rafale}]{Cette image représente une situation tactique telle qu'affichée sur un écran dit \og visualisation tête moyenne \fg{} dans un \emph{Rafale}, un avion de chasse français produit par Dassault Aviation. Sur cette image très \og chargée \fg{} seuls deux petits symboles, que nous avons ici entourés en rouge, représentent des avions ennemis. Au-delà de la carte de fond, les autres symboles représentent diverses informations tactiques importantes : l'avion lui-même bien sûr, sa direction, une boussole, l'altitude maximale des obstacles terrestres, l'échelle, la vitesse de l'avion, le plan de vol, la ligne de front, une loupe, etc. Par conséquent, même avec un très petit nombre de cibles potentielles, l'affichage est complexe, dense, et potentiellement gênant pour la sélection. Crédit : Portail Aviation\footnotemark.}
@@ -587,7 +587,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	
 	\newcommand{\subImgAircraftW}{0.74\textwidth}
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\begin{subfigure}[t]{\subImgAircraftW}
 			\centering
@@ -710,7 +710,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	L'utilisation d'un dispositif immersif présente \emph{a priori} des avantages intéressants, tant pour la perception et la représentation de l'environnement que pour l'interaction. Elle faciliterait par ailleurs l'affichage de données contextuelles plus détaillées que ce qu'un dispositif de rendu 2D traditionnel permet (sans mener à un niveau d'occultation intolérable). Dans un contexte militaire, on peut également imaginer permettre à l'utilisateur, via ses interactions avec l'environnement virtuel, de donner des instructions tactiques aux forces déployées sur terre, en mer ou dans les airs.
 
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/Radar-Scope-ZSE}
 		\caption[Écran de contrôle du trafic aérien, en 2D]{Écran de contrôle du trafic aérien. Toutes les informations, qui portent pourtant sur un espace tridimentionnel, sont représentées sur le même plan, avec une densité telle que certaines indications écrites sont illisibles. Crédit : \emph{Bold Method}\footnotemark.}
@@ -734,7 +734,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{http://eunavfor.eu/}}
 	
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
@@ -797,7 +797,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\emph{Congress gets report on giving FAA space traffic role} -- \url{http://spacenews.com/congress-gets-report-on-giving-faa-space-traffic-role}}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
         \begin{subfigure}[t]{0.41\textwidth}
             \centering
@@ -849,7 +849,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\FloatBarrier \subsection{Foules}
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit. Il en résulte une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance devient difficile.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
@@ -891,7 +891,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.deveryware.com/savoir-faire/notre-expertise}}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cellphones}
 		\caption[Surveillance des signaux de téléphones portables]{Illustration d'un système de surveillance en temps réel des signaux émis par les téléphones portables, tiré de la série télévisée \emph{Le Bureau des légendes}, et inspiré de systèmes réels (dont les images ne sont pas publiques). Sur cette image représentant une vue de la ville d'Alger, chaque point coloré représente la position d'un téléphone portable dont le signal est capté et localisé. Le nombre de cibles potentielles est très élevé, et la densité peut être extrême par endroits. \OE{}uvre réalisée par Éric Rochant et produite par Canal+.}
@@ -970,7 +970,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{FPS/TPS}
 	Dans un jeu de tir à la première personne (FPS) la caméra est placée \og dans la tête \fg{} du personnage, selon un mode appelé \og vue subjective \fg{} ; dans un jeu de tir à la troisième personne (TPS) la caméra est placée hors du personnage, souvent derrière lui, un peu au-dessus et, parfois, avec un décalage sur le côté. On appelle parfois la vue d'un TPS \og objective \fg{}. Un FPS est présenté sur la figure~\ref{fig:bf1}, tandis qu'un exemple de TPS est fourni par la figure~\ref{fig:gears}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
@@ -1013,7 +1013,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.45\textwidth}
 			\centering
@@ -1042,7 +1042,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
 		\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}]{Exemple d'une partie du RTS \emph{Cossacks~II: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Ce jeu est connu pour son nombre maximal d'unités particulièrement élevé : 64~000. La gestion de troupes si nombreuses est un défi particulièrement difficile qui n'est pas facilité par la pénibilité de la tâche de sélection dans un tel contexte. Jeu développé par GSC Game World et édité par CDV Software.}
@@ -1053,7 +1053,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Une telle technique allégerait le fardeau de la sélection, laissant les joueurs de RTS et RTT se concentrer sur le cœur du jeu, sur les éléments dont la valeur ludique est la plus élevée --- gestion, organisation tactique, choix stratégiques, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter les véhicules et pièces d'artillerie\ldots{}
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
 		\caption[Énorme bataille dans le jeu \emph{EVE Online}]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Au-delà du nombre extrêmement important de cibles, ce cas présente la difficulté d'être en trois dimensions, ce qui complique la saisie et implique un haut niveau d'occultation, en particulier pour les petits vaisseaux situés derrière un vaisseau capital ou de grande taille. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
@@ -1075,7 +1075,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
 	\newcolumntype{Y}{>{\small}X}
 	\newcolumntype{Z}{>{\centering}X}
-	\begin{table}[!htb]
+	\begin{table}[!htbp]
 		\centering
 		\begin{tabularx}{\textwidth}{ Y X X X } % Putain j'entrave que dalle mais ça marche à peu près
 		Héros				&	Temps de virage à 180\textdegree(s)	&	Vitesse (unités arbitraires)	&	Vitesse affichée (cm/s)	\newrow
@@ -1108,7 +1108,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	% https://www.reddit.com/r/DotA2/comments/1vaklc/how_big_is_the_dota2_map_really/
 	
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.52\textwidth}
 			\centering
@@ -1134,7 +1134,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Le principe de ce jeu d'une complexité inattendue est illustré par la figure~\ref{fig:agario}. Pour avaler un adversaire, l'on peut soit le rattraper et l'englober, ce qui est difficile car il faut pour cela être significativement plus gros (et donc plus lent, selon le mécanisme du jeu) soit se diviser en deux et propulser une de ses moitiés sur lui, ce qui nécessite de viser très soigneusement, et d'autant plus prudemment qu'une fois scindé en deux, le joueur est beaucoup plus vulnérables à ses gros adversaires.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/agario}
 		\caption[\emph{Agar.io}]{Scène de jeu d'\emph{Agar.io}. Chaque ensemble de disques d'un même nom (par exemple MENT97) est contrôlé par un joueur, qui cherchera à dévorer les autres disques. Notez cependant que les disques à bords dentés sont des obstacles causant l'éclatement des joueurs qui les percutent vivement. Chaque tout petit disque sans texte est de la nourriture à attraper, chaque disque avec du texte est également une cible potentielle. Dans cette scène, celles-ci sont nombreuses et leur agancement est complexe, d'autant qu'elles ont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Crédit : GD Rentstr0m\footnotemark{} ; jeu développé et édité par Matheus Valadares.}
