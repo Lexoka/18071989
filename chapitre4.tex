@@ -523,7 +523,7 @@
 	
 	En revanche, la catégorie saccadée semble très difficile à prédire, à tel point qu'aucun de nos sujets n'a rapporté avoir cherché à anticiper ou prédire de tels mouvements pour sélectionner une cible de cette catégorie. Nous en déduisons que les catégories stable et vibratoire sont caractérisées par des sélections relativement aisées du fait de la nature prévisible de leurs mouvements, tandis que la catégorie saccadée est caractérisée par des sélections difficiles du fait de la nature imprévisible de ses mouvements.
 	
-	Cette observation peut paraître quelque peu contre-intuitive pour la catégorie vibratoire, du fait de sa pseudo-entropie particulièrement élevée. L'on pourrait en effet supposer qu'une grande quantité de désordre dans le mouvement nuise à sa prévisibilité et donc gène considérablement la sélection, mais dans les faits, la nature \og contenue \fg{} du mouvement vibratoire semble en faciliter la prévision, fût-elle approximative. Les cibles ayant une aire non-nulle, la prévision n'a en effet pas besoin d'être parfaite. Nous explorerons cette hypothèse plus avant dans une prochaine section de ce chapitre.
+	Cette observation peut paraître quelque peu contre-intuitive pour la catégorie vibratoire, du fait de sa pseudo-entropie particulièrement élevée. L'on pourrait en effet supposer qu'une grande quantité de désordre dans le mouvement nuise à sa prévisibilité et donc gène considérablement la sélection, mais dans les faits, la nature \og contenue \fg{} du mouvement vibratoire semble en faciliter la prévision, fût-elle approximative. Les cibles ayant un périmètre non-nul, la prévision n'a en effet pas besoin d'être parfaite. Nous explorerons cette hypothèse plus avant dans une prochaine section de ce chapitre.
 	
 	Bien sûr, il faut préciser que les frontières entre ces trois catégories ne sont ni clairement délimitées ni absolues, comme le montrent nos cartes thermiques (figure~\ref{fig:hmaps}) ou encore les mesures de MTSN en fonction de AF (figure~\ref{fig:tAF}). Sans doute dépendent-elles en plus des perceptions individuelles de chacun, mais elles fournissent un guide pour comprendre la difficulté de sélection des cibles mobiles en fonction de la nature de leurs mouvements.
 	
@@ -712,32 +712,32 @@
 	
 	La phase de correction étant en revanche susceptible de représenter une très grande portion du temps de sélection (cela peut dépasser les 80~\%{} pour les conditions les plus difficiles) l'on voit bien que les gains potentiels sont considérables, si l'on parvient à obtenir une accélération $s$ importante sur cette phase. Une technique d'assistance à la sélection de cibles mobiles devrait donc se focaliser sur cette phase.
 	
-\section{Aires des enveloppes convexes et temps de sélection}
-	Pour rappel, l'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Nous montrions dans le chapitre~\ref{chap3} (en particulier sur la figure~\ref{fig:spEffect}) que l'aire de l'enveloppe convexe d'une trajectoire générée par notre modèle VFA dépendait fortement de la vitesse.
+\section{Périmètres des enveloppes convexes et temps de sélection}
+	Pour rappel, l'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Nous montrions dans le chapitre~\ref{chap3} (en particulier sur la figure~\ref{fig:spEffect}) que le périmètre de l'enveloppe convexe d'une trajectoire générée par notre modèle VFA dépendait fortement de la vitesse.
 	
-	\subsection{L'aire : une fonction linéaire de la vitesse}
-	Si l'on considère une cible comme un object ponctuel --- donc d'aire nulle --- il est évident que si $V = 0$, la cible ne bougera pas et l'aire de son enveloppe convexe sera nulle. Dès lors, l'on peut formuler l'hypothèse que l'aire de l'enveloppe convexe d'une trajectoire générée par le modèle VFA est une fonction linéaire de la vitesse, c'est-à-dire que $\mathcal{A}(ec) = \gamma{}V$ où $\mathcal{A}(ec)$ est l'aire de l'enveloppe convexe $ec$, et $\gamma \in \mathbb{R}$.
+	\subsection{Le périmètre : une fonction linéaire de la vitesse}
+	Si l'on considère une cible comme un object ponctuel --- donc de périmètre nul --- il est évident que si $V = 0$, la cible ne bougera pas et le périmètre de son enveloppe convexe sera nulle. Dès lors, l'on peut formuler l'hypothèse que le périmètre de l'enveloppe convexe d'une trajectoire générée par le modèle VFA est une fonction linéaire de la vitesse, c'est-à-dire que $\mathcal{P}(ec) = \gamma{}V$ où $\mathcal{P}(ec)$ est le périmètre de l'enveloppe convexe $ec$, et $\gamma \in \mathbb{R}$.
 	
-	Nous avons évalué cette hypothèse en fixant les valeurs de A et F, et en faisant varier V pour mesurer l'impact sur $\mathcal{A}(ec)$. La figure~\ref{fig:avspeed} fournit une illustration de telles mesures, en l'occurrence avec $A = 120\degree$ et $F = 8$~Hz. Toutes nos mesures avec d'autres valeurs de A et F sont cohérentes. Notez que les aires utilisées pour ce graphique correspondent à l'aire moyenne sur 400 trajectoires générées aléatoirement pour chaque valeur de V.
+	Nous avons évalué cette hypothèse en fixant les valeurs de A et F, et en faisant varier V pour mesurer l'impact sur $\mathcal{P}(ec)$. La figure~\ref{fig:avspeed} fournit une illustration de telles mesures, en l'occurrence avec $A = 120\degree$ et $F = 8$~Hz. Toutes nos mesures avec d'autres valeurs de A et F sont cohérentes. Notez que les périmètres utilisés pour ce graphique correspondent au périmètre moyen sur 400 trajectoires générées aléatoirement pour chaque valeur de V.
 	
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/areaVspeed}
-		\caption[Aire de l'enveloppe convexe en fonction de la vitesse]{Aire de l'enveloppe convexe d'une trajectoire (de 5 secondes) en fonction de la vitesse. Les paramètres A et F sont fixés (à respectivement 120\textdegree{} et 8~Hz) et la vitesse varie de 0,125~cm/s à 4~cm/s. Pour chaque valeur de V, on mesure l'aire moyenne de l'enveloppe convexe de la trajectoire génrée. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est d'environ 0,986.}
+		\caption[Périmètre de l'enveloppe convexe en fonction de la vitesse]{Périmètre de l'enveloppe convexe d'une trajectoire (de 5 secondes) en fonction de la vitesse. Les paramètres A et F sont fixés (à respectivement 120\textdegree{} et 8~Hz) et la vitesse varie de 0,125~cm/s à 4~cm/s. Pour chaque valeur de V, on mesure le périmètre moyen de l'enveloppe convexe de la trajectoire génrée. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est d'environ 0,986.}
 		\label{fig:avspeed}
 	\end{figure}
 	
-	Précisons avant d'aller plus loin que $\mathcal{A}(ec)$ dépend de la durée du mouvement, selon une relation linéaire que la figure~\ref{fig:durationVarea} illustre. Si l'on souhaite étudier la relation entre une variable quelconque et $\mathcal{A}(ec)$, la durée de la trajectoire importe peu, à condition qu'elle soit significativement supérieure à la période $T = \frac{1}{F}$ (au moins double, dans l'idéal).
+	Précisons avant d'aller plus loin que $\mathcal{P}(ec)$ dépend de la durée du mouvement, selon une relation linéaire que la figure~\ref{fig:durationVarea} illustre. Si l'on souhaite étudier la relation entre une variable quelconque et $\mathcal{P}(ec)$, la durée de la trajectoire importe peu, à condition qu'elle soit significativement supérieure à la période $T = \frac{1}{F}$ (au moins double, dans l'idéal).
 	
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/durationVarea}
-		\caption[Aire de l'enveloppe convexe sur en fonction de la durée du mouvement]{Aire moyenne de l'enveloppe convexe d'une trajectoire en fonction de la durée du mouvement, sur de nombreuses combinaisons de A et F, pour une vitesse fixée à 2,19~cm/s. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est supérieur à 0,999.}
+		\caption[Périmètre de l'enveloppe convexe sur en fonction de la durée du mouvement]{Périmètre moyen de l'enveloppe convexe d'une trajectoire en fonction de la durée du mouvement, sur de nombreuses combinaisons de A et F, pour une vitesse fixée à 2,19~cm/s. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est supérieur à 0,999.}
 		\label{fig:durationVarea}
 	\end{figure}
 	
 	\subsection{Détermination des coefficients}
-	Cependant, si l'on a bien $\mathcal{A}(ec) = \gamma{}V$, $\forall A$ et $\forall F$, la valeur de $\gamma$ n'est pas la même pour toutes les combinaisons de A et F. Nous avons donc cherché à déterminer la valeur de $\gamma$ en fonction de F et A, de manière à pouvoir étudier $\mathcal{A}(ec)$ en fonction de F et A.
+	Cependant, si l'on a bien $\mathcal{P}(ec) = \gamma{}V$, $\forall A$ et $\forall F$, la valeur de $\gamma$ n'est pas la même pour toutes les combinaisons de A et F. Nous avons donc cherché à déterminer la valeur de $\gamma$ en fonction de F et A, de manière à pouvoir étudier $\mathcal{P}(ec)$ en fonction de F et A.
 	
 	Pour ce faire, nous avons généré des trajectoires pour diverses combinaisons de F et A à de nombreuses valeurs de V, afin de déterminer la valeur de $\gamma$ correspondant à chaque couple (F,A). Encore une fois, pour chaque condition (V,F,A) nous avons généré de multiples trajectoires (200), afin d'obtenir des valeurs moyennes fiables. Les résultats sont présentés sous forme de cartes thermiques sur la figure~\ref{fig:gammaVfa}. La figure~\ref{fig:gammaVfaLin} les représente sur une échelle linéaire, et la figure~\ref{fig:gammaVfaLog} sur une échelle logarithmique. Cette dernière figure, par ses lignes droites, suggère qu'une loi de puissance régit nos données, comme nous allons le voir plus loin.
 	
@@ -761,7 +761,7 @@
 		\label{fig:gammaVfa}
 	\end{figure}
 	
-	Ces données nous fournissent un moyen d'obtenir, à partir d'une aire de référence pour un couple (F,A), l'aire réelle en fonction de V, simplement en multipliant l'aire de référence par $\gamma{}V$. Si le couple (F,A) en question n'est pas présent dans les données brutes ayant permis de générer la figure~\ref{fig:gammaVfa}, la continuité de la fonction qui à un couple (F,A) associe une valeur de $\gamma$ nous autorise à approximer la valeur recherchée à l'aide d'une simple interpolation bilinéaire (et il serait bien entendu possible de calculer une grille de référence plus fine et plus précise) ou d'un modèle analytique.
+	Ces données nous fournissent un moyen d'obtenir, à partir d'un périmètre de référence pour un couple (F,A), le périmètre réel en fonction de V, simplement en multipliant le périmètre de référence par $\gamma{}V$. Si le couple (F,A) en question n'est pas présent dans les données brutes ayant permis de générer la figure~\ref{fig:gammaVfa}, la continuité de la fonction qui à un couple (F,A) associe une valeur de $\gamma$ nous autorise à approximer la valeur recherchée à l'aide d'une simple interpolation bilinéaire (et il serait bien entendu possible de calculer une grille de référence plus fine et plus précise) ou d'un modèle analytique.
 	
 	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\gamma$}{gamma}}
 	Si la figure~\ref{fig:gammaVfaLin} suggère que l'augmentation de A et de F ont le même effet sur $\gamma$, à savoir en diminuer la valeur, la figure~\ref{fig:gammaVfaLog} montre que, dès lors que A atteint une valeur relativement élevée (autour de 50) la fréquence a un impact très important sur la valeur de $\gamma$. Inversement, lorsque A est en dessous de ce seuil, l'impact de F sur $\gamma$ est assez faible, voire presque nul pour de petites valeurs de A.
@@ -809,7 +809,7 @@
 	
 	%Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
 	
-	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $x$ représente $A\sqrt{F}$, $M$ est la valeur maximale atteinte, $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure, et $k$ est une constante. Cette fonction peut donc s'écrire également sous la forme de l'équation~\ref{eq:brokenPowerAF}, et l'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}. Une version optimisée, définie par l'équation~\ref{eq:brokenPowerNumOpt}
+	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $x$ représente $A\sqrt{F}$, $M$ est la valeur maximale atteinte, $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure, et $k$ est une constante. Cette fonction peut donc s'écrire également sous la forme de l'équation~\ref{eq:brokenPowerAF}, et l'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}.
 	
 	\begin{align}
 		\label{eq:brokenPower}
@@ -828,17 +828,17 @@
 	\end{figure}
 	
 	\FloatBarrier
-	\subsection{Aire en fonction de F et A}
-	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver l'aire de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f\left(A\sqrt{F}\right) = \gamma$. De fait, la formule de l'aire de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{A}_{base}(ec)$ est l'aire \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme l'aire de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
+	\subsection{Périmètre en fonction de F et A}
+	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver le périmètre de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f\left(A\sqrt{F}\right) = \gamma$. De fait, la formule du périmètre de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{P}_{base}(ec)$ est le périmètre \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme le périmètre de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
 
 	\begin{align}
 		\label{eq:areaVFAgamma}
-		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times \gamma{}V \\
+		\mathcal{P}(ec) &= \mathcal{P}_{base}(ec) \times \gamma{}V \\
 		\label{eq:areaVFAonly}
-		\mathcal{A}(ec) &= \mathcal{A}_{base}(ec) \times f\left(A\sqrt{F}\right)
+		\mathcal{P}(ec) &= \mathcal{P}_{base}(ec) \times f\left(A\sqrt{F}\right)
 	\end{align}
 	
-	Naturellement, pour pouvoir estimer l'aire de l'enveloppe convexe à partir de nos paramètres, il faut pouvoir calculer $\mathcal{A}_{base}(ec)$. Nous avons donc calculé l'aire moyenne des enveloppes convexes de trajectoires générées à partir de multiples couples (F,A) avec $V = 1$~cm/s, en générant de nombreuses trajectoires par condition (100) afin d'avoir des valeurs de référence fiables. Dans un premier temps, nous avons calculé les aires des enveloppes convexes pour $V = 1$~cm/s, pour de nombreux couples (F,A). La figure~\ref{fig:afAreaLin} représente ces données sous forme de carte thermique, et la figure~\ref{fig:afAreaLog} les représente de la même façon, mais sur une échelle logarithmique, pour plus de lisibilité.
+	Naturellement, pour pouvoir estimer le périmètre de l'enveloppe convexe à partir de nos paramètres, il faut pouvoir calculer $\mathcal{P}_{base}(ec)$. Nous avons donc calculé le périmètre moyen des enveloppes convexes de trajectoires générées à partir de multiples couples (F,A) avec $V = 1$~cm/s, en générant de nombreuses trajectoires par condition (100) afin d'avoir des valeurs de référence fiables. Dans un premier temps, nous avons calculé les périmètres des enveloppes convexes pour $V = 1$~cm/s, pour de nombreux couples (F,A). La figure~\ref{fig:afAreaLin} représente ces données sous forme de carte thermique, et la figure~\ref{fig:afAreaLog} les représente de la même façon, mais sur une échelle logarithmique, pour plus de lisibilité.
 	
 	\begin{figure}[!htb]
 		\centering
@@ -855,87 +855,87 @@
 			\caption{Échelle logarithmique.}
 			\label{fig:afAreaLog}
 		\end{subfigure}
-		\caption[Aires des enveloppes convexes en fonction de F et A]{Aires des enveloppes convexes en fonction de F et A. La fréquence se lit en ordonnée, le paramètre d'angle en abscisse, et la valeur de l'aire est indiquée par la couleur ; elle est comprise entre 0 et 10, et toutes les valeurs indiquées correspondent à une vitesse de 1~cm/s.}
+		\caption[Périmètres des enveloppes convexes en fonction de F et A]{Périmètres des enveloppes convexes en fonction de F et A. La fréquence se lit en ordonnée, le paramètre d'angle en abscisse, et la valeur du périmètre est indiquée par la couleur ; elle est comprise entre 0 et 10, et toutes les valeurs indiquées correspondent à une vitesse de 1~cm/s.}
 		\label{fig:afArea}
 	\end{figure}
 	
-	La similitude entre ces données et celles indiquant les valeurs de $\gamma$ en fonction du couple (F,A) est particulièrement frappante. Cela laisse supposer que l'influence du produit $\gamma{}V$ pourrait être dominante dans l'aire de l'enveloppe convexe. Afin de le vérifier, nous avons cherché à exprimer $\mathcal{A}(ec)$ en fonction du produit AF d'une part, ainsi que de $A\sqrt{F}$ d'autre part, comme nous l'avions fait avec $\gamma$ dans la figure~\ref{fig:gammaVentropy}. Les résultats sont présentés sur la figure~\ref{fig:areaVentropy}, et confirment nos impressions.	
+	La similitude entre ces données et celles indiquant les valeurs de $\gamma$ en fonction du couple (F,A) est particulièrement frappante. Cela laisse supposer que l'influence du produit $\gamma{}V$ pourrait être dominante dans le périmètre de l'enveloppe convexe. Afin de le vérifier, nous avons cherché à exprimer $\mathcal{P}(ec)$ en fonction du produit AF d'une part, ainsi que de $A\sqrt{F}$ d'autre part, comme nous l'avions fait avec $\gamma$ dans la figure~\ref{fig:gammaVentropy}. Les résultats sont présentés sur la figure~\ref{fig:areaVentropy}, et confirment nos impressions.	
 	
 	\begin{figure}[!htb]
 		\centering
 		\begin{subfigure}[t]{\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/af2area}
-			\caption{$\mathcal{A}(ec)$ en fonction de $A\times{}F$.}
+			\caption{$\mathcal{P}(ec)$ en fonction de $A\times{}F$.}
 			\label{fig:af2area}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/af2areaLogLog}
-			\caption{$\mathcal{A}(ec)$ en fonction de $A\sqrt{F}$, sur une échelle logarithmique.}
+			\caption{$\mathcal{P}(ec)$ en fonction de $A\sqrt{F}$, sur une échelle logarithmique.}
 			\label{fig:af2areaLogLog}
 		\end{subfigure}
-		\caption[$\mathcal{A}(ec)$ en fonction de F et A, bis]{$\mathcal{A}(ec)$ en fonction de F et A. Les valeurs de $\mathcal{A}(ec)$ sont en ordonnée, et l'expression contenant A et F est en abscisse. On remarque que la seconde expression fondée sur la racine carrée de F correspond bien mieux aux valeurs de $\mathcal{A}(ec)$.}
+		\caption[$\mathcal{P}(ec)$ en fonction de F et A, bis]{$\mathcal{P}(ec)$ en fonction de F et A. Les valeurs de $\mathcal{P}(ec)$ sont en ordonnée, et l'expression contenant A et F est en abscisse. On remarque que la seconde expression fondée sur la racine carrée de F correspond bien mieux aux valeurs de $\mathcal{P}(ec)$.}
 		\label{fig:areaVentropy}
 	\end{figure}
 	
-	\subsection{Indépendance de l'aire de base par rapport à F et A}
-	Pour rappel, $\mathcal{A}(ec) = \mathcal{A}_{base}(ec) \times \gamma{}V$, donc $\mathcal{A}_{base}(ec) = \frac{\mathcal{A}(ec)}{\gamma{}V}$. Or, nous avons les valeurs de $\mathcal{A}(ec)$ ainsi que celles de $\gamma$, et nous pouvons fixer $V = 1$. Nous avons donc pu calculer les valeurs de $\mathcal{A}_{base}(ec)$ pour tous nos couples (F,A), et avons toujours obtenu une valeur proche de 1,0 : plus précisément, une valeur moyenne de 1,001 avec un écart-type de 0,020.
+	\subsection{Indépendance du périmètre de base par rapport à F et A}
+	Pour rappel, $\mathcal{P}(ec) = \mathcal{P}_{base}(ec) \times \gamma{}V$, donc $\mathcal{P}_{base}(ec) = \frac{\mathcal{P}(ec)}{\gamma{}V}$. Or, nous avons les valeurs de $\mathcal{P}(ec)$ ainsi que celles de $\gamma$, et nous pouvons fixer $V = 1$. Nous avons donc pu calculer les valeurs de $\mathcal{P}_{base}(ec)$ pour tous nos couples (F,A), et avons toujours obtenu une valeur proche de 1,0 : plus précisément, une valeur moyenne de 1,001 avec un écart-type de 0,020.
 	
-	Nous pouvons donc en déduire que $\mathcal{A}_{base}(ec)$ ne dépend pas de F et A, et que l'influence de ces paramètres sur $\mathcal{A}(ec)$ est entièrement capturée par $\gamma$. Les équations~\ref{eq:areaVFAgamma} et~\ref{eq:areaVFAonly} peuvent donc être réécrites sous la forme de l'équation~\ref{eq:areaGammaV} et ~\ref{eq:areaASQRTF}, respectivement.
+	Nous pouvons donc en déduire que $\mathcal{P}_{base}(ec)$ ne dépend pas de F et A, et que l'influence de ces paramètres sur $\mathcal{P}(ec)$ est entièrement capturée par $\gamma$. Les équations~\ref{eq:areaVFAgamma} et~\ref{eq:areaVFAonly} peuvent donc être réécrites sous la forme de l'équation~\ref{eq:areaGammaV} et ~\ref{eq:areaASQRTF}, respectivement.
 	
 	\begin{align}
 		\label{eq:areaGammaV}
-		\mathcal{A}(ec) &= \gamma{}V \\
+		\mathcal{P}(ec) &= \gamma{}V \\
 		\label{eq:areaASQRTF}
-		\mathcal{A}(ec) &= f\left(A\sqrt{F}\right)V
+		\mathcal{P}(ec) &= f\left(A\sqrt{F}\right)V
 	\end{align}
 	
-	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'espérance de l'aire de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f\left(A\sqrt{F}\right)$, où la valeur de $f\left(A\sqrt{F}\right)$ est obtenue à l'aide du modèle que nous avons présenté dans les équations~\ref{eq:brokenPower}, \ref{eq:brokenPowerAF}, et \ref{eq:brokenPowerNum}.
+	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'espérance du périmètre de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f\left(A\sqrt{F}\right)$, où la valeur de $f\left(A\sqrt{F}\right)$ est obtenue à l'aide du modèle que nous avons présenté dans les équations~\ref{eq:brokenPower}, \ref{eq:brokenPowerAF}, et \ref{eq:brokenPowerNum}.
 	
 \section{Enveloppes convexes et performances de sélection}
-	Attendu que l'aire de l'enveloppe convexe d'une trajectoire correspond à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathcal{A}(ec)$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathcal{A}(ec)$ calculées pour des trajectoires de 2 secondes, comme dans la suite de nos travaux.
+	Attendu que le périmètre de l'enveloppe convexe d'une trajectoire correspond à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathcal{P}(ec)$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathcal{P}(ec)$ calculées pour des trajectoires de 2 secondes, comme dans la suite de nos travaux.
 
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/perfVareaRaw}
-		\caption[Temps de sélection en fonction de l'aire de l'enveloppe convexe]{Temps de sélection normalisés en fonction de l'aire de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
+		\caption[Temps de sélection en fonction du périmètre de l'enveloppe convexe]{Temps de sélection normalisés en fonction du périmètre de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
 		\label{fig:perfVareaRaw}
 	\end{figure}
 
 	En considérant tous les points uniformément, les résultats sont difficiles à lire, mais les couleurs que nous avons utilisées permettent de distinguer les résultats en fonction de la vitesse de la cible sélectionnée, et nous apportent quelques informations. Tout d'abord, chaque sous-ensemble de points associé à une vitesse donnée forme une courbe \og en cloche \fg{} distincte des autres.
 	
-	Notez que les points situés en bas à gauche de la figure correspondent aux cibles de mouvements rectilignes. Leurs aires ne sont pas nulles car nous avons assimilé (par approximation) les cibles à de petits carrés, donc un mouvement rectiligne est associé à un rectangle très allongé. Concrètement, l'effet est négligeable par rapport à des cibles ponctuelles.
+	Notez que les points situés en bas à gauche de la figure correspondent aux cibles de mouvements rectilignes. Leurs périmètres ne sont pas nuls car nous avons assimilé (par approximation) les cibles à de petits carrés, donc un mouvement rectiligne est associé à un rectangle très allongé. Concrètement, l'effet est négligeable par rapport à des cibles ponctuelles.
 	
 	\subsection{Normalisation du temps par rapport à la vitesse}
-	Il apparaît donc que la vitesse est un critère déterminant pour interpréter les performances de sélection en fonction de l'aire de l'enveloppe convexe. Or, les résultats présentés dans les sections précédentes montraient déjà un effet approximativement linéaire de la vitesse sur le temps de sélection. Nous pouvons donc examiner les MTSN divisés par la vitesse en fonction de $\mathcal{A}(ec)$. Ces résultats sont présentés sur la figure~\ref{fig:perfVareaTimeNormedAll}.
+	Il apparaît donc que la vitesse est un critère déterminant pour interpréter les performances de sélection en fonction du périmètre de l'enveloppe convexe. Or, les résultats présentés dans les sections précédentes montraient déjà un effet approximativement linéaire de la vitesse sur le temps de sélection. Nous pouvons donc examiner les MTSN divisés par la vitesse en fonction de $\mathcal{P}(ec)$. Ces résultats sont présentés sur la figure~\ref{fig:perfVareaTimeNormedAll}.
 	
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/perfVareaTimeNormedAll}
-		\caption[Temps de sélection/V en fonction de l'aire de l'enveloppe convexe]{Temps de sélection normalisés divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
+		\caption[Temps de sélection/V en fonction du périmètre de l'enveloppe convexe]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
 		\label{fig:perfVareaTimeNormedAll}
 	\end{figure}
 	
 	Sur cette figure, il apparaît plus clairement que les cibles de vitesse moyenne et élevée sont associées à peu près au même intervalle de temps de sélection. Il en va autrement des cibles lentes, dont les résultats sont beaucoup plus ramassés. Ce n'est pas étonnant, nous avions en effet noté dans les sections précédentes que les effets de nos paramètres F et A étaient bien plus faibles à basse vitesse. Ces cibles ne présentant de surcroît pas de grandes difficultés de sélection, nous les omettrons des discussions qui suivent.
 	
-	\subsection{Normalisation de l'aire par rapport à la vitesse}
-	Toutefois, si les courbes des cibles rapides et de vitesse moyenne se ressemblent, elles sont clairement distinctes, et plus précisément décalées en abscisse. Or, l'aire de l'enveloppe convexe est en abscisse, et nous savons que $\mathcal{A}(ec) = \gamma{}V$. Afin de comparer ce qui est comparable, il convient donc de diviser également les aires par la vitesse, ce que nous avons fait, et que nous illustrons par la figure~\ref{fig:perfVareaEverythingNormed}.
+	\subsection{Normalisation du périmètre par rapport à la vitesse}
+	Toutefois, si les courbes des cibles rapides et de vitesse moyenne se ressemblent, elles sont clairement distinctes, et plus précisément décalées en abscisse. Or,  de l'enveloppe convexe est en abscisse, et nous savons que $\mathcal{P}(ec) = \gamma{}V$. Afin de comparer ce qui est comparable, il convient donc de diviser également les périmètres par la vitesse, ce que nous avons fait, et que nous illustrons par la figure~\ref{fig:perfVareaEverythingNormed}.
 
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/perfVareaEverythingNormed}
-		\caption[Temps de sélection/V en fonction de $\mathcal{A}(ec)/V$]{Temps de sélection normalisés divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
+		\caption[Temps de sélection/V en fonction de $\mathcal{P}(ec)/V$]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
 		\label{fig:perfVareaEverythingNormed}
 	\end{figure}
 	
-	Après cette double normalisation par la vitesse, et après avoir écarté les résultats des sélections de cibles lentes, nous obtenons deux courbes qui se superposent bien mieux. Les résultats correspondant aux cibles en mouvement rectiligne sont (assez logiquement) à part, mais l'on constate que lorsque l'aire est petite, la sélection est relativement aisée ; lorsqu'elle croît, la sélection devient plus difficile\ldots{} puis commence à l'être de moins en moins, jusqu'à redevenir à peu près aussi aisée que lorsque l'aire est petite. Sans surprise, les taux d'erreurs reflètent la même tendance, ce que la figure~\ref{fig:errorsVareaEverythingNormed} illustre.
+	Après cette double normalisation par la vitesse, et après avoir écarté les résultats des sélections de cibles lentes, nous obtenons deux courbes qui se superposent bien mieux. Les résultats correspondant aux cibles en mouvement rectiligne sont (assez logiquement) à part, mais l'on constate que lorsque le périmètre est petit, la sélection est relativement aisée ; lorsqu'elle croît, la sélection devient plus difficile\ldots{} puis commence à l'être de moins en moins, jusqu'à redevenir à peu près aussi aisée que lorsque le périmètre est petit. Sans surprise, les taux d'erreurs reflètent la même tendance, ce que la figure~\ref{fig:errorsVareaEverythingNormed} illustre.
 	
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/errorsVareaEverythingNormed}
-		\caption[Taux d'erreurs/V en fonction de $\mathcal{A}(ec)/V$]{Taux d'erreurs divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
+		\caption[Taux d'erreurs/V en fonction de $\mathcal{P}(ec)/V$]{Taux d'erreurs divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
 		\label{fig:errorsVareaEverythingNormed}
 	\end{figure}
 
@@ -943,34 +943,34 @@
 	\subsection{Interprétation}
 	Ce motif est relativement familier en ce qu'il rappelle ce que nous avions observé avec la pseudo-entropie (le produit AF) mais il est ici plus net.
 	
-	Comme nous l'avons vu dans les sections précédentes, en particulier sur la figure~\ref{fig:gammaASQRTF}, $\mathcal{A}(ec)$ est grande quand $A\sqrt{F}$ est petit et décroît en fonction de $A\sqrt{F}$. Ce qui est vrai pour $A\sqrt{F}$ l'est également pour AF, or nous savons que de grandes valeurs de AF correspondent à de courts temps de sélection, car elles sont associées à des conditions vibratoires --- donc relativement prévisibles. De même, nous savons que les plus petites valeurs de AF correspondent à des conditions quasi-rectilignes, prévisibles et associées à de courts temps de sélection. Enfin, nous avons que les valeurs intermédiaires de AF correspondent aux conditions saccadées --- les plus difficiles.
+	Comme nous l'avons vu dans les sections précédentes, en particulier sur la figure~\ref{fig:gammaASQRTF}, $\mathcal{P}(ec)$ est grande quand $A\sqrt{F}$ est petit et décroît en fonction de $A\sqrt{F}$. Ce qui est vrai pour $A\sqrt{F}$ l'est également pour AF, or nous savons que de grandes valeurs de AF correspondent à de courts temps de sélection, car elles sont associées à des conditions vibratoires --- donc relativement prévisibles. De même, nous savons que les plus petites valeurs de AF correspondent à des conditions quasi-rectilignes, prévisibles et associées à de courts temps de sélection. Enfin, nous avons que les valeurs intermédiaires de AF correspondent aux conditions saccadées --- les plus difficiles.
 	
 	De fait, nous pouvons interpréter ces courbes de la façon suivante :
 	\begin{itemize}
-		\item lorsque l'aire est grande, la sélection est aisée car les mouvements sont stables et prévisibles ;
-		\item lorsque l'aire est intermédiaire, la sélection est difficile car les mouvements sont saccadés, imprévisibles ;
-		\item lorsque l'aire est petite, la sélection est relativement aisée car les mouvements sont vibratoires et relativement prévisibles.
+		\item lorsque le périmètre est grand, la sélection est aisée car les mouvements sont stables et prévisibles ;
+		\item lorsque le périmètre est intermédiaire, la sélection est difficile car les mouvements sont saccadés, imprévisibles ;
+		\item lorsque le périmètre est petit, la sélection est relativement aisée car les mouvements sont vibratoires et relativement prévisibles.
 	\end{itemize}
 	
-	Il apparaît donc que $\mathcal{A}(ec)/V$ pourrait être un prédicteur efficace du temps de sélection (divisé par V, mais il suffit d'une multiplication pour le retrouver) à condition de pouvoir faire une estimation fiable.
+	Il apparaît donc que $\mathcal{P}(ec)/V$ pourrait être un prédicteur efficace du temps de sélection (divisé par V, mais il suffit d'une multiplication pour le retrouver) à condition de pouvoir faire une estimation fiable.
 	
 	
-	\subsection{Modélisation de la MTSN en fonction de \texorpdfstring{$\mathcal{A}(ec)$}{A(ec)}}
+	\subsection{Modélisation de la MTSN en fonction de \texorpdfstring{$\mathcal{P}(ec)$}{A(ec)}}
 	En pratique, il est difficile de trouver une modélisation de $\frac{MTSN}{V}$ en fonction de $mathcal{A}(ec)/V$, mais nous pouvons faire quelques observations :
 	
 	\begin{itemize}
-		\item lorsque l'aire est très grande (mouvements prévisibles) la MTSN est basse mais admet une borne inférieure (déterminé par le temps de sélection d'une cible statique) ;
-		\item lorsque l'aire atteint une certaine valeur, que nous pouvons nommer $\mathcal{A}_{pic}(ec)$, la MTSN est maximale ($MTSN_{max}$) ;
-		\item quand $\mathcal{A}(ec) < \mathcal{A}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
-		\item quand $\mathcal{A}(ec) > \mathcal{A}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
-		\item lorsque l'aire est très petite (mouvements vibratoires) la MTSN est basse mais admet toujours la même borne inférieure, vers laquelle elle tend asymptotiquement.
+		\item lorsque le périmètre est très grand (mouvements prévisibles) la MTSN est basse mais admet une borne inférieure (déterminé par le temps de sélection d'une cible statique) ;
+		\item lorsque le périmètre atteint une certaine valeur, que nous pouvons nommer $\mathcal{P}_{pic}(ec)$, la MTSN est maximale ($MTSN_{max}$) ;
+		\item quand $\mathcal{P}(ec) < \mathcal{P}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
+		\item quand $\mathcal{P}(ec) > \mathcal{P}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
+		\item lorsque le périmètre est très petit (mouvements vibratoires) la MTSN est basse mais admet toujours la même borne inférieure, vers laquelle elle tend asymptotiquement.
 	\end{itemize}
 	
-	Le dernier point n'est pas évident sur les figures ci-dessus car nous n'avons pas évalué empiriquement de conditions avec des valeurs de $A\sqrt{F}$ très élevées, mais nos simulations montrent que $\mathcal{A}(ec)$ tend vers zéro quand $A\sqrt{F}$ est grand, et d'autre part, de rapides essais empiriques confirment que la sélection devient très aisée dans ces cas, presque autant qu'avec une cible statique.
+	Le dernier point n'est pas évident sur les figures ci-dessus car nous n'avons pas évalué empiriquement de conditions avec des valeurs de $A\sqrt{F}$ très élevées, mais nos simulations montrent que $\mathcal{P}(ec)$ tend vers zéro quand $A\sqrt{F}$ est grand, et d'autre part, de rapides essais empiriques confirment que la sélection devient très aisée dans ces cas, presque autant qu'avec une cible statique.
 	
-	Par conséquent, si l'on doit estimer le temps de sélection en fonction de l'aire, il faut trouver une fonction $g : \mathbb{R}^{+} \to \mathbb{R}^{+}$, $g\left(\mathcal{A}(ec)\right) \mapsto y$ qui admette une borne inférieure, qui soit croissante sur $[0, \mathcal{A}_{pic}]$ et décroissante sur $[\mathcal{A}_{pic}, \infty]$. Naturellement, il faut aussi qu'elle puisse être ajustée à nos données.
+	Par conséquent, si l'on doit estimer le temps de sélection en fonction du périmètre, il faut trouver une fonction $g : \mathbb{R}^{+} \to \mathbb{R}^{+}$, $g\left(\mathcal{P}(ec)\right) \mapsto y$ qui admette une borne inférieure, qui soit croissante sur $[0, \mathcal{P}_{pic}]$ et décroissante sur $[\mathcal{P}_{pic}, \infty]$. Naturellement, il faut aussi qu'elle puisse être ajustée à nos données.
 	
-	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $a$, $b$, $d$, et $\sigma$ sont des paramètres réels, qui valent respectivement environ 1,74, 1,49, 0,27 et 2,45 ici, et $x$ représente $\mathcal{A}(ec)$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit} (sans les résultats correspondant aux cibles de mouvement rectiligne).
+	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $a$, $b$, $d$, et $\sigma$ sont des paramètres réels, qui valent respectivement environ 1,74, 1,49, 0,27 et 2,45 ici, et $x$ représente $\mathcal{P}(ec)$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit} (sans les résultats correspondant aux cibles de mouvement rectiligne).
 	
 	% Probability density function of a Rayleigh distribution; kind of.
 	\begin{equation}
@@ -981,20 +981,20 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/timeVareaFit}
-		\caption[Temps de sélection/V en fonction de $\mathcal{A}(ec)/V$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,846.}
+		\caption[Temps de sélection/V en fonction de $\mathcal{P}(ec)/V$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,846.}
 		\label{fig:timeVareaFit}
 	\end{figure}
 	
-	Ce modèle permet d'estimer la MTSN à partir de $\mathcal{A}(ec)/V$, dont nous avons montré précédemment qu'elle pouvait être estimée à partir de V, F et A. Ces trois paramètres peuvent donc être utilisés pour estimer les performances lors d'une tâche de sélection d'une cible mue en fonction d'eux.
+	Ce modèle permet d'estimer la MTSN à partir de $\mathcal{P}(ec)/V$, dont nous avons montré précédemment qu'elle pouvait être estimée à partir de V, F et A. Ces trois paramètres peuvent donc être utilisés pour estimer les performances lors d'une tâche de sélection d'une cible mue en fonction d'eux.
 	
 	Quoique utile, ce modèle a un inconvénient qu'il faut garder à l'esprit : il est fondé sur une fonction qui n'est pas monotone, ce qui le distingue nettement du modèle de Fitts. En effet, dans celui-ci, le sens vers lequel les paramètres doivent être modifiés pour réduire l'indice de difficulté est toujours le même : il est préférable de réduire l'amplitude (effective) du mouvement, et d'augmenter la largeur (effective) de la cible. Ces recommandations peuvent guider la conception de technique d'aide à la sélection, ou tout simplement de modes d'interaction et d'interfaces.
 	
-	Les choses sont ici plus subtiles. Si un objet donné est associé à une certaine valeur de $\mathcal{A}(ec)$, faut-il l'augmenter ou la réduire pour faciliter la sélection ? Cela dépend : si $\mathcal{A}(ec) < \mathcal{A}_{pic}(ec)$, il faut la réduire ; si $\mathcal{A}(ec) > \mathcal{A}_{pic}(ec)$, il faut l'augmenter, si $\mathcal{A}(ec) = \mathcal{A}_{pic}(ec)$, les deux options sont bénéfiques. Il faut dans tous les cas chercher à \og s'éloigner \fg{} du pic\ldots{} ce qui suppose de le connaître. À défaut de le connaître avec certitude, si l'on connaît certains couples $\left( \mathcal{A}(ec), MTSN\right)$, il est possible de trouver une fonction de la forme de celle de l'équation~\ref{eq:pdfModel} correspondant aux données, et permettant d'estimer la valeur de $\mathcal{A}_{pic}(ec)$.
+	Les choses sont ici plus subtiles. Si un objet donné est associé à une certaine valeur de $\mathcal{P}(ec)$, faut-il l'augmenter ou la réduire pour faciliter la sélection ? Cela dépend : si $\mathcal{P}(ec) < \mathcal{P}_{pic}(ec)$, il faut la réduire ; si $\mathcal{P}(ec) > \mathcal{P}_{pic}(ec)$, il faut l'augmenter, si $\mathcal{P}(ec) = \mathcal{P}_{pic}(ec)$, les deux options sont bénéfiques. Il faut dans tous les cas chercher à \og s'éloigner \fg{} du pic\ldots{} ce qui suppose de le connaître. À défaut de le connaître avec certitude, si l'on connaît certains couples $\left( \mathcal{P}(ec), MTSN\right)$, il est possible de trouver une fonction de la forme de celle de l'équation~\ref{eq:pdfModel} correspondant aux données, et permettant d'estimer la valeur de $\mathcal{P}_{pic}(ec)$.
 	
 	Ensuite, il est possible de déterminer dans quel sens les paramètres A et F doivent évoluer, de préférence de concert, mais agir sur un seul d'entre eux suffit à obtenir un effet tout à fait significatif, comme le montrent les figures~\ref{fig:aEffectPerf} et~\ref{fig:fEffectPerf}.
 	
 	\subsection{Modélisation de la MTSN en fonction de \texorpdfstring{$A\sqrt{F}$}{A* racine carrée de F}}
-	Ce que nous avons appris sur le pouvoir prédictif de $A\sqrt{F}$ pour les aires des enveloppes convexes --- donc indirectement pour les performances de sélection --- suggère qu'une tentative de modélisation des temps de sélection sans l'intermédiaire des $\mathcal{A}(ec)$ pourrait fonctionner, en s'appuyant sur $A\sqrt{F}$ plutôt que sur le simple produit AF. Nous proposons donc, avec la même approche, un modèle de la MTSN en fonction de $A\sqrt{F}$. Ce modèle est de la forme décrite par l'équation~\ref{eq:pdfModel}, avec $a \approx 1,42$ ; $a \approx 0,68$ ; $c = 0,01$ ; $d \approx 0,31$ ; et $\sigma \approx 2,32$. Une représentation graphique en est fournie sur la figure~\ref{fig:timeVafFit}.
+	Ce que nous avons appris sur le pouvoir prédictif de $A\sqrt{F}$ pour les périmètres des enveloppes convexes --- donc indirectement pour les performances de sélection --- suggère qu'une tentative de modélisation des temps de sélection sans l'intermédiaire des $\mathcal{P}(ec)$ pourrait fonctionner, en s'appuyant sur $A\sqrt{F}$ plutôt que sur le simple produit AF. Nous proposons donc, avec la même approche, un modèle de la MTSN en fonction de $A\sqrt{F}$. Ce modèle est de la forme décrite par l'équation~\ref{eq:pdfModel}, avec $a \approx 1,42$ ; $a \approx 0,68$ ; $c = 0,01$ ; $d \approx 0,31$ ; et $\sigma \approx 2,32$. Une représentation graphique en est fournie sur la figure~\ref{fig:timeVafFit}.
 	
 	\begin{equation}
 		g(x) = a\frac{cx-b}{\sigma^{2}}e^{-\frac{(cx-b)^{2}}{2\sigma^{2}} } + d
@@ -1014,7 +1014,7 @@
 	%pearsonr: (0.86316190221271505, 7.3359677429338683e-22)
 
 	
-	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire de l'aire de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathcal{A}(ec)$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur l'aire nous paraît plus approprié dans la majorité de cas.
+	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire du périmètre de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathcal{P}(ec)$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur le périmètre nous paraît plus approprié dans la majorité de cas.
 
 \section{Conclusion}
 	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
@@ -1025,10 +1025,10 @@
 	
 	Nous avons analysé les profils de vitesse du curseur lors des tâches de sélection, en fonction de la nature des mouvements de la cible. Nous avons ainsi observé que les phases balistique et de correction étaient relativement équilibrées pour les cibles statiques, mais que pour les cibles mobiles, la phase de correction dominait d'autant plus que la condition était difficile --- cible rapide aux mouvements imprévisibles. Nous en avons déduit une recommandation selon laquelle une technique d'assistance à la sélection devrait se concentrer sur la facilitation de la phase de correction, afin de maximiser le gain de temps.
 	
-	Nous nous sommes ensuite intéressés aux aires des enveloppes convexes ($\mathcal{A}(ec)$) associées aux trajectoires de nos cibles, en fonction des paramètres de leurs mouvements. Ces aires décrivent l'espace qu'une cible est susceptible d'occuper en un temps donné. Nous avons d'abord montré qu'elles sont proportionnelles à la vitesse ; puis, nous avons observé que la pente de cette relation linéaire dépendait des paramètres F et A. Plus précisément, nous avons montré qu'elle dépendait de $A\sqrt{F}$. Mieux, nous avons vu que pour une durée de trajectoire donnée, l'aire ne dépendait que de la vitesse et d'une fonction de $A\sqrt{F}$, soit d'un coefficient que nous avons appelé $\gamma$. Nous avons de plus proposé un modèle permettant d'estimer précisément l'espérance de $\gamma$, et donc celle de $\mathcal{A}(ec)$ à partir des paramètres V, F et A.
+	Nous nous sommes ensuite intéressés aux périmètres des enveloppes convexes ($\mathcal{P}(ec)$) associées aux trajectoires de nos cibles, en fonction des paramètres de leurs mouvements. Ces périmètres décrivent l'espace qu'une cible est susceptible d'occuper en un temps donné. Nous avons d'abord montré qu'elles sont proportionnelles à la vitesse ; puis, nous avons observé que la pente de cette relation linéaire dépendait des paramètres F et A. Plus précisément, nous avons montré qu'elle dépendait de $A\sqrt{F}$. Mieux, nous avons vu que pour une durée de trajectoire donnée, le périmètre ne dépendait que de la vitesse et d'une fonction de $A\sqrt{F}$, soit d'un coefficient que nous avons appelé $\gamma$. Nous avons de plus proposé un modèle permettant d'estimer précisément l'espérance de $\gamma$, et donc celle de $\mathcal{P}(ec)$ à partir des paramètres V, F et A.
 	
-	Nous avons montré que les performances de sélection dépendaient de $\mathcal{A}(ec)$, à condition de prendre soin de normaliser d'une part ces aires, et d'autre part les temps de sélection par rapport à la vitesse des cibles. On obtient alors une relation non linéaire (et non monotone) entre $\mathcal{A}(ec)$ et les performances de sélection, qu'il s'agisse des temps de sélection ou des taux d'erreurs.
+	Nous avons montré que les performances de sélection dépendaient de $\mathcal{P}(ec)$, à condition de prendre soin de normaliser d'une part ces périmètres, et d'autre part les temps de sélection par rapport à la vitesse des cibles. On obtient alors une relation non linéaire (et non monotone) entre $\mathcal{P}(ec)$ et les performances de sélection, qu'il s'agisse des temps de sélection ou des taux d'erreurs.
 	
-	Après avoir relié les différentes valeurs de $\mathcal{A}(ec)$ aux classes de mouvement que nous avions déjà identifiées, nous avons proposé un modèle prédictif des performances de sélection en fonction des aires des enveloppes convexes et de la vitesse. Comme il est possible d'estimer l'espérance de $\mathcal{A}(ec)$ en fonction de V, F et A, il devient donc possible d'estimer les performances de sélection à partir de ces paramètres, donc de prédire la difficulté d'une tâche, et de la réduire en jouant sur V, F et A, si les circonstances le permettent.
+	Après avoir relié les différentes valeurs de $\mathcal{P}(ec)$ aux classes de mouvement que nous avions déjà identifiées, nous avons proposé un modèle prédictif des performances de sélection en fonction des périmètres des enveloppes convexes et de la vitesse. Comme il est possible d'estimer l'espérance de $\mathcal{P}(ec)$ en fonction de V, F et A, il devient donc possible d'estimer les performances de sélection à partir de ces paramètres, donc de prédire la difficulté d'une tâche, et de la réduire en jouant sur V, F et A, si les circonstances le permettent.
 
 \clearpage

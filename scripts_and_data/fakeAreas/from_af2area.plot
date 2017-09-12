@@ -1,7 +1,7 @@
 set term svg size 2560, 1440 fsize 46
 set output "asqrtf2area.svg"
 
-set ylabel "Aire (cm²)"
+set ylabel "Périmètre moyen (cm)"
 unset key
 
 set yrange [0.1:10.5]

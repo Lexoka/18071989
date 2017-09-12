@@ -2,7 +2,7 @@ set term svg size 2560, 1440 fsize 46
 set output "durationVarea.svg"
 
 set xlabel "Durée (s)"
-set ylabel "Aire moyenne (cm²)"
+set ylabel "Périmètre moyen (cm)"
 
 set key top left
 

@@ -3,7 +3,7 @@ set output "areaVspeed.svg"
 
 set key top left
 set xlabel "Vitesse (cm/s)"
-set ylabel "Aire (cm²)"
+set ylabel "Périmètre (cm)"
 
 #mean(x) = m
 f(x) = a*x
