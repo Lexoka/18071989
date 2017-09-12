@@ -904,7 +904,7 @@
 		\label{fig:motion135150}
 	\end{figure}
 	
-	\subsubsection{Longueur des trajectoires, aires des enveloppes convexes}
+	\subsubsection{Longueur des trajectoires, périmètres des enveloppes convexes}
 	Pour rappel, toutes les trajectoires des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} furent générées par un mouvement de vitesse constante, 2,19~cm/s. Attendu qu'elles ont également été générées sur une même durée (20 secondes) elles ont toutes la même longueur, malgré les apparences dues aux variations d'échelle : $2,19~cm/s \times 20~s = 43,8~cm$.
 	
 	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut,	la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
@@ -999,53 +999,53 @@
 		\label{fig:motion165180}
 	\end{figure}
 	
-	Une façon d'estimer l'aire de la surface occupée par un ensemble de points (comme une trajectoire) consiste déterminer son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Des exemples d'enveloppes convexes sont représentés sur la figure~\ref{fig:trajAreas}. On y remarque notamment une relation inverse entre la pseudo-entropie et l'aire de l'enveloppe convexe de la trajectoire. Les trajectoires de pseudo-entropie très faible, telle que celle de la figure~\ref{fig:areaTraj_219_1_16}, occupent un espace important, tandis que les trajectoires de très forte pseudo-entropie, comme celle de la figure~\ref{fig:areaTraj_219_180_240}, sont confinées à une toute petite zone.
+	Une façon d'estimer la surface occupée par un ensemble de points (comme une trajectoire) consiste déterminer son enveloppe convexe. L'enveloppe convexe d'un ensemble de points du plan est le plus petit polygone convexe contenant tous les points de l'ensemble. Dans un espace en trois dimensions, l'enveloppe convexe est simplement le plus petit polyèdre convexe contenant tous les points de l'ensemble. Des exemples d'enveloppes convexes sont représentés sur la figure~\ref{fig:trajAreas}. On y remarque notamment une relation inverse entre la pseudo-entropie et le périmètre de l'enveloppe convexe de la trajectoire. Les trajectoires de pseudo-entropie très faible, telle que celle de la figure~\ref{fig:areaTraj_219_1_16}, occupent un espace important, tandis que les trajectoires de très forte pseudo-entropie, comme celle de la figure~\ref{fig:areaTraj_219_180_240}, sont confinées à une toute petite zone.
 	
 	
 	\begin{figure}[htb]
 		\centering
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_1_16}
-			\caption[$A = 1$, $F=16$]{$A = 1$, $F=16$, $AF=16$. L'aire de l'enveloppe est d'environ 87~cm².}
-			\label{fig:areaTraj_219_1_16}
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_1_16}
+			\caption{$A = 1$, $F=16$, $AF=16$. Le périmètre de l'enveloppe est d'environ 87~cm.}
+			\label{fig:areaTraj_2_19_1_16}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_5_16}
-			\caption[Enveloppe convexe, $A = 5$, $F=16$]{$A = 5$, $F=16$, $AF=80$. L'aire de l'enveloppe est d'environ 83~cm².}
-			\label{fig:areaTraj_219_5_16}
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_5_8}
+			\caption{$A = 5$, $F=8$, $AF=40$. Le périmètre de l'enveloppe est d'environ 86~cm.}
+			\label{fig:areaTraj_2_19_5_8}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_45_4}
-			\caption[Enveloppe convexe, $A = 45$, $F=4$]{$A = 45$, $F=4$, $AF=180$. L'aire de l'enveloppe est d'environ 48~cm².}
-			\label{fig:areaTraj_219_45_4}
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_45_4}
+			\caption{$A = 45$, $F=4$, $AF=180$. Le périmètre de l'enveloppe est d'environ 44~cm.}
+			\label{fig:areaTraj_2_19_45_4}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_90_8}
-			\caption[Enveloppe convexe, $A = 90$, $F=8$]{$A = 90$, $F=8$, $AF=720$. L'aire de l'enveloppe est d'environ 16,4~cm².}
-			\label{fig:areaTraj_219_90_8}
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_90_8}
+			\caption{$A = 90$, $F=8$, $AF=720$. Le périmètre de l'enveloppe est d'environ 31~cm.}
+			\label{fig:areaTraj_2_19_90_8}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_180_60}
-			\caption[Enveloppe convexe, $A = 180$, $F=60$]{$A = 180$, $F=60$, $AF=10800$. L'aire de l'enveloppe est d'environ 3,25~cm².}
-			\label{fig:areaTraj_219_180_60}
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_180_60}
+			\caption{$A = 180$, $F=60$, $AF=10800$. Le périmètre de l'enveloppe est d'environ 5~cm.}
+			\label{fig:areaTraj_2_19_180_60}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_219_180_240}
-			\caption[Enveloppe convexe, $A = 180$, $F=240$]{$A = 180$, $F=240$, $AF=43200$. L'aire de l'enveloppe est d'environ 1,85~cm².}
-			\label{fig:areaTraj_219_180_240}
+			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_180_240}
+			\caption{$A = 180$, $F=240$, $AF=43200$. Le périmètre de l'enveloppe est d'environ 4~cm.}
+			\label{fig:areaTraj_2_19_180_240}
 		\end{subfigure}
-		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et l'aire de l'enveloppe convexe décroît.}
+		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et le périmètre de l'enveloppe convexe décroît.}
 		\label{fig:trajAreas}
 	\end{figure}
 	
@@ -1851,7 +1851,7 @@
 	
 	Nous avons réinterprété le concept d'entropie en nous appuyant sur le modèle VFA ; sur ce fondement, nous avons proposé la notion de pseudo-entropie, qui constitue un outil plus simple à utiliser, et potentiellement plus utile --- avec des limites, que nous avons détaillées.	
 	
-	Nous avons rappelé le concept d'enveloppe convexe d'un ensemble de points, et souligné sa pertinence pour caractériser les trajectoires de cibles mobiles, notamment grâce à l'aire de ces enveloppes. Nous nous attarderons plus loin sur leur importance.
+	Nous avons rappelé le concept d'enveloppe convexe d'un ensemble de points, et souligné sa pertinence pour caractériser les trajectoires de cibles mobiles, notamment grâce au périmètre de ces enveloppes. Nous nous attarderons plus loin sur leur importance.
 	
 	Enfin, nous avons procédé à une application systématique du modèle VFA à des cas concrets, sélectionnés parmi ceux que nous avons identifiés au cours du chapitre~\ref{chap1}. Pour ce faire, nous avons adopté deux approches complémentaires. Premièrement, nous avons développé une suite d'outils pour analyser des résultats bruts de simulations de dynamique moléculaire --- une application particulièrement exigeante pour la sélection de cibles mobiles --- afin d'en extraire des informations pertinentes par rapport au modèle VFA. Nous avons utilisé cette suite d'outils sur une grande quantité de \emph{trajectoires} de simulations, afin d'en extraire des données quantitatives et objectives permettant d'étayer nos impressions plus subjectives.
 	
