@@ -1015,6 +1015,39 @@
 
 	
 	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire du périmètre de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathcal{P}(ec)$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur le périmètre nous paraît plus approprié dans la majorité de cas.
+	
+\section{Aires des enveloppes convexes et temps de sélection}
+
+	\subsection{L'aire : une fonction quadratique de la vitesse}
+
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/realAreaVspeed}
+		\caption[Aire de l'enveloppe convexe en fonction de V]{Aire de l'enveloppe convexe en fonction de V, pour des valeurs de F et A de 8 et 60, respectivement. Les données sont en violet et l'approximation quadratique est en vert. Le coefficient de corrélation est supérieur à 0,9994.}
+		\label{fig:realAreaVspeed}
+	\end{figure}
+
+	Idem durée.
+	
+	\subsection{Détermination des coefficients}
+	
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/afRealDelta_log}
+		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique de l'aire de l'enveloppe convexe en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite.}
+		\label{fig:afRealDelta_log}
+	\end{figure}
+	
+	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\delta$}{delta}}
+	
+	Lois de puissance combinées.
+	
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/a_rootF_delta}
+		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun.}
+		\label{fig:a_rootF_delta}
+	\end{figure}
 
 \section{Conclusion}
 	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
