@@ -1,5 +1,4 @@
-"Frequency"	"Angle"	"Speed"	"RealArea"	"RealAreaDivSS"	"Stdev"	"RaDivSpeed"	"Time"	"TimeDivSpeed"	"TimeDivSS"	"Errors"	"CappedErr"	"Frates"	"Perims2s"	"Perims5s"
-														
+"#Frequency"	"Angle"	"Speed"	"RealArea"	"RealAreaDivSS"	"Stdev"	"RaDivSpeed"	"Time"	"TimeDivSpeed"	"TimeDivSS"	"Errors"	"CappedErr"	"Frates"	"Perims2s"	"Perims5s"
 8	0	1.46	0	0	0	0	0.161266261	0.1104563431	0.0756550296	0.3653846154	0.3653846154	0	0	0
 13	0	1.46	0	0	0	0	0.1704129716	0.1167212134	0.0799460366	0.2884615385	0.2884615385	0	0	0
 20	0	1.46	0	0	0	0	0.1584676971	0.1085395185	0.074342136	0.25	0.25	0	0	0

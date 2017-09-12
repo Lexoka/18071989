@@ -954,7 +954,6 @@
 	
 	Il apparaît donc que $\mathcal{P}(ec)/V$ pourrait être un prédicteur efficace du temps de sélection (divisé par V, mais il suffit d'une multiplication pour le retrouver) à condition de pouvoir faire une estimation fiable.
 	
-	
 	\subsection{Modélisation de la MTSN en fonction de \texorpdfstring{$\mathcal{P}(ec)$}{A(ec)}}
 	En pratique, il est difficile de trouver une modélisation de $\frac{MTSN}{V}$ en fonction de $mathcal{A}(ec)/V$, mais nous pouvons faire quelques observations :
 	
@@ -1034,7 +1033,7 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/afRealDelta_log}
-		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique de l'aire de l'enveloppe convexe en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite.}
+		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique de l'aire de l'enveloppe convexe en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite. Diagonale de difficulté.}
 		\label{fig:afRealDelta_log}
 	\end{figure}
 	
@@ -1047,6 +1046,35 @@
 		\includegraphics[width=\textwidth]{figures/ch4/a_rootF_delta}
 		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun.}
 		\label{fig:a_rootF_delta}
+	\end{figure}
+	
+	\subsection{Aire en fonction de F et A}
+	Des maths.
+	
+	\subsection{Indépendance de l'aire de base par rapport à F et A}
+	Plus de maths, et heatmaps. Enfin au moins une heatmap.
+	
+	\subsection{Aires et performances de sélection}
+	
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_normed}
+		\caption[MTSN/V en fonction de l'aire/V²]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données correspondant à $V = 1,46$~cm/s et $V = 2;19$~cm/s se confondent.}
+		\label{fig:perf_V_RealArea_normed}
+	\end{figure}
+	
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_lousy_fit}
+		\caption[MTSN/V en fonction de l'aire/V² et approximation]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données présentées ici correspondent à $V = 1,46$~cm/s et $V = 2;19$~cm/s, avec une approximation polynomiale de degré 2, et de coefficient de corrélation supérieur à 0,771.}
+		\label{fig:perf_V_RealArea_lousy_fit}
+	\end{figure}
+	
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_better_fit}
+		\caption[MTSN/V en fonction de l'aire/V² et approximation]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données présentées ici correspondent à $V = 1,46$~cm/s et $V = 2;19$~cm/s, mais uniquement pour $F > 4$~Hz, avec une approximation polynomiale de degré 2, et de coefficient de corrélation supérieur à 0,895.}
+		\label{fig:perf_V_RealArea_better_fit}
 	\end{figure}
 
 \section{Conclusion}
