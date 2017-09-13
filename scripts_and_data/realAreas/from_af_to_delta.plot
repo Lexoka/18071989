@@ -25,7 +25,7 @@ set xrange [0.2:13000]
 set yrange [0.001:4]
 
 plot "quadApproxSorted.csv" u 4:5 title "Données" ,\
-	g(x) lw 6 title "Lois de puissance combinées"
+	g(x) lw 10 title "Lois de puissance combinées"
 	#f(0.0085*x) lw 6,\
 
 set output "af_delta.svg"
