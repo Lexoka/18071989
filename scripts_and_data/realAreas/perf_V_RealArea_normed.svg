@@ -41,7 +41,7 @@
 	  <feComposite in='SourceGraphic' in2='grey' operator='atop'/>
 	</filter>
 </defs>
-<g fill="none" color="white" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
+<g fill="none" color="white" stroke="black" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M309.7,1219.2 L344.2,1219.2 M2463.6,1219.2 L2429.1,1219.2  '/>	<g transform="translate(277.6,1236.4)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
@@ -129,12 +129,12 @@
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
-	<g id="gnuplot_plot_1" ><title>1,46 cms</title>
+	<g id="gnuplot_plot_1" ><title>1,46 cm/s</title>
 <g fill="none" color="white" stroke="currentColor" stroke-width="3.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="3.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(2204.4,150.5)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >1,46 cms</tspan></text>
+		<text><tspan font-family="Arial" >1,46 cm/s</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="3.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -183,10 +183,10 @@
 	<use xlink:href='#gpPt6' transform='translate(2317.9,133.3) scale(17.25)' color='rgb(  0, 158, 115)'/>
 </g>
 	</g>
-	<g id="gnuplot_plot_2" ><title>2,19 cms</title>
+	<g id="gnuplot_plot_2" ><title>2,19 cm/s</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="3.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(2204.4,219.5)" stroke="none" fill="black" font-family="Arial" font-size="46.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >2,19 cms</tspan></text>
+		<text><tspan font-family="Arial" >2,19 cm/s</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="3.00" stroke-linecap="butt" stroke-linejoin="miter">
