@@ -1071,6 +1071,8 @@
 	\end{figure}
 	
 	De fait, les performances de sélection peuvent être modélisées de façon satisfaisante et simple avec une approximation polynomiale de degré 2, à condition que les fréquences soient suffisamment élevées. Nous préconisons donc ce modèle pour ces conditions, car il est plus simple d'utilisation que celui fondé sur le périmètre et, de surcroît, légèrement plus précis. Il convient cependant de garder les limites de son domaine d'application à l'esprit avant de s'en servir.
+	
+	Toutefois, et comme pour l'estimation des performances à partir de $\mathcal{P}(ec)$, il existe une valeur $\mathcal{A}_{pic}(ec)$ pour laquelle la difficulté de sélection est maximale. Ainsi, pour une condition (V,F,A) donnée, selon que $\mathcal{A}(ec)$ sera supérieure ou inférieure à $\mathcal{A}_{pic}(ec)$, la minimisation de la difficulté de la tâche nécessitera de réduire ou d'augmenter la valeur de $\mathcal{A}(ec)$, respectivement. Cela implique de connaître $\mathcal{A}_{pic}(ec)$, au moins approximativement.
 
 \section{Conclusion}
 	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
@@ -1083,7 +1085,7 @@
 	
 	Nous nous sommes ensuite intéressés aux périmètres des enveloppes convexes ($\mathcal{P}(ec)$) associées aux trajectoires de nos cibles, en fonction des paramètres de leurs mouvements. Ces périmètres décrivent l'espace qu'une cible est susceptible d'occuper en un temps donné. Nous avons d'abord montré qu'ils sont proportionnels à la vitesse ; puis, nous avons observé que la pente de cette relation linéaire dépendait des paramètres F et A. Plus précisément, nous avons montré qu'elle dépendait de $A\sqrt{F}$. Ainsi, pour une durée de trajectoire donnée, le périmètre ne dépend que de la vitesse et d'une fonction de $A\sqrt{F}$, soit d'un coefficient que nous avons appelé $\gamma$. Nous avons de plus proposé un modèle permettant d'estimer précisément l'espérance de $\gamma$, et donc celle de $\mathcal{P}(ec)$ à partir des paramètres V, F, et A.
 	
-	Nous avons réalisé un travail analogue sur les aires de ces mêmes envloppes convexes ($\mathcal{A}(ex)$), pour lesquelles nous avons montré qu'elles étaient proportionnelles au carré de la vitesse. Là encore, nous avons observé que le coefficient déterminant cette relation quadratique, que nous avons appelé $\delta$, dépendait des paramètres F et A, et toujours plus précisément de $A\sqrt{F}$. Nous avons également proposé un modèle permettant d'estimer précisément l'espérance de $\delta$, et donc de $\mathcal{A}(ec)$ à partir des paramètres V, F, et A.
+	Nous avons réalisé un travail analogue sur les aires de ces mêmes envloppes convexes ($\mathcal{A}(ec)$), pour lesquelles nous avons montré qu'elles étaient proportionnelles au carré de la vitesse. Là encore, nous avons observé que le coefficient déterminant cette relation quadratique, que nous avons appelé $\delta$, dépendait des paramètres F et A, et toujours plus précisément de $A\sqrt{F}$. Nous avons également proposé un modèle permettant d'estimer précisément l'espérance de $\delta$, et donc de $\mathcal{A}(ec)$, à partir des paramètres V, F, et A.
 	
 	Nous avons montré que les performances de sélection dépendent de $\mathcal{P}(ec)$, à condition de prendre soin de normaliser d'une part ces périmètres, et d'autre part les temps de sélection par rapport à la vitesse des cibles. On obtient alors une relation non linéaire (et non monotone) entre $\mathcal{P}(ec)$ et les performances de sélection, qu'il s'agisse des temps de sélection ou des taux d'erreurs.
 	
@@ -1091,6 +1093,6 @@
 	
 	De même, nous avons montré que les temps de sélection et les taux d'erreurs (divisés par la vitesse) dépendent de $\frac{\mathcal{A}(ec)}{V^{2}}$. Nous proposé un modèle polynomial permettant de relier les aires aux performances. Or, les premières pouvant être déterminées à partir des paramètres du modèle VFA, les secondes peuvent être estimées à partir de ces seuls paramètres, à l'aide de nos modèles.
 	
-	Nous avons montré qu'il était possible de prédire la difficulté d'une tâche de sélection à partir des paramètres V, F, et A, en passant éventuellement par l'intermédiaire du périmètre de l'enveloppe convexe associée, ou par son aire. Lorsque les fréquences sont suffisamment élevées, nous avons constaté que l'aire fournissait un modèle plus précis et plus simple d'utilisation, mais plus limité.
+	Nous avons montré qu'il était possible de prédire la difficulté d'une tâche de sélection de cible mobile à partir des paramètres V, F, et A de ses mouvements, en passant éventuellement par l'intermédiaire de l'espérance du périmètre de l'enveloppe convexe pour la condition (V,F,A) donnée, ou par l'espérance de son aire. Lorsque les fréquences sont suffisamment élevées, nous avons constaté que l'aire fournissait un modèle plus précis et plus simple d'utilisation, malgré les limites de son domaine d'application.
 
 \clearpage
