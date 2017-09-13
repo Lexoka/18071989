@@ -15,4 +15,4 @@ set xrange [0.5:180]
 set yrange [0.5:4096]
 
 #splot "quadApprox.csv" u 1:(sqrt($2)):5 w pm3d
-splot "quadApprox.csv" u 1:2:5 w pm3d
+splot "quadApprox.csv" u 1:2:3 w pm3d

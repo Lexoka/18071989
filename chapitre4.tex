@@ -803,7 +803,7 @@
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLogLogUnbrokenPowerFit}
-		\caption[Coefficients $\gamma$ en fonction de F et A, quater (log-log)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance est en vert.}
+		\caption[Coefficients $\gamma$ en fonction de F et A, quater (log-log)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance est en vert. Remarquez que puisque $\mathcal{P}(ec) = \gamma{}V$, ces valeurs correspondent également à $\mathcal{P}(ec)$ quand $V = 1$.}
 		\label{fig:asqrtFVgammaLogLogUnbrokenPowerFit}
 	\end{figure}
 	
@@ -827,75 +827,16 @@
 		\label{fig:asqrtFVgammaLogLogPowerFit}
 	\end{figure}
 	
-	\FloatBarrier
-	\subsection{Périmètre en fonction de F et A}
-	Ainsi, le produit $A\sqrt{F}$ nous permet de déterminer le coefficient $\gamma$ par lequel il faut multiplier la vitesse avant de multiplier le tout par une valeur de référence dépendant de F et de A, afin de trouver le périmètre de l'enveloppe convexe. Nous pouvons donc avancer qu'il existe une fonction $f$ telle que $f\left(A\sqrt{F}\right) = \gamma$. De fait, la formule du périmètre de l'enveloppe convexe que l'on pouvait exprimer selon la forme de l'équation~\ref{eq:areaVFAgamma} peut être réécrite sous la forme de l'équation~\ref{eq:areaVFAonly}, où $\mathcal{P}_{base}(ec)$ est le périmètre \og de base \fg{} de l'enveloppe convexe, que nous choisissons (un peu arbitrairement) de définir comme le périmètre de l'enveloppe convexe d'une trajectoire générée par un couple (F,A) donné avec $V = 1$~cm/s, et divisée par $\gamma{}V$, c'est-à-dire par $\gamma$.
-
-	\begin{align}
-		\label{eq:areaVFAgamma}
-		\mathcal{P}(ec) &= \mathcal{P}_{base}(ec) \times \gamma{}V \\
-		\label{eq:areaVFAonly}
-		\mathcal{P}(ec) &= \mathcal{P}_{base}(ec) \times f\left(A\sqrt{F}\right)
-	\end{align}
+	Grâce à ce modèle, nous pouvons exprimer le coefficient $\gamma$( par lequel il faut multiplier la vitesse afin de trouver le périmètre de l'enveloppe convexe) en fonction de l'expression $A\sqrt{F}$. Cela nous permet d'exprimer le périmètre directement en fonction de nos paramètres, selon l'équation~\ref{eq:areaModel}.
 	
-	Naturellement, pour pouvoir estimer le périmètre de l'enveloppe convexe à partir de nos paramètres, il faut pouvoir calculer $\mathcal{P}_{base}(ec)$. Nous avons donc calculé le périmètre moyen des enveloppes convexes de trajectoires générées à partir de multiples couples (F,A) avec $V = 1$~cm/s, en générant de nombreuses trajectoires par condition (100) afin d'avoir des valeurs de référence fiables. Dans un premier temps, nous avons calculé les périmètres des enveloppes convexes pour $V = 1$~cm/s, pour de nombreux couples (F,A). La figure~\ref{fig:afAreaLin} représente ces données sous forme de carte thermique, et la figure~\ref{fig:afAreaLog} les représente de la même façon, mais sur une échelle logarithmique, pour plus de lisibilité.
+	\begin{equation}
+		\mathcal{P}(ec) = V.M \left( 1 + \frac{A^{2}F}{x_{n}^{2}}\right)^{-\frac{1}{2}}
+		\label{eq:perimModel}
+	\end{equation}
 	
-	\begin{figure}[!htb]
-		\centering
-		\begin{subfigure}[t]{\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/afArea}
-			\caption{Échelle linéaire.}
-			\label{fig:afAreaLin}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/afArea_log}
-			\caption{Échelle logarithmique.}
-			\label{fig:afAreaLog}
-		\end{subfigure}
-		\caption[Périmètres des enveloppes convexes en fonction de F et A]{Périmètres des enveloppes convexes en fonction de F et A. La fréquence se lit en ordonnée, le paramètre d'angle en abscisse, et la valeur du périmètre est indiquée par la couleur ; elle est comprise entre 0 et 10, et toutes les valeurs indiquées correspondent à une vitesse de 1~cm/s.}
-		\label{fig:afArea}
-	\end{figure}
 	
-	La similitude entre ces données et celles indiquant les valeurs de $\gamma$ en fonction du couple (F,A) est particulièrement frappante. Cela laisse supposer que l'influence du produit $\gamma{}V$ pourrait être dominante dans le périmètre de l'enveloppe convexe. Afin de le vérifier, nous avons cherché à exprimer $\mathcal{P}(ec)$ en fonction du produit AF d'une part, ainsi que de $A\sqrt{F}$ d'autre part, comme nous l'avions fait avec $\gamma$ dans la figure~\ref{fig:gammaVentropy}. Les résultats sont présentés sur la figure~\ref{fig:areaVentropy}, et confirment nos impressions.	
-	
-	\begin{figure}[!htb]
-		\centering
-		\begin{subfigure}[t]{\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/af2area}
-			\caption{$\mathcal{P}(ec)$ en fonction de $A\times{}F$.}
-			\label{fig:af2area}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/af2areaLogLog}
-			\caption{$\mathcal{P}(ec)$ en fonction de $A\sqrt{F}$, sur une échelle logarithmique.}
-			\label{fig:af2areaLogLog}
-		\end{subfigure}
-		\caption[$\mathcal{P}(ec)$ en fonction de F et A, bis]{$\mathcal{P}(ec)$ en fonction de F et A. Les valeurs de $\mathcal{P}(ec)$ sont en ordonnée, et l'expression contenant A et F est en abscisse. On remarque que la seconde expression fondée sur la racine carrée de F correspond bien mieux aux valeurs de $\mathcal{P}(ec)$.}
-		\label{fig:areaVentropy}
-	\end{figure}
-	
-	\subsection{Indépendance du périmètre de base par rapport à F et A}
-	Pour rappel, $\mathcal{P}(ec) = \mathcal{P}_{base}(ec) \times \gamma{}V$, donc $\mathcal{P}_{base}(ec) = \frac{\mathcal{P}(ec)}{\gamma{}V}$. Or, nous avons les valeurs de $\mathcal{P}(ec)$ ainsi que celles de $\gamma$, et nous pouvons fixer $V = 1$. Nous avons donc pu calculer les valeurs de $\mathcal{P}_{base}(ec)$ pour tous nos couples (F,A), et avons toujours obtenu une valeur proche de 1,0 : plus précisément, une valeur moyenne de 1,001 avec un écart-type de 0,020.
-	
-	Nous pouvons donc en déduire que $\mathcal{P}_{base}(ec)$ ne dépend pas de F et A, et que l'influence de ces paramètres sur $\mathcal{P}(ec)$ est entièrement capturée par $\gamma$. Les équations~\ref{eq:areaVFAgamma} et~\ref{eq:areaVFAonly} peuvent donc être réécrites sous la forme de l'équation~\ref{eq:areaGammaV} et ~\ref{eq:areaASQRTF}, respectivement.
-	
-	\begin{align}
-		\label{eq:areaGammaV}
-		\mathcal{P}(ec) &= \gamma{}V \\
-		\label{eq:areaASQRTF}
-		\mathcal{P}(ec) &= f\left(A\sqrt{F}\right)V
-	\end{align}
-	
-	L'équation~\ref{eq:areaASQRTF}, en particulier, nous permet d'estimer l'espérance du périmètre de l'enveloppe convexe d'une trajectoire générée par un triplet (V,F,A) en multipliant V par $f\left(A\sqrt{F}\right)$, où la valeur de $f\left(A\sqrt{F}\right)$ est obtenue à l'aide du modèle que nous avons présenté dans les équations~\ref{eq:brokenPower}, \ref{eq:brokenPowerAF}, et \ref{eq:brokenPowerNum}.
-	
-\section{Enveloppes convexes et performances de sélection}
-	Attendu que le périmètre de l'enveloppe convexe d'une trajectoire correspond à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathcal{P}(ec)$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathcal{P}(ec)$ calculées pour des trajectoires de 2 secondes, comme dans la suite de nos travaux.
+\section{Périmètres des enveloppes et performances de sélection}
+	Attendu que le périmètre de l'enveloppe convexe d'une trajectoire est lié à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathcal{P}(ec)$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathcal{P}(ec)$ calculées pour des trajectoires de 2 secondes, comme dans la suite de cette section.
 
 	\begin{figure}[!htb]
 		\centering
@@ -943,7 +884,7 @@
 	\subsection{Interprétation}
 	Ce motif est relativement familier en ce qu'il rappelle ce que nous avions observé avec la pseudo-entropie (le produit AF) mais il est ici plus net.
 	
-	Comme nous l'avons vu dans les sections précédentes, en particulier sur la figure~\ref{fig:gammaASQRTF}, $\mathcal{P}(ec)$ est grande quand $A\sqrt{F}$ est petit et décroît en fonction de $A\sqrt{F}$. Ce qui est vrai pour $A\sqrt{F}$ l'est également pour AF, or nous savons que de grandes valeurs de AF correspondent à de courts temps de sélection, car elles sont associées à des conditions vibratoires --- donc relativement prévisibles. De même, nous savons que les plus petites valeurs de AF correspondent à des conditions quasi-rectilignes, prévisibles et associées à de courts temps de sélection. Enfin, nous avons que les valeurs intermédiaires de AF correspondent aux conditions saccadées --- les plus difficiles.
+	Comme nous l'avons vu dans les sections précédentes, en particulier sur la figure~\ref{fig:gammaASQRTF}, $\mathcal{P}(ec)$ est grand quand $A\sqrt{F}$ est petit et décroît en fonction de $A\sqrt{F}$. Ce qui est vrai pour $A\sqrt{F}$ l'est également pour AF, or nous savons que de grandes valeurs de AF correspondent à de courts temps de sélection, car elles sont associées à des conditions vibratoires --- donc relativement prévisibles. De même, nous savons que les plus petites valeurs de AF correspondent à des conditions quasi-rectilignes, prévisibles et associées à de courts temps de sélection. Enfin, nous avons que les valeurs intermédiaires de AF correspondent aux conditions saccadées --- les plus difficiles.
 	
 	De fait, nous pouvons interpréter ces courbes de la façon suivante :
 	\begin{itemize}
@@ -1016,8 +957,14 @@
 	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire du périmètre de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathcal{P}(ec)$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur le périmètre nous paraît plus approprié dans la majorité de cas.
 	
 \section{Aires des enveloppes convexes et temps de sélection}
+	Une autre façon d'utiliser les enveloppes convexes pour prédire les performances de sélection est de passer par leurs aires. Du point de vue perceptif, cela peut être plus pertinent, celles-ci pouvant être interprétées comme la taille de la zone que la cible est susceptible d'occuper.
+	
+	Nous avons donc examiné leur relation à nos paramètres V, F, et A, ainsi qu'aux performances de sélection.
 
 	\subsection{L'aire : une fonction quadratique de la vitesse}
+	Nous avons vu que le périmètre d'une enveloppe convexe était une fonction linéaire de V ; il est naturel de supposer que l'aire en serait une fonction quadratique, c'est-à-dire que $\mathcal{A}(ec) = \delta{}V^{2}$ où $\mathcal{A}(ec)$ est l'aire de l'enveloppe convexe $ec$, et $\delta \in \mathbb{R}$.
+	
+	C'est ce que nous avons vérifié, en mesurant l'aire de nombreuses (50) trajectoires pour $F = 5$ et $A = 60$, comme l'illustre la figure~\ref{fig:realAreaVspeed}. Les résultats que nous avons obtenus avec tous les autres couples (F,A) sont cohérents avec ceux-ci.
 
 	\begin{figure}[!htbp]
 		\centering
@@ -1026,22 +973,29 @@
 		\label{fig:realAreaVspeed}
 	\end{figure}
 
-	Idem durée.
+	De même, alors que le périmètre est une fonction linéaire de la durée du mouvement, l'aire en est une fonction quadratique.
 	
 	\subsection{Détermination des coefficients}
+	De façon analogue à ce que nous observions pour les périmètres, si l'on a bien $\mathcal{A}(ec) = \delta{}V^{2}$, $\forall A$ et $\forall F$, la valeur de $\delta$ n'est pas la même pour toutes les combinaisons de A et F. Nous avons donc cherché à la déterminer en fonction de F et A, de manière à pouvoir étudier $\mathcal{A}(ec)$ en fonction de F et A.
+	
+	Pour ce faire, nous avons généré des trajectoires pour diverses combinaisons de F et A à de nombreuses valeurs de V, afin de déterminer la valeur de $\delta$ correspondant à chaque couple (F,A). Encore une fois, pour chaque condition (V,F,A) nous avons généré de multiples trajectoires (20), afin d'obtenir des valeurs moyennes fiables. Les résultats sont présentés sous forme de carte thermique, sur la figure~\ref{fig:afRealDelta_log}.
 	
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/afRealDelta_log}
-		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique des coefficients $\delta$ en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite. Le coefficient de corrélation est supérieur à 0,996. Diagonale de difficulté.}
+		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique des coefficients $\delta$ en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite. Remarquez que puisque $\mathcal{A}(ec) = \delta{}V^{2}$, ces valeurs correspondent également à $\mathcal{A}(ec)$ quand $V = 1$.}
 		\label{fig:afRealDelta_log}
 	\end{figure}
 	
+	L'observation la plus frappante sur cette carte est que les valeurs les plus élevées sont centrées sur la diagonale principale, celle qui court du coin supérieur gauche au coin inférieur droit. Il s'agit précisément de la diagonale que nous avions appelée \og de difficulté \fg{} sur la figure~\ref{fig:hmaps}, qui présente les performances de sélection en fonction de F et A. Cette similitude suggère un lien fort entre F, A, $\mathcal{A}(ec)$ et les performances de sélection.
+	
 	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\delta$}{delta}}
 	
-	Lois de puissance combinées.
+	Comme pour $\gamma$, tenter de représenter $\delta$ en fonction du produit AF démontre une grande dispersion, comme le montre la figure~\ref{fig:af_delta}. Mais, ainsi que l'illustre la figure~\ref{fig:a_rootF_delta}, représenter $\delta$ en fonction de $A\sqrt{F}$ produit un résultat beaucoup plus convaincant, permettant une modélisation.
 	
-	Pour modéliser ces données, nous avons opté pour le modèle de l'équation~\ref{eq:doublePower}, avec les valeurs numériques présentées dans l'équation~\ref{eq:doublePowerNum}.
+	En effet, sur cette échelle logarithmique, deux segments rectilignes sont observables, qui se rejoignent autour de $A\sqrt{F}$ = 120, dans une courbe commune. Or, un segment rectiligne sur une échelle logarithmique est caractéristique d'une loi de puissance ; nous avons donc ici deux lois de puissance combinées.
+	
+	C'est pourquoi, pour modéliser ces données, nous avons opté pour le modèle de l'équation~\ref{eq:doublePower}, avec les valeurs numériques présentées dans l'équation~\ref{eq:doublePowerNum}.
 	
 	\begin{align}
 		\label{eq:doublePower}
@@ -1052,16 +1006,27 @@
 	
 	\begin{figure}[!htbp]
 		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/af_delta}
+		\caption[Coefficients $\delta$ en fonction du prdouit AF]{Coefficients $\delta$ en fonction du produit AF, sur une échelle log-log. Les données sont fortement dispersées.}
+		\label{fig:af_delta}
+	\end{figure}
+	
+	\begin{figure}[!htbp]
+		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/a_rootF_delta}
-		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun, d'où l'approximation (en vert).}
+		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun, d'où l'approximation (en vert). Le coefficient de corrélation est supérieur à 0,996.}
 		\label{fig:a_rootF_delta}
 	\end{figure}
 	
+	Ce modèle nous permet d'exprimer l'aire directement en fonction de nos paramètres, selon l'équation~\ref{eq:areaModel}.
+	
+	\begin{equation}
+		\mathcal{A}(ec) = V^{2}N (A\sqrt{F})^n \left(1+\left(\frac{A\sqrt{F}}{x_n}\right)^{|\beta|s}\right)^{\operatorname{sgn}(\beta)/s}
+		\label{eq:areaModel}
+	\end{equation}
+	
 	\subsection{Aire en fonction de F et A}
 	Des maths.
-	
-	\subsection{Indépendance de l'aire de base par rapport à F et A}
-	Plus de maths, et heatmaps. Enfin au moins une heatmap.
 	
 	\subsection{Aires et performances de sélection}
 	
