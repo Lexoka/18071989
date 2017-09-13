@@ -1033,7 +1033,7 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/afRealDelta_log}
-		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique de l'aire de l'enveloppe convexe en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite. Diagonale de difficulté.}
+		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique des coefficients $\delta$ en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite. Le coefficient de corrélation est supérieur à 0,996. Diagonale de difficulté.}
 		\label{fig:afRealDelta_log}
 	\end{figure}
 	
@@ -1041,10 +1041,19 @@
 	
 	Lois de puissance combinées.
 	
+	Pour modéliser ces données, nous avons opté pour le modèle de l'équation~\ref{eq:doublePower}, avec les valeurs numériques présentées dans l'équation~\ref{eq:doublePowerNum}.
+	
+	\begin{align}
+		\label{eq:doublePower}
+		f(x) &= N x^n \left(1+\left(\frac{x}{x_n}\right)^{|\beta|s}\right)^{\operatorname{sgn}(\beta)/s} \\
+		\label{eq:doublePowerNum}
+		f(x) &= 0,052 x^{0,97} \left(1+\left(\frac{x}{120}\right)^{2,84}\right)^{-1}
+	\end{align}
+	
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch4/a_rootF_delta}
-		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun.}
+		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun, d'où l'approximation (en vert).}
 		\label{fig:a_rootF_delta}
 	\end{figure}
 	
