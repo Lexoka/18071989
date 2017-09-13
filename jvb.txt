@@ -1,0 +1,32 @@
+Explication générale des tâches de sélection de cibles dans un avion de combat
+
+	JVB :
+		mobiles hostiles ou non
+
+		joystick, vocal, eye-tracking
+
+		désignation extérieure
+
+		Serval, 4 avions, 6 bombes chacun, 
+
+
+
+
+	Dans quelle mesure la mobilité d'une cible influe-t-elle sur la tâche de sélection ?
+		Vitesse et nature des mouvements (au sol comme en l'air)
+
+
+
+
+	Exemple marquant où le système a bien fonctionné
+
+	JVB :
+
+
+
+
+	Exemple marquant où le système s'est montré insuffisant
+
+	JVB :
+
+CESA

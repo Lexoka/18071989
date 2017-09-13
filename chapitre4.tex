@@ -957,9 +957,9 @@
 	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire du périmètre de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathcal{P}(ec)$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur le périmètre nous paraît plus approprié dans la majorité de cas.
 	
 \section{Aires des enveloppes convexes et temps de sélection}
-	Une autre façon d'utiliser les enveloppes convexes pour prédire les performances de sélection est de passer par leurs aires. Du point de vue perceptif, cela peut être plus pertinent, celles-ci pouvant être interprétées comme la taille de la zone que la cible est susceptible d'occuper.
+	Une autre façon d'utiliser les enveloppes convexes pour prédire les performances de sélection est de passer par leurs aires. Du point de vue perceptif, cela peut être plus pertinent, celles-ci pouvant être interprétées comme la taille de la zone que la cible est susceptible d'occuper. En effet, en observant un mouvement d'une nature donnée pendant un temps suffisament long (probablement de l'ordre de la seconde), un utilisateur est potentiellement capable d'estimer intuitivement la partie de l'espace dans laquelle la cible peut se trouver.	Cette estimation peut le guider dans sa tâche de sélection.
 	
-	Nous avons donc examiné leur relation à nos paramètres V, F, et A, ainsi qu'aux performances de sélection.
+	Et de manière plus générale, l'aire d'une enveloppe convexe est une mesure objective, simple et scalaire de la nature d'une trajectoire, donc des mouvements de l'objet qui la génère. Nous avons donc examiné sa relation aux paramètres de notre modèle VFA d'une part, et aux performances de sélection d'autre part.
 
 	\subsection{L'aire : une fonction quadratique de la vitesse}
 	Nous avons vu que le périmètre d'une enveloppe convexe était une fonction linéaire de V ; il est naturel de supposer que l'aire en serait une fonction quadratique, c'est-à-dire que $\mathcal{A}(ec) = \delta{}V^{2}$ où $\mathcal{A}(ec)$ est l'aire de l'enveloppe convexe $ec$, et $\delta \in \mathbb{R}$.
@@ -973,7 +973,7 @@
 		\label{fig:realAreaVspeed}
 	\end{figure}
 
-	De même, alors que le périmètre est une fonction linéaire de la durée du mouvement, l'aire en est une fonction quadratique.
+	De même, alors que le périmètre est une fonction linéaire de la durée du mouvement, l'aire en est une fonction quadratique. Les données que nous présentons plus bas sont issues de simulations exécutées avec une durée de mouvement de 5 secondes.
 	
 	\subsection{Détermination des coefficients}
 	De façon analogue à ce que nous observions pour les périmètres, si l'on a bien $\mathcal{A}(ec) = \delta{}V^{2}$, $\forall A$ et $\forall F$, la valeur de $\delta$ n'est pas la même pour toutes les combinaisons de A et F. Nous avons donc cherché à la déterminer en fonction de F et A, de manière à pouvoir étudier $\mathcal{A}(ec)$ en fonction de F et A.
@@ -991,7 +991,7 @@
 	
 	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\delta$}{delta}}
 	
-	Comme pour $\gamma$, tenter de représenter $\delta$ en fonction du produit AF démontre une grande dispersion, comme le montre la figure~\ref{fig:af_delta}. Mais, ainsi que l'illustre la figure~\ref{fig:a_rootF_delta}, représenter $\delta$ en fonction de $A\sqrt{F}$ produit un résultat beaucoup plus convaincant, permettant une modélisation.
+	De même que pour $\gamma$, tenter de représenter $\delta$ en fonction du produit AF démontre une grande dispersion, comme le montre la figure~\ref{fig:af_delta}. Mais, ainsi que l'illustre la figure~\ref{fig:a_rootF_delta}, représenter $\delta$ en fonction de $A\sqrt{F}$ produit un résultat beaucoup plus convaincant, permettant une modélisation.
 	
 	En effet, sur cette échelle logarithmique, deux segments rectilignes sont observables, qui se rejoignent autour de $A\sqrt{F}$ = 120, dans une courbe commune. Or, un segment rectiligne sur une échelle logarithmique est caractéristique d'une loi de puissance ; nous avons donc ici deux lois de puissance combinées.
 	
@@ -1050,7 +1050,7 @@
 		\label{fig:perf_V_RealArea_normed}
 	\end{figure}
 	
-	Quoique simple, ce modèle ne parvient malheureusement pas à prédire certaine valeurs situées nettement en dessous de la parabole inversée, en particulier quand $\frac{\mathcal{A}(ec)}{V^{2}} \in [1,2]$. Un examen plus poussé de nos résultats montre que ces valeurs ont un point commun : leur fréquence est basse, inférieure ou égale à 4~Hz.
+	Quoique simple, ce modèle ne parvient malheureusement pas à prédire certaines valeurs situées nettement en dessous de la parabole inversée, en particulier quand $\frac{\mathcal{A}(ec)}{V^{2}} \in [1,2]$. Un examen plus poussé de nos résultats montre que ces valeurs ont un point commun : leur fréquence est basse, inférieure ou égale à 4~Hz.
 	
 	\begin{figure}[!htbp]
 		\centering
@@ -1059,7 +1059,7 @@
 		\label{fig:perf_V_RealArea_lousy_fit}
 	\end{figure}
 	
-	Pour mieux l'illustrer, nous avons retiré ces données de notre ensemble et refait une approximation polynomiale, toujours de degré 2. Le résultat, fourni sur la figure~\ref{fig:perf_V_RealArea_better_fit}, est bien meilleur. La raison précise pour laquelle les mesures correspondant aux basses fréquences sont incohérentes avec les autres demeure inconnue, mais nous pouvons avancer l'hypothèse que lorsque la fréquence est en dessous d'un certain seuil --- potentiellement situé autour de 4~Hz --- son effet sur les performances de sélection n'est pas pleinement réalisé ; peut-être ces fréquences sont-elles suffisament basses pour que les utilisateurs puisse distinguer les changements de direction suffisamment nettement pour les prévoir.
+	Pour mieux l'illustrer, nous avons retiré ces données de notre ensemble et refait une approximation polynomiale, toujours de degré 2. Le résultat, fourni sur la figure~\ref{fig:perf_V_RealArea_better_fit}, est bien meilleur. La raison précise pour laquelle les mesures correspondant aux basses fréquences sont incohérentes avec les autres demeure inconnue, mais nous pouvons avancer l'hypothèse que lorsque la fréquence est en dessous d'un certain seuil --- potentiellement situé autour de 4~Hz --- son effet sur les performances de sélection n'est pas pleinement réalisé ; peut-être ces fréquences sont-elles suffisament basses pour que les utilisateurs puissent distinguer les changements de direction suffisamment nettement pour les prévoir.
 	
 	Naturellement, les résultats obtenus pour les taux d'erreurs sont parfaitement cohérents avec ceux relatifs aux temps de sélection, ce qui est logique compte tenu de la très forte corrélation entre ces deux grandeurs.
 	
