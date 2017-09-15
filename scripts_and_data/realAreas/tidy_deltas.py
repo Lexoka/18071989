@@ -3,17 +3,6 @@ import numpy as np
 import sys
 import pandas as pd
 
-# Basically just builds a proper two-dimensional table from the three columns
-def FillDF(tidyDf, dirtyDf):
-	for index, row in dirtyDf.iterrows():
-		#print(row)
-		a = row[0]
-		f = row[1]
-		m = row[2]
-		tidyDf.loc[a,f] = m
-	print("\n\ntidyDf:")
-	print(tidyDf.head())
-	tidyDf.to_csv("tidy_linapprox.csv",sep="\t", index=False)
 
 def SortDF(dirtyDf):
 	dirtyDf["ARF"] = dirtyDf.Angle * np.sqrt(dirtyDf.Frequency)

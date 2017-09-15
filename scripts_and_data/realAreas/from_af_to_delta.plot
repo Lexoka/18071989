@@ -12,9 +12,11 @@ f(x) = uBound / ( ( 1/(x**a) ) + ( 1/(x**b) ) )
 
 ga = 0.97
 gb = 1.0
-beta = -2.78
-N = 0.05
-bend = 120
+#beta = -2.78
+beta = -2.72
+N = 0.051
+#bend = 120
+bend = 115
 g(x) = N * x**ga * ( 1 + (x/bend)**(abs(beta)*gb) )**(sgn(beta)/gb)
 
 stats "quadApproxSorted.csv" u 5:(g($4)) name "A"
