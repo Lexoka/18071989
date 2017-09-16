@@ -896,19 +896,19 @@
 	Il apparaît donc que $\mathbb{E}(\mathcal{P}(ec))/V$ pourrait être un prédicteur efficace du temps de sélection (divisé par V, mais il suffit d'une multiplication pour le retrouver) à condition de pouvoir faire une estimation fiable.
 	
 	\subsection{Modélisation de la MTSN en fonction \texorpdfstring{de $\mathbb{E}(\mathcal{P}(ec))$}{du périmètre}}
-	En pratique, il est difficile de trouver une modélisation de $\frac{MTSN}{V}$ en fonction de $mathcal{A}(ec)/V$, mais nous pouvons faire quelques observations :
+	En pratique, il est difficile de trouver une modélisation de $\frac{MTSN}{V}$ en fonction de $\mathcal{P}(ec)/V$, mais nous pouvons faire quelques observations :
 	
 	\begin{itemize}
 		\item lorsque le périmètre est très grand (mouvements prévisibles) la MTSN est basse mais admet une borne inférieure (déterminé par le temps de sélection d'une cible statique) ;
-		\item lorsque le périmètre atteint une certaine valeur, que nous pouvons nommer $\mathcal{P}_{pic}(ec)$, la MTSN est maximale ($MTSN_{max}$) ;
-		\item quand $\mathbb{E}(\mathcal{P}(ec)) < \mathcal{P}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
-		\item quand $\mathbb{E}(\mathcal{P}(ec)) > \mathcal{P}_{pic}(ec)$, $MTSN < MTSN_{max}$ ;
+		\item lorsque le périmètre atteint une certaine valeur, que nous pouvons nommer $\mathbb{E}(\mathcal{P}_{pic}(ec))$, la MTSN est maximale ($MTSN_{max}$) ;
+		\item quand $\mathbb{E}(\mathcal{P}(ec)) < \mathbb{E}(\mathcal{P}_{pic}(ec))$, $MTSN < MTSN_{max}$ ;
+		\item quand $\mathbb{E}(\mathcal{P}(ec)) > \mathbb{E}(\mathcal{P}_{pic}(ec))$, $MTSN < MTSN_{max}$ ;
 		\item lorsque le périmètre est très petit (mouvements vibratoires) la MTSN est basse mais admet toujours la même borne inférieure, vers laquelle elle tend asymptotiquement.
 	\end{itemize}
 	
 	Le dernier point n'est pas évident sur les figures ci-dessus car nous n'avons pas évalué empiriquement de conditions avec des valeurs de $A\sqrt{F}$ très élevées, mais nos simulations montrent que $\mathbb{E}(\mathcal{P}(ec))$ tend vers zéro quand $A\sqrt{F}$ est grand, et d'autre part, de rapides essais empiriques confirment que la sélection devient très aisée dans ces cas, presque autant qu'avec une cible statique.
 	
-	Par conséquent, si l'on doit estimer le temps de sélection en fonction du périmètre, il faut trouver une fonction $g : \mathbb{R}^{+} \to \mathbb{R}^{+}$, $g\left(\mathbb{E}(\mathcal{P}(ec))\right) \mapsto y$ qui admette une borne inférieure, qui soit croissante sur $[0, \mathcal{P}_{pic}]$ et décroissante sur $[\mathcal{P}_{pic}, \infty]$. Naturellement, il faut aussi qu'elle puisse être ajustée à nos données.
+	Par conséquent, si l'on doit estimer le temps de sélection en fonction du périmètre, il faut trouver une fonction $g : \mathbb{R}^{+} \to \mathbb{R}^{+}$, $g\left(\mathbb{E}(\mathcal{P}(ec))\right) \mapsto y$ qui admette une borne inférieure, qui soit croissante sur $[0, \mathbb{E}(\mathcal{P}_{pic}(ec))]$ et décroissante sur $[\mathbb{E}(\mathcal{P}_{pic}(ec)), \infty]$. Naturellement, il faut aussi qu'elle puisse être ajustée à nos données.
 	
 	Nous proposons une telle fonction définie par l'équation~\ref{eq:pdfModel}, (où $a$, $b$, $d$, et $\sigma$ sont des paramètres réels, qui valent respectivement environ 1,74, 1,49, 0,27 et 2,45 ici, et $x$ représente $\mathbb{E}(\mathcal{P}(ec))$), et dont une représentation graphique est fournie sur la figure~\ref{fig:timeVareaFit} (sans les résultats correspondant aux cibles de mouvement rectiligne).
 	
@@ -929,7 +929,7 @@
 	
 	Quoique utile, ce modèle a un inconvénient qu'il faut garder à l'esprit : il est fondé sur une fonction qui n'est pas monotone, ce qui le distingue nettement du modèle de Fitts. En effet, dans celui-ci, le sens vers lequel les paramètres doivent être modifiés pour réduire l'indice de difficulté est toujours le même : il est préférable de réduire l'amplitude (effective) du mouvement, et d'augmenter la largeur (effective) de la cible. Ces recommandations peuvent guider la conception de technique d'aide à la sélection, ou tout simplement de modes d'interaction et d'interfaces.
 	
-	Les choses sont ici plus subtiles. Si un objet donné est associé à une certaine valeur de $\mathbb{E}(\mathcal{P}(ec))$, faut-il l'augmenter ou la réduire pour faciliter la sélection ? Cela dépend : si $\mathbb{E}(\mathcal{P}(ec)) < \mathcal{P}_{pic}(ec)$, il faut la réduire ; si $\mathbb{E}(\mathcal{P}(ec)) > \mathcal{P}_{pic}(ec)$, il faut l'augmenter, si $\mathbb{E}(\mathcal{P}(ec)) = \mathcal{P}_{pic}(ec)$, les deux options sont bénéfiques. Il faut dans tous les cas chercher à \og s'éloigner \fg{} du pic\ldots{} ce qui suppose de le connaître. À défaut de le connaître avec certitude, si l'on connaît certains couples $\left( \mathbb{E}(\mathcal{P}(ec)), MTSN\right)$, il est possible de trouver une fonction de la forme de celle de l'équation~\ref{eq:pdfModel} correspondant aux données, et permettant d'estimer la valeur de $\mathcal{P}_{pic}(ec)$.
+	Les choses sont ici plus subtiles. Si un objet donné est associé à une certaine valeur de $\mathbb{E}(\mathcal{P}(ec))$, faut-il l'augmenter ou la réduire pour faciliter la sélection ? Cela dépend : si $\mathbb{E}(\mathcal{P}(ec)) < \mathbb{E}(\mathcal{P}_{pic}(ec))$, il faut la réduire ; si $\mathbb{E}(\mathcal{P}(ec)) > \mathbb{E}(\mathcal{P}_{pic}(ec))$, il faut l'augmenter, si $\mathbb{E}(\mathcal{P}(ec)) = \mathbb{E}(\mathcal{P}_{pic}(ec))$, les deux options sont bénéfiques. Il faut dans tous les cas chercher à \og s'éloigner \fg{} du pic\ldots{} ce qui suppose de le connaître. À défaut de le connaître avec certitude, si l'on connaît certains couples $\left( \mathbb{E}(\mathcal{P}(ec)), MTSN\right)$, il est possible de trouver une fonction de la forme de celle de l'équation~\ref{eq:pdfModel} correspondant aux données, et permettant d'estimer la valeur de $\mathbb{E}(\mathcal{P}_{pic}(ec))$.
 	
 	Ensuite, il est possible de déterminer dans quel sens les paramètres A et F doivent évoluer, de préférence de concert, mais agir sur un seul d'entre eux suffit à obtenir un effet tout à fait significatif, comme le montrent les figures~\ref{fig:aEffectPerf} et~\ref{fig:fEffectPerf}.
 	
@@ -1072,7 +1072,7 @@
 	
 	De fait, les performances de sélection peuvent être modélisées de façon satisfaisante et simple avec une approximation polynomiale de degré 2, à condition que les fréquences soient suffisamment élevées. Nous préconisons donc ce modèle pour ces conditions, car il est plus simple d'utilisation que celui fondé sur le périmètre et, de surcroît, légèrement plus précis. Il convient cependant de garder les limites de son domaine d'application à l'esprit avant de s'en servir.
 	
-	Toutefois, et comme pour l'estimation des performances à partir de $\mathbb{E}(\mathcal{P}(ec))$, il existe une valeur $\mathcal{A}_{pic}(ec)$ pour laquelle la difficulté de sélection est maximale. Ainsi, pour une condition (V,F,A) donnée, selon que $\mathbb{E}(\mathcal{A}(ec))$ sera supérieure ou inférieure à $\mathcal{A}_{pic}(ec)$, la minimisation de la difficulté de la tâche nécessitera de réduire ou d'augmenter la valeur de $\mathbb{E}(\mathcal{A}(ec))$, respectivement. Cela implique de connaître $\mathcal{A}_{pic}(ec)$, au moins approximativement.
+	Toutefois, et comme pour l'estimation des performances à partir de $\mathbb{E}(\mathcal{P}(ec))$, il existe une valeur $\mathbb{E}(\mathcal{A}_{pic}(ec))$ pour laquelle la difficulté de sélection est maximale. Ainsi, pour une condition (V,F,A) donnée, selon que $\mathbb{E}(\mathcal{A}(ec))$ sera supérieure ou inférieure à $\mathbb{E}(\mathcal{A}_{pic}(ec))$, la minimisation de la difficulté de la tâche nécessitera de réduire ou d'augmenter la valeur de $\mathbb{E}(\mathcal{A}(ec))$, respectivement. Cela implique de connaître $\mathbb{E}(\mathcal{A}_{pic}(ec))$, au moins approximativement.
 
 \section{Conclusion}
 	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
