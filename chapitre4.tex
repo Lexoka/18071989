@@ -766,7 +766,39 @@
 	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\gamma$}{gamma}}
 	Si la figure~\ref{fig:gammaVfaLin} suggère que l'augmentation de A et de F ont le même effet sur $\gamma$, à savoir en diminuer la valeur, la figure~\ref{fig:gammaVfaLog} montre que, dès lors que A atteint une valeur relativement élevée (autour de 50) la fréquence a un impact très important sur la valeur de $\gamma$. Inversement, lorsque A est en dessous de ce seuil, l'impact de F sur $\gamma$ est assez faible, voire presque nul pour de petites valeurs de A.
 	
-	On peut donc supposer que le produit AF ne serait pas un très bon prédicteur de $\gamma$, car le poids de F serait trop fort\ldots{} Mais une expression de la forme $A\times{}F^{k}$ avec $k \in [0,1]$ pourrait être plus appropriée. Des essais empiriques avec différentes valeurs de $k$ montrent que la meilleure est $k = \frac{1}{2}$, c'est-à-dire l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} confirme, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; et en effet --- nous obtenons un coefficient de corrélation de Pearson de seulement -0,601 entre le produit AF et $\gamma$, avec une \emph{p-value} inférieure à $10^{-53}$ toutefois). La figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$, de même que la figure~\ref{fig:gammaASQRTFlog}, qui représente les mêmes résultats, mais sur une échelle logarithmique, bien plus lisible pour les petites valeurs de $A\sqrt{F}$ ; nous obtenons ici un coefficient de corrélation de -0,768, avec une \emph{p-value} inférieure à $10^{-105}$.
+	On peut donc supposer que le produit AF ne serait pas un très bon prédicteur de $\gamma$, car le poids de F serait trop fort\ldots{} Mais une expression de la forme $A^{i}\times{}F^{j}$ avec $i,j \in \mathbb{R}$ pourrait être plus appropriée. Nous nous sommes donc attachés à trouver la meilleure expression de cette forme à mettre en relation avec $\gamma$. Pour ce faire, nous avons conçu l'algorithme suivant :
+	
+	Pour une expression de la forme $A^{i}\times{}F^{j}$ donnée :	
+	
+	\begin{enumerate}
+		\item Pour chaque couple (A,F), calculer la valeur $A^{i}\times{}F^{j}$ correspondante ;
+		\item Trier l'ensemble des données, coefficients $\gamma$ compris, selon les valeurs $A^{i}\times{}F^{j}$, en ordre croissant (ou décroissant, de manière équivalente) ;
+		\item Partitionner l'ensemble des valeurs de $\gamma$ en 20 sous-ensembles de valeurs consécutives de $\gamma$, et de cardinaux égaux ;
+		\item Calculer l'écart-type de chaque sous-ensemble ;
+		\item Calculer et retourner la moyenne de ces écarts-types.
+	\end{enumerate}
+	
+	Plus cette moyenne est faible, plus l'expression est considérée comme bonne, car cela revient à minimiser la dispersion des valeurs de $\gamma$ pour un intervalle de valeurs de $A^{i}\times{}F^{j}$ donné. Plus cette valeur est faible, plus nous sommes proches d'une situation où l'on peut dire qu'il existe une fonction continue qui à une valeur de $A^{i}\times{}F^{j}$ associe une unique valeur de $\gamma$.
+	
+	Nous avons appliqué cet algorithme à 6400 couples $(i,j)$, avec $i,j \in [0,1;4]$. Les valeurs obtenues pour la moyenne des écarts-types sont représentées sous forme de carte thermique sur la figure~\ref{fig:spread_v_af}. Celle-ci illustre que l'expression n'admet pas une unique forme optimale, mais un ensemble infini, représenté par la ligne en bleu foncé. Il s'agit plus précisément des couples $(i,j)$ tels que $i = 2j$.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/spread_v_af}
+		\caption[Moyenne des écarts-types de $\gamma$ en fonction de $i$ et $j$.]{Moyenne des écarts-types de $\gamma$ en fonction des exposants de A et F. La valeur de cette moyenne se lit d'après l'échelle de couleur à droite.}
+		\label{fig:spread_v_af}
+	\end{figure}
+	
+	Afin de le confirmer, nous avons représenté la moyenne des écarts-types des valeurs de $\gamma$ en fonction du rapport $\frac{i}{j}$, sur la figure~\ref{fig:spread_v_expa_over_expf}. Or, on observe bien un minimum en $\frac{i}{j} = 2$, confirmant l'observation faite sur la carte thermique~\ref{fig:spread_v_af}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch4/spread_v_expa_over_expf}
+		\caption[Moyenne des écarts-types de $\gamma$ en fonction de $i/j$.]{Moyenne des écarts-types de $\gamma$ en fonction du rapport des exposants de A et F, c'est-à-dire en fonction de $\frac{i}{j}$ où $i$ et $j$ sont les exposants dans l'expression $A^{i}F^{j}$.}
+		\label{fig:spread_v_expa_over_expf}
+	\end{figure}
+	
+	Nous choisissons donc de simplement fixer $i = 1$ et $j = \frac{1}{2}$, c'est-à-dire d'adopter l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} illustre, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; et en effet nous obtenons un coefficient de corrélation de Pearson de seulement -0,601 entre le produit AF et $\gamma$, avec une \emph{p-value} inférieure à $10^{-53}$ toutefois. La figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$, de même que la figure~\ref{fig:gammaASQRTFlog}, qui représente les mêmes résultats, mais sur une échelle logarithmique, bien plus lisible pour les petites valeurs de $A\sqrt{F}$ ; nous obtenons ici un coefficient de corrélation de -0,768, avec une \emph{p-value} inférieure à $10^{-105}$.
 	
 	% AF:		(-0.60099016653473358, 2.5188805302307829e-54)
 	% ASQRT(F):	(-0.76821320224146317, 2.7924336218256319e-106)
@@ -991,7 +1023,7 @@
 	
 	\subsection{Pseudo-entropie et valeur de \texorpdfstring{$\delta$}{delta}}
 	
-	De même que pour $\gamma$, tenter de représenter $\delta$ en fonction du produit AF démontre une grande dispersion, comme on le voit sur la figure~\ref{fig:af_delta}. Mais, ainsi que l'illustre la figure~\ref{fig:a_rootF_delta}, représenter $\delta$ en fonction de $A\sqrt{F}$ produit un résultat beaucoup plus convaincant, permettant une modélisation.
+	De même que pour $\gamma$, tenter de représenter $\delta$ en fonction du produit AF démontre une grande dispersion, comme on le voit sur la figure~\ref{fig:af_delta}. Mais, ainsi que l'illustre la figure~\ref{fig:a_rootF_delta}, représenter $\delta$ en fonction de $A\sqrt{F}$ produit un résultat beaucoup plus convaincant, permettant une modélisation. Notre algorithme de recherche de l'expression $A^{i}F^{j}$ optimale le confirme.
 	
 	En effet, sur cette échelle logarithmique, deux segments rectilignes sont observables, qui se rejoignent autour de $A\sqrt{F}$ = 120, dans une courbe commune. Or, un segment rectiligne sur une échelle logarithmique est caractéristique d'une loi de puissance ; nous avons donc ici deux lois de puissance combinées.
 	
