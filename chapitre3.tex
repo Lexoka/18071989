@@ -1,6 +1,6 @@
 %!TEX root = these.tex
 
-\chapter[Taxinomie des environnements de sélection]{Taxinomie des environnements de sélection}
+\chapter[Taxinomie des environnements de sélection]{Taxinomie des environnements de sélection de cibles en mouvement}
 \minitoc
 \label{chap3}
 \cleardoublepage
@@ -39,10 +39,10 @@
 	\subsubsection{Environnements 3D projetés sur un plan}
 	De nombreux types d'objets évoluent dans des environnements tridimensionnels mais sont couramment visualisés et sélectionnés à l'aide de systèmes bidimensionnels. Notez que c'est un choix, qu'il est généralement possible d'utiliser des systèmes 3D, et que pour certaines applications, c'est occasionnellement le cas.
 	
-	Nous nous contentons ici de faire l'inventaire des applications pouvant entrer dans la catégorie \og 3D projetée en 2D \fg{}. Citons donc les simulations moléculaires, le contrôle de l'espace aérien ou extra-atmosphérique, le contrôle de l'espace maritime quand les sous-marins sont pris en compte, la vidéo-surveillance quand les environnements présentent de forts écarts d'altitude (comme dans un simple bâtiment à plusieurs étages), les retransmissions d'événements sportifs (généralement réduits à une vidéo 2D), et enfin la plupart des jeux vidéo dits \og en 3D \fg{} --- à ne pas confondre avec la 3D au sens de \emph{stéréoscopie}.
+	Nous noterons donc ici les applications pouvant entrer dans la catégorie \og 3D projetée en 2D \fg{}, qu'elles puissent également intégrer la catégorie 3D ou non. Citons donc les simulations moléculaires, le contrôle de l'espace aérien ou extra-atmosphérique, le contrôle de l'espace maritime quand les sous-marins sont pris en compte, la vidéo-surveillance quand les environnements présentent de forts écarts d'altitude (comme dans un simple bâtiment à plusieurs étages), les retransmissions d'événements sportifs (généralement réduits à une vidéo 2D), et enfin la plupart des jeux vidéo dits \og en 3D \fg{} --- à ne pas confondre avec la 3D au sens de \emph{stéréoscopie}.
 	
 	\subsubsection{Environnements 3D}
-	Parfois, l'on peut interagir avec un environnement 3D à l'aide d'un dispositif de visualisation immersif et un périphérique de saisie adapté, ayant généralement au moins trois degrés de liberté.
+	Parfois, il est possible d'interagir avec un environnement 3D à l'aide d'un dispositif de visualisation immersif et un périphérique de saisie adapté, ayant généralement au moins trois degrés de liberté.
 	
 	C'est occasionnellement le cas des simulations moléculaires et autres applications scientifiques, de certains jeux vidéo, et potentiellement de toutes les applications mentionnées dans la catégorie \og 3D projetée en 2D \fg{}, même si nous n'avons pas connaissance, par exemple, de tels systèmes actuellement utilisés pour le contrôle de l'espace aérien.
 
@@ -76,7 +76,7 @@
 	Même un piéton sur un trottoir ou un athlète sur une piste de course peuvent avoir une trajectoire localement uniforme. Les projectiles ayant des trajectoires balistiques, ils ne sont pas de mouvement uniforme, mais peuvent l'être si ce mouvement est projeté sur un plan horizontal, masquant les variations d'altitude (quoique des variations de vitesse puissent demeurer perceptibles). Pour être tout à fait exact, un projectile tournant sur lui-même dans l'air (ou un autre fluide) est soumis à l'effet Magnus~\cite{magnus1853ueber, briggs1959effect} et n'a donc pas une trajectoire balistique ; selon l'axe de sa rotation, il peut donc ne pas avoir un mouvement rectiligne une fois sa trajectoire projetée sur un plan horizontal. C'est par exemple le cas d'un ballon de football suite à une \og frappe enroulée \fg{}.
 
 	\subsubsection{Périodicité}
-	Un mouvement sera dit périodique si les changements de directions sont tels que l'objet effectuera une trajectoire qu'il répétera à intervalles réguliers. Plus formellement, un mouvement est périodique s'il admet une période $T$ telle que :
+	Un mouvement sera dit périodique si les changements de direction sont tels que l'objet effectuera une trajectoire qu'il répétera (éventuellement sur une partie seulement) à intervalles réguliers. Plus formellement, un mouvement est périodique s'il admet une période $T$ telle que :
 	
 	$\forall t,~Pos_{t}~=~Pos_{t+T}$ où $Pos_{t}$ désigne la position de l'objet à l'instant $t$.
 	
@@ -155,7 +155,7 @@
 	La Terre, dans son orbite autour du Soleil, peut donc être considérée comme un objet de vitesse constante, en tolérant cette approximation. Nous pouvons également ajouter les piétons en marche, ou les athlètes pendant une course d'endurance.
 	
 	\subsubsection{Objets susceptibles d'accélérer vivement}
-	Comme la vitesse, l'accélération est une quantité réelle. De fait, son utilisation comme critère de discrimination implique de la discrétiser. Ici nous ferons simplement la différence entre les objets dont l'accélération est négligeable et ceux dont elle est clairement perceptible. Si elle est particulièrement élevée, nous le préciserons. Ajoutons que nous définissons ici l'accélération comme la dérivée de la \emph{vitesse} et non de la \emph{vélocité}. Nous partons donc du principe qu'un objet changeant brusquement de direction tout en maintenant une vitesse constante a une \og accélération \fg{} nulle.
+	Comme la vitesse, l'accélération est une quantité réelle. De fait, son utilisation comme critère de discrimination implique de la discrétiser. Ici nous ferons simplement la différence entre les objets dont l'accélération est négligeable et ceux dont elle est clairement perceptible. Si elle est particulièrement élevée, nous le préciserons. Ajoutons que nous définissons ici l'accélération comme la dérivée de la \emph{vitesse} (la valeur scalaire représentant la norme de la vélocité) et non de la \emph{vélocité} (qui est une valeur vectorielle). Nous partons donc du principe qu'un objet changeant brusquement de direction tout en maintenant une vitesse constante a une \og accélération \fg{} nulle, même si sa vélocité change brusquement, par exemple en passant de $\vec{v}_{t} = (0,1)$ à $\vec{v}_{t+1} = (1,0)$, où le vecteur vélocité est inversé mais la vitesse demeure constante et vaut 1.
 	
 	Nous avons vu que beaucoup d'objets sont susceptibles d'avoir une vitesse constante, au moins pendant un certain temps. Pour la plupart, ils sont également susceptibles d'accélérer de façon plus ou moins vive, selon les circonstances. À vrai dire, c'est même le cas des personnages de jeux vidéo cités plus haut, car ils peuvent passer d'une vitesse nulle à leur vitesse maximale de façon presque instantanée, et dans bien des jeux, cette accélération se fait en l'espace d'une \emph{frame}, c'est-à-dire (grossièrement) d'une itération de la boucle de jeu, soit un peu moins de 17~ms dans la plupart des cas.
 	
@@ -179,7 +179,7 @@
 	
 	Les objets nanoscopiques, du moins tels qu'ils sont généralement simulés, tendant à changer de direction de manière abrupte, et la notion de fréquence de changement de direction a généralement du sens. Précisions tout de même que cette fréquence ne saurait être mesurée en temps véritable mais dans le temps de l'animation : en clair, si un atome peut changer de direction de très nombreuses fois par nanoseconde (d'où une fréquence extrêmement élevée) ce qui nous intéresse ici est la fréquence des changements de direction dans l'animation présentée à un utilisateur, car nous ne nous préoccupons que de ce qu'un utilisateur perçoit et de la mesure dans laquelle cela influe sur ses performances de sélection.
 	
-	Il en résulte que dans les simulations moléculaires, par exemple, cette fréquence dépend de la vitesse à laquelle on décide de jouer une animation, ou d'afficher une simulation, comme pour la vitesse des cibles.
+	Il en résulte que dans les simulations moléculaires, par exemple, cette fréquence dépend de la vitesse à laquelle on décide de jouer une animation, ou d'afficher une simulation (dont le pas de temps est également important), comme pour la vitesse des cibles.
 	
 	Les objets virtuels tels que ceux rencontrés dans les jeux vidéo ne sont soumis à aucune contrainte physique, et leurs directions peuvent changer de manière instantanée ou continue, selon les choix des développeurs ; dans certains cas, cette notion de fréquence aura donc du sens, et dans d'autres non.
 	
@@ -200,7 +200,7 @@
 	C'est par exemple le cas des êtres humains en mouvement, et \emph{a fortiori} de plus petits animaux plus vifs, dont l'exemple le plus emblématique est peut-être la mouche, connue pour ses trajectoires saccadées, avec des changements de direction d'environ 90\textdegree{} en moins de 100~ms~\cite{tammero2002influence, collett1975visual, wagner1986flight, schilstra1999blowfly} --- nous reviendrons plus loin sur cette classe de mouvement.
 	
 	\subsubsection{Objets changeant de direction à basse fréquence}
-	Considérons qu'un objet ciné-discret change de direction à basse fréquence si celle-ci est inférieure ou égale à 1~Hz. Si l'objet est ciné-continu, nous dirons que sa fréquence est basse (par un abus de langage) si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est faible.
+	Posons comme définition que pour un objet ciné-discret, sa fréquence de changements de direction est \og basse \fg{} si elle est inférieure ou égale à 1~Hz. Si l'objet est ciné-continu, nous dirons que sa fréquence est basse (par un abus de langage) si, sur la durée de son mouvement, la proportion du temps qu'il passe à changer de direction est faible.
 	
 	Il va sans dire qu'il y a là encore quelque chose d'arbitraire, voire de subjectif, mais c'est probablement inévitable pour dresser une taxinomie pertinente.
 	
@@ -1130,7 +1130,7 @@
 	
 	Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées, si elles dépassent 12~Hz ou 15~Hz, respectivement. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement ; cette réserve ne s'applique pas aux vitesses, et nettement moins aux angles.
 	
-	Par ailleurs, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif.
+	Par ailleurs, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif. De plus, le grand nombre (plus de 116~000) d'images annotés nous permet de prétendre à une certaine représentativité.
 	
 	Pour commencer, nous avons annoté un enregistrement vidéo d'une simulation de dynamique moléculaire, avec une petite molécule. Les résultats que nous avons obtenus sont présentés sous forme d'histogrammes de vitesses (figure~\ref{fig:atom_filteredSpeed}), de fréquences (figure~\ref{fig:atom_frequency}), et d'angles (figure~\ref{fig:atom_angle}) d'une part ; et sur la table~\ref{tab:atom_stats} d'autre part. Sur cette dernière et sur toutes les tables de cette section figurent la vitesse maximale enregistrée ($V_{max}$), la vitesse moyenne ($\overline{V}$), l'écart-type des vitesses, ($\sigma_{V}$), la fréquence maximale ($F_{max}$), la fréquence moyenne ($\overline{F}$), l'écart-type des fréquences ($\sigma_{F}$), l'angle maximal ($A_{max}$), l'angle moyen ($\overline{A}$), et enfin l'écart-type des angles ($\sigma_{A}$). Sur les histogrammes comme sur les tables, les vitesses sont en cm/s, les fréquences en Hz, et les angles en degrés. Les résultats sont cohérents avec nos mesures sur des données brutes de simulation, et illustrent bien à quel point les cibles de ce type peuvent être difficiles à saisir.
 	
@@ -1239,7 +1239,7 @@
 		\label{fig:histConcorde}
 	\end{figure}
 	
-	Ici encore et pour les mêmes raisons, les vitesses faibles sont majoritaires mais de nombreuses valeurs élevées furent enregistrées. Les angles sont le plus souvent petits mais parfois beaucoup plus grands. De même, les valeurs proches de 180\textdegree{} s'expliquent par le fait que la caméra peut se déplacer plus vite que la cible, ce qui implique un demi-tour apparent pour celle-ci.
+	Ici encore et pour les mêmes raisons, les vitesses faibles sont majoritaires mais de nombreuses valeurs élevées furent enregistrées. Les angles sont le plus souvent petits mais parfois beaucoup plus grands. De même, les valeurs proches de 180\textdegree{} s'expliquent par le fait que la caméra peut anticiper les mouvements de la cible, ce qui implique un demi-tour de celle-ci dans le référentiel de l'écran.
 	
 	\footnotetext{\url{https://www.bea.aero/docspa/2000/f-sc000725/pdf/f-sc000725.pdf}}
 
@@ -1824,7 +1824,7 @@
 		Vidéoludique   & O        & O                              & O     & O       & O  & O     & O  & O & O & O        & O          & O         & O         & O & O & O & O & O & O
 		\end{tabular}
 		\end{adjustbox}
-		\caption[Classification des cibles mobiles et environnement de sélection]{Tableau récapitulatif de notre classification des cibles mobiles et de leurs environnements. Pour chaque ligne correspondant à un type d'objet, un O (pour Oui) est inscrit dans une colonne s'il satisfait, au moins dans certains cas, la caractéristique correspondante. Certains objets pouvant avoir des caractéristiques variables selon les circonstances, ils peuvent correspondre à des colonnes mutuellement exclusives. Clef : Uni. signifie uniforme, Pér. signifie péridique, Mark. signifie markovien, 3D/2D signifie 3D projeté en 2D, v indique une petite vitesse et V une grande, de même pour f/F, a/A et d/D pour les fréquences, les angles et les densités, respectivement. Acc. signifie accélération, const. signifie constante, Cd signifie ciné-discret et Cc indique un mouvement ciné-continu.}
+		\caption[Classification des cibles mobiles et environnement de sélection]{Tableau récapitulatif de notre classification des cibles mobiles et de leurs environnements. Pour chaque ligne correspondant à un type d'objet, un O (pour Oui) est inscrit dans une colonne s'il satisfait, au moins dans certains cas, la caractéristique correspondante. Certains objets pouvant avoir des caractéristiques variables selon les circonstances, ils peuvent correspondre à des colonnes mutuellement exclusives. Clef : Uni. signifie uniforme, Pér. signifie périodique, Mark. signifie markovien, 3D/2D signifie 3D projeté en 2D, v indique une petite vitesse et V une grande, de même pour f/F, a/A et d/D pour les fréquences, les angles et les densités, respectivement. Acc. signifie accélération, const. signifie constante, Cd signifie ciné-discret et Cc indique un mouvement ciné-continu.}
 		\label{tab:recapSelEnvs}
 	\end{table}
 
