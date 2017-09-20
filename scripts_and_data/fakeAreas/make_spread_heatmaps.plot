@@ -5,10 +5,10 @@ set ylabel "Exposant du paramètre F"
 unset key
 
 set pm3d map
-set pm3d interpolate 32,32
+#set pm3d interpolate 32,32
 
-set xrange[0.1:4]
-set yrange[0.1:4]
+#set xrange[0.1:4]
+#set yrange[0.1:4]
 
 #set for [i=1:10] ytics (i)
 
