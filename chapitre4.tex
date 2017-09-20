@@ -530,7 +530,7 @@
 \section{Profils de vitesse du curseur}
 	Comme nous le soulignions lors du chapitre~\ref{chap2}, un mouvement de sélection est généralement divisé en une première phase, rapide, de longue distance et dite \emph{balistique}, et une seconde phase, lente, de courte distance et communément appelée \emph{de correction}~\cite{mackenzie1987three, crossman1983feedback}. Ce principe est illustré par les figures~\ref{fig:ballistic} et~\ref{fig:delphianPeak}.
 	
-	Nous notions alors que, d'après divers travaux, une sélection difficile rallonge la phase de correction, et avancions que les difficultés présentées par le caractère mobile des cibles qui nous intéressent pouvait mener à une observation similaire.
+	Nous notions alors que, notamment d'après les travaux de Soechting \emph{et al.}~\cite{soechting1984effect}, une sélection difficile rallonge la phase de correction, et nous avancions que les difficultés présentées par le caractère mobile des cibles qui nous intéressent pouvait mener à une observation similaire.
 	
 	\subsection{Hypothèses}
 	Nous allons nous attacher ici à analyser les profils de vitesse du curseur lors de tâches de sélection de difficultés diverses, afin d'évaluer cette hypothèse, qui est en réalité double :
@@ -582,7 +582,7 @@
 	On constate sur ces profils que les phases balistiques et de correction sont relativement équilibrées, leurs parts respectives du temps de sélection étant approximativement les mêmes. Précisons que la limite entre la phase balistique et la phase de correction n'est pas toujours délimitée de façon très précise, aussi est-il difficile d'en faire des mesures exactes. Mais il est possible de tirer des enseignements d'un examen visuel des profils, ainsi que de mesures quantitatives et précises de la vitesse du curseur.
 	
 	\subsubsection{Cibles en mouvement rectiligne}
-	Si l'on compare les profils de la figure~\ref{fig:staticProfiles}, enregistrés pendant des sélections de cibles statiques, à ceux de la figure~\ref{fig:rectProfiles}, issus de sélections de cibles de mouvement rectiligne, on remarque déjà des différences, alors que le mouvement rectiligne est celui qui génère le moins de difficultés. On observe en effet que les sélections sont plus longues, mais que la durée des phases balistiques n'est pas sensiblement modifiée. En revanche, les phases de correction sont rallongées, et leur forme change quelque peu, avec l'apparition d'oscillations dont l'amplitude peut atteindre --- voire dépasser --- les 10~cm/s.
+	Si l'on compare les profils de la figure~\ref{fig:staticProfiles}, enregistrés pendant des sélections successives de quatre cibles statiques, à ceux de la figure~\ref{fig:rectProfiles}, issus de sélections de quatre cibles de mouvement rectiligne, on remarque déjà des différences, alors que le mouvement rectiligne est celui qui génère le moins de difficultés. On observe en effet que les sélections sont plus longues, mais que la durée des phases balistiques n'est pas sensiblement modifiée. En revanche, les phases de correction sont rallongées, et leur forme change quelque peu, avec l'apparition d'oscillations dont l'amplitude peut atteindre --- voire dépasser --- les 10~cm/s.
 	
 	\begin{figure}[!htb]
 		\centering
@@ -613,7 +613,7 @@
 			\caption{Profil du sujet 9.}
 			\label{fig:rectProfile9}
 		\end{subfigure}
-		\caption[Profils de vitesse du curseur, cibles de mouvement rectiligne]{Profils lissés de vitesse du curseur pour quatre sujets, avec des cibles de mouvement rectiligne à 2,19~cm/s. Le temps (en secondes) est en abscisse et la vitesse (en cm/s) est en ordonnée.}
+		\caption[Profils de vitesse du curseur, cibles de mouvement rectiligne]{Profils lissés de vitesse du curseur pour quatre sujets, avec des cibles de mouvement rectiligne à 2,19~cm/s. Le temps (en secondes) est en abscisse et la vitesse (en cm/s) est en ordonnée. Chaque profil correspond à quatre sélections successives.}
 		\label{fig:rectProfiles}
 	\end{figure}
 	
@@ -983,7 +983,7 @@
 	%	a			b			d			sigma
 	%[ 1.41728564  0.67526069  0.31374369  2.31879762]
 	% but with c manually fixed to 0.01
-	%pearsonr: (0.86316190221271505, 7.3359677429338683e-22)
+	% pearsonr: (0.86316190221271505, 7.3359677429338683e-22)
 
 	
 	Quoique ce modèle n'ait pas --- à ce jour --- plus de fondement théorique que celui de l'équation~\ref{eq:pdfModel} et de la figure~\ref{fig:timeVafFit}, il a l'avantage de ne pas passer par l'intermédaire du périmètre de l'enveloppe convexe. Il a cependant l'inconvénient d'avoir plus de paramètres, et précisément de ne pas tenir compte de $\mathbb{E}(\mathcal{P}(ec))$, qui représente une grandeur concrète, bien comprise et modélisée. Par conséquent, le modèle fondé sur le périmètre nous paraît plus approprié dans la majorité des cas.
