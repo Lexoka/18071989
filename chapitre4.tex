@@ -19,7 +19,7 @@
 \section{Génération de mouvements}
 	Si notre objectif est de caractériser les performances de sélection pour des cibles mobiles en fonction de la nature de leurs mouvements, notre intérêt se porte plus particulièrement sur les cibles de mouvements \og erratiques \fg{}, \og imprévisibles \fg{}, ou rappelant ceux d'une mouche.
 	
-	Ce focus a principalement deux motifs : premièrement, les chercheurs spécialisés dans la biologie structurale tentant d'utiliser des techniques de simulation de dynamique moléculaire interactive (voir le chapitre~\ref{chap1}) nous ont exprimé leurs difficultés d'interaction avec leurs systèmes, et particulièrement de sélection. Deuxièmement, de rapides tests empiriques suggéraient que les mouvements de ce type causaient les plus grandes difficultés pour des tâches de sélection.
+	Ce focus a principalement deux motifs : premièrement, les chercheurs spécialisés dans la biologie structurale tentant d'utiliser des techniques de simulation de dynamique moléculaire interactive (voir le chapitre~\ref{chap1}) nous ont exprimé leurs difficultés d'interaction avec leurs systèmes, et particulièrement de sélection. Deuxièmement, de rapides tests empiriques ont suggéré que les mouvements de ce type causent les plus grandes difficultés pour des tâches de sélection.
 	
 	\subsection{Modèle VFA}
 	Afin de tester cette hypothèse, nous avons conçu un modèle de génération de mouvements permettant, à l'aide d'un nombre de paramètres aussi petit que possible, de générer des mouvements aussi variés que possible dans leur nature. Pour rappel, il s'agit du modèle évoqué dans le chapitre~\ref{chap3}, et décrit par les paramètres suivants, pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
@@ -33,76 +33,9 @@
     Du fait de son fondement sur les paramètres $V$, $F$ et $A$, nous appellerons simplement ce modèle $VFA$.
     
     \subsection{VFA en 3D}
-    Quelques observations s'imposent. Tout d'abord, bien que décrit ici pour deux dimensions, ce modèle est naturellement extensible à l'espace tridimensionnel. En effet, les paramètres $V$, $F$ et $A$ ne changent pas ; seul un ajustement est nécessaire : la rotation du vecteur direction de l'objet animé doit se faire selon un axe qui, pour que la rotation effective soit toujours la même pour un angle donné, doit être orthogonal à $\vec{dir}$. Notre modèle étendu VFA3D fonctionne donc comme le modèle VFA, mais avec un axe de rotation orthogonal à $\vec{dir}$ choisi aléatoirement.
+    Bien que décrit ici pour deux dimensions, ce modèle est naturellement extensible à l'espace tridimensionnel. En effet, les paramètres $V$, $F$ et $A$ ne changent pas ; seul un ajustement est nécessaire : la rotation du vecteur direction de l'objet animé doit se faire selon un axe qui, pour que la rotation effective soit toujours la même pour un angle donné, doit être orthogonal à $\vec{dir}$. Notre modèle étendu VFA3D fonctionne donc comme le modèle VFA, mais avec un axe de rotation orthogonal à $\vec{dir}$ choisi aléatoirement.
     
-    \subsection{Un modèle puissant mais limité}
-	Les capacités offertes par le modèle VFA sont très nombreuses, mais demeurent limitées, et ne peuvent couvrir tous les besoins possible en matière de génération de mouvement aléatoire.
-    
-    \subsubsection{Vitesse constante}
-    Comme nous l'avons partiellement montré dans le chapitre~\ref{chap3}, le fait de varier les paramètres, en particulier $F$ et $A$, permet de générer des types de mouvement subjectivement très différents (voir les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180}), et d'enveloppes convexes de tailles très différentes également (voir la figure~\ref{fig:trajAreas}). Néanmoins, et outre le problème des objets autocorrélés, notre modèle repose notamment sur une vitesse constante, ce qui, de fait, exclut tous les objets susceptibles d'accélérer. Là encore, ce choix fut fait pour limiter le nombre de paramètres, toujours dans l'objectif d'atteindre un compromis entre la simplicité du modèle et sa capacité à générer des mouvements que nos sujets puissent percevoir comme fondamentalement différents.
-    
-	Nous souhaitions tout particulièrement pouvoir générer du mouvement perçu comme \og régulier \fg{} ou \og prévisible \fg{} ainsi que du mouvement \og irrégulier \fg{}, \og saccadé \fg{} ou \og imprévisible \fg{}.
-    
-   	\subsubsection{Pas de véritable autocorrélation}
-	Une autre observation très importante est que ce modèle ne peut générer que du mouvement markovien. En effet, à l'instant $t+1$, la rotation de $\vec{dir}$ générée est totalement indépendante de celle éventuellement générée à $t$, ou plus généralement de la dernière rotation générée, si elle existe. Cela ne signifie pas que $\vec{dir}_{t+1}$ soit indépendant de $\vec{dir}_{t}$, et il ne l'est pas, mais que le changement de direction à tout instant est indépendant du passé de l'objet concerné.
-    
-    Il en résulte que ce modèle ne peut générer du mouvement permettant d'étudier les performances de sélection sur des objets autocorrélés, tels que nous les avons définis et énumérés au cours du chapitre~\ref{chap3}. Ce choix reflète d'une part notre focus originel sur les simulations moléculaires (où il y a une demande claire émanant des utilisateurs) et d'autre part une volonté de conserver un modèle aussi simple que possible, afin de le rendre plus facile à utiliser, mais aussi pour pouvoir évaluer un échantillon représentatif des types de mouvements qu'il peut générer dans un laps de temps raisonnable pour une étude empirique, compte tenu notamment de la fatigue des sujets.
-    
-    \subsubsection{Mouvements pseudo-autocorrélés}
-	Remarquons tout de même qu'une trajectoire générée par notre modèle peut, au moins temporairement, approximer un mouvement autocorrélé. Attendu qu'une tâche de sélection, pour peu qu'elle ne soit pas trop difficile, peut se dérouler sur une durée inférieure ou égale à la durée pendant laquelle le modèle VFA peut approximer un mouvement autocorrélé, il n'est pas nécessairement inutile pour étudier les performances de sélection de ces objets. On privilégiera dans ce cas de très fortes valeurs de $F$ et de très faibles valeurs de $A$. La figure~\ref{fig:autocorr} fournit deux exemples de telles trajectoires que nous proposons d'appeler pseudo-autocorrélées, générées avec $F \in \{30,120\}$ et $A \in \{1,2\}$.
-	
-	\begin{figure}[!htb]
-		%\centering
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/ac_2_19_1_120a}
-			\caption[Mouvement pseudo-autocorrélé A]{$F = 120$ et $A = 1$.}
-			\label{fig:ac1_120A}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/ac_2_19_1_120b}
-			\caption[Mouvement pseudo-autocorrélé B]{$F = 120$ et $A = 1$, bis.}
-			\label{fig:ac_1_120B}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/ac_2_19_2_30}
-			\caption[Mouvement pseudo-autocorrélé B]{$F = 30$ et $A = 2$.}
-			\label{fig:ac_2_30}
-		\end{subfigure}		
-		~
-		\begin{subfigure}[t]{0.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch4/ac_2_19_2_60}
-			\caption[Mouvement pseudo-autocorrélé B]{$F = 120$ et $A = 1$, ter.}
-			\label{fig:ac_1_120C}
-		\end{subfigure}
-		\caption[Mouvements pseudo-autocorrélés]{Trois trajectoires générées avec les mêmes valeurs $F = 120$~Hz et $A = 1\degree$, et une avec $F = 30$~Hz et $A = 2\degree$. Dans tous les cas, $V = 2,19$~cm/s. Ces trajectoires ressemblent à celles que l'on pourrait attendre d'objets autocorrélés, tels que des véhicules, par exemple.}
-		\label{fig:autocorr}
-	\end{figure}
-    
-    \subsection{Proposition de modèles de génération de mouvements autocorrélés}
-    Les objets autocorrélés présentent néanmoins un intérêt certain, et les trajectoires pseudo-autocorrélées ne sont que des approximations qui peuvent s'avérer insuffisantes. Ces objets pourraient faire l'objet d'études spécifiques pour lesquelles de telles approximations ne seraient pas suffisantes. Nous proposons donc ici deux modèles différents permettant de générer des mouvements réellement autocorrélés.
-    
-    \subsubsection{Modèle VFA à mémoire}
-    Une première option pour un modèle adapté aux objets autocorrélés serait d'adapter le modèle VFA en lui ajoutant une mémoire, par exemple une mémoire du dernier changement de direction de l'objet concerné. L'on retiendrait ainsi l'angle du changement de direction à l'instant précédent ($\alpha_{t-T}$, avec $T = \frac{1}{F}$), et l'on pourrait appliquer un nouveau changement avec un angle plus ou moins proche de ce dernier, selon des paramètres. L'équation~\ref{eq:vfamem} présente une possibilité, où $\alpha$ est échantillonné entre $-A$ et $+A$, et $c_{ac} \in [0,1]$ est un coefficient d'autocorrélation.
-    
-    \begin{equation}
-		\alpha_{t} = \alpha_{t-T} \times c_{ac} + \alpha (1 - c_{ac})
-		\label{eq:vfamem}
-    \end{equation}
-    
-	Ainsi, lorsque le coefficient d'autocorrélation est nul, le système devient markovien ; lorsqu'il vaut 1, $\alpha_{nT}$ est constant (avec $n \in \mathbb{N}$). De fait, s'il est non nul, l'objet aura un mouvement circulaire s'il est ciné-continu et régulier s'il est ciné-discret ; s'il est nul, le mouvement sera rectiligne dans les deux cas.
-    
-    \subsubsection{Modèle newtonien}
-    Une seconde option ayant le mérite d'avoir un certain sens physique consisterait à considérer chaque objet comme une particule dotée d'une masse, et de la soumettre à une force qui, elle, serait régie par un modèle de type VFA, éventuellement modifié pour remplacer la vitesse par la norme de la force, notamment. Sans doute serait-il également opportun d'appliquer une force de friction afin d'éviter que l'application (même approximativement) constante d'une force (et donc d'une accélération\footnotemark{}) ne mène à des vitesses potentiellement croissantes et non bornées.
-    
-    \footnotetext{Rappelons que, d'après la seconde loi de Newton~\cite{newton1833philosophiae}, $\vec{F} = m\vec{a}$ où $F$ est une force, $m$ est la masse de l'objet sur lequel elle agit, et $\vec{a}$ est l'accélération de l'objet, soit $\vec{a} = \frac{\vec{F}}{m}$, où l'on voit bien que l'application d'une force constante à un objet de masse constante mène à une accélération constante, donc à une vitesse croissant linéairement. En l'absence de résistance à $\vec{F}$, la vitesse n'est pas bornée.}
-    
-    Le modèle nécessiterait un calibrage précis pour obtenir le comportement souhaité, notamment en ce qui concerne les masses des objets ou le coefficient de friction. Notons par ailleurs que, sauf dans certains cas particuliers (et après une période dynamique) les vitesses des objets ne seraient pas constantes pour une norme de $\vec{F}$ donnée, ce qui distinguerait ce modèle newtonien du nôtre (VFA). En soi, ce n'est pas nécessairement un problème --- et peut même être un avantage --- mais cela complique le contrôle des propriétés d'un environnement synthétique créé pour mener une étude empirique.
+
 
 \section{Expérience et protocole}
 	Nous avons mené une étude empirique~\cite{kouyoumdjian2015characterizing} visant à évaluer les performances de sélection de cibles mobiles en fonction de la nature du mouvement. Nous avions 13 sujets, âgés de 14 à 56 ans. Ils avaient pour tâche de cliquer sur une cible mobile (un disque) affichée sur un écran d'ordinateur de bureau.
@@ -115,7 +48,6 @@
 	\footnotetext{\url{http://www.dell.com/en-us/work/shop/cty/pdp/spd/dell-u2412m}}
 
 	\subsection{Tâche et conditions}
-	\subsubsection{Description de la tâche}
 	La tâche consistait à sélectionner une cible parmi 50 objets identiques : des disques de 5,4~mm de diamètre. Les 49 \og distracteurs \fg{} étaient affichés en gris, et la cible à sélectionner était rouge, comme l'illustre la figure~\ref{fig:app}. Les distracteurs et la cible étaient mus selon les mêmes paramètres V, F et A de notre modèle, mais l'angle $\alpha$ échantillonné à chaque période T était échantillonné séparément pour chaque objet, donc généralement différent. Lorsqu'un disque \og percutait \fg{} le bord de la fenêtre, il \og rebondissait \fg{} dessus.
 	
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
@@ -1107,9 +1039,7 @@
 	Toutefois, et comme pour l'estimation des performances à partir de $\mathbb{E}(\mathcal{P}(ec))$, il existe une valeur $\mathbb{E}(\mathcal{A}_{pic}(ec))$ pour laquelle la difficulté de sélection est maximale. Ainsi, pour une condition (V,F,A) donnée, selon que $\mathbb{E}(\mathcal{A}(ec))$ sera supérieure ou inférieure à $\mathbb{E}(\mathcal{A}_{pic}(ec))$, la minimisation de la difficulté de la tâche nécessitera de réduire ou d'augmenter la valeur de $\mathbb{E}(\mathcal{A}(ec))$, respectivement. Cela implique de connaître $\mathbb{E}(\mathcal{A}_{pic}(ec))$, au moins approximativement.
 
 \section{Conclusion}
-	Nous avons montré que le modèle VFA était adapté aux objets de mouvements markoviens et qu'il pouvait être modifié pour décrire des objets de mouvements autocorrélés, soit en lui ajoutant une mémoire et un paramètre d'autocorrélation, soit par physique newtonienne. En outre, il admet une extension naturelle à la 3D.
-	
-	Nous avons détaillé le protocole d'une évaluation empirique visant à caractériser les performances de sélection de cibles mobiles en fonction de la nature de leurs mouvements, et avons détaillé l'impact des paramètres V, F, et A de notre modèle sur les performances de sélection, d'abord séparément, puis ensemble.
+	Nous avons montré que le modèle VFA admet une extension naturelle à la 3D, avant de détailler le protocole d'une évaluation empirique visant à caractériser les performances de sélection de cibles mobiles en fonction de la nature de leurs mouvements. Cela nous a permis de caractériser l'impact des paramètres V, F, et A de notre modèle sur les performances de sélection, d'abord séparément, puis ensemble.
 	
 	Nous avons ainsi montré que les performances étaient relativement bonnes avec des mouvements \og stables \fg{} et prévisibles, ou \og vibratoires \fg{} et relativement prévisibles, mais mauvaises avec des mouvements \og saccadés \fg{}, imprévisibles. Il ressort de nos mesures quantitatives et des impressions subjectives de nos sujets que la nature prévisible ou imprévisible d'une classe de mouvements est déterminante pour les performances de sélection. Nous avons relié ces familles de mouvements à des valeurs particulières de couples de paramètres (F,A). Nous avons par ailleurs proposé le produit FA comme prédicteur de la difficulté de sélection, pour une vitesse donnée.
 	
