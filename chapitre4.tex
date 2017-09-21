@@ -36,7 +36,6 @@
     Bien que décrit ici pour deux dimensions, ce modèle est naturellement extensible à l'espace tridimensionnel. En effet, les paramètres $V$, $F$ et $A$ ne changent pas ; seul un ajustement est nécessaire : la rotation du vecteur direction de l'objet animé doit se faire selon un axe qui, pour que la rotation effective soit toujours la même pour un angle donné, doit être orthogonal à $\vec{dir}$. Notre modèle étendu VFA3D fonctionne donc comme le modèle VFA, mais avec un axe de rotation orthogonal à $\vec{dir}$ choisi aléatoirement.
     
 
-
 \section{Expérience et protocole}
 	Nous avons mené une étude empirique~\cite{kouyoumdjian2015characterizing} visant à évaluer les performances de sélection de cibles mobiles en fonction de la nature du mouvement. Nous avions 13 sujets, âgés de 14 à 56 ans. Ils avaient pour tâche de cliquer sur une cible mobile (un disque) affichée sur un écran d'ordinateur de bureau.
 
@@ -770,8 +769,6 @@
 		\caption[Coefficients $\gamma$ en fonction de F et A, quater (log-log)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance est en vert. Remarquez que puisque $\mathbb{E}(\mathcal{P}(ec)) = \gamma{}V$, ces valeurs correspondent également à $\mathbb{E}(\mathcal{P}(ec))$ quand $V = 1$.}
 		\label{fig:asqrtFVgammaLogLogUnbrokenPowerFit}
 	\end{figure}
-	
-	%Il est donc possible, à partir du produit $A\sqrt{F}$, de se passer de l'étape d'interpolation bilinéaire pour estimer la valeur de $\gamma$ : il suffit de calculer le produit $A\sqrt{F}$ et de le comparer aux valeurs de référence, éventuellement avec une simple interpolation linéaire. L'ajustement d'une fonction à la courbe de la figure~\ref{fig:gammaASQRTF} fournirait une solution encore plus simple.
 	
 	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $x$ représente $A\sqrt{F}$, $M$ est la valeur maximale atteinte, $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure, et $k$ est une constante. Cette fonction peut donc s'écrire également sous la forme de l'équation~\ref{eq:brokenPowerAF}, et l'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}.
 	
