@@ -526,7 +526,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=STS088&roll=724&frame=66}}
 	
 	\subsection{Observations}
-	L'espace extra-atmosphérique présente de très nombreux objets d'intérêt, ayant des caractéristiques variées, et dont la détection peut être critique. Un système de sélection adapté devrait donc pouvoir gérer l'hétérogénéïté des cibles potentielles et garantir des performances minimales pour les cas les plus importants.	
+	L'espace extra-atmosphérique présente de très nombreux objets d'intérêt, ayant des caractéristiques variées, et dont la détection peut être critique. Un système de sélection adapté devrait donc pouvoir gérer l'hétérogénéité des cibles potentielles et garantir des performances minimales pour les cas les plus importants.	
 	
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation.
@@ -659,22 +659,22 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\emph{Sand marble races are a lot more thrilling than I thought they would be}
 	
 	\url{https://www.reddit.com/r/videos/comments/6linoy/sand_marble_races_are_a_lot_more_thrilling_than_i}}
-	
+
+	\FloatBarrier	
 	\section{Jeux vidéo}
-	\FloatBarrier \subsection{Une tâche centrale dans de nombreux genres}
 	La sélection ou le pointage de cibles mobiles est une tâche que l'on retrouve dans de très nombreux jeux vidéo, appartenant à un nombre important de catégories. On peut notamment citer les jeux de tir, les jeux de rôle d'action, les jeux de gestion, ou de stratégie et tactique militaire, les simulateurs de vol de combat, ainsi que les jeux de type arène de bataille en ligne multijoueur.
 	
 	D'un type de jeu à l'autre, la sélection de cibles varie à la fois du fait de la nature des cibles et parce que la tâche elle-même n'est pas vue de la même façon. Si elle est un élément essentiel des mécanismes du jeu dans certains genres, avec une valeur ludique propre, dans d'autres, elle est purement utilitaire, comme nous allons le voir dans les sous-sections suivantes.
 	
-	\FloatBarrier \subsection{Jeux de tir}
-	Dans un jeu de tir à la première personne (\emph{First-person shooters}, ou FPS, comme \emph{Doom}, \emph{Counter-Strike}\ldots{} et \emph{Third-person shooters}, ou TPS, comme \emph{Max Payne}, \emph{Gears of War}\ldots{}) la caméra est placée \og dans la tête \fg{} du personnage, selon un mode appelé \og vue subjective \fg{} ; dans un TPS, la caméra est placée hors du personnage, souvent derrière lui. On appelle parfois la vue d'un TPS \og objective \fg{}. Un FPS est présenté sur la figure~\ref{fig:bf1}, tandis qu'un exemple de TPS est fourni par la figure~\ref{fig:gears}.
+	\subsection{Jeux de tir}
+	Dans un jeu de tir à la première personne (\emph{First-person shooters}, ou FPS, comme \emph{Doom}, \emph{Counter-Strike}\ldots{} et \emph{Third-person shooters}, ou TPS, comme \emph{Max Payne}, \emph{Gears of War}\ldots{}) la caméra est placée \og dans la tête \fg{} du personnage, selon un mode appelé vue subjective ; dans un TPS, la caméra est placée hors du personnage, souvent derrière lui, on parle alors de objective. Un FPS et un TPS sont présentés sur la figure~\ref{fig:shooters}.
 	
 	\begin{figure}[!htbp]
 		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch1/bf1}
-			\caption[Le FPS \emph{Battlefield 1}]{Le FPS \emph{Battlefield 1}. Aucune cible n'est présente sur cette image, mais des ennemis peuvent surgir n'importe quand, de n'importe où, et le joueur devra réagir avec vitesse et précision. Développé par EA DICE et édité par Electronic Arts.}
+			\caption[Le FPS \emph{Battlefield 1}]{Le FPS \emph{Battlefield 1}. Des ennemis peuvent surgir n'importe quand, de n'importe où, et le joueur devra réagir avec vitesse et précision. Développé par EA DICE et édité par Electronic Arts.}
 			\label{fig:bf1}
 		\end{subfigure}
 		~
@@ -688,29 +688,24 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\caption{Jeux de tir.}
 	\end{figure}
 	
-	Attendu que dans les FPS/TPS, la visée est précisément le cœur du jeu, et censée être difficile, les développeurs seraient probablement peu enclins à intégrer des techniques la facilitant, car cela diminuerait l'intérêt ludique (la valeur du \emph{gameplay}) de leur œuvre. Toutefois, cela pourrait avoir un intérêt dans le cadre d'un mode de jeu à difficulté réduite, pour les débutants. D'ordinaire, ces modes sont plutôt mis en œuvre par une réduction du nombre des ennemis, de leurs compétences, de leur résistance, etc., ce qui peut rendre l'expérience de jeu moins spectaculaire, ou moins cohérente avec le scénario.
+	Attendu que dans les FPS/TPS, la visée est précisément le cœur du jeu, et censée être difficile, les développeurs seraient probablement peu enclins à intégrer des techniques la facilitant, car cela diminuerait l'intérêt ludique de leur œuvre. Toutefois, cela pourrait avoir un intérêt dans le cadre d'un mode de jeu à difficulté réduite, pour les débutants. D'ordinaire, ces modes sont plutôt mis en œuvre par une réduction du nombre des ennemis, de leurs compétences, de leur résistance, etc., ce qui peut rendre l'expérience de jeu moins spectaculaire, ou moins cohérente avec le scénario.
 	
-	\FloatBarrier \subsection{Jeux de rôles (RPG)}
+	\subsection{Jeux de rôles (RPG)}
 	Dans un jeu de rôle (RPG) classique, l'enjeu est très différent. Les capacités du (des) personnage(s) contrôlé(s) par le joueur dépendent de l'expérience accumulée depuis le début du jeu, l'expérience étant ici une ressource précisément quantifiée, sous forme de points la plupart du temps. Ces points sont ensuite investis dans des attributs (force, dextérité, endurance, intelligence\ldots{}) ou compétences (combat à mains nues, tir au fusil, persuasion, discrétion, magie de types divers\ldots{}). Souvent, les performances de visée d'un personnage dépendent uniquement de ses attributs et compétences, et non de la dextérité du joueur, qui n'a pas forcément besoin de désigner les cibles (le personnage les choisissant automatiquement) ou qui peut le faire pendant que l'action du jeu est en pause.
 	
 	Une assistance à la sélection pourrait ici permettre à l'utilisateur de désigner plus facilement des cibles pour ses personnages (afin d'outrepasser le choix fait automatiquement par le personnage, ce qui est parfois judicieux) ou de pouvoir le faire confortablement sans avoir à mettre le jeu en pause, ce qui a pour conséquence non seulement de ralentir le jeu --- et donc de faire perdre du temps au joueur --- mais aussi, potentiellement, de nuire à la sensation d'immersion. Il s'agirait dans ce genre d'accroître le confort des jeux, sans avoir à en altérer les mécanismes fondamentaux.
 	
 	\subsection{Jeux de rôle d'action (ARPG)}
-	Mais il existe aussi une catégorie intermédiaire, les jeux de rôle d'action (ARPG). Les détails varient d'un jeu à l'autre, mais dans ce genre de jeux, le joueur est directement responsable des mouvements de ses personnages, tandis que les attributs et compétences du personnage ont une influence sur ses performances finales. Ce principe peut être mis en œuvre de diverses façons. En ce qui concerne le tir avec une arme (pistolet, arc, fusil\ldots{}) trois options, pas forcément mutuellement exclusives, sont couramment retenues :
+	Mais il existe aussi une catégorie intermédiaire, les jeux de rôle d'action (ARPG). Les détails varient d'un jeu à l'autre, mais dans ce genre de jeux, le joueur est directement responsable des mouvements de ses personnages, tandis que les attributs et compétences du personnage ont une influence sur ses performances finales. Ce principe peut être mis en œuvre de diverses façons. En ce qui concerne le tir avec une arme, trois options, non mutuellement exclusives, sont couramment retenues :
 	\begin{description}
 		\item[Dispersion] Quand les compétences de tir du personnage sont faibles, le réticule de visée est agrandi, ce qui indique au joueur que l'angle du cône de dispersion\footnote{Ce cône représente le volume minimal dans lequel les trajectoires possibles des tirs sont contenues.} est grand. À mesure que les attributs et compétences du personnage augmentent, le réticule et le cône se resserrent.
-		\item[Perturbations] Le curseur et le cône de dispersion peuvent être constants par rapport aux attributs et compétences, mais ils bougent même lorsque le joueur ne touche pas à son périphérique de saisie. Celui-ci doit donc compenser ces mouvements pour viser correctement. À mesure que les attributs et compétences du personnage augmentent, ces mouvements diminuent, et peuvent finir par disparaître entièrement.
-		\item[Recul] Une arme qui tire un projectile a généralement un certain recul. Celui-ci n'a généralement pas d'influence sur la précision du premier tir, mais sur tous les suivants. Dans un jeu vidéo, il est généralement simulé par un mouvement du curseur après le tir, habituellement vers le haut, avec en plus une composante horizontale, qui peut être aléatoire. On peut diminuer cet effet de recul quand les attributs et compétences du personnage croissent, là encore éventuellement jusqu'à l'annuler totalement, quoique cette option soit rarement retenue, pour des raisons de réalisme.
+		\item[Perturbations] Le curseur et le cône de dispersion peuvent être constants par rapport aux attributs et compétences, mais ils bougent même lorsque le joueur ne touche pas à son périphérique de saisie. Celui-ci doit donc compenser ces mouvements pour viser correctement. À mesure que les attributs et compétences du personnage augmentent, ces mouvements diminuent, voire disparaissent entièrement.
+		\item[Recul] Une arme de jet a généralement un certain recul. Celui-ci a peu d'influence sur la précision du premier tir, mais plus sur les suivants. Dans un jeu vidéo, il est généralement simulé par un mouvement du curseur après le tir, habituellement vers le haut, avec en plus une composante horizontale, qui peut être aléatoire. On peut diminuer cet effet de recul quand les attributs et compétences du personnage croissent, éventuellement jusqu'à l'annuler totalement.
 	\end{description}
 
-
-	Ces mécanismes permettent d'obtenir une difficulté de tir qui dépend du joueur, puisqu'il doit tout de même viser, mais aussi des attributs et compétences du personnage. On remarque qu'il s'agit toujours de gêner le joueur, de lui imposer un handicap qui diminue quand les attributs et compétences de ses personnages augmentent. Mais \emph{in fine}, lorsque ce handicap est minime ou nul, le joueur reste borné par sa propre dextérité, comme dans un FPS classique.
+	Ces mécanismes permettent d'obtenir une difficulté de tir qui dépend du joueur, puisqu'il doit tout de même viser, mais aussi des attributs et compétences du personnage. Il s'agit toujours de gêner le joueur, de lui imposer un handicap qui diminue quand les attributs et compétences de ses personnages augmentent. Mais \emph{in fine}, lorsque ce handicap est minime ou nul, le joueur reste borné par sa propre dextérité, comme dans un FPS classique.
 	
-	Une autre technique, utilisée par les récents opus de la série \emph{Fallout} appelée \emph{Vault-Tec Assisted Targeting System}, consiste à arrêter ou considérablement ralentir le temps, pour permettre au joueur de désigner ses cibles, que le personnage attaquera ensuite automatiquement. Cette opération se fait en échange de \og points d'action \fg{}. L'inconvénient majeur de cette solution (illustrée par la figure~\ref{fig:f4vats}) est la perte du temps-réel, et l'impact négatif sur l'immersion qui y est associé. De plus, le caractère automatique de l'attaque, une fois les cibles désignées, rend l'opération totalement indépendante de la dextérité du joueur, ce qui d'une part est une déviation par rapport au paradigme de l'ARPG, et d'autre part peut diminuer l'intérêt ludique du combat, ou nuire à la sensation d'immersion.
-	
-	On pourrait imaginer, à la place ou en complément de ces approches, d'apporter au joueur une assistance à la visée. Une telle technique d'aide à la sélection devrait être paramétrable dans son \og intensité \fg{} c'est-à-dire qu'il devrait lui être possible d'apporter au joueur une assistance plus ou moins prononcée, selon un paramètre donné. Ce paramètre pourrait être (dérivé de) la compétence de tir du personnage. Ainsi, un joueur contrôlant un personnage expert en tir serait capable d'abattre des cibles très difficiles, conformément à l'image du personnage telle qu'elle est véhiculée par le jeu, mais le joueur resterait l'acteur principal de l'opération, sans ralentissement ou suspension du temps. L'aide à la sélection permettrait ici de dépasser la \og borne \fg{} imposée par la dextérité du joueur.
-	
-	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.
+	Une autre technique, utilisée par les récents opus de la série \emph{Fallout} appelée \emph{V.A.T.S.}, consiste à arrêter ou considérablement ralentir le temps, pour permettre au joueur de désigner ses cibles, que le personnage attaquera ensuite automatiquement. L'inconvénient majeur de cette solution (figure~\ref{fig:f4vats}) est la perte du temps-réel, et l'impact négatif sur l'immersion qui y est associé. De plus, le caractère automatique de l'attaque, une fois les cibles désignées, rend l'opération totalement indépendante de la dextérité du joueur, ce qui d'une part est une déviation par rapport au paradigme de l'ARPG, et d'autre part peut diminuer l'intérêt ludique du combat, ou nuire à la sensation d'immersion.
 	
 	\begin{figure}[!htbp]
 		%\centering
@@ -731,37 +726,41 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\caption{Techniques d'assistance à la visée ou sélection dans les jeux vidéo.}
 	\end{figure}
 	
+	On pourrait imaginer, à la place ou en complément de ces approches, d'apporter au joueur une assistance à la visée. Une telle technique d'aide à la sélection devrait être paramétrable dans son \og intensité \fg{} c'est-à-dire qu'il devrait lui être possible d'apporter au joueur une assistance plus ou moins prononcée, selon un paramètre donné. Ce paramètre pourrait être (dérivé de) la compétence de tir du personnage. Ainsi, un joueur contrôlant un personnage expert en tir serait capable d'abattre des cibles très difficiles, conformément à l'image du personnage telle qu'elle est véhiculée par le jeu, mais le joueur resterait l'acteur principal de l'opération, sans ralentissement ou suspension du temps. L'aide à la sélection permettrait ici de dépasser la \og borne \fg{} imposée par la dextérité du joueur.
 	
-	\FloatBarrier \subsection{Jeux de gestion, de stratégie (RTS) et de tactique (RTT)}
-	Dans ce que nous appellerons, pour simplifier, les jeux de gestion (en y incluant les RTS et RTT) le but est de mener un organisme (d'une petite entreprise à une civilisation) vers la prospérité, ou une armée vers la victoire. Ces genres mettent l'accent sur la réflexion tactique et stratégique, la gestion des ressources naturelles et humaines, l'organisation logistique, l'utilisation astucieuse du terrain, l'art de la feinte, etc. La figure~\ref{fig:cossacks2} présente un exemple de RTS.
+	À l'inverse, sans aide à la sélection, même un joueur très adroit aurait du mal à abattre ses cibles si les attributs et compétences de son personnage étaient faibles, car il serait dépourvu d'assistance, et pourrait être handicapé par une (ou plusieurs) des méthodes mentionnées plus haut. Un tel système permettrait d'obtenir des performances de tir qui dépendraient toujours significativement de l'adresse du joueur, mais qui demeureraient en accord avec les performances attendues de la part d'un personnage donné en fonction de ses attributs et compétences, et donc maintiendraient la cohérence de l'univers du jeu tel qu'envisagé par ses créateurs.	
 	
-	S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. Au contraire, la tâche de sélection est purement utilitaire et vue comme une banale nécessité, voire une corvée. Elle fait perdre du temps au joueur, du temps qui pourrait être utilisé pour organiser ses ressources et forces, ou tout simplement pour réfléchir.
+	\subsection{Jeux de gestion, de stratégie (RTS) et de tactique (RTT)}
+	Dans ce que nous appellerons, pour simplifier, les jeux de gestion (en y incluant la catégorie \emph{Real-time strategy} ou RTS, et \emph{Real-time tactics} ou RTT) le but est de mener un organisme (d'une petite entreprise à une civilisation) vers la prospérité, ou une armée vers la victoire. Ces genres mettent l'accent sur la réflexion tactique et stratégique, la gestion des ressources naturelles et humaines, l'organisation logistique, etc.
+
+	\begin{figure}[!htbp]
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
+			\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}]{\emph{Cossacks~II: Napoleonic Wars} : les unités sont nombreuses, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Développé par GSC Game World et édité par CDV Software.}
+			\label{fig:cossacks2}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/eveonline}
+			\caption[Énorme bataille dans le jeu \emph{EVE Online}]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Crédit : \emph{EVE Online Community} ; développé et édité par CCP Games.}
+			\label{fig:eveonline}
+		\end{subfigure}
+		\caption[Jeux de stratégie]{Jeux de stratégie.}
+		\label{fig:stratGames}
+	\end{figure}
+
+	S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. Au contraire, la tâche de sélection est purement utilitaire et vue comme une nécessité, voire une corvée. Elle fait perdre du temps au joueur, du temps qui pourrait être utilisé pour organiser ses ressources, ou tout simplement pour réfléchir.
 	
-	Par conséquent, une technique de sélection facilitant cette tâche autant que possible serait probablement bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses. Dans  \emph{Cossacks~II: Napoleonic Wars}, par exemple, une bataille peut engager jusqu'à 64~000 unités, et la situation devient assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités\footnotemark. Il est évident que si cette solution est acceptable (quoique loin d'être idéale) dans un jeu opposant une intelligence artificielle au joueur humain, elle vient beaucoup plus gênante dans un contexte multijoueur, où les instances du jeu s'exécutant sur chaque machine doivent rester synchronisées. Une bataille de ce jeu est illustrée par la figure~\ref{fig:cossacks2}, mais elle fait pâle figure comparée à l'énorme bataille du jeu de rôle et de stratégie multijoueur \emph{EVE Online}, représentée sur la figure~\ref{fig:eveonline}.
+	Par conséquent, une technique de sélection facilitant cette tâche serait bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses. Dans  \emph{Cossacks~II: Napoleonic Wars}, par exemple, une bataille peut engager jusqu'à 64~000 unités, et la situation devient assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités\footnotemark. Il est évident que si cette solution est acceptable (quoique loin d'être idéale) dans un jeu opposant une intelligence artificielle au joueur, elle vient beaucoup plus gênante dans un contexte multijoueur, où les instances du jeu s'exécutant sur chaque machine doivent rester synchronisées. Une bataille de ce jeu est illustrée par la figure~\ref{fig:cossacks2}, mais elle est eclipsée par l'énorme bataille du jeu multijoueur \emph{EVE Online} (figure~\ref{fig:eveonline}).
 	
 	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/cossacks2}
-		\caption[Un RTS avec de très nombreuses unités : \emph{Cossacks~II: Napoleonic Wars}]{Exemple d'une partie du RTS \emph{Cossacks~II: Napoleonic Wars}, avec de nombreuses unités, très proches les unes des autres. Au nombre et à la densité s'ajouteront, pendant la bataille, le mouvement, le désordre et le mélange avec des unités ennemies. Jeu développé par GSC Game World et édité par CDV Software.}
-		\label{fig:cossacks2}
-	\end{figure}
-	
-	Notons qu'une difficulté spécifique au RTS/RTT doit être prise en compte : s'il est parfois souhaitable de sélectionner \emph{une} cible (qu'il s'agisse d'une unité alliée à laquelle on veut donner un ordre ou d'une unité ennemie à attaquer) il est plus fréquent de vouloir sélectionner un groupe d'unités d'un coup (là encore, qu'elles soient amies ou ennemies). Une technique de sélection appropriée devrait donc permettre aux joueurs de sélectionner leurs cibles rapidement et confortablement, mais aussi de pouvoir gérer à la fois la sélection simple et la sélection multiple.
-	
-	Une telle technique allégerait le fardeau de la sélection, laissant les joueurs de RTS et RTT se concentrer sur le cœur du jeu, sur les éléments dont la valeur ludique est la plus élevée --- gestion, organisation tactique, choix stratégiques, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter les véhicules et pièces d'artillerie\ldots{}
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/eveonline}
-		\caption[Énorme bataille dans le jeu \emph{EVE Online}]{Énorme bataille dans le jeu \emph{EVE Online}. Le nombre précis d'unités est inconnu, mais chaque point rouge ou orange représente un vaisseau ou un drone, donc une cible potentielle. Crédit : \emph{EVE Online Community} ; jeu développé et édité par CCP Games.}
-		\label{fig:eveonline}
-	\end{figure}
-	
+	S'il est parfois souhaitable de sélectionner \emph{une} unité, il est plus fréquent de vouloir en sélectionner un groupe d'un coup. Une technique de sélection appropriée devrait donc impérativement préserver cette possibilité. Une telle technique allégerait le fardeau de la sélection, laissant les joueurs se concentrer sur les éléments ayant une valeur ludique --- gestion, tactique et stratégie, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter le matériel.
 
-	\FloatBarrier \subsection{Arènes de bataille en ligne multijoueur (MOBA/ARTS)}
-	Les jeux de type arène de bataille en ligne (MOBA, ou ARTS pour \emph{action real-time strategy}) ont émergé comme un sous-genre de la catégorie RTS, dans lequel le joueur ne contrôle qu'un seul personnage, et est éventuellement aidé par des personnages non jouables\footnotemark dans sa lutte contre ses ennemis. Ces derniers sont souvent au nombre d'une poignée ou de quelques dizaines, et sont généralement caractérisés par leurs mouvements vifs. Les MOBA présentent donc un assez petit nombre de cibles potentielles (parfois très) rapides dont les mouvements sont fréquemment imprévisibles. Le jeu \emph{League of Legends} est un exemple de MOBA, illustré par la figure~\ref{fig:lol}.
+	\subsection{Arènes de bataille en ligne multijoueur (MOBA/ARTS)}
+	Les jeux de type arène de bataille en ligne (MOBA, ou ARTS pour \emph{action real-time strategy}) ont émergé comme un sous-genre de la catégorie RTS, dans lequel le joueur ne contrôle qu'un seul personnage, et est éventuellement aidé par des personnages non jouables\footnotemark{} dans sa lutte contre ses ennemis. Ces derniers sont souvent au nombre d'une poignée ou de quelques dizaines, et sont généralement caractérisés par leurs mouvements vifs. Les MOBA présentent donc un assez petit nombre de cibles potentielles (parfois très) rapides dont les mouvements sont fréquemment imprévisibles. Le jeu \emph{League of Legends} est un exemple de MOBA, illustré par la figure~\ref{fig:lol}.
 	
 	\footnotetext{PNJ : personnage non jouable, ou non-joueur, de l'anglais \emph{non-player character} (NPC). Désigne, dans un jeu vidéo, un personnage contrôlé exclusivement par l'ordinateur, qui peut être opposé au joueur, l'aider, ou avoir une position neutre.}
 	
@@ -796,29 +795,17 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{table}[!htbp]
 		\centering
 		\begin{tabularx}{\textwidth}{ Y X X X } % Putain j'entrave que dalle mais ça marche à peu près
-		Héros				&	Temps de virage à 180\textdegree(s)	&	Vitesse (unités arbitraires)	&	Vitesse affichée (cm/s)	\newrow
-		Lifestealer			&	0.094 s								&	315								&	63							\newrow
-		Shadow Fiend		&	0.094 s								&	315								&	63							\newrow
-		Faceless Void		&	0.094 s								&	300								&	60							\newrow
-		Batrider			&	0.094 s								&	290								&	58							\newrow
-		Bristleback			&	0.094 s								&	290								&	58							\newrow
-		Phoenix				&	0.094 s								&	285								&	57							\newrow
-		Earthshaker			&	0.105 s								&	310								&	62							\newrow
-		Magnus				&	0.118 s								&	315								&	63							\newrow
-		Storm Spirit		&	0.118 s								&	285								&	57							\newrow
-		Luna				&	0.157 s								&	335								&	67							\newrow
-		Gyrocopter			&	0.157 s								&	315								&	63							\newrow
-		Keeper of the Light	&	0.188 s								&	335								&	67							\newrow
-		Pugna				&	0.188 s								&	330								&	66							\newrow
-		Leshrac				&	0.188 s								&	325								&	65							\newrow
-		Skywrath Mage		&	0.188 s								&	325								&	65							\newrow
-		Lich				&	0.188 s								&	315								&	63							\newrow
-		Outworld Devourer	&	0.188 s								&	315								&	63							\newrow
-		Enchantress			&	0.236 s								&	335								&	67							\newrow
-		Lone Druid			&	0.236 s								&	325								&	65							\newrow
-		\og Maximum \fg{}	&	---									&	550								&	110							\newrow
+		Héros				&	Temps de demi-tour (s)	&	Vitesse (u.a.)	&	Vitesse affichée (cm/s)	\newrow
+		Lifestealer			&	0.094 s					&	315				&	63						\newrow
+		Shadow Fiend		&	0.094 s					&	315				&	63						\newrow
+		Magnus				&	0.118 s					&	315				&	63						\newrow
+		Luna				&	0.157 s					&	335				&	67						\newrow
+		Keeper of the Light	&	0.188 s					&	335				&	67						\newrow
+		Pugna				&	0.188 s					&	330				&	66						\newrow
+		Enchantress			&	0.236 s					&	335				&	67						\newrow
+		\og Maximum \fg{}	&	---						&	550				&	110						\newrow
 		\end{tabularx}
-		\caption[Caractéristiques de mouvement des personnages vifs de \emph{Dota~2}]{Caractéristiques de mouvement des personnages les plus vifs du MOBA \emph{Dota~2}. Les personnages les plus \og agiles \fg{} peuvent effectuer un demi-tour en moins de 0,1 seconde, ce qui correspond à une fréquence d'un peu plus de 10~Hz, ou 20~Hz pour des virages de 90\textdegree, 30~Hz pour des virages de 60\textdegree, etc. Les vitesses des personnages sont également notées dans ce tableau, premièrement dans les unités arbitraires du jeu, et deuxièmement en cm/s telles qu'elles apparaissent sur un écran. Ces dernières valeurs peuvent déprendre de la définition de l'écran et de sa taille, mais sont assez typiques d'un écran de bureau ordinaire. Enfin, la ligne \og maximum \fg{} correspond à la vitesse \og maximale \fg{} d'un personnage. Les guillemets sont dus au fait qu'en pratique, certains objets et certaines capacités accessibles à quelques personnages leur permettent d'aller encore plus vite.}
+		\caption[Caractéristiques de mouvement des personnages vifs de \emph{Dota~2}]{Caractéristiques de mouvement des personnages les plus vifs de \emph{Dota~2}. Les plus \og agiles \fg{} peuvent effectuer un demi-tour en moins de 0,1~s, soit une fréquence d'un peu plus de 10~Hz, ou 20~Hz pour des virages de 90\textdegree, 30~Hz pour 60\textdegree, etc. Les vitesses des personnages sont notées dans les unités arbitraires du jeu (u.a.), et en cm/s telles qu'elles apparaissent sur un écran (en supposant un écran de bureau de taille et de définition courantes). La ligne \emph{Maximum} correspond à la vitesse \og maximale \fg{} d'un personnage --- en pratique, des objets ou capacités accessibles à certains personnages leur permettent d'aller encore plus vite.}
 		\label{tab:dotamoves}
 	\end{table}
 	% On peut considérer que 128 unités représentent à peu près un mètre dans l'espace virtuel, et apparemment 600 unités feraient environ 12 cm à l'écran, soit environ 2 mm par unité.
@@ -834,8 +821,8 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.65\textwidth]{figures/ch1/agario}
-		\caption[\emph{Agar.io}]{Scène de jeu d'\emph{Agar.io}. Chaque ensemble de disques d'un même nom (par exemple MENT97) est contrôlé par un joueur, qui cherchera à dévorer les autres disques. Les disques à bords dentés sont des obstacles causant l'éclatement des joueurs qui les percutent vivement. Chaque tout petit disque sans texte est de la nourriture à attraper, chaque disque avec du texte est également une cible potentielle. Dans cette scène, celles-ci sont nombreuses et leur agancement est complexe, d'autant qu'elles ont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Crédit : GD Rentstr0m\footnotemark{} ; jeu développé et édité par Matheus Valadares.}
+		\includegraphics[width=0.56\textwidth]{figures/ch1/agario}
+		\caption[\emph{Agar.io}]{\emph{Agar.io} : chaque ensemble de disques d'un même nom est contrôlé par un joueur, qui cherchera à dévorer les autres disques. Ceux à bords dentés sont des obstacles causant l'éclatement des joueurs qui les percutent vivement. Chaque petit disque sans texte est de la nourriture à attraper. Dans cette scène, les cibles sont nombreuses et leur agancement est complexe, d'autant qu'elles sont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Crédit : GD Rentstr0m\footnotemark{} ; développé et édité par Matheus Valadares.}
 		\label{fig:agario}
 	\end{figure}
 	
@@ -849,12 +836,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	La difficulté de la tâche de sélection de cible mobile varie également selon l'application. Voici les principaux facteurs de difficulté :
 	\begin{itemize}
-		\item la taille des cibles,
-		\item la distance des cibles par rapport au \og curseur \fg{} ou périphérique,
+		\item la taille des cibles et leur distance par rapport au \og curseur \fg{} ou périphérique,
 		\item la vitesse des cibles,
-		\item la quantité absolue de cibles
-		\item la densité de cibles,
-		\item le niveau d'occultation,
+		\item la quantité absolue et la densité de cibles, le niveau d'occultation qui en découle,
 		\item le nombre de dimensions de l'espace des cibles,
 		\item l'hétérogénéité des cibles,
 		\item la nature du mouvement, plus ou moins imprévisible.
