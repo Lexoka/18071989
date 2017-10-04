@@ -186,8 +186,8 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Ceux-ci peuvent être utilisés de diverses façons, notamment pour percevoir les \og collisions \fg{} entre le curseur et les objets de la scène, ou entre un objet sélectionné par l'utilisateur et un autre objet de la scène, pour permettre à l'utilisateur de percevoir les forces qui s'exercent entre les composantes de la molécule, ou encore pour guider la sélection, en appliquant une force au périphérique haptique dans la direction de la cible présumée de l'utilisateur. Le choix du mode d'utilisation d'un périphérique haptique dans une simulation d'IMD dépend de l'effet recherché.
 	
-	\subsubsection{Limites et défis actuels}
-	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs dizines d'objets, jusqu'à plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité ; cet exemple n'est pas le plus extrême, car la molécule visualisée n'est pas très grande et, surtout, le solvant n'est pas représenté.
+	\subsection{Limites et défis actuels}
+	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs dizaines d'objets, jusqu'à plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité ; cet exemple n'est pas le plus extrême, car la molécule visualisée n'est pas très grande et, surtout, le solvant n'est pas représenté.
 	
 	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Cette occultation dépend également du mode de représentation utilisé. Le système moléculaire de la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
@@ -208,7 +208,17 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	En effet, les mouvements des atomes dans une simulation de dynamique moléculaire se caractérisent par leur irrégularité et, par conséquent, leur imprévisibilité. Selon la simulation et la façon dont elle est représentée, les atomes peuvent adopter un mouvement brownien ou plus proche de celui d'une mouche --- très vif, très saccadé et de fait imprévisible.
 	
-	Ensemble, la très forte densité de cibles, le haut degré d'occultation, la grande vitesse de ces cibles et la nature très imprévisible de leurs mouvements rendent l'interaction (et en particulier la sélection d'une particule) avec les simulations de dynamique moléculaire très difficile. C'est pourquoi les chercheurs en biologie structurale expriment le besoin de meilleurs modes d'interaction, et c'est la principale motivation des travaux présentés dans cette thèse.
+	En somme, les difficultés inhérentes à l'interaction avec les simulations de dynamique moléculaire incluent :
+	
+	\begin{itemize}
+		\item la très forte densité de cibles,
+		\item le haut degré d'occultation,
+		\item la grande vitesse des cibles,
+		\item la nature très imprévisible de leurs mouvements,
+		\item la taille et la périodicité de l'environnement.
+	\end{itemize}
+	
+	Ces facteurs combinés expliquent pourquoi les chercheurs en biologie structurale expriment le besoin de meilleurs modes d'interaction, et c'est la principale motivation des travaux présentés dans cette thèse.
 	
 	La biologie structurale n'est cependant pas le seul domaine caractérisé par un besoin d'interaction avec des cibles mobiles, loin s'en faut. Les sections suivantes vont passer en revue les principaux domaines ayant ce même besoin, mais avec des caractéristiques de mobilité très variées.
 	
