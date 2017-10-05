@@ -16,7 +16,7 @@
 	
 	Outre les principes de fonctionnement et mérites apparents des techniques que nous analyserons dans ce chapitre, nous nous attacherons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles. Nous nous attellerons donc à en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur. Que celui-ci soit néanmoins averti et conscient des limites de cette démarche.
 
-\section{Pointage, sélection et loi de Fitts}
+\section{Notions théoriques et modèles pour le pointage}
 	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas sur lesquels nous nous concentrons, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[!htbp]
@@ -144,6 +144,18 @@
 	La conclusion générale de ces travaux est que la précision requise par un mouvement influe non seulement sur son temps global de complétion, mais également sur l'ensemble de la trajectoire, et notamment sur le profil de vitesse du curseur en fonction du temps. Dès lors, nous pouvons formuler l'hypothèse que les difficultés inhérentes à la sélection de cibles mobiles peuvent être assimilées à un besoin accru de précision, et que par conséquent, un effet comparable pourra être observé sur les trajectoires des curseurs.
 	
 	Nous reviendrons dans les chapitres suivants sur cette hypothèse.
+	
+\section{Taxinomie des techniques de sélection}
+	Dans les sections suivantes, nous présenterons un échantillon représentatif de techniques de sélection de cibles, statiques et mobiles. Cette présentation sera structurée selon la taxinomie dont un schéma est fourni sur la figure~\ref{fig:selTaxi}, et dont les critères et catégories seront explicités le long des sections suivantes. À la fin du chapitre, un retour global et plus détaillé sur cette taxinomie sera proposé.	
+	
+\begin{landscape}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{figures/ch2/selTechTree}
+		\caption[Taxinomie des techniques de sélection de cibles]{Notre proposition de taxinomie des techniques de sélection de cibles. Les catégories et sous-catégories sont représentées par des rectangles arrondis de couleur rose pâle et les techniques de sélection sont représentées par les rectangles bleus/verts. Une technique peut appartenir à différentes catégories à la fois, comme \emph{IntenSelect}, par exemple.}
+		\label{fig:selTaxi}
+	\end{figure}
+\end{landscape}
 	
 \section{Techniques pour la sélection de cibles statiques}
 	Commençons par examiner les techniques conçues pour améliorer les performances de sélection de cibles statiques, mais précisons au préalable qu'elles sont toutes utilisables avec des cibles mobiles, avec divers degrés d'efficacité.
@@ -1422,8 +1434,8 @@
 	\subsubsection{Erreurs de prédiction et frustration}
 	Toutefois, il convient de ne pas négliger les faiblesses des approches de prédiction intentionnelle, au premier rang desquelles figurent les erreurs de prédiction, et la frustration qu'elles peuvent causer chez les utilisateurs, qui peuvent rapidement être très agacés de ne pouvoir obtenir du système le comportement qu'ils attendent. Les heuristiques utilisées doivent donc être soigneusement calibrées d'une part pour minimiser les erreurs de prédiction, et d'autre part pour éviter de (trop) nuire aux performances de sélection, le cas échéant. Ce point peut être primordial pour les applications nécessitant un temps de sélection borné, ou imposant des contraintes sur les taux d'erreurs.
 	
-\section{Taxinomie des techniques de sélection}
-    Comme nous venons de le voir, les techniques d'aide à la sélection sont de natures diverses. Elles consistent souvent à faciliter la sélection d'une cible en augmentant sa taille effective, ou en réduisant la distance effective entre elle et le curseur, selon les recommandations que l'on peut déduire de la loi de Fitts. Nous allons ici présenter nos réflexions sur la taxinomie des techniques de sélection présentée au cours de ce chapitre, et fournir un schéma récapitulatif.
+\section{Discussion de la taxinomie proposée}
+    Comme nous venons de le voir, les techniques d'aide à la sélection sont de natures diverses. Elles consistent souvent à faciliter la sélection d'une cible en augmentant sa taille effective, ou en réduisant la distance effective entre elle et le curseur, selon les recommandations que l'on peut déduire de la loi de Fitts. Nous allons ici présenter nos réflexions sur la taxinomie des techniques de sélection introduite par la figure~\ref{fig:selTaxi}, et présentée au cours de ce chapitre.
     
     \subsection{Techniques pour cibles statiques}
 	\subsubsection{Curseurs zonaux}
@@ -1493,20 +1505,6 @@
     En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesses des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
     
     Observons par ailleurs que la prédiction de l'intention n'est pas incompatible avec d'autres approches mentionnées plus haut, telles que la sélection en cascade, par exemple.
-    
-    \subsection{Schéma récapitulatif}
-	Nous proposons un schéma récapitulatif de la taxinomie exposée ici sur la figure~\ref{fig:selTaxi}.
-    
-    \begin{landscape}
-    
-	\begin{figure}
-		\centering
-		\includegraphics[width=\linewidth]{figures/ch2/selTechTree}
-		\caption[Taxinomie des techniques de sélection de cibles]{Notre proposition de taxinomie des techniques de sélection de cibles. Les catégories et sous-catégories sont représentées par des rectangles arrondis de couleur rose pâle et les techniques de sélection sont représentées par les rectangles bleus/verts. Une technique peut appartenir à différentes catégories à la fois, comme \emph{IntenSelect}, par exemple.}
-		\label{fig:selTaxi}
-	\end{figure}
-    
-    \end{landscape}
     
 \section{Conclusion}
     Les techniques d'assistance à la sélection de cibles visent généralement à optimiser les paramètres de la tâche de sélection connus depuis les travaux de Fitts~\cite{fitts1954information} : la taille effective de la cible, et la distance effective entre celle-ci et le curseur. Cette tendance générale illustre l'influence considérable de la loi de Fitts sur le développement de telles techniques.
