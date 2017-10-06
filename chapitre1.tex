@@ -193,12 +193,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Cette occultation dépend également du mode de représentation utilisé. Le système moléculaire de la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
-	\begin{figure}[!htbp]
+	\begin{SCfigure}%[!htbp]
 		\centering
-		\includegraphics[width=0.6\textwidth]{figures/ch1/gluTrans}
-		\caption[Transporteur de glutamate, très forte occultation]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate (forme ionisée de l'acide glutamique, c'est le neurotransmetteur excitateur le plus important du système nerveux central) à travers des membranes. Sur cette image issue d'une simulation de dynamique moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
+		\includegraphics[width=0.5\textwidth]{figures/ch1/gluTrans}
+		\caption[Transporteur de glutamate, très forte occultation]{Un transporteur de glutamate représenté en sphères de van der Waals, sans son solvant. C'est une protéine qui transporte le glutamate à travers des membranes. Sur cette image issue d'une simulation moléculaire, seule la surface de la molécule est visible, les atomes \og enfouis \fg{} sont entièrement occultés, alors qu'ils représentent la majeure partie de la molécule. Crédit : NVIDIA et Joshua Adelman\footnotemark.}
 		\label{fig:gluTrans}
-	\end{figure}
+	\end{SCfigure}
 	
 	\footnotetext{\url{https://blogs.nvidia.com/blog/2011/01/13/university-pittsburg-researcher-studies-molecular-dynamics-gpus}}
 	
@@ -229,32 +229,32 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\section{Contrôle de l'espace aérien}
  La figure~\ref{fig:airtraffic} représente un écran de contrôle du trafic aérien. Les trajectoires des avions sont (normalement) légèrement courbées ou rectilignes, ce qui les rend particulièrement prévisibles, et donc facilite considérablement la tâche de sélection, comme nous le verrons en détails plus loin. Cependant, selon le niveau de zoom et la quantité d'informations contextuelles affichées sur l'écran, le niveau d'occultation peut devenir très important. La vitesse des cibles dépend également du niveau de zoom, mais dans une relation inverse : plus l'échelle est grande, plus les mouvements des avions sont lents sur l'écran.
 	
-	\FloatBarrier \subsection{Applications civiles}
-	
-	\subsubsection{Avions}
+	\FloatBarrier \subsection{Aviation civile}
 	Un avion de ligne atterrit à environ 250~km/h et ne dépasse pas 1000~km/h en vol de croisière. Ses changements de direction sont très progressifs, généralement de l'ordre de deux degrés par seconde. Ils sont peu fréquents et habituellement prévisibles car les pilotes tâchent d'emprunter des couloirs aériens, ou des trajectoires d'approches imposées aux abords des aéroports. Les avions sont néanmoins nombreux, en particulier près des aéroports, et la grande quantité d'informations pertinentes associées à chaque vol peut requérir un affichage contextuel important, d'où une forte densité d'informations, et des niveaux d'occultation parfois élevés. La figure~\ref{fig:atlanta} en fournit un exemple.
 	
 	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/atlanta}
-		\caption[Trafic aérien, Atlanta]{Trafic aérien centré sur l'aéroport d'Atlanta, en Géorgie (États-Unis) un lundi matin vers 8~h~40. Chaque vol est représenté par un schéma de l'avion permettant d'indiquer son type, ainsi que par un identifiant de vol alphanumérique, de 5 à 7 caractères. Aucune information supplémentaire (origine ou destination du vol, trajectoire, altitude, pavillon de l'appareil, vitesse, horaires prévus, modèle exact de l'avion, carburant encore disponible, etc.) n'est affichée sur cette image, car aucun avion n'est sélectionné. Malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport. Enfin, les vitesses apparentes (à l'écran) des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : \emph{Flight Radar 24\footnotemark}.}
-		\label{fig:atlanta}
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/atlanta}
+			\caption[Trafic aérien, Atlanta]{Trafic aérien centré sur l'aéroport d'Atlanta (États-Unis) un lundi. Chaque avion est représenté par un schéma indiquant son type, et par un identifiant de vol. Aucune information supplémentaire (origine ou destination, trajectoire, altitude, pavillon, vitesse, horaires prévus, modèle exact, etc.) n'est affichée ici, car aucun avion n'est sélectionné. Malgré tout, la densité d'informations est élevée et les appareils s'occultent mutuellement, surtout près de l'aéroport. Enfin, les vitesses relatives des avions demeurent faibles, sauf à un niveau de zoom élevé. Crédit : Flight Radar 24.}
+			\label{fig:atlanta}
+		\end{subfigure}
+		~
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch1/adp}
+			\caption[ADP -- Roissy]{Exemple de visualisation de l'aéroport de Paris--Charles-de-Gaulle avec le logiciel utilisé par le groupe ADP. Seuls les véhicules terrestres sont affichés ici, et les informations contextuelles sont limitées ; pourtant, la densité de cibles est importante, de même que le niveau d'occultation. Crédit : Valtech.}
+			\label{fig:adp}
+		\end{subfigure}
+		\caption[Aéroports]{Aéroports.}
+		\label{fig:airports}
 	\end{figure}
-	
-	\footnotetext{\url{https://www.flightradar24.com}}
 	
 	Le Groupe \emph{Aéroports de Paris} (ADP) utilise un logiciel (encore en phase bêta) de visualisation et contrôle des aéroports permettant non seulement de surveiller les mouvements des avions en l'air et au sol, mais aussi de tous les véhicules au sol tels que les bus d'embarquement, les camions de ravitaillement, les véhicules de maintenance, de secours, etc. Ce logiciel est développé par une équipe du groupe Valtech\footnotemark{}, que nous avons rencontrée afin de mieux comprendre les besoins d'ADP, et les solutions actuellement mises en \oe{}uvre.
 	
 	\footnotetext{\url{https://www.valtech.fr}}
 	
 	La nature de la tâche implique une quantité de données contextuelles très importante, puisque le logiciel permet d'afficher notamment le statut de chaque avion, ses codes d'identification, sa destination ou son origine, son retard éventuel, le statut de ses bagages ou de ses passagers, la liste des passagers en question, les pistes et emplacements de stationnement qui lui sont alloués ou disponibles, sa compagnie, son type, etc. La figure~\ref{fig:adp} fournit un exemple modéré de la quantité d'informations potentiellement affichées.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch1/adp}
-		\caption[ADP -- Roissy]{Exemple de visualisation de l'aéroport de Paris--Charles-de-Gaulle avec le logiciel utilisé par le groupe ADP. Seuls les véhicules terrestres sont affichés ici, et les informations contextuelles sont limitées ; pourtant, la densité de cibles est importante, de même que le niveau d'occultation visuelle. Crédit : Valtech.}
-		\label{fig:adp}
-	\end{figure}
 	
 	Les informations mises à disposition de l'utilisateur ne se limitent pas aux données brutes sur l'aéroport, les avions et autres véhicules, mais incluent des flux vidéo, capturés par des centaines de caméras réparties sur tout l'aéroport. À tout moment, l'utilisateur peut choisir d'ajouter à sa vue un ou plusieurs flux vidéo (par exemple en sélectionnant toutes les caméras filmant un point particulier). Le logiciel utilisé par le groupe ADP, qui fournit des capacités d'action telles que l'ouverture ou la fermeture en temps réel d'un tronçon de piste, est particulièrement utile pour rejouer des situations, et en particulier des incidents --- qui sont le plus souvent mineurs. Dans ce contexte, les caractéristiques réelles de mouvement des avions sont secondaires par rapport aux caractéristiques perçues lorsque les incidents sont rejoués, généralement en accéléré. Dans ce cas, les cibles déjà nombreuses, diverses et mobiles, deviennent plus rapides, selon le facteur d'accélération --- qui peut être très élevé.
 	
@@ -269,7 +269,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Les aéronefs militaires présentent des caractéristiques beaucoup plus variables, dans des intervalles nettement plus grands. C'est notamment dû à leur diversité, puisque l'on trouve des avions de tailles et usages divers, des drones de quelques grammes comme de plusieurs tonnes, des hélicoptères, des missiles, etc.
 	
 	\subsubsection{Avions de combat}
-	La vitesse d'un avion de combat, par exemple, peut atteindre 3000~km/h\footnotemark. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la manœuvrabilité de tels engins, mais il est du moins clair qu'un avion de combat moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs\footnotemark. Des données officielles font état de 12,9\textdegree{}/s \emph{soutenus} pour le Leonardo DRS T-100, qui n'est pourtant qu'un avion d'entraînement\footnotemark.
+	La vitesse d'un avion de combat, par exemple, peut atteindre 3000~km/h\footnotemark. Il est beaucoup plus difficile d'obtenir des données chiffrées sur la manœuvrabilité de tels engins, mais il est du moins clair qu'un avion de combat moderne peut changer de direction beaucoup plus brutalement qu'un avion de ligne, et certaines sources non officielles font état de capacités de l'ordre de 35\textdegree{}/s pour les meilleurs\footnotemark. Des données officielles font état de 12,9\textdegree{}/s \emph{soutenus} pour le Leonardo DRS T-100, un avion d'entraînement\footnotemark.
 	
 	\addtocounter{footnote}{-2}
 	\footnotetext{\url{http://www.migavia.ru/index.php/en/production/mig-31e-fighter?limit=1&start=2}}
@@ -286,11 +286,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/AlFursan}
-		\caption[La patrouille acrobatique \emph{Al Fursan}]{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Des avions militaires peuvent avoir des trajectoires à la fois complexes, très proches les unes des autres, et parcourues à grande vitesse. Crédit : The National UAE\footnotemark.}
+		\caption[La patrouille acrobatique \emph{Al Fursan}]{La patrouille acrobatique émiratie \emph{Al Fursan}, avec ses trajectoires entremêlées mises en évidence par des traînées de fumée colorées. Des avions militaires peuvent avoir des trajectoires à la fois complexes, très proches les unes des autres, et parcourues à grande vitesse. Crédit : The National UAE.}
 		\label{fig:alfursan}
 	\end{figure}
-	
-	\footnotetext{\url{http://www.thenational.ae}}
 	
 	Il convient de noter que les avions de combat eux-mêmes ont des besoins similaires en matière de sélection de cibles mobiles, puisqu'ils ont, comme les stations au sol, pour rôle de contrôler l'espace aérien. Ils ont de plus la charge de mener des opérations de reconnaissance ou de bombardement de cibles au sol qui, si elles sont statiques, sont bien mobiles dans le référentiel de l'avion en vol, \emph{a fortiori} si elles sont filmées par des caméras mobiles. Par ailleurs, les cibles affichées sur les ordinateurs de bord des avions sont accompagnées de diverses informations tactiques qui augmentent fortement la densité d'informations, et potentiellement le niveau d'occultation, comme l'illustre la figure~\ref{fig:sitac}.
 	
@@ -307,7 +305,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{Ou USAF, la force aérienne des États-Unis d'Amérique.}
 	
-	Par conséquent, l'on passe d'une seule cible (apparente) à plusieurs cibles d'abord très rapprochées, mais souvent rapidement divergentes. Parfois, les pilotes plongent vers le sol pour utiliser les retours radar du relief afin de masquer le leur ; ajoutons que c'est d'autant plus efficace que l'aéronef est furtif, et qu'il peut donc apparaître et disparaître des écrans radar à tout moment. Ce point est d'autant plus important que les technologies furtives se répandent progressivement et les aéronefs furtifs sont de plus en plus courants. Parmi les plus connus, on peut citer le Northrop Grumman B-2 \emph{Spirit}, ainsi que le F-35 \emph{Lightning II} produit par Lockheed Martin.	
+	Par conséquent, l'on passe d'une seule cible (apparente) à plusieurs cibles d'abord très rapprochées, mais souvent rapidement divergentes. Parfois, les pilotes plongent vers le sol pour utiliser les retours radar du relief afin de masquer le leur ; ajoutons que c'est d'autant plus efficace que l'aéronef est furtif, et qu'il peut donc apparaître et disparaître des écrans radar à tout moment. Ce point est d'autant plus important que les technologies furtives se répandent progressivement et les aéronefs furtifs sont de plus en plus courants. Pour l'USAF, citons par exemple le B-2 \emph{Spirit}, le F-35 \emph{Lightning II}, et le futur B-21 \emph{Raider}. À ceux-ci s'ajoutent aujourd'hui le Chengdu J-20 chinois, ainsi qu'un nombre d'avions encore en développement : le Sukhoi Su-57 russe, le drone franco-britannique FCAS/SCAF, etc.
 	
 	\newcommand{\subImgAircraftW}{0.74\textwidth}
 	\begin{figure}[!htbp]
@@ -336,8 +334,6 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\label{fig:coolAircraft}
 	\end{figure}
 	
-	À ces appareils de l'USAF s'ajoutent aujourd'hui le Chengdu J-20 chinois, ainsi qu'un nombre d'avions encore en développement : le Sukhoi Su-57 russe, le B-21 \emph{Raider} de Northrop Grumman, le drone franco-britannique FCAS/SCAF, et bien d'autres.
-	
 	Le combat aérien est une application qui peut mêler une très forte densité de cibles (avec un taux d'occultation considérable), parfois évanescentes, à des mouvements rapides et délibérément imprévisibles. De plus, détecter et sélectionner les cibles aussi rapidement que possible revêt une importance littéralement capitale, puisque les pilotes jouent leur vie, sans parler des enjeux stratégiques et humains spécifiques au conflit en question.
 	
 	%If you have sneaky guys like me, at long range we’ll fly in ‘res cell’ which means we’ll be so close to each other we’re closer than the width of the radar beam at that range. That makes it difficult to know exactly how many people are in an attack or air defense package. Then, at some pre-designated range, we’ll do very abrupt maneuvers and split while guys who are locked or not locked (spiked or not spiked) will do different things to optimize our chances of getting at least one good guy untargeted and unseen to a merge.
@@ -351,18 +347,18 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
     %So we climb a 4-ship through the cons and then above so the bad guys can see 4 contrails. Then a sneaky guy . . . me . . . would descend in a 90 degree turn in IDLE with chaff and descend to low altitude with NO contrail so the opponents think we are all above the cons leaving me free to maneuver behind them on the deck. It was a very effective tactics at times.
 	
 	\subsubsection{Hélicoptères de combat}
-	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils, sans qu'il soit aisé de quantifier cette différence. Comme pour les avions, leur comportement est susceptible de varier considérablement selon la mission. Ils sont ausssi légèrement plus rapides, de quelques dizaines de km/h, notamment en piqué. Comme pour les avions, leurs missions impliquent souvent des trajectoires moins prévisibles, d'autant qu'ils cherchent souvent à se camoufler (visuellement et pour les radars) en volant le plus bas possible, ce qui implique de contourner les éléments de relief. L'hélicoptère Eurocoptère \emph{Tigre} représenté sur la figure~\ref{fig:tigre} est un exemple d'appareil rapide, compact et très manœuvrable.
+	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils. Comme pour les avions, leur comportement est susceptible de varier considérablement selon la mission. Ils sont ausssi légèrement plus rapides, de quelques dizaines de km/h, notamment en piqué. Ici encore, leurs missions impliquent souvent des trajectoires moins prévisibles, d'autant qu'ils cherchent souvent à se camoufler (visuellement et pour les radars) en volant le plus bas possible, ce qui implique de contourner les éléments de relief. L'hélicoptère Eurocoptère \emph{Tigre} représenté sur la figure~\ref{fig:tigre} est un exemple d'appareil rapide, compact et très manœuvrable.
 	
 	Du fait de leur capacité à voler à très basse altitude, et souvent entre les éléments de reliefs (par exemple dans des vallées) les hélicoptères ont tendance à n'apparaître que brièvement sur les écrans radar. De fait, s'ils ne sont pas nécessairement des cibles d'un comportement extrêmement vif ou imprévisible, il peut n'être possible de les sélectionner que pendant de très courts laps de temps. Leur sélection peut par conséquent être particulièrement difficile et nécessite une assistance efficace.
 	
-	Pendant la guerre du Golfe, par exemple, un McDonnell Douglas F-15E \emph{Strike Eagle} se trouva dans l'impossibilité de verrouiller son radar sur un hélicoptère Mil Mi-24 \emph{Hind} irakien pour l'abattre à l'aide d'un missile, du fait de la proximité du Mi-24 au sol et de la vivacité de ses mouvements. L'officier des systèmes d'armes du F-15E dut basculer vers la nacelle de désignation laser pour \og marquer \fg{} l'hélicoptère afin de le détruire à l'aide d'une bombe~\cite{craig2007debrief}. L'officier en question ne précise pas si cette désignation fut difficile, attendu qu'il l'effectua avec un outil conçu pour cibler des objets statiques ou, à la rigueur, lents.
+	Pendant la guerre du Golfe, par exemple, un F-15E \emph{Strike Eagle} se trouva dans l'impossibilité de verrouiller son radar sur un hélicoptère Mi-24 \emph{Hind} irakien pour l'abattre à l'aide d'un missile, du fait de la proximité du Mi-24 au sol et de la vivacité de ses mouvements. L'officier des systèmes d'armes du F-15E dut basculer vers la nacelle de désignation laser pour \og marquer \fg{} l'hélicoptère afin de le détruire à l'aide d'une bombe~\cite{craig2007debrief}. Il ne précise pas si cette désignation fut difficile, du fait de l'utilisation d'un outil conçu pour cibler des objets statiques ou, à la rigueur, lents.
 	
 	\footnotetext{\url{https://theaviationist.com/2016/02/14/f-15e-shot-down-iraqi-mi-24}}
 	
 	Observons tout de même que le F-15E est un appareil biplace dans lequel l'officier des systèmes d'armes a pour tâche principale de détruire les cibles ennemies, pendant que le pilote man\oe{}uvre l'appareil. Dans un avion monoplace, ces deux tâches doivent être remplies par une seule personne. Il est donc d'autant plus important que chaque tâche soit aussi facile que possible. Ajoutons enfin qu'avec ses 12 tonnes, le Mil Mi-24 est un hélicoptère lourd et nettement moins man\oe{}uvrable que des appareils plus récents comme un \emph{Tigre} de 6 tonnes, par exemple.
 	
 	\subsubsection{Drones}
-	Le cas des drones aériens, c'est-à-dire des aéronefs sans pilote embarqué (télécommandés ou autonomes) est peut-être le plus hétérogène. On trouve en effet des drones de très petite taille, mais aussi des modèles de plusieurs tonnes~\footnotemark. Leurs modes de sustentation sont très divers, leurs moyens de propulsion varient également et, de fait, leurs caractéristiques de vol sont extrêmement variables, selon qu'il s'agisse de très petits engins extrêmement manœuvrables ou d'aéronefs plus gros, qui se comportent comme des avions traditionnels.
+	Le cas des drones aériens (aéronefs sans pilote embarqué, télécommandés ou autonomes) est le plus hétérogène. On trouve en effet des drones de très petite taille, mais aussi des modèles de plusieurs tonnes~\footnotemark. Leurs modes de sustentation sont divers, leurs moyens de propulsion varient également et, de fait, leurs caractéristiques de vol sont extrêmement variables, selon qu'il s'agisse de très petits engins extrêmement manœuvrables ou d'aéronefs plus gros, qui se comportent comme des avions traditionnels.
 
 	\footnotetext{Le RQ-4 \emph{Global Hawk}, de Northrop Grumman est un drone de reconnaissance dont la masse maximale au décollage dépasse les 14 tonnes, ce qui est comparable à la masse d'un avion de chasse.
 	
@@ -388,9 +384,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{Missiles}	
 	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de combat, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II (figure~\ref{fig:brahmos}).
 	
-	\begin{SCfigure}%[!htbp]
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.44\textwidth]{figures/ch1/brahmos-II}
+		\includegraphics[width=0.36\textwidth]{figures/ch1/brahmos-II}
 		\caption[Missile hypersonique BrahMos-II]{Maquette du missile de croisière hypersonique russo-indien BrahMos-II, en cours de développement : ce missile devrait atteindre une vitesse de croisière de Mach~7\footnotemark{}. Crédit : Pakistan Defence.}
 		\label{fig:brahmos}
 	\end{SCfigure}
@@ -440,21 +436,19 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch1/channel}
-			\caption[Écran de contrôle maritime en Manche (SIA)]{Écran de contrôle représentant les navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 UMS effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : \emph{Arlo Maritime}\footnotemark.}
+			\caption[Écran de contrôle maritime en Manche (SIA)]{Écran de contrôle des navires utilisant le Système d'identification automatique (SIA) en Manche. Ce système n'étant obligatoire que sur les navires de jauge brute supérieure à 300 UMS effectuant des voyages internationaux, ce n'est qu'une représentation partielle du trafic à cet instant. Crédit : Arlo Maritime.}
 			\label{fig:channel}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.58\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch1/lincoln}
-			\caption[Le groupe aéronaval de l'USS \emph{Abraham Lincoln}]{Même dans des eaux relativement vides, la densité de navires peut être élevée localement. C'est potentiellement le cas quand un groupe aéronaval est présent, comme ici, avec le groupe aéronaval de l'USS \emph{Abraham Lincoln}, photographié en 2000. Il est de plus capital dans ce cas d'identifier clairement tous les navires présents, compte tenu de leur importance militaire, sous-marins compris. On précisera toutefois qu'en situation réelle, les navires sont généralement plus espacés que cela. Crédit : Gabriel Wilson, via \emph{Wikimedia}.}
+			\caption[Le groupe aéronaval de l'USS \emph{Abraham Lincoln}]{Même dans des eaux relativement vides, la densité de navires peut être élevée localement, par exemple quand un groupe aéronaval est présent, comme ici, avec celui de l'USS \emph{Abraham Lincoln}. Il est de plus capital dans ce cas d'identifier clairement tous les vaisseaux, compte tenu de leur importance militaire, sous-marins compris. Toutefois, en situation réelle, les navires sont généralement plus espacés que cela. Crédit : Gabriel Wilson.}
 			\label{fig:lincoln}
 		\end{subfigure}
 		\label{fig:muddyWaters}
 		\caption{Densité de cibles dans les espaces maritimes.}
 	\end{figure}
-	
-	\footnotetext{\url{http://www.arlomaritime.com}}
 	
 	La protection environnementale nécessite également un contrôle strict de l'espace maritime, notamment pour éviter le deversement de polluants en mer, particulièrement d'hydrocarbures.
 	
@@ -479,25 +473,25 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Par ailleurs, une pratique consistant à utiliser un satellite pour se rapprocher au plus près d'un autre afin de l'observer et d'espionner ses activités se développe de plus en plus. Nous sommes donc ici dans un cas où, sur un écran de surveillance --- à supposer que l'on puisse détecter cela --- les deux cibles (le satellite espion et le satellite espionné) apparaîtraient avec des trajectoires quasi identiques, et très, très proches l'une de l'autre, voire superposées, si un satellite est juste au-dessus de l'autre, par exemple.
 	
-	\footnotetext{\emph{Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies} -- \url{http://disarmament.un.org/treaties/t/outer_space}}
+	\footnotetext{\url{http://disarmament.un.org/treaties/t/outer_space}}
 	
 	\FloatBarrier \subsection{Débris}
 	D'après l'Agence spatiale européenne (ESA, d'après son sigle anglophone), l'orbite terrestre compterait environ 29~000 objets de plus de 10~cm, 670~000 objets de plus de 1~cm, et pas moins de 170 millions d'objets de plus de 1~mm\ldots{} La collision d'un satellite artificiel avec un objet de seulement un millimètre pourrait détruire un sous-système, tandis qu'un objet d'un centimètre détruirait généralement le satellite\footnotemark.
+	
 	\footnotetext{\url{http://www.esa.int/Our_Activities/Space_Engineering_Technology/Clean_Space/How_many_space_debris_objects_are_currently_in_orbit}}
 	
 	Les débris spatiaux proviennent de sources aussi diverses que des véhicules spatiaux hors service, de l'équipement perdu (voir figure~\ref{fig:spaceDeb}), des propulseurs de véhicules\ldots{} ou des armes\footnotemark~\cite{chun1999shooting}.
 	
-	\footnotetext{\emph{Space Debris from Anti-Satellite Weapons} -- \url{http://www.ucsusa.org/sites/default/files/legacy/assets/documents/nwgs/debris-in-brief-factsheet.pdf}}
+	\footnotetext{\url{http://www.ucsusa.org/sites/default/files/legacy/assets/documents/nwgs/debris-in-brief-factsheet.pdf}}
 	
 	Si le sujet est préoccupant pour les satellites et autres vols non habités, il est beaucoup plus inquiétant pour les vols habités. La question est d'autant plus importante que les vols habités pourraient devenir bien plus courants à moyen terme\footnotemark.
 	
-	\footnotetext{\emph{SpaceX's Elon Musk Unveils Interplanetary Spaceship to Colonize Mars} -- \url{http://www.space.com/34210-elon-musk-unveils-spacex-mars-colony-ship.html}}
+	\footnotetext{\url{http://www.space.com/34210-elon-musk-unveils-spacex-mars-colony-ship.html}}
 	
 	La question des débris, et plus généralement des collisions et de la circulation dans l'espace extra-atmosphérique est suffisamment sérieuse pour que la \emph{Federal Aviation Administration} (FAA) des États-Unis travaille sur un système civil de gestion du trafic spatial\footnotemark.
 	
-	\footnotetext{\emph{Towards a Civil Space Traffic Management System} -- \url{https://www.faa.gov/about/office_org/headquarters_offices/ast/media/6_space_traffic_management_plans.pdf} ;
-	
-	\emph{Congress gets report on giving FAA space traffic role} -- \url{http://spacenews.com/congress-gets-report-on-giving-faa-space-traffic-role}}
+	\footnotetext{\url{https://www.faa.gov/about/office_org/headquarters_offices/ast/media/6_space_traffic_management_plans.pdf} ;
+	\url{http://spacenews.com/congress-gets-report-on-giving-faa-space-traffic-role}}
 	
 	\begin{figure}[!htbp]
 		%\centering
@@ -543,7 +537,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\FloatBarrier \subsection{Véhicules motorisés}
 	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, exception faite de ceux qui enfreignent le code de la route. Mais, soit à cause de l'infraction en question, soit parce qu'ils l'enfreignent pour fuir après des délits ou crimes plus graves, ces véhicules-là peuvent justement faire l'objet d'une attention particulière de la part des forces de l'ordre. Dans ces cas-là, la vitesse d'un véhicule peut dépasser les 300~km/h\footnotemark.
 	
-	\footnotetext{\emph{Un chauffard roule à plus de 320~km/h sur l'A1} -- \url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-km-h-sur-l-a1.html}}
+	\footnotetext{\url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-km-h-sur-l-a1.html}}
 	
 	Les changements de direction dépendent évidemment de la vitesse. En ville, à moins de 50~km/h, une automobile peut effectuer un virage à 90 degrés dans un laps de temps de l'ordre de la seconde si sa vitesse est réduite, mais elle est contrainte à des courbes beaucoup plus douces lorsqu'elle se déplace rapidement, par exemple sur une autoroute.
 	
@@ -585,9 +579,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	L'État français s'appuie notamment sur les services d'entreprises telles que Deveryware :
 	
 	\begin{displayquote}
-		[Celle-ci] est depuis 2003 la spécialiste de référence pour le développement et le déploiement de solutions mettant en œuvre la géolocalisation en temps réel des personnes et des biens.
+		(Celle-ci) est depuis 2003 la spécialiste de référence pour le développement et le déploiement de solutions mettant en œuvre la géolocalisation en temps réel des personnes et des biens.
 
-		Elle est un partenaire important de l'État français pour des applications régaliennes utilisant ces techniques, qu'il s'agisse de sécurité publique ou de sécurité civile pour contribuer à la mise en sécurité des citoyens.\footnotemark
+		Elle est un partenaire important de l'État français pour des applications régaliennes utilisant ces techniques, qu'il s'agisse de sécurité publique ou de sécurité civile pour contribuer à la mise en sécurité des citoyens.\footnotemark{}
 	\end{displayquote}
 	
 	\footnotetext{\url{http://www.deveryware.com/savoir-faire/notre-expertise}}
@@ -595,16 +589,18 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch1/cellphones}
-		\caption[Surveillance des signaux de téléphones portables]{Illustration d'un système de surveillance en temps réel des signaux émis par les téléphones portables, tiré de la série télévisée \emph{Le Bureau des légendes}, et inspiré de systèmes réels (dont les images ne sont pas publiques). Sur cette image représentant une vue de la ville d'Alger, chaque point coloré représente la position d'un téléphone portable dont le signal est capté et localisé. Le nombre de cibles potentielles est très élevé, et la densité peut être extrême par endroits. \OE{}uvre réalisée par Éric Rochant et produite par Canal+.}
+		\caption[Surveillance des signaux de téléphones portables]{Système de surveillance en temps réel des signaux émis par les téléphones portables, tiré de la série télévisée \emph{Le Bureau des légendes}\footnotemark{}, et inspiré de systèmes réels (dont les images ne sont pas publiques). Sur cette vue de la ville d'Alger, chaque point coloré représente la position d'un téléphone portable dont le signal est localisé. Le nombre de cibles potentielles est très élevé, et la densité peut être extrême par endroits.}
 		\label{fig:cellphones}
 	\end{figure}
 	
-	\FloatBarrier \subsection{Hétérogénéité}
+	\footnotetext{\OE{}uvre réalisée par Éric Rochant et produite par Canal+}
+	
+	\subsection{Hétérogénéité}
 	L'on comprend aisément que la surveillance des signaux téléphoniques porte sur des cibles à peu près identiques à celles de la vidéo-surveillance. En effet, les téléphones sont généralement transportés par des gens à pied, en voiture, à vélo, dans les transports en commun, etc. Cependant, une difficulté s'ajoute puisque l'on surveille ici des espaces beaucoup plus grands, et donc plus hétérogènes.
 	
 	En sus de la quantité de cibles, il faut donc pouvoir gérer leur très forte densité, et l'hétérogénéité de leurs mouvements : un groupe de piétons peut potentiellement être à seulement quelques mètres d'un groupe de voyageurs dans un train à grande vitesse, d'automobilistes sur une autoroute, etc.
 	
-	\FloatBarrier \subsection{Informations complémentaires}
+	\subsection{Informations complémentaires}
 	Par ailleurs, il peut être souhaitable ou nécessaire d'afficher des informations complémentaires pour chaque signal localisé. L'identité ou la localisation de l'interlocuteur si un appel est en cours, la durée de l'appel, la fréquence à laquelle l'interlocuteur courant est appelé, la liste des interlocuteurs fréquents de la personne concernée, les localisations de ces interlocuteurs fréquents, leurs interlocuteurs à eux — en somme, le réseau social de la personne observée — ne sont que des exemples parmi d'autres.
 	
 	Ces informations pourraient être affichées sous forme de texte associé à un point, ou représentées par d'autres moyens graphiques : traits entre les signaux, clignotements, textures, etc. Dans tous les cas, la complexité visuelle et la densité de la vue présentée à l'utilisateur n'en seraient qu'accrues ; de fait, la difficulté de la tâche de sélection le serait aussi. Nous sommes donc face à une tâche de sélection de cibles mobiles très nombreuses, denses, hétérogènes dans un environnement visuel pouvant contenir de nombreuses informations complémentaires.
@@ -618,14 +614,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.swissinfo.ch/fre/societe/ski-alpin-_une-histoire-de-famille-se-termine-au-lauberhorn/37746484}}
 	
-	\begin{figure}[!htbp]
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.60\textwidth]{figures/ch1/basket}
-		\caption[Match de basket-ball]{Match de basket-ball. Les joueurs sont peu nombreux, mais vifs et imprévisibles. Ils sont très près les uns des autres et s'occultent mutuellement, surtout filmés depuis le côté. Le ballon lui-même peut être une cible, plus rapide et imprévisible encore. Crédit : \emph{Weekend Notes}\footnotemark.}
+		\includegraphics[width=0.58\textwidth]{figures/ch1/basket}
+		\caption[Match de basket-ball]{Match de basket-ball. Les joueurs sont peu nombreux, mais vifs et imprévisibles. Ils sont très près les uns des autres et s'occultent mutuellement, surtout filmés depuis le côté. Le ballon lui-même peut être une cible, plus rapide et imprévisible encore. Crédit : Weekend Notes.}
 		\label{fig:basketball}
-	\end{figure}
+	\end{SCfigure}
 	
-	\footnotetext{\url{http://www.weekendnotes.com/perth-wildcats-nbl-games}}
 	
 	\FloatBarrier \subsection{Véhicules}
 	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques. Dans ces derniers cas, les mouvements sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens\footnotemark{} (une discipline récente et en plein essor) dans les sports mécaniques, l'on est alors face à un cas où les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
@@ -651,13 +646,11 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Le billard, sous ses diverses formes (\emph{pool}, \emph{snooker}, etc.) est intéressant en ce que, d'une part, les \og projectiles \fg{}, c'est-à-dire les boules, sont en relativement grand nombre, et ne peuvent donc bénéficier d'un raccourci dédié, et d'autre part, leurs mouvements sont extrêmement vifs et difficiles à prédire. En effet, le premier segment d'une trajectoire de boule peut ne durer que 0,12~seconde\footnotemark{}.
 	
-	\footnotetext{\emph{Faster Than a Speeding Bullet?} -- \url{http://www.sfbilliards.com/Misc/onoda_all_txt.pdf}}
+	\footnotetext{\url{http://www.sfbilliards.com/Misc/onoda_all_txt.pdf}}
 	
 	Citons également les courses de billes dans le sable (\emph{sand marble racing}), un jeu curieux qui consiste à laisser rouler plusieurs billes dans des sillons creusés dans le sable dont le tracé est soigneusement étudier pour créer une sensation de suspense concernant l'issue de la \og course \fg{}. Ce passe-temps plus intéressant qu'il peut en avoir l'air donne lieu à des enregistrements vidéo largement diffusés sur internet\footnotemark{}, agrémentés de statistiques, et tout à fait susceptibles d'être augmentés par des capacités d'interaction qui nécessiteraient la sélection de ces objets rapides aux mouvements vifs.
 	
-	\footnotetext{\emph{Sand marble races are a lot more thrilling than I thought they would be}
-	
-	\url{https://www.reddit.com/r/videos/comments/6linoy/sand_marble_races_are_a_lot_more_thrilling_than_i}}
+	\footnotetext{\url{https://www.reddit.com/r/videos/comments/6linoy/sand_marble_races_are_a_lot_more_thrilling_than_i}}
 
 	\FloatBarrier	
 	\section{Jeux vidéo}
@@ -754,14 +747,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Par conséquent, une technique de sélection facilitant cette tâche serait bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses. Dans  \emph{Cossacks~II: Napoleonic Wars}, par exemple, une bataille peut engager jusqu'à 64~000 unités, et la situation devient assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités\footnotemark. Il est évident que si cette solution est acceptable (quoique loin d'être idéale) dans un jeu opposant une intelligence artificielle au joueur, elle vient beaucoup plus gênante dans un contexte multijoueur, où les instances du jeu s'exécutant sur chaque machine doivent rester synchronisées. Une bataille de ce jeu est illustrée par la figure~\ref{fig:cossacks2}, mais elle est eclipsée par l'énorme bataille du jeu multijoueur \emph{EVE Online} (figure~\ref{fig:eveonline}).
 	
-	\footnotetext{\emph{Cossacks~II: Napoleonic Wars -- Strategy Guide} --- \url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
+	\footnotetext{\url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
 	S'il est parfois souhaitable de sélectionner \emph{une} unité, il est plus fréquent de vouloir en sélectionner un groupe d'un coup. Une technique de sélection appropriée devrait donc impérativement préserver cette possibilité. Une telle technique allégerait le fardeau de la sélection, laissant les joueurs se concentrer sur les éléments ayant une valeur ludique --- gestion, tactique et stratégie, etc. Elle pourrait même permettre de gérer des situations plus complexes, avec plus d'unités, plus de variables à prendre en compte, et donc plus de richesse tactique ou stratégique. De fait, l'on pourrait s'approcher un peu plus des situations réelles que ces jeux simulent parfois --- la bataille de Stalingrad, par exemple, impliquait quelque deux millions d'hommes, sans compter le matériel.
 
 	\subsection{Arènes de bataille en ligne multijoueur (MOBA/ARTS)}
 	Les jeux de type arène de bataille en ligne (MOBA, ou ARTS pour \emph{action real-time strategy}) ont émergé comme un sous-genre de la catégorie RTS, dans lequel le joueur ne contrôle qu'un seul personnage, et est éventuellement aidé par des personnages non jouables\footnotemark{} dans sa lutte contre ses ennemis. Ces derniers sont souvent au nombre d'une poignée ou de quelques dizaines, et sont généralement caractérisés par leurs mouvements vifs. Les MOBA présentent donc un assez petit nombre de cibles potentielles (parfois très) rapides dont les mouvements sont fréquemment imprévisibles. Le jeu \emph{League of Legends} est un exemple de MOBA, illustré par la figure~\ref{fig:lol}.
 	
-	\footnotetext{PNJ : personnage non jouable, ou non-joueur, de l'anglais \emph{non-player character} (NPC). Désigne, dans un jeu vidéo, un personnage contrôlé exclusivement par l'ordinateur, qui peut être opposé au joueur, l'aider, ou avoir une position neutre.}
+	\footnotetext{PNJ : un personnage non jouable, ou non-joueur, est contrôlé exclusivement par l'ordinateur. Il peut être hostile ou non.}
 	
 	\begin{figure}[!htbp]
 		%\centering
@@ -818,12 +811,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	Le principe de ce jeu d'une complexité inattendue est illustré par la figure~\ref{fig:agario}. Pour avaler un adversaire, l'on peut soit le rattraper et l'englober, ce qui est difficile car il faut pour cela être significativement plus gros (et donc plus lent, selon le mécanisme du jeu) soit se diviser en deux et propulser une de ses moitiés sur lui, ce qui nécessite de viser très soigneusement, et d'autant plus prudemment qu'une fois scindé en deux, le joueur est beaucoup plus vulnérable à ses gros adversaires.
 	
-	\begin{figure}[!htbp]
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.56\textwidth]{figures/ch1/agario}
-		\caption[\emph{Agar.io}]{\emph{Agar.io} : chaque ensemble de disques d'un même nom est contrôlé par un joueur, qui cherchera à dévorer les autres disques. Ceux à bords dentés sont des obstacles causant l'éclatement des joueurs qui les percutent vivement. Chaque petit disque sans texte est de la nourriture à attraper. Dans cette scène, les cibles sont nombreuses et leur agancement est complexe, d'autant qu'elles sont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Crédit : GD Rentstr0m\footnotemark{} ; développé et édité par Matheus Valadares.}
+		\includegraphics[width=0.46\textwidth]{figures/ch1/agario}
+		\caption[\emph{Agar.io}]{\emph{Agar.io} : chaque ensemble de disques d'un même nom est contrôlé par un joueur, et doit dévorer les autres. Ceux à bords dentés sont de dangereux obstacles. Chaque petit disque sans texte est de la nourriture à attraper. Les cibles sont nombreuses et leur agancement est complexe, d'autant qu'elles sont contrôlées par des humains qui cherchent à s'abriter derrière les obstacles. Développé et édité par Matheus Valadares.}
 		\label{fig:agario}
-	\end{figure}
+	\end{SCfigure}
 	
 	\footnotetext{\url{https://www.youtube.com/watch?v=XaZ2n_feTko}}
 	
