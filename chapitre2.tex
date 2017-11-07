@@ -12,12 +12,12 @@
 	
 	De fait, nous séparerons les techniques selon qu'elles seront conçues pour des cibles statiques ou mobiles, tout en admettant qu'une technique appartenant à une catégorie peut généralement être utilisée pour les cibles de l'autre. Ainsi, nous discuterons des techniques de sélection fondées sur un curseur zonal (surfacique ou volumique), sur l'augmentation ou la transformation des cibles, sur l'altération du temps, sur le lancer de rayon ou la projection conique, sur la sélection à plusieurs étapes (dite en cascade), ainsi que sur la prédiction de l'intention de l'utilisateur.
 	
-	Remarquez que ces catégories ne sont pas mutuellement exclusives, loin s'en faut, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâcherons d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, en fonction de ce qui nous paraît être son principe fondamental.
+	Remarquez que ces catégories ne sont pas mutuellement exclusives, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâcherons d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, en fonction de ce qui nous paraît être son principe fondamental.
 	
-	Outre les principes de fonctionnement et mérites apparents des techniques que nous analyserons dans ce chapitre, nous nous attacherons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles. Nous nous attellerons donc à en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur. Que celui-ci soit néanmoins averti et conscient des limites de cette démarche.
+	Outre les principes de fonctionnement et mérites apparents des techniques que nous analyserons dans ce chapitre, nous nous attacherons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles. Nous nous attellerons donc à en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur.
 
 \section{Notions théoriques et modèles pour le pointage}
-	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas sur lesquels nous nous concentrons, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter l'histoire de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
+	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas sur lesquels nous nous concentrons, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter la problématique de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
 	
 	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.58\textwidth}
@@ -41,7 +41,7 @@
 	
 	\begin{equation}
 		\label{eq:fitts}
-		MT = a + bID
+		T_{M} = a + bID
 	\end{equation}
 	
 	\begin{equation}
@@ -49,9 +49,9 @@
 		ID = \log_2\left(\frac{2D}{W} \right)
 	\end{equation}
 	
-	Dans l'équation~\ref{eq:fitts}, $MT$ représente le temps de mouvement, $a$ et $b$ sont des constantes déterminées empiriquement. Dans l'équation~\ref{eq:fittsID}, $ID$ représente l'indice de difficulté, $D$ représente l'amplitude du mouvement, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que $W$ représente la largeur de la cible. La partie la plus intéressante de cette équation est l'indice de difficulté. C'est la seule partie variable, et c'est celle qui, comme son nom l'indique, détermine la difficulté de la tâche. Cet indice est aisé à comprendre intuitivement : plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile.
+	Dans l'équation~\ref{eq:fitts}, $T_{M}$ représente le temps de mouvement, $a$ et $b$ sont des constantes déterminées empiriquement. Dans l'équation~\ref{eq:fittsID}, $ID$ représente l'indice de difficulté, $D$ représente l'amplitude du mouvement, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que $W$ représente la largeur de la cible. La partie la plus intéressante de cette équation est l'indice de difficulté. C'est la seule partie variable, et c'est celle qui, comme son nom l'indique, détermine la difficulté de la tâche. Cet indice est aisé à comprendre intuitivement : plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile.
 	
-	Pour l'indice de difficulté, MacKenzie propose une formulation de l'indice de difficulté dite de Shannon, inspirée de la théorie de l'information proposée par ce dernier~\cite{mackenzie1989note}. Cette formulation est fournie dans l'équation~\ref{eq:shannon}.
+	Pour l'indice de difficulté, MacKenzie propose une formulation de l'indice de difficulté dite de Shannon, inspirée de la théorie de l'information proposée par ce dernier~\cite{mackenzie1989note}. Cette formulation, qui a l'avantage d'être positive même quand l'amplitude de mouvement est très faible, est fournie dans l'équation~\ref{eq:shannon}.
 	
 	\begin{equation}
 		\label{eq:shannon}
@@ -59,7 +59,7 @@
 	\end{equation}
 	
 	\subsection{Extensions de la loi de Fitts}
-	L'étude de Paul M. Fitts portait sur un dispositif mécanique simple, mais sa loi s'applique aussi bien aux périphériques de saisie classiques (souris, \emph{joysticks}, etc.)~\cite{card1978evaluation}. Mieux, alors qu'elle fut d'abord énoncée pour des mouvements sur une seule dimension, elle loi s'étend aisément au plan~\cite{card1978evaluation, mackenzie1992extending}, éventuellement en tenant compte de la forme de la cible~\cite{accot2003refining}, ou même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
+	L'étude de Paul M. Fitts portait sur un dispositif mécanique simple, mais sa loi s'applique aussi bien aux périphériques de saisie classiques (souris, \emph{joysticks}, etc.)~\cite{card1978evaluation}. Mieux, alors qu'elle fut d'abord énoncée pour des mouvements sur une seule dimension, cette loi s'étend aisément au plan~\cite{card1978evaluation, mackenzie1992extending}, éventuellement en tenant compte de la forme de la cible~\cite{accot2003refining}, ou même à l'espace tridimensionnel~\cite{murata2001extending}. On peut également généraliser la loi de Fitts pour modéliser des tâches de tracé de trajectoires~\cite{accot1997beyond, accot1999performance}.
 	
 	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour modéliser les performances de sélection, de nombreuses formulations plus ou moins différentes existent, et leurs mérites respectifs font débat~\cite{casallas2015prediction}. Certaines extensions peuvent, par exemple, tenir compte de l'angle $\theta$ entre le vecteur qui va du curseur à la cible et un vecteur horizontal orienté vers la droite (cf. la figure~\ref{fig:theta}). C'est le cas de la formulation de~\cite{murata2001extending} exposée dans l'équation~\ref{eq:murata}.
 	
@@ -71,9 +71,9 @@
 	D'autres versions tiennent compte simultanément de la forme de la cible et de cet angle $\theta$~\cite{appert2008evaluation, grossman2004pointing}.
 	
 	\subsection{Loi de Fitts et cibles mobiles}
-	La recherche sur la loi de Fitts appliquée aux cibles mobiles, comparativement aux travaux sur les cibles statiques, est très pauvre~\cite{casallas2015prediction}. Elle n'est pas inexistante~\cite{jagacinski1980test, hoffmann1991capture, hajri2011moving} mais très limitée, et elle s'intéresse rarement à la nature du mouvement des cibles, surtout quand ce mouvement est imprévisible.
+	La recherche sur la loi de Fitts appliquée aux cibles mobiles, comparativement aux travaux sur les cibles statiques, est très pauvre~\cite{casallas2015prediction}. Elle n'est pas inexistante~\cite{jagacinski1980test, hoffmann1991capture, hajri2011moving} mais très limitée, et elle s'intéresse rarement à la nature du mouvement des cibles, surtout quand ce mouvement est imprévisible. Par exemple, les modèles développés dans les travaux de Jagacinski \emph{et al.}~\cite{jagacinski1980test} ou d'Al Harji \emph{et al.}~\cite{hajri2011moving} font l'hypothèse de cibles de vitesse et de direction constantes.
 	
-	De fait, les modèles développés dans les travaux de Jagacinski \emph{et al.}~\cite{jagacinski1980test} ou d'Al Harji \emph{et al.}~\cite{hajri2011moving}, par exemple, font l'hypothèse de cibles de vitesse et de direction constantes. La loi de Fitts étendue par Jagacinski \emph{et al.} est présentée dans l'équation~\ref{eq:jagacinski}, où $CT$ est le temps de sélection, $D$ et $W$ sont toujours la distance à la cible et sa largeur, $V$ est la vitesse de la cible, tandis que $c$, $d$ et $e$ sont des constantes réelles.
+	La loi de Fitts étendue par Jagacinski \emph{et al.} est présentée dans l'équation~\ref{eq:jagacinski}, où $CT$ est le temps de sélection, $D$ et $W$ sont toujours la distance à la cible et sa largeur, $V$ est la vitesse de la cible, tandis que $c$, $d$ et $e$ sont des constantes réelles.
 	
 	\begin{equation}
 		\label{eq:jagacinski}
@@ -116,25 +116,25 @@
 	
 	Il convient cependant de noter un point très spécifique à cette évaluation : les cibles mobiles se dirigeaient toutes \emph{vers} l'utilisateur --- plus ou moins directement. De fait, l'augmentation de la vitesse \emph{diminue} le temps de sélection, puisqu'elle réduit la distance à parcourir pour l'utilisateur, dans un mouvement rectiligne, donc relativement aisé à prédire et anticiper. Ce résultat au demeurant intéressant ne saurait donc suffire à modéliser les performances de sélection pour les cibles mobiles de mouvements quelconques.
 	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/casallas}
+		\includegraphics[width=0.28\textwidth]{figures/ch2/casallas}
 		\caption[Paramètres du modèle de Casallas]{Modèle de Casallas. $\vec{D}$ est le vecteur du curseur (rouge) à la cible (verte), $\vec{D} = \vec{D_{m}} + \vec{D_{s}}$ où $\vec{D_{m}}$ est la projection de $\vec{V}$ sur $\vec{D}$, et $\vec{D_{s}}$ est la composante de $\vec{D}$ orthogonale à $\vec{D_{m}}$. Crédit : \cite{casallas2015prediction}.}
 		\label{fig:casallas}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles \og quelconques \fg{} --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
 	
-	Celle-ci demeure donc, à notre connaissance, incapable de modéliser le temps de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
+	Celle-ci n'a, à notre connaissance, jamais été étendue pour modéliser le temps de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
 	
 	\subsection{Complexité du mouvement : phases balistique et de correction}
-	Woodworth~\cite{woodworth1899accuracy} fut à notre connaissance le premier à identifier deux phases dans le mouvement ciblé : une impulsion initiale et une phase de contrôle. Welford~\cite{welford1968fundamentals} fit la même observation et nota par ailleurs que la première phase, visant à couvrir la distance nécessaire, était plus rapide, tandis que la seconde, celle de visée, était plus courte~\cite{mackenzie1987three}. Il remarqua de plus, et de même que Crossman et Goodeve~\cite{crossman1983feedback}, que la première phase était \emph{balistique} et qu'à la seconde s'ajoutait un processus de contrôle visuel.
+	Woodworth~\cite{woodworth1899accuracy} fut à notre connaissance le premier à identifier deux phases dans le mouvement ciblé : une impulsion initiale et une phase de contrôle. Welford~\cite{welford1968fundamentals} fit la même observation et nota par ailleurs que la première phase, visant à couvrir la distance nécessaire, était plus rapide, tandis que la seconde, celle de ciblage, était plus courte~\cite{mackenzie1987three}. Il remarqua de plus, et de même que Crossman et Goodeve~\cite{crossman1983feedback}, que la première phase était \emph{balistique} et qu'à la seconde s'ajoutait un processus de contrôle visuel.
 	
 	Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/ballistic}
+		\includegraphics[width=0.70\textwidth]{figures/ch2/ballistic}
 		\caption[Profil de vitesse -- phases balistique et de correction]{Vitesse du pointeur en fonction du temps au cours d'un mouvement ciblé. La vitesse croît fortement puis décroît de même au cours de la phase balistique, puis connaît de petites oscillations au cours de la phase de correction. Crédit : \cite{liu2009designing}.}
 		\label{fig:ballistic}
 	\end{figure}
@@ -161,7 +161,7 @@
 	Commençons par examiner les techniques conçues pour améliorer les performances de sélection de cibles statiques, mais précisons au préalable qu'elles sont toutes utilisables avec des cibles mobiles, avec divers degrés d'efficacité.
 
 \subsection{Curseurs zonaux}
-	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{kabbash1995prince, worden1997making}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance effective entre le curseur et la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
+	Un curseur zonal substitue au curseur ordinaire, qui est réduit à un point, une zone de sélection~\cite{kabbash1995prince, worden1997making}. Lorsque la cible est petite, les performances de sélection ne sont donc plus limitées par sa taille, mais par la taille du curseur. De plus, la distance à parcourir par le curseur zonal pour atteindre la cible est légèrement réduite, puisqu'il faut la mesurer à partir de la limite de la zone de sélection, et non depuis son centre.
 	
 	\subsubsection{\emph{Prince}}
 	La technique \emph{Prince}~\cite{kabbash1995prince} consiste à utiliser un rectangle comme curseur de sélection. Les auteurs ont notamment répliqué la fameuse expérience de Fitts en l'inversant : au lieu d'un point comme curseur et de cibles \og larges \fg{} , ils optèrent pour un curseur large et des cibles ponctuelles, comme l'illustre la figure~\ref{fig:princeCursor}.
@@ -227,14 +227,14 @@
 	La technique \emph{Bubble Cursor} consiste à agrandir dynamiquement un curseur zonal (représenté par un disque) jusqu'à ce qu'il atteigne la cible la plus proche. Mathématiquement, cela revient à construire un diagramme de Voronoï des cibles et à s'appuyer dessus pour la sélection : le \emph{Bubble Cursor} est toujours dans une et une seule cellule du diagramme, et peut sélectionner la cible correspondante, comme l'illustrent les figures~\ref{fig:bubble} et~\ref{fig:voronoi}. De fait, dans sa version pure, il n'est capable de sélectionner que des cibles, pas l'espace entre celles-ci.	
 
 	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.45\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/bubble}
-			\caption{\emph{Bubble Cursor} (a,c,d) par opposition à un curseur zonal (b). (b) : le curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection. Mais le \emph{Bubble Cursor} s'adapte (c et d). (d) : la cible n'est pas \emph{entièrement} recouverte par le disque du curseur, mais le curseur est localement étendu pour l'envelopper.}
+			\caption{\emph{Bubble Cursor} (a,c,d). (b) : un curseur zonal ne permet pas aisément de choisir entre les deux cibles qui se trouvent dans la zone de sélection, mais le \emph{Bubble Cursor} s'adapte (c et d). (d) : la cible n'est pas \emph{entièrement} recouverte par le disque du curseur, qui est localement étendu pour l'envelopper.}
 			\label{fig:bubble}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.53\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/voronoi}
 			\caption{Diagramme de Voronoï définissant les cellules associées à chaque cible. C'est un pavage du plan en cellules à partir d'un ensemble discret de points (\emph{germes}). Chaque cellule forme l'ensemble des points plus proches de son germe que des autres. Les frontières d'activation de chaque cible, donc sa largeur effective, sont définies par sa cellule.}
@@ -244,17 +244,17 @@
 		\label{fig:bubbleVoronoi}
 	\end{figure}
 	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp] % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/bubbleResults}
+		\includegraphics[width=0.42\textwidth]{figures/ch2/bubbleResults}
 		\caption[\emph{Bubble Cursor} --  performances]{Temps de pointage avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ est la largeur réelle de la cible, et $EW$ sa largeur effective. Le \emph{Bubble Cursor} améliore les performances, dépend de $EW$ bien plus que de $W$. Crédit : \cite{grossman2005bubble}.}
 		\label{fig:bubbleResults}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	Grossman et Balakrishnan ont montré que les performances de sélection avec le \emph{Bubble Cursor} suivent la loi de Fitts, à condition de remplacer la largeur de la cible par sa largeur effective, c'est-à-dire la largeur de sa cellule dans le diagramme de Voronoï~\cite{grossman2005bubble}, cf. la figure~\ref{fig:bubbleResults}. Le \emph{Bubble Cursor} peut être mis en œuvre en 2D aussi bien qu'en 3D~\cite{vanacken2007exploring}.
 
 	\paragraph{Instabilité.}
-	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides.
+	Un inconvénient de cette technique est le fait que le curseur peut rapidement croître et décroître à mesure qu'il s'approche et s'éloigne de plusieurs cibles successives. Cela peut représenter une source de distraction visuelle, en particulier quand les cibles elles-mêmes sont mobiles, \emph{a fortiori} si elles sont rapides. De plus, attendu que le \emph{Bubble Cursor} agrandit la largeur effective des cibles à la mesure de leur cellule de Voronoï, il est moins efficace en environnement dense, où les cellules de Voronoï sont plus petites. Le \emph{Bubble Cursor} montre donc ses limites face à des cibles potentielles nombreuses, mobiles et rapides. Par ailleurs, un environnement dynamique impose un calcul coûteux~\cite{aurenhammer2000voronoi} de diagramme de Voronoï à chaque déplacement d'un objet.
 	
 	Un autre inconvénient (potentiellement majeur) du \emph{Bubble Cursor} est intrinsèquement lié à son mode de fonctionnement : il partage l'espace de sélection en un diagramme de Voronoï, où toute partie de l'espace fait partie de la zone de sélection d'une cible. Par conséquent, il n'existe plus d'espace \og vide \fg{} dans lequel on pourrait utiliser le périphérique de saisie pour effectuer une opération indépendante des cibles, par exemple ouvrir un menu contextuel.
 	
@@ -276,24 +276,24 @@
 	Les performances du \emph{Silk Cursor} furent évaluées par Zhai \emph{et al.} en le comparant à un curseur volumique de fonctionnement identique, mais rendu en fil de fer, dans des conditions monoscopiques et stéréoscopiques (voir la figure~\ref{fig:silkPerf}). Comme le supposaient les auteurs, la semi-transparence du curseur permet une forte amélioration du temps de sélection, particulièrement avec un écran monoscopique. De plus, la stéréoscopie réduit le temps de sélection de façon significative, et ce même avec le \emph{Silk Cursor}.
 	
 	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{0.38\textwidth}
+		\begin{subfigure}[t]{0.42\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silk}
 			\caption{Le \emph{Silk Cursor} : l'utilisateur est ici en train d'essayer de sélectionner un poisson, en l'englobant avec le volume du curseur. Quelques parties du poisson ne sont pas incluses dans le volume de sélection, et de fait il ne peut pas encore être sélectionné.}
 			\label{fig:silk}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.60\textwidth}
+		\begin{subfigure}[t]{0.56\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkPerf}
-			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Pour la première lettre, \emph{M} indique une condition monoscopique et \emph{S} indique une condition stéréoscopique ; pour la seconde, \emph{S} désigne le \emph{Silk Cursor}, et \emph{W} correspond au curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} permettent tous deux de fortement réduire le temps de sélection. L'axe des ordonnées ne commence pas à 0.}
+			\caption{Temps de sélection du \emph{Silk Cursor} et d'un curseur volumique en fil de fer. Première lettre : \emph{M} $\rightarrow$ condition monoscopique ; \emph{S} $\rightarrow$ condition stéréoscopique. Seconde lettre : \emph{S} $\rightarrow$ \emph{Silk Cursor} ; \emph{W} $\rightarrow$ curseur en fil de fer (\emph{wireframe}). La stéréoscopie et le \emph{Silk Cursor} améliorent fortement les performances.}
 			\label{fig:silkPerf}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor}]{\emph{Silk Cursor}. Crédit : \cite{zhai1994silk}}
 		\label{fig:silkCursorPerf}
 	\end{figure}
 	
-	On observera toutefois que la conception de l'évaluation pourrait favoriser ce dernier de façon artificielle, en ce qu'il est nécessaire que l'objet visé soit intégralement inclus dans le curseur volumique, ce qui ne paraît pas indispensable dans l'absolu. Or, en fil de fer, vérifier cela visuellement paraît très difficile, tandis que s'assurer qu'une partie de l'objet est dans le curseur semble plus aisé ; on peut supposer que la différence de difficulté entre ces deux tâches est moindre avec le \emph{Silk Cursor} grâce aux indications fournies par la semi-transparence.
+	Observons toutefois que la conception de l'évaluation pourrait favoriser ce dernier de façon artificielle, en ce qu'il est nécessaire que l'objet visé soit intégralement inclus dans le curseur volumique, ce qui ne paraît pas indispensable dans l'absolu. Or, en fil de fer, vérifier cela visuellement est très difficile, tandis que s'assurer qu'une partie de l'objet est dans le curseur semble plus aisé ; on peut supposer que la différence de difficulté entre ces deux tâches est moindre avec le \emph{Silk Cursor} grâce aux indications fournies par la semi-transparence.
 	
 	\paragraph{Taux et amplitude des erreurs.}
 	Les auteurs ont également évalué les performances du \emph{Silk Cursor} sous l'angle des erreurs, tant leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
@@ -302,14 +302,14 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrors}
-			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique rendu en fil de fer. Comme pour les temps de sélection, la stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
+			\caption{Taux d'erreurs du \emph{Silk Cursor} comparé à un curseur volumique. Ici encore, la stéréoscopie et le \emph{Silk Cursor} améliorent les performances.}
 			\label{fig:silkErrors}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/silkErrorMag}
-			\caption{Amplitude des erreurs du \emph{Silk Cursor} comparé à un curseur volumique en fil de fer. Il s'agit de la distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent significativement les performances. Les conditions sont indiquées comme sur la figure~\ref{fig:silkPerf}. L'axe des ordonnées ne commence pas à 0.}
+			\caption{Erreurs : distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent les performances.}
 			\label{fig:silkErrorMag}
 		\end{subfigure}
 		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
@@ -331,25 +331,25 @@
 		\emph{StereoWire}	& 				& 2		& 7			& 3		& 	 			\\
 		\emph{StereoSilk}	& 				& 		& 			& 3		& 9 			\\
 	\end{tabular}
-	\caption[\emph{Silk Cursor} -- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. \emph{MonoWire} et \emph{MonoSilk} sont les conditions monoscopiques en fil de fer et avec le \emph{Silk Cursor} respectivement ; \emph{StereoWire} et \emph{StereoSilk} sont les équivalents respectifs en stéréoscopie. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Source :~\cite{zhai1994silk}.}
+	\caption[\emph{Silk Cursor} -- impressions subjectives]{Impressions subjectives du \emph{Silk Cursor}. Chaque case contient le nombre de sujets ayant évalué la condition correspondante de la sorte. Le \emph{Silk Cursor} s'illustre par les 9 très hautes appréciations reçues en stéréoscopie. Source :~\cite{zhai1994silk}.}
 	\label{tab:silkImpr}
 	\end{table}
 
 	\subsubsection{\emph{DynaSpot}}
 	L'impossibilité de sélectionner l'espace vide avec le \emph{Bubble Cursor} est une des raisons d'être de la technique \emph{DynaSpot}~\cite{chapuis2009dynaspot}. Celle-ci relie l'aire du curseur à sa vitesse. Le curseur conserve sa taille normale lorsqu'il est lent, mais croît et affecte une plus grande surface quand il se déplace plus vite. De fait il suffit de ralentir pour ramener le curseur à un comportement \og normal \fg{} et pouvoir sélectionner de l'espace vide, par exemple pour ouvrir un menu contextuel, ou agir directement sur l'espace vide, comme l'illustre la figure~\ref{fig:dynaSpot}.
 	
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{0.49\textwidth}
+	\begin{figure}[htbp]
+		\begin{subfigure}[t]{0.54\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/dynaSpot}
-			\caption{(a) La zone d'activation de \emph{DynaSpot} est couplée à la vitesse du curseur : plus celui-ci est rapide, plus celle-là est grande. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est en sur-brillance et sélectionnée. (c) Quand la zone de sélection ne touche aucun objet, on peut sélectionner l'espace vide.}
+			\caption{(a) Le curseur de \emph{DynaSpot} croît avec la vitesse du curseur. (b) Plusieurs objets coupent la zone de sélection : la cible la plus proche du curseur est sélectionnée. (c) Quand le curseur ne touche aucun objet, on peut sélectionner l'espace vide.}
 			\label{fig:dynaSpot}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.44\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/dynaResults}
-			\caption{Performances (en temps de sélection) du \emph{BubbleCursor}, de \emph{DynaSpot} (2 versions paramétrées différemment) et d'un curseur ordinaire, en fonction de l'ID. Celui-ci est calculé en fonction de la largeur de la cible pour le curseur ordinaire, de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}.}
+			\caption{Temps de sélection du \emph{BubbleCursor}, de deux versions de \emph{DynaSpot}, et d'un curseur ponctuel, en fonction de l'ID (calculé en fonction de la largeur effective pour le \emph{Bubble Cursor} et \emph{DynaSpot}.}
 			\label{fig:dynaResults}
 		\end{subfigure}
 		\caption[\emph{DynaSpot} -- principe et performances]{\emph{DynaSpot} -- principe et performances. Crédit : \cite{chapuis2009dynaspot}.}
@@ -380,12 +380,12 @@
 	
 	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
 	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/spotlight}
-		\caption[Cône de sélection : \emph{Spotlight}]{Illustration d'une technique de sélection par cône, baptisée \emph{Spotlight}. Les objets qui se trouvent dans le cône sont des candidats à la sélection : quand il y en a plusieurs, le plus proche de l'axe de révolution du cône est choisi ; en cas de proximité égale, le plus proche du périphérique de pointage est choisi. Crédit : \cite{liang1994jdcad}.}
+		\includegraphics[width=0.44\textwidth]{figures/ch2/spotlight}
+		\caption[Cône de sélection : \emph{Spotlight}]{\emph{Spotlight} : les objets dans le cône sont des candidats à la sélection ; quand il y en a plusieurs, le plus proche de l'axe de révolution du cône est choisi, et en cas de proximité égale, le plus proche du périphérique de pointage est choisi. Crédit : \cite{liang1994jdcad}.}
 		\label{fig:spotlight}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	Cela facilite la sélection, puisque les gestes n'ont plus besoin d'être aussi précis, mais peut ajouter de l'ambiguïté si deux objets se trouvent dans le cône de sélection. Le cas échéant, cette ambiguïté peut être levée de plusieurs façon, en fonction de la proximité à l'axe de révolution du cône, en fonction de la distance au périphérique de pointage, ou via une intervention directe de l'utilisateur.
 	
@@ -415,60 +415,51 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
-			\caption{Performances du \emph{Shadow Cone} (\emph{SCone}) avec une grande cible, comparé à la sélection par rayon et par cône. Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet). Le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône, mais fournit des performances satisfaisantes.}
+			\caption{Grande cible : le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône.}
 			\label{fig:shadowSLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une petite cible. Le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône, mais ces deux techniques font bien mieux que la sélection par rayon.}
+			\caption{Petite cible : le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône ; le \emph{raycasting} est moins performant.}
 			\label{fig:shadowSSmall}
 		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone}. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowConePerf}
-	\end{figure}
-	
-	Les temps de sélection mesurés pour les différentes techniques, avec et sans suivi de la tête, sont présentés sur la figure~\ref{fig:shadowSLarge} pour une grande cible seule, la figure~\ref{fig:shadowSSmall} pour une petite cible seule, la figure~\ref{fig:shadowPLarge} pour une grande cible avec un distracteur, la figure~\ref{fig:shadowPSmall} pour une petite cible avec un distracteur, la figure~\ref{fig:shadowCLarge} pour une grande cible avec de nombreux distracteurs, et enfin la figure~\ref{fig:shadowCSmall} pour une petite cible avec de nombreux distracteurs.
-	
-	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
-
-	\begin{figure}[!htbp]
+		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
-			\caption{Performances du \emph{Shadow Cone} avec une paire de grands objets. Aucune différence significative n'est mesurable entre les techniques pour les temps de sélection, mais le \emph{raycasting} ne produisit aucune erreur, contre 1,3 erreur par utilisateur pour la sélection par cône et 0,2 pour le \emph{Shadow Cone}, avec suivi de la tête dans les deux cas.}
+			\caption{Paire de grands objets : même temps de sélection pour toutes les techniques. \emph{Raycasting} : 0 erreur, contre 1,3 erreur/utilisateur pour la sélection par cône, et 0,2 pour le \emph{Shadow Cone}.}
 			\label{fig:shadowPLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une paire de petits objets. Le \emph{Shadow Cone} est ici plus lent que la sélection par cône, mais génère moins d'erreurs (0,2 par utilisateur contre 0,6) ; la sélection par rayon ne produisit aucune erreur, là encore avec suivi de la tête.}
+			\caption{Paire de petits objets. Le \emph{Shadow Cone} est plus lent que la sélection par cône, mais génère moins d'erreurs (0,2/utilisateur contre 0,6) ; aucune erreur pour le \emph{raycasting}.}
 			\label{fig:shadowPSmall}
 		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone} -- II]{Performances du \emph{Shadow Cone} -- II. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowConePerf2}
-	\end{figure}
-
-		
-	\begin{figure}[!htbp]
+		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
-			\caption{Performances du \emph{Shadow Cone} avec une grappe de gros objets. Ici, c'est le \emph{raycasting} qui se montre nettement plus performant que les autres techniques. La sélection par cône a en outre généré 2,2 échecs par \emph{timeout} par utilisateur, alors que les deux autres techniques n'en ont généré aucun (avec suivi de la tête). De plus, la sélection par cône généra 20,3 erreurs par utilisateur, contre 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
+			\caption{Grappe de gros objets : le \emph{raycasting} est plus performant que les autres techniques. Sélection par cône : 2,2 échecs par \emph{timeout}/utilisateur ; 0 pour les deux autres techniques. Sélection par cône : 20,3 erreurs/utilisateur ; 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
 			\label{fig:shadowCLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-			\caption{Performances du \emph{Shadow Cone} avec une grappe de petits objets. Le \emph{raycasting} est le plus performant avec suivi de la tête. Dans cette condition, l'écart entre les autres techniques n'est pas significatif. La sélection par cône généra 2 échecs par \emph{timeout} par utilisateur, contre aucun pour les autres techniques, avec suivi de la tête. Le \emph{Shadow Cone} a un taux d'erreurs élevé : 4,5 par utilisateur, contre 4,4 pour la sélection par cône et 1,2 pour le \emph{raycasting}, avec suivi de la tête.}
+			\caption{Grappe de petits objets : le \emph{raycasting} domine ; pas d'écart significatif entre les autres techniques. Sélection par cône : 2 échecs par \emph{timeout}/utilisateur ; 0 pour les autres techniques. \emph{Shadow Cone} : 4,5 erreurs/utilisateur ; 4,4 pour la sélection par cône, et 1,2 pour le \emph{raycasting}.}
 			\label{fig:shadowCSmall}
 		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone} -- III]{Performances du \emph{Shadow Cone} -- III. Crédit : \cite{steed20043d}.}
-		\label{fig:shadowConePerf3}
+		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone (SCone)}, comparé à la sélection par cône et par \emph{raycasting}. Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet) ; les erreurs sont rapportées pour les conditions avec suivi. Crédit : \cite{steed20043d}.}
+		\label{fig:shadowConePerf}
 	\end{figure}
+	
+	Les temps de sélection mesurés pour les différentes techniques, avec et sans suivi de la tête, sont présentés sur la figure~\ref{fig:shadowSLarge} pour une grande cible seule, la figure~\ref{fig:shadowSSmall} pour une petite cible seule, la figure~\ref{fig:shadowPLarge} pour une grande cible avec un distracteur, la figure~\ref{fig:shadowPSmall} pour une petite cible avec un distracteur, la figure~\ref{fig:shadowCLarge} pour une grande cible avec de nombreux distracteurs, et enfin la figure~\ref{fig:shadowCSmall} pour une petite cible avec de nombreux distracteurs.
+	
+	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
 	
 	\subsubsection{Le problème de l'ambiguïté en environnement dense}
 	Lorsque l'environnement est particulièrement dense, la sélection par rayon ou cône devient difficile~\cite{kopper2011rapid}, car la précision requise devient très élevée, tant pour l'utilisateur que pour le système de suivi du périphérique de pointage. L'utilisation d'un cône facilite la sélection de petites cibles, mais ajoute un risque d'ambiguïté. Une solution pourrait être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon qu'il lance, ce qui peut être très troublant, et ingérable avec des cibles mobiles, surtout rapides.
@@ -484,22 +475,27 @@
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
 	\newcommand{\rayWidth}{0.55\textwidth}
+
 	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
-		\caption[Principe du \emph{Depth Ray}]{Fonctionnement du \emph{Depth Ray}. (a) Un marqueur rose est utilisé pour sélectionner la cible intersectée la plus proche de lui --- notons que le marqueur fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur et de sélectionner une cible plus lointaine. Crédit : \cite{grossman2006design}.}
-		\label{fig:depthRay}
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
+			\caption[Principe du \emph{Depth Ray}]{\emph{Depth Ray}. (a) Un marqueur rose sélectionne la cible intersectée la plus proche de lui (il fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible). (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur. Crédit : \cite{grossman2006design}.}
+			\label{fig:depthRay}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\rayWidth]{figures/ch2/lockRay}
+			\caption[Principe du \emph{Lock Ray}]{\emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique. (b) Une fois que l'utilisateur a pressé le bouton du périphérique, un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, et sélectionne en relâchant le bouton. Crédit : \cite{grossman2006design}.}
+			\label{fig:lockRay}
+		\end{subfigure}
+		\caption[\emph{Depth \&{} Lock Rays}]{\emph{Depth \&{} Lock Ray}.}
+		\label{fig:depthAndLockRays}
 	\end{figure}
 	
 	\subsubsection{\emph{Lock Ray}}
 	Le \emph{Lock Ray}~\cite{grossman2006design} fonctionne de la même façon que le \emph{Depth Ray}, si ce n'est qu'une fois que le rayon est positionné, il est \emph{verrouillé} --- d'où le nom --- afin de permettre à l'utilisateur de déplacer le marqueur de profondeur sans avoir à craindre de faire bouger le rayon par accident.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\rayWidth]{figures/ch2/lockRay}
-		\caption[Principe du \emph{Lock Ray}]{Fonctionnement du \emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique, sans marqueur de profondeur. (b) Une fois que l'utilisateur a pressé le bouton du périphérique un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, comme dans le \emph{Depth Ray}, et effectue la sélection en relâchant le bouton. Crédit : \cite{grossman2006design}.}
-		\label{fig:lockRay}
-	\end{figure}
 	
 	\subsubsection{\emph{Flower Ray}}
 	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon \og s'épanouissent \fg{}  --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}. Dans le menu \og floral \fg{} les objets sont disposés par ordre de profondeur croissante dans le sens horaire, avec le plus proche en haut à droite.
@@ -507,7 +503,7 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/flowerRay}
-		\caption[Principe du \emph{Flower Ray}]{Fonctionnement du \emph{Depth Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur poncuel, qui apparaît à cet instant. (c) L'utilisateur peut à présent pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Flower Ray}]{\emph{Flower Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur ponctuel, qui apparaît à cet instant. (c) L'utilisateur peut alors pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
 		\label{fig:flowerRay}
 	\end{figure}
 	
@@ -519,7 +515,7 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\rayWidth]{figures/ch2/smartRay}
-		\caption[Principe du \emph{Smart Ray}]{Utilisation du \emph{Smart Ray} pour sélectionner le petit carré. (a) Les poids des cibles sont basés sur la distance entre le rayon et la cible, et visualisés par de petites sphères au centre de chaque cible. À tout moment, la cible avec le plus gros poids peut être sélectionnée. (b,c) Le rayon peut être repositionné en continu pour augmenter le poids de la cible visée, même si elle est occultée. Crédit : \cite{grossman2006design}.}
+		\caption[Principe du \emph{Smart Ray}]{Utilisation du \emph{Smart Ray} pour sélectionner le petit carré. (a) Les poids des cibles dépendent de la distance entre le rayon et la cible, et sont illustrés des sphères au centre de chaque cible. À tout moment, la cible de poids maximal peut être sélectionnée. (b,c) Le rayon peut être repositionné en continu pour augmenter le poids de la cible visée, même si elle est occultée. Crédit : \cite{grossman2006design}.}
 		\label{fig:smartRay}
 	\end{figure}
 	
@@ -534,17 +530,17 @@
 	Les temps de sélection mesurés par les auteurs pour les différentes techniques sont représentés sur la figure~\ref{fig:rayTimes}.
 	
 	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.42\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/rayTimes}
-			\caption{Évaluation des techniques de \emph{raycasting} avec désambiguïsation en environnement dense. Les résultats présentés sont les temps de sélection. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel.}
+			\caption{Techniques de \emph{raycasting} avec désambiguïsation en environnement dense. Seul le \emph{Depth Ray} se montre plus performant que le curseur ponctuel.}
 			\label{fig:rayTimes}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.56\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/smartRayLocation}
-			\caption{Pour les cibles dont les identifiants sont faibles (vers la gauche) le \emph{Smart Ray} fournit de bons résultats, mais ils sont mauvais pour les cibles d'identifiant élevé (à droite). Tous les sujets de l'évaluation étaient droitiers, donc le rayon venait également de la droite, et rencontrait beaucoup d'obstacles.}
+			\caption{Pour les cibles à gauche, le \emph{Smart Ray} fournit de bons résultats, pas pour les cibles à droite. Les sujets de l'évaluation étaient droitiers, donc le rayon venait de la droite, et rencontrait beaucoup d'obstacles.}
 			\label{fig:smartRayLocation}
 		\end{subfigure}
 		\caption[Performances du \emph{raycasting} avec désambiguïsation]{Performances du \emph{raycasting} avec désambiguïsation. Crédit : \cite{grossman2006design}.}
@@ -561,12 +557,12 @@
 	\paragraph{Distance parcourue par le périphérique.}
 	Les auteurs ont par ailleurs mesuré la distance parcourue par le périphérique de pointage au cours d'une tâche de sélection, pour chaque technique évaluée. C'est un résultat important car il est déterminant pour la fatigue ressentie par un utilisateur sur une durée significative. Ici encore, le \emph{Smart Ray} déçoit, tandis que les autres techniques permettent de réduire la distance à parcourir par rapport au curseur ponctuel, comme l'illustre la figure~\ref{fig:rayFootprint}.
 	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][htbp]
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/rayFootprint}
-		\caption[\emph{Raycasting} et désambiguïsation -- distance parcourue par le périphérique]{Distance parcourue par le périphérique de pointage avec les diverses techniques de \emph{raycasting} évaluées. Les \emph{Depth, Lock} et\emph{Flower Rays} font mieux que le curseur ponctuel, au contraire du \emph{Smart Ray} qui affiche en outre un écart-type considérable. Crédit : \cite{grossman2006design}.}
+		\caption[\emph{Raycasting} et désambiguïsation -- distance parcourue par le périphérique]{Distance parcourue par le périphérique de pointage avec les techniques de \emph{raycasting} évaluées. Les \emph{Depth, Lock} et \emph{Flower Rays} font mieux que le curseur ponctuel, au contraire du \emph{Smart Ray} qui affiche en sus un écart-type considérable. Crédit : \cite{grossman2006design}.}
 		\label{fig:rayFootprint}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	Là encore on peut s'interroger sur la solidité des distances mesurées sur \emph{Smart Ray} attendu que dans un contexte \og réel \fg{} les utilisateurs seraient libres de se déplacer. Naturellement, la quantité de mouvement absolue du pointeur pourrait s'en trouver accrue, mais sa quantité de mouvement relatif à l'utilisateur pourrait diminuer. Il resterait à déterminer s'il est plus fatigant de bouger beaucoup son bras, ou un peu son corps et un peu son bras. Cette question est à notre connaissance ouverte.
 	
@@ -1135,7 +1131,7 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch2/targetGhost}
-		\caption[La technique \emph{Target Ghost}]{(Les flèches et annotations ont été ajoutées à l'image pour l'illustrer). \emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale est désaturée (en tant que fantôme), mais poursuit sa trajectoire. Un proxy plus vif de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et peut être sélectionné aisément. Seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
+		\caption[La technique \emph{Target Ghost}]{\emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale est désaturée (en tant que fantôme), mais poursuit sa trajectoire. Un proxy plus vif de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et peut être sélectionné aisément. Seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
 		\label{fig:targetGhost}
 	\end{figure}
 	
