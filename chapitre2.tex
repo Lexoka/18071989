@@ -786,7 +786,7 @@
 	\end{figure}
 	
 	\paragraph{Performances.}
-	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs parties, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
+	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique. Ainsi, l'on constate que cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites --- et \emph{a fortiori} les deux à la fois. Ce résultat n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs étapes, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée.
 	
 	On notera que les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, et parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
 	
@@ -797,7 +797,7 @@
 		\label{fig:dCanvasRCPerf}
 	\end{figure}
 
-	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
+	Enfin, précisons que l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci. De fait, on peut supposer qu'avec cette optimisation, les résultats obtenus seraient légèrement meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
 	
 	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape \og d'affichage \fg{} une animation de 200 ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation.
 	
@@ -811,9 +811,11 @@
 	\end{figure}
 	
 	Au-delà des temps de sélection, les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Sur l'intervalle de tailles testé, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, mais ce dernier résultat reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques.
+	
+	Notons que dans les deux cas, les techniques furent évaluées avec des cibles à égale distance du périphérique de pointage, et donc sans aucune occultation. Leurs performances dans des environnements denses avec beaucoup d'occultation demeurent par conséquent inconnues, et sujettes à caution.
 		 
 	\subsubsection{Le problème de la perte du contexte}
-	Les techniques de sélection en cascade pouvant prendre des formes diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, cette perturbation pourrait être une contrepartie acceptable.
+	Les techniques de sélection en cascade pouvant prendre des formes diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. La question de l'influence de ces transitions forcées par le système sur le risque de \emph{cybersickness}~\cite{laviola2000discussion} (ou \og mal du simulateur \fg{} ) n'est par ailleurs pas abordée par les auteurs des études citées plus haut. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, ces désagréments pourraient être une contrepartie acceptable.
 	
 	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
 	
@@ -834,7 +836,7 @@
 	Une classe de techniques consiste à analyser une partie du mouvement du curseur de sélection pour tenter d'estimer son point d'arrivée, donc la cible visée par l'utilisateur, et ainsi accélérer la sélection. Nous allons ici en analyser quelques-unes.
 	
 	\subsubsection{Le \emph{Delphian Desktop}}
-	Le \emph{Delphian Desktop}~\cite{asano2005predictive} est une technique de prédiction de la trajectoire du curseur, qui analyse sa position dans le temps pour essayer de déterminer si un pic de vélocité pour le mouvement en cours a été atteint. Il s'inspire d'observations sur les systèmes perceptif et moteur de l'humain, issues de diverses études de psychologie et kinésiologie~\cite{accot2003refining, graham1995pointing, graham1996physical, mackenzie1992extending, mackenzie1994prediction, takagi2002fundamental, walker1993spatial}.
+	Le \emph{Delphian Desktop}~\cite{asano2005predictive} est une technique de prédiction de la trajectoire du curseur, qui analyse sa position dans le temps pour essayer de déterminer si un pic de vélocité pour le mouvement en cours a été atteint. Il s'inspire d'observations sur les systèmes perceptif et moteur de l'humain, issues de diverses études de psychologie et kinesthésie~\cite{accot2003refining, graham1995pointing, graham1996physical, mackenzie1992extending, mackenzie1994prediction, takagi2002fundamental, walker1993spatial}.
 	
 	On sait en effet depuis une étude de Walker \emph{et al.}~\cite{walker1993spatial} que la hauteur du pic de vitesse d'un curseur croît avec la distance entre la cible et lui-même, avec un profil typique illustré par la figure~\ref{fig:delphianPeak}.
 
@@ -892,7 +894,7 @@
 
 	Cette tendance est d'ailleurs mieux illustrée par la figure~\ref{fig:delphianTimesID}, qui met en évidence les différences de pentes entre les droites qui représentent le temps de sélection en fonction de l'indice de difficulté (ID) pour la sélection non assistée et pour le \emph{Delphian Desktop}. On peut supposer que, pour des cibles d'ID très élevé, celui-ci serait d'autant plus avantageux.
 	
-	Il convient néanmoins de remarquer que dasns l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
+	Il convient néanmoins de remarquer que dans l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
 
 	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
 		\centering
@@ -904,7 +906,7 @@
 	Asano \emph{et al.} ont par ailleurs mesuré les erreurs de prédiction de la direction du mouvement, c'est-à-dire l'écart angulaire entre la direction estimée par le \emph{Delphian Desktop} et la droite passant par le point de départ du curseur et par le centre de la cible. La figure~\ref{fig:delphianTimesErrors} présente les résultats obtenus. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur.
 	
 	\paragraph{Erreurs.}
-	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fu pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
+	Une technique de sélection s'évalue en fonction de temps de sélection mais aussi en fonction des erreurs, et cet aspect ne fut pas oublié par les auteurs du \emph{Delphian Desktop}. En sus des erreurs de prédiction de direction mentionnées plus haut, ils ont mesuré les taux d'erreurs (les clics hors de la cible), les ratios d'erreur de distance $R_{ED}$ définis par $R_{ED} = D_{E}/D$ où $D_{E}$ est la distance entre le point d'arrivée du \og saut \fg{} effectué par le \emph{Delphian Desktop} et la cible, et $D$ est la distance entre le point de départ du curseur et la cible. Les erreurs mesurées sont détaillées dans la table~\ref{tab:delphianErrors}.
 	
 	\begin{table}
 	\centering
@@ -927,7 +929,7 @@
 	\footnotetext{L'à-coup, aussi appelé \emph{jerk} ou \emph{jolt} dans la littérature anglo-saxonne, est le vecteur quantifiant le changement d'accélération d'un objet. Mathématiquement, il s'agit de la dérivée de l'accélération par rapport au temps --- c'est-à-dire de la dérivée seconde de la vitesse, ou troisième de la position, toujours par rapport au temps.}
 	
 	\paragraph{Fondements théoriques et mathématiques.}
-	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. Or, le chemin entre deux points qui minimize l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
+	Lank \emph{et al.} observent que la cinématique du mouvement balistique non-contraint obéit à la loi de l'à-coup minimum. Or, la minimisation de l'à-coup implique une vélocité qui varie de façon aussi \og douce \fg{} que possible dans le temps. De plus, le chemin entre deux points qui minimise l'à-coup est de \emph{crackle} constant, où \emph{crackle} est la dérivée cinquième de la position par rapport au temps, ou la dérivée seconde de l'à-coup, toujours par rapport au temps. Les auteurs en déduisent les équation~\ref{eq:kepP} et~\ref{eq:kepV}, où $x(t)$ est la position en fonction du temps, $v(t)$ est la vitesse en fonction du temps, et $t$ est le temps.
 	
 	\begin{align}
 		\label{eq:kepP}
