@@ -293,10 +293,10 @@
 		\label{fig:silkCursorPerf}
 	\end{figure}
 	
-	Observons toutefois que la conception de l'évaluation pourrait favoriser ce dernier de façon artificielle, en ce qu'il est nécessaire que l'objet visé soit intégralement inclus dans le curseur volumique, ce qui ne paraît pas indispensable dans l'absolu. Or, en fil de fer, vérifier cela visuellement est très difficile, tandis que s'assurer qu'une partie de l'objet est dans le curseur semble plus aisé ; on peut supposer que la différence de difficulté entre ces deux tâches est moindre avec le \emph{Silk Cursor} grâce aux indications fournies par la semi-transparence.
+	Observons toutefois que la conception de l'évaluation pourrait favoriser ce dernier de façon artificielle, en ce qu'il est nécessaire que l'objet visé soit intégralement inclus dans le curseur volumique, ce qui ne paraît pas indispensable dans l'absolu. Or, en fil de fer, vérifier cela visuellement est très difficile, tandis que s'assurer qu'une partie de l'objet est dans le curseur semble plus aisé. On peut supposer que la différence de difficulté entre ces deux tâches est moindre avec le \emph{Silk Cursor} grâce aux indications fournies par la semi-transparence, qui facilite la perception de la profondeur et des objets occultés.
 	
 	\paragraph{Taux et amplitude des erreurs.}
-	Les auteurs ont également évalué les performances du \emph{Silk Cursor} sous l'angle des erreurs, tant leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
+	Les auteurs ont également évalué les performances du \emph{Silk Cursor} en matière d'erreurs, tant pour leur taux d'occurrence (voir la figure~\ref{fig:silkErrors}) que pour leur amplitude (voir la figure~\ref{fig:silkErrorMag}). Cette technique de sélection permet donc d'améliorer les temps de sélection, de réduire les occurrences d'erreurs et de diminuer leur amplitude lorsqu'elles se produisent malgré tout.
 	
 	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
@@ -312,14 +312,14 @@
 			\caption{Erreurs : distance euclidienne entre la position du curseur et celle souhaitée pour saisir la cible. La stéréoscopie et le \emph{Silk Cursor} améliorent les performances.}
 			\label{fig:silkErrorMag}
 		\end{subfigure}
-		\caption[\emph{Silk Cursor} -- erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
+		\caption[\emph{Silk Cursor} -- Occurrences et amplitude des erreurs]{\emph{Silk Cursor} -- erreurs. Crédit : \cite{zhai1994silk}}
 		\label{fig:SilkErrorsErrMag}
 	\end{figure}
 	
-	Enfin, cette étude menée par Zhai \emph{et al.}~\cite{zhai1994silk} confirme l'intérêt du rendu stéréoscopique pour de telles tâches, et vérifie qu'il apporte toujours un bénéfice tangible lorsqu'il est combiné au \emph{Silk Cursor}.
+	Enfin, cette étude menée par Zhai \emph{et al.}~\cite{zhai1994silk} confirme l'intérêt du rendu stéréoscopique pour de telles tâches, et montre qu'il apporte toujours un bénéfice tangible lorsqu'il est combiné au \emph{Silk Cursor}.
 	
 	\paragraph{Impressions subjectives.}
-	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets de leur étude, compilées dans la table~\ref{tab:silkImpr}. Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
+	Zhai \emph{et al.} ont également recueuilli les impressions subjectives des sujets (table~\ref{tab:silkImpr}). Le \emph{Silk Cursor} fut évalué très positivement par les utilisateurs, qui ont même préféré sa version monoscopique à la version stéréoscopique du curseur en fil de fer. En stéréoscopie, toutes les impressions subjectives étaient au moins hautes, et souvent très hautes.
 
 	\begin{table}
 	\centering
@@ -356,17 +356,17 @@
 		\label{fig:dynaSpotRes}
 	\end{figure}
 	
-	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
+	Il n'est donc pas nécessaire de désactiver \emph{DynaSpot} ou de changer de mode explicitement. En ceci, \emph{DynaSpot} comble une des lacunes du \emph{Bubble Cursor}. Cependant, Chapuis \emph{et al.}~\cite{chapuis2009dynaspot} ont montré que dans la plupart des cas, les performances de \emph{DynaSpot} sont similaires à celles du \emph{Bubble Cursor}. Ces résultats sont résumés dans la figure~\ref{fig:dynaResults}.
 
 	Attendu que la croissance et la décroissance du curseur sont à la fois lentes et prévisibles avec cette technique, le niveau de distraction visuelle est faible. Par ailleurs, il n'est pas nécessaire de connaître la position des cibles potentielles pour appliquer \emph{DynaSpot}, qui ne dépend que de la vitesse du curseur. En cela, cette technique permet de pallier deux autres inconvénients du \emph{Bubble Cursor}.
 
 	\paragraph{Ambiguïté et ralentissements.}
 	Le principal inconvénient de cette technique est précisément le fait que le curseur ne tient pas compte des cibles. Par conséquent, à vitesse élevée, sa surface peut en recouvrir plusieurs, et il ne peut déterminer laquelle est la bonne. Il est donc nécessaire de ralentir et d'attendre que le curseur rapetisse suffisamment pour ne toucher qu'une cible. En pratique, cela se produit assez rapidement, et pour les cibles statiques ce n'est pas vraiment gênant. Mais si les cibles sont mobiles, et \emph{a fortiori} rapides, le curseur ne peut s'arrêter, et il peut même être impossible à l'utilisateur de ralentir suffisamment pour que le curseur retrouve une taille permettant la sélection. Ainsi, de même que pour le \emph{Bubble Cursor}, la densité et la vitesse des cibles posent de sérieux problèmes.
 
-	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution est intéressante sur le papier mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un \og dézoom \fg{} avant que la sélection finale ne puisse avoir lieu.
+	On pourrait toutefois envisager une sélection en deux temps (en cascade) : l'utilisateur pré-sélectionnerait plusieurs cibles lorsque le curseur est gros et rapide, puis devrait choisir parmi les cibles touchées laquelle il veut. Naturellement, le processus de sélection en deviendrait plus lourd et plus long, et pourrait nécessiter de stopper (ou ralentir) les cibles après l'étape de pré-sélection pour que la sélection finale soit réalisable, ou bien encore de zoomer fortement sur l'espace pré-sélectionné. Cette dernière solution semble intéressante, mais pourrait s'avérer peu pratique si les cibles de l'espace pré-sélectionné ont des directions opposées et sont suffisamment rapides pour forcer un \og dézoom \fg{} avant que la sélection finale ne puisse avoir lieu.
 
 	\subsubsection{La densité : un écueil pour les curseurs zonaux}
-	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît la distance minimale entre deux cibles \emph{a priori}. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
+	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît \emph{a priori} la distance minimale entre deux cibles. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
 	
 	\subsection{Techniques de lancer de rayon (\emph{raycasting})}
 	Certaines techniques substituent aux curseurs classiques des rayons ou volumes projetés depuis un point contrôlé par l'utilisateur. Nous allons ici les examiner ensemble.
@@ -378,7 +378,7 @@
 	
 	Cependant, pour les objets de petite taille apparente, la sélection peut être difficile, car elle requiert une précision angulaire élevée. De plus, si le système de \emph{tracking} qui fournit la position et l'orientation du périphérique de pointage produit un signal bruité, la difficulté de sélection s'en trouve encore accrue. Par conséquent, des techniques dérivées du \emph{raycasting} ont été développées.
 	
-	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce type remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
+	Classiquement, on utilisera une technique de cône de sélection, comme par exemple \emph{Spotlight}~\cite{liang1994jdcad}, illustrée par la figure~\ref{fig:spotlight}. Comme le nom l'indique, les techniques de ce typent remplacent le rayon de sélection par un cône dont le sommet est placé sur le périphérique de pointage.
 	
 	\begin{SCfigure}[50][!htbp]
 		\centering
@@ -462,17 +462,19 @@
 	Quoique les figures sus-citées présentent les résultats avec et sans suivi de la tête, nous nous contenterons ici de commenter les résultats avec suivi, attendu que le cas particulier de rendu immersif incorrect dans un SID dépasse le cadre de cet état de l'art, et n'est pas particulièrement pertinent au regard des besoins et applications identifiés au cour du premier chapitre. Observons simplement que, pour une condition et une technique données, le suivi de la tête améliore toujours les temps de sélection, comme l'on pouvait s'y attendre ; l'effet sur les erreurs et échecs est généralement le même.
 	
 	\subsubsection{Le problème de l'ambiguïté en environnement dense}
-	Lorsque l'environnement est particulièrement dense, la sélection par rayon ou cône devient difficile~\cite{kopper2011rapid}, car la précision requise devient très élevée, tant pour l'utilisateur que pour le système de suivi du périphérique de pointage. L'utilisation d'un cône facilite la sélection de petites cibles, mais ajoute un risque d'ambiguïté. Une solution pourrait être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon qu'il lance, ce qui peut être très troublant, et ingérable avec des cibles mobiles, surtout rapides.
+	Lorsque l'environnement est particulièrement dense, la sélection par rayon ou cône devient difficile~\cite{kopper2011rapid}, car la précision requise devient très élevée, tant pour l'utilisateur que pour le système de suivi du périphérique de pointage. L'utilisation d'un cône facilite la sélection de petites cibles, mais ajoute un risque d'ambiguïté. Une solution pourrait être d'augmenter le ratio contrôle/affichage à proximité des cibles~\cite{frees2007prism, kopper2010human}, mais c'est au prix de l'introduction d'un décalage entre l'orientation réelle du périphérique de pointage et celle du rayon lancé, ce qui peut être très troublant, et peu performant avec des cibles mobiles, surtout rapides.
 	
 	Et si diverses techniques peuvent aider à lever l'ambiguïté, leur utilisation est d'autant plus difficile que les cibles situées dans le volume du cône sont nombreuses, petites et\ldots{} mobiles. En effet, la mobilité des cibles nécessite d'effectuer des mouvements plus rapides pour les pointer, donc d'exercer plus de force, et de fait, d'être moins précis~\cite{schmidt1979motor}. En particulier, le \emph{Shadow Cone} impose de maintenir la cible visée à l'intérieur du cône pendant toute la phase de désambiguïsation, ce qui peut s'avérer extrêmement difficile avec une cible en mouvement, \emph{a fortiori} si ses mouvements sont rapides et/ou imprévisibles. Par conséquent, nous ne pouvons retenir cette technique pour les applications qui nous intéressent.
 	
 	Néanmoins, observons qu'en assouplissant quelque peu cette contrainte, le \emph{Shadow Cone} fournirait potentiellement de meilleurs résultats avec les cibles mobiles. C'est en substance ce que propose le \emph{Smart Ray}~\cite{grossman2006design}, décrit plus bas.
 
 	\subsection{\emph{Raycasting} avec désambiguïsation}
-	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
+	Dans~\cite{grossman2006design}, Grossman \emph{et al.} proposent d'évaluer diverses techniques de sélection dérivées du \emph{raycasting} et ayant pour but de faciliter la désambiguïsation lorsque le rayon atteint plusieurs objets. Ces travaux sont présentés comme étant motivés par l'émergence d'écrans volumétriques\footnotemark{}~\cite{ebert1999realizing}, mais demeurent très pertinents pour des dispositifs d'affichage plus classiques, notamment stéréoscopiques.
+	
+	\footnotetext{Un écran volumétrique est un dispositif formant une représentation en 3D des objets qu'il affiche, généralement via une forme d'autostéréoscopie, c'est-à-dire de stéréoscopie ne nécessitant pas le port de lunettes spéciales.}
 
 	\subsubsection{\emph{Depth Ray}}
-	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique de pointage le long de son axe est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
+	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique le long de son axe de pointage est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est ainsi augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
 	\newcommand{\rayWidth}{0.55\textwidth}
 
@@ -490,8 +492,15 @@
 			\caption[Principe du \emph{Lock Ray}]{\emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique. (b) Une fois que l'utilisateur a pressé le bouton du périphérique, un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, et sélectionne en relâchant le bouton. Crédit : \cite{grossman2006design}.}
 			\label{fig:lockRay}
 		\end{subfigure}
-		\caption[\emph{Depth \&{} Lock Rays}]{\emph{Depth \&{} Lock Ray}.}
-		\label{fig:depthAndLockRays}
+		~
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\rayWidth]{figures/ch2/flowerRay}
+			\caption[Principe du \emph{Flower Ray}]{\emph{Flower Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur ponctuel, qui apparaît à cet instant. (c) L'utilisateur peut alors pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
+			\label{fig:flowerRay}
+		\end{subfigure}
+		\caption[\emph{Depth, \&{} Lock Rays}]{\emph{Depth \&{} Lock Ray}.}
+		\label{fig:depthAndLockAndFlowerRays}
 	\end{figure}
 	
 	\subsubsection{\emph{Lock Ray}}
@@ -499,14 +508,7 @@
 	
 	\subsubsection{\emph{Flower Ray}}
 	Comme le \emph{Lock Ray}, le \emph{Flower Ray}~\cite{grossman2006design} fonctionne avec deux phases distinctes. Dans la première, l'utilisateur place son rayon dans la position et l'orientation qu'il désire ; puis, il le fixe, et les objets croisés par le rayon \og s'épanouissent \fg{}  --- tout autour d'un curseur ponctuel, comme les pétales d'une fleur autour de son pistil, ainsi que l'illustre la figure~\ref{fig:flowerRay}. Dans le menu \og floral \fg{} les objets sont disposés par ordre de profondeur croissante dans le sens horaire, avec le plus proche en haut à droite.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\rayWidth]{figures/ch2/flowerRay}
-		\caption[Principe du \emph{Flower Ray}]{\emph{Flower Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur ponctuel, qui apparaît à cet instant. (c) L'utilisateur peut alors pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
-		\label{fig:flowerRay}
-	\end{figure}
-	
+		
 	\subsubsection{\emph{Smart Ray}}
 	Par définition, un rayon contient une infinité de points. Toutefois, si deux sont sécants, alors ils n'ont qu'un seul point en commun. Il donc possible d'utilier deux rayons pour effectuer une sélection par \emph{raycasting} sans aucune ambiguïté. Toutefois, cela nécessite deux périphériques de saisie et cela occupe les deux mains de l'utilisateur.
 	
@@ -570,7 +572,7 @@
 	Enfin, Grossman \emph{et al.} rapportent que les taux d'erreurs sont avantageux avec ces techniques de \emph{raycasting} avec désambiguïsation, comme le détaille la table~\ref{tab:rayErrors}.
 	
 %	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
-	\begin{table}
+	\begin{table}[htbp]
 	\centering
 	\begin{tabular}{c c}
 		Type de curseur			& Taux d'erreurs \bigstrut[b] \\ \hline
@@ -587,13 +589,15 @@
 	\subsubsection{Conclusion}
 	L'étude de Grossman \emph{et al.}~\cite{grossman2006design} montre qu'en environnement dense, la sélection par \emph{raycasting} pur est moins efficace qu'un curseur ponctuel, voire impossible, mais que des méthodes de désambiguïsation peuvent permettre d'atteindre de meilleures performances. Dans une certaine mesure, on peut en effet améliorer les temps de sélection, mais les bénéfices sur les taux d'erreurs sont encore plus importants.
 	
-	Parmi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple.
+	Parmi les techniques évaluées ici, le \emph{Depth Ray} se distingue des autres avec de très bons temps de sélection, et un taux d'erreurs légèrement plus élevé que ceux des autres techniques avancées, mais tout de même nettement inférieur à ce qu'on obtient avec un curseur ponctuel. Toutefois, le \emph{Depth Ray} souffre d'un léger inconvénient, puisqu'il nécessite un périphérique de pointage permettant de capturer non seulement son orientation, mais également sa position, c'est-à-dire qu'un simple gyroscope est insuffisant. Ce n'est pas nécessairement le cas du \emph{Lock Ray} ou du \emph{Flower Ray}, par exemple. Néanmoins, la profondeur pourrait éventuellement être gérée par un contrôle additionnel sur le périphérique de pointage, tel qu'une molette, par exemple.
 	
 	Ce qui est potentiellement plus gênant avec le \emph{Depth Ray} est le couplage des phases de pré-sélection et de désambiguïsation. Si ce couplage est bénéfique ici, on peut en douter dans le cas de cibles mobiles, où il faudrait constamment réajuster l'orientation du rayon pour continuer à \og capturer \fg{} la cible, tout en avançant ou reculant le périphérique pour placer le marqueur de profondeur au bon endroit. Nous supposons que pour des cibles petites et/ou rapides, le \emph{Depth Ray} serait très difficile à utiliser, là où un \emph{Lock/Flower Ray} pourrait fournir des performances satisfaisantes, à condition peut-être d'utiliser un cône un peu large au lieu d'un rayon cylindrique --- en réalité, ces techniques furent mises en \oe{}uvre par Grossman \emph{et al.} avec des cônes de 2\textdegree{} d'angle, même si ce n'était pas indiqué par le rendu graphique.
 	
 	Si le \emph{Smart Ray} fournit ici d'assez mauvais résultats, il serait intéressant de le réévaluer dans ce contexte, car d'une part, il souffrirait peut-être moins de l'occultation de la cible si elle était mobile, et d'autre part, il ne serait peut-être plus nécessaire de bouger le rayon pour lever l'ambiguïté, puisqu'en suivant la cible, son poids augmenterait continuellement, tandis que les poids des distracteurs seraient susceptibles de baisser assez rapidement --- à moins que ceux-ci ne se déplacent de façon corrélée à la cible, en étant toujours touchés par le rayon, ce qui est assez improbable sur une durée de plusieurs secondes dans la plupart des cas.
 	
 	Ainsi, les inconvénients principaux de cette technique, à savoir la distance parcourue par le périphérique et l'occultation pourraient être atténués, tandis que l'heuristique de prédiction pourrait \emph{mieux} fonctionner qu'avec des cibles statiques. Nous verrons plus loin que la technique \emph{IntenSelect}~\cite{de2005intenselect} fonctionne à peu près sur ce principe, de même que \emph{Hook}~\cite{ortega2013hook}, qui fait cependant usage d'un curseur ponctuel.
+	
+	Ajoutons enfin que le \emph{Smart Ray} pourrait être adapté pour utiliser, en plus du rayon projeté par le périphérique de pointage, un cône (relativement étroit) orienté selon la direction du regard de l'utilisateur. Ainsi, les objets dont les poids augmenteraient seraient ceux situés à la fois dans le cône de vision de l'utilisateur et proches du rayon.
 
 	\subsection{Sélection en cascade, grossière, puis fine}
 	Les techniques de cette catégorie divisent la sélection en deux phases (ou plus). Premièrement, une portion de l'espace visuel est sélectionnée. Cette première phase étant grossière, elle n'a pas besoin d'être précise, et peut être très rapide. Par exemple, avec un simple périphérique de pointage, tel qu'une souris, un ratio contrôle/affichage (\emph{control/display, C/D}) très faible peut être utilisé. Le curseur (ou autre medium de sélection) peut ainsi se placer très rapidement sur la zone d'intérêt, mais n'a pas besoin d'être précisément sur la cible pour délencher la deuxième phase : la sélection (plus) fine. Dans celle-ci, l'utilisateur sélectionne la cible elle-même, par exemple à l'aide d'un ratio C/D plus élevé, ou bien affine encore l'espace de sélection, jusqu'à ce qu'une phase finale permette la sélection effective de la cible.
@@ -614,7 +618,7 @@
 	\footnotetext{Des réseaux de caméras infrarouge permettant d'obtenir les positions précises d'un ensemble de marqueurs, donc l'orientation de l'objet sur lequel les marqueurs sont posés --- objet pouvant éventuellement être la tête d'un utilisateur.
 	\url{http://www.ar-tracking.com/products/tracking-systems/arttrack-system/arttrack5}}
 	
-	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux~\cite{monden2005evaluation, vspakov2011comparison}. Dans uen certaine mesure, ces derniers peuvent être filtrés, mais cela ne règle que partiellement le problème~\cite{zhang2008improving}.
+	Comme le rappellent Zhai \emph{et al.}~\cite{zhai1999manual}, l'utilisation des yeux comme entrée dans un système informatique fait l'objet de recherches depuis longtemps~\cite{levine1981eye, bolt1982eyes, ware1987evaluation, jacob1990you}. Ils remarquent également que la fovéa, (la zone centrale de la macula, la zone de la rétine où la vision des détails est la plus précise) avec son angle de 1\textdegree{}, est trop grossière pour les cibles les plus petites, surtout compte tenu des mouvements aléatoire constamment effectués par les yeux~\cite{monden2005evaluation, vspakov2011comparison}. Dans une certaine mesure, ces derniers peuvent être filtrés, mais cela ne règle que partiellement le problème~\cite{zhang2008improving}.
 	
 	Par ailleurs, il peut être très déroutant pour un utilisateur de \og charger \fg{} un canal sensoriel, habituellement passif\footnotemark{}, d'une fonction de manipulation plus généralement dévolue à une extrémité ou un membre.
 	
@@ -637,7 +641,7 @@
 
 	Par conséquent, l'utilisation de suivi des yeux se montre souvent difficile à mettre en œuvre, quoique les progrès techniques puissent, dans un futur proche, pallier au moins partiellement ces difficultés.
 	
-	Du reste, même quand le suivi des yeux est impossible et seule la tête peut être pris en compte, les informations captées demeurent précieuses. En effet, 40~\%{} à 70~\%{} de l'orientation du regard est déterminée par la rotation de la tête, tandis que les 60~\%{} à 30~\%{} restants (respectivement) dépendent des mouvements oculaires~\cite{gauthier1991short}. On peut donc, le plus souvent, obtenir une bonne estimation de la direction du regard en se fondant uniquement sur l'orientation de la tête.
+	Du reste, même quand le suivi des yeux est impossible et seule la tête peut être prise en compte, les informations captées demeurent précieuses. En effet, 40~\%{} à 70~\%{} de l'orientation du regard est déterminée par la rotation de la tête, tandis que les 60~\%{} à 30~\%{} restants (respectivement) dépendent des mouvements oculaires~\cite{gauthier1991short}. On peut donc, le plus souvent, obtenir une bonne estimation de la direction du regard en se fondant uniquement sur l'orientation de la tête.
 	
 	\subsubsection{\emph{Look \&{} Touch}}
 	Stellmach \emph{et al.}~\cite{stellmach2012look} ont développé et évalué plusieurs techniques fondées sur le principe de la sélection en cascade avec une phase grossière dirigée par le regard, et une phase fine s'appuyant sur un périphérique doté d'un écran tactile, tel qu'un \emph{smartphone}.
