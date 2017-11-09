@@ -152,7 +152,7 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth]{figures/ch2/selTechTree}
-		\caption[Taxinomie des techniques de sélection de cibles]{Notre proposition de taxinomie des techniques de sélection de cibles. Les catégories et sous-catégories sont représentées par des rectangles arrondis de couleur rose pâle et les techniques de sélection sont représentées par les rectangles bleus/verts. Une technique peut appartenir à différentes catégories à la fois, comme \emph{IntenSelect}, par exemple.}
+		\caption[Taxinomie des techniques de sélection de cibles]{Notre proposition de taxinomie des techniques de sélection de cibles. Les catégories et sous-catégories sont représentées par des rectangles arrondis de couleur rose pâle, et les techniques de sélection sont représentées par les rectangles bleus/verts. Une technique peut appartenir à différentes catégories à la fois, comme \emph{IntenSelect}, par exemple.}
 		\label{fig:selTaxi}
 	\end{figure}
 \end{landscape}
@@ -244,7 +244,7 @@
 		\label{fig:bubbleVoronoi}
 	\end{figure}
 	
-	\begin{SCfigure}[50][!htbp] % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
 		\includegraphics[width=0.42\textwidth]{figures/ch2/bubbleResults}
 		\caption[\emph{Bubble Cursor} --  performances]{Temps de pointage avec et sans le \emph{Bubble Cursor}, en fonction de $W$ et $EW$, où $W$ est la largeur réelle de la cible, et $EW$ sa largeur effective. Le \emph{Bubble Cursor} améliore les performances, dépend de $EW$ bien plus que de $W$. Crédit : \cite{grossman2005bubble}.}
@@ -369,6 +369,7 @@
 	Le principal inconvénient d'un curseur zonal se présente lorsque la densité de cibles potentielles est élevée. Si deux cibles sont séparées d'une distance inférieure à la taille de la zone de sélection, il peut être difficile de choisir parmi les deux. Ce problème est illustré par la figure~\ref{fig:bubble}. Il est possible de partiellement pallier ce problème en utilisant une zone plus petite, mais en plus de réduire l'efficacité de la technique, ce n'est certain de fonctionner que si l'on connaît \emph{a priori} la distance minimale entre deux cibles. La figure~\ref{fig:areaCursor} présente une solution possible, qui consiste à n'utiliser que le centre du curseur, mais cela implique la perte de l'avantage fourni par un curseur zonal.
 	
 	\subsection{Techniques de lancer de rayon (\emph{raycasting})}
+	\label{sec:raycasting}
 	Certaines techniques substituent aux curseurs classiques des rayons ou volumes projetés depuis un point contrôlé par l'utilisateur. Nous allons ici les examiner ensemble.
 
 	\subsubsection{Lancer de rayon (\emph{raycasting}) pur}
@@ -1065,7 +1066,7 @@
 	On observera notamment que les résultats de SPEED sont corrects même avec un indice de difficulté élevé, tandis que KEP tend à s'effondrer dans ces cas-là, avec un taux de prédiction nul pour des cibles de 16 pixels de largeur à une distance de 1536 pixels, contre 26,2~\%{} pour SPEED.
 	
 	\subsubsection{L'hypothèse de rectitude et les cibles mobiles}
-	Les techniques de prédiction de la trajectoire du curseur admettent un point faible commun : leur hypothèse de base selon laquelle la trajectoire du curseur est rectiligne. Quoique raisonnable pour les cibles statiques, cette hypothèse ne tient pas quand elles sont mobiles, surtout si elles sont rapides et leurs mouvements sont imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
+	Les techniques de prédiction de la trajectoire du curseur ont un point faible commun : leur hypothèse de base selon laquelle la trajectoire du curseur est rectiligne. Quoique raisonnable pour les cibles statiques, cette hypothèse ne tient pas quand les cibles sont mobiles, surtout si elles sont rapides et leurs mouvements sont imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas.
 	
 	Il ne nous semble donc pas possible de retenir ces techniques pour les tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
 	
@@ -1111,7 +1112,7 @@
 	
 	L'on peut supposer, en extrapolant ces résultats, que la technique \emph{Hold} serait encore plus bénéfique sur des cibles encore plus petites ou rapides. Elle devrait logiquement permettre de sélectionner de façon relativement aisée des cibles d'une vitesse originelle quelconque, tandis que sans assistance, des cibles trop rapides peuvent devenir insaisissables.
 	
-	Il s'avère par ailleurs que la technique \emph{Hybrid} fournit de meilleurs résultats que \emph{Chase} et \emph{Hold}, en 1D comme en 2D. Dans le premier cas, la réduction du temps de sélection est de 12~\%{} par rapport à \emph{Chase} et 20~\%{} par rapport à \emph{Chase}, contre respectivement 13~\%{} et 3~\%{} dans le second cas. Il semble donc que le mode \emph{Hybrid} permette aux utilisateurs de choisir eux-mêmes la stratégie optimale.
+	Il s'avère par ailleurs que la technique \emph{Hybrid} (où l'utilisateur positionne sa souris sur un flacon vert, puis peut cliquer librement sur la cible, ou sur le flacon pour stopper la cible et relâcher le bouton dessus) fournit de meilleurs résultats que \emph{Chase} (où l'utilisateur positionne sa souris sur un flacon rouge pour déclencher la sélection, puis clique sur la cible) et \emph{Hold}, en 1D comme en 2D. Dans le premier cas, la réduction du temps de sélection est de 12~\%{} par rapport à \emph{Chase} et 20~\%{} par rapport à \emph{Chase}, contre respectivement 13~\%{} et 3~\%{} dans le second cas. Il semble donc que le mode \emph{Hybrid} permette aux utilisateurs de choisir eux-mêmes la stratégie optimale.
 	
 	La figure~\ref{fig:holdTech} présente les choix de technique faits par les sujets en fonction des paramètres de la cible --- sa taille, sa vitesse, sa direction et l'angle de sa direction.
 	
@@ -1176,18 +1177,17 @@
 	L'utilisation d'un proxy peut aussi être gênante dans un contexte immersif avec un périphérique de saisie permettant une correspondance à l'échelle 1 entre l'espace moteur et l'espace virtuel, en particulier si la sélection a pour but de permettre une manipulation de l'objet saisi. C'est notamment le cas pour les simulations de dynamique moléculaire, qui impliquent d'envoyer des forces au système simulé, avec un retour (pseudo-)haptique pour l'utilisateur.
 		
 	\subsubsection{Perte du contexte dynamique}
-	Les techniques de manipulation du temps impliquent d'arrêter (ou altérer) l'animation ou la simulation à la source des mouvements des cibles, ce qui est inacceptable dans bon nombre d'applications, comme la plupart des jeux vidéo, par exemple. Pour les simulations moléculaires ou encore le contrôle des espaces aérien, maritime, terrestre, les retransmissions d'événements sportifs, etc., cela implique une perte de connexion avec le réel, qui peut dans certains cas être inacceptable.
+	Les techniques de manipulation du temps impliquent d'arrêter (ou d'altérer) l'animation ou la simulation à la source des mouvements des cibles, ce qui est inacceptable dans bon nombre d'applications, comme la plupart des jeux vidéo, par exemple. Pour les simulations moléculaires ou encore le contrôle des espaces aérien, maritime, terrestre, les retransmissions d'événements sportifs, etc., cela implique une déconnexion avec le réel, qui peut dans certains cas être inacceptable.
 	
-	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utiliser des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} impliquerait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations. Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés. Il est vrai que \emph{Target/Bubble Ghost} propose un palliatif, mais il n'est que partiellement efficace, et au prix d'un encombrement visuel presque doublé.
+	Un cas particulier mérite d'être souligné : celui des simulations interactives collaboratives, c'est-à-dire impliquant plusieurs utilisateurs pouvant éventuellement être distants l'un de l'autre, et utilisant des dispositifs différents mais synchronisés. Dans un tel contexte, \emph{Hold} induirait soit l'imposition par un utilisateur à tous les autres d'un arrêt de la simulation, soit la désynchronisation des différentes simulations. Certains jeux vidéo sont également dans ce cas de figure, avec le facteur aggravant qu'ils peuvent impliquer un très grand nombre d'utilisateurs simultanés. Il est vrai que \emph{Target/Bubble Ghost} propose un palliatif, mais il n'est que partiellement efficace, et au prix d'un encombrement visuel presque doublé.
 	
 	\subsection{Techniques fondées sur l'augmentation des objets}
 	Certaines techniques se fondent sur la loi de Fitts et son énoncé de l'importance de la largeur de la cible pour faciliter la sélection en augmentant les cibles, de façon à les agrandir. Attardons-nous sur deux d'entre elles.
 
 	\subsubsection{\emph{AttachedShock}}
-	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}. est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets \og fuyants \fg{} : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
+	\emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock} est une technique développée pour répondre à un besoin plutôt spécifique à la réalité augmentée : la sélection d'objets \og fuyants \fg{} : lorsqu'un utilisateur se déplace dans une direction (à pied ou dans un véhicule) les objets à côté desquels il passent quittent son champ de vision rapidement, et de plus en plus vite à mesure que qu'ils s'approchent des bords du champ de vision, comme l'illustre la figure~\ref{fig:as2dspeed}.
 
 	\begin{SCfigure}
-		%\centering
 		\includegraphics[scale=0.35]{figures/ch2/as2dspeed}
 		\caption[\emph{AttachedShock}, profil de vitesse]{Vue d'un utilisateur dans une voiture, fixant la route. Des objets (les sphères vertes) attirent son attention. Ils sont fixés au sol, mais leur vitesse relative (par rapport au référentiel de la voiture) est celle de la voiture dans le référentiel terrestre. Une fois projetée sur un écran 2D, elle varie considérablement en fonction de la distance de l'objet au centre de l'écran. On peut parler de \emph{vitesse apparente}. Crédit : \cite{you2012attachedshock}.}
 		\label{fig:as2dspeed}	
@@ -1204,20 +1204,20 @@
 	
 	Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme \og naturelle \fg{} --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute. Les auteurs ont comparé \emph{AttachedShock} à d'autres techniques de référence, dont bien sûr un simple curseur ponctuel mais aussi un curseur zonal, ainsi que la technique \emph{Comet}, présentée plus haut.
 
-	La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
-
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/asRes}
-		\caption[\emph{AttachedShock}, performance]{Évaluation d'\emph{AttachedShock}. Le taux d'erreurs est en abscisse, le temps de sélection en ordonnée. \emph{AttachedShock} ne fait pas bien mieux qu'un curseur zonal en temps de sélection, mais s'illustre pas un taux d'erreurs très bas, et par un temps de sélection moyen qui demeure le meilleur, quoique de peu. Résultats tirés de~\cite{you2012attachedshock}.}
+		\caption[\emph{AttachedShock}, performance]{Évaluation d'\emph{AttachedShock}. Le taux d'erreurs est en abscisse, le temps de sélection en ordonnée. \emph{AttachedShock} ne fait pas bien mieux qu'un curseur zonal en temps de sélection, mais le taux d'erreurs est très bas. Résultats tirés de~\cite{you2012attachedshock}.}
 		\label{fig:asRes}
-	\end{wrapfigure}
+	\end{SCfigure}
+
+	La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
 	
 	\emph{AttachedShock} n'est toutefois pas sans limite. En effet, la densité de cibles testée par les auteurs est très faible, comme le montre la figure~\ref{fig:asDensity}. La technique n'ayant pas été évaluée avec une grande densité de cibles, il est impossible d'affirmer qu'elle fonctionnerait bien dans de telles conditions, mais l'on peut en douter compte tenu du fait qu'elle repose sur la possibilité qu'a l'utilisateur de se \og contenter \fg{} de mouvements balistiques sans mouvements correctifs, ce qui serait bien difficile avec les nombreux obstacles que de nombreux distracteurs constitueraient.
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.9\textwidth]{figures/ch2/asDensity}
+		\includegraphics[width=0.8\textwidth]{figures/ch2/asDensity}
 		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de \og traverser \fg{} leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
 		\label{fig:asDensity}
 	\end{figure}
@@ -1227,26 +1227,23 @@
 	\subsubsection{\emph{(Bubble) Comet}}
 	Avec \emph{Comet}~\cite{hasan2011comet}, chaque cible potentielle laisse derrière elle une traînée (ou queue) qui peut être sélectionnée à la place de la cible elle-même, comme le montre la figure~\ref{fig:comet}.
 
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
 		\includegraphics[width=0.46\textwidth]{figures/ch2/comet}
 		\caption[La technique \emph{Comet}]{(a) La cible et sa queue de comète. (b) La queue est mise en surbrillance lorsque le curseur passe dessus. (c) Les queues peuvent être recouvertes par les cibles ajdacentes. Crédit : \cite{hasan2011comet}.}
 		\label{fig:comet}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	Cela revient à augmenter la taille effective des cibles. Attendu que cela s'applique aux cibles et pas aux curseurs, \emph{Comet} peut être combinée à une technique de curseur, par exemple le \emph{Bubble Cursor} ou \emph{DynaSpot}. Hasan \emph{et al.} ont montré que cette technique permet de significativement améliorer les temps de sélection et les taux d'erreurs pour les cibles mobiles en 2D~\cite{hasan2011comet}, comme le montrent les résultats compilés sur les figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
-	\subsubsection{Augmentation et\ldots{} encombrement visuel}
-	Les techniques fondées sur l'augmentation ont un inconvénient commun : l'encombrement visuel significativement accru, et les deux techniques évaluées ici ne font pas exception. De plus, elles modifient la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Naturellement, le haut niveau d'encombrement visuel est d'autant plus problématique que l'environnement de départ est dense et présente un haut degré d'occultation.
-	
-	\subsubsection{Encombrement visuel et déformation}
-	Comme pour les techniques de cette famille conçues pour les cibles statiques, l'inconvénient majeur est l'encombrement visuel, sensiblement accru. Par ailleurs, la déformation des cibles ou autres modifications de leur apparence peuvent poser problème selon le contexte.
+	\subsubsection{Limites des techniques fondées sur l'augmentation}
+	Les techniques fondées sur l'augmentation ont un inconvénient commun : l'encombrement visuel significativement accru, et les deux techniques détaillées ici ne font pas exception. De plus, elles modifient la représentation visuelle des cibles, et en particulier de leur forme. Pour certaines applications, par exemple les simulations moléculaires (dans lequelles la perception des formes des molécules est absolument critique) ce point est particulièrement gênant. Naturellement, le haut niveau d'encombrement visuel est d'autant plus problématique que l'environnement de départ est dense et présente un haut degré d'occultation.
 
 	\subsection{Techniques de prédiction intentionnelle}
-	Les techniques de prédiction intentionnelle cherchent à prédire l'intention de l'utilisateur à partir de ses actions ; en \og devinant \fg{} quelle cible il souhaite choisir, l'on peut lui proposer de le faire de façon très accélérée. Nous allons ici examiner deux techniques de ce type, mais précisons avant de procéder que le \emph{Smart Ray}, décrit plus haut dans la catégorie \emph{raycasting} avec désambiguïsation, pourrait tout à fait être considéré comme une technique de prédiction intentionnelle.
+	Les techniques de prédiction intentionnelle cherchent à prédire l'intention de l'utilisateur à partir de ses actions ; en \og devinant \fg{} quelle cible il souhaite choisir, elles visent à lui proposer de le faire de façon très accélérée. Nous allons ici examiner deux techniques de ce type, mais précisons avant de procéder que le \emph{Smart Ray}, décrit dans la section~\ref{sec:raycasting}, pourrait tout à fait être considéré comme une technique de prédiction intentionnelle.
 	
 	\subsubsection{\emph{IntenSelect}}
-	De Haan \emph{et al.}~\cite{de2005intenselect} observent que le \emph{raycasting} fonctionne mal pour sélectionner des objets petits, fins, ou distants ; occultés ou dans un milieu très dense ; ou caractérisés par un comportement dynamique complexe. C'est pour cette raison qu'ils ont développé une nouvelle méthode d'interaction baptisée \emph{IntenSelect}, visant à faciliter la sélection de cibles. Ils identifient notamment les simulations de dynamique moléculaire comme une application particulièrement exigeante, ainsi que nous le soulignions dans le premier chapitre de ce manuscrit. Cette observation est illustrée par la figure~\ref{fig:intensMD}.
+	De Haan \emph{et al.}~\cite{de2005intenselect} observent que le \emph{raycasting} fonctionne mal pour sélectionner des objets petits, fins, ou distants, occultés ou dans un milieu très dense, ou caractérisés par un comportement dynamique complexe. C'est pour cette raison qu'ils ont développé une nouvelle méthode d'interaction baptisée \emph{IntenSelect}, visant à faciliter la sélection de cibles. Ils identifient notamment les simulations de dynamique moléculaire comme une application particulièrement exigeante, ainsi que nous le soulignions dans le premier chapitre de ce manuscrit. Cette observation est illustrée par la figure~\ref{fig:intensMD}.
 	
 	De Haan \emph{et al.} notent par ailleurs que le mouvement des cibles ne fait qu'exacerber les difficultés rencontrées avec les cibles distantes et/ou de petite taille.
 	
@@ -1345,34 +1342,34 @@
 	Les possibilités sont extrêmement nombreuses et laissées à la libre appréciation des concepteurs d'applications. Reconnaissons simplement l'avantage (potentiellement considérable) de fonctions de \emph{scoring} facilement paramétrables.
 	
 	\paragraph{Performances.}
-	Les performances d'\emph{IntenSelect} sont bonnes et le sont particulièrement avec des cibles mobiles, comme l'on pouvait s'y attendre --- c'est du moins ce qu'indique l'étude empirique menée par de Haan \emph{et al.}~\cite{de2005intenselect}, qui mettent tout de même le lecteur en garde en précisant qu'ils n'avaient que 8 sujets. Quoi qu'il en soit, leurs résultats sont présentés sur la figure~\ref{fig:intensPerf}.
+	Les performances d'\emph{IntenSelect} sont bonnes et le sont particulièrement avec des cibles mobiles, comme l'on pouvait s'y attendre --- c'est du moins ce qu'indique l'étude empirique menée par de Haan \emph{et al.}~\cite{de2005intenselect}, qui mettent tout de même le lecteur en garde en précisant qu'ils n'avaient que 8 sujets. Leurs résultats sont présentés sur la figure~\ref{fig:intensPerf}.
 	
-	\begin{figure}[!htbp]
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.70\textwidth]{figures/ch2/intensPerf}
+		\includegraphics[width=0.62\textwidth]{figures/ch2/intensPerf}
 		\caption[\emph{IntenSelect} -- performances]{Performances de la technique \emph{IntenSelect} en sélection de cibles statiques (à gauche) et mobiles (à droite), comparée au \emph{raycasting} et à la sélection par cône. Les résultats ne se démarquent pas de ceux de la sélection par cône avec des cibles statiques mais c'est le cas quand elles bougent. Les boîtes représentent les données entre le premier et le dernier quartile, avec la valeur médiane indiquée en rouge. Crédit : \cite{de2005intenselect}.}
 		\label{fig:intensPerf}
-	\end{figure}
+	\end{SCfigure}
 	
-	Bien qu'\emph{IntenSelect} ne puisse faire mieux que la sélection par cône avec des cibles statiques, cette technique brille plus avec des cibles mobiles. Les sujets expérimentés de cette étude empirique rapportent parfois qu'avec des cibles statiques, \emph{IntenSelect} était trop \og collant \fg{}. De fait, ils étaient forcés d'attendre un peu avant que le rayon s'attache à la cible qu'ils visaient réellement. Les autres sujets ne rapportent pas de différence, mais furent en réalité \emph{plus} rapides avec \emph{IntenSelect}.
+	Bien qu'\emph{IntenSelect} ne fasse pas mieux que la sélection par cône avec des cibles statiques, cette technique est plus efficace avec des cibles mobiles. Les sujets expérimentés de cette étude empirique rapportent parfois qu'avec des cibles statiques, \emph{IntenSelect} était trop \og collant \fg{}. De fait, ils étaient forcés d'attendre un peu avant que le rayon s'attache à la cible qu'ils visaient réellement. Les autres sujets ne rapportent pas de différence, mais furent en réalité \emph{plus} rapides avec \emph{IntenSelect}.
 	
 	Nous pouvons émettre l'hypothèse que cette technique n'est réellement utile que lorsque la tâche est difficile, et que la difficulté effective varie d'un utilisateur à l'autre. Peut-être serait-il opportun de réduire l'inertie de la fonction de \emph{scoring} pour les tâches les plus faciles, ce qui inclut les tâches de difficulté modérée effectuées par des utilisateurs expérimentés.
 	
 	On notera que certains utilisateurs très expérimentés ont réussi à obtenir de bons résultats avec le \emph{raycasting} sur des cibles mobiles\ldots{} en tirant parti de la périodicité de leurs mouvements pour les intercepter. Il nous semble qu'ils ont ici exploité une faille du protocole expérimental. Dans un contexte plus réaliste --- peu des applications que nous avons identifiées dans le premier chapitre présentent des cibles aux mouvements périodiques --- le \emph{raycasting}, et sans doute la sélection par cône, auraient probablement obtenu des résultats moins bons encore. Naturellement, les performances relatives d'\emph{IntenSelect} ne s'en trouveraient qu'améliorées.
 	
 	\paragraph{Lacunes avec les cibles statiques.}
-	Le premier inconvénient d'\emph{IntenSelect} est évident : il s'est montré moins performant que la sélection par cône avec des cibles statiques. Néanmoins, comme nous le soulignions ci-dessus, il est probable que cette situation puisse s'inverser en adaptant les fonctions de calcul et d'accumulation de score afin qu'il réagisse plus rapidement. Sans doute le problème du calibrage optimal de ses fonctions nécessiterait-il une étude entière à lui seul, voire plus, mais le potentiel nous paraît grand. Malgré tout, éliminer totalement le coût associé à l'inertie d'une telle heuristique de prédiction pourrait s'avérer très difficile, voire impossible.
+	Le premier inconvénient d'\emph{IntenSelect} est évident : il s'est montré moins performant que la sélection par cône avec des cibles statiques. Néanmoins, comme nous le soulignions ci-dessus, il est probable que cette situation puisse s'inverser en adaptant les fonctions de calcul et d'accumulation de score afin qu'il réagisse plus rapidement. Sans doute le problème du calibrage optimal de ses fonctions nécessiterait-il une étude entière à lui seul, mais le potentiel nous paraît grand. Malgré tout, éliminer totalement le coût associé à l'inertie d'une telle heuristique de prédiction pourrait s'avérer très difficile, voire impossible.
 	
-	L'étude menée par de Haan \emph{et al.} est, de leur propre aveu, informelle. On regrettera en effet que, dans la condition dite dynamique, ils ne se soient intéressés qu'à des cibles de taille relativement grande. Par ailleurs, la nature précise du mouvement de ces cibles n'est pas précisée, même si les auteurs révèlent qu'il était périodique, ce qui ne nous semble pas souhaitable pour une étude ce type.
+	L'étude menée par de Haan \emph{et al.} est, de leur propre aveu, informelle. On regrettera en effet que, dans la condition dite dynamique, ils ne se soient intéressés qu'à des cibles de taille relativement grande. Par ailleurs, la nature du mouvement de ces cibles n'est pas précisée, même si les auteurs révèlent qu'il était périodique, ce qui ne nous semble pas souhaitable pour une étude ce type.
 	
 	La question de la robustesse d'\emph{IntenSelect} pour des tâches particulièrement difficiles avec des cibles plus petites, beaucoup plus nombreuses, avec des mouvements rapides et imprévisibles demeure donc ouverte. Reconnaissons néanmoins qu'\emph{IntenSelect} nous paraît mieux équipée que bien d'autres techniques pour gérer ces considérables difficultés.
 		
 	\subsubsection{Hook}
-	\emph{Hook}~\cite{ortega2013hook} est une heuristique de prédiction fondée sur une évaluation continue de la distance entre le curseur et les cibles potentielles. Celles-ci sont triées par ordre de proximité, et les $NCT$ (\emph{Number of Closest Targets} objets les plus proches du curseur voient leur score augmenter à chaque boucle de l'heuristique, et augmenter d'autant plus fortement qu'ils sont proches du curseur. Tous les autres objets voient leur score diminuer, et diminuer d'autant plus fortement qu'ils sont éloignés du curseur.
+	\emph{Hook}~\cite{ortega2013hook} est une heuristique de prédiction fondée sur une évaluation continue de la distance entre le curseur et les cibles potentielles. Celles-ci sont triées par ordre de proximité, et les $NCT$ (\emph{Number of Closest Targets}) objets les plus proches du curseur voient leur score augmenter à chaque boucle de l'heuristique, et augmenter d'autant plus fortement qu'ils sont proches du curseur. Tous les autres objets voient leur score diminuer, et ce d'autant plus fortement qu'ils sont éloignés du curseur.
 		
 	La cible potentielle dont le score est le plus élevé est considérée comme celle que l'utilisateur cherche probablement à sélectionner. La sélection peut donc se faire par simple pression d'un bouton, sans contrainte particulière sur la position du curseur au moment où elle est déclenchée.
 
-	L'hypothèse de base sur laquelle \emph{Hook} repose est que puisque l'utilisateur, lorsqu'il essaie de sélectionner une cible mobile, \og suit \fg{} ses mouvements avec son curseur~\cite{hasan2011comet}, la trajectoire de celui-ci sera fortement corrélée à celle de la cible, et permettra donc de l'identifier.
+	L'hypothèse de base sur laquelle repose la technique \emph{Hook} est que puisque l'utilisateur, lorsqu'il essaie de sélectionner une cible mobile, \og suit \fg{} ses mouvements avec son curseur~\cite{hasan2011comet}, la trajectoire de celui-ci sera fortement corrélée à celle de la cible, et permettra donc de l'identifier.
 	
 	\emph{Hook} est manifestement une technique pensée pour les cibles mobiles, mais elle est également bien adaptée aux environnements denses, car elle ne repose pas sur un agrandissement effectif des objets (comme le \emph{Bubble Cursor}) ou sur l'hypothèse que la cible n'est pas occultée, comme la plupart des techniques de \emph{raycasting}.
 	
@@ -1383,7 +1380,13 @@
 	
 	La solution retenue par Ortega~\cite{ortega2013hook} se résume en deux formules simples. La première décrit l'évolution dans le temps des objets les plus proches du curseur :
 	
-	$Score_{cible_{i}}(t) = Score_{cible_{i}}(t-1) + (NCT - i) \times \Delta{}t$ ; et la seconde définit celle des objets éloignés du curseur : $Score_{cible_{i}}(t) = Score_{cible_{i}}(t-1) - \frac{NCT}{2} \times \Delta{}t$ où $Score_{cible_{i}}(t)$ est le score de la cible $i$ à l'instant $t$, $NCT$ est le nombre d'objets proches du curseur et $\Delta{}t$ est le temps écoulé depuis la précédente itération.
+	$$ Score_{cible_{i}}(t) = Score_{cible_{i}}(t-1) + (NCT - i) \times \Delta{}t $$
+	
+	La seconde définit celle des objets éloignés du curseur :
+	
+	$$ Score_{cible_{i}}(t) = Score_{cible_{i}}(t-1) - \frac{NCT}{2} \times \Delta{}t $$
+	
+	$Score_{cible_{i}}(t)$ est le score de la cible $i$ à l'instant $t$, $NCT$ est le nombre d'objets proches du curseur et $\Delta{}t$ est le temps écoulé depuis la précédente itération.
 	
 	À tout instant, l'objet de score maximal peut être sélectionné en activant un seul contrôle ou bouton d'un périphérique de saisie. Notez que cette technique spécifiquement conçue pour les cibles mobiles fonctionne également pour les cibles statiques, puisque le calcul du score ne nécessite pas que les objets bougent. De même, \emph{Hook} fonctionne avec un périphérique de saisie à deux degrés de liberté, en effectuant les calculs de score dans un plan sur lequel l'espace 3D est projeté.
 	
@@ -1424,17 +1427,17 @@
 		\label{fig:hookRes3d}
 	\end{figure}
 	
-	\paragraph{\emph{Quid} des environnements denses à objets liés ?}
-	Les qualités et avantages de \emph{Hook} sont nombreux, mais plusieurs interrogations demeurent. Premièrement, les performances relatives de cette technique seraient-elles aussi bonnes avec d'autres types de mouvements ? Le seraient-elles avec des objets beaucoup plus nombreux et plus d'occultation encore ?
+	\paragraph{Environnements denses à objets liés.}
+	Les qualités et avantages de \emph{Hook} sont nombreux, mais plusieurs interrogations demeurent. Premièrement, les performances relatives de cette technique seraient-elles aussi bonnes avec d'autres types de mouvements ? Le seraient-elles avec des objets beaucoup plus nombreux et avec plus d'occultation encore ?
 	
 	Mais surtout, nous nous interrogeons sur les performances de \emph{Hook} lorsqu'il s'agit de sélectionner un objet dans un groupe dense dont les membres ont des mouvements corrélés. Nous pensons par exemple à un banc de poissons, un groupe d'oiseaux en formation ou une escadrille d'avions.
 	
 	En effet, dans ces situations, \emph{Hook} pourrait avoir du mal à distinguer la cible visée des objets environnants, puisque leurs positions seraient très proche et leurs mouvements très similaires.
 	
-	Néanmoins, cette technique présente suffisamment de qualités dans le contexte de la sélection de cibles mobiles en environnement dense pour retenir particulièrement notre attention, et il nous apparaît qu'elle forme le meilleur point de départ pour la conception d'une technique optimale pour cette classe de tâches.
+	Néanmoins, cette technique présente suffisamment de qualités dans le contexte de la sélection de cibles mobiles en environnement dense pour retenir notre attention, et il nous apparaît qu'elle forme le meilleur point de départ pour la conception d'une technique optimale pour cette classe de tâches.
 	
 	\subsubsection{Erreurs de prédiction et frustration}
-	Toutefois, il convient de ne pas négliger les faiblesses des approches de prédiction intentionnelle, au premier rang desquelles figurent les erreurs de prédiction, et la frustration qu'elles peuvent causer chez les utilisateurs, qui peuvent rapidement être très agacés de ne pouvoir obtenir du système le comportement qu'ils attendent. Les heuristiques utilisées doivent donc être soigneusement calibrées d'une part pour minimiser les erreurs de prédiction, et d'autre part pour éviter de (trop) nuire aux performances de sélection, le cas échéant. Ce point peut être primordial pour les applications nécessitant un temps de sélection borné, ou imposant des contraintes sur les taux d'erreurs.
+	Toutefois, il convient de ne pas négliger les faiblesses des approches de prédiction intentionnelle, au premier rang desquelles figurent les erreurs de prédiction, et la frustration qu'elles peuvent causer chez les utilisateurs, qui peuvent rapidement être très agacés de ne pouvoir obtenir du système le comportement qu'ils attendent. Les heuristiques utilisées doivent donc être soigneusement calibrées, d'une part pour minimiser les erreurs de prédiction, et d'autre part pour éviter de (trop) nuire aux performances de sélection, le cas échéant. Ce point peut être primordial pour les applications nécessitant un temps de sélection borné, ou imposant des contraintes sur les taux d'erreurs.
 	
 \section{Discussion de la taxinomie proposée}
     Comme nous venons de le voir, les techniques d'aide à la sélection sont de natures diverses. Elles consistent souvent à faciliter la sélection d'une cible en augmentant sa taille effective, ou en réduisant la distance effective entre elle et le curseur, selon les recommandations que l'on peut déduire de la loi de Fitts. Nous allons ici présenter nos réflexions sur la taxinomie des techniques de sélection introduite par la figure~\ref{fig:selTaxi}, et présentée au cours de ce chapitre.
@@ -1480,7 +1483,7 @@
     
     En effet, si la trajectoire d'un curseur est supposée rectiligne, l'est-elle réellement quand la cible est mobile, voire rapide ? Si elle l'est, vise-t-elle la position de la cible à l'instant où le mouvement débute, ou la position où l'utilisateur estime qu'elle sera à la fin du mouvement ?
     
-    Ces questions --- au demeurant très intéressantes --- sont à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
+    Ces questions restent à notre connaissance ouvertes à ce jour, et l'usage d'une telle approche ne nous paraît pas envisageable avant d'y avoir répondu et avant d'avoir analysé les implications des réponses.
 
     \subsection{Techniques pour cibles mobiles}
 	\subsubsection{Augmentation des objets}
@@ -1495,14 +1498,14 @@
 	\subsubsection{Manipulation du temps}
     Les techniques spécifiquement pensées pour les cibles mobiles adoptent parfois une solution radicale : les rendre statiques. C'est notamment le cas d'une technique simplement appelée \emph{Hold}~\cite{hajri2011moving}, qui se contente de stopper tous les objets pendant la phase de sélection, mais aussi de \emph{Target Ghost}~\cite{hasan2011comet}, qui crée des copies statiques des cibles qui, elles, demeurent mobiles, mais semi-transparentes. Cette dernière technique a l'avantage de ne pas perdre le contexte dynamique.
     
-    Mais elle a aussi l'inconvénient de doubler le nombre d'objets affichés, et ceux qui sont voués à être sélectionnés (les copies statiques) demeurent détachés de leur contexte dynamique. Pis, si les objets ne sont pas visuellement différents les uns des autres, il peut être impossible pour l'utilisateur de relier une copie statique à l'objet qui l'a engendré.
+    Mais elle a aussi l'inconvénient de doubler le nombre d'objets affichés, et ceux qui sont voués à être sélectionnés (les copies statiques) demeurent détachés de leur contexte dynamique. De plus, si les objets ne sont pas visuellement différents les uns des autres, il peut être impossible pour l'utilisateur de relier une copie statique à l'objet qui l'a engendré.
     
     Là encore, les applications à forte densité ne peuvent se satisfaire d'une technique de ce type, et ce d'autant plus que le contexte dynamique est important, ou que les objets sont visuellement similaires.
     
 	\subsubsection{Prédiction intensionnelle}
     Une autre approche prédictive consiste à observer le comportement de l'utilisateur pour essayer de deviner son intention, et plus précisément pour déterminer quel objet il souhaite sélectionner. C'est ainsi que fonctionnent \emph{IntenSelect}~\cite{de2005intenselect} (est une forme de lancer de rayon) et \emph{Hook}~\cite{ortega2013hook} (qui fait usage d'un curseur ponctuel).
     
-    Un des intérêts de la prédiction d'intention est de ne pas dépendre d'hypothèses telles que la rectitude de la trajectoire du curseur, particulièrement \og fragiles \fg{} avec des cibles mobiles. L'hypothèse généralement commune aux techniques de ce type est que l'utilisateur va chercher à \og suivre \fg{} sa cible pour la capturer, donc que ses mouvements seront corrélés à ceux de la cible. Cette corrélation est exploitée pour déterminer quel objet est visé par l'utilisateur.
+    Un des intérêts de la prédiction d'intention est de ne pas dépendre d'hypothèses particulièrement \og fragiles \fg{} avec des cibles mobiles, telles que la rectitude de la trajectoire du curseur. L'hypothèse généralement commune aux techniques de ce type est que l'utilisateur va chercher à \og suivre \fg{} sa cible pour la capturer, donc que ses mouvements seront corrélés à ceux de la cible. Cette corrélation est exploitée pour déterminer quel objet est visé par l'utilisateur.
     
     En pratique les résultats sont généralement très bons, comme nous le détaillons dans la section concernée. Et si certaines interrogations demeurent, notamment concernant la robustesses des techniques de ce genre face à des objets sujets à des mouvements de natures variées, ou dans des environnements extrêmement denses, la prédiction d'intention ressort de l'étude présentée dans le présent chapitre comme la voie la plus prometteuse pour la sélection de cibles mobiles en environnement dense.
     
@@ -1511,11 +1514,11 @@
 \section{Conclusion}
     Les techniques d'assistance à la sélection de cibles visent généralement à optimiser les paramètres de la tâche de sélection connus depuis les travaux de Fitts~\cite{fitts1954information} : la taille effective de la cible, et la distance effective entre celle-ci et le curseur. Cette tendance générale illustre l'influence considérable de la loi de Fitts sur le développement de telles techniques.
     
-    De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, cependant, les bénéfices apportés par les techniques de ce type tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
+    De fait, ces approches sont généralement efficaces pour la sélection de cibles statiques dans des environnements \og ordinaires \fg{}, c'est-à-dire relativement peu denses et bi-dimensionnels. Lorsque l'on ajoute une dimension, ou que la densité augmente, les bénéfices apportés par les techniques de ce type tendent à chuter de manière assez drastique. Le \emph{Bubble Cursor}~\cite{grossman2005bubble} en est peut-être l'exemple le plus emblématique, en dépit de ses indiscutables qualités.
     
     Or, dans une tâche de sélection de cibles mobiles, le mouvement peut être bien plus déterminant que la taille ou la distance au curseur pour les performances, comme nous le verrons plus en détail dans un prochain chapitre. De fait, les approches traditionnelles, si elles peuvent être utiles avec les cibles mobiles, ne sont pas orientées dans leur conception par le facteur de difficulté principal.
     
-    Elles montrent rapidement leurs limites avec des cibles dont les mouvements sont  difficilement prévisibles ou rapides. Les approches fondées sur la prédiction de l'intention de l'utilisateur, en revanche, sont mieux adaptées aux cibles mobiles, voire aux environnements denses. Il est de plus possible de les combiner à d'autres techniques dans un processus de sélection en cascade, par exemple en s'appuyant sur une estimation de la direction du regard de l'utilisateur ou --- comme il nous paraît plus judicieux compte tenu des contraintes inhérentes à certaines des applications détaillées dans le premier chapitre de ce manuscrit --- sur un filtrage sémantique, par exemple à commande vocale.
+    Elles montrent rapidement leurs limites avec des cibles dont les mouvements sont  difficilement prévisibles ou rapides. Les approches fondées sur la prédiction de l'intention de l'utilisateur, en revanche, sont mieux adaptées aux cibles mobiles, voire aux environnements denses. Il est de plus possible de les combiner à d'autres techniques dans un processus de sélection en cascade, par exemple en s'appuyant sur une estimation de la direction du regard de l'utilisateur ou --- comme il nous paraît plus judicieux compte tenu des contraintes inhérentes à certaines des applications détaillées dans le premier chapitre de ce manuscrit --- sur un filtrage sémantique, par exemple via des commandes vocales.
     
     Les approches fondées sur la prédiction de l'intention se prêtent aussi particulièrement bien à un couplage avec une assistance haptique ou pseudo-haptique~\cite{lecuyer2009simulating, pusch2011pseudo} visant par exemple à guider l'utilisateur vers la cible prédite afin d'accélérer la sélection et/ou d'améliorer la perception par l'utilisateur de cette prédiction, éventuellement en évitant de surcharger le canal visuel.
     
