@@ -658,16 +658,21 @@
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
-		\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
-		\label{fig:lookandtouch}
-	\end{figure}
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
-		\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}. Crédit : \cite{stellmach2012look}.}
-		\label{fig:lookandtouch2}
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/lookandtouch}
+			\caption[\emph{Look \&{} Touch -- principe}]{Fonctionnement des quatre premiers modes de sélection en cascade de la famille \emph{Look \&{} Touch}.}
+			\label{fig:lookandtouch}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
+			\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}.}
+			\label{fig:lookandtouch2}
+		\end{subfigure}
+		\caption[\emph{Look \&{} Touch} -- principe]{\emph{Look \&{} Touch} -- principe. Crédit : \cite{stellmach2012look}.}
+		\label{lookAndTouchPrinciple}
 	\end{figure}
 	
 	\paragraph{De bons résultats, sans vainqueur clair.}
@@ -676,17 +681,21 @@
 	Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances dans la plupart des cas, avec peut-être un léger avantage global à la technique \emph{MAGIC tab}. Du moins cette tendance est-elle confirmée par les impressions sujectives recueillies par Stellmach \emph{et al.}, et exposées sur la figure~\ref{fig:latSubj}.
 
 	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/latRes}
-		\caption[\emph{Look \&{} Touch -- performances}]{Performances obtenues pour les diverses techniques de type \emph{Look \&{} Touch}. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances. Crédit : \cite{stellmach2012look}.}
-		\label{fig:latRes}
-	\end{figure}
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch2/latSubj}
-		\caption[\emph{Look \&{} Touch -- impressions subjectives}]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation des techniques \emph{Look \&{} Touch}. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête. Crédit : \cite{stellmach2012look}.}
-		\label{fig:latSubj}
+%		\centering
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/latRes}
+			\caption[\emph{Look \&{} Touch} -- performances]{Performances. Les temps de sélection sont en haut, et les taux d'erreurs en bas. Les mentions $S_{i}$ et $D_{i}$ indiquent respectivement les différentes tailles et distances.}
+			\label{fig:latRes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/latSubj}
+			\caption[\emph{Look \&{} Touch} -- impressions subjectives]{Impressions subjectives recueillies par Stellmach \emph{et al.} auprès des sujets de l'évaluation. La technique \emph{MAGIC tab} l'emporte, mais d'une très courte tête.}
+			\label{fig:latSubj}
+		\end{subfigure}
+		\caption[\emph{Look \&{} Touch} -- performances]{\emph{Look \&{} Touch} -- performances et impressions. Crédit : \cite{stellmach2012look}.}
 	\end{figure}
 	
 	\paragraph{\emph{MAGIC tab} et le problème de linéarité.}
@@ -806,7 +815,7 @@
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.85\textwidth]{figures/ch2/dCanvasSPerf}
+		\includegraphics[width=0.75\textwidth]{figures/ch2/dCanvasSPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasSPerf}
 	\end{figure}
@@ -897,12 +906,12 @@
 	
 	Il convient néanmoins de remarquer que dans l'étude d'Asano \emph{et al.}, seule la distance variait, pas la taille des cibles ; de fait, cette courbe de temps en fonction de l'ID pourrait ne pas tenir lorsque les variations d'ID proviennent de variations dans les tailles des cibles. C'est un point qui mérite d'être examiné.
 
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/delphianTimesID}
-		\caption[\emph{Delphian Desktop} -- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'ID, avec le \emph{Delphian Desktop} (\emph{Prediction}) et sans (\emph{Non-Prediction}). Cette technique est contre-productive pour les petites distances, mais bénéfique pour les grandes. La droite qui estime son temps de sélection en fonction de l'ID est d'une pente plus douce, ce qui est de bon augure pour d'hypothétiques cibles plus distantes. Crédit : \cite{asano2005predictive}.}
+		\includegraphics[width=0.42\textwidth]{figures/ch2/delphianTimesID}
+		\caption[\emph{Delphian Desktop} -- temps de sélection en fonction de l'ID]{Temps de sélection en fonction de l'ID, avec le \emph{Delphian Desktop} (\emph{Prediction}) et sans (\emph{Non-Prediction}). Cette technique est contre-productive pour les petites distances, mais bénéfique pour les grandes. Crédit : \cite{asano2005predictive}.}
 		\label{fig:delphianTimesID}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	Asano \emph{et al.} ont par ailleurs mesuré les erreurs de prédiction de la direction du mouvement, c'est-à-dire l'écart angulaire entre la direction estimée par le \emph{Delphian Desktop} et la droite passant par le point de départ du curseur et par le centre de la cible. La figure~\ref{fig:delphianTimesErrors} présente les résultats obtenus. Quelle que soit la distance considérée, le temps de mouvement croît fortement avec l'erreur de prédiction, ce qui est logique car une grande erreur nécessite un plus grand mouvement correctif de la part de l'utilisateur.
 	
@@ -1144,25 +1153,25 @@
 	
 	L'utilisateur peut ensuite sélectionner la version statique et opaque de la cible, qui sert de proxy pour sa jumelle mobile. Cela permet de ramener une tâche de sélection de cible mobile à une simple sélection de cible statique. Naturellement, cela facilite considérablement les choses, ce qui permet d'améliorer significativement les temps de sélection et, dans une plus grande mesure encore, les taux d'erreurs, comme le montrent les graphiques des figures~\ref{fig:cometGhostTimes}, \ref{fig:cometGhostErrors} et~\ref{fig:cometGhostPredictability}.
 
-	\begin{figure}[!htbp]
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/cometGhostPredictability}
+		\includegraphics[width=0.5\textwidth]{figures/ch2/cometGhostPredictability}
 		\caption[\emph{Comet/Ghost}, prévisibilité et résultats]{Temps de complétion de la tâche, (a) : en fonction des types de curseur, avec ou sans \emph{Ghost}, (b) : en fonction de la prévisibilité du chemin pris par la cible. La technique \emph{Comet} est décrite dans la section suivante. Crédit : \cite{hasan2011comet}.}
 		\label{fig:cometGhostPredictability}
-	\end{figure}
+	\end{SCfigure}
 
 	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/cometGhostTimes}
-			\caption{Temps de de sélection (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. L'usage d'un fantôme est bénéfique sur un curseur basique, mais néfaste dans tous les autres cas. Par ailleurs, \emph{Comet} offre les meilleurs temps de sélection. La technique \emph{Comet} est décrite dans la section suivante.}
+			\caption{Temps de de sélection de chaque technique avec et sans \emph{Ghost}. Le \emph{ghosting} est bénéfique sur un curseur basique, mais néfaste dans les autres cas. La technique \emph{Comet} (décrute dans la section suivante) offre les meilleurs temps de sélection.}
 			\label{fig:cometGhostTimes}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/cometGhostErrors}
-			\caption{Taux d'erreurs pour la tâche de sélection (curseur basique, curseur zonal, \emph{Bubble Cursor} et \emph{Comet}), avec et sans \emph{Ghost}. L'usage d'un fantôme est très bénéfique dans tous les cas, même s'il augmente le temps de sélection lorsqu'une meilleure technique que le curseur basique est utilisée. La technique \emph{Comet} est décrite dans la section suivante.}
+			\caption{Taux d'erreurs pour la tâche de sélection, avec et sans \emph{Ghost}. Le \emph{ghosting} est très bénéfique dans tous les cas, même s'il augmente le temps de sélection (sauf avec un curseur basique).}
 			\label{fig:cometGhostErrors}
 		\end{subfigure}
 		\caption[\emph{Comet Ghost} -- temps de sélection et taux d'erreurs]{\emph{Comet Ghost} -- performances. Crédit : \cite{hasan2011comet}.}
@@ -1197,19 +1206,24 @@
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.70\textwidth]{figures/ch2/asas}
-		\caption[\emph{AttachedShock}, onde de choc]{À gauche, une représentation schématique de la réelle onde de choc d'un avion supersonique (un \emph{Concorde}). À droite, une cible mobile (la sphère verte) accompagnée de son onde de choc telle qu'elle est représentée par \emph{AttachedShock}. Cette onde vient augmenter la représentation visuelle de la cible afin d'en faciliter la sélection. Crédit : ~\cite{you2012attachedshock}.}
-		\label{fig:asas}
+		\begin{subfigure}[t]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/asas}
+			\caption{Gauche : représentation schématique de l'onde de choc d'un avion supersonique. Droite : cible mobile (la sphère verte) accompagnée de son onde de choc telle qu'elle est représentée par \emph{AttachedShock}.}
+			\label{fig:asas}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/asRes}
+			\caption{Évaluation d'\emph{AttachedShock}. Le taux d'erreurs est en abscisse, le temps de sélection en ordonnée. \emph{AttachedShock} ne fait pas bien mieux qu'un curseur zonal en temps de sélection, mais le taux d'erreurs est très bas.}
+			\label{fig:asRes}
+		\end{subfigure}
+		\caption{\emph{AttachedShock}. Source :~\cite{you2012attachedshock}.}
+		\label{fig:asMain}
 	\end{figure}
 	
 	Cette technique a pour particularité de le faire en limitant l'encombrement visuel et en optant pour une augmentation visuelle pouvant être perçue comme \og naturelle \fg{} --- plus par habitude des ondes de choc qui se propagent dans l'eau que de celles générées par les avions supersoniques, sans doute. Les auteurs ont comparé \emph{AttachedShock} à d'autres techniques de référence, dont bien sûr un simple curseur ponctuel mais aussi un curseur zonal, ainsi que la technique \emph{Comet}, présentée plus haut.
-
-	\begin{SCfigure}[50][!htbp]
-		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch2/asRes}
-		\caption[\emph{AttachedShock}, performance]{Évaluation d'\emph{AttachedShock}. Le taux d'erreurs est en abscisse, le temps de sélection en ordonnée. \emph{AttachedShock} ne fait pas bien mieux qu'un curseur zonal en temps de sélection, mais le taux d'erreurs est très bas. Résultats tirés de~\cite{you2012attachedshock}.}
-		\label{fig:asRes}
-	\end{SCfigure}
 
 	La technique \emph{AttachedShock} s'est montrée meilleure que toutes les autres dans cette évaluation, quoique de peu pour le temps de sélection. Les résultats détaillés sont illustrés par la figure~\ref{fig:asRes}. Dans les conditions du protocole de test mis en place par les auteurs, \emph{AttachedShock} permet une sélection rapide et fiable par rapport aux techniques existantes, avec un encombrement visuel très contenu.
 	
@@ -1217,8 +1231,8 @@
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch2/asDensity}
-		\caption[\emph{AttachedShock}, densité de cibles]{Captures d'écran du dispositif d'évaluation d'\emph{AttachedShock}. À gauche, l'expérience est menée sur un segment de route rectiligne ; à droite, sur un segment courbe. La sphère rouge est la cible à sélectionner, tandis que les vertes sont des distracteurs. On constate que les distracteurs sont peu nombreux et qu'il est relativement peu probable de \og traverser \fg{} leur onde de choc en essayant d'atteindre cette de la cible. Crédit: \cite{you2012attachedshock}.}
+		\includegraphics[width=0.7\textwidth]{figures/ch2/asDensity}
+		\caption[\emph{AttachedShock}, densité de cibles]{Dispositif d'évaluation d'\emph{AttachedShock}. Gauche : expérience menée sur un segment de route rectiligne ; droite : sur un segment courbe. La sphère rouge est la cible à sélectionner, et les vertes sont des distracteurs. Ceux-ci sont peu nombreux, et il est peu probable de \og traverser \fg{} leur onde de choc en essayant d'atteindre celle de la cible. Crédit: \cite{you2012attachedshock}.}
 		\label{fig:asDensity}
 	\end{figure}
 	
