@@ -416,45 +416,45 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSLarge}
-			\caption{Grande cible : le \emph{Shadow Cone} ne peut se distinguer de la sélection par rayon ou par cône.}
+			\caption{Grande cible : le \emph{Shadow Cone} ne peut se distinguer des autres techniques.}
 			\label{fig:shadowSLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowSSmall}
-			\caption{Petite cible : le \emph{Shadow Cone} ne peut se distnguer de la sélection par cône ; le \emph{raycasting} est moins performant.}
+			\caption{Petite cible : le \emph{Shadow Cone} ne peut se distnguer de \emph{Cone} ; \emph{Ray} est moins performant.}
 			\label{fig:shadowSSmall}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPLarge}
-			\caption{Paire de grands objets : même temps de sélection pour toutes les techniques. \emph{Raycasting} : 0 erreur, contre 1,3 erreur/utilisateur pour la sélection par cône, et 0,2 pour le \emph{Shadow Cone}.}
+			\caption{Paire de grands objets : même temps de sélection pour toutes les techniques. \emph{Ray} : 0 erreur, contre 1,3 erreur/utilisateur pour \emph{Cone}, et 0,2 pour \emph{SCone}.}
 			\label{fig:shadowPLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowPSmall}
-			\caption{Paire de petits objets. Le \emph{Shadow Cone} est plus lent que la sélection par cône, mais génère moins d'erreurs (0,2/utilisateur contre 0,6) ; aucune erreur pour le \emph{raycasting}.}
+			\caption{Paire de petits objets : \emph{SCone} est plus lent que \emph{Cone}, mais génère moins d'erreurs (0,2/utilisateur vs. 0,6) ; aucune erreur pour \emph{Ray}.}
 			\label{fig:shadowPSmall}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCLarge}
-			\caption{Grappe de gros objets : le \emph{raycasting} est plus performant que les autres techniques. Sélection par cône : 2,2 échecs par \emph{timeout}/utilisateur ; 0 pour les deux autres techniques. Sélection par cône : 20,3 erreurs/utilisateur ; 5,2 pour le \emph{Shadow Cone} et 0,5 pour le \emph{raycasting}.}
+			\caption{Grappe de gros objets : \emph{Ray} est plus performant que les autres techniques. \emph{Cone} : 2,2 échecs par \emph{timeout}/utilisateur ; 0 pour les autres techniques. \emph{Cone} : 20,3 erreurs/utilisateur ; 5,2 pour \emph{SCone} et 0,5 pour \emph{Ray}.}
 			\label{fig:shadowCLarge}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/shadowCSmall}
-			\caption{Grappe de petits objets : le \emph{raycasting} domine ; pas d'écart significatif entre les autres techniques. Sélection par cône : 2 échecs par \emph{timeout}/utilisateur ; 0 pour les autres techniques. \emph{Shadow Cone} : 4,5 erreurs/utilisateur ; 4,4 pour la sélection par cône, et 1,2 pour le \emph{raycasting}.}
+			\caption{Grappe de petits objets : \emph{Ray} domine ; pas d'écart significatif entre les autres techniques. \emph{Cone} : 2 échecs par \emph{timeout}/utilisateur ; 0 pour les autres techniques. \emph{SCone} : 4,5 erreurs/utilisateur ; 4,4 pour \emph{Cone}, et 1,2 pour \emph{Ray}.}
 			\label{fig:shadowCSmall}
 		\end{subfigure}
-		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone (SCone)}, comparé à la sélection par cône et par \emph{raycasting}. Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet) ; les erreurs sont rapportées pour les conditions avec suivi. Crédit : \cite{steed20043d}.}
+		\caption[Performances du \emph{Shadow Cone}]{Performances du \emph{Shadow Cone (SCone)}, comparé à la sélection par cône (\emph{Cone}) et par lancer de rayon (\emph{Ray}). Chaque technique est évaluée avec suivi de la tête (en bleu) et sans (en violet) ; les erreurs sont rapportées pour les conditions avec suivi. Crédit : \cite{steed20043d}.}
 		\label{fig:shadowConePerf}
 	\end{figure}
 	
@@ -477,31 +477,37 @@
 	\subsubsection{\emph{Depth Ray}}
 	Le \emph{Depth Ray}~\cite{grossman2006design} fonctionne comme une technique de \emph{raycasting} traditionnelle, si ce n'est que la position du périphérique le long de son axe de pointage est prise en compte, comme le montre la figure~\ref{fig:depthRay}. Le rayon est ainsi augmenté d'un marqueur de profondeur que l'utilisateur déplace le long du rayon simplement en avançant ou en reculant le périphérique de pointage.
 	
-	\newcommand{\rayWidth}{0.55\textwidth}
-
+	\newcommand{\rayWidth}{0.48\textwidth}
 	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{\rayWidth}
 			\centering
-			\includegraphics[width=\rayWidth]{figures/ch2/depthRay}
-			\caption[Principe du \emph{Depth Ray}]{\emph{Depth Ray}. (a) Un marqueur rose sélectionne la cible intersectée la plus proche de lui (il fonctionne par proximité et n'a pas besoin d'être \emph{sur} la cible). (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche. (c) Inversement, avancer le périphérique permet d'avancer le marqueur. Crédit : \cite{grossman2006design}.}
+			\includegraphics[width=\textwidth]{figures/ch2/depthRay}
+			\caption{\emph{Depth Ray}. (a) Un marqueur rose sélectionne la cible intersectée la plus proche de lui. (b) Reculer le périphérique de pointage recule le marqueur et permet de séletionner une cible plus proche\ldots{} et inversement (c).}
 			\label{fig:depthRay}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{\rayWidth}
 			\centering
-			\includegraphics[width=\rayWidth]{figures/ch2/lockRay}
-			\caption[Principe du \emph{Lock Ray}]{\emph{Lock Ray}. (a) La sélection commence par une phase de \emph{raycasting} classique. (b) Une fois que l'utilisateur a pressé le bouton du périphérique, un marqueur de profondeur apparaît au milieu du segmet du rayon inclus dans la sphère. (c) L'utilisateur peut déplacer le marqueur en déplaçant sa main, et sélectionne en relâchant le bouton. Crédit : \cite{grossman2006design}.}
+			\includegraphics[width=\textwidth]{figures/ch2/lockRay}
+			\caption{\emph{Lock Ray}. (a) Première phase : \emph{raycasting} classique. (b) Après pression du bouton du périphérique, un marqueur de profondeur apparaît. (c) L'utilisateur le déplace avec sa main, et sélectionne en relâchant le bouton.}
 			\label{fig:lockRay}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{\rayWidth}
 			\centering
-			\includegraphics[width=\rayWidth]{figures/ch2/flowerRay}
-			\caption[Principe du \emph{Flower Ray}]{\emph{Flower Ray}. (a) Toutes les cibles croisées par le rayon sont colorées en vert. (b) Quand l'utilisateur presse le bouton de son périphérique, ces objets s'épanouissent en un menu de sélection autour d'un curseur ponctuel, qui apparaît à cet instant. (c) L'utilisateur peut alors pointer près de la cible et relâcher le bouton pour la sélectionner. Crédit : \cite{grossman2006design}.}
+			\includegraphics[width=\textwidth]{figures/ch2/flowerRay}
+			\caption{\emph{Flower Ray}. (a) Toutes les cibles croisées par le rayon sont en vert. (b) Sur une pression de bouton, elles s'épanouissent en un menu de sélection autour d'un curseur qui apparaît alors. (c) L'utilisateur pointe près de la cible et relâche le bouton pour la sélectionner.}
 			\label{fig:flowerRay}
 		\end{subfigure}
-		\caption[\emph{Depth, \&{} Lock Rays}]{\emph{Depth \&{} Lock Ray}.}
-		\label{fig:depthAndLockAndFlowerRays}
+		~
+		\begin{subfigure}[t]{\rayWidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch2/smartRay}
+			\caption{\emph{Smart Ray}. Sélection du carré. (a) Les poids des cibles dépendent de leur distance au rayon (illustrés par des sphères dans les cibles). La cible de poids maximal peut être sélectionnée. (b,c) Le rayon peut être repositionné pour augmenter le poids de la cible visée.}
+			\label{fig:smartRay}
+		\end{subfigure}
+		\caption[Lancer de rayon avec désambiguïsation]{Techniques de lancer de rayon avec désambiguïsation. Crédit : \cite{grossman2006design}.}
+		\label{fig:depthLockFlowerSmartRays}
 	\end{figure}
 	
 	\subsubsection{\emph{Lock Ray}}
@@ -514,13 +520,6 @@
 	Par définition, un rayon contient une infinité de points. Toutefois, si deux sont sécants, alors ils n'ont qu'un seul point en commun. Il donc possible d'utilier deux rayons pour effectuer une sélection par \emph{raycasting} sans aucune ambiguïté. Toutefois, cela nécessite deux périphériques de saisie et cela occupe les deux mains de l'utilisateur.
 	
 	Le \emph{Smart Ray}~\cite{grossman2006design} propose donc de faire cela avec deux rayons issus du même périphérique, mais mesurés à deux instant différents, selon un principe proche de celui du \emph{Shadow Cone}~\cite{steed20043d}. Chaque objet se voit attribuer un \og poids \fg{} qui croît d'autant plus que le rayon est proche de son centre, ou décroît d'autant plus qu'il en est loin, continuellement. L'objet dont le poids est le plus élevé peut être sélectionné, comme l'illustre la figure~\ref{fig:smartRay}.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\rayWidth]{figures/ch2/smartRay}
-		\caption[Principe du \emph{Smart Ray}]{Utilisation du \emph{Smart Ray} pour sélectionner le petit carré. (a) Les poids des cibles dépendent de la distance entre le rayon et la cible, et sont illustrés des sphères au centre de chaque cible. À tout moment, la cible de poids maximal peut être sélectionnée. (b,c) Le rayon peut être repositionné en continu pour augmenter le poids de la cible visée, même si elle est occultée. Crédit : \cite{grossman2006design}.}
-		\label{fig:smartRay}
-	\end{figure}
 	
 	\subsubsection{Motivations}
 	Grossman \emph{et al.}~\cite{grossman2006design} notent que les techniques présentées ci-dessus ont chacune des avantages et des inconvénients. Le \emph{Depth Ray} unifie les phases de sélection et de désambiguïsation, ce qui peut faire gagner du temps mais aussi causer des perturbations entre les phases. Le \emph{Lock Ray} sépare les phases explicitement, mais désambiguïse avec un menu linéaire. Le \emph{Flower Ray} propose un menu radial, théoriquement plus rapide, mais les utilisateurs doivent suivre l'animation pour ne pas perdre leur cible entre les deux phases. Enfin, le \emph{Smart Ray} fournit un mode de désambiguïsation implicite et possiblement plus fluide, mais potentiellement source de frustration s'il échoue à prédire correctement l'intention de l'utilisateur, comme toujours avec les techniques prédictives.
@@ -815,7 +814,7 @@
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/dCanvasSPerf}
+		\includegraphics[width=0.7\textwidth]{figures/ch2/dCanvasSPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparées à celles de SQUAD, en fonction du nombre de cibles. Les résultats sont clairement en faveur de la première technique sur l'intervalle testé. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasSPerf}
 	\end{figure}
@@ -1020,7 +1019,7 @@
 	
 	\begin{table}
 	\centering
-	\begin{tabular}{l | c c}
+	\begin{tabular}{c | c c}
 														& \multicolumn{2}{c}{Prédiction}	\\
 		Pourcentage de mouvement effectué ($s_{i}$)	& Correcte	& Cible adjacente	\bigstrut[b] \\ \hline
 		80												& 49,3~\%{}	& 34,1~\%{}			\bigstrut[t] \\
@@ -1146,7 +1145,7 @@
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.6\textwidth]{figures/ch2/targetGhost}
+		\includegraphics[width=0.5\textwidth]{figures/ch2/targetGhost}
 		\caption[La technique \emph{Target Ghost}]{\emph{Target Ghost} avec un curseur basique. Quand elle est \og \emph{ghostée} \fg{} la cible originale est désaturée (en tant que fantôme), mais poursuit sa trajectoire. Un proxy plus vif de l'objet demeure figé à la position qu'il occupait lorsque la touche \emph{Maj} a été pressée, et peut être sélectionné aisément. Seul le proxy peut être sélectionné, au contraire du fantôme de la cible. Crédit : \cite{hasan2011comet}.}
 		\label{fig:targetGhost}
 	\end{figure}
