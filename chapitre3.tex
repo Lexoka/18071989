@@ -47,9 +47,9 @@
 	C'est occasionnellement le cas des simulations moléculaires et autres applications scientifiques, de certains jeux vidéo, et potentiellement de toutes les applications mentionnées dans la catégorie \og 3D projetée en 2D \fg{}, même si nous n'avons pas connaissance, par exemple, de tels systèmes actuellement utilisés pour le contrôle de l'espace aérien.
 
 	\FloatBarrier \subsection{Autocorrélation}
-	Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur direction d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-1$ même si le changement d'orientation n'en dépend pas.
+	Nous considérerons ici qu'un mouvement est autocorrélé si un \emph{changement de direction} opéré à l'instant $t$ dépend du \emph{changement} (éventuellement nul) opéré à l'instant $t-1$. Si, au contraire, un changement peut avoir lieu à l'instant $t$ quelle que fût la situation à l'instant précédent, nous appellerons ce mouvement \emph{markovien}~\cite{markov1960theory} en admettant qu'il s'agit d'un abus de langage, puisqu'un processus respectant la propriété de Markov est totalement indépendant de l'état du système à l'instant précédent ; or, ici, le vecteur vitesse d'un objet à l'instant $t$ peut dépendre de son orientation à l'instant $t-1$ même si le changement d'orientation n'en dépend pas.
 	
-	En effet, si ledit changement se fait selon un angle borné (entre -10\textdegree{} et +10\textdegree{}, par exemple) alors l'orientation du vecteur direction à l'instant $t$ dépendra de son orientation à $t-1$, puisqu'elle ne pourra différer de celle-ci que de 10\textdegree{}. Tant que le \emph{changement} de direction à l'instant $t$, lui, est bien indépendant du \emph{changement} à l'instant $t-1$, nous admettrons cet abus de langage et parlerons de mouvement markovien.
+	En effet, si ledit changement se fait selon un angle borné (entre -10\textdegree{} et +10\textdegree{}, par exemple) alors l'orientation du vecteur vitesse à l'instant $t$ dépendra de son orientation à $t-1$, puisqu'elle ne pourra différer de celle-ci que de 10\textdegree{}. Tant que le \emph{changement} de direction à l'instant $t$, lui, est bien indépendant du \emph{changement} à l'instant $t-1$, nous admettrons cet abus de langage et parlerons de mouvement markovien.
 	
 	Dans le cas contraire, le mouvement sera dit autocorrélé. Par exemple, un véhicule effectuant un virage à un instant $t$ est susceptible de maintenir ce virage --- donc le changement de direction correspondant --- à l'instant $t+1$ : le fait que le changement de direction à un instant influence celui de l'instant suivant constitue ce que nous appelons l'autocorrélation. Par commodité, un objet dont les mouvements sont autocorrélés sera dit autocorrélé, et un objet dont les mouvements sont markoviens sera dit markovien.
 
@@ -67,7 +67,7 @@
 	Enfin, il est possible de rencontrer dans un jeu vidéo n'importe quel type d'objet, réel ou imaginaire. Ceux de la seconde catégorie peuvent être autocorrélés comme markoviens ; il est impossible d'en dresser un inventaire exhaustif, mais disons simplement qu'ils existent --- comme les disques du jeu \emph{Agar.io}, mentionné dans le premier chapitre, qui sont markoviens. On trouvera aussi, parmi les objets imaginaires, diverses créatures fictives, généralement autocorrélées.
 
 	\FloatBarrier \subsubsection{Uniformité}
-	Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur direction ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, le vecteur vitesse de l'objet concerné change.
+	Le mouvement autocorrélé le plus simple est le mouvement uniforme, c'est-à-dire celui pour lequel le vecteur vitesse ne change jamais. Les objets de mouvement uniforme se déplacent donc en ligne droite. Inversement, un mouvement n'est pas uniforme si, à un instant quelconque, la direction ou la norme du vecteur vitesse de l'objet concerné change.
 	
 	Du fait du focus de ce manuscrit sur les cibles mobiles de sélection difficile, nous n'avons pas réellement abordé d'objets aux mouvements uniformes au cours du premier chapitre. Il va sans dire qu'ils existent pourtant. Remarquons néanmoins que si l'on restreint suffisamment la fenêtre temporelle au travers de laquelle on analyse le mouvement d'un objet, l'on peut généralement aboutir à un mouvement localement uniforme.
 	
@@ -112,11 +112,11 @@
 	\FloatBarrier \subsection{Vitesse}
 	La vitesse des cibles est un critère essentiel de notre taxinomie, car cette valeur a une très forte influence sur la difficulté de sélection, comme le montrent notamment les résultats empiriques obtenus par Ortega~\cite{ortega2013hook} et présentés sur les figures~\ref{fig:hookRes2d} et~\ref{fig:hookRes3d}, ainsi que les travaux de Jagacinksi \emph{et al.}~\cite{jagacinski1980test} (résumés par l'équation~\ref{eq:jagacinski}) et ceux d'Al Harji \emph{et al.}~\cite{hajri2011moving} (résumés par les équations~\ref{eq:hajriC2} et~\ref{eq:hajriVW}). Comme on l'imagine aisément, plus une cible est rapide, plus elle est difficile à sélectionner. Nos propres mesures, sur lesquelles nous reviendrons en détail plus loin, le confirment.
 	
-	Il est important de noter que la vitesse \emph{réelle} de la cible n'est pas très importante, seule sa vitesse \emph{apparente} compte. Par exemple, la Terre effectue sa rotation autour du Soleil à près de 30~km/s, soit 108~000~km/h. Cette vitesse réelle a pourtant peu de chances d'être un problème dans une application réelle car une telle application présenterait probablement la Terre à une échelle permettant d'observer toute son orbite (ou une grande partie de celle-ci). Or, la Terre mettant environ 365 jours à compléter son orbite, sa vitesse apparente à l'écran serait très faible, donc parfaitement gérable dans une tâche de sélection.
+	Il est important de noter que la vitesse \emph{absolue} de la cible n'est pas très importante, seule sa vitesse \emph{relative} (observée à l'écran) compte. Par exemple, la Terre effectue sa rotation autour du Soleil à près de 30~km/s, soit 108~000~km/h. Cette vitesse réelle a pourtant peu de chances d'être un problème dans une application réelle car une telle application présenterait probablement la Terre à une échelle permettant d'observer toute son orbite (ou une grande partie de celle-ci). Or, la Terre mettant environ 365 jours à compléter son orbite, sa vitesse relative serait très faible, donc parfaitement gérable dans une tâche de sélection.
 	
-	À l'inverse, une balle de tennis est comparativement lente ($\approx$~200~km/h), mais étant observée à l'échelle d'un court de tennis (environ 24~m) sa vitesse apparente est considérable. De même, un objet dans un jeu vidéo peut se déplacer très lentement, à quelques cm/s seulement ; mais si ce mouvement est observé à l'échelle 1, alors l'objet traversera un écran standard en seulement quelques secondes, voire moins.
+	À l'inverse, une balle de tennis est comparativement lente ($\approx$~200~km/h), mais étant observée à l'échelle d'un court de tennis (environ 24~m) sa vitesse relative est considérable. De même, un objet dans un jeu vidéo peut se déplacer très lentement, à quelques cm/s seulement ; mais si ce mouvement est observé à l'échelle 1, alors l'objet traversera un écran standard en seulement quelques secondes, voire moins.
 	
-	Or, notre taxinomie vise à classifier les cibles et leurs environnements selon les difficultés de sélection qu'ils présentent et non selon leurs caractéristiques absolues ; de fait, nous nous intéresserons aux vitesses apparentes des objets examinés. Ce choix (au demeurant inévitable) est lourd de conséquences car la vitesse apparente d'un objet d'une vitesse réelle donnée dépend évidemment des conditions dans lesquelles il est affiché, en particulier de l'échelle relative à la taille du dispositif d'affichage, et de ladite taille. Elle dépend également, pour tout ce qui n'est pas joué à vitesse réelle, de la vitesse choisie pour l'animation ou la simulation (avec dans ce dernier cas une contrainte supplémentaire imposée par les performances du système). Par exemple, une vidéo peut être jouée en accéléré.
+	Or, notre taxinomie vise à classifier les cibles et leurs environnements selon les difficultés de sélection qu'ils présentent et non selon leurs caractéristiques absolues ; de fait, nous nous intéresserons aux vitesses relatives des objets examinés. Ce choix (au demeurant inévitable) est lourd de conséquences car la vitesse relative d'un objet d'une vitesse réelle donnée dépend évidemment des conditions dans lesquelles il est affiché, en particulier de l'échelle relative à la taille du dispositif d'affichage, et de ladite taille. Elle dépend également, pour tout ce qui n'est pas joué à vitesse réelle, de la vitesse choisie pour l'animation ou la simulation (avec dans ce dernier cas une contrainte supplémentaire imposée par les performances du système). Par exemple, une vidéo peut être jouée en accéléré.
 	
 	La taxinomie que nous proposons implique de faire des choix. La vitesse des objets est un critère de discrimination essentiel, qui impose de discrétiser un espace continu. Dans un souci de simplicité, nous avons choisi de le réduire à deux catégories : les objets rapides et les objets lents.
 	
@@ -175,9 +175,9 @@
 	Quand bien même cette limite technique n'existerait pas, il est douteux qu'un humain puisse percevoir une différence à l'œil nu entre les quelque 10~000~$g$ d'un coup de squille (ou crevette-mante)~\cite{patek2004biomechanics} et les 100~000~$g$ d'une morsure de fourmi \emph{Odontomachus}~\cite{patek2006multifunctionality}. Contentons-nous donc d'observer que ces objets peuvent accélérer de manière extrêmement vive.
    
 	\FloatBarrier \subsection{Fréquence des changements de direction}
-	Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur direction. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer cette fréquence comme étant soit nulle (car il n'y a jamais de changement brusque), soit infinie (car il y a un changement constant). Dans les deux cas, ce n'est guère utile pour caractériser le mouvement.
+	Pour les objets macroscopiques réels, la direction est généralement soit constante, soit en changement continu. Par exemple, une automobile peut rouler droit devant elle pendant un certain temps, puis, pendant une durée généralement plus courte, suivre une trajectoire courbe caractérisée par une rotation continue de son vecteur vitesse. Dans ce cas, il est difficile de parler de \emph{fréquence} des changements de direction, comme s'ils étaient des événements ponctuels et discrets, à moins de considérer cette fréquence comme étant soit nulle (car il n'y a jamais de changement brusque), soit infinie (car il y a un changement constant). Dans les deux cas, ce n'est guère utile pour caractériser le mouvement.
 	
-	Parfois, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un événement instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur direction est plus raisonnable, compte tenu de la perception subjective d'un utilisateur.
+	Parfois, cependant, il peut être pertinent de considérer un changement de direction relativement court et rapide comme un événement instantané se produisant à un instant bien défini. Pour reprendre l'exemple de l'automobile, il est clair que cette approximation posera généralement des problèmes pour les trajets à grande vitesse, par exemple sur les autoroutes --- les courbes y sont très douces et, de fait, les changements de direction sont lents et continus. À plus basse vitesse, cependant, et notamment pendant la circulation urbaine, il est possible d'effectuer un virage à 90\textdegree{} sur un temps beaucoup plus court. Dans ces conditions, assimiler ce virage à une rotation instantanée du vecteur vitesse est plus raisonnable, compte tenu de la perception subjective d'un utilisateur.
 	
 	Les objets nanoscopiques, du moins tels qu'ils sont généralement simulés, tendant à changer de direction de manière abrupte, et la notion de fréquence de changement de direction a généralement du sens. Précisions tout de même que cette fréquence ne saurait être mesurée en temps véritable mais dans le temps de l'animation : en clair, si un atome peut changer de direction de très nombreuses fois par nanoseconde (d'où une fréquence extrêmement élevée) ce qui nous intéresse ici est la fréquence des changements de direction dans l'animation présentée à un utilisateur, car nous ne nous préoccupons que de ce qu'un utilisateur perçoit et de la mesure dans laquelle cela influe sur ses performances de sélection.
 	
@@ -226,7 +226,7 @@
 	Enfin, les jeux vidéo regorgent d'objets de ce type, notamment de créatures (humaines ou non) jouant le rôle d'antagonistes dans des titres contenant des tâches de visée ou de sélection. Les exemples sont extrêmement nombreux et présents dans bien des genres différents.
 	
 	\FloatBarrier \subsection{Amplitude des changements de direction}
-	Outre leur fréquence, les changements de direction doivent être examinés selon leur amplitude. Concrètement, quand une cible change de direction, son vecteur direction subit une rotation. C'est l'angle de cette rotation que nous appelons \emph{l'amplitude} du changement de direction.
+	Outre leur fréquence, les changements de direction doivent être examinés selon leur amplitude. Concrètement, quand une cible change de direction, son vecteur vitesse subit une rotation. C'est l'angle de cette rotation que nous appelons \emph{l'amplitude} du changement de direction.
 	
 	Pour une fréquence donnée, si cette valeur est faible, la direction de l'objet changera relativement peu et sa trajectoire sera relativement \og lisse \fg{}, comme sur la plupart des exemples de la figure~\ref{fig:motion1530}, exception faite de ceux dont la fréquence est élevée ($\geq$~16~Hz). Si elle est élevée, en revanche, la trajectoire sera très \og irrégulière \fg{}, comme on l'observe notamment sur la figure~\ref{fig:motion165180}, même à basse fréquence (notez que les amplitudes données dans ces figures sont des valeurs maximales --- nous y reviendrons).
 	
@@ -295,7 +295,7 @@
 	Sans doute de nombreux modèles pourraient-ils être conçus, et sans doute pourraient-ils correspondre à des compromis ayant divers avantages et inconvénients. Dans le but d'obtenir un modèle relativement simple (donc utilisable dans des évaluations d'une durée raisonnable pour les sujets) nous avons choisi de nous limiter aux mouvements markoviens ; ce choix fut également motivé par le fait que ces mouvements sont intrinsèquement moins prévisibles et, par conséquent, plus difficiles à anticiper --- ils rendent de fait la sélection plus difficile.
 	
 	\FloatBarrier \subsection{Trois paramètres pour le mouvement synthétique}
-	Nous avons opté pour un modèle limité à trois paramètres pour définir le mouvement d'un objet de vecteur direction $\vec{dir}$ :
+	Nous avons opté pour un modèle limité à trois paramètres pour définir le mouvement d'un objet de vecteur vitesse $\vec{dir}$ (indiquant sa direction par son orientation, et sa vitesse par sa norme) :
 	\begin{enumerate}
 		\item La vitesse $V$ à laquelle l'objet se déplace ;
 		\item La fréquence $F$ des changements de $\vec{dir}$ ;
@@ -563,6 +563,8 @@
     Le modèle nécessiterait un calibrage précis pour obtenir le comportement souhaité, notamment en ce qui concerne les masses des objets ou le coefficient de friction. Notons par ailleurs que, sauf dans certains cas particuliers (et après une période dynamique) les vitesses des objets ne seraient pas constantes pour une norme de $\vec{F}$ donnée, ce qui distinguerait ce modèle newtonien du nôtre (VFA). En soi, ce n'est pas nécessairement un problème --- et peut même être un avantage --- mais cela complique le contrôle des propriétés d'un environnement synthétique créé pour mener une étude empirique.
 	
 	\FloatBarrier \subsection{Entropie}
+	La discussion des facteurs qui déterminent la nature du mouvement, et en particularité sa régularité, amènent à considérer la question de l'ordre et du désordre dans le mouvement. Ces propriétés pourraient en effet avoir une influence sur la difficulté d'anticipation de la trajectoire d'une cible, et donc de sa sélection.
+	
 	Dans ses travaux sur la thermodynamique, Rudolf Clausius définit l'entropie comme \og le contenu de transformation [d'un] corps \fg{}~\cite{clausius1865verschiedene, clausius1865diverses}. Rapidement, Ludwig Boltzmann redéfinit l'entropie $S$ par l'équation $S = k\log(W)$, où $k$ est une constante et $W$ est le nombre d'états dans lequel un système peut se trouver~\cite{boltzmann1866mechanische, weisstein2004eric}.
 	
 	À partir de la définition de Boltzmann, Claude Shannon redéfinit à nouveau l'entropie~\cite{shannon1949communication} (qu'il préfère noter $H(X)$) d'une variable aléatoire discrète $X$ de valeurs possibles $\{x_{1}, \ldots{}, x_{n}\}$ par l'équation~\ref{eq:shannonEntropy}, où $P(x_{i})$ est la probabilité que $X=x_{i}$.
@@ -583,7 +585,7 @@
 	
 	Dans le cas qui nous concerne, on peut donc dire qu'une cible est de forte entropie si, pour une position donnée à l'instant $t$, les positions possibles à l'instant $t+1$ sont nombreuses (en les supposant équiprobables).
 	
-	Supposons donc une cible de position $pos$ et de vecteur direction $\vec{dir}$ à l'instant $t$. Si $F=0$ ou $A=0$, alors $pos_{t+1} = pos + S \times \vec{dir}$. Seul cet état est possible, donc la quantité d'information de la cible est nulle, et son entropie aussi. En revanche, s'il peut y avoir une rotation de $\vec{dir}$ à l'instant $t+1$, alors l'entropie sera non nulle, et dépendra de la probabilité de ce changement de direction, ainsi que du nombre de valeurs possibles pour le changement de direction $\alpha$.
+	Supposons donc une cible de position $pos$ et de vecteur vitesse $\vec{dir}$ à l'instant $t$. Si $F=0$ ou $A=0$, alors $pos_{t+1} = pos + S \times \vec{dir}$. Seul cet état est possible, donc la quantité d'information de la cible est nulle, et son entropie aussi. En revanche, s'il peut y avoir une rotation de $\vec{dir}$ à l'instant $t+1$, alors l'entropie sera non nulle, et dépendra de la probabilité de ce changement de direction, ainsi que du nombre de valeurs possibles pour le changement de direction $\alpha$.
 	
 	Si l'on considère $\alpha$ comme un nombre réel, en toute rigueur, le nombre de valeurs possibles est infini, et l'entropie aussi. L'on peut cependant considérer que pour un utilisateur, un changement de direction de 10,0001\textdegree{} ne sera généralement pas différent d'un changement de 10\textdegree{} ; aussi serait-il judicieux de discrétiser l'espace de $\alpha$. Une solution simple consiste à arrondir la valeur à l'entier le plus proche, ce qui réduit l'espace aux entiers contenus dans l'intervalle $[-180\degree{}, +180\degree{}]$, soit 360 valeurs (car $180 \equiv -180 \mod 360$).
 	
@@ -1085,35 +1087,35 @@
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_5_8}
-			\caption{$A = 5$, $F=8$, $AF=40$. Le périmètre de l'enveloppe est d'environ 86~cm.}
+			\caption{$A = 5$, $F=8$, $AF=40$. Le périmètre de l'enveloppe est d'environ 85~cm.}
 			\label{fig:areaTraj_2_19_5_8}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_45_4}
-			\caption{$A = 45$, $F=4$, $AF=180$. Le périmètre de l'enveloppe est d'environ 44~cm.}
+			\caption{$A = 45$, $F=4$, $AF=180$. Le périmètre de l'enveloppe est d'environ 53~cm.}
 			\label{fig:areaTraj_2_19_45_4}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_90_8}
-			\caption{$A = 90$, $F=8$, $AF=720$. Le périmètre de l'enveloppe est d'environ 31~cm.}
+			\caption{$A = 90$, $F=8$, $AF=720$. Le périmètre de l'enveloppe est d'environ 16~cm.}
 			\label{fig:areaTraj_2_19_90_8}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_180_60}
-			\caption{$A = 180$, $F=60$, $AF=10800$. Le périmètre de l'enveloppe est d'environ 5~cm.}
+			\caption{$A = 180$, $F=60$, $AF=10800$. Le périmètre de l'enveloppe est d'environ 4~cm.}
 			\label{fig:areaTraj_2_19_180_60}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\subImgWarea}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_180_240}
-			\caption{$A = 180$, $F=240$, $AF=43200$. Le périmètre de l'enveloppe est d'environ 4~cm.}
+			\caption{$A = 180$, $F=240$, $AF=43200$. Le périmètre de l'enveloppe est d'environ 3~cm.}
 			\label{fig:areaTraj_2_19_180_240}
 		\end{subfigure}
 		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et le périmètre de l'enveloppe convexe décroît.}
@@ -1126,8 +1128,8 @@
 	
 	Remarquons cependant que quand la pseudo-entropie est très faible, la régularité de la trajectoire suggère une sélection relativement aisée ; quand elle est très élevée, la très petite zone couverte par la trajectoire laisse également supposer une sélection assez facile, du fait d'une distance (telle que définie par Fitts~\cite{fitts1954information}) très courte --- à partir du moment où le curseur atteint l'enveloppe convexe de la cible, du moins.
 	
-	\section{Résultats}
-	Pour étayer notre taxinomie des cibles mobiles et de leurs environnements, nous nous sommes appuyés sur des mesures quantitatives et objectives des critères les plus importants que nous avons retenus. Nous avons pour cela adopté deux approches complémentaires :
+	\section{Validation de taxinomie}
+	Pour valider notre taxinomie des cibles mobiles et de leurs environnements, nous nous sommes appuyés sur des mesures quantitatives et objectives des critères les plus importants que nous avons retenus. Nous avons pour cela adopté deux approches complémentaires :
 	
 	\begin{itemize}
 		\item Premièrement, nous avons développé une suite d'outils permettant de traiter des résultats bruts de simulations de dynamique moléculaire (appelés \emph{trajectoires}) afin de mesurer les angles de rotation des vecteurs direction des atomes, et d'analyser ces mesures ;
@@ -1197,9 +1199,9 @@
 	Par conséquent, les simulations de dynamique moléculaire peuvent potentiellement entrer dans toutes les catégories de mouvement markovien --- voire autocorrélé si la fréquence est suffisamment élevée. Mais surtout, les mouvements susceptibles de poser les plus grandes difficultés de sélection sont possibles dans cette application.
 	
 	\FloatBarrier \subsection{Analyses des mouvements d'objets divers}
-	Au cours de cette phase, nous avons annoté des vidéos de types très divers pour caractériser quantitativement et objectivement le mouvement de cibles variées. Nous avons ensuite analysé les résultats pour comptabiliser tous les angles de rotation de vecteur direction, toutes les fréquences de rotation, et toutes les vitesses. Nous avons donc pu construire des histogrammes pour chacune de ces grandeurs, mais aussi en calculer la moyenne, l'écart-type, et en noter la valeur maximale.
+	Au cours de cette phase, nous avons annoté des vidéos de types très divers pour caractériser quantitativement et objectivement le mouvement de cibles variées, telles qu'elles apparaissent à l'écran --- c'est-à-dire que nous avons mesurés les mouvements relatifs plutôt qu'absolus, attendu que ce sont ceux qui seraient effectivement perçu par un utilisateur. Nous avons ensuite analysé les résultats pour comptabiliser tous les angles de rotation de vecteur vitesse, toutes les fréquences de rotation, et toutes les vitesses. Nous avons donc pu construire des histogrammes pour chacune de ces grandeurs, mais aussi en calculer la moyenne, l'écart-type, et en noter la valeur maximale.
 	
-	Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées, si elles dépassent 12~Hz ou 15~Hz, respectivement. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement ; cette réserve ne s'applique pas aux vitesses, et nettement moins aux angles.
+	Lorsqu'une vidéo représente plusieurs cibles potentielles, nos résultats correspondent à des mesures effectuées sur un échantillon de celles-ci. Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées, si elles dépassent 12~Hz ou 15~Hz, respectivement. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement ; cette réserve ne s'applique pas aux vitesses, et nettement moins aux angles.
 	
 	Par ailleurs, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif. De plus, le grand nombre (plus de 116~000) d'images annotées nous permet de prétendre à une certaine représentativité.
 	
