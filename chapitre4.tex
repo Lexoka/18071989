@@ -49,12 +49,12 @@
 	\subsection{Tâche et conditions}
 	La tâche consistait à sélectionner une cible parmi 50 objets identiques : des disques de 5,4~mm de diamètre. Les 49 \og distracteurs \fg{} étaient affichés en gris, et la cible à sélectionner était rouge, comme l'illustre la figure~\ref{fig:app}. Les distracteurs et la cible étaient mus selon les mêmes paramètres V, F et A de notre modèle, mais l'angle $\alpha$ échantillonné à chaque période T était échantillonné séparément pour chaque objet, donc généralement différent. Lorsqu'un disque \og percutait \fg{} le bord de la fenêtre, il \og rebondissait \fg{} dessus.
 	
-	\begin{wrapfigure}{O}{0.5\textwidth} % Capital O makes the figure float, because that's totally intuitive and obvious.
+	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.46\textwidth]{figures/ch4/app}
+		\includegraphics[width=0.3\textwidth]{figures/ch4/app}
 		\caption[Application utilisée dans notre évaluation]{Application utilisée dans notre évaluation. Le curseur gris s'approche de la cible rouge (qui n'est pas sélectionnable ici, car le centre du curseur cruciforme n'est pas inclus dans le disque) et les distracteurs gris se déplacent dans la fenêtre. Le nombre de tentatives de sélection encore possibles pour la cible courante est affiché en haut à gauche --- 5 dans le cas présent. Le taux de complétion de l'expérience dans son ensemble est inscrit en bas à gauche.}
 		\label{fig:app}
-	\end{wrapfigure}
+	\end{SCfigure}
 	
 	Ce choix, qui altère ponctuellement le mouvement généré par le modèle VFA, fut fait pour d'une part éviter la disparition d'une cible hors de la fenêtre, pour éviter toute discontinuité (par exemple si la cible réapparaissait de l'autre côté de la fenêtre), et pour limiter la \og surprise \fg{} éprouvée par l'utilisateur en imitant un phénomène physique familier. Cela permet par ailleurs de garantir la constance la densité de l'environnement.
 	
@@ -740,14 +740,14 @@
 		\begin{subfigure}[t]{\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/afVgamma}
-			\caption{$\gamma$ en fonction de $A\times{}F$.}
+			\caption{$\gamma$ en fonction de $A\times{}F~(\degree{}.Hz)$.}
 			\label{fig:gammaAF}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgamma}
-			\caption{$\gamma$ en fonction de $A\sqrt{F}$.}
+			\caption{$\gamma$ en fonction de $A\sqrt{F}~ (\degree{}.Hz^{1/2})$.}
 			\label{fig:gammaASQRTF}
 		\end{subfigure}
 		\caption[Coefficients $\gamma$ en fonction de F et A, bis]{Coefficients $\gamma$ en fonction de F et A. Les valeurs de $\gamma$ sont en ordonnée, et l'expression contenant A et F est en abscisse. On remarque que la seconde expression fondée sur la racine carrée de F correspond bien mieux aux valeurs de $\gamma$.}

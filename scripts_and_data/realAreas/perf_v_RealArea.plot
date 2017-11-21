@@ -1,6 +1,6 @@
 set term svg size 2560, 1440 fsize 46
 
-set xlabel "Aire"
+set xlabel "Aire (cm²)"
 set ylabel "Temps de sélection moyen normalisé"
 
 set output "perf_V_RealArea_raw.svg"

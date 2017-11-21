@@ -1,7 +1,7 @@
-set term png size 2560, 1440 font arial 36
+set term png size 2560, 1440 font arial 40
 set output "afRealDelta_log.png"
-set xlabel "Angle"
-set ylabel "Fréquence"
+set xlabel "Angle (degrés)"
+set ylabel "Fréquence (Hz)"
 unset key
 
 set pm3d map
