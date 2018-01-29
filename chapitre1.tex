@@ -20,11 +20,11 @@
 	Avant de décrire l'activité de simulation moléculaire interactive et ses objectifs, il convient de décrire le domaine sous-jacent, c'est-à-dire la biologie moléculaire ou structurale. 
 	La biologie structurale est la branche de la biologie qui étudie la structure, l'organisation spatiale, et la dynamique des macromolécules biologiques, principalement les protéines et les acides nucléiques. Elle concerne en particulier la détermination à l'échelle nanoscopique des structures tridimensionnelles de ces molécules et complexes moléculaires (au moyen de techniques biophysiques), les principes à la base des modifications de conformation des macromolécules, l'analyse des mouvements moléculaires et la dynamique de ces structures.
 
-La compréhension moléculaire et structurale du mode d'action d'une molécule sur une autre (ou sur un complexe moléculaire), que des techniques de visualisation aident à appréhender, permet de modéliser les interactions qui se déroulent en permanence à l'échelle moléculaire au sein des organismes vivants.
+	La compréhension moléculaire et structurale du mode d'action d'une molécule sur une autre (ou sur un complexe moléculaire), que des techniques de visualisation aident à appréhender, permet de modéliser les interactions qui se déroulent en permanence à l'échelle moléculaire au sein des organismes vivants.
 
-De même, cette compréhension permet de rationaliser la conception et l'amélioration de molécules actives, de médicaments. On utilise pour cela à la fois des méthodes expérimentales d'analyse structurale, mais aussi des approches computationnelles pour prédire des candidats médicaments à partir de la structure.
+	De même, cette compréhension permet de rationaliser la conception et l'amélioration de molécules actives, de médicaments. On utilise pour cela à la fois des méthodes expérimentales d'analyse structurale, mais aussi des approches computationnelles pour prédire des candidats de médicaments à partir de la structure.
 
-Nous allons voir dans cette section que les approches computationnelles se fondent notamment sur des simulations qui, lorsqu'elles sont interactives, nécessitent la sélection de cibles mobiles particulièrement difficiles à saisir. Cette difficulté est la première motivation des travaux présentés dans ce manuscrit.
+	Nous allons voir dans cette section que les approches computationnelles se fondent notamment sur des simulations qui, lorsqu'elles sont interactives, nécessitent la sélection de cibles mobiles particulièrement difficiles à saisir. Cette difficulté est la première motivation des travaux présentés dans ce manuscrit.
 	
 	\FloatBarrier \subsection{Contexte de la dynamique moléculaire}
 	Une simulation de dynamique moléculaire~\cite{fermi1955alamos, alder1959studies, rahman1964correlations, gibson1960dynamics, lennard1924determination} consiste à simuler, par un calcul numérique, le comportement d'un système moléculaire dans le temps. Celui-ci est modélisé par un système de particules, avec généralement une particule par atome. Des formules mathématiques permettent de modéliser les différentes forces qui s'appliquent à chaque particule, et ces forces sont intégrées avec un pas de temps pour déterminer le mouvement de chaque particule à chaque itération, donc la dynamique du système.
@@ -36,7 +36,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 
 	\footnotetext{Les notions évoquées dans cette section et suivies d'un astérisque sont définies et détaillées dans l'annexe~\ref{appendix:annexeA}.}
 	
-	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}. Ce procédé repose sur l'identification d'une ou plusieurs structures protéiques* connues et proches de la séquence d'acides aminés* recherchée. Elle passe par un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Cela s'appuie sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN* qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
+	Parfois, on procède également par homologie~\cite{marti2000comparative, kaczanowski2010similar}, c'est-à-dire par l'identification d'une ou plusieurs structures protéiques* connues et proches de la séquence d'acides aminés* recherchée. Cela implique un alignement qui établit une correspondance entre les acides aminés de la protéine étudiée et ceux des structures protéiques connues. Le procédé s'appuie sur l'observation que la structure tridimensionnelle de protéines homologues est mieux conservée que la séquence d'ADN* qui l'engendre. La connaissance de la séquence d'acides aminés d'une protéine permet donc d'essayer de prédire sa conformation 3D, si l'on parvient à trouver des protéines homologues dont la structure est connue.
 	
 	\begin{figure}[!htbp]
 		\centering
@@ -191,7 +191,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsection{Limites et défis actuels}
 	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs dizaines d'objets, jusqu'à plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité ; cet exemple n'est pas le plus extrême, car la molécule visualisée n'est pas très grande et, surtout, le solvant n'est pas représenté.
 	
-	Il résulte naturellement de cette forte densité un niveau d'occultation très important. Cette occultation dépend également du mode de représentation utilisé. Le système moléculaire de la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
+	Il découle de cette forte densité un niveau d'occultation très important, qui dépend également du mode de représentation utilisé. Le système moléculaire de la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
 	\begin{SCfigure}%[!htbp]
 		\centering
@@ -202,13 +202,13 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{https://blogs.nvidia.com/blog/2011/01/13/university-pittsburg-researcher-studies-molecular-dynamics-gpus}}
 	
-	Dans les simulations d'IMD, la vitesse des cibles peut être très élevée. Elle dépend en pratique de la vitesse de la simulation, donc de la taille du système simulé et des ressources de calcul disponibles, mais elle peut être supérieure à 10~\r{A}/s, sachant que le rayon d'un atome est d'environ 1~\r{A}.
+	Dans les simulations d'IMD, la vitesse des cibles peut être très élevée. Elle dépend en pratique de la vitesse de la simulation, donc de la taille du système simulé et des ressources de calcul disponibles, mais elle peut être supérieure à 10~\r{A}/s\footnote{$1~\r{A} = 0,1~nm = 10^{-10}~m $}, sachant que le rayon d'un atome est d'environ 1~\r{A}.
 	
 	La périodicité des \og boîtes \fg{} de simulation introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
 	
 	Quand il s'agit d'interagir avec un tel système, la vitesse d'une particule dans l'espace moteur dépend de la façon dont le système est représenté et du périphérique utilisé, mais elle devient rapidement problématique, \emph{a fortiori} quand la nature même du mouvement pose problème.
 	
-	En effet, les mouvements des atomes dans une simulation de dynamique moléculaire se caractérisent par leur irrégularité et, par conséquent, leur imprévisibilité. Selon la simulation et la façon dont elle est représentée, les atomes peuvent adopter un mouvement brownien ou plus proche de celui d'une mouche --- très vif, très saccadé et de fait imprévisible.
+	En effet, les mouvements des atomes dans une simulation de dynamique moléculaire se caractérisent par leur irrégularité et, par conséquent, leur imprévisibilité. Selon la simulation et la façon dont elle est représentée, les atomes peuvent adopter un mouvement brownien ou plus proche de celui d'une mouche --- très vif, très saccadé et de fait imprévisible. Généralement, différents atomes d'une même simulation se meuvent de façons potentiellement très différentes, selon la région de la molécule dans laquelle ils sont situés, et la flexibilité de ladite région, notamment. L'hétérogénéité des cibles potentielles peut donc être élevée, de sorte qu'une approche visant à faciliter la sélection d'une cible n'est pas nécessairement efficace pour une autre.
 	
 	En somme, les difficultés inhérentes à l'interaction avec les simulations de dynamique moléculaire incluent :
 	
@@ -217,6 +217,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\item le haut degré d'occultation,
 		\item la grande vitesse des cibles,
 		\item la nature très imprévisible de leurs mouvements,
+		\item leur hétérogénéité,
 		\item la taille et la périodicité de l'environnement.
 	\end{itemize}
 	
@@ -349,7 +350,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\subsubsection{Hélicoptères de combat}
 	De même, les hélicoptères militaires sont plus agiles que leurs homologues civils. Comme pour les avions, leur comportement est susceptible de varier considérablement selon la mission. Ils sont ausssi légèrement plus rapides, de quelques dizaines de km/h, notamment en piqué. Ici encore, leurs missions impliquent souvent des trajectoires moins prévisibles, d'autant qu'ils cherchent souvent à se camoufler (visuellement et pour les radars) en volant le plus bas possible, ce qui implique de contourner les éléments de relief. L'hélicoptère Eurocoptère \emph{Tigre} représenté sur la figure~\ref{fig:tigre} est un exemple d'appareil rapide, compact et très manœuvrable.
 	
-	Du fait de leur capacité à voler à très basse altitude, et souvent entre les éléments de reliefs (par exemple dans des vallées) les hélicoptères ont tendance à n'apparaître que brièvement sur les écrans radar. De fait, s'ils ne sont pas nécessairement des cibles d'un comportement extrêmement vif ou imprévisible, il peut n'être possible de les sélectionner que pendant de très courts laps de temps. Leur sélection peut par conséquent être particulièrement difficile et nécessite une assistance efficace.
+	Du fait de leur capacité à voler à très basse altitude, et souvent entre les éléments de reliefs (par exemple dans des vallées) les hélicoptères ont tendance à n'apparaître que brièvement sur les écrans radar. De fait, s'ils ne sont pas nécessairement des cibles d'un comportement extrêmement vif ou imprévisible, il peut n'être possible de les sélectionner que pendant de très courts laps de temps. Leur sélection peut par conséquent être particulièrement difficile, et nécessite une assistance efficace.
 	
 	Pendant la guerre du Golfe, par exemple, un F-15E \emph{Strike Eagle} se trouva dans l'impossibilité de verrouiller son radar sur un hélicoptère Mi-24 \emph{Hind} irakien pour l'abattre à l'aide d'un missile, du fait de la proximité du Mi-24 au sol et de la vivacité de ses mouvements. L'officier des systèmes d'armes du F-15E dut basculer vers la nacelle de désignation laser pour \og marquer \fg{} l'hélicoptère afin de le détruire à l'aide d'une bombe~\cite{craig2007debrief}. Il ne précise pas si cette désignation fut difficile, du fait de l'utilisation d'un outil conçu pour cibler des objets statiques ou, à la rigueur, lents.
 	
@@ -395,9 +396,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\subsubsection{Hétérogénéité des cibles}
 	En situation réelle, un espace aérien pourrait tout à fait contenir des véhicules et autres engins volants de tous les types sus-cités, des essaims de drones très manœvrables jusqu'aux missiles balistiques les plus rapides. Un système de contrôle interactif devrait donc être assez souple pour permettre la sélection de cibles de natures très différentes.
-	On peut noter que les engins volants militaires ont vocation à chercher à éviter d'être détectés, soit en étant naturellement furtifs, soit en volant à très basse altitude et en tirant parti du relief naturel. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, et peuvent éventuellement disparaître de ces écrans, offrant une fenêtre temporelle restreinte pour l'interaction.
+	On peut noter que les engins volants militaires ont vocation à chercher à éviter d'être détectés, soit en étant intrinsèquement furtifs, soit en volant à très basse altitude et en tirant parti du relief naturel. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, et peuvent éventuellement disparaître de ces écrans, offrant une fenêtre temporelle restreinte pour l'interaction.
 	
-	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnotemark{}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims.
+	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnotemark{}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Au cours d'un entretien, le général de brigade aérienne (2S) Jean-Vincent Brisset a également insisté fortement sur la nature critique de la tâche d'identification.	
 	
 	\addtocounter{footnote}{-1}
 	\footnotetext{Frégate de défense aérienne (FDA) française de classe \emph{Horizon}, d'un déplacement d'environ 7000 tonnes, ayant pour mission principale de participer à la défense antiaérienne d'un groupe aéronaval, ou d'assurer la protection d'une zone ou d'un convoi contre des attaques aériennes ou de missiles.}
@@ -421,9 +422,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 \section{Contrôle de l'espace maritime}
 	La figure~\ref{fig:channel} représente un écran de contrôle du trafic maritime en Manche. Fondamentalement, c'est un problème très similaire à celui du contrôle du trafic aérien, car il s'agit dans les deux cas de surveiller et d'organiser un espace fluide~\cite{henninger2012avant, henninger2013fluide}. Comme dans les airs, les enjeux sont à la fois militaires et civils.
 	
-	Les bâtiments militaires (\emph{a fortiori} s'ils sont potentiellement hostiles) doivent en effet être détectés le plus tôt possible et suivis tant qu'ils sont dans un espace d'intérêt défini, mais il faut également surveiller les bâtiments civils.
-	
-	Les activités commerciales normales qui font l'objet de contrôles douaniers.
+	Les bâtiments militaires (\emph{a fortiori} s'ils sont potentiellement hostiles) doivent en effet être détectés le plus tôt possible et suivis tant qu'ils sont dans un espace d'intérêt défini, mais il faut également surveiller les bâtiments civils, par exemple dans le cadre d'activités commerciales normales qui font l'objet de contrôles douaniers.
 	
 	Cependant, la mer abrite des activités illégales diverses, incluant tous types de trafics (contrebande, œuvres d'art, drogues, armes, êtres humains) ainsi que de la piraterie ou des activités liées au terrorisme. Le fret maritime mondial représentant près de 10 milliards de tonnes, on mesure l'ampleur et l'importance du défi à l'échelle planétaire~\cite{unctad}.
 	
@@ -456,7 +455,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La plupart des navires se déplacent à la surface de l'eau. Par conséquent, leur représentation dans le plan sur un écran de contrôle n'implique généralement pas de perte d'information significative, contrairement au cas aérien. Les sous-marins constituent toutefois une exception à cette règle, et peuvent plonger à plusieurs centaines de mètres. S'ils représentent une très petite minorité des navires en circulation, leur détection revêt une importance militaire critique.
 	
 	\subsubsection{Données 3D affichées en 2D}
-	De fait, le problème de l'affichage planaire d'informations tridimensionnelles demeure, même s'il est moins prégnant. Les navires sont en moyenne bien plus lents que les aéronefs, mais certains bateaux de type \emph{go-fast} peuvent dépasser les 150~km/h. Ces navires étant fréquemment utilisés par les trafiquants de drogues pour échapper aux garde-côtes, il est particulièrement important de pouvoir les détecter et les contrôler.
+	De fait, le problème de l'affichage planaire d'informations tridimensionnelles demeure, même s'il est moins prégnant. Les navires sont en moyenne bien plus lents que les aéronefs, mais certains bateaux de type \emph{go-fast} peuvent dépasser les 150~km/h. Ces navires étant fréquemment utilisés par les trafiquants de drogue pour échapper aux garde-côtes, il est particulièrement important de pouvoir les détecter et les contrôler.
 	
 	\subsubsection{Densité d'informations}
 	Comme souvent pour les tâches de ce type, la densité de cibles dépend du niveau de zoom, qui peut résulter d'un choix de l'utilisateur, ou d'une contrainte (l'obligation d'avoir en permanence une zone donnée affichée, par exemple). La densité peut donc varier et, potentiellement, être très élevée. Elle devient particulièrement problématique lorsque l'on souhaite afficher des informations contextuelles à propos des navires, ou d'un sous-ensemble de ceux-ci. Ces informations peuvent concerner le type du navire, son pavillon, son propriétaire, son équipage, son origine, sa destination (connue ou présumée) ses escales, sa cargaison, etc., ainsi que les éventuelles précédentes valeurs de toutes ces données.
@@ -465,6 +464,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	Ces informations revêtent une importance particulière lorsqu'il est nécessaire aux autorités de faire la différence entre un bateau effectuant un simple voyage de plaisance et une embarcation susceptible d'être engagée dans une activité criminelle. Un groupe de \emph{speedboats} filant à vive allure vers une destination donnée peut tout aussi bien être un groupe d'amis en promenade qu'une bande de trafiquants de drogues. Il est donc nécessaire aux agents de contrôle de l'espace maritime de disposer d'un maximum d'informations le plus vite possible pour déterminer s'il faut ordonner l'interception de ces bateaux.
 	
 	La figure~\ref{fig:lincoln} illustre un cas de forte densité locale de navires, avec des cibles de haute importance stratégique de surcroît. Près des ports, la densité peut être plus élevée encore, même si les navires concernés sont moins préoccupants pour les autorités. Il leur est toutefois nécessaire de garantir la circulation fluide et sûre de ces navires, et de veiller à ce que personne ne tire parti de cette forte densité à des fins illicites ou criminelles.
+	
+	\subsubsection{Hétérogénéité}
+	Dans ce domaine aussi, l'hétérogénéité des cibles est un facteur de difficulté majeur : l'ensemble des engins flottants est d'une très grande diversité, allant de la petite embarcation artisanale jusqu'aux navires de plusieurs centaines de milliers de tonnes. De même, les vitesses et les trajectoires rencontrées varient considérablement. Une technique d'assistance à la sélection dédiée à cet usage devrait donc tenir compte de cette hétérogénéité, et permettre de la gérer efficacement.
 	
 	\section{Contrôle de l'espace extra-atmosphérique}
 	Le problème de la surveillance de l'espace extra-atmosphérique se pose de façon assez analogue à celui des espaces aérien et maritime. Là encore il s'agit d'une part de vérifier que les objets qui s'y meuvent le font de façon sûre, et d'identifier ce qui peut potentiellement représenter une menace (essentiellement militaire, car à ce jour aucune organisation criminelle connue n'a pu mettre un objet en orbite).
@@ -525,7 +527,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\section{Vidéo-surveillance}
 	La vidéo-surveillance s'applique aussi bien aux foules dans les lieux publics ou sensibles qu'à la voirie, où peuvent circuler des véhicules de types divers. Un agent de sécurité en charge de visionner un flux de vidéo-surveillance pourrait avoir à sélectionner une personne, par exemple pour obtenir des informations sur celle-ci grâce à la reconnaissance faciale, ou un véhicule, pour les mêmes raisons, par exemple grâce à sa plaque d'immatriculation.
 	
-	Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement. Le suivi de cibles filmées par des caméras de vidéo-surveillance a déjà fait l'objet de travaux de recherche~\cite{lipton1998moving, nishimura1997video, benfold2011stable}, mais plus rarement avec composante interactive qui nous intéresse ici.
+	Quelle que soit la nature de la cible, sa sélection pourrait avoir pour but de zoomer dessus, de verrouiller une caméra robotisée afin qu'elle la suive, ou de la désigner à des forces de sécurité sur le terrain pour qu'elles interviennent physiquement. Le suivi de cibles filmées par des caméras de vidéo-surveillance a déjà fait l'objet de travaux de recherche~\cite{lipton1998moving, nishimura1997video, benfold2011stable}, mais plus rarement avec la composante interactive qui nous intéresse ici.
 	
 	Une des difficultés de cette application est le fait qu'une cible peut bouger non seulement de façon imprévisible, mais également de façon totalement indépendante des actions de l'utilisateur~\cite{ilich2010moving, silva2012real}.	
 	
@@ -539,11 +541,11 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-km-h-sur-l-a1.html}}
 	
-	Les changements de direction dépendent évidemment de la vitesse. En ville, à moins de 50~km/h, une automobile peut effectuer un virage à 90 degrés dans un laps de temps de l'ordre de la seconde si sa vitesse est réduite, mais elle est contrainte à des courbes beaucoup plus douces lorsqu'elle se déplace rapidement, par exemple sur une autoroute.
+	Les changements de direction dépendent évidemment de la vitesse. En ville, à moins de 50~km/h, une automobile peut effectuer un virage à 90 degrés dans un laps de temps de l'ordre de la seconde, mais elle est contrainte à des courbes beaucoup plus douces lorsqu'elle se déplace rapidement, par exemple sur une autoroute.
 	
 	La fréquence des changements de direction dépend également de la vitesse, tant pour des raisons physiques que du fait du tracé des trajets communément effectués. En milieu urbain dense, on peut considérer qu'un véhicule va changer de direction, de façon plus ou moins prononcée, à une fréquence de l'ordre de 0,1~Hz, sachant qu'en cas de nécessité, cette fréquence peut être nettement plus élevée.
 	
-	\FloatBarrier \subsection{Véhicules divers}
+	\FloatBarrier \subsection{Autres véhicules et hétérogénéité}
 	En plus des piétons et des automobiles, la vidéo-surveillance s'applique à tous les véhicules et moyens de déplacement susceptibles d'être utilisés dans l'espace public : patins à roulettes, skateboards de tous types, bicyclettes, motocyclettes, etc. Les caractéristiques du mouvement de ces moyens de transport sont diverses, mais généralement comprises dans les intervalles formés par les piétons et les automobiles. Il est donc important qu'une technique de sélection puisse non seulement gérer les valeurs extrêmes de vitesse, d'angle et de fréquence de changements de direction, mais également les diverses combinaisons de ces valeurs qui peuvent se présenter simultanément.
 		
 	\begin{figure}[!htbp]
@@ -572,14 +574,14 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	La surveillance s'applique également à la partie invisible du spectre électromagnétique, et notamment aux signaux émis par les téléphones portables. Les objectifs de cette surveillance sont multiples mais peuvent inclure la lutte contre la criminalité, le terrorisme, ou un adversaire militaire, mais aussi l'étude des usages afin d'adapter les réseaux de communication, de transport, etc.	
 	
 	\FloatBarrier \subsection{Moyens et méthodes}
-	La figure~\ref{fig:cellphones} fournit une illustration (tirée d'une œuvre de fiction) d'un tel système. S'il est présenté dans l'œuvre en question comme fondé sur des détections par satellite, en pratique les systèmes réels se fondent plutôt sur des capteurs aériens ou, plus simplement, sur les données fournies directement par les opérateurs téléphoniques, comme le permet par exemple l'article 20 de la loi de programmation militaire de décembre 2013, en France\footnotemark.
+	La figure~\ref{fig:cellphones} fournit une illustration d'un tel système, tirée d'une œuvre de fiction. Si l'œuvre en question présente ce système comme fondé sur des détections par satellite, en pratique, les systèmes réels se fondent plutôt sur des capteurs aériens ou, plus simplement, sur les données fournies directement par les opérateurs téléphoniques, comme le permet par exemple l'article 20 de la loi de programmation militaire de décembre 2013, en France\footnotemark.
 	
 	\footnotetext{\url{https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028338825}}
 	
-	L'État français s'appuie notamment sur les services d'entreprises telles que Deveryware :
+	L'État français s'appuie notamment sur les services d'entreprises telles que Deveryware, qui se décrit en ces termes :
 	
 	\begin{displayquote}
-		(Celle-ci) est depuis 2003 la spécialiste de référence pour le développement et le déploiement de solutions mettant en œuvre la géolocalisation en temps réel des personnes et des biens.
+		Deveryware est depuis 2003 la spécialiste de référence pour le développement et le déploiement de solutions mettant en œuvre la géolocalisation en temps réel des personnes et des biens.
 
 		Elle est un partenaire important de l'État français pour des applications régaliennes utilisant ces techniques, qu'il s'agisse de sécurité publique ou de sécurité civile pour contribuer à la mise en sécurité des citoyens.\footnotemark{}
 	\end{displayquote}
@@ -648,7 +650,7 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	
 	\footnotetext{\url{http://www.sfbilliards.com/Misc/onoda_all_txt.pdf}}
 	
-	Citons également les courses de billes dans le sable (\emph{sand marble racing}), un jeu curieux qui consiste à laisser rouler plusieurs billes dans des sillons creusés dans le sable dont le tracé est soigneusement étudier pour créer une sensation de suspense concernant l'issue de la \og course \fg{}. Ce passe-temps plus intéressant qu'il peut en avoir l'air donne lieu à des enregistrements vidéo largement diffusés sur internet\footnotemark{}, agrémentés de statistiques, et tout à fait susceptibles d'être augmentés par des capacités d'interaction qui nécessiteraient la sélection de ces objets rapides aux mouvements vifs.
+	Citons également les courses de billes dans le sable (\emph{sand marble racing}), un jeu curieux qui consiste à laisser rouler plusieurs billes dans des sillons creusés dans le sable dont le tracé est soigneusement étudié pour créer une sensation de suspense concernant l'issue de la \og course \fg{}. Ce passe-temps plus intéressant qu'il peut en avoir l'air donne lieu à des enregistrements vidéo largement diffusés sur internet\footnotemark{}, agrémentés de statistiques, et tout à fait susceptibles d'être augmentés par des capacités d'interaction qui nécessiteraient la sélection de ces objets rapides aux mouvements vifs.
 	
 	\footnotetext{\url{https://www.reddit.com/r/videos/comments/6linoy/sand_marble_races_are_a_lot_more_thrilling_than_i}}
 
@@ -821,6 +823,9 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 	\footnotetext{\url{https://www.youtube.com/watch?v=XaZ2n_feTko}}
 	
 	Sans doute \emph{Agar.io} fait-il partie des jeux pour lesquels la visée est une fin en soi, un ressort ludique. Cependant, son principe très simple cache une profondeur tactique insoupçonnée, notamment du fait de la possibilité de coopérer avec d'autres joueurs, selon des procédés complexes --- bien qu'issus de mécanismes très simples --- qu'il n'est pas utile de détailler ici. Disons simplement que le développeur pourrait choisir de faciliter la visée pour mettre plus de poids sur la tactique.
+	
+	\subsection{Hétérogénéité}
+	Par sa richesse et sa diversité, justement, le domaine vidéoludique exhibe peut-être la plus grande hétérogénéité qui soit en matière de cibles mobiles. Certes, un jeu donné ne peut couvrir l'ensemble des cibles vidéoludiques possible, mais il peut en contenir un échantillon riche et divers, de sorte que l'hétérogénéité peut souvent y être un facteur de difficulté dans la tâche de sélection de cibles mobiles. À chaque développeur de juger de l'utilité d'une assistance à la sélection, mais le cas échéant, elle devra permettre une gestion efficace de cette hétérogénéité. 
 
 	
 	\section{Conclusion}    
@@ -836,12 +841,12 @@ Nous allons voir dans cette section que les approches computationnelles se fonde
 		\item la nature du mouvement, plus ou moins imprévisible.
 	\end{itemize}
 	
-	Un examen des cas évoqués dans ce chapitre, mené à la lumière des facteurs sus-cités, suggère que les simulations de dynamique moléculaire interactives représentent la tâche la plus difficile, quoique certaines autres ne soient pas très loin derrière. Cette application peut donc servir de guide dans la conception d'une technique de sélection de cibles mobiles, à condition de maintenir une généricité suffisante.
+	Un examen des cas évoqués dans ce chapitre, mené à la lumière des facteurs sus-cités, suggère que les simulations de dynamique moléculaire interactives représentent la tâche la plus difficile, quoique certaines autres ne soient pas très loin derrière. Cette application peut donc servir de guide dans la conception d'une technique de sélection de cibles mobiles, à condition de maintenir une généricité suffisante. Elle présente du moins un intérêt certain, attendu qu'elle correspond à un besoin exprimé par les spécialistes du domaine.
 	
 	Cependant, compte tenu des divers impératifs requis par chaque application, une technique idéale devrait être suffisamment paramétrable pour favoriser le temps de sélection ou le taux d'erreur, selon les besoins. Elle devrait également pouvoir s'adapter à des espaces à deux et trois dimensions, ainsi qu'à des dispositifs de visualisation et d'interaction aussi divers que possible : téléphones (\emph{smartphones}), tablettes tactiles, ordinateurs portables équipés de \emph{touchpads}, ordinateurs de bureau équipés d'une souris et d'un clavier, dispositifs immersifs (de type CAVE ou HMD, par exemple), murs d'écrans, manettes de jeu, \emph{joysticks}, souris 3D, \emph{Flysticks}\footnotemark, bras haptiques, etc.
 	
 	\footnotetext{Périphérique d'interaction sans fil conçu pour la réalité virtuelle, produit par Advanced Realtime Tracking (ART) : \url{http://www.ar-tracking.com/products/interaction/flystick2}}
 	
-	L'enjeu des ces travaux de thèse est d'une part de formaliser le mouvement et la dynamique de ces cibles, en identifiant des facteurs de difficulté, tels que l'imprévisibilité du mouvement d'une cible, comme dans le cas de la simulation moléculaire. D'autre part, il s'agit de déterminer dans quelle mesure ces facteurs influencent les difficultés liées à sélection de cibles mobiles, problématiques à ce jour peu étudiées d'un point de vue expérimental. Ce travail préalable est essentiel pour répondre aux besoins des applications évoquées dans ce chapitre, comme base au développement de techniques pour faciliter la sélection de cibles mobiles.
+	L'enjeu des ces travaux de thèse est d'une part de formaliser le mouvement et la dynamique de ces cibles, en identifiant des facteurs de difficulté, tels que l'imprévisibilité du mouvement d'une cible, comme dans le cas de la simulation moléculaire. D'autre part, il s'agit de déterminer dans quelle mesure ces facteurs influencent les difficultés liées à sélection de cibles mobiles, ces problématiques étant à ce jour peu étudiées d'un point de vue expérimental. Ce travail préalable est essentiel pour répondre aux besoins des applications évoquées dans ce chapitre, comme base au développement de techniques pour faciliter la sélection de cibles mobiles.
 	
 	En amont, nous allons dans le chapitre suivant présenter un état de l'art des techniques de sélection de cibles.
