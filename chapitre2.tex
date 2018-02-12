@@ -132,7 +132,7 @@
 	
 	Celle-ci n'a, à notre connaissance, jamais été étendue pour modéliser le temps de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
 	
-	\subsection{Complexité du mouvement : phases balistique et de correction}
+	\subsection{Complexité du mouvement : décomposition en sous-mouvements}
 	Woodworth~\cite{woodworth1899accuracy} fut à notre connaissance le premier à identifier deux phases dans le mouvement ciblé : une impulsion initiale et une phase de contrôle. Welford~\cite{welford1968fundamentals} fit la même observation et nota par ailleurs que la première phase, visant à couvrir la distance nécessaire, était plus rapide, tandis que la seconde, celle de ciblage, était plus courte~\cite{mackenzie1987three}. Il remarqua de plus, et de même que Crossman et Goodeve~\cite{crossman1983feedback}, que la première phase était \emph{balistique} et qu'à la seconde s'ajoutait un processus de contrôle visuel.
 	
 	Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
@@ -146,7 +146,22 @@
 	
 	Langolf \emph{et al.}~\cite{langolf1976investigation} ont de plus montré que \og le mouvement entier vers le centre de la cible devient plus lent quand les tolérances sur la cible (i.e. sa largeur) diminuent \fg{}, ce qui est cohérent avec les travaux de Crossman et Goodeve~\cite{crossman1983feedback}, Marteniuk \emph{et al.}~ \cite{marteniuk1987constraints}, ainsi que ceux de Soechting~\cite{soechting1984effect}. Ce dernier remarqua par ailleurs qu'avec de petites cibles, la phase balistique était plus courte, et de fait la phase de correction en était d'autant rallongée.
 	
-	La conclusion générale de ces travaux est que la précision requise par un mouvement influe non seulement sur son temps global de complétion, mais également sur l'ensemble de la trajectoire, et notamment sur le profil de vitesse du curseur en fonction du temps. Dès lors, nous pouvons formuler l'hypothèse que les difficultés inhérentes à la sélection de cibles mobiles peuvent être assimilées à un besoin accru de précision, et que par conséquent, un effet comparable pourra être observé sur les trajectoires des curseurs.
+	Meyer \emph{et al.}~\cite{meyer1988optimality} proposent un modèle \og des sous-mouvements stochastiques optimisés \fg{} (ou SMSO) alternatif, fondé sur des hypothèses assez différentes. Ici, la phase balistique et la phase de correction ne sont pas considérées comme telles, mais font place à des sous-mouvements successifs, permettant chacun de se rapprocher un peu plus de la cible. Une illustration de cette modélisation est fournie dans la figure~\ref{fig:meyer}. Ce qui retient particulièrement notre attention dans cette approche, outre le fait que le modèle SMSO permet d'expliquer (entre autres) l'origine de la loi de Fitts, est que bien que la quantité de sous-mouvements soit fixée à 2 par les auteurs du modèle --- notamment du fait des travaux de Langolf \emph{et al.}~\cite{langolf1976investigation} et Carlton~\cite{carlton1979control}, qui ont constaté la prépondérance de ce cas de figure --- ils admettent eux-mêmes qu'elle peut éventuellement être plus élevée~\cite{crossman1963feedback, crossman1983feedback}, notamment quand la difficulté de sélection est grande, en particulier quand le pointage doit être stable, c'est-à-dire quand le curseur doit rester sur la cible et non se contenter de passer dessus.
+	
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=0.70\textwidth]{figures/ch2/meyer}
+		\caption[Profils de vitesse et d'accélération dans le modèle SMSO]{Profils de vitesse et d'accélération dans le modèle SMSO. Les unités sont en dégrés d'angle, car le mouvement étudié par Meyer \emph{et al.} était rotatif. Crédit : \cite{meyer1988optimality}.}
+		\label{fig:meyer}
+	\end{figure}
+	
+	Dans ce dernier cas, étudié par Jagacinski \emph{et al.}~\cite{jagacinski1980fitts}, les cibles étaient statiques. Pourtant, lorsque l'indice de difficulté de Fitts était élevé, le nombre de sous-mouvements pouvait atteindre quatre. Il est donc raisonnable de supposer que dans un cas similaire, mais avec des cibles mobiles --- \emph{a fortiori} vives et imprévisibles --- ce nombre pourrait être (beaucoup) plus élevé.
+	
+	Par conséquent, nous évaluerons plus loin la pertinence de l'interprétation d'un mouvement de sélection de cible mobile en succession (potentiellement très longue) de sous-mouvements, en nous appuyant sur ces travaux.
+	
+	La conclusion générale de ces diverses études et propositions théoriques est que la précision requise par un mouvement influe non seulement sur son temps global de complétion, mais également sur l'ensemble de la trajectoire, et notamment sur le profil de vitesse du curseur en fonction du temps. Dès lors, nous pouvons formuler l'hypothèse que les difficultés inhérentes à la sélection de cibles mobiles peuvent être assimilées à un besoin accru de précision, et que par conséquent, un effet spécifique pourra être observé sur les trajectoires des curseurs.
+	
+	Plus précisément, nous pouvons formuler l'hypothèse que la mobilité d'une cible mène à une multiplication des sous-mouvements, et que ceux- ci sont d'autant plus nombreux que les mouvements de la cible sont \og difficiles \fg{}.
 	
 	Nous reviendrons dans les chapitres suivants sur cette hypothèse.
 	
