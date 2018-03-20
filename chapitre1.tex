@@ -7,13 +7,13 @@
 \cleardoublepage
 
 	\section{Introduction}
-	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une position, s'ajoutent des caractéristiques de mouvement, direction, vitesse,  accélération, et qui peuvent de plus varier dans le temps. 
+	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une position, s'ajoutent des caractéristiques de mouvement : direction, vitesse, accélération, et qui peuvent de plus varier dans le temps. 
 	
-	D'un point de vue perceptif, un utilisateur peut trouver un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire. La grande diversité des types de mouvements perçus, souvent reliés à des mouvements relatifs à l'expérience écologique de l'utilisateur, implique des difficultés à établir  des protocoles expérimentaux permettant de caractériser la difficulté de sélection de cibles mobiles. En effet, il est nécessaire d'apporter des solutions  adaptées aux différentes natures du mouvement des objets à sélectionner. Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité de types de mouvements.
+	D'un point de vue perceptif, un utilisateur peut trouver un mouvement plutôt rectiligne, légèrement courbé, très saccadé, circulaire\ldots{} La grande diversité des types de mouvements perçus, souvent reliés à des mouvements relatifs à l'expérience écologique de l'utilisateur, implique des difficultés à établir  des protocoles expérimentaux permettant de caractériser la difficulté de sélection de cibles mobiles. En effet, il est nécessaire d'apporter des solutions  adaptées aux différentes natures du mouvement des objets à sélectionner. Un des objectifs de ce chapitre est de dégager les grandes lignes de cette diversité de types de mouvements.
 	
-	Dans ce chapitre introductif, nous nous attacherons à dresser un inventaire des applications impliquant la sélection de cibles mobiles comme tâche durant l'activité. Nous analyserons les enjeux de la sélection dans chacun des cas, afin de comprendre les priorités et besoins spécifiques à chaque application.
+	Dans ce chapitre introductif, nous nous attachons à dresser un inventaire des applications impliquant la sélection de cibles mobiles comme tâche durant l'activité. Nous analysons les enjeux de la sélection dans chacun des cas, afin de comprendre les priorités et besoins spécifiques à chaque application. Nous nous appuyons tout particulièrement sur des entretiens que nous avons menés avec des spécialistes des divers domaines évoqués, afin de focaliser notre étude sur les véritables problématiques liées aux applications que nous étudions.
 	
-	Il va sans dire que cet inventaire ne saurait prétendre à l'exhaustivité, tant ces applications sont nombreuses. À défaut d'exhaustivité, l'objectif que nous nous sommes fixés est la représentativité, afin de se forger une idée générale des besoins, des difficultés et enjeux de la sélection de cibles mobiles. Nous verrons que les applications vont des simulations moléculaires aux jeux vidéo, en passant par le contrôle de la circulation aérienne, maritime, terrestre, ainsi que la télévision interactive et divers domaines de la sécurité et de la défense. Une attention plus particulière est volontairement portée sur la description de l'activité de simulation moléculaire interactive, les problématiques de sélection liées à cette activité étant à la base de ce travail de thèse sur la sélection de cibles mobiles.
+	Il va sans dire que cet inventaire ne saurait prétendre à l'exhaustivité, tant ces applications sont nombreuses. À défaut d'exhaustivité, l'objectif que nous nous sommes fixés est la représentativité, afin de se forger une idée générale des besoins, des difficultés et enjeux de la sélection de cibles mobiles. Nous observons que les applications vont des simulations moléculaires aux jeux vidéo, en passant par le contrôle de la circulation aérienne, maritime, terrestre, ainsi que la télévision interactive et divers domaines de la sécurité et de la défense. Une attention plus particulière est volontairement portée sur la description de l'activité de simulation moléculaire interactive, les problématiques de sélection liées à cette activité étant à la base de ce travail de thèse sur la sélection de cibles mobiles~\cite{kouyoumdjian2014understanding, kouyoumdjian2015mdinvr}.
 	
 
 	\section{Simulation moléculaire interactive}
@@ -189,7 +189,9 @@
 	Ceux-ci peuvent être utilisés de diverses façons, notamment pour percevoir les \og collisions \fg{} entre le curseur et les objets de la scène, ou entre un objet sélectionné par l'utilisateur et un autre objet de la scène, pour permettre à l'utilisateur de percevoir les forces qui s'exercent entre les composantes de la molécule, ou encore pour guider la sélection, en appliquant une force au périphérique haptique dans la direction de la cible présumée de l'utilisateur. Le choix du mode d'utilisation d'un périphérique haptique dans une simulation d'IMD dépend de l'effet recherché.
 	
 	\subsection{Limites et défis actuels}
-	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures. Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs dizaines d'objets, jusqu'à plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité ; cet exemple n'est pas le plus extrême, car la molécule visualisée n'est pas très grande et, surtout, le solvant n'est pas représenté.
+	L'interaction avec une simulation de dynamique moléculaire présente plusieurs difficultés majeures~\cite{kouyoumdjian2014understanding, kouyoumdjian2015mdinvr}, notamment identifiées au cours des travaux menés dans le projet Exaviz~\cite{dreher2014exaviz}. La présente section s'appuie sur des entretiens menés avec les membres de ce projet centré sur la l'interaction avec les simulations de dynamique moléculaire. Ce sont avant tout leur expertise et les difficultés qu'ils ont rencontrées qui informent nos travaux.
+	
+	Tout d'abord, le nombre de cibles potentielles est très élevé, avec au minimum plusieurs dizaines d'objets, jusqu'à plusieurs millions dans les cas les plus extrêmes. Ces cibles étant confinées dans un espace relativement petit, il en résulte de plus une densité élevée, voire très élevée (selon le mode de représentation). La figure~\ref{fig:exaviz} donne d'ailleurs une idée de cette densité ; cet exemple n'est pas le plus extrême, car la molécule visualisée n'est pas très grande et, surtout, le solvant n'est pas représenté.
 	
 	Il découle de cette forte densité un niveau d'occultation très important, qui dépend également du mode de représentation utilisé. Le système moléculaire de la figure~\ref{fig:gluTrans}, du fait de l'utilisation de sphères de van der Waals, présente un degré d'occultation particulièrement important, et ce malgré le fait que le solvant n'est pas représenté.
 	
@@ -383,7 +385,19 @@
 	\footnotetext{\url{http://www.lci.fr/international/soldats-francais-blesses-par-un-drone-de-daech-en-irak-quand-un-engin-de-loisir-devient-une-arme-du-terrorisme-2007738.html}}
 	
 	\subsubsection{Missiles}	
-	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de combat, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II (figure~\ref{fig:brahmos}).
+	La surveillance de l'espace aérien concerne également divers types de missiles (de croisière, balistiques, etc.). Leurs caractéristiques détaillées sont généralement au moins aussi secrètes que celles des avions de combat, mais on sait néanmoins qu'ils peuvent être à la fois hypersoniques (c'est-à-dire dépasser Mach~5) et manœuvrables à de telles vitesses~\cite{missiles}, comme le missile BrahMos-II (figure~\ref{fig:brahmos}), ou encore le Kh-47M2 \emph{Kinzhal}, censé pouvoir atteindre Mach~10\footnotemark{} et être manœuvrable, quoique peut-être  à de moindres vitesses seulement.
+	
+	\footnotetext{\url{https://theaviationist.com/2018/03/12/russia-test-fires-new-kh-47m2-kinzhal-hypersonic-missile}}
+	
+	Des planeurs hypersoniques tels que le RS-26 \emph{Rubezh} sont supposés capables de vitesses de l'ordre de Mach~20, et demeurent manœuvrales~\footnotemark{}.
+	
+	\footnotetext{\url{https://www.washingtonpost.com/business/technology/putin-russia-has-nuclear-weapons-impossible-to-intercept/2018/03/01/47d71e3a-1d77-11e8-98f5-ceecfa8741b6_story.html}
+	
+	\url{https://russianmilitaryanalysis.wordpress.com/2018/03/04/emerging-russian-weapons-welcome-to-the-2020s-part-1-kinzhal-sarmat-4202} }
+
+	D'autres ont vocation à opérer en essaim, de manière collaborative et relativement furtive, ce qui implique l'apparition soudaine, tardive et fugace de nombreuses cibles densément regroupées\footnotemark{}.
+	
+	\footnotetext{\url{http://www.defense24.news/2018/02/19/puissance-aerienne-remue-menage-secteur-anti-iads}}
 	
 	\begin{SCfigure}[50][!htbp]
 		\centering
@@ -398,7 +412,7 @@
 	En situation réelle, un espace aérien pourrait tout à fait contenir des véhicules et autres engins volants de tous les types sus-cités, des essaims de drones très manœvrables jusqu'aux missiles balistiques les plus rapides. Un système de contrôle interactif devrait donc être assez souple pour permettre la sélection de cibles de natures très différentes.
 	On peut noter que les engins volants militaires ont vocation à chercher à éviter d'être détectés, soit en étant intrinsèquement furtifs, soit en volant à très basse altitude et en tirant parti du relief naturel. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, et peuvent éventuellement disparaître de ces écrans, offrant une fenêtre temporelle restreinte pour l'interaction.
 	
-	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnotemark{}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Au cours d'un entretien, le général de brigade aérienne (2S) Jean-Vincent Brisset a également insisté fortement sur la nature critique de la tâche d'identification.	
+	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnotemark{}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Au cours d'un entretien qu'il nous a accordé, le général de brigade aérienne (2S) Jean-Vincent Brisset a également insisté fortement sur la nature critique de la tâche d'identification, préalable indispensable à toute décision de faire feu.	
 	
 	\addtocounter{footnote}{-1}
 	\footnotetext{Frégate de défense aérienne (FDA) française de classe \emph{Horizon}, d'un déplacement d'environ 7000 tonnes, ayant pour mission principale de participer à la défense antiaérienne d'un groupe aéronaval, ou d'assurer la protection d'une zone ou d'un convoi contre des attaques aériennes ou de missiles.}
@@ -426,9 +440,14 @@
 	
 	Cependant, la mer abrite des activités illégales diverses, incluant tous types de trafics (contrebande, œuvres d'art, drogues, armes, êtres humains) ainsi que de la piraterie ou des activités liées au terrorisme. Le fret maritime mondial représentant près de 10 milliards de tonnes, on mesure l'ampleur et l'importance du défi à l'échelle planétaire~\cite{unctad}.
 	
-	La piraterie, en particulier, représente un tel danger que l'Union européenne a dû mettre en place une force navale, \emph{Atalanta}\footnotemark, spécialement dédiée à la lutte contre la piraterie au large de la Somalie. Celle-ci atteint depuis quelques années un tel degré de sophistication que les pirates utilisent de grands bâtiments (cargos, chalutiers, pétroliers\ldots{}) détournés comme bateaux-mères, à partir desquels ils lancent de plus petites embarcations pour intercepter leurs cibles~\cite{audebaud2010lutte, guisnel2012pirates, dumas2015}. La Somalie n'est cependant pas le seul lieu où la piraterie sévit, puisqu'on la retrouve notamment dans le Golfe de Guinée~\cite{onuoha2012piracy}, aux abords du détroit de Malacca~\cite{raymond2009piracy} ou encore au large du Bangladesh~\cite{liss2011oceans}.
+	La piraterie, en particulier, représente un tel danger que l'Union européenne a dû mettre en place une force navale, \emph{Atalanta}\footnotemark, spécialement dédiée à la lutte contre la piraterie au large de la Somalie. Celle-ci atteint depuis quelques années un tel degré de sophistication que les pirates utilisent de grands bâtiments (cargos, chalutiers, pétroliers\ldots{}) détournés comme bateaux-mères, à partir desquels ils lancent de plus petites embarcations pour intercepter leurs cibles~\cite{audebaud2010lutte, guisnel2012pirates, dumas2015}.
 	
 	\footnotetext{\url{http://eunavfor.eu/}}
+	
+	La multiplicité des petites embarcations des pirates rend leur éradication particulièrement difficile, car les navires et aéronefs des marines luttant contre la piraterie sont trop peu nombreux\footnotemark{}. La Somalie n'est d'ailleurs pas le seul lieu où la piraterie sévit, puisqu'on la retrouve notamment dans le Golfe de Guinée~\cite{onuoha2012piracy}, aux abords du détroit de Malacca~\cite{raymond2009piracy} ou encore au large du Bangladesh~\cite{liss2011oceans}.
+	
+	\footnotetext{\url{http://www.defense24.news/2018/02/26/guerre-hybride-mer-lexperience-de-jeune-ecole}}
+	
 	
 	\begin{figure}[!htbp]
 		%\centering
@@ -454,6 +473,10 @@
 	\FloatBarrier \subsection{Difficultés}
 	La plupart des navires se déplacent à la surface de l'eau. Par conséquent, leur représentation dans le plan sur un écran de contrôle n'implique généralement pas de perte d'information significative, contrairement au cas aérien. Les sous-marins constituent toutefois une exception à cette règle, et peuvent plonger à plusieurs centaines de mètres. S'ils représentent une très petite minorité des navires en circulation, leur détection revêt une importance militaire critique.
 	
+	Nous pouvons également citer dans cette catégorie des engins plus atypiques, tels que la torpille nucléaire \emph{Status-6}\footnotemark{}, encore en développement, et censée être capable de se mouvoir à 185~km/h et à 1000 mètres de profondeur --- ce qui la rend extrême par sa vitesse, sa profondeur et sa dangerosité. Le drone militaire \emph{Klavesin} est annoncé comme capable d'atteindre 2000 mètres de profondeur, bien qu'à des vitesses beaucoup plus modestes.
+	
+	\footnotetext{\url{https://russianmilitaryanalysis.wordpress.com/2018/03/06/emerging-russian-weapons-welcome-to-the-2020s-part-2-9m730-status-6-klavesin-2r}}
+	
 	\subsubsection{Données 3D affichées en 2D}
 	De fait, le problème de l'affichage planaire d'informations tridimensionnelles demeure, même s'il est moins prégnant. Les navires sont en moyenne bien plus lents que les aéronefs, mais certains bateaux de type \emph{go-fast} peuvent dépasser les 150~km/h. Ces navires étant fréquemment utilisés par les trafiquants de drogue pour échapper aux garde-côtes, il est particulièrement important de pouvoir les détecter et les contrôler.
 	
@@ -473,7 +496,7 @@
 	
 	Même si d'importantes restrictions sont en place sur l'utilisation de l'espace extra-atmosphérique à des fins militaires\footnotemark, les missiles balistiques, en particulier intercontinentaux, passent par ce milieu. Il est donc nécessaire aux systèmes de détection et de défense de pouvoir les distinguer rapidement des satellites. Compte tenu de l'extrême dangerosité de ces armes, et de leur vitesse foudroyante, tout système interactif permettant à un être humain d'examiner la situation afin de prendre une décision se doit d'être extrêmement performant, c'est-à-dire de permettre un examen approfondi de la cible visée par l'utilisateur aussi rapidement que possible, et en minimisant les erreurs de sélection. Un tel missile est représenté sur la figure~\ref{fig:m51}.
 	
-	Par ailleurs, une pratique consistant à utiliser un satellite pour se rapprocher au plus près d'un autre afin de l'observer et d'espionner ses activités se développe de plus en plus. Nous sommes donc ici dans un cas où, sur un écran de surveillance --- à supposer que l'on puisse détecter cela --- les deux cibles (le satellite espion et le satellite espionné) apparaîtraient avec des trajectoires quasi identiques, et très, très proches l'une de l'autre, voire superposées, si un satellite est juste au-dessus de l'autre, par exemple.
+	Par ailleurs, une pratique consistant à utiliser un satellite pour se rapprocher au plus près d'un autre afin de l'observer et d'espionner ses activités se développe de plus en plus. Nous sommes donc ici dans un cas où, sur un écran de surveillance --- à supposer que l'on puisse détecter cela --- les deux cibles (le satellite espion et le satellite espionné) apparaîtraient avec des trajectoires quasi identiques, et très, très proches l'une de l'autre, voire superposées, si un satellite est juste au-dessus de l'autre, par exemple. En effet \og sans doute faut-il se garder d’accorder trop de foi aux déclarations politiques sur la nécessité d’utiliser l’espace à des fins pacifiques : la guerre reste une dialectique et seule l’adaptation compte ; même limitée, une guerre n’est pas livrée pour être perdue \fg{}~\cite{henrotin2013asat}.
 	
 	\footnotetext{\url{http://disarmament.un.org/treaties/t/outer_space}}
 	
@@ -596,6 +619,8 @@
 	\end{figure}
 	
 	\footnotetext{\OE{}uvre réalisée par Éric Rochant et produite par Canal+}
+	
+	Nous avons pu confirmer, via des échanges avec des spécialistes du renseignement (issus du monde opérationnel ou académique), la pertinence de tels systèmes, et leur usage par divers services de renseignement.
 	
 	\subsection{Hétérogénéité}
 	L'on comprend aisément que la surveillance des signaux téléphoniques porte sur des cibles à peu près identiques à celles de la vidéo-surveillance. En effet, les téléphones sont généralement transportés par des gens à pied, en voiture, à vélo, dans les transports en commun, etc. Cependant, une difficulté s'ajoute puisque l'on surveille ici des espaces beaucoup plus grands, et donc plus hétérogènes.
@@ -807,6 +832,7 @@
 	% https://www.reddit.com/r/DotA2/comments/1vaklc/how_big_is_the_dota2_map_really/
 	
 	\FloatBarrier \subsection{Richesse et diversité}
+	\label{sub:rich}
 	L'univers vidéoludique est d'une richesse et d'une diversité considérables tandis que le nombre de jeux est considérable et constante croissance. 
 	
 	Il serait bien impossible dans ce manuscrit de faire un inventaire complet de cette diversité, dût-il être entièrement consacré à cet objectif. Pour illustrer cette richesse et cette diversité, contentons-nous simplement de mentionner un seul exemple, \emph{Agar.io}. Dans cette curieuse création de Matheus Valadares, le joueur contrôle un disque coloré qu'il doit nourrir pour le faire grossir au maximum, en dévorant ses adversaires.
