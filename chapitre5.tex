@@ -18,7 +18,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/ch5/asqrtFvTime}
+		\includegraphics[width=\textwidth]{figures/ch5/asqrtFvTime}
 		\caption{Moyennes des temps de sélection normalisés, divisées par la vitesse, en fonction du produit $A\sqrt{F}$, pour des cibles de vitesse moyenne ou rapide.}
 		\label{fig:tAsqrtF}
 	\end{figure}
@@ -41,11 +41,58 @@
 	\subsubsection{Filtrage avec limitation à 4~Hz}
 	Illustrons notre propos par un exemple concret de technique d'aide à la sélection, fondée sur une limitation de la fréquence de changements de direction à 4~Hz --- ce choix est quelque peu arbitraire, mais informé par les données de la figure~\ref{fig:fEffectPerf}, section~\ref{sub:freqEffect}. Si une cible a un paramètre F dont la valeur intrinsèque est de 32~Hz, un \emph{proxy} de la cible est créé, mais sa position n'est mise à jour que quatre fois par seconde ; les valeurs intérmédiaires étant interpolées. Cette méthode a l'avantage de permettre au \emph{proxy}, dans une certaine mesure, de \og coller \fg{} aux mouvements de la cible réelle, mais de manière moins saccadée, plus prévisible.
 	
-	Cela se fait toutefois au prix d'une latence inversement proportionnelle à la fréquence d'échantillonage choisie, c'est-à-dire ici $\frac{1}{4}~s = 250~ms$. Naturellement, il est possible de réduire cette latence en augmentant la fréquence d'échantillonage, ce qui a l'inconvénient de diminuer l'efficacité de la technique.
+	Cela se fait toutefois au prix d'une latence inversement proportionnelle à la fréquence d'échantillonage choisie (que nous appelons $F'$), c'est-à-dire ici $\frac{1}{4}~s = 250~ms$. Naturellement, il est possible de réduire cette latence en augmentant la fréquence d'échantillonage, ce qui a l'inconvénient de diminuer l'efficacité de la technique.
 	
-	Cette façon de filtrer les positions des cibles permet de conserver des points en commun avec la trajectoire initiale, et donc de ne pas trop en modifier l'étendue ; nous reviendrons sur ce point plus loin avec des illustrations.
+	Cette façon de filtrer les positions des cibles permet de conserver des points en commun avec la trajectoire initiale, et donc de ne pas trop en modifier l'étendue et l'allure générale, comme l'illustre la figure~\ref{fig:filterF}.
 	
-	Il est important de noter (et encore une fois, la figure~\ref{fig:fEffectPerf} l'illustre) que la réduction de la fréquence permet d'améliorer les performances, mais que cette réduction est moins perceptible lorsque le paramètre A est particulièrement grand. 
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_freqFilter_2_19_120_32}
+			\caption{Trajectoire originale, $F = 32$~Hz.}
+			\label{fig:filterFnoFilter}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_freqFilter_2_19_120_32_filter_16}
+			\caption{Trajectoire filtrée, avec $F' = 16$~Hz.}
+			\label{fig:filterFw16}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_freqFilter_2_19_120_32_filter_8}
+			\caption{Trajectoire filtrée, avec $F' = 8$~Hz.}
+			\label{fig:filterFw8}
+		\end{subfigure}		
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_freqFilter_2_19_120_32_filter_4}
+			\caption{Trajectoire filtrée, avec $F' = 4$~Hz.}
+			\label{fig:filterFw4}
+		\end{subfigure}
+		\caption[Filtrage des trajectoires par limitation de fréquence]{Une trajectoire originale, et quatre trajectoires produites par limitation de la fréquence. Pour la trajectoire originale, A vaut 120\textdegree{}, et chaque trajectoire est générée sur 5 secondes, comme pour les données du chapitre~\ref{chap4}. Le paramètre A n'est pas nécessairement respecté pour les trajectoires filtrées, attendu que plusieurs angles de 120\textdegree{} au plus peuvent s'accumuler d'une période à l'autre. En bleu, les trajectoires avec leurs longueurs respectives indiquées en légende ; en rouge, les aires de leurs enveloppes convexes.}
+		\label{fig:filterF}
+	\end{figure}
+	
+	\paragraph{Effet secondaire sur la vitesse des cibles.}
+	Mais un effet secondaire de ce procédé est crucial : la longueur de la trajectoire est réduite. Or, attendu que la durée totale du mouvement n'est pas modifiée (elle est de 4 secondes pour les trajectoires de la figure~\ref{fig:filterF}), la vitesse moyenne de la cible diminue. Or, nous l'avons vu plus haut, la vitesse est le paramètre dont l'effet sur les temps de sélection est le plus fort, ainsi que le plus simple. En effet, les temps de sélection dépendent de la vitesse de façon approximativement affine, et les taux d'erreur, de façon approximativement linéaire (voir la figure~\ref{fig:spEffectPerf}, section~\ref{sub:spEffect}).
+	
+	L'effet du filtrage par fréquence sur la vitesse des cibles est illustré sur la figure~\ref{fig:filteringByFHistograms}. On y constate qu'une forte diminution de la vitesse (jusqu'à $-54,34~\%{}$) accompagne celle de la fréquence. L'aire de l'enveloppe convexe, elle, demeure relativement stable, avec une diminution de $14,8~\%{}$ seulement dans le cas le plus extrème, avec $F'=4~Hz$. Mais comme la vitesse diminue, l'aire divisée par la vitesse au carrée augmente fortement. Or, les données présentées sur la figure~\ref{fig:perf_V_RealArea_normed} (section~\ref{sub:areaVperf}) montrent que quand cette valeur est très grande, la sélection est généralement rapide. Par ailleurs, les résultats présentés sur la figure~\ref{fig:perf_V_RealArea_raw} de la même section montrent que lorsque la vitesse est faible, les temps de sélection sont toujours relativement courts de toute manière.
+	
+	Il en résulte que si l'allure générale de la trajectoire, ainsi que l'espace qu'elle occupe ne changent guère, la cible devient considérablement plus aisée à sélectionner, d'après nos modèles.
+		
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch5/filteringByFHistograms}
+		\caption[Effet du filtrage fréquentiel]{Effet du filtrage fréquentiel sur les caractéristiques d'une trajectoire. Celle-ci, générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$, se trouve modifiée de telle manière que la vitesse moyenne de la cible chute drastiquement --- de 2,19~cm/s à 1,00~cm/s --- de même, évidemment, que la fréquence. L'aire de l'enveloppe convexe demeure relativement stable.}
+		\label{fig:filteringByFHistograms}
+	\end{figure}
+
+	Comme la figure~\ref{fig:fEffectPerf} l'illustre, la réduction de la fréquence permet d'améliorer les performances, mais que cette réduction est moins perceptible lorsque le paramètre A est particulièrement grand.
 
 	\subsection{Modification du paramètre A}
 	Dans ces cas-là, il peut être plus judicieux de chercher à diminuer ce dernier --- là encore, il paraît difficile de chercher à l'augmenter de manière sensée. La réduction du paramètre A est peut-être plus délicate que celle de F, attendu qu'elle ne se prête pas à un filtrage temporel.
