@@ -14,3 +14,14 @@ set y2label "Aire (cm²) ; aire/V²(s²)"
 
 
 plot "filterbyFdata.csv" u 3:xtic(1) ti col, "" u 4 ti col axes x1y2, "" u 5 ti col axes x1y2
+
+
+set output "filteringByMovingAverageHistograms.svg"
+
+set y2range [0:5.5]
+plot "movingAverageData.csv" u 3:xtic(1) ti col, "" u 4 ti col axes x1y2, "" u 5 ti col axes x1y2
+
+set output "filteringBySpeedRedHistograms.svg"
+
+set y2range [0:5]
+plot "speedRedData.csv" u 3:xtic(1) ti col, "" u 4 ti col axes x1y2, "" u 5 ti col axes x1y2

@@ -1105,6 +1105,7 @@
 	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.
 	
 	\subsection{Techniques de manipulation du temps}
+	\label{sub:timeLord}
 	Certaines techniques cherchent à faciliter la sélection de cibles mobiles par une forme de manipulation du temps. Celui-ci peut être ralenti, arrêté momentanément, ou altéré d'une autre manière. Nous allons ici présenter deux techniques de ce type.
 	
 	\subsubsection{\emph{Hold}}
@@ -1223,7 +1224,7 @@
 		\label{fig:as2dspeed}	
 	\end{SCfigure}
 	
-	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde est augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
+	Pour faciliter la sélection de telles cibles sans trop augmenter l'encombrement visuel (\emph{clutter}) de la scène, les auteurs d'\emph{AttachedShock} ont choisi d'ajouter aux objets apparemment en mouvement une onde de choc, comme sur la figure~\ref{fig:asas}. Cette onde augmente l'objet en facilite la sélection. \emph{AttachedShock} fait donc partie de la famille des techniques de sélection qui cherchent à faciliter la sélection en augmentant la taille effective des cibles. La sélection se fait en effet en \og traversant \fg{} l'onde de choc d'un objet, ce qui permet aux utilisateurs d'effectuer un mouvement balistique sans avoir à ralentir comme ils le devraient avec une cible non augmentée.
 	
 	\begin{figure}[!htbp]
 		\centering

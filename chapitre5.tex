@@ -11,8 +11,9 @@
 	Troisièmement, nous proposons une nouvelle technique de sélection, dont la conception s'appuie sur les travaux présentés plus haut dans ce manuscrit.
 	Enfin, nous portons un regard critique sur nos résultats, et détaillons une réflexion sur les travaux futurs à mener.
 	
-\section[VFA : guide pour la sélection de cibles mobiles]{Le modèle VFA comme guide pour les tâches de sélection de cibles mobiles}
-	Les résultats que nous avons obtenus et exposés au cours du chapitre~\ref{chap4} montrent, comme de nombreux travaux antérieurs, que la vitesse a un effet déterminant sur les performances de sélection. La première recommandation qui découle de cette observation est de chercher à réduire la vitesse réelle ou effective des cibles mobiles pour en faciliter la sélection.
+\section[VFA : guide pour altérer les mouvements de cibles]{Le modèle VFA comme guide altérer les mouvements de cibles, et en faciliter la sélection}
+	\label{sub:vfaGuide}
+	Les résultats que nous avons obtenus et exposés au cours du chapitre~\ref{chap4} montrent, comme de nombreux travaux antérieurs (dont les principaux sont rappelés dans la section~\ref{sub:fittsMobile}), que la vitesse a un effet déterminant sur les performances de sélection. La première recommandation qui découle de cette observation est de chercher à réduire la vitesse réelle ou effective des cibles mobiles pour en faciliter la sélection.
 
 	Mais comme nous l'avions vu dans le chapitre~\ref{chap4}, la pseudo-entropie, c'est-à-dire le produit AF, a également une influence importante sur les performances de sélection à une vitesse donnée, et permet dans une certaine mesure de les prédire. C'est ce qu'illustre la figure~\ref{fig:tAF} de la section~\ref{sub:previsibility}. Or, l'étude menée sur les périmètres et aires des enveloppes convexes des trajectoires, telle que présentée dans le même chapitre, suggère une plus grande pertinence de la valeur $A\sqrt{F}$, que nous appellerons dorénavant pseudo-entropie subjective, ou PES. Aussi nous apparaît-il judicieux de revisiter la relation entre les performances de sélection et les paramètres VFA, que nous illustrons par la figure~\ref{fig:tAsqrtF}.
 	
@@ -32,6 +33,66 @@
 	Toutefois, cette recommandation pratique vaut autant pour la conception d'applications que pour l'élaboration de techniques d'aide à la sélection. En effet, certaines des techniques de sélection étudiées dans le chapitre~\ref{chap2} sont fondées sur la modification de la taille effective des cibles ou de leur distance au curseur ; lorsqu'il s'agit de cibles mobiles, elles peuvent également agir sur la vitesse, dont nous savons que l'importance est primordiale.
 	
 	Dans la plupart des contextes applicatifs que nous avons étudiés, la PES d'une cible est généralement en dessous de $PES_{max}$. Pour l'en éloigner encore plus, il faut donc chercher à diminuer A et F. Bien sûr, cette diminution n'est généralement pas incompatible avec l'usage d'une autre technique d'aide à la sélection, comme par exemple le \emph{Bubble Cursor}~\cite{grossman2005bubble}, ou encore \emph{Hook}~\cite{ortega2013hook}.
+	
+	\subsection{Modification du paramètre V}
+	Des techniques consistant à modifier la vitesse de cibles à sélectionner existent déjà, et deux d'entre elles sont présentées dans la section~\ref{sub:timeLord} : \emph{Hold}~\cite{hajri2011moving} et \emph{Target Ghost}~\cite{hasan2011comet}. La première stoppe le mouvement des cibles, tandis que la seconde ajoute à chaque cible un \emph{proxy} statique, que l'utilisateur peut sélectionner à sa place.
+	
+	Chacune revient en quelque sorte à arrêter le temps. La vitesse pouvant être définie comme le raport de la distance parcourue par le temps de trajet, il est logique de chercher à manipuler la vitesse en manipulant le temps. Mais jouer sur la distance est également possible, fût-ce indirectement, comme nous les verrons plus loin.
+	
+	\emph{Hold} a l'inconvénient d'engendrer une perte du contexte dynamique de l'application, et se prête mal aux usages en temps réel. \emph{Target Ghost} est plus souple, mais implique une forte déconnexion entre les \emph{proxies} statiques et leurs cibles-mères respectives, dont les positions deviennent totalement décorrélées.
+	
+	\subsubsection{\emph{Proxy} ralenti}
+	Une solution moins contraignante existe, et consiste à générer un \emph{proxy} mobile, dont la vitesse est bornée par une valeur strictement inférieure à celle de la cible. À chaque instant, le \emph{proxy} se dirige vers la cible qui l'a engendré. Il apparaît immédiatement que, si le mouvement est suffisamment désordonné, même un \emph{proxy} très lent pourra suivre sa cible-mère sans que la distance entre les deux ne diverge ; pour un mouvement plus régulier, la vitesse du \emph{proxy} devra être plus proche de celle de la cible pour éviter cette divergence.
+	
+	Dans ce dernier cas cependant, la régularité du mouvement de la cible implique une sélection plus aisée, de sorte que le gain relativement faible apporté par l'utilisation d'un \emph{proxy} lent n'est pas nécessairement un inconvénient majeur.
+	
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_SpeedReduction_2_19_120_32}
+			\caption{Trajectoire originale.}
+			\label{fig:speedRedOriginal}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_SpeedReduction_2_19_120_32_factor_0_75}
+			\caption{Trajectoire filtrée, avec $FR = 75$~\%{}.}
+			\label{fig:speedRed075}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_SpeedReduction_2_19_120_32_factor_0_5}
+			\caption{Trajectoire filtrée, avec $FR = 50$~\%{}.}
+			\label{fig:speedRed050}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_SpeedReduction_2_19_120_32_factor_0_25}
+			\caption{Trajectoire filtrée, avec $FR = 25$~\%{}.}
+			\label{fig:speedRed025}
+		\end{subfigure}
+		\caption[Utilisation de \emph{proxies} lents]{Utilisation de \emph{proxies} lents pour faciliter la sélection. Pour la trajectoire originale, V vaut 2,19~cm/s, A vaut 120\textdegree{}, F vaut 32~Hz, et chaque trajectoire est générée sur 5 secondes, comme pour les données du chapitre~\ref{chap4}. Les trois autres trajectoires sont générées avec des facteurs de ralentissement de la cible (RF) indiqués en légende de chaque sous-figure. En bleu, les trajectoires avec leurs longueurs respectives indiquées en légende ; en rouge, les aires de leurs enveloppes convexes.}
+		\label{fig:speedRed}
+	\end{figure}
+	
+	Des exemples de \emph{proxies} lents sont fournis sur la figure~\ref{fig:speedRed}. Pour les paramètres VFA étudiés ici, l'utilisation d'un \emph{proxy} limité à 75~\%{} de la vitesse de sa cible-mère permet de conserver l'allure générale de la trajectoire originale, sans trop affecter son enveloppe convexe, et en la lissant quelque peu, au point de donner une allure ciné-continue au mouvement généré (revoir la section~\ref{sub:kinematicTypes} pour la définition de ce terme). Du fait de la réduction de la vitesse et du lissage opéré, rendant le mouvement un peu plus prévisible, le \emph{proxy} est plus aisé à sélectionner.
+	
+	Néanmoins, l'application d'une réduction de vitesse plus forte, ne serait-ce que de 50~\%{}, introduit un décalage important entre la cible et son \emph{proxy}, ce que la forme et l'aire de l'enveloppe convexe illustrent ; le phénomène n'en est que plus marqué lorsque le facteur de réduction de vitesse est de 25~\%{}.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch5/filteringBySpeedRedHistograms}
+		\caption[Utilisation d'un \emph{proxy} lent]{Effet de l'utilisation d'un \emph{proxy} lent sur les caractéristiques d'une trajectoire. Celle-ci est générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$. La vitesse est naturellement proportionnelle au facteur de ralentissement appliqué. L'aire de l'enveloppe convexe demeure à peu près stable quand RF vaut 75~\%{}, mais chute fortement au-delà.}
+		\label{fig:filteringBySpeedRed}
+	\end{figure}
+	
+	C'est ce qu'illustre la figure~\ref{fig:filteringBySpeedRed}, sur laquelle on observe malgré tout une forte augmentation de l'aire de l'enveloppe convexe divisée par la vitesse au carré, ce qui s'explique par la diminution de la vitesse. Or, les données présentées sur la figure~\ref{fig:perf_V_RealArea_normed} (section~\ref{sub:areaVperf}) montrent que quand cette valeur est très grande, la sélection est généralement rapide. Par ailleurs, les résultats présentés sur la figure~\ref{fig:perf_V_RealArea_raw} de la même section montrent que lorsque la vitesse est faible, les temps de sélection sont toujours relativement courts de toute manière.
+	
+	D'autres combinaisons de VFA engendrant un mouvement plus \og brownien \fg{} toléreraient mieux de fortes réductions de vitesse, et sans doute certains contextes applicatifs seraient-ils propices à de fortes réductions, quitte à introduire un grand décalage --- potentiellement divergent --- entre une cible et son \emph{proxy}. En somme, l'utilisation d'un \emph{proxy} lent peut fortement faciliter la sélection, à condition que le contexte applicatif tolère les modifications du comportement de la cible qu'elle implique.
 	
 	\subsection{Modification du paramètre F}
 	Il est difficile d'imaginer une façon d'augmenter la valeur de F qui ait du sens, à l'exception, peut-être, du choix d'une plus haute fréquence d'échantillonage, lorsqu'il s'agit de données mesurées ou simulées, par exemple pour un enregistrement vidéo, ou une simulation scientifique impliquant des particules.
@@ -74,14 +135,14 @@
 			\caption{Trajectoire filtrée, avec $F' = 4$~Hz.}
 			\label{fig:filterFw4}
 		\end{subfigure}
-		\caption[Filtrage des trajectoires par limitation de fréquence]{Une trajectoire originale, et quatre trajectoires produites par limitation de la fréquence. Pour la trajectoire originale, A vaut 120\textdegree{}, et chaque trajectoire est générée sur 5 secondes, comme pour les données du chapitre~\ref{chap4}. Le paramètre A n'est pas nécessairement respecté pour les trajectoires filtrées, attendu que plusieurs angles de 120\textdegree{} au plus peuvent s'accumuler d'une période à l'autre. En bleu, les trajectoires avec leurs longueurs respectives indiquées en légende ; en rouge, les aires de leurs enveloppes convexes.}
+		\caption[Filtrage des trajectoires par limitation de fréquence]{Une trajectoire originale, et trois trajectoires produites par limitation de la fréquence. Pour la trajectoire originale, A vaut 120\textdegree{}, et chaque trajectoire est générée sur 5 secondes, comme pour les données du chapitre~\ref{chap4}. Le paramètre A n'est pas nécessairement respecté pour les trajectoires filtrées, attendu que plusieurs angles de 120\textdegree{} au plus peuvent s'accumuler d'une période à l'autre. En bleu, les trajectoires avec leurs longueurs respectives indiquées en légende ; en rouge, les aires de leurs enveloppes convexes.}
 		\label{fig:filterF}
 	\end{figure}
 	
 	\paragraph{Effet secondaire sur la vitesse des cibles.}
 	Mais un effet secondaire de ce procédé est crucial : la longueur de la trajectoire est réduite. Or, attendu que la durée totale du mouvement n'est pas modifiée (elle est de 4 secondes pour les trajectoires de la figure~\ref{fig:filterF}), la vitesse moyenne de la cible diminue. Or, nous l'avons vu plus haut, la vitesse est le paramètre dont l'effet sur les temps de sélection est le plus fort, ainsi que le plus simple. En effet, les temps de sélection dépendent de la vitesse de façon approximativement affine, et les taux d'erreur, de façon approximativement linéaire (voir la figure~\ref{fig:spEffectPerf}, section~\ref{sub:spEffect}).
 	
-	L'effet du filtrage par fréquence sur la vitesse des cibles est illustré sur la figure~\ref{fig:filteringByFHistograms}. On y constate qu'une forte diminution de la vitesse (jusqu'à $-54,34~\%{}$) accompagne celle de la fréquence. L'aire de l'enveloppe convexe, elle, demeure relativement stable, avec une diminution de $14,8~\%{}$ seulement dans le cas le plus extrème, avec $F'=4~Hz$. Mais comme la vitesse diminue, l'aire divisée par la vitesse au carrée augmente fortement. Or, les données présentées sur la figure~\ref{fig:perf_V_RealArea_normed} (section~\ref{sub:areaVperf}) montrent que quand cette valeur est très grande, la sélection est généralement rapide. Par ailleurs, les résultats présentés sur la figure~\ref{fig:perf_V_RealArea_raw} de la même section montrent que lorsque la vitesse est faible, les temps de sélection sont toujours relativement courts de toute manière.
+	L'effet du filtrage par fréquence sur la vitesse des cibles est illustré sur la figure~\ref{fig:filteringByFHistograms}. On y constate qu'une forte diminution de la vitesse (jusqu'à $-54,34~\%{}$) accompagne celle de la fréquence. L'aire de l'enveloppe convexe, elle, demeure relativement stable, avec une diminution de $14,8~\%{}$ seulement dans le cas le plus extrème, avec $F'=4~Hz$. Mais comme la vitesse diminue, l'aire divisée par la vitesse au carrée augmente fortement. Or, quand cette valeur est très grande, la sélection est généralement rapide, lorsque la vitesse est faible, elle l'est toujours.
 	
 	Il en résulte que si l'allure générale de la trajectoire, ainsi que l'espace qu'elle occupe ne changent guère, la cible devient considérablement plus aisée à sélectionner, d'après nos modèles.
 		
@@ -115,18 +176,273 @@
 	
 	Néanmoins, selon le paramètre A intrinsèque de la cible, et selon la borne imposée, le comportement du \emph{proxy} peut-être plus ou moins déconnecté de celui de la cible potentielle qu'il représente ; aussi la prudence est-elle de mise lorsque cette technique est mise en œuvre, et il est probablement souhaitable d'éviter d'avoir un écart trop important entre la valeur originelle de A et la borne choisie. Il est toutefois possible de combiner cette imposition de borne avec le report de l'entropie sur F.
 	
-	\subsubsection{Filtrage par moyenne mobile}
-	La moyenne mobile constitue un type de filtrage passe-bas assez classique. Elle consiste, pour une largeur L, à remplacer chaque valeur $x_{i}$ rencontrée dans une série par la moyenne d'un échantillon de L valeurs centré sur $x_{i}$. Là encore, une latence est introduite par le procédé, et elle est proportionnelle à L. Il serait probablement mal aviser de chercher à lisser ainsi les angles de rotation du vecteur vitesse d'une cible, car cela introduirait un décalage potentiellement divergent entre la position de la cible et celle de son \emph{proxy}.
+	\subsection{Filtrage par moyenne mobile}
+	La moyenne mobile constitue un type de filtrage passe-bas assez classique. Elle consiste, pour une largeur L, à remplacer chaque valeur $x_{i}$ rencontrée dans une série par la moyenne d'un échantillon de L valeurs centré sur $x_{i}$. Là encore, une latence est introduite par le procédé, et elle est proportionnelle à L. Il serait probablement mal avisé de chercher à lisser ainsi les angles de rotation du vecteur vitesse d'une cible, car cela introduirait un décalage potentiellement divergent entre la position de la cible et celle de son \emph{proxy}.
 	
-	Cependant, il est possible d'appliquer un tel filtrage aux positions mêmes de la cible. Dans ce cas, F demeure inchangé, mais A est diminué de fait --- ou plus rigoureusement, la valeur moyenne des angles de rotation du vecteur vitesse est diminuée, car nous avons défini A comme la borne supérieur de ces angles, et la diminution de cette borne est moins évidente.
+	Cependant, il est possible d'appliquer un tel filtrage aux positions mêmes de la cible. Dans ce cas, la trajectoire est considérablement lissée, et ne présente plus d'angles marqués --- elle devient courbe. Ainsi, le mouvement devient ciné-continu, comme l'illustre la figure~\ref{fig:movingAverageTrajs}.
 	
-	Ici et comme avec d'autres méthodes de filtrage évoquées plus haut, un compromis entre le \og pouvoir \fg{} de lissage et la latence proportionnelle à L doit être trouvé de manière \emph{ad hoc}, selon le contexte applicatif.
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_MovingAverage_2_19_120_32}
+			\caption{Trajectoire originale.}
+			\label{fig:movAvOriginal}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_MovingAverage_2_19_120_32_window_62_5}
+			\caption{Trajectoire filtrée, avec $L = 62,5$~ms.}
+			\label{fig:movAv0625}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_MovingAverage_2_19_120_32_window_125_0}
+			\caption{Trajectoire filtrée, avec $L = 125$~ms.}
+			\label{fig:movAv1250}
+		\end{subfigure}		
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/2_19_MovingAverage_2_19_120_32_window_250_0}
+			\caption{Trajectoire filtrée, avec $L = 250$~ms.}
+			\label{fig:movAv2500}
+		\end{subfigure}
+		\caption[Filtrage des trajectoires par moyenne mobile]{Une trajectoire originale, et trois trajectoires produites par application d'une moyenne mobile sur les positions de la cible. Pour la trajectoire originale, A vaut 120\textdegree{}, tandis que F est de 32~Hz. Chaque trajectoire est générée sur 5 secondes, comme pour les données du chapitre~\ref{chap4}. En bleu, les trajectoires avec leurs longueurs respectives indiquées en légende ; en rouge, les aires de leurs enveloppes convexes. Les largeurs L des fenêtres mobiles sont ici choisies avec 62,5, 125, et 250~ms, car ces durées, si ont les ramène à des fréquences, correspondent respectivement à 16, 8, et 4~Hz, soit les valeurs choisies pour illustrer le filtrage fréquentiel (figure~\ref{fig:filterF}).}
+		\label{fig:movingAverageTrajs}
+	\end{figure}
+	
+	De même que pour le filtrage fréquentiel, l'allure générale de la trajectoire, son étendue, et l'aire de son enveloppe convexe ne sont pas significativement modifiées. En revanche, si le filtrage fréquentiel tend à accentuer les angles --- et donc le caractère ciné-discret du mouvement --- la moyenne mobile produit une trajectoire \emph{lissée}, donc ciné-continue. En remplaçant les grands changement de direction instantanés par de petits changements continus, elle rend le mouvement d'une cible plus prévisible, tout en réduisant significativement sa vitesse. Le paramètres A et F n'ont donc ici plus guère de sens, à moins d'en adopter une définition plus adaptée aux mouvements ciné-continus.
+	
+	Ces effets sont quantifiés sur la figure~\ref{fig:filteringByMovingAverageHistograms}. Les différences sur ces métriques ne sont pas suffisamment marquées pour faire une distinction claire entre le filtrage fréquentiel et l'application d'une moyenne mobile. Cependant, les natures profondément différentes des trajectoires générées (ciné-discrètes dans le premier cas, ciné-continues dans le second) justifient la coexistence de ces deux techniques, dont chacun pourra juger de la pertinence, selon l'application visée.
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch5/filteringByMovingAverageHistograms}
+		\caption[Effet du filtrage par moyenne mobile]{Effet du filtrage par moyenne mobile sur les caractéristiques d'une trajectoire. Celle-ci, générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$, se trouve modifiée de telle manière que la vitesse moyenne de la cible chute drastiquement --- de 2,19~cm/s à 1,03~cm/s lorsque la fenêtre mobile a une largeur de 250~ms. L'aire de l'enveloppe convexe demeure relativement stable.}
+		\label{fig:filteringByMovingAverageHistograms}
+	\end{figure}
+	
+	De même, un compromis entre le \og pouvoir \fg{} de lissage et la latence proportionnelle à L doit être trouvé de manière \emph{ad hoc}, selon le contexte applicatif.
 	
 	
 	\subsection{Utilisation dynamique des proxies}
-	Comme nous le précisions notamment dans la section~\ref{sub:techAug} qui évoque les techniques fondées sur l'augmentation des cibles, cette approche a l'inconvénient majeur d'accroître l'encombrement visuel, généralement d'un facteur deux lorsqu'elle implique l'utilisation de \emph{proxies}. Toutefois, il est tout à fait possible de mitiger cet impact en combinant cette approche avec de la prédiction intentionnelle. Par exemple, la technique \emph{Hook}~\cite{ortega2013hook} maintient en permanence une liste des N cibles potentielles les plus proches du curseur, où N est un entier naturel paramétrable. Ce procédé très simple pourrait être utiliser pour restreindre l'usage des \emph{proxies} : seules les N cibles en question en seraient accompagnées, les autres étant jugées trop loin du curseur pour être visées par l'utilisateur.
+	\label{sub:dynamicProxies}
+	Comme nous le précisions notamment dans la section~\ref{sub:techAug} qui évoque les techniques fondées sur l'augmentation des cibles, cette approche a l'inconvénient majeur d'accroître l'encombrement visuel, généralement d'un facteur deux lorsqu'elle implique l'utilisation de \emph{proxies}. Toutefois, il est tout à fait possible de mitiger cet impact en combinant cette approche avec de la prédiction intentionnelle. Par exemple, la technique \emph{Hook}~\cite{ortega2013hook} maintient en permanence une liste des N cibles potentielles les plus proches du curseur, où N est un entier naturel paramétrable. Ce procédé très simple pourrait être utilisé pour restreindre l'usage des \emph{proxies} : seules les N cibles en question en seraient accompagnées, les autres étant jugées trop loin du curseur pour être visées par l'utilisateur.
 	
 	Naturellement, selon le contexte, d'autres approches pourraient être pertinentes, comme celle d'\emph{IntenSelect}~\cite{de2005intenselect}, par exemple, fondée sur un principe similaire, mais appliqué à des rayons lancés depuis un périphérique de saisie, plutôt qu'à un curseur ponctuel. Quelle que soit l'approche exacte choisie, si le nombre de \emph{proxies} est beaucoup plus petit que le nombre total de cibles potentielles, l'encombrement visuel ajouté est faible, potentiellement inférieur à 10~\%{}, voire moins si l'on opte pour des \emph{proxies} partiellement transparents, par exemple.
 
+	\subsection{Combinaison avec des techniques existantes}
+	Les propositions détaillées ci-dessus portent sur le comportement des cibles, ou d'éventuels \emph{proxies} que l'on pourrait leur ajouter. Par conséquent, il est tout à fait possible de les combiner avec des techniques de sélection existantes, pour peu qu'elles ne consistent pas à modifier le comportement des cibles, ou du moins de le modifier de manière incompatible avec nos propositions.
 	
+	Les techniques fondées sur un curseur zonal ou du lancer de rayon (notamment avec désambiguïsation) peuvent être combinées avec nos propositions. Il en va de même de la sélection en cascade, ou de la prédiction de la trajectoire du curseur.
+	
+	Les techniques de manipulation du temps sont moins appropriées à de telles combinaisons, mais l'augmentation des objets est parfaitement possible, de même que la prédiction intentionnelle, que l'on appliquera aux seuls \emph{proxies} plutôt qu'à leurs cibles-mères.
+	
+	Nous recommandons donc de se rapporter à notre taxinomie des techniques de sélection (chapitre~\ref{chap2}) afin de choisir la plus approprié à chaque contexte applicatif, et de faire de même avec l'ensemble des propositions que nous détaillons dans le chapitre présent (section~\ref{sub:vfaGuide}) afin de choisir la meilleure combinaison possible. Nous suggérons par exemple de combiner le filtrage fréquentiel, qui conserve bien l'allure d'une trajectoire et son enveloppe convexe, avec la technique \emph{Hook}~\cite{ortega2013hook}, qui a fait ses preuves, mais n'est pas conçue pour gérer le mouvement brownien, que le filtrage fréquentiel permet, dans une certaine mesure, \og d'ordonner \fg{}.
+
+\section{Estimer la difficulté de sélection pour mieux la réduire}
+	Cependant, il n'est pas toujours possible de modifier le comportement des cibles. Même l'ajout de \emph{proxies} peut poser problème, y compris en en limitant le nombre par des heuristiques intentionnelles. Ces conditions ne rendent pas le modèle VFA inutile pour autant. D'une part, il permet d'estimer la difficulté de la tâche, et peut donc informer la conception de l'interface d'une application en indiquant si une aide à la sélection est nécessaire, si le nombre d'objets doit être réduit, si les objets doivent être agrandis, etc. D'autre part et surtout, il est peut-être possible d'utiliser les informations qu'il fournit pour réduire la difficulté moyenne d'une tâche de sélection.
+	
+	En effet, dans la plupart des contextes applicatifs évoqués au cours du chapitre~\ref{chap1}, les cibles potentielles forment un ensemble hétérogène du point de vue cinématique, c'est-à-dire que leurs mouvements respectifs ne sont pas tous de même nature. En particulier, les paramètres VFA qui les décrivent ne sont pas les mêmes.
+	
+	\subsection{Différents parmètres VFA, différentes difficultés}
+	De fait, dans un contexte hétérogène particulier, la difficulté inhérente à la sélection d'une cible donnée n'est pas forcément la même que pour une autre cible. Or, les paramètres VFA, qui permettent d'estimer cette difficulté (notamment par le truchement de l'espérance de l'aire de l'enveloppe convexe associée, voir la figure~\ref{fig:perf_V_RealArea_better_fit} de la section~\ref{sub:areaVperf}) sont de fait différents d'une cible à l'autre, et peuvent être déterminés. Selon le contexte, ils seront déterminés exactement, ou estimés, ou mesurés en temps réel, mais ils peuvent presque toujours être connus.
+	
+	Il est donc possible de dresser un tableau des différentes cibles (ou des différents types de cibles) et de leurs difficultés de sélection respective, afin de savoir quels objets poseront le plus de problèmes aux utilisateurs.
+	
+	\subsection{Espace d'affichage et encombrement visuel}
+	Bien que nous n'ayons pas spécifiquement étudié ce paramètre au cours de l'étude que nous présentons dans les section~\ref{sub:interact} et suivantes~\cite{kouyoumdjian2015characterizing}, la largeur de Fitts demeure très importante dans une tâche de sélection de cible mobile, ce qu'illustrent par ailleurs les modèles d'autres auteurs, présentés dans la section~\ref{sub:fittsMobile}. Par conséquent, augmenter la taille d'une cible mobile en facilite toujours la sélection, et des techniques conçues spécifiquement pour cette tâche sont fondées sur ce principe. C'est notamment le cas de \emph{Comet}, dont les auteurs ont confirmé l'apport empiriquement~\cite{hasan2011comet}. Il en est de même pour \emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}.
+	
+	Mais ces dernières ont l'inconvénient d'augmenter l'encombrement visuel global de la scène. Certes, il serait probablement possible d'utiliser une heuristique intentionnelle pour mitiger ce problème, comme nous le proposions pour les \emph{proxies} dans la section~\ref{sub:dynamicProxies}, en n'augmentant que les objets dont on estime qu'ils peuvent être visés par l'utilisateur. Mais l'on peut craindre que les changements de taille permanents des objets de la scène ne perturbent l'utilisateur, et nuisent au confort d'utilisation global.
+	
+	Plutôt que d'utiliser une heuristique intentionnelle pour choisir quelles cibles augmenter, il est possible de s'appuyer sur une estimation de la difficulté de sélection de chaque cible. Ainsi, il est possible de consacrer plus d'espace d'affichage aux objets mobiles en ayant le plus besoin.
+	
+	Nous proposons en effet que, dans le cadre de l'utilisation d'une technique d'augmentation des objets, il est pertinent de considérer l'espace d'affichage comme un budget, qu'il appartient au concepteur de l'application de répartir judicieusement. Il paraît logique, au moins intuitivement, d'allouer une plus grande proportion de cet espace aux cibles les plus difficiles à saisir. Plus formellement, nous émettons l'hypothèse suivante :
+	
+	\begin{description}
+		\item[H1 :] Si les cibles jugées difficiles sont agrandies, et les cibles jugées faciles sont rétrécies, de sorte que l'espace d'affichage alloué à l'ensemble des cibles demeure constant, les performances de sélection mesurées sur l'ensemble des cibles sont meilleures.
+	\end{description}
+	
+	Ici, une cible \og jugée difficile \fg{} est une cible pour laquelle notre modèle prédit un temps de sélection relativement élevé, tandis qu'une cible \og jugée facile \fg{} a un temps de sélection prédit relativement faible (voir la figure~\ref{fig:perf_V_RealArea_better_fit} de la section~\ref{sub:areaVperf}).
+	
+	\subsection{Expérience et protocole}
+	Afin d'évaluer notre hypothèse H1, nous avons mené une étude empirique avec 16 sujets, au cours de laquelle il leur était demandé de sélectionner des cibles rondes en cliquant dessus, dans un environnement homogène d'une part, et hétérogène de l'autre --- c'est-à-dire avec des cibles mues par les mêmes paramètres VFA et, respectivement, par des paramètres différents.
+	
+	Dans la condition hétérogène, chaque cible est de même taille ; dans la condition hétérogène, elles sont de tailles différentes selon l'estimation de leur difficulté de sélection, faite à partir de leurs paramètres VFA.
+	
+	\subsection{Dispositif expérimental}
+	Chaque sujet ayant participé à l'étude l'a fait avec une machine identique : un ordinateur de bureau doté d'un écran de 24 pouces de diagonale, et d'une souris optique filaire ambidextre, sans accélération du curseur.
+	
+	Les sujets étaient assis sur des chaises de bureau, et avaient la possibilité d'ajuster la luminosité et le contraste de l'écran, selon leurs préférences personnelles, afin de garantir leur confort.
+	
+	\subsection{Tâche et conditions}
+	L'application utilisée pour mener l'étude affiche des disques en bleu sur un fond noir rectangulaire, cerné d'un cadre gris. À tout moment, l'objet à sélectionner est rouge, tandis que les distracteurs demeurent bleus. Une fois que la cible est sélectionnée avec succès (c'est-à-dire une fois que le sujet a cliqué dessus), elle redevient bleue, et une autre devient rouge.
+	
+	De surcroît, chaque nouvelle cible est repositionnée dès qu'elle devient rouge, à une distance par rapport au curseur précisément réglée sur REMPLIR, dans une direction par rapport au curseur choisie de manière totalement aléatoire, à une exception près : si la direction choisie implique une sortie du cadre noir servant de fond, une autre direction est choisie aléatoirement --- cette opération pouvant éventuellement être répétée plusieurs fois, jusqu'à ce qu'une position convenable soit trouvée. Ce déplacement soudain n'a été remarqué par aucun des sujets, sans doute parce qu'il a lieu à un moment où le sujet se concentre sur autre chose (la cible précédente qu'il vient de réussir à sélectionner) et parce que le changement de couleur, du bleu vers le rouge vif, fait distraction.
+	
+	La figure~\ref{fig:evalAppRunning} fournit des illustrations de l'application en cours d'exécution, dans sa condition homogène (figure~\ref{fig:homoRunning}), et dans sa condition hétérogène (figure~\ref{fig:heteroRunning}).
+	
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/homoRunning}
+			\caption{Condition homogène : toutes les cibles font la même taille.}
+			\label{fig:homoRunning}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/heteroRunning}
+			\caption{Condition hétérogène : les cibles sont de tailles différentes.}
+			\label{fig:heteroRunning}
+		\end{subfigure}
+		\caption[Application pour l'évaluation, homogène vs. hétérogène]{Application utilisée pour mener notre étude, dans ses conditions homogène et hétérogène. Les distracteurs sont en bleu, la cible est en rouge, et la barre verte au bas de l'écran indique le taux de complétion de l'évaluation.}
+		\label{fig:evalAppRunning}
+	\end{figure}
+	
+	\subsubsection{Conditions}
+	Pour la condition d'entrainement, toutes les combinaisons des paramètres VFA suivants étaient évaluées, 5 fois chacune :
+	
+	\begin{description}
+		\item[V :] 3 ; 5 (2 valeurs)
+		\item[F :] 4 ; 16 ; 32~Hz (3 valeurs)
+		\item[A :] 45 ; 90 ; 180\textdegree{} (3 valeurs)
+	\end{description}
+	
+	À ces combinaisons s'ajoutaient une condition de mouvement totalement rectiligne à V5, répétée 10 fois. Au total, il y avait donc $2\times{}3\times{}3\times{}5+1\times{}10=100$ essais.
+	
+	Pour les conditions homogène et hétérogène, nous avions toutes les combinaisons suivantes, évaluées 6 fois au lieu de 5 :
+	
+	\begin{description}
+		\item[V :] 3 ; 5 (2 valeurs)
+		\item[F :] 4 ; 8 ; 16 ; 32~Hz (4 valeurs)
+		\item[A :] 45 ; 90 ; 180\textdegree{} (3 valeurs)
+	\end{description}
+	
+	Là aussi, une condition de mouvement rectiligne à V5 était ajoutée, et répétée 12 fois. Au total, il y avait donc $2\times{}4\times{}3\times{}6+1\times{}12=156$ essais.
+	
+	Nous avons choisi ces valeurs en nous appuyant sur les enseignement de l'étude décrite dans le chapitre~\ref{chap4}. En effet, il importe d'avoir suffisamment d'essais par condition pour obtenir des résultats précis, tout en limitant la durée de chaque passation, afin d'éviter de trop fatiguer ou lasser nos sujets. Il importe également d'échantillonner correctement notre espace des paramètres afin de ne pas omettre de \og type \fg{} ou \og famille \fg{} de mouvement importants\ldots{}
+	
+	Il convient donc d'éliminer les paramètres qui ne sont pas indispensables, et d'essayer d'augmenter le nombre d'essais par condition. En particulier, nous avions constaté que les cibles lentes étaient toujours relativement aisées à sélectionner ; nous les avons donc supprimées. L'analyse de nos précédentes données montre également une certaine continuité dans l'effet du paramètre F, et suggère fortement que sa racine carrée soit à prendre en compte, plus que F lui-même. De plus, nous avons observé que les très basses fréquences génèrent du mouvement relativement prévisible et aisé à sélectioner.
+	
+	Par conséquent, nous avons opté pour un échantillonnage exponentiel, avec 4 valeurs différentes, au lieu des 7 de la précédente étude, en omettant les plus faibles.
+	
+	De même, nos résultats montraient que le mouvement rectiligne était toujours aisé à sélectionner, aussi avons-nous supprimé la valeur 0 de l'ensemble des valeurs de A, en conservant tout de même 12 essais rectilignes. Pour réduire le nombre de conditions, nous avons remplacé les valeurs 30 et 60 par 45, et supprimé la valeur 120. Ceci nous a permis de passer de 6 valeurs de A à seulement 4.
+	
+	\emph{In fine}, cette révision des valeurs des paramètres VFA nous a permis de passer de $3\times{}7\times{}6+1=126$ combinaisons différentes à seulement $2\times{}4\times{}3+1=26$. En revanche, nous avons augmenté le nombre d'essais par combinaison, passant de 4 à 6, ou 12 pour la condition rectiligne (répétée 20 fois dans l'étude précédente). Ainsi, nous obtenons $24\times{}6+12=156$ essais au lieu de $126\times{}4+20=524$ précédemment. Toutefois, chaque sujet était soumis à deux conditions différentes, pour un total de 312 essais. 
+	
+	Cette réduction du nombre total d'essais nous parut appropriée, compte tenu d'une part des remarques des sujets de notre première étude, et d'autre part de l'augmentation de la difficulté moyenne des sélections dans cette seconde expérience, du fait de la suppression des vitesses faibles, et de l'augmentation des valeurs retenues, même si l'agrandissement des cibles compense partiellement.
+	
+	\subsection{Procédure et collecte des données}
+	L'expérience à proprement parler était précédée d'une session d'entraînement, décrite ci-dessus.
+	
+	Ensuite, et avant de débuter les sélections, un très bref questionnaire était soumis à chaque sujet. Les questions suivantes y étaient posées (voir la figure~\ref{fig:questionnaire}) :
+	
+	\begin{itemize}
+		\item Quel est votre nom ?
+		\item Êtes-vous une homme ou une femme ?
+		\item Êtes-vous droitier ou gaucher ?
+		\item Quel âge avez-vous ?
+		\item À quelle fréquence jouez-vous aux jeux vidéo ? (Jamais -- rarement -- parfois -- souvent -- tous les jours).
+	\end{itemize}
+	
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\textwidth]{figures/ch5/questionnaire}
+		\caption[Questionnaire]{Questionnaire soumis aux sujets de notre étude empirique, avant l'étude elle-même.}
+		\label{fig:questionnaire}
+	\end{figure}
+	
+	Les sujets devaient ensuite actionner la barre d'espace pour lancer l'expérience. La moitié d'entre eux a complété la condition homogène d'abord, et hétérogène ensuite ; l'autre moitié a complété ces conditions dans l'ordre inverse, afin de compenser d'éventuels effets d'apprentissage, par ailleurs palliés par la session d'entrainement préliminaire.
+	
+	Afin de tenter d'harmoniser les stratégies de sélection de nos sujets (c'est-à-dire de les rapprocher les unes des autres sur le continuum précision-vitesse), nous leur avons fourni pour consigne de tâcher de sélectionner chaque cible en moins de 10 essais. Cette valeur, délibérément élevée, fut choisie pour inciter les sujets à privilégier la vitesse, afin de réduire le temps de sélection par essai, et donc d'améliorer le ratio $\frac{nombre~d'essais}{durée~de~l'expérience}$, attendu que la durée de l'expérience tend à augmenter la fatigue et la lassitude des sujets, surtout pour une tâche aussi répétitive et nécessitant un tel degré de concentration.
+	
+	Afin de limiter cette fatigue et cette lassitude, nous imposons une pause après la sélection de 25~\%{} des cibles, ainsi qu'après 50~\%{} et 75~\%{} d'entre elles. Chaque sujet est libre de laisser la pause durer aussi longtemps qu'il le souhaite, afin de récupérer pleinement. Une pression de la barre d'espace permet de reprendre les sélections de cibles.
+	
+	Une barre de progression affichant le taux de complétion de l'expérience est affichée en permanence au bas de l'écran, en vert, et lorsque tous les essais ont été effectués, un message s'affiche pour indiquer la fin de l'expérience et remercier les sujets.
+	
+	\subsubsection{Données collectées}
+	Nous avons collecté de nombreuses données, certaines sont constantes, d'autres sont liées à des événements ou synthétiques, et certaines changent à chaque tour de boucle du logiciel d'évaluation, c'est-à-dire 60 fois par seconde.
+	
+	Les données constantes sont les suivantes :
+	
+	\begin{itemize}
+		\item Les paramètres VFA de chaque cible ;
+		\item L'espérance de l'aire de l'enveloppe convexe de chaque cible, d'après ses paramètres VFA ;
+		\item L'estimation de la difficulté de sélection de chaque cible, d'après notre modèle.
+	\end{itemize}
+	
+	Les données liées à des événements ou synthétiques sont les suivantes :
+	
+	\begin{itemize}
+		\item Le temps de sélection de chaque cible, pour chaque essai ;
+		\item Le nombre d'erreur pour chaque cible, pour chaque essai.
+	\end{itemize}
+	
+	Les données collectées à chaque tour de boucle sont les suivantes :
+	
+	\begin{itemize}
+		\item Le temps écoulé depuis le début de l'expérience (pauses exclues) ;
+		\item La position de chaque cible dans les coordonnées du monde ;
+		\item La position de chaque cible dans les coordonnées de l'écran ;
+		\item La direction de chaque cible dans les coordonnées de l'écran ;
+		\item La position du curseur dans les coordonnées du monde ;
+		\item La position du curseur dans les coordonnées de l'écran ;
+		\item La cible que l'utilisateur est actuellement censé sélectionner (celle qui est rouge) ;
+		\item Une valeur booléenne indiquant si l'utilisateur a cliqué sur sa souris pendant la dernière \emph{frame} ;
+		\item Une valeur booléenne indiquant si l'utilisateur a cliqué sur la cible rouge pendant la dernière \emph{frame} ;
+		\item Le nombre d'erreurs pendant la dernière \emph{frame}.
+	\end{itemize}
+	
+	\subsection{Résultats}
+	
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/timeRes}
+			\caption{Temps moyens de sélection, et intervalles de confiance à 95~\%{}.}
+			\label{fig:timeRes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/errorRes}
+			\caption{Nombres moyens d'erreurs, et intervalles de confiance à 95~\%{}.}
+			\label{fig:errorRes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/errorsTimesScatter}
+			\caption{Temps moyens de sélection et nombres moyens d'erreurs. Une technique \og idéale \fg{} serait située dans le coin inférieur gauche (temps courts, et peu d'erreurs), tandis qu'une technique très mauvaise serait dans le coin supérieur droit (temps longs, et beaucoup d'erreurs).}
+			\label{fig:errorsTimesScatter}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/productRes}
+			\caption{Produit du temps moyen de sélection par le nombre d'erreurs (plus un). Les boîtes indiquent les intervalles de confiance à 95~\%{}, les \og moustaches \fg{} à leurs extrémités indiquent les intervalles de confiance à 98~\%{}, et les barres noires horizontales, les valeurs moyennes.}
+			\label{fig:productRes}
+		\end{subfigure}
+		\caption[Temps et erreurs de sélection, homogène vs. hétérogène]{Temps et erreurs de sélection, en condition homogène et en condition hétérogène.}
+		\label{fig:timeAndErrorRes}
+	\end{figure}
+	
+	\subsubsection{Temps de sélection}
+	
+	\subsubsection{Erreurs}
+	
+	\subsubsection{Performances de sélection}
+	
+	\subsection{Interprétation}
+	
+	\subsection{Améliorations potentielles}
+	
+	
+
 \clearpage
