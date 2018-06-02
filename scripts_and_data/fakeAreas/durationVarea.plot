@@ -1,10 +1,10 @@
-set term svg size 2560, 1440 fsize 46
+set term svg size 2560, 1440 fsize 76
 set output "durationVarea.svg"
 
 set xlabel "Durée (s)"
 set ylabel "Périmètre moyen (cm)"
 
-set key top left
+set key bottom right
 
 #f(x) = a*x
 g(x) = 2*x

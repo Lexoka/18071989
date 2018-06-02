@@ -10,11 +10,11 @@ unset key
 #set bmargin 2.5
 
 set xlabel "Nombre moyen d'erreurs"
-set ylabel "Temps de sélection moyen (s)"
+set ylabel "Temps moyen de sélection (s)"
 
 
-set xrange [9:10]
-set yrange [2.8:3.2]
+set xrange [8.8:10]
+set yrange [2.7:3.1]
 
 
 plot "errorsTimesData.csv" using 2:3 with points pt 7 ps 2 lc "red",\

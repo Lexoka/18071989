@@ -181,10 +181,9 @@
 	
 	Dans l'impossibilité de le faire, nous opterons pour une estimation des valeurs \og typique \fg{} et maximale. Illustrons simplement ce propos par l'exemple d'une automobile : sur autoroute, sa fréquence de changements de direction sera presque nulle ; en ville, elle sera bien plus élevée.
 	
-	\FloatBarrier \subsubsection{Objets ciné-continus}
+	\FloatBarrier \subsubsection{Objets ciné-continus, ciné-discrets}
 	Cette catégorie contient la plupart des objets autocorrlés : véhicules, projectiles, objets célestes, etc. Certains objets vidéoludiques sont également (perçus comme) ciné-continus et, pour un petit nombre d'entre eux, peuvent être markoviens, du moins dans certains cas. Le jeu \emph{Agar.io}, cité dans le chapitre~\ref{chap1}, en est un exemple.
 	
-	\FloatBarrier \subsubsection{Objets ciné-discrets}
 	Les objets markoviens sont généralement ciné-discrets. Nous trouvons donc dans cette catégorie les atomes des simulations moléculaires, divers objets de jeux vidéo\ldots{} Mais précisons que bien qu'ils soient, au sens strict, incapables de changer de direction \emph{instantanément}, certains objets paraissent subjectivement le faire de façon suffisamment soudaine pour que nous les considérions comme ciné-discrets.
 	
 	C'est par exemple le cas des êtres humains en mouvement, et \emph{a fortiori} de plus petits animaux plus vifs, dont l'exemple le plus emblématique est peut-être la mouche, connue pour ses trajectoires saccadées, avec des changements de direction d'environ 90\textdegree{} en moins de 100~ms~\cite{tammero2002influence, collett1975visual, wagner1986flight, schilstra1999blowfly} --- nous reviendrons plus loin sur cette classe de mouvement.
@@ -281,12 +280,26 @@
 	Sans doute de nombreux modèles pourraient-ils être conçus, et sans doute pourraient-ils correspondre à des compromis ayant divers avantages et inconvénients. Dans le but d'obtenir un modèle relativement simple (donc utilisable dans des évaluations d'une durée raisonnable pour les sujets) nous avons choisi de nous limiter aux mouvements markoviens ; ce choix fut également motivé par le fait que ces mouvements sont intrinsèquement moins prévisibles et, par conséquent, plus difficiles à anticiper --- ils rendent de fait la sélection plus difficile.
 	
 	\FloatBarrier \subsection{Trois paramètres pour le mouvement synthétique}
-	Nous avons opté pour un modèle limité à trois paramètres pour définir le mouvement d'un objet de vecteur vitesse $\vec{dir}$ (indiquant sa direction par son orientation, et sa vitesse par sa norme) :
+	Nous avons opté pour un modèle (baptisé VFA) limité à trois paramètres pour définir le mouvement d'un objet de vecteur vitesse $\vec{dir}$ (indiquant sa direction par son orientation, et sa vitesse par sa norme) :
 	\begin{enumerate}
 		\item La vitesse $V$ à laquelle l'objet se déplace ;
 		\item La fréquence $F$ des changements de $\vec{dir}$ ;
 		\item L'angle maximal $A$ de ces changements de direction : à chaque période $T = \frac{1}{F}$, $\vec{dir}$ subit une rotation d'un angle $\alpha$ choisi aléatoirement et échantillonné uniformément dans l'intervalle $[-A, +A]$.
 	\end{enumerate}
+	
+	Ces paramètres sont analogues à ceux choisis pour évaluer \emph{Comet}~\cite{hasan2011comet} et, dans une certaine mesure, \emph{Hook}~\cite{ortega2013hook}.
+	
+	\subsubsection{Gestion de la dimensionnalité et de la densité}
+	Précisons que l'objectif de ce modèle est de caractériser la nature des mouvements de cibles, ou de les générer.	Il s'applique aux cibles elles-mêmes et non aux environnements de sélection dans leur ensemble. C'est la raison pour laquelle la dimensionnalité et la densité ne sont pas exprimées explicitement par ce modèle. Il s'en accommode néanmoins, puisqu'il est tout à fait possible d'animer une cible 2D ou 3D avec ces paramètres, et d'obtenir la densité voulue.
+	
+	En effet, la dimensionnalité n'implique qu'une différence : en 2D, l'angle $\alpha$ choisi aléatoirement à chaque période suffit à déterminer la nouvelle direction de la cible. En 3D, pour un angle $\alpha$ donné, les nouvelles direction possibles sont infinies, et réparties sur la surface d'un cône d'angle $\alpha$. Il suffit donc de choisir aléatoirement une direction sur ce cône.
+	
+	La densité, elle, est indépendante des paramètres de ce modèle : elle ne dépend que de la taille de l'environnement de sélection et de l'ensemble des cibles. Il suffit donc d'ajuster ces paramètres ; le modèle que nous proposons permet d'animer les cibles, indépendamment de la densité voulue.
+	
+	\subsubsection{Omission de l'autocorrélation}
+	Nous avons délibérément choisi de ne pas retenir, dans cette version du modèle, de paramètre lié à l'autocorrélation. Ce choix est en partie motivé par l'absence d'autocorrélation des cibles dans les trajectoires de dynamique moléculaire, mais surtout par le fait qu'en choisissant les paramètres astucieusement, le modèle VFA peut simuler du mouvement autocorrélé de manière relativement convaincante, comme nous le montrons dans la section~\ref{sub:pseudoAutoCorr}.
+	
+	Par ailleurs, nous proposons deux extensions possibles de notre modèle VFA visant à gérer explicitement et correctement l'autocorrélation, pour les cas où la pseudo-autocorrélation permise par le modèle VFA de base ne serait pas suffisante. Ces propositions sont détaillées dans la section~\ref{sub:vfaAutoCorr}.
 	
 	\FloatBarrier \subsection{Examen des trajectoires obtenues}
 	Des exemples de trajectoires obtenues avec ce modèle sont fournis dans la figure~\ref{fig:motion1530} avec $A=15$ et $A=30$, dans la figure~\ref{fig:motion4560} avec $A=45$ et $A=60$, dans la figure~\ref{fig:motion7590} avec $A=75$ et $A=90$, dans la figure~\ref{fig:motion105120} avec $A=105$ et $A=120$, dans la figure~\ref{fig:motion135150} avec $A=135$ et $A=150$, et dans la figure~\ref{fig:motion165180} avec $A=165$ et $A=180$. Dans tous les cas, $S=2,19$, $F$ prend les valeurs 1, 4, 8, 16, 32 et 60, et le mouvement généré dure 20 secondes. A est toujours exprimé en degrés d'angle, F en Hz, et S en cm/s.
@@ -294,7 +307,7 @@
 	Naturellement, si la vitesse était plus élevée, les trajectoires seraient plus \og dilatées \fg{}, tandis que si elle était plus faible, elles seraient plus \og comprimées \fg{} (voir la figure~\ref{fig:spEffect}). De plus, si $A=0$ ou $F=0$, alors il n'y a aucun changement de direction, et le mouvement est uniforme (rectiligne). Si nous avons échantillonné tout l'espace des valeurs de $A$ possibles --- de 0 à 180\textdegree{} --- nous nous sommes limités à 60~Hz pour la fréquence, d'une part parce qu'il devient difficile de percevoir une différence marquée dès qu'elle atteint une trentaine de hertz, et d'autre part parce que la plupart des dispositifs d'affichage du commerce sont limités à 60~Hz.	
 	
 	\newcommand{\subImgWarea}{0.42\textwidth}
-	\newcommand{\subImgWmo}{0.32\textwidth}
+	\newcommand{\subImgWmo}{0.315\textwidth}
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWmo}
 			\centering
@@ -389,95 +402,6 @@
 	Cette observation est intéressante en ce que ce modèle conçu pour les objets markoviens peut fournir une approximation du mouvement autocorrélé qui, dans certains cas, peut être suffisante. C'est particulièrement vrai sur une fenêtre temporelle plus restreinte, limitée à quelques secondes tout au plus --- mais une telle fenêtre peut être trop courte pour certaines applications.
 	
 	À défaut d'être réellement autocorrélés, les mouvements générés par ces conditions (que l'on peut résumer par une valeur de $A \times F$ faible) engendrent des trajectoires suffisamment \og régulières \fg{} pour être relativement prévisibles à court terme (sur une ou deux secondes). Nous reviendrons plus loin sur l'importance de la prévisibilité pour une tâche de sélection. Contentons-nous pour le moment de remarquer qu'un objet dont les changements de direction sont rares et/ou de faible amplitude tend à avoir une trajectoire relativement \og lisse \fg{} et, de fait, prévisible.
-
-
-	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_1}
-			\caption[$A = 45$, $F=1$]{$A = 45$, $F=1$}
-			\label{fig:synTraj_219_45_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_4}
-			\caption[$A = 45$, $F=4$]{$A = 45$, $F=4$}
-			\label{fig:synTraj_219_45_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_8}
-			\caption[$A = 45$, $F=8$]{$A = 45$, $F=8$}
-			\label{fig:synTraj_219_45_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_16}
-			\caption[$A = 45$, $F=16$]{$A = 45$, $F=16$}
-			\label{fig:synTraj_219_45_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_32}
-			\caption[$A = 45$, $F=32$]{$A = 45$, $F=32$}
-			\label{fig:synTraj_219_45_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_45_60}
-			\caption[$A = 45$, $F=60$]{$A = 45$, $F=60$}
-			\label{fig:synTraj_219_45_60}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_1}
-			\caption[$A = 60$, $F=1$]{$A = 60$, $F=1$}
-			\label{fig:synTraj_219_60_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_4}
-			\caption[$A = 60$, $F=4$]{$A = 60$, $F=4$}
-			\label{fig:synTraj_219_60_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_8}
-			\caption[$A = 60$, $F=8$]{$A = 60$, $F=8$}
-			\label{fig:synTraj_219_60_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_16}
-			\caption[$A = 60$, $F=16$]{$A = 60$, $F=16$}
-			\label{fig:synTraj_219_60_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_32}
-			\caption[$A = 60$, $F=32$]{$A = 60$, $F=32$}
-			\label{fig:synTraj_219_60_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_60_60}
-			\caption[$A = 60$, $F=60$]{$A = 60$, $F=60$}
-			\label{fig:synTraj_219_60_60}
-		\end{subfigure}
-		\caption[Mouvements générés par notre modèle -- II]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
-		\label{fig:motion4560}
-	\end{figure}
 	
     \subsection{Un modèle puissant mais limité}
 	Les capacités offertes par le modèle VFA sont très nombreuses, mais demeurent limitées, et ne peuvent couvrir tous les besoins en matière de génération de mouvement aléatoire.
@@ -492,46 +416,49 @@
     
 	Il en résulte que ce modèle ne peut générer du mouvement permettant d'étudier les performances de sélection sur des objets autocorrélés. Ce choix reflète d'une part notre focus originel sur les simulations moléculaires (où il y a une demande claire émanant des utilisateurs) et d'autre part une volonté de conserver un modèle aussi simple que possible, afin de le rendre plus facile à utiliser, mais aussi pour pouvoir évaluer un échantillon représentatif des types de mouvements qu'il peut générer dans un laps de temps raisonnable pour une étude empirique, compte tenu notamment de la fatigue des sujets.
     
-    %\FloatBarrier \subsubsection{Mouvements pseudo-autocorrélés}
+    \paragraph{Mouvements pseudo-autocorrélés.}
+    \label{sub:pseudoAutoCorr}
 	Remarquons tout de même qu'une trajectoire générée par notre modèle peut, au moins temporairement, approximer un mouvement autocorrélé. Attendu qu'une tâche de sélection, pour peu qu'elle ne soit pas trop difficile, peut se dérouler sur une durée inférieure ou égale à la durée pendant laquelle le modèle VFA peut approximer un mouvement autocorrélé, il n'est pas nécessairement inutile pour étudier les performances de sélection de ces objets. On privilégiera dans ce cas de très fortes valeurs de $F$ et de très faibles valeurs de $A$. La figure~\ref{fig:autocorr} fournit deux exemples de telles trajectoires que nous proposons d'appeler pseudo-autocorrélées, générées avec $F \in \{30,120\}$ et $A \in \{1,2\}$.
 	
 	\begin{figure}[!htb]
 		%\centering
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.23\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/ac_2_19_1_120a}
-			\caption[Mouvement pseudo-autocorrélé A]{$F = 120$ et $A = 1$.}
+			\caption{$F=120$ ; $A=1$.}
 			\label{fig:ac1_120A}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.23\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/ac_2_19_1_120b}
-			\caption[Mouvement pseudo-autocorrélé B]{$F = 120$ et $A = 1$, bis.}
+			\caption{$F=120$ ; $A=1$, bis.}
 			\label{fig:ac_1_120B}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.23\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/ac_2_19_2_30}
-			\caption[Mouvement pseudo-autocorrélé B]{$F = 30$ et $A = 2$.}
+			\caption{$F=30$ ; $A=2$.}
 			\label{fig:ac_2_30}
 		\end{subfigure}		
 		~
-		\begin{subfigure}[t]{0.49\textwidth}
+		\begin{subfigure}[t]{0.23\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/ac_2_19_2_60}
-			\caption[Mouvement pseudo-autocorrélé B]{$F = 120$ et $A = 1$, ter.}
+			\caption{$F=120$ ; $A=1$, ter.}
 			\label{fig:ac_1_120C}
 		\end{subfigure}
-		\caption[Mouvements pseudo-autocorrélés]{Trois trajectoires générées avec les mêmes valeurs $F = 120$~Hz et $A = 1\degree$, et une avec $F = 30$~Hz et $A = 2\degree$. Dans tous les cas, $V = 2,19$~cm/s. Ces trajectoires ressemblent à celles que l'on pourrait attendre d'objets autocorrélés, tels que des véhicules, par exemple.}
+		\caption[Mouvements pseudo-autocorrélés]{Trois trajectoires générées avec les mêmes valeurs $F = 120$~Hz et $A = 1\degree$, et une avec $F = 30$~Hz et $A = 2\degree$ ; dans tous les cas, $V = 2,19$~cm/s. Elles ressemblent à celles d'objets autocorrélés, comme des véhicules.}
 		\label{fig:autocorr}
 	\end{figure}
     
-    \FloatBarrier \subsection{Proposition de modèles de génération de mouvements autocorrélés}
+    \FloatBarrier \subsection{Modèles de génération de mouvements autocorrélés}
+    \label{sub:vfaAutoCorr}
     Les objets autocorrélés présentent néanmoins un intérêt certain, et les trajectoires pseudo-autocorrélées ne sont que des approximations qui peuvent s'avérer insuffisantes. Ces objets pourraient faire l'objet d'études spécifiques pour lesquelles de telles approximations ne seraient pas suffisantes. Nous proposons donc ici deux modèles différents permettant de générer des mouvements réellement autocorrélés.
     
     \FloatBarrier \subsubsection{Modèle VFA à mémoire}
+    \label{sub:vfaMem}
     Une première option pour un modèle adapté aux objets autocorrélés serait d'adapter le modèle VFA en lui ajoutant une mémoire, par exemple une mémoire du dernier changement de direction de l'objet concerné. L'on retiendrait ainsi l'angle du changement de direction à l'instant précédent ($\alpha_{t-T}$, avec $T = \frac{1}{F}$), et l'on pourrait appliquer un nouveau changement avec un angle plus ou moins proche de ce dernier, selon des paramètres. L'équation~\ref{eq:vfamem} présente une possibilité, où $\alpha$ est échantillonné entre $-A$ et $+A$, et $c_{ac} \in [0,1]$ est un coefficient d'autocorrélation.
     
     \begin{equation}
@@ -539,7 +466,11 @@
 		\label{eq:vfamem}
     \end{equation}
     
-	Ainsi, lorsque le coefficient d'autocorrélation est nul, le système devient markovien ; lorsqu'il vaut 1, $\alpha_{nT}$ est constant (avec $n \in \mathbb{N}$). De fait, s'il est non nul, l'objet aura un mouvement circulaire s'il est ciné-continu et régulier s'il est ciné-discret ; s'il est nul, le mouvement sera rectiligne dans les deux cas.
+	Ainsi, lorsque le coefficient d'autocorrélation est nul, le système devient markovien ; lorsqu'il vaut 1, $\alpha_{nT}$ est constant (avec $n \in \mathbb{N}$). De fait, s'il est non nul, l'objet aura un mouvement circulaire s'il est ciné-continu et régulier s'il est ciné-discret ; s'il est nul, le mouvement sera rectiligne dans les deux cas. Les figures~\ref{fig:realAutocorr} et~\ref{fig:realAutocorr2} fournissent des illustrations de mouvements autocorrélés générés par ce modèle, avec divers coefficients de corrélation, de 0 à 100~\%{}. La valeur initiale de l'angle de rotation du vecteur vitesse choisie ici est nulle, d'où un mouvement rectiligne quand le coefficient vaut 100~\%{}.
+	
+	Notez que nous fournissons plus d'exemples avec des coefficients proches de 100~\%{} car ce sont eux qui fournissent les résultats les plus proches de mouvements d'objets macroscopiques familiers. Ici, le rapport $\frac{F}{V}$ est suffisamment élevé pour que les mouvements semblent continus lorsque $c_{ac}$ est élevé. Ajoutons qu'avec une valeur de A plus faible, ce coefficient n'aurait pas besoin d'être si élevé pour générer de telles trajectoires.
+	
+
     
     \FloatBarrier \subsubsection{Modèle newtonien}
     Une seconde option ayant le mérite d'avoir un certain sens physique consisterait à considérer chaque objet comme une particule dotée d'une masse, et de la soumettre à une force qui, elle, serait régie par un modèle de type VFA, éventuellement modifié pour remplacer la vitesse par la norme de la force, notamment. Sans doute serait-il également opportun d'appliquer une force de friction afin d'éviter que l'application (même approximativement) constante d'une force (et donc d'une accélération\footnotemark{}) ne mène à des vitesses potentiellement croissantes et non bornées.
@@ -601,94 +532,6 @@
 	
 	Nous pouvons aisément déduire des observations faites plus haut sur la fréquence des changements de direction et leurs amplitudes que l'entropie et la pseudo-entropie pourront être très élevées pour les objets ciné-discrets mais tendront à être faibles pour les objets ciné-continus (après discrétisation).
 	
-	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_1}
-			\caption[$A = 75$, $F=1$]{$A = 75$, $F=1$}
-			\label{fig:synTraj_219_75_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_4}
-			\caption[$A = 75$, $F=4$]{$A = 75$, $F=4$}
-			\label{fig:synTraj_219_75_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_8}
-			\caption[$A = 75$, $F=8$]{$A = 75$, $F=8$}
-			\label{fig:synTraj_219_75_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_16}
-			\caption[$A = 75$, $F=16$]{$A = 75$, $F=16$}
-			\label{fig:synTraj_219_75_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_32}
-			\caption[$A = 75$, $F=32$]{$A = 75$, $F=32$}
-			\label{fig:synTraj_219_75_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_75_60}
-			\caption[$A = 75$, $F=60$]{$A = 75$, $F=60$}
-			\label{fig:synTraj_219_75_60}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_1}
-			\caption[$A = 90$, $F=1$]{$A = 90$, $F=1$}
-			\label{fig:synTraj_219_90_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_4}
-			\caption[$A = 90$, $F=4$]{$A = 90$, $F=4$}
-			\label{fig:synTraj_219_90_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_8}
-			\caption[$A = 90$, $F=8$]{$A = 90$, $F=8$}
-			\label{fig:synTraj_219_90_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_16}
-			\caption[$A = 90$, $F=16$]{$A = 90$, $F=16$}
-			\label{fig:synTraj_219_90_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_32}
-			\caption[$A = 90$, $F=32$]{$A = 90$, $F=32$}
-			\label{fig:synTraj_219_90_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_90_60}
-			\caption[$A = 90$, $F=60$]{$A = 90$, $F=60$}
-			\label{fig:synTraj_219_90_60}
-		\end{subfigure}
-		\caption[Mouvements générés par notre modèle -- III]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
-		\label{fig:motion7590}
-	\end{figure}
-	
 	Nous proposons ici un examen détaillé de quelques trajectoires. Avant tout autre propos, que le lecteur nous permette d'attirer son attention sur le fait que les trajectoires illustrées sur les figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} sont représentées à des échelles différentes. En effet, la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
 	
 	Il est donc inévitable de représenter ces trajectoires à des échelles adaptées si l'on souhaite qu'elles soient lisibles, mais il convient de faire attention à l'échelle et de garder à l'esprit que les trajectoires les plus irrégulières sont généralement représentées à une échelle bien plus fine.
@@ -702,48 +545,48 @@
 
 	\begin{figure}[htb]
 		\centering
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spTraj_0_5_120_2}
 			\caption[$S = 0,5$]{$S = 0,5$~cm/s.}
 			\label{fig:spTraj_0_5_120_2}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spTraj_1_0_120_2}
 			\caption[$S = 1$]{$S = 1$~cm/s.}
 			\label{fig:spTraj_1_0_120_2}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spTraj_1_5_120_2}
 			\caption[$S = 1,5$]{$S = 1,5$~cm/s.}
 			\label{fig:spTraj_1_5_120_2}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spTraj_2_0_120_2}
 			\caption[$S = 2,0$]{$S = 2,0$~cm/s.}
 			\label{fig:spTraj_2_0_120_2}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spTraj_3_0_120_2}
 			\caption[$S = 3,0$]{$S = 3,0$~cm/s.}
 			\label{fig:spTraj_3_0_120_2}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/spTraj_4_0_120_2}
 			\caption[$S = 4,0$]{$S = 4,0$~cm/s.}
 			\label{fig:spTraj_4_0_120_2}
 		\end{subfigure}
-		\caption[Effet des vitesses]{Trajectoires générées avec $A = 120\degree$ et $F = 2$~Hz, et des vitesses variables, de 0,5~cm/s à 4,0~cm/s. Notez que pour mieux observer le phénomène de \og dilatation \fg{} des trajectoires, et contrairement à la plupart des figures de ce type incluses dans ce manuscrit, l'échelle est constante pour toutes les sous-figures.}
+		\caption[Effet des vitesses]{Trajectoires générées avec $A = 120\degree$ et $F = 2$~Hz, et des vitesses variables, de 0,5~cm/s à 4,0~cm/s. Pour mieux observer le phénomène de \og dilatation \fg{} des trajectoires, l'échelle est constante pour toutes les sous-figures.}
 		\label{fig:spEffect}
 	\end{figure}
 	
@@ -756,94 +599,6 @@
 	Un examen de n'importe quel bloc de six trajectoires pour une valeur de $A$ donnée montrera que plus $F$ est grand, plus les trajectoires sont irrégulières. Cet effet est très net et tout aussi visible quand $A$ est petit (comme sur la figure~\ref{fig:motion1530}) que quand il est grand (comme sur la figure~\ref{fig:motion165180}).
 	
 	Toutefois, quand $A$ est très grand, même avec une petite valeur de $F$, la trajectoire présente d'importantes irrégularités, comme sur la figure~\ref{fig:synTraj_219_180_1}. Notez cependant d'une part que ce n'est vrai que parce que nous observons la trajectoire sur une fenêtre temporelle relativement longue (20 secondes) et d'autre part que nous aurions pu choisir une valeur de $F$ bien plus faible, comme 0,1~Hz, par exemple, voire moins. Si $F$ était strictement inférieure à 0,05~Hz, sur une fenêtre de 20 secondes, la trajectoire serait rectiligne.
-	
-	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_1}
-			\caption[$A = 105$, $F=1$]{$A = 105$, $F=1$}
-			\label{fig:synTraj_219_105_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_4}
-			\caption[$A = 105$, $F=4$]{$A = 105$, $F=4$}
-			\label{fig:synTraj_219_105_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_8}
-			\caption[$A = 105$, $F=8$]{$A = 105$, $F=8$}
-			\label{fig:synTraj_219_105_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_16}
-			\caption[$A = 105$, $F=16$]{$A = 105$, $F=16$}
-			\label{fig:synTraj_219_105_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_32}
-			\caption[$A = 105$, $F=32$]{$A = 105$, $F=32$}
-			\label{fig:synTraj_219_105_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_105_60}
-			\caption[$A = 105$, $F=60$]{$A = 105$, $F=60$}
-			\label{fig:synTraj_219_105_60}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_1}
-			\caption[$A = 120$, $F=1$]{$A = 120$, $F=1$}
-			\label{fig:synTraj_219_120_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_4}
-			\caption[$A = 120$, $F=4$]{$A = 120$, $F=4$}
-			\label{fig:synTraj_219_120_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_8}
-			\caption[$A = 120$, $F=8$]{$A = 120$, $F=8$}
-			\label{fig:synTraj_219_120_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_16}
-			\caption[$A = 120$, $F=16$]{$A = 120$, $F=16$}
-			\label{fig:synTraj_219_120_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_32}
-			\caption[$A = 120$, $F=32$]{$A = 120$, $F=32$}
-			\label{fig:synTraj_219_120_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_120_60}
-			\caption[$A = 120$, $F=60$]{$A = 120$, $F=60$}
-			\label{fig:synTraj_219_120_60}
-		\end{subfigure}
-		\caption[Mouvements générés par notre modèle -- IV]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
-		\label{fig:motion105120}
-	\end{figure}
 	
 	\FloatBarrier \subsubsection{Effet combiné des angles et fréquences}
 	L'effet des fréquences étant qualitativement comparable à celui des angles, on peut considérer que ces paramètres sont approximativement équivalents et, de fait, les regrouper en un seul par un produit. Ainsi, l'on peut s'intéresser non pas à leurs valeurs respectives mais au produit $AF$, que nous avons également baptisé \emph{pseudo-entropie}.
@@ -875,98 +630,10 @@
 	
 	L'on pourra donc, dans certains cas, utiliser le produit $AF$ seul, pour simplifier l'étude des résultats, mais il convient de le faire en ayant à l'esprit que c'est une approximation, et qu'elle tend à être moins précise pour les valeurs de $A$ ou $F$ particulièrement faibles ou élevées.
 	
-	\begin{figure}[htb]
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_1}
-			\caption[$A = 135$, $F=1$]{$A = 135$, $F=1$}
-			\label{fig:synTraj_219_135_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_4}
-			\caption[$A = 135$, $F=4$]{$A = 135$, $F=4$}
-			\label{fig:synTraj_219_135_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_8}
-			\caption[$A = 135$, $F=8$]{$A = 135$, $F=8$}
-			\label{fig:synTraj_219_135_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_16}
-			\caption[$A = 135$, $F=16$]{$A = 135$, $F=16$}
-			\label{fig:synTraj_219_135_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_32}
-			\caption[$A = 135$, $F=32$]{$A = 135$, $F=32$}
-			\label{fig:synTraj_219_135_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_135_60}
-			\caption[$A = 135$, $F=60$]{$A = 135$, $F=60$}
-			\label{fig:synTraj_219_135_60}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_1}
-			\caption[$A = 150$, $F=1$]{$A = 150$, $F=1$}
-			\label{fig:synTraj_219_150_1}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_4}
-			\caption[$A = 150$, $F=4$]{$A = 150$, $F=4$}
-			\label{fig:synTraj_219_150_4}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_8}
-			\caption[$A = 150$, $F=8$]{$A = 150$, $F=8$}
-			\label{fig:synTraj_219_150_8}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_16}
-			\caption[$A = 150$, $F=16$]{$A = 150$, $F=16$}
-			\label{fig:synTraj_219_150_16}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_32}
-			\caption[$A = 150$, $F=32$]{$A = 150$, $F=32$}
-			\label{fig:synTraj_219_150_32}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWmo}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/synTraj_219_150_60}
-			\caption[$A = 150$, $F=60$]{$A = 150$, $F=60$}
-			\label{fig:synTraj_219_150_60}
-		\end{subfigure}
-		\caption[Mouvements générés par notre modèle -- V]{Exemples de trajectoires générées par notre modèle pour un objet de vitesse constante (2,19~cm/s).}
-		\label{fig:motion135150}
-	\end{figure}
-	
 	\FloatBarrier \subsubsection{Longueur des trajectoires, périmètres des enveloppes convexes}
 	Pour rappel, toutes les trajectoires des figures~\ref{fig:motion1530}, \ref{fig:motion4560}, \ref{fig:motion7590}, \ref{fig:motion105120}, \ref{fig:motion135150} et \ref{fig:motion165180} furent générées par un mouvement de vitesse constante, 2,19~cm/s. Attendu qu'elles ont également été générées sur une même durée (20 secondes) elles ont toutes la même longueur, malgré les apparences dues aux variations d'échelle : $2,19~cm/s \times 20~s = 43,8~cm$.
 	
-	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut,	la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
+	Mais certaines trajectoires sont très peu \og nouées \fg{} tandis que d'autres le sont beaucoup. De fait, l'espace horizontal ou vertical qu'elles occupent peut varier considérablement. Par exemple, comme nous le mentionnions plus haut, la trajectoire de la figure~\ref{fig:synTraj_219_15_1} parcourt plus de 40~cm à l'horizontale, tandis que celle de la figure~\ref{fig:synTraj_219_180_60} est contenue dans un rectangle d'environ 1,2~cm de hauteur sur 1~cm de largeur.
 	
 	En règle générale, plus la pseudo-entropie est faible, plus la trajectoire parcourra une distance horizontale ou verticale importante, et plus la pseudo-entropie est élevée, plus ces distances sont faibles. Notez cependant que cela n'implique pas nécessairement qu'une trajectoire de faible pseudo-entropie occupera forcément une aire importante, car comme le montre la figure~\ref{fig:synTraj_219_30_1}, la distance parcourue sur un axe (vertical, en l'occurrence) peut être très faible.
 	
@@ -1063,48 +730,48 @@
 	
 	\begin{figure}[htb]
 		\centering
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_1_16}
-			\caption{$A = 1$, $F=16$, $AF=16$. Le périmètre de l'enveloppe est d'environ 87~cm.}
+			\caption{$A = 1$, $F=16$, $AF=16$. $P\approx~87$~cm.}
 			\label{fig:areaTraj_2_19_1_16}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_5_8}
-			\caption{$A = 5$, $F=8$, $AF=40$. Le périmètre de l'enveloppe est d'environ 85~cm.}
+			\caption{$A = 5$, $F=8$, $AF=40$. $P\approx~85$~cm.}
 			\label{fig:areaTraj_2_19_5_8}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_45_4}
-			\caption{$A = 45$, $F=4$, $AF=180$. Le périmètre de l'enveloppe est d'environ 53~cm.}
+			\caption{$A = 45$, $F=4$, $AF=180$. $P\approx~53$~cm.}
 			\label{fig:areaTraj_2_19_45_4}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_90_8}
-			\caption{$A = 90$, $F=8$, $AF=720$. Le périmètre de l'enveloppe est d'environ 16~cm.}
+			\caption{$A = 90$, $F=8$, $AF=720$. $P\approx~16$~cm.}
 			\label{fig:areaTraj_2_19_90_8}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_180_60}
-			\caption{$A = 180$, $F=60$, $AF=10800$. Le périmètre de l'enveloppe est d'environ 4~cm.}
+			\caption{$A = 180$, $F=60$, $AF=10800$. $P\approx~4$~cm.}
 			\label{fig:areaTraj_2_19_180_60}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\subImgWarea}
+		\begin{subfigure}[t]{\subImgWmo}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch3/areaTraj_2_19_180_240}
-			\caption{$A = 180$, $F=240$, $AF=43200$. Le périmètre de l'enveloppe est d'environ 3~cm.}
+			\caption{$A = 180$, $F=240$, $AF=43200$. $P\approx~3$~cm.}
 			\label{fig:areaTraj_2_19_180_240}
 		\end{subfigure}
-		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et le périmètre de l'enveloppe convexe décroît.}
+		\caption[Enveloppes convexes]{Enveloppes convexes de six trajectoires de pseudo-entropies croissantes. À mesure que la pseudo-entropie croît, elles sont de plus en plus \og repliées \fg{} et le périmètre $P$ de l'enveloppe convexe décroît.}
 		\label{fig:trajAreas}
 	\end{figure}
 	
@@ -1114,7 +781,7 @@
 	
 	Remarquons cependant que quand la pseudo-entropie est très faible, la régularité de la trajectoire suggère une sélection relativement aisée ; quand elle est très élevée, la très petite zone couverte par la trajectoire laisse également supposer une sélection assez facile, du fait d'une distance (telle que définie par Fitts~\cite{fitts1954information}) très courte, à partir du moment où le curseur atteint l'enveloppe convexe de la cible.
 	
-	\section{Validation de taxinomie}
+	\section{Validation de la taxinomie}
 	Pour valider notre taxinomie des cibles mobiles et de leurs environnements, nous nous sommes appuyés sur des mesures quantitatives et objectives des critères les plus importants que nous avons retenus. Nous avons pour cela adopté deux approches complémentaires :
 	
 	\begin{itemize}
@@ -1131,9 +798,11 @@
 	
 	Les valeurs des angles de rotation des vecteurs direction, elles, sont indépendantes de ce choix, puisqu'il s'agit simplement, pour chaque atome, de l'écart entre son vecteur direction d'un pas à l'autre. C'est donc sur cette valeur que nous nous sommes concentrés, en gardant à l'esprit que la vitesse des cibles et la fréquence des changements de direction sont variables et dépendent du mode d'affichage choisi.
 	
-	Nous avons ainsi analysé un échantillon hétérogène de systèmes moléculaires en mesurant tous les angles de rotation, pour chaque pas de la simulation. Pour chaque système, nous avons ensuite dressé un histogramme de toutes ces valeurs, afin d'avoir une représentation complète de toute la gamme d'angles possibles, et des proportions dans lesquelles ils apparaissent. Ces histogrammes sont présentés sur la figure~\ref{fig:dynMolAngles}.
+	Nous avons ainsi analysé un échantillon hétérogène de systèmes moléculaires. Cet échantillon est issu de nos échanges avec des spécialistes de la biologie structurale, et constitué par leurs soins : il est constitué de systèmes faisant l'objet de simulations \og réelles \fg{}, c'est-à-dire visant à répondre à des questions de recherche en biologie.
 	
-	\newcommand{\subImgWaStats}{0.49\textwidth}
+	Pour chaque simulation, nous mesurons tous les angles de rotation, pour chaque pas de temps. Pour chaque système, nous avons ensuite dressé un histogramme de toutes ces valeurs, afin d'avoir une représentation complète de toute la gamme d'angles possibles, et des proportions dans lesquelles ils apparaissent. Ces histogrammes sont présentés sur la figure~\ref{fig:dynMolAngles}.
+	
+	\newcommand{\subImgWaStats}{0.23\textwidth}
 	\begin{figure}[htb]
 		\begin{subfigure}[t]{\subImgWaStats}
 			\centering
@@ -1162,7 +831,7 @@
 			\caption{}
 			\label{fig:gk_extension_all_angles}
 		\end{subfigure}
-		\caption[Angles de rotation, dynamique moléculaire]{Angles de rotation des vecteurs direction des atomes de simulations de dynamique moléculaire. Les angles, en dégrés, sont en abscisse, et les nombres absolus d'occurrences sont en ordonnée, pour chacun des quatre systèmes analysés, notés a, b, c, et d.}
+		\caption[Angles de rotation, dynamique moléculaire]{Angles (en abscisse et en degrés) de rotation des vecteurs direction des atomes de simulations de dynamique moléculaire. Les nombres absolus d'occurrences sont en ordonnée, pour chacun des quatre systèmes analysés (a, b, c, et d.)}
 		\label{fig:dynMolAngles}
 	\end{figure}
 
@@ -1187,7 +856,10 @@
 	\FloatBarrier \subsection{Analyses des mouvements d'objets divers}
 	Au cours de cette phase, nous avons annoté des vidéos de types très divers pour caractériser quantitativement et objectivement le mouvement de cibles variées, telles qu'elles apparaissent à l'écran --- c'est-à-dire que nous avons mesurés les mouvements relatifs plutôt qu'absolus, attendu que ce sont ceux qui seraient effectivement perçu par un utilisateur. Nous avons ensuite analysé les résultats pour comptabiliser tous les angles de rotation de vecteur vitesse, toutes les fréquences de rotation, et toutes les vitesses. Nous avons donc pu construire des histogrammes pour chacune de ces grandeurs, mais aussi en calculer la moyenne, l'écart-type, et en noter la valeur maximale.
 	
-	Lorsqu'une vidéo représente plusieurs cibles potentielles, nos résultats correspondent à des mesures effectuées sur un échantillon de celles-ci. Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées, si elles dépassent 12~Hz ou 15~Hz, respectivement. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement ; cette réserve ne s'applique pas aux vitesses, et nettement moins aux angles.
+	Lorsqu'une vidéo représente plusieurs cibles potentielles, nos résultats correspondent à des mesures effectuées sur un échantillon de celles-ci. Les vidéos elles-mêmes furent choisies en recherchant la plus grande diversité possible, et en privilégiant les mouvements vifs et imprévisibles, car il s'agit des cas les plus intéressants, du fait de la difficulté inhérente à la sélection de tels objets. Nous incluons néanmoins plusieurs vidéos d'objets lents, ou de mouvements réguliers et prévisibles.
+	
+	
+	Avant d'exposer et commenter nos résultats, il convient de noter que les fréquences de changements de direction mesurées ici sont significativement affectées par le nombre d'images par seconde dans les vidéos utilisées comme sources. Celles-ci ont généralement une fréquence de 24~Hz ou 30~Hz, qui peut être insuffisante pour correctement échantillonner les véritables fréquences de changement de direction des cibles observées, si elles dépassent 12~Hz ou 15~Hz, respectivement~\cite{shannon1949communication}. La prudence s'impose donc pour l'interprétation de nos résultats concernant cette caractéristique du mouvement ; cette réserve ne s'applique pas aux vitesses, et nettement moins aux angles.
 	
 	Par ailleurs, la nature intrinsèquement discrète des vidéos, constituées d'un nombre donné d'images par seconde, implique une discrétisation \emph{de facto} de mouvements qui, en soi, peuvent être ciné-continus. La lecture de ces résultats impose de garder à l'esprit qu'ils ne reflètent pas directement la nature réelle des mouvements mesurés. Mais puisque les tâches de sélection impliquent presque toujours un système interactif opérant une discrétisation semblable, nos mesures demeurent pertinentes d'un point de vue pratique et applicatif. De plus, le grand nombre (plus de 116~000) d'images annotées nous permet de prétendre à une certaine représentativité.
 	
@@ -1271,391 +943,27 @@
 
 	Les petites vitesses sont majoritaires, notamment car la caméra suit la cible, mais les vitesses élevées sont loin d'être rares, notamment du fait de saccades dans la vidéo. La plupart des angles sont faibles mais l'abondance de saccades mène à une distribution assez \og plate \fg{} une fois les petits angles écartés.
 
-	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_filteredSpeed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats.
-		
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/concordeA_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:concordeA_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/concordeA_frequency}
-			\caption{Fréquences.}
-			\label{fig:concordeA_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/concordeA_angle}
-			\caption{Angles.}
-			\label{fig:concordeA_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour le \emph{Concorde}]{Histogrammes pour le \emph{Concorde}.}
-		\label{fig:histConcorde}
-	\end{figure}
-	
-	Ici encore et pour les mêmes raisons, les vitesses faibles sont majoritaires mais de nombreuses valeurs élevées furent enregistrées. Les angles sont le plus souvent petits mais parfois beaucoup plus grands. De même, les valeurs proches de 180\textdegree{} s'expliquent par le fait que la caméra peut anticiper les mouvements de la cible, ce qui implique un demi-tour de celle-ci dans le référentiel de l'écran.
+	Sur le même thème, nous avons annoté une vidéo de l'éphémère vol du \emph{Concorde} qui s'écrasa à Gonesse en juillet 2000\footnotemark{}. Les histogrammes sont sur les figures~\ref{fig:concordeA_filteredSpeed}, \ref{fig:concordeA_frequency}, et \ref{fig:concordeA_angle} ; la table~\ref{tab:concordeA_stats} synthétise ces résultats. Ici encore et pour les mêmes raisons, les vitesses faibles sont majoritaires mais de nombreuses valeurs élevées furent enregistrées. Les angles sont le plus souvent petits mais parfois beaucoup plus grands. De même, les valeurs proches de 180\textdegree{} s'expliquent par le fait que la caméra peut anticiper les mouvements de la cible, ce qui implique un demi-tour de celle-ci dans le référentiel de l'écran.
 	
 	\footnotetext{\url{https://www.bea.aero/docspa/2000/f-sc000725/pdf/f-sc000725.pdf}}
 
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
+	Nous soulignions au cours du chapitre~\ref{chap1} l'intérêt des mouvements de foule --- manifestations, émeutes, etc. Aussi avons-nous annoté deux vidéos d'émeutes, dont les histogrammes sont représentés sur la figure~\ref{fig:histRiots}, et dont les résultats synthétiques sont sur les tables~\ref{tab:riot_stats} et \ref{tab:riot2a_stats}. Sur ces vidéos, les vitesses sont un peu plus faibles, les valeurs plus élevées étant généralement liées aux charges et autres courses rapides. Les fréquences sont plutôt basses et les angles distribués de façon approximativement uniforme, exception faite des petits angles, sur-représentés, comme c'est souvent le cas. Les deux vidéos produisent des résultats assez cohérents entre eux, ce qui est logique attendu qu'il s'agit d'événements du même type.
 
-		29,82		& 6,50				& 4,76			& 25,00		& 12,64				& 8,00			& 176,15	& 48,76				& 48,45			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo du \emph{Concorde}]{Statistiques pour la vidéo du \emph{Concorde}.}
-	\label{tab:concordeA_stats}
-\end{table}
 
-	Nous soulignions au cours du chapitre~\ref{chap1} l'intérêt des mouvements de foule --- manifestations, émeutes, etc. Aussi avons-nous annoté deux vidéos d'émeutes, dont les histogrammes sont représentés sur la figure~\ref{fig:histRiots}, et dont les résultats synthétiques sont sur les tables~\ref{tab:riot_stats} et \ref{tab:riot2a_stats}.
 
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot_filteredSpeed}
-			\caption{Vitesses pour l'émeute 1.}
-			\label{fig:riot_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot_frequency}
-			\caption{Fréquences pour l'émeute 1.}
-			\label{fig:riot_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot_angle}
-			\caption{Angles pour l'émeute 1.}
-			\label{fig:riot_angle}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot2a_filteredSpeed}
-			\caption{Vitesses pour l'émeute 2.}
-			\label{fig:riot2a_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot2a_frequency}
-			\caption{Fréquences pour l'émeute 2.}
-			\label{fig:riot2a_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/riot2a_angle}
-			\caption{Angles pour l'émeute 2.}
-			\label{fig:riot2a_angle}
-		\end{subfigure}
-		\caption[Histogrammes, émeutes]{}
-		\label{fig:histRiots}
-	\end{figure}
+	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique ; c'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}. Les vitesses sont généralement très basses et stables, ce qui est logique puisque les avions sont observés sur une très grande échelle, et en vol de croisière. Toutefois, elles sont parfois très élevées, en particulier quand le point de vue est déplacé ou en cas de zoom ; c'est là qu'il faut chercher l'explication du second pic, à 5~cm/s, sur la figure~\ref{fig:germanwingsA_filteredSpeed}. Pour les mêmes raisons, les fréquences sont assez faibles, mais les grands angles ne sont pas rares, même si les petits sont largement majoritaires. Là encore, la raison est essentiellement à chercher du côté des ajustements du point de vue.	
 
-	Sur ces vidéos, les vitesses sont un peu plus faibles, les valeurs plus élevées étant généralement liées aux charges et autres courses rapides. Les fréquences sont plutôt basses et les angles distribués de façon approximativement uniforme, exception faite des petits angles, sur-représentés, comme c'est souvent le cas.
+	Nous avons annoté deux vidéos de plus pour le trafic aérien, dont les histogrammes sont sur la figure~\ref{fig:histAirControl34} et les statistiques synthétiques sur les tables~\ref{tab:hkg_stats} et \ref{tab:flightradar2a_stats}. Les résultats sont cohérents avec ceux des vidéos précédentes, ce qui nous fournit une caractérisation assez complète et précise des tâches de sélection de cibles mobiles pour le contrôle du trafic aérien. Certes, ces vidéos sont issues d'outils publics tels que \emph{FlightRadar24} plutôt que d'applications professionnelles, mais le fonctionnement des premiers est proche de celui des secondes.
+
+	Il ressort de ces observations que les cibles ne sont pas intrinsèquement très difficiles à sélectionner avec ces outils, mais par leur nombre, la densité et l'occultation qui en résultent, elles peuvent présenter des difficultés significatives. Ajoutons, après avoir consulté la table~\ref{tab:flightradar2a_stats}, que les vitesses maximales peuvent être élevées, notamment lors de modifications du point de vue ou zooms. Outre l'effet perturbant que de tels pics de vitesse peuvent avoir, notamment par la discontinuité qu'ils introduisent, ils rendent une éventuelle tâche de sélection bien plus difficile, ne serait-ce que ponctuellement.
 	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		43,14		& 3,86				& 3,93			& 25,00		& 4,37				& 5,42			& 180,00	& 75,87				& 54,49			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo d'émeute 1]{Statistiques pour la vidéo d'émeute 1.}
-	\label{tab:riot_stats}
-\end{table}
-
-	Les deux vidéos produisent des résultats assez cohérents entre eux, ce qui est logique attendu qu'il s'agit d'événements du même type.
-
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		34,47		& 7,54				& 4,36			& 29,97		& 6,47				& 5,41			& 180,00	& 64,57				& 59,56			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo d'émeute 2]{Statistiques pour la vidéo d'émeute 2.}
-	\label{tab:riot2a_stats}
-\end{table}
-
-	Le contrôle du trafic aérien est une application doublement intéressante : d'une part du fait des caractéristiques de ses cibles, et d'autre part du fait de son caractère critique ; c'est pourquoi nous avons choisi d'en annoter plusieurs vidéos. Pour deux d'entre elles, les histogrammes sont présentés sur la figure~\ref{fig:histAirControl12}, tandis que les statistiques synthétiques sont disponibles dans les tables~\ref{tab:mhA_stats} et \ref{tab:germanwingsA_stats}.
-	
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/mhA_filteredSpeed}
-			\caption{Vitesses, trafic aérien 1.}
-			\label{fig:mhA_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/mhA_frequency}
-			\caption{Fréquences, trafic aérien 1.}
-			\label{fig:mhA_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/mhA_angle}
-			\caption{Angles, trafic aérien 1.}
-			\label{fig:mhA_angle}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_filteredSpeed}
-			\caption{Vitesses, trafic aérien 2.}
-			\label{fig:germanwingsA_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_frequency}
-			\caption{Fréquences, trafic aérien 2.}
-			\label{fig:germanwingsA_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/germanwingsA_angle}
-			\caption{Angles, trafic aérien 2.}
-			\label{fig:germanwingsA_angle}
-		\end{subfigure}
-		\caption[Histogrammes, contrôle du trafic aérien]{}
-		\label{fig:histAirControl12}
-	\end{figure}
-	
-	Les vitesses sont généralement très basses et stables, ce qui est logique puisque les avions sont observés sur une très grande échelle, et en vol de croisière. Toutefois, elles sont parfois très élevées, en particulier quand le point de vue est déplacé ou en cas de zoom ; c'est là qu'il faut chercher l'explication du second pic, à 5~cm/s, sur la figure~\ref{fig:germanwingsA_filteredSpeed}.
-	
-	Pour les mêmes raisons, les fréquences sont assez faibles, mais les grands angles ne sont pas rares, même si les petits sont largement majoritaires. Là encore, la raison est essentiellement à chercher du côté des ajustements du point de vue.
-	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		39,69		& 1,82				& 2,79			& 10,00		& 4,23				& 3,13			& 180,00	& 52,68				& 56,62			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo de trafic aérien 1]{Statistiques pour la vidéo de trafic aérien 1.}
-	\label{tab:mhA_stats}
-\end{table}
-
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		7,42		& 3,26				& 2,24			& 10,00		& 3,60				& 2,34			& 180,00	& 37,76				& 45,05			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo de trafic aérien 2]{Statistiques pour la vidéo de trafic aérien 2.}
-	\label{tab:germanwingsA_stats}
-\end{table}
-
-	Nous avons annoté deux vidéos de plus pour le trafic aérien, dont les histogrammes sont sur la figure~\ref{fig:histAirControl34} et les statistiques synthétiques sur les tables~\ref{tab:hkg_stats} et \ref{tab:flightradar2a_stats}.
-	
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/hkg_filteredSpeed}
-			\caption{Vitesses, trafic aérien 3.}
-			\label{fig:hkg_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/hkg_frequency}
-			\caption{Fréquences, trafic aérien 3.}
-			\label{fig:hkg_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/hkg_angle}
-			\caption{Angles, trafic aérien 3.}
-			\label{fig:hkg_angle}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_filteredSpeed}
-			\caption{Vitesses, trafic aérien 4.}
-			\label{fig:flightradar2a_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_frequency}
-			\caption{Fréquences, trafic aérien 4.}
-			\label{fig:flightradar2a_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/flightradar2a_angle}
-			\caption{Angles, trafic aérien 4.}
-			\label{fig:flightradar2a_angle}
-		\end{subfigure}
-		\caption[Histogrammes, contrôle du trafic aérien, bis]{}
-		\label{fig:histAirControl34}
-	\end{figure}
-	
-	Les résultats sont cohérents avec ceux des vidéos précédentes, ce qui nous fournit une caractérisation assez complète et précise des tâches de sélection de cibles mobiles pour le contrôle du trafic aérien. Certes, ces vidéos sont issues d'outils publics tels que \emph{FlightRadar24} plutôt que d'applications professionnelles, mais le fonctionnement des premiers est proche de celui des secondes.
-	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		4,21		& 1,64				& 0,99			& 30,00		& 3,29				& 4,85			& 176,63	& 53,24				& 52,95			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo  de trafic aérien 3]{Statistiques pour la vidéo  de trafic aérien 3.}
-	\label{tab:hkg_stats}
-\end{table}
-
-	Il ressort de ces observations que les cibles ne sont pas intrinsèquement très difficiles à sélectionner avec ces outils, mais par leur nombre, la densité et l'occultation qui en résultent, elles peuvent présenter des difficultés significatives. Ajoutons, après avoir consulté la table~\ref{tab:flightradar2a_stats}, que les vitesses maximales peuvent être élevées, notamment lors de modifications du point de vue ou zooms.
-
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		120,00		& 1,01				& 5,29			& 10,00		& 1,30				& 1,96			& 180,00	& 54,65				& 47,58			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo  de trafic aérien 4]{Statistiques pour la vidéo de trafic aérien 4.}
-	\label{tab:flightradar2a_stats}
-\end{table}
-
-	Outre l'effet perturbant que de tels pics de vitesse peuvent avoir, notamment par la discontinuité qu'ils introduisent, ils rendent une éventuelle tâche de sélection bien plus difficile, ne serait-ce que ponctuellement.
-	
-	Les avions ne sont pas les seuls objets volants pouvant faire l'objet d'une tâche de sélection, et c'est pourquoi nous avons aussi annoté une vidéo de la navette spatiale américaine (\emph{Space shuttle} ou \emph{Space Transportation System}, STS). Les histogrammes correspondants sont sur la figure~\ref{fig:histSpace}, tandis que les statistiques synthétiques sont dans la table~\ref{tab:spaceA_stats}.
-	
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/spaceA_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:spaceA_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/spaceA_frequency}
-			\caption{Fréquences.}
-			\label{fig:spaceA_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/spaceA_angle}
-			\caption{Angles.}
-			\label{fig:spaceA_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour la navette spatiale]{Histogrammes pour la navette spatiale.}
-		\label{fig:histSpace}
-	\end{figure}
-	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		382,43		& 25,64				& 27,26			& 29,97		& 8,05				& 7,98			& 180,00	& 65,52				& 55,93			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo de la navette spatiale]{Statistiques pour la vidéo de la navette spatiale.}
-	\label{tab:spaceA_stats}
-\end{table}
-	
-	La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
+	Les avions ne sont pas les seuls objets volants pouvant faire l'objet d'une tâche de sélection, et c'est pourquoi nous avons aussi annoté une vidéo de la navette spatiale américaine (\emph{Space shuttle} ou \emph{Space Transportation System}, STS). Les histogrammes correspondants sont sur la figure~\ref{fig:histSpace}, tandis que les statistiques synthétiques sont dans la table~\ref{tab:spaceA_stats}. La distribution des vitesses est caractéristique des vidéos de ce type : dominée par les petites valeurs, avec quelques grandes valeurs liées aux saccades de la vidéo. Les fréquences présentent également un profil habituel, mais la distribution des angles est plus intéressante par son caractère relativement équilibré, avec beaucoup de grands angles, malgré une majorité de petits --- d'où des phases de mouvement assez diversifiées.
 	
 	Dans le domaine aérien, mais cette fois-ci vivant, nous avons annoté une vidéo d'un court vol d'oiseau (un pigeon), dont les histogrammes sont sur la figure~\ref{fig:histOiseau}, et les statistiques synthétiques dans la table~\ref{tab:oiseau_stats}. Les oiseaux en particulier, et les animaux en général pourraient faire l'objet de tâches de sélection de cible mobile dans des applications de réalité augmentée permettant de choisir un individu pour que le système reconnaisse automatiquement son espèce, sa race, et affiche des informations complémentaires tirées d'une base de données, voire d'une encyclopédie en ligne.
-		
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:oiseau_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_frequency}
-			\caption{Fréquences.}
-			\label{fig:oiseau_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/oiseau_angle}
-			\caption{Angles.}
-			\label{fig:oiseau_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour le pigeon]{Histogrammes pour le pigeon.}
-		\label{fig:histOiseau}
-	\end{figure}
-	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		37,77		& 7,88				& 6,10			& 29,97		& 5,10				& 3,90			& 180,00	& 50,36				& 50,74			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo du pigeon]{Statistiques pour la vidéo du pigeon.}
-	\label{tab:oiseau_stats}
-\end{table}
 
 	Suivi par la caméra, le volatile génère surtout d'assez petites vitesses, d'autant que la vidéo est au ralenti. Ses distributions de fréquences et d'angles indiquent un mouvement de faible pseudo-entropie, donc relativement prévisible.
 	
-	Pour compléter ces données, nous avons annoté une deuxième courte vidéo du même type : le décollage d'un petit oiseau au ralenti. Les histogrammes sont sur la figure~\ref{fig:histBird}, et les statistiques synthétiques dans la table~\ref{tab:bird_stats}.
-	
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bird_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:bird_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bird_frequency}
-			\caption{Fréquences.}
-			\label{fig:bird_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bird_angle}
-			\caption{Angles.}
-			\label{fig:bird_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour le petit oiseau]{Histogrammes pour le petit oiseau.}
-		\label{fig:histBird}
-	\end{figure}
-	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		37,52		& 8,76				& 8,07			& 23,98		& 9,92				& 9,74			& 171,44	& 60,51				& 50,82			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo du petit oiseau]{Statistiques pour la vidéo du petit oiseau.}
-	\label{tab:bird_stats}
-\end{table}
-
-	Les résultats sont tout à fait cohérents avec ceux du pigeon, ce qui est logique attendu que les deux vidéos montrent un décollage, sont courtes, et filmées au ralenti.
+	Pour compléter ces données, nous avons annoté une deuxième courte vidéo du même type : le décollage d'un petit oiseau au ralenti. Les histogrammes sont sur la figure~\ref{fig:histBird}, et les statistiques synthétiques dans la table~\ref{tab:bird_stats}. Les résultats sont tout à fait cohérents avec ceux du pigeon, ce qui est logique attendu que les deux vidéos montrent un décollage, sont courtes, et filmées au ralenti.
 
 	Dans la même veine que les oiseaux, et pour les mêmes raisons, nous avons annoté une vidéo d'un poisson dans un aquarium, face à une caméra fixe. Les histogrammes sont présentés sur la figure~\ref{fig:histPoisson}, et les statistiques synthétiques peuvent être consultées dans la table~\ref{tab:poisson_stats}.
 	
@@ -1737,47 +1045,9 @@
 
 	Si les vitesses ne sont pas énormes, elles dépassent occasionnellement la dizaine de cm/s (ce qui peut être dû à un déplacement du point de vue du joueur) avec de rares valeurs très élevées. Les fréquences sont dominées par un pic à 30~Hz, lié au taux d'images par seconde de la vidéo, et les angles sont caractérisés par deux pics, un à 0\textdegree{} et un à 180\textdegree{}, avec des deux côtés une douce décroissance vers le minimum, autour de 100\textdegree{}. Cela s'explique par les mouvements des créatures de ce jeu, principalement rectilignes avec des virages nets, qui sont le plus souvent des demi-tours. C'est un motif courant chez les objets animés par des algorithmes ou heuristiques de plus court chemin tels que l'\emph{A*}~\cite{dijkstra1959note, hart1968formal}.
 	
-	Nous avons annoté une vidéo d'un deuxième jeu, \emph{World of Warcraft}, un jeu de rôle massivement multijoueur. Les histogrammes sont présentés sur la figure~\ref{fig:histWow}, et les statistiques synthétiques dans la table~\ref{tab:wow_stats}.
-
-	\begin{figure}[!htbp]
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/wow_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:wow_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/wow_frequency}
-			\caption{Fréquences.}
-			\label{fig:wow_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/wow_angle}
-			\caption{Angles.}
-			\label{fig:wow_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour le jeu \emph{World of Warcraft}]{Histogrammes pour le jeu \emph{World of Warcraft}.}
-		\label{fig:histWow}
-	\end{figure}
-	
-	Les vitesses sont majoritairement basses mais leur distribution décroît de manière assez douce, de sorte que les vitesses élevées ne sont pas anecdotiques. Les fréquences sont plutôt basses, mais la distribution des angles est assez équilibrée, avec une moyenne à 98\textdegree{} et un écart-type d'environ 57\textdegree{}. Précisons que la cible annotée ici était le personnage contrôlé par le joueur ayant enregistré la vidéo ; de fait, la caméra du jeu le suivait (avec une certaine souplesse, d'où les mouvements mesurés), ce qui tend à fortement diminuer les mouvements apparents.
+	Nous avons annoté une vidéo d'un deuxième jeu, \emph{World of Warcraft}, un jeu de rôle massivement multijoueur. Les histogrammes sont présentés sur la figure~\ref{fig:histWow}, et les statistiques synthétiques dans la table~\ref{tab:wow_stats}. Les vitesses sont majoritairement basses mais leur distribution décroît de manière assez douce, de sorte que les vitesses élevées ne sont pas anecdotiques. Les fréquences sont plutôt basses, mais la distribution des angles est assez équilibrée, avec une moyenne à 98\textdegree{} et un écart-type d'environ 57\textdegree{}. Précisons que la cible annotée ici était le personnage contrôlé par le joueur ayant enregistré la vidéo ; de fait, la caméra du jeu le suivait (avec une certaine souplesse, d'où les mouvements mesurés), ce qui tend à fortement diminuer les mouvements apparents.
 	
 	D'un point de vue extérieur, avec une caméra ne s'adaptant pas à ses mouvements, ce personnage serait significativement plus rapide et vif. Nous y reviendrons en nous appuyant sur d'autres exemples.
-	
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		15,62		& 3,19				& 2,46			& 20,00		& 5,74				& 4,79			& 180,00	& 98,03				& 57,17			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo du jeu \emph{World of Warcraft}]{Statistiques pour la vidéo du jeu \emph{World of Warcraft}.}
-	\label{tab:wow_stats}
-\end{table}
 
 	Ensuite, nous avons annoté une vidéo du célèbre jeu \emph{Pac-Man}. Les histogrammes sont sur la figure~\ref{fig:histPacmann}, et les statistiques synthétiques dans la table~\ref{tab:pacmannA_stats}.
 	
@@ -1821,53 +1091,18 @@
 	
 	Les fréquences et les angles sont quelque peu bruités par les petits changements de direction dus à l'imparfaite précision des annotations, inhérente à tout processus humain, puisqu'il est impossible de cliquer en ligne parfaitement droite quand une cible a un mouvement rectiligne. De surcroît, la discrétisation de l'espace impliquée par la grille de pixels ne permet pas de mesurer un mouvement parfaitement rectiligne dans toutes les directions. Mais l'on distingue un pic d'angles à 90\textdegree{}, comme attendu pour un jeu caractérisé pour ses virages à angle droit.	
 
-	Nous avons aussi annoté une vidéo de course de billes (voir le chapitre~\ref{chap1}), dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques dans la table~\ref{tab:bille_stats}.
-	
-	\begin{figure}[!htbp]	
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_filteredSpeed}
-			\caption{Vitesses.}
-			\label{fig:bille_filteredSpeed}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_frequency}
-			\caption{Fréquences.}
-			\label{fig:bille_frequency}
-		\end{subfigure}
-		~
-		\begin{subfigure}[t]{\subImgWclicks}
-			\centering
-			\includegraphics[width=\textwidth]{figures/ch3/bille_angle}
-			\caption{Angles.}
-			\label{fig:bille_angle}
-		\end{subfigure}
-		\caption[Histogrammes pour la course de billes]{Histogrammes pour la course de billes.}
-		\label{fig:histBille}
-	\end{figure}
-
-\begin{table}
-	\centering
-	\begin{tabular}{c c c c c c c c c}
-		$V_{max}$	& $\overline{V}$	& $\sigma_{V}$	& $F_{max}$	& $\overline{F}$	& $\sigma_{F}$	& $A_{max}$	& $\overline{A}$	& $\sigma_{A}$	\bigstrut[b] \\ \hline
-
-		533,74		& 19,89				& 27,77			& 50,00		& 22,75				& 13,58			& 180,00	& 41,91				& 48,75			\bigstrut[t] \\
-	\end{tabular}
-	\caption[Statistiques pour la vidéo de course de billes]{Statistiques pour la vidéo de course de billes.}
-	\label{tab:bille_stats}
-\end{table}
-
-	Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquents, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.
+	Nous avons aussi annoté une vidéo de course de billes (voir le chapitre~\ref{chap1}), dont les histogrammes sont présentés sur la figure~\ref{fig:histBille}, et les statistiques synthétiques dans la table~\ref{tab:bille_stats}. Remarquons que la distribution des vitesses est très fortement dominée par les vitesses très faibles, mais que des valeurs très élevées apparaissent, du fait d'occasionnelles saccades de la vidéo. De même, si les petits angles sont les plus fréquents, des angles proches de 180\textdegree{} ne sont pas rares et s'expliquent notamment par le fait que la caméra se déplace parfois plus vite que les billes --- qui peuvent de plus rebondir.
 	
 	\FloatBarrier \subsection{Tableau de classification}
 	Ces mesures quantitatives appuient les réflexions présentées plus haut et nous permettent de dresser la table~\ref{tab:recapSelEnvs} qui formalise notre classification des cibles mobiles et de leurs environnements de sélection.
 	
 	Bien sûr, et comme nous l'avons plusieurs fois remarqué au cours de ce chapitre, cette entreprise de classification implique un certain nombre de choix qui peuvent avoir quelque chose de subjectif ou d'arbitraire. Nul doute que cette synthèse de nos travaux de classification pourra faire l'objet de débats --- et tant mieux. Mais il nous semble qu'elle constitue une bonne base de travail et une référence utile pour qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles.
 	
+	Ajoutons qu'elle se rapporte bien plus aux environnements de sélection en eux-mêmes, c'est-à-dire aux cibles et à leur contexte : taille de l'environnement, nombre de cibles (donc densité), dimensionnalité, nature des mouvements\ldots{} Les caractéristiques qui dépendent du dispositif d'affichage et d'interaction, cependant, sont essentiellement omises, attendu qu'elles ne sont pas intrinsèquement liées au contexte applicatif. Nous ne tenons donc pas compte, par exemple, de facteurs importants comme la taille du dispositif d'affichage, sa définition, les couleurs choisies et des contrastes qui en découlent~\cite{borst1989principles}, ou même de la nature du dispositif de pointage utilisé.
+	
+	Ces considérations méritent d'être étudiées, et surtout d'être prises en compte lors de la conception de paradigmes d'interaction, compte tenu de l'effet que ces facteurs peuvent avoir sur les performances de sélection. Sans doute serait-il également pertinent de s'attarder sur l'effet de facteurs humains tels que l'âge ou la dextérité de chaque individu, particulièrement par rapport aux interactions possible avec les effets de certaines techniques de sélection. Les auteurs du \emph{Rake cursor}~\cite{blanch2009rake} soulignent par exemple --- et vraisemblablement à juste titre --- que leur technique présente un intérêt tout particulier pour les personnes à mobilité réduite. La description et l'étude systématiques de ces facteurs et de leurs effets devront cependant être remises à de futurs travaux, sans doute passionnants.
+	
 	\begin{landscape}
-
 	\begin{table}
 		\centering
 		\begin{adjustbox}{max width=\linewidth}

@@ -38,7 +38,7 @@
 
 \section{Expérience et protocole}
 \label{sub:interact}
-	Nous avons mené une étude empirique~\cite{kouyoumdjian2015characterizing} visant à évaluer les performances de sélection de cibles mobiles en fonction de la nature du mouvement. Nous avions 13 sujets, âgés de 14 à 56 ans. Ils avaient pour tâche de cliquer sur une cible mobile (un disque) affichée sur un écran d'ordinateur de bureau.
+	Nous avons mené une étude empirique~\cite{kouyoumdjian2015characterizing} visant à évaluer les performances de sélection de cibles mobiles en fonction de la nature du mouvement. Nous avions 13 sujets, âgés de 14 à 56 ans (un des 14 sujets ayant répondu positivement à notre appel dut être retiré de nos résultats du fait d'une corruption des données collectées). Ils avaient pour tâche de cliquer sur une cible mobile (un disque) affichée sur un écran d'ordinateur de bureau.
 
 	\subsection{Dispositif expérimental}
 	Le périphérique de saisie était une souris standard sans accélération, afin d'éviter le biais potentiel introduit par une fonction de gain pouvant être familière pour certains utilisateurs et pas pour d'autres. Cette souris pilotait un curseur cruciforme gris. Le moniteur était un Dell \emph{UltraSharp U2412M}\footnotemark{}, de 24 pouces (60,96~cm) de diagonale, et d'environ 94 pixels par pouce (37 pixels par cm).
@@ -57,18 +57,20 @@
 		\label{fig:app}
 	\end{SCfigure}
 	
-	Ce choix, qui altère ponctuellement le mouvement généré par le modèle VFA, fut fait pour d'une part éviter la disparition d'une cible hors de la fenêtre, pour éviter toute discontinuité (par exemple si la cible réapparaissait de l'autre côté de la fenêtre), et pour limiter la \og surprise \fg{} éprouvée par l'utilisateur en imitant un phénomène physique familier. Cela permet par ailleurs de garantir la constance la densité de l'environnement.
+	Ce choix, qui altère ponctuellement le mouvement généré par le modèle VFA, fut fait pour d'une part éviter la disparition d'une cible hors de la fenêtre, pour éviter toute discontinuité (par exemple si la cible réapparaissait de l'autre côté de la fenêtre), et pour limiter la \og surprise \fg{} éprouvée par l'utilisateur en imitant un phénomène physique familier. Cela permet par ailleurs de garantir la constance la densité de l'environnement, et c'est l'option retenue par Hasan \emph{et al.}~\cite{hasan2011comet}
 	
-	Pour contrôler l'amplitude (telle que définie par Fitts~\cite{fitts1954information}) les mouvements des distracteurs étaient légèrement contraints, de telle sorte qu'après la sélection d'une cible, la distance entre le curseur et la cible suivante était à peu près constante (environ 7,96~cm).
+	Pour contrôler l'amplitude (telle que définie par Fitts~\cite{fitts1954information}) les mouvements des distracteurs étaient légèrement contraints, de telle sorte qu'après la sélection d'une cible, la distance entre le curseur et la cible suivante était à peu près constante (environ 7,96~cm). Aucun de nos sujets n'a remarqué la présence de ces contraintes.
 	
 	Quand une cible était sélectionnée avec succès, elle changeait brièvement de couleur pour devenir verte tandis que la cible suivante devenait rouge.
 	
 	\subsubsection{Erreurs et échecs}
 	La sélection de cibles implique un compromis entre vitesse et précision~\cite{guiard2011fitt}, et les utilisateurs sont généralement libres d'adopter différentes approches de ce compromis, privilégiant le premier ou le second objectif. Il peut en résulter, d'un utilisateur à l'autre, d'importants écarts de temps de sélection et de taux d'erreurs. Afin de minimiser ces variations, nos sujets avaient pour instruction de sélectionner leurs cibles le plus rapidement possible, mais avec un maximum de 5 tentatives.
 	
-	Le nombre de tentatives encore possible était affiché dans le coin supérieur gauche de la fenêtre (voir la figure~\ref{fig:app}). Après la dernière tentative, en cas d'échec le mot \emph{failure} était affiché à la place du nombre de tentatives, indiquant un échec. Mais les sujets avaient pour instruction de continuer à essayer de sélectionner la cible, sans plus chercher à minimiser les erreurs. Cette particularité de notre dispositif expérimental était nécessaire pour avoir suffisamment de données (en temps de sélection) pour les conditions les plus difficiles, qui généraient énormément d'erreurs.
+	Le nombre de tentatives encore possible était affiché dans le coin supérieur gauche de la fenêtre (voir la figure~\ref{fig:app}). Après la dernière tentative, en cas d'échec le mot \emph{failure} était affiché à la place du nombre de tentatives, indiquant un échec. Mais les sujets avaient pour instruction de continuer à essayer de sélectionner la cible, sans plus chercher à minimiser les erreurs. Cette particularité de notre dispositif expérimental était nécessaire pour avoir suffisamment de données (en temps de sélection) pour les conditions les plus difficiles, qui généraient énormément d'erreurs. Par ailleurs, elle correspond probablement mieux à une \og vraie \fg{} tâche dans le sens où, dans une application réelle, si la sélection d'une cible est nécessaire, l'utilisateur continuera d'essayer de la saisir jusqu'à réussir, il n'abandonnera pas la tâche en cas d'échec.
 	
-	Elle a néanmoins l'inconvénient de réduire quelque peu les temps de sélection des conditions les plus difficiles, tout en augmentant leurs taux d'erreurs. Ainsi, les échecs ne sont pas absolus, mais indiquent les conditions pour lesquelles la sélection est (parfois extrêmement) difficile.
+	Ajoutons néanmoins que, si nous considérions uniquement les temps de sélection de chaque tentative de l'utilisateur, alors nous aurions des temps de sélection plus homogènes d'une condition à l'autre, et seuls les taux d'erreurs permettraient des les départager. Attendu que le choix que nous avons fait pour mesurer les temps de sélection mène à une corrélation extrêmement forte entre ceux-ci et les taux d'erreurs, il nous apparaît que ce choix était pertinent.
+	
+	Ainsi, les échecs ne sont pas absolus, mais indiquent les conditions pour lesquelles la sélection est (parfois extrêmement) difficile.
 	
 	\subsubsection{Conditions évaluées}
 	Nous avons testé toutes les combinaisons des valeurs de V, F et A suivantes, avec 4 sélections par condition et par sujet :
@@ -79,7 +81,7 @@
 		\item[A :] 0, 30, 60, 90, 120 et 180 degrés, soit 6 valeurs.
 	\end{description}
 	
-	À ceci s'ajoutait une condition de base avec des cibles statiques, répétée 20 fois. Naturellement, lorsque $A = 0$, les cibles se déplacent en ligne droite. Au total, nous avons évalué $3 \times 7 \times 6 + 1 = 127$ conditions ave 4 essais par condition dynamique et 20 essais pour la condition statique, soit un total de $126 \times 4 + 1 \times 20 = 524$ essais par participant, et $524 \times 13 = 6812$ essais au total.
+	À ceci s'ajoutait une condition de base avec des cibles statiques, répétée 20 fois. Naturellement, lorsque $A = 0$, les cibles se déplacent en ligne droite. Au total, nous avons évalué $3 \times 7 \times 6 + 1 = 127$ conditions ave 4 essais par condition dynamique et 20 essais pour la condition statique, soit un total de $126 \times 4 + 1 \times 20 = 524$ essais par participant, et $524 \times 13 = 6812$ essais au total. Pour chaque participant, l'ordre des condition était choisi au hasard, de façon à compenser les éventuels effets d'apprentissage.
 	
 	La conception de ce protocole impliquait un compromis difficile entre plusieurs objectifs contradictoires : avoir suffisamment de conditions pour évaluer un échantillon représentatif des types de mouvements possibles, avoir suffisamment de données par condition pour avoir des résultats fiables, limiter l'évaluation dans le temps et dans l'intensité pour limiter la fatigue des sujets et ne pas les décourager.
 	
@@ -91,7 +93,6 @@
 	Les valeurs de A résultent d'un constat similaire, mais moins marqué. Ainsi, les valeurs évaluées vont simplement de 0\textdegree{} à 180\textdegree{} par pas de 30\textdegree{} ; la valeur 150\textdegree{} est omise car trop similaire (subjectivement) aux valeurs 120\textdegree{} et 180\textdegree{}, et afin de limiter le nombre de conditions.
 
 	\subsection{Procédure et collecte de données}
-	\subsubsection{Descrption de la procédure}
 	Chaque session durait environ 40 minutes (selon les performances du sujet) dont une phase d'entraînement de plus de 50 essais, prenant fin au moment où le sujet se sentait suffisamment à l'aise pour commencer l'évaluation.
 	
 	Des pauses d'une durée laissée au choix du sujet étaient accordées à 25~\%{}, 50~\%{} et 75~\%{} de complétion de l'évaluation, afin de limiter les effets de la fatigue. Permettons-nous en effet d'insister sur le fait que la tâche nécessite une concentration intense et soutenue, en plus d'un effort physique non négligeable compte tenu de la rapidité et de la précision requises. Les pauses étaient donc généralement appréciées.
@@ -133,7 +134,7 @@
 
 	\subsection{Vitesse}
 	\label{sub:spEffect}
-	Sans surprise, les temps de sélection et les taux d'erreurs croissent avec la vitesse des cibles, comme l'illustre la figure~\ref{fig:spEffectPerf}. Ainsi, la moyenne des MTSN de toutes les conditions lentes (0,73~cm/s) est de 16,74~\%{}, celle des conditions de vitesse intermédiaire est de 25,02~\%{}, et celle des conditions rapides est de 36,58~\%{}. Les différences de pourcentages croisées entre ces conditions sont présentées dans le tableau~\ref{tab:spPerf}.
+	Sans surprise, les temps de sélection et les taux d'erreurs croissent avec la vitesse des cibles, comme l'illustre la figure~\ref{fig:spEffectPerf}. Ainsi, la moyenne des MTSN de toutes les conditions lentes (0,73~cm/s) est de 16,74~\%{}, celle des conditions de vitesse intermédiaire est de 25,02~\%{}, et celle des conditions rapides est de 36,58~\%{}. Les différences de pourcentages croisées entre ces conditions sont présentées dans le tableau~\ref{tab:spPerf}, et les intervalles de confiance à 95~\%{} sont présentés dans le tableau~\ref{tab:spPerfCIs}.
 
 	Les MTSN, TERR et TECH en fonction de la vitesse sont présentés sur la figure~\ref{fig:spEffectPerf}, pour des valeurs de A de 60 et 120, et pour toutes les valeurs de F. Les conditions associées aux autres valeurs de A sont omises ici, dans un souci de concision, mais présentent des caractéristiques très similaires.
 	
@@ -141,8 +142,8 @@
 	\begin{table}
 		\centering
 		\begin{tabular}{r c | c c c}
-			Vitesse			&			& Basse		& Moyenne	& Haute		\bigstrut[b] \\
-							&			& (16,74)	& (25,02)	& (36,58)	\bigstrut[b] \\ \hline
+			Vitesse			&			& Basse		& Moyenne	& Haute		\\
+							&			& (16,74)	& (25,02)	& (36,58)	\\ \hline
 			Basse			& (16,74)	& 0,00		& 39,65		& 74,40		\bigstrut[t] \\
 			Moyenne			& (25,02)	& 39,65		& 0,00		& 37,51		\\
 			Haute			& (36,58)	& 74,40		& 37,51		& 0,00		\\
@@ -150,6 +151,18 @@
 		\caption[Performances selon la vitesse]{Performances de sélection (MTSN moyennes) selon la vitesse, et différences de pourcentages. Les MTSN moyennes associées à chaque vitesse sont présentées sur la première ligne et la première colonne en pourcentages, et les différences de pourcentages croisées sont indiquées à l'intérieur du tableau.}
 		\label{tab:spPerf}
 	\end{table}
+	
+	\begin{table}
+		\centering
+		\begin{tabular}{c | c c c}
+			Vitesse		& Borne inférieure	& Moyenne	& Borne supérieure	\\ \hline
+			Basse		& 16,2327			& 16,7411	& 17,2495			\bigstrut[t] \\
+			Moyenne		& 22,3232			& 25,0215	& 27,7198			\\
+			Haute		& 32,1127			& 36,5754	& 41,0381			\\
+		\end{tabular}
+		\caption[Performances selon la vitesse -- II]{Performances de sélection (MTSN moyennes) selon la vitesse, et intervalles de confiance à 95~\%{}. Les MTSN sont présentées pour chaque vitesse, avec la borne inférieure de l'intervalle de confiance, la moyenne, la borne supérieure. Chaque valeur est exprimée sous forme de pourcentage.}
+		\label{tab:spPerfCIs}
+	\end{table}	
 	
 	On observe que les MTSN et TERR sont approximativement des fonctions affine de la vitesse, pour une pseudo-entropie (i.e., le produit AF) donnée. Les TECH tendent à croître de façon super-linéaire, probablement du fait de l'effet de seuil introduit par notre définition (arbitraire) d'un échec.
 
@@ -203,7 +216,7 @@
 
 
 	\subsection{Angle}
-	L'effet du paramètre d'angle est plus subtile à interpréter, notamment du fait d'interactions avec la vitesse et la fréquence. À basse vitesse, l'effet de A sur les MTSN est faible : pour $V = 0,73$ et $F = 4$, quand $A= 0$, $MTSN = 14~\%{}$ alors que quand $A = 120$, $MTSN = 20~\%{}$, soit une différence de pourcentage de seulement 33~\%{}, et qui plus est la plus importante mesurée entre deux valeurs de A pour cette vitesse. En revanche, lorsque S vaut 2,19, alors les MTSN sont respectivement 21~\%{} et 54~\%{} pour les mêmes valeurs de A et F, ce qui représente une différence de pourcentage de 90~\%{}.
+	L'effet du paramètre d'angle est plus subtil à interpréter, notamment du fait d'interactions avec la vitesse et la fréquence. À basse vitesse, l'effet de A sur les MTSN est faible : pour $V = 0,73$ et $F = 4$, quand $A= 0$, $MTSN = 14~\%{}$ alors que quand $A = 120$, $MTSN = 20~\%{}$, soit une différence de pourcentage de seulement 33~\%{}, et qui plus est la plus importante mesurée entre deux valeurs de A pour cette vitesse. En revanche, lorsque S vaut 2,19, alors les MTSN sont respectivement 21~\%{} et 54~\%{} pour les mêmes valeurs de A et F, ce qui représente une différence de pourcentage de 90~\%{}.
 	
 	L'interprétation que nous proposons est qu'à basse vitesse, la sélection est de toute façon relativement facile, presque indépendamment de la nature du mouvement, ce qui n'est plus du tout vrai avec des cibles rapides. Ces résultats sont illustrés par la figure~\ref{fig:aEffectPerf}.
 
@@ -312,15 +325,11 @@
 	\end{figure}
 
 \section{Analyse exploratoire}
-	Nous avons également porté un regard sur notre espace de paramètres entier afin d'identifier des tendances plus générales.
-
-	Les cartes thermiques (\emph{heat maps}) sur les figures~\ref{fig:hmap_t_146} et~\ref{fig:hmap_t_219} présentent les MTSN pour toutes les combinaisons de A et F aux vitesses intermédiaire et élevée, respectivement. Sur chaque carte, A se lit sur l'axe des abscisses, et F sur celui des ordonnées. Les TERR et TECH sont également représentés sur la figure~\ref{fig:hmaps}.
+	Nous avons également porté un regard sur notre espace de paramètres entier afin d'identifier des tendances plus générales. Les cartes thermiques (\emph{heat maps}) sur les figures~\ref{fig:hmap_t_146} et~\ref{fig:hmap_t_219} présentent les MTSN pour toutes les combinaisons de A et F aux vitesses intermédiaire et élevée, respectivement. Sur chaque carte, A se lit sur l'axe des abscisses, et F sur celui des ordonnées. Les TERR et TECH sont également représentés sur la figure~\ref{fig:hmaps}.
 	
 	Nous remarquons sur toutes ces cartes de chaleur --- et plus clairement à 2,19~cm/s --- qu'une zone approximativement située sur la diagonale principale (du coin supérieur gauche au coin inférieur droit) est associé aux MTSN, TERR et TECH les plus élevés, donc aux conditions les plus difficiles.
 	
-	Si l'on suit cette diagonale et que l'on se rapporte aux axes des abscisses et des ordonnées, l'on peut remarquer qu'elle est caractérisée soit par une forte valeur de A associée à une faible valeur de F, soit l'inverse, soit à des valeurs de A et F simultanément intermédiaires.
-	
-	Inversement, lorsque A et F sont simultanément faibles (coin inférieur gauche) ou simultanément élevés (coin supérieur droit) la sélection est relativement aisée.
+	Si l'on suit cette diagonale et que l'on se rapporte aux axes des abscisses et des ordonnées, l'on peut remarquer qu'elle est caractérisée soit par une forte valeur de A associée à une faible valeur de F, soit l'inverse, soit à des valeurs de A et F simultanément intermédiaires. Inversement, lorsque A et F sont simultanément faibles (coin inférieur gauche) ou simultanément élevés (coin supérieur droit) la sélection est relativement aisée.
 
 	\begin{figure}[!htb]
 		\centering
@@ -559,14 +568,14 @@
 	\begin{table}
 		\centering
 		\begin{tabular}{c | c c | c}
-						& \multicolumn{2}{c |}{Vitesses moyennes}	&							\bigstrut[b] \\
-			Sujet		& Cible statique	& Mouvement rectiligne	& Différence de pourcentage	\bigstrut[b] \\ \hline
+						& \multicolumn{2}{c |}{Vitesses moyennes}	&							\\
+			Sujet		& Cible statique	& Mouvement rectiligne	& Différence de pourcentage	\\ \hline
 			5			& 11,10~cm/s		& 8,00~cm/s				& 32,44~\%{}				\bigstrut[t] \\
 			6			& 9,82~cm/s			& 8,57~cm/s				& 13,60~\%{}				\\
 			8			& 7,65~cm/s			& 7,05~cm/s				& 8,13~\%{}					\\
 			9			& 8,48~cm/s			& 6,46~cm/s				& 26,98~\%{}				\\
 		\end{tabular}
-		\caption[Vitesses moyennes du curseur, cibles statiques ou en mouvement rectiligne]{Vitesses moyennes (en cm/s) du curseur pour quatre sujets différents, au cours de sélections de cibles statiques d'une part, en mouvement rectiligne d'autre part. Les différences de pourcentages entre les deux conditions sont présentées dans la quatrième colonne.}
+		\caption[Vitesses moyennes du curseur, cibles statiques ou en mouvement rectiligne]{Vitesses moyennes et leurs différences de pourcentages pour le curseur de quatre sujets différents, au cours de sélections de cibles statiques et en mouvement rectiligne.}
 		\label{tab:cursorSpeed}
 	\end{table}
 	
@@ -611,39 +620,39 @@
 	\begin{table}
 		\centering
 		\begin{tabular}{c | c c c | c c}
-					& \multicolumn{3}{c |}{Vitesses moyennes}		& \multicolumn{2}{c}{Différences de pourcentage}	\bigstrut[b] \\
-			Sujet	& Statique		& Rectiligne	& Imprévisible	& Stat--impr.		& Rect-impr.					\bigstrut[b] \\ \hline
+					& \multicolumn{3}{c |}{Vitesses moyennes}		& \multicolumn{2}{c}{Différences de pourcentage}	\\
+			Sujet	& Statique		& Rectiligne	& Imprévisible	& Stat--impr.		& Rect-impr.					\\ \hline
 			5		& 11,10~cm/s	& 8,00~cm/s		& 5,89~cm/s		& 61,29~\%{}		& 30,36~\%{}					\bigstrut[t] \\
 			6		& 9,82~cm/s		& 8,57~cm/s		& 4,41~cm/s		& 76,14~\%{}		& 64,20~\%{}					\\
 			8		& 7,65~cm/s		& 7,05~cm/s		& 2,85~cm/s		& 91,33~\%{}		& 84,77~\%{}					\\
 			9		& 8,48~cm/s		& 6,46~cm/s		& 4,14~cm/s		& 68,79~\%{}		& 43,85~\%{}					\\
 		\end{tabular}
-		\caption[Vitesses du curseur, cibles statiques, rectilignes ou imprévisibles]{Vitesses moyennes (en cm/s) du curseur pour quatre sujets différents, au cours de sélections de cibles statiques, en mouvement rectiligne, ou imprévisibles. Les différences de pourcentages entre les conditions sont présentées dans les deux dernières colonnes (\emph{stat-impr} pour les différences entre cibles statiques et de mouvements imprévisibles, \emph{rect-impr} pour les différences entre cibles de mouvement rectiligne et imprévisibles).}
+		\caption[Vitesses du curseur, cibles statiques, rectilignes ou imprévisibles]{Vitesses moyennes du curseur pour 4 sujets : sélections de cibles statiques, en mouvement rectiligne, ou imprévisibles. Les différences de pourcentages \emph{stat-impr} correspondent aux différences entre les cibles statiques et de mouvements imprévisibles, \emph{rect-impr} aux différences entre cibles de mouvement rectiligne et imprévisibles.}
 		\label{tab:cursorSpeedTough}
 	\end{table}
 	
 	\subsection{Prédominance de la phase de correction}
-	Si, pour des cibles statiques, les phases balistique et de correction sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase de correction dominant alors le temps total de sélection, conformément à nos hypothèses de départ.
+	Si, pour des cibles statiques, les phases balistique et de correction sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase de correction dominant alors le temps total de sélection, conformément à nos hypothèses de départ. Nous reviendrons sur ce point dans le chapitre suivant.
 	
-	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du niveau d'accélération possible sur cette portion.
+	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du facteur d'accélération possible sur cette portion.
 	
 	Cette loi s'énonce formellement selon l'équation~\ref{eq:amdahl}, où $S(s)$ est l'accélération totale de la tâche (facteur sans unité), $p$ est la proportion (en temps) de la tâche qui peut être accélérée, et $s$ est l'accélération possible sur cette portion (facteur sans unité). Or, il est évident que cette loi implique la limite énoncée dans l'équation~\ref{eq:amdahlLimit}.
 	
 	\begin{align}
 		\label{eq:amdahl}
-		S(s) &= \frac{1}{(1-p) + \frac{1}{s}} \\
+		S(s,p) &= \frac{1}{(1-p) + \frac{1}{s}} \\
 		\label{eq:amdahlLimit}
-		\lim_{s\to\infty} S(s) &= \frac{1}{1-p}
+		\lim_{s\to\infty} S(s,p) &= \frac{1}{1-p}
 	\end{align}
 	
 	Cette limite quand $s$ tend vers l'infini correspond à l'accélération maximale qu'il serait possible d'obtenir avec une technique d'assistance à la sélection \og parfaite \fg{}, c'est-à-dire réduisant le temps de sélection à zéro, mais seulement sur une partie de la tâche représentant une proportion $p$ de son temps de complétion. La figure~\ref{fig:amdahl} en fournit une représentation graphique. Comme on le constate, pour de petites valeurs de $p$, l'accélération maximale théoriquement possible reste faible, si bien qu'il nous paraît déraisonnable de concentrer ses efforts sur une phase de la tâche de sélection représentant moins de 30~\%{} du temps total de la tâche.
 	
-	\begin{figure}[!htb]
+	\begin{SCfigure}[50][htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/amdahl}
-		\caption[Loi d'Amdahl sous sa forme de limite]{Loi d'Amdahl sous sa forme de limite, quand le taux d'accélération de la sous-tâche tend vers l'infini. La courbe violette représente l'accélération maximale possible pour une tâche dont une sous-tâche représentant une proportion $p$ de son temps de complétion initial peut être accélérée à l'infini ; c'est-à-dire que le temps de complétion de cette sous-tâche peut être réduit à zéro. Cette fonction diverge en $p = 1$, et l'accélération est sur une échelle logarithmique.}
+		\includegraphics[width=0.45\textwidth]{figures/ch4/amdahl}
+		\caption[Loi d'Amdahl sous sa forme de limite]{Loi d'Amdahl quand $s\to\infty$ : c'est l'accélération maximale possible pour une tâche dont une sous-tâche représentant une proportion $p$ de son temps de complétion initial peut être accélérée à l'infini (temps de complétion nul). Échelle logarithmique.}
 		\label{fig:amdahl}
-	\end{figure}
+	\end{SCfigure}
 	
 	La phase de correction étant en revanche susceptible de représenter une très grande portion du temps de sélection (cela peut dépasser les 80~\%{} pour les conditions les plus difficiles) l'on voit bien que les gains potentiels sont considérables, si l'on parvient à obtenir une accélération $s$ importante sur cette phase. Une technique d'assistance à la sélection de cibles mobiles devrait donc se focaliser sur cette phase.
 	
@@ -655,38 +664,42 @@
 	
 	Nous avons évalué cette hypothèse en fixant les valeurs de A et F, et en faisant varier V pour mesurer l'impact sur $\mathbb{E}(\mathcal{P}(ec))$. La figure~\ref{fig:avspeed} fournit une illustration de telles mesures, en l'occurrence avec $A = 120\degree$ et $F = 8$~Hz. Toutes nos mesures avec d'autres valeurs de A et F sont cohérentes. Notez que les périmètres utilisés pour ce graphique correspondent au périmètre moyen sur 400 trajectoires générées aléatoirement pour chaque valeur de V.
 	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/areaVspeed}
-		\caption[Périmètre de l'enveloppe convexe en fonction de la vitesse]{Périmètre de l'enveloppe convexe d'une trajectoire (de 5 secondes) en fonction de la vitesse. Les paramètres A et F sont fixés (à respectivement 120\textdegree{} et 8~Hz) et la vitesse varie de 0,125~cm/s à 4~cm/s. Pour chaque valeur de V, on mesure le périmètre moyen de l'enveloppe convexe de la trajectoire génrée. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est d'environ 0,986.}
-		\label{fig:avspeed}
+	\begin{figure}[!htbp]
+		\begin{subfigure}{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/areaVspeed}
+			\caption[Périmètre de l'enveloppe convexe en fonction de la vitesse]{Périmètre de l'enveloppe convexe d'une trajectoire (de 5~s) en fonction de la V ; A et F sont fixés (120\textdegree{} et 8~Hz) et V varie de 0,125~cm/s à 4~cm/s. Pour chaque V, on mesure le périmètre moyen de l'enveloppe convexe de la trajectoire générée. Les mesures sont en violet, et une approximation linéaire est en vert. Son coefficient de corrélation est d'environ 0,986.}
+			\label{fig:avspeed}
+		\end{subfigure}
+		~
+		\begin{subfigure}{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/durationVarea}
+			\caption[Périmètre de l'enveloppe convexe sur en fonction de la durée du mouvement]{Périmètre moyen de l'enveloppe convexe d'une trajectoire en fonction de la durée du mouvement, sur de nombreuses combinaisons de A et F, pour une vitesse fixée à 2,19~cm/s. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est supérieur à 0,999.}
+			\label{fig:durationVarea}
+		\end{subfigure}
+		\caption{Périmètres d'enveloppes convexes.}
+		\label{fig:perimeters}
 	\end{figure}
 	
 	Précisons avant d'aller plus loin que $\mathbb{E}(\mathcal{P}(ec))$ dépend de la durée du mouvement, selon une relation linéaire que la figure~\ref{fig:durationVarea} illustre. Si l'on souhaite étudier la relation entre une variable quelconque et $\mathbb{E}(\mathcal{P}(ec))$, la durée de la trajectoire importe peu, à condition qu'elle soit significativement supérieure à la période $T = \frac{1}{F}$ (au moins double, dans l'idéal).
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/durationVarea}
-		\caption[Périmètre de l'enveloppe convexe sur en fonction de la durée du mouvement]{Périmètre moyen de l'enveloppe convexe d'une trajectoire en fonction de la durée du mouvement, sur de nombreuses combinaisons de A et F, pour une vitesse fixée à 2,19~cm/s. Les mesures sont en violet et une approximation linéaire est représentée en vert, avec son équation. Son coefficient de corrélation est supérieur à 0,999.}
-		\label{fig:durationVarea}
-	\end{figure}
 	
 	\subsection{Détermination des coefficients}
 	Cependant, si l'on a bien $\mathbb{E}(\mathcal{P}(ec)) = \gamma{}V$, $\forall A$ et $\forall F$, la valeur de $\gamma$ n'est pas la même pour toutes les combinaisons de A et F. Nous avons donc cherché à déterminer la valeur de $\gamma$ en fonction de F et A, de manière à pouvoir étudier $\mathbb{E}(\mathcal{P}(ec))$ en fonction de F et A.
 	
 	Pour ce faire, nous avons généré des trajectoires pour diverses combinaisons de F et A à de nombreuses valeurs de V, afin de déterminer la valeur de $\gamma$ correspondant à chaque couple (F,A). Encore une fois, pour chaque condition (V,F,A) nous avons généré de multiples trajectoires (200), afin d'obtenir des valeurs moyennes fiables. Les résultats sont présentés sous forme de cartes thermiques sur la figure~\ref{fig:gammaVfa}. La figure~\ref{fig:gammaVfaLin} les représente sur une échelle linéaire, et la figure~\ref{fig:gammaVfaLog} sur une échelle logarithmique. Cette dernière figure, par ses lignes droites, suggère qu'une loi de puissance régit nos données, comme nous allons le voir plus loin.
 	
-	\clearpage % Forces a float page; avoids warnings and probably helps compilation a bit.
+%	\clearpage % Forces a float page; avoids warnings and probably helps compilation a bit.
 	\begin{figure}[!htb]
 		\centering
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{0.485\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/linApprox}
 			\caption{Échelle linéaire.}
 			\label{fig:gammaVfaLin}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{0.485\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/linApprox_log}
 			\caption{Échelle logarithmique.}
@@ -716,39 +729,43 @@
 	Plus cette moyenne est faible, plus l'expression est considérée comme bonne, car cela revient à minimiser la dispersion des valeurs de $\gamma$ pour un intervalle de valeurs de $A^{i}\times{}F^{j}$ donné. Plus cette valeur est faible, plus nous sommes proches d'une situation où l'on peut dire qu'il existe une fonction continue qui à une valeur de $A^{i}\times{}F^{j}$ associe une unique valeur de $\gamma$.
 	
 	Nous avons appliqué cet algorithme à plus de 80~000 couples $(i,j)$, avec $i \in [0,4]$ et $j \in [0,2]$. Les valeurs obtenues pour la moyenne des écarts-types sont représentées sous forme de carte thermique sur la figure~\ref{fig:spread_v_af}. Celle-ci illustre que l'expression n'admet pas une unique forme optimale, mais un ensemble infini, représenté par la ligne en bleu foncé. Il s'agit plus précisément des couples $(i,j)$ tels que $i = 2j$.
-	
+
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/spread_v_af}
-		\caption[Moyenne des écarts-types de $\gamma$ en fonction de $i$ et $j$.]{Moyenne des écarts-types de $\gamma$ en fonction des exposants de A et F. La valeur de cette moyenne se lit d'après l'échelle de couleur à droite.}
-		\label{fig:spread_v_af}
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/spread_v_af}
+			\caption[Moyenne des écarts-types de $\gamma$ en fonction de $i$ et $j$.]{Moyenne des écarts-types de $\gamma$ en fonction des exposants de A et F. La valeur de cette moyenne se lit d'après l'échelle de couleur à droite.}
+			\label{fig:spread_v_af}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/spread_v_expa_over_expf}
+			\caption[Moyenne des écarts-types de $\gamma$ en fonction de $i/j$.]{Moyenne des écarts-types de $\gamma$ en fonction du rapport des exposants de A et F, c'est-à-dire en fonction de $\frac{i}{j}$ où $i$ et $j$ sont les exposants dans l'expression $A^{i}F^{j}$.}
+			\label{fig:spread_v_expa_over_expf}
+		\end{subfigure}
+		\caption[Écarts-types de $\gamma$ en fonction de $i$ et $j$]{Moyenne des écarts-types de $\gamma$ en fonction des exposants de A et F.}
+		\label{fig:spread_v_af_and_ratio}
 	\end{figure}
 	
 	Afin de le confirmer, nous avons représenté la moyenne des écarts-types des valeurs de $\gamma$ en fonction du rapport $\frac{i}{j}$, sur la figure~\ref{fig:spread_v_expa_over_expf}. Or, on observe bien un minimum en $\frac{i}{j} = 2$, confirmant l'observation faite sur la carte thermique~\ref{fig:spread_v_af}.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/spread_v_expa_over_expf}
-		\caption[Moyenne des écarts-types de $\gamma$ en fonction de $i/j$.]{Moyenne des écarts-types de $\gamma$ en fonction du rapport des exposants de A et F, c'est-à-dire en fonction de $\frac{i}{j}$ où $i$ et $j$ sont les exposants dans l'expression $A^{i}F^{j}$.}
-		\label{fig:spread_v_expa_over_expf}
-	\end{figure}
-	
-	Nous choisissons donc de simplement fixer $i = 1$ et $j = \frac{1}{2}$, c'est-à-dire d'adopter l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} illustre, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; et en effet nous obtenons un coefficient de corrélation de Pearson de seulement -0,601 entre le produit AF et $\gamma$, avec une \emph{p-value} inférieure à $10^{-53}$ toutefois. La figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$, de même que la figure~\ref{fig:gammaASQRTFlog}, qui représente les mêmes résultats, mais sur une échelle logarithmique, bien plus lisible pour les petites valeurs de $A\sqrt{F}$ ; nous obtenons ici un coefficient de corrélation de -0,768, avec une \emph{p-value} inférieure à $10^{-105}$.
+		
+	Nous choisissons donc de simplement fixer $i = 1$ et $j = \frac{1}{2}$, c'est-à-dire d'adopter l'expression $A\sqrt{F}$. La figure~\ref{fig:gammaAF} illustre, par la multiplicité des valeurs de $\gamma$ dans un petit intervalle de valeurs de AF, que ce n'est pas la meilleure façon d'exprimer ce coefficient en fonction des paramètres du modèle VFA ; et en effet nous obtenons un coefficient de corrélation de Pearson de seulement -0,601 entre le produit AF et $\gamma$, avec une \emph{p-value} inférieure à $10^{-53}$ toutefois. La figure~\ref{fig:gammaASQRTF} illustre la pertinence de la forme $A\sqrt{F}$ : nous obtenons ici un coefficient de corrélation de -0,768, avec une \emph{p-value} inférieure à $10^{-105}$.
 	
 	% AF:		(-0.60099016653473358, 2.5188805302307829e-54)
 	% ASQRT(F):	(-0.76821320224146317, 2.7924336218256319e-106)
 	%
-	\clearpage % Forces a float page; avoids warnings and probably helps compilation a bit.
+	%\clearpage % Forces a float page; avoids warnings and probably helps compilation a bit.
 	\begin{figure}[!htb]
 		\centering
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{0.485\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/afVgamma}
 			\caption{$\gamma$ en fonction de $A\times{}F~(\degree{}.Hz)$.}
 			\label{fig:gammaAF}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{0.485\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgamma}
 			\caption{$\gamma$ en fonction de $A\sqrt{F}~ (\degree{}.Hz^{1/2})$.}
@@ -758,20 +775,31 @@
 		\label{fig:gammaVentropy}
 	\end{figure}
 
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLog}
-		\caption[Coefficients $\gamma$ en fonction de F et A, ter (log)]{Coefficients $\gamma$ en fonction de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée, et $A\sqrt{F}$ est en abscisse, sur une échelle logarithmique.}
-		\label{fig:gammaASQRTFlog}
-	\end{figure}
+%	\begin{figure}[!htb]
+%		\centering
+%		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLog}
+%		\caption[Coefficients $\gamma$ en fonction de F et A, ter (log)]{Coefficients $\gamma$ en fonction de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée, et $A\sqrt{F}$ est en abscisse, sur une échelle logarithmique.}
+%		\label{fig:gammaASQRTFlog}
+%	\end{figure}
 	
 	Si l'on examine les valeurs de $\gamma$ en fonction de $A\sqrt{F}$ sur une échelle \emph{log-log}, on remarque que sur une portion des données, correspondant à peu près à celles définies sur $A\sqrt{F} \in [180,\infty[$, la représentation graphique des valeurs de $\gamma$ est rectiligne, indiquant une loi de puissance. La figure~\ref{fig:asqrtFVgammaLogLogUnbrokenPowerFit} l'illustre, avec une approximation par une loi de puissance (d'équation $y = 1000x^{-0,95}$), dont le coefficient de corrélation est supérieur à 0,99\ldots{} pour cette portion seulement.
 	
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLogLogUnbrokenPowerFit}
-		\caption[Coefficients $\gamma$ en fonction de F et A, quater (log-log)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance est en vert. Remarquez que puisque $\mathbb{E}(\mathcal{P}(ec)) = \gamma{}V$, ces valeurs correspondent également à $\mathbb{E}(\mathcal{P}(ec))$ quand $V = 1$.}
-		\label{fig:asqrtFVgammaLogLogUnbrokenPowerFit}
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLogLogUnbrokenPowerFit}
+			\caption{Approximation : loi de puissance. $\mathbb{E}(\mathcal{P}(ec)) = \gamma{}V$, donc $\gamma = \mathbb{E}(\mathcal{P}(ec))$ quand $V = 1$.}
+			\label{fig:asqrtFVgammaLogLogUnbrokenPowerFit}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLogLogPowerFit}
+			\caption{Approximation par une loi de puissance courbée. $c_{corr} > 0,9997$.}
+			\label{fig:asqrtFVgammaLogLogPowerFit}
+		\end{subfigure}
+		\caption[Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation est en vert, avec son coefficient de corrélation $c_{corr}$.}
+		\label{fig:asqrtFVgammaLogLogFits}
 	\end{figure}
 	
 	Pour modéliser l'ensemble de nos données, il est possible d'employer une loi de puissance modifiée pour qu'elle s'ajuste aux données quand $A\sqrt{F}<180$. Nous avons opté pour une fonction de la forme de l'équation~\ref{eq:brokenPower}, où $x$ représente $A\sqrt{F}$, $M$ est la valeur maximale atteinte, $x_{n}$ situe le point où la courbe est modifiée pour tenir compte de l'écart avec une loi de puissance pure, et $k$ est une constante. Cette fonction peut donc s'écrire également sous la forme de l'équation~\ref{eq:brokenPowerAF}, et l'expression que nous avons utilisée avec ses valeurs numériques précises est fournie par l'équation~\ref{eq:brokenPowerNum}.
@@ -785,13 +813,6 @@
 		f(A\sqrt{F}) &= 10 \left( 1 + \frac{A^{2}F}{138,87382085^{2}} \right)^{-\frac{1}{2}}
 	\end{align}
 	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/asqrtFVgammaLogLogPowerFit}
-		\caption[Coefficients $\gamma$ vs. F et A, quinquies (log-log et loi de puissance)]{Coefficients $\gamma$ en fonction des valeurs de $A\sqrt{F}$. Les valeurs de $\gamma$ sont en ordonnée et en violet, et l'approximation par une loi de puissance courbée est en vert. Le coefficient de corrélation est supérieur à 0,9997.}
-		\label{fig:asqrtFVgammaLogLogPowerFit}
-	\end{figure}
-	
 	Grâce à ce modèle, nous pouvons exprimer le coefficient $\gamma$( par lequel il faut multiplier la vitesse afin de trouver le périmètre de l'enveloppe convexe) en fonction de l'expression $A\sqrt{F}$. Cela nous permet d'exprimer le périmètre directement en fonction de nos paramètres, selon l'équation~\ref{eq:areaModel}.
 	
 	\begin{equation}
@@ -803,48 +824,51 @@
 \section{Périmètres et performances de sélection}
 	Attendu que le périmètre de l'enveloppe convexe d'une trajectoire est lié à l'espace que la cible peut occuper pendant la durée considérée, il est raisonnable de supposer un lien entre les performances (par exemple le temps de sélection) et $\mathbb{E}(\mathcal{P}(ec))$. La figure~\ref{fig:perfVareaRaw} présente notre exploration de cette relation, avec des valeurs de $\mathbb{E}(\mathcal{P}(ec))$ calculées pour des trajectoires de 2 secondes, comme dans la suite de cette section.
 
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perfVareaRaw}
-		\caption[Temps de sélection en fonction du périmètre de l'enveloppe convexe]{Temps de sélection normalisés en fonction du périmètre de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
-		\label{fig:perfVareaRaw}
-	\end{figure}
-
 	En considérant tous les points uniformément, les résultats sont difficiles à lire, mais les couleurs que nous avons utilisées permettent de distinguer les résultats en fonction de la vitesse de la cible sélectionnée, et nous apportent quelques informations. Tout d'abord, chaque sous-ensemble de points associé à une vitesse donnée forme une courbe \og en cloche \fg{} distincte des autres.
 	
 	Notez que les points situés en bas à gauche de la figure correspondent aux cibles de mouvements rectilignes. Leurs périmètres ne sont pas nuls car nous avons assimilé (par approximation) les cibles à de petits carrés, donc un mouvement rectiligne est associé à un rectangle très allongé. Concrètement, l'effet est négligeable par rapport à des cibles ponctuelles.
 	
 	\subsection{Normalisation du temps par rapport à la vitesse}
-	Il apparaît donc que la vitesse est un critère déterminant pour interpréter les performances de sélection en fonction du périmètre de l'enveloppe convexe. Or, les résultats présentés dans les sections précédentes montraient déjà un effet approximativement linéaire de la vitesse sur le temps de sélection. Nous pouvons donc examiner les MTSN divisés par la vitesse en fonction de $\mathbb{E}(\mathcal{P}(ec))$. Ces résultats sont présentés sur la figure~\ref{fig:perfVareaTimeNormedAll}.
-	
+	Il apparaît donc que la vitesse est un critère déterminant pour interpréter les performances de sélection en fonction du périmètre de l'enveloppe convexe. Or, les résultats présentés dans les sections précédentes montraient déjà un effet approximativement linéaire de la vitesse sur le temps de sélection. Nous pouvons donc examiner les MTSN divisées par la vitesse en fonction de $\mathbb{E}(\mathcal{P}(ec))$. Ces résultats sont présentés sur la figure~\ref{fig:perfVareaTimeNormedAll}.
+
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perfVareaTimeNormedAll}
-		\caption[Temps de sélection/V en fonction du périmètre de l'enveloppe convexe]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
-		\label{fig:perfVareaTimeNormedAll}
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perfVareaRaw}
+			\caption[Temps de sélection en fonction du périmètre de l'enveloppe convexe]{Temps de sélection normalisés en fonction du périmètre de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
+			\label{fig:perfVareaRaw}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perfVareaTimeNormedAll}
+			\caption{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe, pour les cibles lentes, rapides, et de vitesse intermédiaire.}
+			\label{fig:perfVareaTimeNormedAll}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perfVareaEverythingNormed}
+			\caption{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
+			\label{fig:perfVareaEverythingNormed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/errorsVareaEverythingNormed}
+			\caption[Taux d'erreurs/V en fonction de $\mathbb{E}(\mathcal{P}(ec))/V$]{Taux d'erreurs divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
+			\label{fig:errorsVareaEverythingNormed}
+		\end{subfigure}
+		\caption[Performances en fonction du périmètre]{Performances en fonction du périmètre.}
+		\label{fig:perfVareaTimeVariousNorms}
 	\end{figure}
 	
 	Sur cette figure, il apparaît plus clairement que les cibles de vitesse moyenne et élevée sont associées à peu près au même intervalle de temps de sélection. Il en va autrement des cibles lentes, dont les résultats sont beaucoup plus ramassés. Ce n'est pas étonnant, nous avions en effet noté dans les sections précédentes que les effets de nos paramètres F et A étaient bien plus faibles à basse vitesse. Ces cibles ne présentant de surcroît pas de grandes difficultés de sélection, nous les omettrons des discussions qui suivent.
 	
 	\subsection{Normalisation du périmètre par rapport à la vitesse}
 	Toutefois, si les courbes des cibles rapides et de vitesse moyenne se ressemblent, elles sont clairement distinctes, et plus précisément décalées en abscisse. Or,  de l'enveloppe convexe est en abscisse, et nous savons que $\mathbb{E}(\mathcal{P}(ec)) = \gamma{}V$. Afin de comparer ce qui est comparable, il convient donc de diviser également les périmètres par la vitesse, ce que nous avons fait, et que nous illustrons par la figure~\ref{fig:perfVareaEverythingNormed}.
-
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perfVareaEverythingNormed}
-		\caption[Temps de sélection/V en fonction de $\mathbb{E}(\mathcal{P}(ec))/V$]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
-		\label{fig:perfVareaEverythingNormed}
-	\end{figure}
 	
 	Après cette double normalisation par la vitesse, et après avoir écarté les résultats des sélections de cibles lentes, nous obtenons deux courbes qui se superposent bien mieux. Les résultats correspondant aux cibles en mouvement rectiligne sont (assez logiquement) à part, mais l'on constate que lorsque le périmètre est petit, la sélection est relativement aisée ; lorsqu'elle croît, la sélection devient plus difficile\ldots{} puis commence à l'être de moins en moins, jusqu'à redevenir à peu près aussi aisée que lorsque le périmètre est petit. Sans surprise, les taux d'erreurs reflètent la même tendance, ce que la figure~\ref{fig:errorsVareaEverythingNormed} illustre.
-	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/errorsVareaEverythingNormed}
-		\caption[Taux d'erreurs/V en fonction de $\mathbb{E}(\mathcal{P}(ec))/V$]{Taux d'erreurs divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire.}
-		\label{fig:errorsVareaEverythingNormed}
-	\end{figure}
-
 	
 	\subsection{Interprétation}
 	Ce motif est relativement familier en ce qu'il rappelle ce que nous avions observé avec la pseudo-entropie (le produit AF) mais il est ici plus net.
@@ -882,12 +906,24 @@
 		g(x) = a\frac{x-b}{\sigma^{2}}e^{-\frac{(x-b)^{2}}{2\sigma^{2}} } + d
 		\label{eq:pdfModel}
 	\end{equation}
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/timeVareaFit}
-		\caption[Temps de sélection/V en fonction de $\mathbb{E}(\mathcal{P}(ec))/V$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,846.}
-		\label{fig:timeVareaFit}
+
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/timeVareaFit}
+			\caption[Temps de sélection/V en fonction de $\mathbb{E}(\mathcal{P}(ec))/V$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction du périmètre de l'enveloppe convexe également divisée par la vitesse, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,846.}
+			\label{fig:timeVareaFit}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/timeVafFit}
+			\caption[Temps de sélection/V en fonction de $A\sqrt{F}$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction de $A\sqrt{F}$, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,863.}
+			\label{fig:timeVafFit}	
+		\end{subfigure}
+		\caption[Performances en fonction de F, A, et du périmètre]{Performances en fonction de F, A, et du périmètre.}
+		\label{fig:timeVafAndPerimFits}
 	\end{figure}
 	
 	Ce modèle permet d'estimer la MTSN à partir de $\mathbb{E}(\mathcal{P}(ec))/V$, dont nous avons montré précédemment qu'elle pouvait être estimée à partir de V, F et A. Ces trois paramètres peuvent donc être utilisés pour estimer les performances lors d'une tâche de sélection d'une cible mue en fonction d'eux.
@@ -905,14 +941,7 @@
 		g(x) = a\frac{cx-b}{\sigma^{2}}e^{-\frac{(cx-b)^{2}}{2\sigma^{2}} } + d
 		\label{eq:pdfModelAf}
 	\end{equation}
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/timeVafFit}
-		\caption[Temps de sélection/V en fonction de $A\sqrt{F}$ et modèle]{Temps de sélection normalisés divisés par la vitesse, en fonction de $A\sqrt{F}$, pour les cibles rapides et de vitesse intermédiaire ; proposition de modèle. Le coefficient de corrélation est supérieur à 0,863.}
-		\label{fig:timeVafFit}
-	\end{figure}
-	
+		
 	%	a			b			d			sigma
 	%[ 1.41728564  0.67526069  0.31374369  2.31879762]
 	% but with c manually fixed to 0.01
@@ -933,7 +962,7 @@
 
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/realAreaVspeed}
+		\includegraphics[width=0.6\textwidth]{figures/ch4/realAreaVspeed}
 		\caption[Aire de l'enveloppe convexe en fonction de V]{Aire de l'enveloppe convexe en fonction de V, pour des valeurs de F et A de 8 et 60, respectivement. Les données sont en violet et l'approximation quadratique est en vert. Le coefficient de corrélation est supérieur à 0,9994.}
 		\label{fig:realAreaVspeed}
 	\end{figure}
@@ -945,9 +974,9 @@
 	
 	Pour ce faire, nous avons généré des trajectoires pour diverses combinaisons de F et A à de nombreuses valeurs de V, afin de déterminer la valeur de $\delta$ correspondant à chaque couple (F,A). Encore une fois, pour chaque condition (V,F,A) nous avons généré de multiples trajectoires (200), afin d'obtenir des valeurs moyennes fiables. Les résultats sont présentés sous forme de carte thermique, sur la figure~\ref{fig:afRealDelta_log}.
 	
-	\begin{figure}[!htbp]
+	\begin{figure}[htbp]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/afRealDelta_log}
+		\includegraphics[width=0.8\textwidth]{figures/ch4/afRealDelta_log}
 		\caption[Coefficients $\delta$ en fonction de F et A]{Carte thermique des coefficients $\delta$ en fonction de F et A, sur une échelle log-log. Les angles se lisent en abscisse, les fréquences en ordonnée, et la valeur de $\delta$ est indiquée par la couleur, selon l'échelle de droite. Remarquez que puisque $\mathbb{E}(\mathcal{A}(ec)) = \delta{}V^{2}$, ces valeurs correspondent également à $\mathbb{E}(\mathcal{A}(ec))$ quand $V = 1$.}
 		\label{fig:afRealDelta_log}
 	\end{figure}
@@ -969,18 +998,23 @@
 		f(x) &= 0,052 x^{0,97} \left(1+\left(\frac{x}{120}\right)^{2,84}\right)^{-1}
 	\end{align}
 	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/af_delta}
-		\caption[Coefficients $\delta$ en fonction du prdouit AF]{Coefficients $\delta$ en fonction du produit AF, sur une échelle log-log. Les données sont fortement dispersées.}
-		\label{fig:af_delta}
-	\end{figure}
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/a_rootF_delta}
-		\caption[Coefficients $\delta$ en fonction de $A\sqrt{F}$]{Coefficients $\delta$ en fonction de $A\sqrt{F}$, sur une échelle log-log. Les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun, d'où l'approximation par deux lois de puissance combinées (en vert). Le coefficient de corrélation est supérieur à 0,9978.}
-		\label{fig:a_rootF_delta}
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/af_delta}
+			\caption{$\delta$ en fonction de AF. Les données sont fortement dispersées.}
+			\label{fig:af_delta}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/a_rootF_delta}
+			\caption{$\delta$ en fonction de $A\sqrt{F}$.}
+			\label{fig:a_rootF_delta}
+		\end{subfigure}
+		\caption[Coefficients $\delta$]{Coefficients $\delta$, sur une échelle log-log. Sur la sous-figure de droite, les deux segments rectilignes sont caractéristiques d'une loi de puissance\ldots{} chacun, d'où l'approximation par deux lois de puissance combinées (en vert). Le coefficient de corrélation est supérieur à 0,9978.}
+		\label{fig:af_and_root_delta}
 	\end{figure}
 	
 	Ce modèle nous permet d'exprimer l'aire directement en fonction des paramètres de notre modèle VFA, selon l'équation~\ref{eq:areaModel}.
@@ -994,12 +1028,6 @@
 	\label{sub:areaVperf}
 	Comme nous l'évoquions plus haut, d'un point de vue perceptif, l'aire de l'enveloppe convexe d'une trajectoire de cible mobile peut être interprétée comme la taille de la zone que la cible est susceptible d'occuper au cours d'une durée donnée. L'on peut donc faire l'hypothèse d'un lien entre cette aire et les performances de sélection. Pour explorer ce lien, nous avons représenté sur la figure~\ref{fig:perf_V_RealArea_raw} les temps de sélection en fonction de l'espérance de l'aire de l'enveloppe convexe, pour chaque condition de notre évaluation empirique décrite plus haut.
 	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_raw}
-		\caption[MTSN en fonction de l'aire]{Temps de sélection normalisés, en fonction de l'aire de l'enveloppe convexe.}
-		\label{fig:perf_V_RealArea_raw}
-	\end{figure}
 	
 	Si un lien apparaît de façon relativement claire entre les temps de sélection et l'aire, il est tout aussi clair que les différentes valeurs de V produisent des ensembles de points disctincts, ce qui suggère un fort effet de ce paramètre. Or, nous avons vu que $\mathbb{E}(\mathcal{A}(ec))$ en est une fonction quadratique ; il est donc logique d'examiner le lien entre les performances et $\frac{\mathbb{E}(\mathcal{A}(ec))}{V^{2}}$. De plus, d'une part la figure~\ref{fig:perf_V_RealArea_raw} montre clairement un effet important de la vitesse sur les temps de sélection ; d'autre part, nos observations des sections précédentes montrent que ceux-ci dépendent linéairement de la vitesse, ce que la figure~\ref{fig:perfVareaEverythingNormed} confirmait, en relation avec les périmètres des enveloppes convexes.
 	
@@ -1008,33 +1036,51 @@
 	Sur cette dernière figure, les données des cibles à 1,46~cm/s et 2,19~cm/s se confondent, ce qui confirme la pertinence de nos divisions par $V$ et $V^{2}$. Les temps de sélection croissent en fonction de $\frac{\mathbb{E}(\mathcal{A}(ec))}{V^{2}}$ jusqu'à un certain point, puis décroissent.
 	
 	Afin de modéliser cette relation, compte tenu de sa relative simplicité, et dans un souci de proposer un modèle aussi facile à utiliser que possible, nous avons opté pour une approximation polynomiale de degré 2, représentée sur la figure~\ref{fig:perf_V_RealArea_lousy_fit}, qui combine nos résultats pour 1,46~cm/s et 2,19~cm/s.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_normed}
-		\caption[MTSN/V en fonction de l'aire/V²]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données correspondant à $V = 1,46$~cm/s et $V = 2;19$~cm/s se confondent.}
-		\label{fig:perf_V_RealArea_normed}
+
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_raw}
+			\caption{Temps de sélection normalisés, en fonction de l'aire de l'enveloppe convexe.}
+			\label{fig:perf_V_RealArea_raw}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_normed}
+			\caption{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données correspondant à $V = 1,46$~cm/s et $V = 2;19$~cm/s se confondent.}
+			\label{fig:perf_V_RealArea_normed}
+		\end{subfigure}
+		\caption[MTSN en fonction de l'aire]{Temps de sélection en fonction de l'aire de l'enveloppe convexe.}
+		\label{fig:perf_V_RealArea_raw_and_normed}
 	\end{figure}
-	
+
+
 	Quoique simple, ce modèle ne parvient malheureusement pas à prédire certaines valeurs situées nettement en dessous de la parabole inversée, en particulier quand $\frac{\mathbb{E}(\mathcal{A}(ec))}{V^{2}} \in [1,2]$. Un examen plus poussé de nos résultats montre que ces valeurs ont un point commun : leur fréquence est basse, inférieure ou égale à 4~Hz.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_lousy_fit}
-		\caption[MTSN/V en fonction de l'aire/V² et approximation]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données présentées ici correspondent à $V = 1,46$~cm/s et $V = 2;19$~cm/s, avec une approximation polynomiale de degré 2, et de coefficient de corrélation supérieur à 0,771.}
-		\label{fig:perf_V_RealArea_lousy_fit}
+
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_lousy_fit}
+			\caption[MTSN/V en fonction de l'aire/V² et approximation]{Toutes valeurs de F. Approximation : coefficient de corrélation supérieur à 0,771.}
+			\label{fig:perf_V_RealArea_lousy_fit}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.485\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_better_fit}
+			\caption[MTSN/V en fonction de l'aire/V² et approximation]{Données telles que $F > 4$~Hz ; coefficient de corrélation supérieur à 0,895.}
+			\label{fig:perf_V_RealArea_better_fit}
+		\end{subfigure}
+		\caption[Temps normalisés/V, en fonction de l'aire/V².]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données présentées ici correspondent à $V = 1,46$~cm/s et $V = 2;19$~cm/s, avec une approximation polynomiale de degré 2.}
+		\label{fig:perf_V_RealArea_fits}
 	\end{figure}
 	
 	Pour mieux l'illustrer, nous avons retiré ces données de notre ensemble et refait une approximation polynomiale, toujours de degré 2. Le résultat, fourni sur la figure~\ref{fig:perf_V_RealArea_better_fit}, est bien meilleur. La raison précise pour laquelle les mesures correspondant aux basses fréquences sont incohérentes avec les autres demeure inconnue, mais nous pouvons avancer l'hypothèse que lorsque la fréquence est en dessous d'un certain seuil --- potentiellement situé autour de 4~Hz --- son effet sur les performances de sélection n'est pas pleinement réalisé ; peut-être ces fréquences sont-elles suffisament basses pour que les utilisateurs puissent distinguer les changements de direction assez nettement pour les prévoir.
 	
 	Naturellement, les résultats obtenus pour les taux d'erreurs sont parfaitement cohérents avec ceux relatifs aux temps de sélection, ce qui est logique compte tenu de la très forte corrélation entre ces deux grandeurs.
-	
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch4/perf_V_RealArea_better_fit}
-		\caption[MTSN/V en fonction de l'aire/V² et approximation]{Temps de sélection normalisés et divisés par la vitesse, en fonction de l'aire de l'enveloppe convexe divisée par la vitesse au carré. Les données présentées ici correspondent à $V = 1,46$~cm/s et $V = 2;19$~cm/s, mais uniquement pour $F > 4$~Hz, avec une approximation polynomiale de degré 2, et de coefficient de corrélation supérieur à 0,895.}
-		\label{fig:perf_V_RealArea_better_fit}
-	\end{figure}
 	
 	De fait, les performances de sélection peuvent être modélisées de façon satisfaisante et simple avec une approximation polynomiale de degré 2, à condition que les fréquences soient suffisamment élevées. Nous préconisons donc ce modèle pour ces conditions, car il est plus simple d'utilisation que celui fondé sur le périmètre et, de surcroît, légèrement plus précis. Il convient cependant de garder les limites de son domaine d'application à l'esprit avant de s'en servir.
 	

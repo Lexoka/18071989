@@ -3,19 +3,21 @@ set output "timeRes.svg"
 unset key
 
 set xrange[0:3] # Otherwise, Gnuplot goes full retard and puts the error bars right on the vertical axes
-set yrange[0:3.8]
+set yrange[2:3.4]
 set ylabel "Temps moyen de sélection (s)"
 
+set boxwidth 0.25
+
 plot "times.csv" u ($0):2:3:4:xticlabels(1) lw 6 with yerrorbars,\
-	"times.csv" u ($0):2 lw 6 pt 1 ps 2 lc 1
+	"times.csv" u ($0):2 pt 7 ps 0.8 lc 1
 
 set output "errorRes.svg"
 
-set yrange[0:11]
+set yrange[6:11]
 set ylabel "Nombre moyen d'erreurs"
 
 plot "errors.csv" u ($0):2:3:4:xticlabels(1) lw 6 with yerrorbars,\
-	"errors.csv" u ($0):2 lw 6 pt 1 ps 2 lc 1
+	"errors.csv" u ($0):2 pt 7 ps 0.8 lc 1
 
 set output "productRes.svg"
 set ylabel "Produit Temps × (Erreurs+1)"

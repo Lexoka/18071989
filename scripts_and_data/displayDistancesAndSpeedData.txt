@@ -1,0 +1,22 @@
+OK so on my laptop, the window is 31 cm wide, and that's 16.0f for the engine
+
+So a 1.0f in Unity is 1.9375cm on screen.
+
+And a target moves at 5.0f/s if it's fast, or 3.0f/s if it's "slow"
+Ergo, speeds are 5.8125 cm/s and 9.6875 cm/s
+Which is pretty damn fast, but the targets are a bit over 12mm in diameter in homo mode
+
+So that's quite different from before.
+
+The repositioning distance is 4.5f, or 8.71875cm
+
+But on a 24" display, you've got to multiply everything by 24/15 = 1.6
+
+So 1.0f becomes 3.1 cm
+16.0f becomes 49.6 cm
+9.0f becomes 27.9 cm
+3.0f is 9.3 cm
+5.0f is 15.5 cm
+4.5f is 13.95 cm
+
+And the targets are a good 19.2 mm in diameter
