@@ -22,7 +22,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch5/asqrtFvTime}
+		\includegraphics[width=0.7\textwidth]{figures/ch5/asqrtFvTime}
 		\caption[MTSN/V en fonction de $A\sqrt{F}$]{Moyennes des temps de sélection normalisés, divisées par la vitesse, en fonction du produit $A\sqrt{F}$, pour des cibles de vitesse moyenne ou rapide.}
 		\label{fig:tAsqrtF}
 	\end{figure}
@@ -85,13 +85,27 @@
 	Des exemples de \emph{proxies} lents sont fournis sur la figure~\ref{fig:speedRed}. Pour les paramètres VFA étudiés ici, l'utilisation d'un \emph{proxy} limité à 75~\%{} de la vitesse de sa cible-mère permet de conserver l'allure générale de la trajectoire originale, sans trop affecter son enveloppe convexe, et en la lissant quelque peu, au point de donner une allure ciné-continue au mouvement généré (revoir la section~\ref{sub:kinematicTypes} pour la définition de ce terme). Du fait de la réduction de la vitesse et du lissage opéré, rendant le mouvement un peu plus prévisible, le \emph{proxy} est plus aisé à sélectionner.
 	
 	Néanmoins, l'application d'une réduction de vitesse plus forte, ne serait-ce que de 50~\%{}, introduit un décalage important entre la cible et son \emph{proxy}, ce que la forme et l'aire de l'enveloppe convexe illustrent ; le phénomène n'en est que plus marqué lorsque le facteur de réduction de vitesse est de 25~\%{}.
-	
+
+
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch5/filteringBySpeedRedHistograms}
-		\caption[Utilisation d'un \emph{proxy} lent]{Effet de l'utilisation d'un \emph{proxy} lent sur les caractéristiques d'une trajectoire. Celle-ci est générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$. La vitesse est naturellement proportionnelle au facteur de ralentissement appliqué. L'aire de l'enveloppe convexe demeure à peu près stable quand RF vaut 75~\%{}, mais chute fortement au-delà.}
-		\label{fig:filteringBySpeedRed}
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/filteringBySpeedRedHistograms}
+			\caption{\emph{Proxy} lent. La vitesse est naturellement proportionnelle au facteur de ralentissement appliqué. L'aire de l'enveloppe convexe demeure à peu près stable quand RF vaut 75~\%{}, mais chute fortement au-delà.}
+			\label{fig:filteringBySpeedRed}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/filteringByFHistograms}
+			\caption{Filtrage fréquentiel. La trajectoire se trouve modifiée de telle manière que la vitesse moyenne de la cible chute drastiquement --- de 2,19~cm/s à 1,00~cm/s --- de même, évidemment, que la fréquence. L'aire de l'enveloppe convexe demeure relativement stable.}
+			\label{fig:filteringByFHistograms}
+		\end{subfigure}
+		\caption[Effet de modifications du comportement des cibles]{Effet de modifications du comportement des cibles sur les caractéristiques des trajectoires. Les trajectoires sont générées avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$.}
+		\label{fig:speedRedAndFilteringbyFhistograms}
 	\end{figure}
+
 	
 	C'est ce qu'illustre la figure~\ref{fig:filteringBySpeedRed}, sur laquelle on observe malgré tout une forte augmentation de l'aire de l'enveloppe convexe divisée par la vitesse au carré, ce qui s'explique par la diminution de la vitesse. Or, les données présentées sur la figure~\ref{fig:perf_V_RealArea_normed} (section~\ref{sub:areaVperf}) montrent que quand cette valeur est très grande, la sélection est généralement rapide. Par ailleurs, les résultats présentés sur la figure~\ref{fig:perf_V_RealArea_raw} de la même section montrent que lorsque la vitesse est faible, les temps de sélection sont toujours relativement courts de toute manière.
 	
@@ -148,13 +162,6 @@
 	L'effet du filtrage par fréquence sur la vitesse des cibles est illustré sur la figure~\ref{fig:filteringByFHistograms}. On y constate qu'une forte diminution de la vitesse (jusqu'à -54,34~\%{}) accompagne celle de la fréquence. L'aire de l'enveloppe convexe, elle, demeure relativement stable, avec une diminution de 14,8~\%{} seulement dans le cas le plus extrème, avec $F'=4~Hz$. Mais comme la vitesse diminue, l'aire divisée par la vitesse au carrée augmente fortement. Or, quand cette valeur est très grande, la sélection est généralement rapide, lorsque la vitesse est faible, elle l'est toujours.
 	
 	Il en résulte que si l'allure générale de la trajectoire, ainsi que l'espace qu'elle occupe ne changent guère, la cible devient considérablement plus aisée à sélectionner, d'après nos modèles.
-		
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=\textwidth]{figures/ch5/filteringByFHistograms}
-		\caption[Effet du filtrage fréquentiel]{Effet du filtrage fréquentiel sur les caractéristiques d'une trajectoire. Celle-ci, générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$, se trouve modifiée de telle manière que la vitesse moyenne de la cible chute drastiquement --- de 2,19~cm/s à 1,00~cm/s --- de même, évidemment, que la fréquence. L'aire de l'enveloppe convexe demeure relativement stable.}
-		\label{fig:filteringByFHistograms}
-	\end{figure}
 
 	Comme la figure~\ref{fig:fEffectPerf} l'illustre, la réduction de la fréquence permet d'améliorer les performances, mais que cette réduction est moins perceptible lorsque le paramètre A est particulièrement grand.
 
@@ -223,7 +230,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch5/filteringByMovingAverageHistograms}
+		\includegraphics[width=0.5\textwidth]{figures/ch5/filteringByMovingAverageHistograms}
 		\caption[Effet du filtrage par moyenne mobile]{Effet du filtrage par moyenne mobile sur les caractéristiques d'une trajectoire. Celle-ci, générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$, se trouve modifiée de telle manière que la vitesse moyenne de la cible chute drastiquement --- de 2,19~cm/s à 1,03~cm/s lorsque la fenêtre mobile a une largeur de 250~ms. L'aire de l'enveloppe convexe demeure relativement stable.}
 		\label{fig:filteringByMovingAverageHistograms}
 	\end{figure}
@@ -293,14 +300,14 @@
 	
 	\begin{figure}[!htb]
 		%\centering
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/homoRunning}
 			\caption{Condition homogène : toutes les cibles font la même taille.}
 			\label{fig:homoRunning}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{\textwidth}
+		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/heteroRunning}
 			\caption{Condition hétérogène : les cibles sont de tailles différentes.}
@@ -358,7 +365,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch5/questionnaire}
+		\includegraphics[width=0.4\textwidth]{figures/ch5/questionnaire}
 		\caption[Questionnaire]{Questionnaire soumis aux sujets de notre étude empirique, avant l'étude elle-même.}
 		\label{fig:questionnaire}
 	\end{figure}
@@ -549,7 +556,7 @@
 	
 	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=\textwidth]{figures/ch5/homogeneityHistogram}
+		\includegraphics[width=0.5\textwidth]{figures/ch5/homogeneityHistogram}
 		\caption[Homogénéisation des performances par ajustement des tailles]{Homogénéisation des performances par ajustement des tailles des cibles. Les écarts-type du temps de sélection, du nombre d'erreurs, et du produit $Perf$ sont représentés : les deux premières valeurs sont sur l'échelle de gauche, la troisième est sur l'échelle de droite.}
 		\label{fig:homogeneityHistogram}
 	\end{figure}

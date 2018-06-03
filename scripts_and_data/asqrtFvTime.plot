@@ -1,4 +1,4 @@
-set term svg size 2560, 1440 fsize 46
+set term svg size 2560, 1440 fsize 76
 set output "asqrtFvTime.svg"
 
 set ylabel "MTSN/V"
