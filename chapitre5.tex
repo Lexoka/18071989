@@ -263,6 +263,48 @@
 	
 	Il est donc possible de dresser un tableau des différentes cibles (ou des différents types de cibles) et de leurs difficultés de sélection respective, afin de savoir quels objets poseront le plus de problèmes aux utilisateurs.
 	
+	\subsection{Distance de Fitts et cibles mobiles}
+	Nous avons déjà vu que le modèle de Fitts pur n'était pas adapté à la sélection de cibles mobiles, et que des versions modifiées de ce modèle y étaient parfois préférées --- voir la section~\ref{sub:fittsMobile}. Ces modèles intègrent toujours la distance entre le curseur et la cible (que nous appelons ici distance de Fitts) comme facteur. Cependant, nos observations précédentes ont montré que lorsque les mouvements d'une cible sont vifs et imprévisibles, la phase de la tâche de sélection consistant à s'approcher de la cible est dominée par la phase consistant à la saisir une fois que l'on en est proche. De fait, il est possible que, dans ces cas-là, le temps de sélection soit à peu près indépendant de la distance de Fitts.
+	
+	Pour évaluer cette hypothèse, nous avons mené une petite étude sur quatre sujets, trois hommes et une femme, âgés de 22, 25, 26 et 26 ans, respectivement, et tous droitiers. Nous avons utilisé un protocole identique à celui décrit dans la section~\ref{sub:as_protocol}, mais avec un écran de 15 pouces de diagonale, et une seule combinaison VFA : V = 5/16 de la largeur du cadre par seconde, soit XXX, F = 20~Hz, et A = 100\textdegree{}. Cette condition fut choisie pour sa difficulté. Chaque sujet a effectué 42 sélections pour chacune des trois distances de Fitts évaluées : 1/8, 1/4, et 1/2 de la largeur du cadre.
+	
+	\subsubsection{Temps de sélection et erreurs}
+	Nous présentons les résultats obtenus sur la figure~\ref{fig:fittsDistAndPerf}, sous forme de moyennes et d'intervalles de confiance à 95~\%{}. Les temps de sélection moyens bruts sont sur la figure~\ref{fig:ampTimeRes}, les moyennes des temps de sélection normalisés sont sur la figure~\ref{fig:normTimes}, les moyennes des taux d'erreurs normalisés sont sur la figure~\ref{fig:normErrors}, et les moyennes des produits $Temps\times(Erreurs+1)$ sont sur la figure~\ref{fig:normProducts} --- cette dernière métrique est détaillée dans la section~\ref{sub:product}. Comme nous le supposions, la distance de Fitts ne semble plus avoir d'influence signficative sur les performances de sélection d'une cible mobile lorsque la difficulté est suffisamment élevée. Il n'en va cependant pas de même de la largeur de la cible, comme nous le verrons plus loin.
+
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/ampTimeRes}
+			\caption{Temps de sélection bruts.}
+			\label{fig:ampTimeRes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normTimes}
+			\caption{Moyenne des temps de sélection normalisés.}
+			\label{fig:normTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normErrors}
+			\caption{Moyenne des taux d'erreurs normalisés.}
+			\label{fig:normErrors}
+		\end{subfigure}		
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normProducts}
+			\caption{Moyenne des performances sur E et T normalisés.}
+			\label{fig:normProducts}
+		\end{subfigure}
+		\caption[Distance de Fitts et performances de sélection]{Distance de Fitts et performances de sélection.}
+		\label{fig:fittsDistAndPerf}
+	\end{figure}
+
+	
 	\subsection{Espace d'affichage et encombrement visuel}
 	Bien que nous n'ayons pas spécifiquement étudié ce paramètre au cours de l'étude que nous présentons dans les section~\ref{sub:interact} et suivantes~\cite{kouyoumdjian2015characterizing}, la largeur de Fitts demeure très importante dans une tâche de sélection de cible mobile, ce qu'illustrent par ailleurs les modèles d'autres auteurs, présentés dans la section~\ref{sub:fittsMobile}. Par conséquent, augmenter la taille d'une cible mobile en facilite toujours la sélection, et des techniques conçues spécifiquement pour cette tâche sont fondées sur ce principe. C'est notamment le cas de \emph{Comet}, dont les auteurs ont confirmé l'apport empiriquement~\cite{hasan2011comet}. Il en est de même pour \emph{AttachedShock}~\cite{you2012attachedshock, you2014attachedshock}.
 	
@@ -273,13 +315,14 @@
 	Nous proposons en effet que, dans le cadre de l'utilisation d'une technique d'augmentation des objets, il est pertinent de considérer l'espace d'affichage comme un budget, qu'il appartient au concepteur de l'application de répartir judicieusement. Il paraît logique, au moins intuitivement, d'allouer une plus grande proportion de cet espace aux cibles les plus difficiles à saisir. Plus formellement, nous émettons les hypothèses suivantes :
 	
 	\begin{description}
-		\item[H1 :] Notre estimation de la difficulté de sélection d'une cible se montrera plus fiable que l'usage des paramètres V, F, ou A.
+		\item[H1 :] Notre estimation de la difficulté de sélection d'une cible est plus fiable que l'usage des paramètres V, F, ou A.
 		\item[H2 :] Si les cibles jugées difficiles sont agrandies, et les cibles jugées faciles sont rétrécies, de sorte que l'espace d'affichage alloué à l'ensemble des cibles demeure constant, les performances de sélection mesurées sur l'ensemble des cibles sont meilleures.
 	\end{description}
 	
 	Ici, une cible \og jugée difficile \fg{} est une cible pour laquelle notre modèle prédit un temps de sélection relativement élevé, tandis qu'une cible \og jugée facile \fg{} a un temps de sélection prédit relativement faible (voir la figure~\ref{fig:perf_V_RealArea_better_fit} de la section~\ref{sub:areaVperf}).
 	
 	\subsection{Expérience et protocole}
+	\label{sub:as_protocol}
 	Afin d'évaluer notre hypothèse H1, nous avons mené une étude empirique avec 16 sujets, au cours de laquelle il leur était demandé de sélectionner des cibles rondes en cliquant dessus, dans un environnement homogène d'une part, et hétérogène de l'autre --- c'est-à-dire avec des cibles mues par les mêmes paramètres VFA et, respectivement, par des paramètres différents.
 	
 	Dans la condition hétérogène, chaque cible est de même taille ; dans la condition hétérogène, elles sont de tailles différentes selon l'estimation de leur difficulté de sélection, faite à partir de leurs paramètres VFA.
@@ -342,9 +385,7 @@
 	
 	Il convient donc d'éliminer les paramètres qui ne sont pas indispensables, et d'essayer d'augmenter le nombre d'essais par condition. En particulier, nous avions constaté que les cibles lentes étaient toujours relativement aisées à sélectionner ; nous les avons donc supprimées. L'analyse de nos précédentes données montre également une certaine continuité dans l'effet du paramètre F, et suggère fortement que sa racine carrée soit à prendre en compte, plus que F lui-même. De plus, nous avons observé que les très basses fréquences génèrent du mouvement relativement prévisible et aisé à sélectioner.
 	
-	Par conséquent, nous avons opté pour un échantillonnage exponentiel, avec 4 valeurs différentes, au lieu des 7 de la précédente étude, en omettant les plus faibles.
-	
-	De même, nos résultats montraient que le mouvement rectiligne était toujours aisé à sélectionner, aussi avons-nous supprimé la valeur 0 de l'ensemble des valeurs de A, en conservant tout de même 12 essais rectilignes. Pour réduire le nombre de conditions, nous avons remplacé les valeurs 30 et 60 par 45, et supprimé la valeur 120. Ceci nous a permis de passer de 6 valeurs de A à seulement 4.
+	Par conséquent, nous avons opté pour un échantillonnage exponentiel, avec 4 valeurs différentes, au lieu des 7 de la précédente étude, en omettant les plus faibles. De même, nos résultats montraient que le mouvement rectiligne était toujours aisé à sélectionner, aussi avons-nous supprimé la valeur 0 de l'ensemble des valeurs de A, en conservant tout de même 12 essais rectilignes. Pour réduire le nombre de conditions, nous avons remplacé les valeurs 30 et 60 par 45, et supprimé la valeur 120. Ceci nous a permis de passer de 6 valeurs de A à seulement 4.
 	
 	\emph{In fine}, cette révision des valeurs des paramètres VFA nous a permis de passer de $3\times{}7\times{}6+1=126$ combinaisons différentes à seulement $2\times{}4\times{}3+1=26$. En revanche, nous avons augmenté le nombre d'essais par combinaison, passant de 4 à 6, ou 12 pour la condition rectiligne (répétée 20 fois dans l'étude précédente). Ainsi, nous obtenons $24\times{}6+12=156$ essais au lieu de $126\times{}4+20=524$ précédemment. Toutefois, chaque sujet était soumis à deux conditions différentes, pour un total de 312 essais. 
 	
@@ -482,6 +523,7 @@
 	\end{itemize}
 	
 	\subsection{Résultats}
+	\label{sub:as_res}
 	Les données collectées les plus importantes sont les temps de sélection, et les erreurs. Nous allons dans un premier temps les examiner séparément, puis ensemble.
 	
 	\begin{figure}[!htb]
@@ -489,31 +531,31 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/timeRes}
-			\caption{Temps moyens de sélection, et intervalles de confiance à 95~\%{}.}
+			\caption{Temps moyens de sélection, et IC à 95~\%{}.}
 			\label{fig:timeRes}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/errorRes}
-			\caption{Nombres moyens d'erreurs, et intervalles de confiance à 95~\%{}.}
+			\caption{Nombres moyens d'erreurs, et IC à 95~\%{}.}
 			\label{fig:errorRes}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/errorsTimesScatter}
-			\caption{Temps moyens de sélection et nombres moyens d'erreurs. Une technique \og idéale \fg{} serait située dans le coin inférieur gauche (temps courts, et peu d'erreurs), tandis qu'une technique très mauvaise serait dans le coin supérieur droit (temps longs, et beaucoup d'erreurs).}
+			\caption{Temps moyens de sélection et nombres moyens d'erreurs. Une technique \og idéale \fg{} serait située dans le coin inférieur gauche : temps courts, et peu d'erreurs.}
 			\label{fig:errorsTimesScatter}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/productRes}
-			\caption{Produit du temps de sélection par le nombre d'erreurs (plus un). Les boîtes indiquent les intervalles de confiance à 95~\%{}, les \og moustaches \fg{} à leurs extrémités indiquent les intervalles de confiance à 98~\%{}, et les barres noires horizontales, les valeurs moyennes.}
+			\caption{$T(E+1)$. Les boîtes indiquent les IC à 95~\%{}, les \og moustaches \fg{} à leurs extrémités indiquent les IC à 98~\%{}, et les barres noires horizontales, les moyennes.}
 			\label{fig:productRes}
 		\end{subfigure}
-		\caption[Temps et erreurs de sélection, homogène vs. hétérogène]{Temps et erreurs de sélection, en condition homogène et en condition hétérogène.}
+		\caption[Temps et erreurs de sélection, homogène vs. hétérogène]{Temps et erreurs de sélection, en condition homogène et en condition hétérogène. IC = Intervalles de confiance.}
 		\label{fig:timeAndErrorRes}
 	\end{figure}
 	
@@ -534,6 +576,7 @@
 	La figure~\ref{fig:errorRes} présente le nombre moyen d'erreurs en fonction de la condition, homogène ou hétérogène. Là encore, si l'ajustement de la taille des cibles permet de diminuer le nombre moyen d'erreurs, les intervalles de confiance à 95~\%{} ne sont pas disjoints, de sorte que nous ne pouvons retenir l'hypothèse \textbf{H2} pour les erreurs.
 	
 	\subsubsection{Performances de sélection}
+	\label{sub:product}
 	Néanmoins, les performances de sélection ne sauraient être envisagées sous l'angle seul des temps de sélection, ou des erreurs. En effet, les tâches physiques en général~\cite{woodworth1899accuracy}, et le pointage en particulier~\cite{fitts1966cognitive} sont connus depuis longtemps pour être des compromis entre vitesse et précision. Ce compromis est même quantifié pour le pointage~\cite{mackenzie2008fitts, guiard2011fitt, guiard2015mathematical}, et décrit comme un compromis de type \emph{max-max} si l'on considère la vitesse et la précision, qu'il faut maximiser, ou \emph{min-min} si l'on considère, de manière équivalente, le temps de sélection et les erreurs, qu'il faut minimiser.
 	
 	Nous proposons donc de considérer les deux valeurs \emph{simultanément}, plutôt que séparément. C'est l'objet de la figure~\ref{fig:errorsTimesScatter}, qui présente le nombre moyen d'erreurs en abscisse, et le temps moyen de sélection en ordonnée, pour chaque condition. Le but d'une technique d'aide à la sélection peut ainsi être conçu comme le déplacement des mesures de performance vers le coin inférieur gauche, idéalement sur les deux axes. C'est ce que l'ajustement des tailles des cibles permet, quoique de manière assez faible sur chaque axe.
@@ -541,75 +584,319 @@
 	Observons au passage que les temps de sélection et les erreurs sont naturellement très fortement corrélés, à hauteur de 90,74~\%{} dans la condition homogène, et 86,82~\%{} dans la condition hétérogène ; dans les deux cas, la \emph{p-value} est trop faible pour que nos outils puissent la distinguer de zéro. Ainsi, l'ajustement des tailles ne change pas fondamentalement la nature du compromis vitesse-précision de la tâche.
 	
 	\paragraph{Produit temps $\times$ erreurs.}
-	Attendu que chaque composante des performances de sélection est à minimiser, nous pouvons adopter une métrique scalaire unique pour mesurer les performances : la moyenne des produits du temps de sélection par le nombre d'erreurs, pour chaque essai. Afin d'éviter d'obtenir des résultats nuls en cas d'absence d'erreur, et pour conserver le temps de sélection tel quel dans ce cas-là, nous proposons la métrique suivante : $Perf = T \times{} (E+1)$, où $Perf$ représente les performances, $T$ est le temps de sélection, et $E$ le nombre d'erreurs.
+	Il y a de surcroît un problème inhérent à l'examen du seul temps de sélection dans les études que nous présentons ici, puisque pour un essai donné, il peut y avoir un nombre non borné d'erreurs. De fait, un essai ayant pris 4 secondes avec aucune erreur, par exemple, n'est pas directement comparable à un autre essai ayant pris le même temps mais avec 15 erreurs. On peut en effet supposer que si le sujet avait veillé à ne commetre aucune erreur dans le second cas, il aurait mis bien plus de temps à sélectionner sa cible ; inversement, dans le premier cas, en étant moins prudent et en s'autorisant d'éventuelles erreurs, il aurait pu compléter sa sélection plus rapidement. De plus, dans une application réelle, une erreur peut avoir un \og coût \fg{} temporel additionnel, par exemple s'il faut désélectionner ce qui a été sélectionné par erreur, annuler une éventuelle action involontairement déclenchée par le clic erroné, ou si ce dernier a déclenché un retour graphique perturbant, etc.
+	
+	Par conséquent, et attendu que chaque composante des performances de sélection est à minimiser, nous pouvons adopter une métrique scalaire unique pour mesurer les performances : la moyenne des produits du temps de sélection par le nombre d'erreurs, pour chaque essai. Afin d'éviter d'obtenir des résultats nuls en cas d'absence d'erreur, et pour conserver le temps de sélection tel quel dans ce cas-là, nous proposons la métrique suivante : $Perf = T \times{} (E+1)$, où $Perf$ représente les performances, $T$ est le temps de sélection, et $E$ le nombre d'erreurs.
 	
 	Assez logiquement, il n'y a pas de corrélation significative entre $Perf$ et F, ou A, mais il y en a une entre $Perf$ et V : 19,80~\%{}, avec une \emph{p-value} de $2,39.10^{-23}$, et surtout entre $Perf$ et l'estimation de la difficulté de la cible : 29,35~\%{}, avec une \emph{p-value} de $1,77.10^{-50}$.
 	
-	Nous avons calculé cette valeur pour chaque essai, et en présentons les valeurs moyennes dans la figure~\ref{fig:productRes}, avec les intervalles de confiance à 95~\%{} et 98~\%{}, qui demeurent disjoints entre les conditions homogène et hétérogène, avec un net avantage pour cette dernière.
+	Nous avons calculé cette valeur pour chaque essai, et en présentons les moyennes dans la figure~\ref{fig:productRes}, avec les intervalles de confiance à 95~\%{} et 98~\%{}, qui demeurent disjoints entre les conditions homogène et hétérogène, avec un net avantage pour cette dernière.
 	
 	Il nous apparaît donc que, sur le fondement de cette métrique de performances, inspirée des travaux sur le compromis vitesse-précision exprimé par la loi de Fitts, notre hypothèse \textbf{H2} peut être retenue, concernant les performances de sélection prises dans leur ensemble.
 	
 	\subsubsection{Homogénéisation des performances}
 	Notre ajustement des tailles des objets mobiles ayant pour conséquence de faciliter la sélection des cibles difficile, et de rendre plus difficile la sélection des cibles faciles, il est possible de voir le procédé comme une homogénéisation des performances de sélection sur l'ensemble des cibles en présence. Dans certains types d'application, garantir (ou favoriser) une expérience d'utilisateur homogène selon les conditions rencontrées peut être vu comme une fin en soi.
 	
-	De fait, il est intéressant de chercher à quantifier cette homogénéisation des performances de sélection. C'est ce que fait la figure~\ref{fig:homogeneityHistogram}, qui présente lse écarts-types du temps de sélection, du nombre d'erreurs, et de $Perf$, selon la condition. Sur toutes ces métriques, l'ajustement des tailles des cibles est corrélé avec une diminution, assez marquée sur les erreurs, très marquée sur $Perf$.
-	
+	De fait, il est intéressant de chercher à quantifier cette homogénéisation des performances de sélection. C'est ce que fait la figure~\ref{fig:homogeneityHistogram}, qui présente les écarts-types du temps de sélection, du nombre d'erreurs, et de $Perf$, selon la condition. Sur toutes ces métriques, l'ajustement des tailles des cibles est corrélé avec une diminution, assez marquée sur les erreurs, très marquée sur $Perf$.
+
 	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/ch5/homogeneityHistogram}
-		\caption[Homogénéisation des performances par ajustement des tailles]{Homogénéisation des performances par ajustement des tailles des cibles. Les écarts-type du temps de sélection, du nombre d'erreurs, et du produit $Perf$ sont représentés : les deux premières valeurs sont sur l'échelle de gauche, la troisième est sur l'échelle de droite.}
-		\label{fig:homogeneityHistogram}
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/homogeneityHistogram}
+			\caption{Résultats bruts.}
+			\label{fig:homogeneityHistogram}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normHomogeneityHistogram}
+			\caption{Résultats normalisés.}
+			\label{fig:normHomogeneityHistogram}
+		\end{subfigure}
+		\caption[Homogénéisation des performances]{Homogénéisation des performances par ajustement des tailles des cibles. Les écarts-type du temps de sélection, du nombre d'erreurs, et du produit $Perf$ sont représentés, cette dernière valeur étant sur l'échelle de droite dans la figure~\ref{fig:homogeneityHistogram}.}
+		\label{fig:homoHistosNormAndRaw}
 	\end{figure}
 	
-	\subsubsection{Synthèse numérique des résultats}
+	\subsection{Normalisation des résultats}
+	Comme nous l'expliquions dans le chapitre~\ref{chap4}, l'examen de moyennes sur des résultats bruts a l'inconvénient de donner plus de poids aux sujets relativement lents. C'est un choix possible pour l'évaluation d'une technique de sélection, si l'on considère qu'il convient de se concentrer sur les individus ayant le plus de difficultés à accomplir une tâche. C'est pourquoi nous avons présenté nos résultats bruts.
+	
+	Le fait d'étudier les résultats bruts a également l'inconvénient de masquer quelque peu les corrélations entre la nature des mouvements d'une combinaison VFA et les performances de sélection qui y sont associées, puisque celles-ci sont \og bruitées \fg{} par les différences entre les sujets.
+	
+	Mais une méthode plus égalitaire et plus propice à l'étude des corrélations consiste à normaliser les résultats, par exemple en divisant, pour chaque sujet, tous ses temps de sélection par son temps le plus long, et tous ses taux d'erreurs par son taux d'erreurs le plus élevé. C'est ce que nous avons faits, et les résultats correspondants sont fournis dans la figure~\ref{fig:normAsTimeAndErrors}.
+	
+
+	\begin{figure}[!htb]
+		%\centering
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normAsTimes}
+			\caption{MTSN.}
+			\label{fig:normAsTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normAsErrors}
+			\caption{MTEN.}
+			\label{fig:normAsErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normErrorsTimesScatter}
+			\caption{MTSN et MTEN.}
+			\label{fig:errorsTimesScatter}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normAsProducts}
+			\caption{MTSEN. Boîtes : IC à 95~\%{} ; \og moustaches \fg{} : IC à 98~\%{} ; barres noires : moyennes.}
+			\label{fig:normAsProducts}
+		\end{subfigure}
+		\caption[Temps et erreurs de sélection, homogène vs. hétérogène -- II]{Temps et erreurs de sélection, en condition homogène et en condition hétérogène, normalisés.}
+		\label{fig:normAsTimeAndErrors}
+	\end{figure}
+
+
+	\subsection{Synthèse des résultats}
 	Nous proposons dans le tableau~\ref{tab:synthRes} une synthèse des résultats numériques de notre étude sur l'ajustement des tailles des cibles. Les valeurs de ce tableau correspondent à celles présentées graphiquement dans les sections précédentes.
 	
 %	\newcommand{\newrow}{\bigstrut[t] \\ \hline}
-	\begin{table}
-		\centering
-		\begin{tabular}{l | c c}
-			Condition				& Homogène						& Hétérogène			\bigstrut[b] \\ \hline
-			Temps moyen				& 2,9751						& 2,8423				\bigstrut[t] \\
-			Int. conf. 95~\%{}		& [2,8236 ; 3,1266]				& [2,7253 ; 2,9594]		\bigstrut[b] \\ \hline
-			Erreurs					& 9,4823						& 9,3036				\bigstrut[t] \\
-			Int. conf. 95~\%{}		& [8,9985 ; 9,9661]				& [8,9195 ; 9,6878]		\bigstrut[b] \\ \hline
-			$Perf$ moyenne			& 74,1061						& 54,4747				\bigstrut[t] \\
-			Int. conf. 95~\%{}		& [63,9409 ; 84,2713]			& [48,6160 ; 60,3335]	\\
-			Int. conf. 98~\%{}		& [62,0427 ; 86,1695]			& [47,5220 ; 61,4275]	\bigstrut[b] \\ \hline
-			Corr(diff, temps)		& 0,4030 ; 1,8086$.10^{-97}$	& -0,0713 ; 0,0004	\bigstrut[t] \\
-			Corr(V, temps)			& 0,2722 ; 2,1890$.10^{-43}$	& -0,0518 ; 0,0099	\\
-			Corr(diff, erreurs)		& 0,4302 ; 2,7188$.10^{-112}$	& -0,0721 ; 0,0003	\\
-			Corr(V, erreurs)		& 0,2995 ; 1,4558$.10^{-52}$	& -0,0474 ; 0,0183	\\
-			Corr(diff, $Perf$)		& 0,2935 ; 1,7719$.10^{-50}$	& -0,0378 ; 0,0599	\\
-			Corr(V, $Perf$)			& 0,1980 ; 2,3853$.10^{-23}$	& -0,0302 ; 0,1326	\\
-			Corr(temps, erreurs)	& 0,9074 ; --					& 0,8682 ; --			\\
-			Écart-type temps		& 3,8493						& 2,9736				\\
-			Écart-type erreurs		& 12,2926						& 9,7608				\\
-			Écart-type $Perf$		& 258,2776						& 148,8590				\\
-		\end{tabular}
-		\caption[Synthèse des résultats de l'étude sur l'ajustement des tailles]{Synthèse des résultats de l'étude sur l'ajustement des tailles. Les abbréviations \og Int. conf. \fg{}, \og Corr \fg{}, et \og diff \fg{} signifient respectivement \og Intervalle de confiance à \fg{}, \og Corrélation \fg{} (accompagnée de sa \emph{p-value}), et \og estimation de la difficulté de sélection d'une cible \fg{}. Les corrélations entre la vitesse ou l'estimation de la difficulté d'une part, et le temps de sélection, les erreurs, ou $Perf$ de l'autre, qui sont marquées et significatives dans la condition homogène, disparaissent --- et même s'inversent --- dans la condition hétérogène.}
-		\label{tab:synthRes}
-	\end{table}
+\begin{table}
+	\centering
+	\begin{tabular}{l | c c c c}
+		Condition		& Homo						& Hétéro					& Homo (norm)				& Hétéro (norm)				\bigstrut[b] \\ \hline
+		$\overline{T}$	& 2,98						& 2,84						& 12,65						& 12,48						\bigstrut[t] \\
+		IC 95~\%{}		& [2,82 ; 3,13]				& [2,73 ; 2,96]				& [12,08 ; 13,22]			& [12,01 ; 12,95]			\bigstrut[b] \\ \hline
+		$\overline{E}$	& 9,48						& 9,30						& 11,87						& 11,58						\bigstrut[t] \\
+		IC 95~\%{}		& [9,00 ; 9,96]				& [8,92 ; 9,69]				& [11,27 ; 12,46]			& [11,10 ; 12,07]			\bigstrut[b] \\ \hline
+		$\overline{P}$	& 73,84						& 54,32						& 16,25						& 15,29						\bigstrut[t] \\
+		IC 95~\%{}		& [63,74 ; 83,94]			& [48,50 ; 60,14]			& [15,27 ; 17,22]			& [14,57 ; 16,02]			\\
+		IC 98~\%{}		& [61,85 ; 85,82]			& [47,41 ; 61,23]			& [15,09 ; 17,40]			& [14,43 ; 16,16]			\bigstrut[b] \\ \hline
+		C($d$, $T$)		& 40,16 ; 2,2$.10^{-97}$	& -7,10 ; 3,9$.10^{-4}$		& 42,59 ; 1,4$.10^{-110}$	& -9,11 ; 5,1$.10^{-6}$		\bigstrut[t] \\
+		C(V, $T$)		& 27,12 ; 2,5$.10^{-43}$	& -5,21 ; 9,3$.10^{-3}$		& 29,27 ; 1,6$.10^{-50}$	& -6,72 ; 7,9$.10^{-4}$		\\
+		C($d$, $E$)		& 42,89 ; 3,0$.10^{-112}$	& -7,20 ; 3,2$.10^{-4}$		& 42,68 ; 4,5$.10^{-111}$	& -7,75 ; 1,1$.10^{-4}$		\\
+		C(V, $E$)		& 29,86 ; 1,5$.10^{-52}$	& -4,74 ; 0,02				& 29,83 ; 1,9$.10^{-52}$	& -5,30 ; 0,0081			\\
+		C($d$, $P$)		& 29,28 ; 1,6$.10^{-50}$	& -3,77 ; 0,06				& 39,20 ; 1,8$.10^{-92}$	& -8,14 ; 4,7$.10^{-5}$		\\
+		C(V, $P$)		& 19,74 ; 2,4$.10^{-23}$	& -3,04 ; 0,13				& 26,92 ; 1,1$.10^{-42}$	& -6,21 ; 0,0019			\\
+		C($T$, $E$)		& 90,73 ; --				& 0,8680 ; --				& 95,33						& 92,03						\\
+		$\sigma{}T$		& 3,83						& 2,96						& 0,15						& 0,12						\\
+		$\sigma{}E$		& 12,25						& 9,73						& 0,15						& 0,15						\\
+		$\sigma{}P$		& 257,47					& 148,40					& 0,25						& 0,18						\\
+	\end{tabular}
+	\caption[Synthèse des résultats de l'étude sur l'ajustement des tailles]{Synthèse des résultats de l'étude sur l'ajustement des tailles. Les abbréviations \og IC \fg{}, \og C \fg{}, \og $d$ \fg{}, \og $T$ \fg{}, \og $E$ \fg{}, \og $P$ \fg{}, et \og norm \fg{}  signifient respectivement \og Intervalle de confiance à \fg{}, \og Corrélation \fg{} (accompagnée de sa \emph{p-value}), \og estimation de la difficulté de sélection d'une cible \fg{}, \og Temps \fg{}, \og Erreurs \fg{}, \og $Perf$ \fg{} et \og avec normalisation \fg{}. Un $\sigma$ indique un écart-type, et une barre horizontale, une moyenne. Les corrélations sont exprimées en pourcentages. Celles entre la vitesse ou l'estimation de la difficulté d'une part, et le temps de sélection, les erreurs, ou $Perf$ de l'autre, qui sont marquées et significatives dans la condition homogène, disparaissent --- et même s'inversent --- dans la condition hétérogène. La normalisation renforce les corrélations dans la condition homogène, particulièrement pour $Perf$.}
+	\label{tab:synthRes}
+\end{table}
+
+
+
 	
 	\subsection{Interprétation}
 	L'objet de cette étude était moins de développer une technique d'aide à la sélection de cibles mobiles que de démontrer la validité et l'utilité de notre modèle d'estimation de la difficulté d sélection d'une cible mobile. En effet, les contraintes placées étaient très fortes, et avaient pour but de tester nos hypothèses \textbf{H1} et \textbf{H2}. Nous retenons la première sans réserves, et la seconde lorsque les performances de sélection sont considérées de manière holistique, et non seulement sur le plan du temps de sélection ou du taux d'erreurs. Une tâche de sélection étant par essence un compromis vitesse-précision, il nous semble que l'hypothèse \textbf{H2} ne devrait pas être rejetée, quoique nous aimerions la voir évaluée plus précisément, avec plus de sujets, voire d'essais par sujet. Ajoutons que les inversions de corrélations notées dans le tableau~\ref{tab:synthRes} plaident pour une légère diminution du paramètre N de la parabole décrite par l'équation~\ref{eq:scalingParabola}, ce qui pourrait également améliorer les résultats.
 	
 	Cette étude montre qu'il est possible d'estimer de manière relativement fiable la difficulté de sélection d'une cible mobile, et de s'appuyer sur cette donnée pour informer la conception d'une technique d'assistance à la sélection. Notre proposition d'ajustement des tailles des cibles est en effet parfaitement comptabile avec un large éventail de techniques de sélection, parmi lesquelles nous pouvons citer la plupart des curseurs zonaux, comme notamment le \emph{DynaSpot}~\cite{chapuis2009dynaspot}, le lancer de rayon avec désambiguïsation~\cite{grossman2006design}, la sélection en cascade telle que la met en \oe{}uvre le \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation}, par exemple, ou encore l'augmentation des objets, comme avec \emph{Comet}~\cite{hasan2011comet}, par exemple.
 	
-	\subsubsection{Prédiction intentionnelle biaisée}
+	\section{Prédiction intentionnelle biaisée -- \emph{SharpHook}}
 	Au premier abord, l'ajustement des tailles des cibles pourrait paraître sans intérêt lorsque l'on utilise une heuristique de prédiction intentionnelle telle que \emph{Hook}~\cite{ortega2013hook}, qui ne se préoccuppe pas de la taille des objets. Cependant, il n'en est rien.
 	
-	Certes, la difficulté d'une cible due à ses mouvements n'a pas d'influence, \emph{a priori}, sur l'intention de l'utilisateur de la sélectionner ou non. Cependant, attendu qu'une heuristique de ce type s'appuie sur un système de scores pour deviner quel objet l'utilisateur cherche à sélectionner, il est possible d'utiliser la difficulté de sélection pour biaiser l'heuristique en faveur des cibles les plus difficiles, de manière tout à fait analogue à ce que nous avons fait avec la taille des cibles dans l'étude précédente. La difficulté pourrait tout simplement, à l'aide d'une parabole du type de celles de la figure~\ref{fig:parabolae}, fournir un facteur permettant de biaiser le score de la cible.
+	Certes, la difficulté de sélection d'une cible due à ses mouvements n'a pas d'influence, \emph{a priori}, sur l'intention de l'utilisateur de la sélectionner ou non. Cependant, attendu qu'une heuristique de ce type s'appuie sur un système de scores pour deviner quel objet l'utilisateur cherche à sélectionner, il est possible d'utiliser la difficulté de sélection pour biaiser l'heuristique en faveur des cibles les plus difficiles, de manière tout à fait analogue à ce que nous avons fait avec la taille des cibles dans l'étude précédente. La difficulté pourrait tout simplement, à l'aide d'une parabole du type de celles de la figure~\ref{fig:parabolae}, fournir un facteur permettant de biaiser le score de la cible.
 	
-	Ainsi, les cibles naturellement faciles seraient certes un peu plus délicates à sélectionner, mais \emph{Hook} est suffisamment performant pour supposer que cela ne pose pas de problème, et les cibles les plus difficiles à saisir seraient plus facilement \og accrochées \fg{} par l'heuristique. Comme nous l'évoquions plus haut, \emph{Hook} est compatible avec les méthodes de filtrages décrites dans la section~\ref{sub:vfaGuide}, et l'ajustement de la taille des cibles peut s'y ajouter sans incompatibilité aucune. Notons que ce qui vaut pour \emph{Hook} et son curseur ponctuel vaut également pour \emph{IntenSelect}~\cite{de2005intenselect} et son lancer de rayon avec prédiction intentionnelle.
+	Ainsi, les cibles naturellement faciles seraient certes un peu plus délicates à sélectionner, mais \emph{Hook} est suffisamment performant pour supposer que cela ne pose pas de problème, et les cibles les plus difficiles à saisir seraient plus facilement \og accrochées \fg{} par l'heuristique. Comme nous l'évoquions plus haut, \emph{Hook} est compatible avec les méthodes de filtrages décrites dans la section~\ref{sub:vfaGuide}, et l'ajustement de la taille des cibles peut s'y ajouter sans incompatibilité aucune, quoique sans intérêt manifeste. Notons que ce qui vaut pour \emph{Hook} et son curseur ponctuel vaut également pour \emph{IntenSelect}~\cite{de2005intenselect} et son lancer de rayon avec prédiction intentionnelle.
 	
-	\subsubsection{Assistance haptique ou pseudo-haptique}
-	Par ailleurs, rien de tout cela n'empêche d'utiliser une assistance haptique ou pseudo-haptique, qui pourrait également dépendre du résultat final de l'heuristique de prédiction intentionnelle, c'est-à-dire à la fois de l'intention prédite, et de la difficulté des cibles potentielles. Il nous apparaît important de garder toutes ces options à l'esprit, et de les combiner au besoin, selon les difficultés et contraintes inhérentes à chaque contexte applicatif.
+	Nous pouvons formuler deux nouvelles hypothèses :
+	
+	\begin{description}
+		\item[H3 :] Notre estimation de la difficulté de sélection d'une cible est plus fiable que l'usage des paramètres V, F, ou A, même avec une technique de type \emph{Hook}.
+		\item[H4 :] Si l'heuristique de prédiction intentionnelle est biaisée en faveur des cibles jugées difficiles, et en défaveur des cibles jugées faciles, les performances de sélection mesurées sur l'ensemble des cibles sont meilleures.
+	\end{description}
+
+	
+	\subsection{Expérience et protocole}
+	Afin d'évaluer ces hypothèses, nous avons mené une étude similaire à celle de la section précédente, avec 8 participants. Les mêmes combinaisons de V, F, et A ont été utilisées, mais répétées 20 fois chacune au lieu de 6, pour un total de 520 essais par condition, soit 1040 par passation. Chaque sujet a effectué deux passations, pour un total de 2080 essais par sujet. Cette multiplication du nombre d'essais fut permise par l'utilisation d'une technique d'aide à la sélection presque identique à \emph{Hook}, avec une différence limitée au retour visuel : au lieu d'un cône (voir la figure~\ref{fig:hookPic}) pointant vers la cible \og accrochée \fg{}, trop instable avec des cibles aussi vives, nous nous sommes contentés de colorer la cible à sélectionner en vert quand elle est accrochée.
+	
+	\subsection{Score biaisé}
+	Pour rappel, l'équation~\ref{eq:standardHookNear} décrit le calcul du score des $NCT$ cibles les plus proches du curseur pour chaque tour de boucle du programme, et l'équation~\ref{eq:standardHookFar} décrit ce calcul des autres cibles, plus distantes. $Score_{cible_{i}}(t)$ est le score de la cible $i$ à l'instant $t$, $NCT$ est le nombre d'objets proches du curseur et $\Delta{}t$ est le temps écoulé depuis la précédente itération. Nous avons ici adopté une valeur de 8 pour NCT, choisie empiriquement.
+	
+	\begin{align}
+		\label{eq:standardHookNear}
+		Score_{cible_{i}}(t) &= Score_{cible_{i}}(t-1) + (NCT - i) \times \Delta{}t \\
+		\label{eq:standardHookFar}
+		Score_{cible_{i}}(t) &= Score_{cible_{i}}(t-1) - \frac{NCT}{2} \times \Delta{}t
+	\end{align}
+	
+	Pour biaiser ce calcul de score, nous avons remplacé ces fonctions par celles des équations~\ref{eq:biasedHookNear} et~\ref{eq:biasedHookFar}. $Diff_{i}$ est une estimation de la difficulté de sélection de la cible $i$, normalisée sur [0,1], où la cible la plus difficile de l'ensemble a une difficulté de 1.
+
+	\begin{align}
+		\label{eq:biasedHookNear}
+		Score_{cible_{i}}(t) &= Score_{cible_{i}}(t-1) + (NCT - i) \times 2 \times Diff_{i} \times \Delta{}t \\
+		\label{eq:biasedHookFar}
+		Score_{cible_{i}}(t) &= Score_{cible_{i}}(t-1) - \frac{NCT\times Diff_{i}}{2} \times \Delta{}t
+	\end{align}
+	
+	Bien sûr, ce n'est qu'une façon parmi d'autes de biaiser le calcul du score avec la difficulté de sélection, et d'ailleurs, il serait également possible de biaiser le calcul de la distance. Nous proposons cette solution avant tout pour sa simplicité. Celle-ci étant dérivée de \emph{Hook}, mais se voulant plus astucieuse, nous l'avons baptisée \emph{SharpHook}.
+	
+	\subsection{Temps de sélection et erreurs}
+	Les résultats bruts obtenus avec \emph{SharpHook} sont présentés sur la figure~\ref{fig:rawHookPerfs}, où la condition \og Standard \fg{} correspond à la prédiction intentionnelle fondée sur l'heuristique de \emph{Hook}, et la condition \emph{Biaisé} correspond à \emph{SharpHook} et son score biaisé en fonction de la difficulté de sélection de chaque cible. Les temps de sélection présentés sur la figure~\ref{fig:hookRawTimes} montre un léger avantage en faveur de \emph{SharpHook}, mais avec des intervalles de confiance à 95~\%{} se chevauchant : [1,7373 ; 1,9736] pour \emph{Hook} et [1,6080 ; 1,8159] pour \emph{SharpHook}. Toutefois, l'avantage de ce dernier est beaucoup plus marqué pour les taux d'erreurs, présentés sur la figure~\ref{fig:hookRawErrors}. De fait, nous retenons l'hypothèse \textbf{H4}. Des vues plus synthétiques des performances sont présentées sur la figure~\ref{fig:hookRawProducts}, qui représente le produit $Temps(Erreurs+1)$, et la figure~\ref{fig:rawHookErrorsTimesScatter}, qui représente les performances de sélection sur deux axes : temps et erreurs.
+	
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/hookRawTimes}
+			\caption{Temps de sélection bruts.}
+			\label{fig:hookRawTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/hookRawErrors}
+			\caption{Nombres moyens d'erreurs bruts.}
+			\label{fig:hookRawErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/hookRawProducts}
+			\caption{Produits $T(E+1)$ bruts.}
+			\label{fig:hookRawProducts}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/rawHookErrorsTimesScatter}
+			\caption{Temps de sélection et erreurs.}
+			\label{fig:rawHookErrorsTimesScatter}
+		\end{subfigure}
+		\caption[\emph{SharpHook} -- résultats bruts]{Performances de sélection de \emph{SharpHook} -- résultats bruts. Moyennes et intervalles de confiance à 95~\%{}.}
+		\label{fig:rawHookPerfs}
+	\end{figure}
+	
+	\subsection{Normalisation des résultats}
+	C'est ce que nous avons fait ici, et les résultats sont présentés sur la figure~\ref{fig:normHookPerfs}. Dans celle-ci, MTSN est la moyenne des temps de sélection normalisés, et MTEN est la moyenne des taux d'erreurs normalisés. Cette fois-ci, les valeurs moyennes sont représentées par les barres horizontales sombres, tandis que les extrémités des \og boîtes \fg{} indiquent les bornes des intervalles de confiance à 95~\%{}, et les \og moustaches \fg{} indiquent les bornes des intervalles de confiance à 99~\%{}. Pour une meilleure visibilité, les échelles ne commencent pas à zéro.
+	
+	Sur la base de résultats normalisés, les données sont plus clairement en faveur de \emph{SharpHook}. Celui-ci conserve son avantage tant en temps de sélection qu'en taux d'erreurs, mais les intervalles de confiance sont clairement disjoints, même à 99~\%{}. Notre hypothèse \textbf{H4} s'en trouve confortée.
+
+
+	\begin{figure}[!htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/hookNormTimes}
+			\caption{MTSN.}
+			\label{fig:hookNormTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/hookNormErrors}
+			\caption{MTEN.}
+			\label{fig:hookNormErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/hookNormProducts}
+			\caption{Moyennes des performances sur E et T normalisés.}
+			\label{fig:hookNormProducts}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/normHookErrorsTimesScatter}
+			\caption{MTSN et MTEN.}
+			\label{fig:normHookErrorsTimesScatter}
+		\end{subfigure}
+		\caption[\emph{SharpHook} -- résultats normalisés]{Performances de sélection de \emph{SharpHook} -- résultats normalisés. Moyennes, intervalles de confiance à 95~\%{} et à 99~\%{}.}
+		\label{fig:normHookPerfs}
+	\end{figure}
+	
+	\subsection{Difficulté et performances}
+	Sur les résultats normalisés, d'intéressantes corrélations sont observables, et présentées dans le tableau~\ref{tab:hookCorr}. En effet, s'il n'y a pas de corrélation significative entre VFA et les erreurs (ces dernières étant sans doute trop rares), il y a bien des corrélations marquées, quoique faibles, entre V et les temps de sélection. Surtout, notre estimation de la difficulté est plus fortement corrélée aux temps de sélection que la vitesse. Il est surtout intéressant de remarquer que même \emph{SharpHook} présente une corrélation entre la difficulté et les temps de sélection, ce qui suggère que le biais que nous avons introduit dans le calcul du score pourrait être plus bénéfique s'il était renforcé, par exemple en élevant le facteur $Diff$ au carré, ou en biaisant également le calcul de la distance.
+	
+	\begin{table}
+		\centering
+		\begin{tabular}{l | c c}
+			Condition				& \emph{Hook}					& \emph{SharpHook}				\bigstrut[b] \\ \hline
+			Corr(diff, temps)		& 0,1190 ; 1,2643$.10^{-27}$	& 0,0886 ; 5,6781$.10^{-16}$	\bigstrut[t] \\
+			Corr(V, temps)			& 0,0892 ; 3,5536$.10^{-16}$	& 0,0765 ; 2,8704$.10^{-12}$		\\
+%			Corr(diff, $Perf$)		& 0,2935 ; 1,7719$.10^{-50}$	& -0,0378 ; 0,0599		\\
+%			Corr(V, $Perf$)			& 0,1980 ; 2,3853$.10^{-23}$	& -0,0302 ; 0,1326		\\
+%			Écart-type temps		& 3,8493						& 2,9736				\\
+%			Écart-type erreurs		& 12,2926						& 9,7608				\\
+%			Écart-type $Perf$		& 258,2776						& 148,8590				\\
+		\end{tabular}
+		\caption[\emph{Hook} et \emph{SharpHook} -- corrélations]{Corrélations entre la vitesse ou l'estimation de la difficulté d'une part et les temps de sélection.}
+		\label{tab:hookCorr}
+	\end{table}
+
+	Ces corrélations sont bien moins marquées que sans assistance à la sélection. Il est probable que cette assistance lisse les écarts de performance d'une condition à l'autre, réduisant de fait les corrélations qui en découlent. Quoi qu'il en soit, la \emph{p-value} associée à la corrélation entre la difficulté et le temps de sélection étant inférieure à celle de la corrélation entre V et le temps de sélection, et ce de plus de 10 ordres de grandeur, nous pouvons retenir notre hypothèse \textbf{H3}.
+	
+	
+	\subsection{Interprétation}
+	Nos résultats illustrent l'intérêt de l'utilisation du modèle VFA et d'une estimation de la difficulté de sélection s'appuyant dessus pour biaiser une heuristique de prédiction intentionnelle. Cependant, ils mettent également en lumière le fait que ce biais peut s'appliquer de bien des façons, et qu'un calibrage minutieux pourrait s'avérer bénéfique. En effet, nous n'avons pas entièrement \og annulé \fg{} la corrélation entre la difficulté et les performances de sélection avec la version de \emph{SharpHook} que nous proposons.
+	
+	De plus, il n'est pas garanti que le modèle d'estimation de la difficulté de sélection que nous proposons, et qui s'appuie sur des données relatives à des sélection non assitées, soit optimal pour \emph{Hook}, qui change profondément la nature de la tâche. Il pourrait donc être opportun de concevoir un modèle spécifique, permettant un biais pus précis et donc plus performant.
+	
+	Enfin, nos résulats confirment ceux d'Ortega~\cite{ortega2013hook}, d'une part en montrant que les temps de sélection avec \emph{Hook} sont très courts --- nos résultats étant indirectement comparables à ceux de la section~\ref{sub:as_res}, obtenus avec d'autres sujets et un autre dispositif expérimental --- mais surtout, les taux d'erreurs sont exceptionnellement bas : autour de 0,25 par sélection contre environ 9,5 sans assistance.
+	
+	\section{Assistance haptique ou pseudo-haptique -- \emph{FastHook}}
+	Ces taux d'erreurs découlent avant tout de stratégies \og imprudentes \fg{} de la part de participants ayant prévilégié la vitesse au détriment de la précision, mais ils reflètent une réelle difficulté lors de l'utilisation de \emph{Hook}, et par conséquent de \emph{SharpHook} : lorsqu'une cible est accrochée, l'utilisateur peut la sélectionner, mais il n'a pas de garantie qu'entre sa décision de cliquer pour effectuer la sélection, et le clic effectif, la cible sera toujours accrochée. Et parfois, elle se décroche, l'heuristique ayant changé de prédiction entre-temps.
+	
+	En fait, il est possible de favoriser la \og sûreté \fg{} d'une sélection, en suivant une cible plus longtemps et/ou de plus près, afin que son score soit très supérieur à ceux des autres objets, pour réduire la probabilité que le score d'un autre objet dépasse celui de la cible visée entre la décision de cliquer et le clic. Cette stratégie échange de la vitesse contre de la précision. Or, comme nous l'avons vu dans le chapitre~\ref{chap1}, pour certaines application, cette dernière est primordiale.
+	
+	Nous avons plusieurs fois mentionné l'intérêt potentiel d'une assistance haptique ou pseudo-haptique~\cite{lecuyer2009simulating, pusch2011pseudo} lors d'une tâche de sélection. Dans ce contexte précis au moins, elle pourrait présenter deux intérêts : réduire la probabilité d'une erreur en attirant le curseur vers la cible accrochée, donc en réduisant la distance entre les deux et en améliorant le score de la cible ; accrocher la cible de plus près, permettant de creuser plus rapidement l'écart de score avec les autres objets, et donc de sélectionner plus rapidement. En principe, un avantage pourrait être observé, ou l'autre, ou un peu des deux.
+	
+	\subsection{\emph{FastHook}}
+	Pour évaluer l'intérêt de ce concept, nous avons développé une nouvelle variante de \emph{Hook}, augmentée d'une assistance pseudo-haptique attirant le curseur vers la cible prédite par l'heuristique. À chaque tour de boucle du programme, le curseur subit le déplacement effectif $\vec{dep_{eff}}$ décrit par les équations~\ref{eq:phDisplacement} et~\ref{eq:phDisplacement2}, où $K$ est une constante réelle ; $V$ est la vitesse de la cible accrochée ; $f_{accrochage}$ est le score de la cible accrochée divisé par le score le plus élevé relevé sur l'ensemble des autres objets ; $\vec{cc}$ est un vecteur de norme 1 ayant pour origine le curseur, et orienté vers la cible ; $\Delta{}t$ est le temps écoulé depuis la précédente boucle ; et $distance$ est la distance entre le curseur et la cible.
+
+	\begin{align}
+		\label{eq:phDisplacement}
+		\vec{dep_{eff}} &= max(\vec{dep}, \vec{cc}) \\
+		\label{eq:phDisplacement2}
+		\vec{dep} &= \frac{K * V * f_{accrochage} * \vec{cc} * \Delta{}t}{1 + distance^{2}}
+	\end{align}
+	
+	Cette variante de \emph{Hook} permettant d'accrocher plus fermement une cible, nous l'appelons \emph{FastHook}\footnote{Par opposition à \emph{loose} plus qu'à \emph{slow}.}. Nous formulons à son propos les hypothèses suivantes :
+	
+	\begin{description}
+		\item[H5 :] Notre estimation de la difficulté de sélection d'une cible est plus fiable que l'usage des paramètres V, F, ou A, même avec une technique de type \emph{FastHook}.
+		\item[H6 :] Grâce à son assistance pseudo-haptique, \emph{FastHook} offre de meilleures performances que \emph{Hook} :
+		\begin{description}
+			\item[H6a :] Les temps de sélection de \emph{FastHook} sont meilleurs que ceux de \emph{Hook}.
+			\item[H6b :] Les taux d'erreusr de \emph{FastHook} sont meilleurs que ceux de \emph{Hook}.
+		\end{description}
+	\end{description}
+
+	
+	\subsection{Expérience et protocole}
+	Même avec la version standard de \emph{Hook}, nous l'avons vu, les erreurs sont assez rares. Pour mesurer l'influence de \emph{FastHook} sur celles-ci, nous avons décidé de favoriser leur occurrence, en choisissant des paramères VFA extrêmement difficiles, en conjonction avec un grand nombre de distracteurs :
+	
+	\begin{description}
+		\item[V :] 16 largeurs de cadre par seconde (1 valeur)
+		\item[F :] 8 ; 12 ; 16 ; 20 ; 24 ; 28 ; 32 ; 36 ; 40 ; 44 ; 48 ; 52 ; 56 ; 60~Hz (14 valeurs)
+		\item[A :] 30 ; 60 ; 90 ; 120 ; 150 ; 180\textdegree{} (6 valeurs)
+	\end{description}
+	
+	Nous avons donc $1\times{}14\times{}6 = 84$ combinaisons différentes, auxquelles s'ajoute une combinaison rectiligne. Chaque combinaison était évaluée deux fois par sujet, pour un total de $(84+1)\times{}2 = 170$ essais par sujet. Le grand nombre de combinaisons est lié à la nécessité d'un grand nombre de distracteurs pour augmenter la difficulté de la tâche, nous permettant une grande diversité dans les natures de leurs mouvement. Insistons encore sur l'extrême difficulté de la tâche : à cette vitesse, les cibles traversent la largeur de l'écran en une seconde seulement, de sorte que même en mouvement rectiligne, elles sont difficiles à saisir. Sans assistance à la sélection, cette expérience serait probablement impossible.
+	
+	L'expérience menée était par ailleurs identique à celle portant sur \emph{SharpHook}, mais avec seulement X sujets, et des cibles de taille réduite, afin de limiter l'encombrement visuel : de XX~mm de diamètre, elles passent à YY. SCREENSHOTS et SHARPHOOK aussi.
+
+	
+	\subsection{Résultats}
+	
+	\subsection{Normalisation}
+	
+	\subsection{Interprétation}
+	
+	\section{Métrique synthétique paramétrable}
+	Dans la section~\ref{sub:product}, nous avons introduit une métrique synthétique permettant d'évaluer les performances de sélection d'un sujet ou d'une technique en la réduisant à un seul nombre, appelé $Perf$, avec $Perf = T(E+1)$ où $T$ est le temps de sélection et $E$ le nombre d'erreurs. En réalité, cette formule assez simple cache un parti pris assez fort : celui d'accorder un poids égal au temps de sélection et aux erreurs. En effet, on peut voir cette formule comme un cas particulier d'une forme plus générale : $Perf(m,n) = T^{m}(E+1)^{n}$ avec $m, n \in \mathbb{R}^{+}$.
+	
+	En pratique, sans doute n'est-il pas nécessaire de chercher à ajuster les deux exposants, car il suffit d'en modifier un pour altérer le poids relatif du facteur auquel il s'applique. On peut donc réduire cette formule à $Perf(m,n) = T(E+1)^{n}$. On pourra ainsi diminuer l'influence du taux d'erreurs sur les performances en diminuant $n$, et vice-versa. Dans un souci de praticité, nous proposons de se référer à un paramètre $p$, pour \emph{précision}, défini par $p = \log_2\left(n\right)$. Cela permet d'avoir un paramètre d'effet symétrique, et centré sur 0. Par exemple, nous avons les couples $(p,n)$ suivants : $\left(0,1\right), \left(1,2\right), \left(-1,\frac{1}{2}\right), \left(2,4\right), \left(-2,\frac{1}{4}\right)$\ldots{} Plus généralement, le facteur $E+1$ sera élevé à la puissance $2^{p}$ si $p$ est positif, ou remplacé par sa racine $2^{\abs*{p}}$-ième si $p$ est négatif.
 	
 	\section{Améliorer l'estimation de la difficulté de sélection}
 	Notre modèle d'estimation de la difficulté de sélection fournit des résultats cohérents et fiables, nous l'avons vu. Cependant, il n'est pas sans faiblesses, comme l'illustre par exemple la différence entre les figures~\ref{fig:perf_V_RealArea_lousy_fit} et~\ref{fig:perf_V_RealArea_better_fit}, qui met en lumière le manque de précision de notre modèle lorsque la valeur de F est particulièrement basse.
 	
-	Sans doute serait-il possible d'améliorer l'estimation de la difficulté de sélection d'une cible ; c'est du moins ce que suggèrent les valeurs de nos corrélations résumées par le tableau~\ref{tab:synthRes}, qui montrent une certaine marge de progression. Une modélisation mathématique plus astucieuse serait probablement utile, de même que des données plus variées et plus nombreuses à fin de l'étalonner.
+	Sans doute serait-il possible d'améliorer l'estimation de la difficulté de sélection d'une cible ; c'est du moins ce que suggèrent les valeurs de nos corrélations résumées par le tableau~\ref{tab:synthRes}, qui montrent une certaine marge de progression. Une modélisation mathématique plus astucieuse serait probablement utile, de même que des données plus variées et plus nombreuses afin de l'étalonner.
 	
 	\subsection{Réseaux de neurones}
 	Une méthode radicalement différente consisterait à employer un procédé d'apprentissage machine, tel qu'un réseau de neurones. Les entrées du réseau devraient inclure V, F, et A, voire également la largeur W et la distance D du modèle classique de Fitts, que nous avons entièrement omis dans ces travaux, en les fixant, pour limiter le focus --- déjà très large --- des études menées. Nous pourrions également y ajouter le coefficient d'autocorrélation, décrit dans la section~\ref{sub:vfaMem}. La sortie du réseau serait tout simplement une estimation de la difficulté de sélection de la cible concernée. Il est probable qu'un tel réseau, nourri de suffisamment de données d'apprentissage, fournirait une estimation nettement plus fiable, et donc potentiellement plus utile, de la difficulté inhérente à la sélection d'une cible mobile.

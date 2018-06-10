@@ -14,3 +14,16 @@ set y2label "Écart-type de (Temps×(Erreurs+1))"
 
 
 plot "homogeneityData.csv" u 2:xtic(1) ti col, "" u 3 ti col, "" u 4 ti col axes x1y2
+
+
+
+
+set output "normHomogeneityHistogram.svg"
+
+unset y2tics
+unset y2label
+set ylabel "Écarts-types"
+set yrange [0:0.3]
+
+
+plot "normHomogeneityData.csv" u 2:xtic(1) ti col, "" u 3 ti col, "" u 4 ti col

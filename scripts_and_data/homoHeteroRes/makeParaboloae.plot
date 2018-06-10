@@ -1,4 +1,4 @@
-set term svg size 1920, 1440 fsize 56
+set term svg size 1920, 1440 fsize 66
 set output "parabola1.svg"
 unset key
 
@@ -10,7 +10,7 @@ set xrange [0:1]
 set yrange [0:1.6]
 
 set xlabel "Aire normalisée"
-set ylabel "Facteur d'agrandissement/rétrécissement"
+set ylabel "Facteur de mise à l'échelle"
 
 plot f(x) lw 6
 

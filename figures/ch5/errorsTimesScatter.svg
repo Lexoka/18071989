@@ -88,17 +88,17 @@
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M444.7,1123.2 L444.7,1073.7 M444.7,92.3 L444.7,141.8  '/>	<g transform="translate(444.7,1243.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" > 8.8</tspan></text>
+		<text><tspan font-family="Verdana" > 9.1</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M667.5,1123.2 L667.5,1073.7 M667.5,92.3 L667.5,141.8  '/>	<g transform="translate(667.5,1243.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" > 9</tspan></text>
+		<text><tspan font-family="Verdana" > 9.2</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M890.3,1123.2 L890.3,1073.7 M890.3,92.3 L890.3,141.8  '/>	<g transform="translate(890.3,1243.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" > 9.2</tspan></text>
+		<text><tspan font-family="Verdana" > 9.3</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -108,17 +108,17 @@
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M1336.0,1123.2 L1336.0,1073.7 M1336.0,92.3 L1336.0,141.8  '/>	<g transform="translate(1336.0,1243.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" > 9.6</tspan></text>
+		<text><tspan font-family="Verdana" > 9.5</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M1558.8,1123.2 L1558.8,1073.7 M1558.8,92.3 L1558.8,141.8  '/>	<g transform="translate(1558.8,1243.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" > 9.8</tspan></text>
+		<text><tspan font-family="Verdana" > 9.6</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<path stroke='black'  d='M1781.6,1123.2 L1781.6,1073.7 M1781.6,92.3 L1781.6,141.8  '/>	<g transform="translate(1781.6,1243.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" > 10</tspan></text>
+		<text><tspan font-family="Verdana" > 9.7</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -139,16 +139,16 @@
 </g>
 	<g id="gnuplot_plot_1" ><title>"errorsTimesData.csv" using 2:3</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<use xlink:href='#gpPt6' transform='translate(1204.8,414.2) scale(49.50)' color='rgb(255,   0,   0)'/>
-	<use xlink:href='#gpPt6' transform='translate(1005.8,756.4) scale(49.50)' color='rgb(255,   0,   0)'/>
+	<use xlink:href='#gpPt6' transform='translate(1296.7,414.2) scale(49.50)' color='rgb(255,   0,   0)'/>
+	<use xlink:href='#gpPt6' transform='translate(898.5,756.4) scale(49.50)' color='rgb(255,   0,   0)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_2" ><title>"" using 2:3:1</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(1204.8,336.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
+	<g transform="translate(1296.7,336.7)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
 		<text><tspan font-family="Verdana" >Homo</tspan></text>
 	</g>
-	<g transform="translate(1005.8,678.9)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
+	<g transform="translate(898.5,678.9)" stroke="none" fill="black" font-family="Verdana" font-size="66.00"  text-anchor="middle">
 		<text><tspan font-family="Verdana" >Hétéro</tspan></text>
 	</g>
 </g>

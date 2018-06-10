@@ -99,7 +99,7 @@
 	
 	\footnotetext{\url{https://blogs.nvidia.com/blog/2011/01/13/university-pittsburg-researcher-studies-molecular-dynamics-gpus}}
 	
-	Dans les simulations d'IMD, la vitesse des cibles peut être très élevée, parfois supérieure à 10~\r{A}/s\footnote{$1~\r{A} = 0,1~nm = 10^{-10}~m $}, sachant que le rayon d'un atome est d'environ 1~\r{A}. La périodicité des \og boîtes \fg{} de simulation introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
+	Dans les simulations d'IMD, la vitesse des cibles peut être très élevée, parfois supérieure à 10~\r{A}/s\footnote{1~\r{A} = 0,1~nm = $10^{-10}~m$}, sachant que le rayon d'un atome est d'environ 1~\r{A}. La périodicité des \og boîtes \fg{} de simulation introduit une difficulté particulière pour la sélection de cibles, puisqu'un objet peut quitter l'espace de sélection par un bord et le réintégrer par le bord opposé. Au-delà de l'effet de surprise, cela implique un changement brutal dans la distance entre le curseur et la cible, à moins que le curseur puisse se déplacer de la même manière.
 	
 	Quand il s'agit d'interagir avec un tel système, la vitesse d'une particule dans l'espace moteur dépend de la façon dont le système est représenté et du périphérique utilisé, mais elle devient rapidement problématique, \emph{a fortiori} quand la nature même du mouvement pose problème.
 	
@@ -416,7 +416,8 @@
 	
 	\footnotetext{\url{https://thedroneracingleague.com}}
 	
-	\FloatBarrier \subsection{Projectiles}
+	\subsection{Projectiles}
+	\label{sub:projectiles}
 	Les divers projectiles utilisés dans les sports (balles, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficiles : plus de 180~km/h pour un palet de hockey sur glace\footnotemark{}, 199~km/h pour une balle de baseball\footnotemark{}, 260~km/h pour une balle de tennis\footnotemark{}, et 350~km/h pour une balle de golfe\footnotemark{}. Dans le cas du hockey sur glace, les rebonds potentiellement nombreux du palet peuvent rendre sa trajectoire complexe et imprévisible. Dans une moindre mesure, c'est vrai d'une balle de baseball, voire d'un ballon de football, par exemple. Cependant, il n'y a généralement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié (éventuellement actionné à l'aide d'un contrôle spécifique) serait probablement une option préférable à l'utilisation d'une technique de sélection \og libre \fg{}, fût-elle assistée.
 	
 	\addtocounter{footnote}{-3}

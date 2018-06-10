@@ -1,0 +1,116 @@
+Time avereages and 95% confidence intervals, one and two:
+0.19695492315920984 0.18093689133033064
+(0.1936580713133319, 0.20025177500508778)
+(0.17801553642194126, 0.18385824623872002)
+
+Time avereages and 98% confidence intervals, one and two:
+0.19695492315920984 0.18093689133033064
+(0.19304243469313226, 0.20086741162528743)
+(0.1774700181074155, 0.18440376455324578)
+
+Time avereages and 99% confidence intervals, one and two:
+0.19695492315920984 0.18093689133033064
+(0.19262191787605598, 0.2012879284423637)
+(0.17709739630787605, 0.18477638635278523)
+
+Errors averages and confidence intervals, one and two:
+0.03945619658119658 0.030603988603988608
+(0.036980856431966865, 0.0419315367304263)
+(0.02824164247946031, 0.032966334728516906)
+
+Correlations between time and difficulty, one and two:
+(0.11900019289869498, 1.2643225111724309e-27)
+(0.08859735767581489, 5.678075655801776e-16)
+
+Correlations between time and speed, one and two:
+(0.08921699414174128, 3.553559130204408e-16)
+(0.07646576578549914, 2.8703645337694042e-12)
+
+Correlations between time and frequency, one and two:
+(-0.011321199924008133, 0.30182378688433376)
+(0.006291423774893257, 0.5661128968394491)
+
+Correlations between time and angle, one and two:
+(0.02545465044343766, 0.0202410852653451)
+(0.02212817463956232, 0.043555455639033125)
+
+Correlations between errors and difficulty, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between errors and speed, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between errors and frequency, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between errors and angle, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between time and errors, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between difficulty and product, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between speed and product, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between frequency and product, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Correlations between angle and product, one and two:
+(nan, 1.0)
+(nan, 1.0)
+
+Standard deviations for time, one and two:
+0.153428141014806
+0.13595334998115535
+
+Standard deviations for errors, one and two:
+0.11519681660869212
+0.10993832639858583
+
+Standard deviations for product, one and two:
+0.17159071695526612
+0.1544293919038466
+
+T tests for time and errors between one and two:
+Ttest_indResult(statistic=7.1272938518266775, pvalue=1.0656083816014676e-12)
+Ttest_indResult(statistic=nan, pvalue=nan)
+
+Averages and confidence interval for product, one and two:
+0.2207380628746574 0.2016234727515378
+(0.21705093502322304, 0.22442519072609174)
+(0.19830510610518137, 0.20494183939789423)
+
+Confidence interval 98 for product, one and two:
+(0.21636242033259806, 0.22511370541671671)
+(0.19768545192530054, 0.20556149357777506)
+
+Confidence interval 99 for product, one and two:
+(0.21589212341277225, 0.22558400233654252)
+(0.19726219087346936, 0.20598475462960625)
+
+T tests for product between one and two:
+0.2207380628746574 0.2016234727515378
+Ttest_indResult(statistic=nan, pvalue=nan)
+
+Effect size on times 80%:
+0.016018031828879148
+(0.014191884019236966, 0.01784417963852133)
+
+Effect size on errors 80%:
+0.008852207977207977
+(0.006710555547424911, 0.010993860406991043)
+
+Effect size on errors 50%:
+0.008852207977207977
+(0.0077244941196503315, 0.009979921834765622)

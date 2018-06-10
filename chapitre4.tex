@@ -958,16 +958,14 @@
 	\subsection{L'aire : une fonction quadratique de la vitesse}
 	Nous avons vu que le périmètre d'une enveloppe convexe était une fonction linéaire de V ; il est naturel de supposer que l'aire en serait une fonction quadratique, c'est-à-dire que $\mathbb{E}(\mathcal{A}(ec)) = \delta{}V^{2}$ où $\mathcal{A}(ec)$ est l'aire de l'enveloppe convexe $ec$, $\mathbb{E}(\mathcal{A}(ec))$ est l'espérance de cette valeur, et $\delta \in \mathbb{R}$. De même que pour les périmètres, nous faisons ici l'hypothèse que la moyenne des $\mathcal{A}(ec)$ correspondant à un ensemble suffisamment grand de trajectoires générées pour un couple (F,A) donné converge presque sûrement vers une valeur réelle : $\mathbb{E}(\mathcal{A}(ec))$.
 	
-	C'est ce que nous avons vérifié cette relation quadratique en mesurant l'aire de nombreuses (50) trajectoires pour $F = 5$ et $A = 60$, comme l'illustre la figure~\ref{fig:realAreaVspeed}. Les résultats que nous avons obtenus avec tous les autres couples (F,A) sont cohérents avec ceux-ci.
+	C'est ce que nous avons vérifié cette relation quadratique en mesurant l'aire de nombreuses (50) trajectoires pour $F = 5$ et $A = 60$, comme l'illustre la figure~\ref{fig:realAreaVspeed}. Les résultats que nous avons obtenus avec tous les autres couples (F,A) sont cohérents avec ceux-ci. De même, alors que le périmètre est une fonction linéaire de la durée du mouvement, l'aire en est une fonction quadratique. Les données que nous présentons plus bas sont issues de simulations exécutées avec une durée de mouvement de 5 secondes.
 
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.6\textwidth]{figures/ch4/realAreaVspeed}
 		\caption[Aire de l'enveloppe convexe en fonction de V]{Aire de l'enveloppe convexe en fonction de V, pour des valeurs de F et A de 8 et 60, respectivement. Les données sont en violet et l'approximation quadratique est en vert. Le coefficient de corrélation est supérieur à 0,9994.}
 		\label{fig:realAreaVspeed}
-	\end{figure}
-
-	De même, alors que le périmètre est une fonction linéaire de la durée du mouvement, l'aire en est une fonction quadratique. Les données que nous présentons plus bas sont issues de simulations exécutées avec une durée de mouvement de 5 secondes.
+	\end{figure}. 
 	
 	\subsection{Détermination des coefficients}
 	De façon analogue à ce que nous observions pour les périmètres, si l'on a bien $\mathbb{E}(\mathcal{A}(ec)) = \delta{}V^{2}$, $\forall A$ et $\forall F$, la valeur de $\delta$ n'est pas la même pour toutes les combinaisons de A et F. Nous avons donc cherché à la déterminer en fonction de F et A, de manière à pouvoir étudier $\mathbb{E}(\mathcal{A}(ec))$ en fonction de F et A.

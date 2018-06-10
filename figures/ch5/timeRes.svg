@@ -106,8 +106,8 @@
 <g fill="none" color="white" stroke="currentColor" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="6.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(148,   0, 211)'  d='M859.6,565.6 L859.6,316.8 M834.9,565.6 L884.3,565.6 M834.9,316.8 L884.3,316.8 M1320.6,646.4 L1320.6,454.2
-		M1295.9,646.4 L1345.3,646.4 M1295.9,454.2 L1345.3,454.2  '/>	<use xlink:href='#gpPt0' transform='translate(859.6,441.2) scale(24.75)' color='rgb(148,   0, 211)'/>
+	<path stroke='rgb(148,   0, 211)'  d='M859.6,564.9 L859.6,317.6 M834.9,564.9 L884.3,564.9 M834.9,317.6 L884.3,317.6 M1320.6,645.8 L1320.6,454.8
+		M1295.9,645.8 L1345.3,645.8 M1295.9,454.8 L1345.3,454.8  '/>	<use xlink:href='#gpPt0' transform='translate(859.6,441.2) scale(24.75)' color='rgb(148,   0, 211)'/>
 	<use xlink:href='#gpPt0' transform='translate(1320.6,550.3) scale(24.75)' color='rgb(148,   0, 211)'/>
 </g>
 	</g>
