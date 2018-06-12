@@ -3,7 +3,7 @@ set output "ampTimeRes.svg"
 unset key
 
 set xrange[0:4] # Otherwise, Gnuplot goes full retard and puts the error bars right on the vertical axes
-set yrange[0:30]
+set yrange[0:50]
 set xlabel "Distance"
 set ylabel "Temps moyen de sélection (s)"
 
