@@ -3,7 +3,7 @@
 \chapter[Exploitation de VFA pour l'aide à la sélection]{Exploitation du modèle VFA pour la conception de techniques de sélection}
 \minitoc
 \label{chap5}
-\cleardoublepage
+\clearpage
 
 \section{Introduction}
 	Dans ce chapitre, nous présentons premièrement différentes pistes pour concevoir des techniques d'aide à la sélection (ou améliorer des techniques existantes) à l'aide de l'ensemble des enseignements tirés des précédents chapitres, et en particulier du modèle VFA et de son pouvoir de prédiction de la difficulté de sélection d'une cible mobile. Nous évoquons plusieurs procédés possibles, fondés sur la modification du comportement des cibles mêmes, ou l'usage de \emph{proxies} aux mouvements altérés.
@@ -13,6 +13,8 @@
 	Troisièmement, nous proposons de nouvelles techniques de sélection, dont la conception s'appuie sur les travaux présentés plus haut dans ce manuscrit, c'est-à-dire à la fois sur le pouvoir du modèle VFA, mais aussi sur notre état de l'art et notre taxinomie des techniques de sélection. Nous présentons une étude empirique menée pour exploiter simultanément la prédiction intentionnelle et notre estimation de la difficulté, puis nous examinons les résultats obtenus.
 	
 	Quatrièmement, et sur le même principe, nous évaluons l'intérêt de l'usage d'une assistance pseudo-haptique en conjonction avec la prédiction intentionnelle, à l'aide d'une nouvelle étude empirique, dont nous étudions les résultats.
+	
+	Cinquièmement, nous proposons une technique de sélection s'appuyant simultanément sur les principes de sélection en cascade et de prédiction intentionnelle. Nous l'évaluons dans une autre étude empirique, dont nous exposons les résultats.
 	
 	Enfin, nous portons un regard critique sur nos résultats, en particulier sur l'efficacité de l'estimation de la difficulté de sélection d'une cible, et exposons une réflexion sur les travaux futurs à mener afin d'améliorer cette estimation. Nous envisageons quelques pistes permettant d'améliorer les techniques évaluées dans ce chapitre, et leurs éventuelles combinaisons.
 	
@@ -249,7 +251,7 @@
 	
 	% 1.0f = 2.84 cm sur 22 pouces
 	% Donc environ 1.94 cm sur 15 pouces
-	Pour évaluer cette hypothèse, nous avons mené une petite étude sur sept sujets, cinq hommes et deux femmes, âgés de 22, 23, 23, 28, 29, 26 et 26 ans, respectivement, et tous droitiers. Nous avons utilisé un protocole identique à celui décrit dans la section~\ref{sub:as_protocol}, mais avec un écran de 15 pouces de diagonale, et une seule combinaison VFA : V = 31,25~\%{} de la largeur du cadre par seconde, soit 9,68~cm/s, F = 20~Hz, et A = 100\textdegree{}. Cette condition fut choisie pour sa difficulté. Chaque sujet a effectué 42 sélections pour chacune des trois distances de Fitts évaluées : 12,5~\%{}, 25~\%{}, et 50~\%{} de la largeur du cadre, soit environ 3,87~cm, 7,75~cm, et 15,49~cm.
+	Pour évaluer cette hypothèse, nous avons mené une petite étude sur 8 sujets, 6 hommes et 2 femmes, âgés de 22, 23, 23, 28, 22, 29, 26 et 26 ans, respectivement, et tous droitiers. Nous avons utilisé un protocole identique à celui décrit dans la section~\ref{sub:as_protocol}, mais avec un écran de 15 pouces de diagonale, et une seule combinaison VFA : V = 31,25~\%{} de la largeur du cadre par seconde, soit 9,68~cm/s, F = 20~Hz, et A = 100\textdegree{}. Cette condition fut choisie pour sa difficulté. Chaque sujet a effectué 42 sélections pour chacune des trois distances de Fitts évaluées : 12,5~\%{}, 25~\%{}, et 50~\%{} de la largeur du cadre, soit environ 3,87~cm, 7,75~cm, et 15,49~cm.
 	
 	\subsubsection{Temps de sélection et erreurs}
 	Nous présentons les résultats obtenus sur la figure~\ref{fig:fittsDistAndPerf}, sous forme de moyennes et d'intervalles de confiance à 95~\%{}. Les temps de sélection moyens bruts sont sur la figure~\ref{fig:ampTimeRes}, les moyennes des temps de sélection normalisés sont sur la figure~\ref{fig:normTimes}, les moyennes des taux d'erreurs normalisés sont sur la figure~\ref{fig:normErrors}, et les moyennes des produits $Temps\times(Erreurs+1)$ sont sur la figure~\ref{fig:normProducts} --- cette dernière métrique est détaillée dans la section~\ref{sub:product}. Comme nous le supposions, la distance de Fitts ne semble plus avoir d'influence majeure sur les performances de sélection d'une cible mobile lorsque la difficulté est suffisamment élevée. Il n'en va cependant pas de même de la largeur de la cible, comme nous le verrons plus loin.
@@ -307,7 +309,7 @@
 	Afin d'évaluer notre hypothèse H1, nous avons mené une étude empirique avec 16 sujets, au cours de laquelle il leur était demandé de sélectionner des cibles rondes en cliquant dessus, dans un environnement homogène d'une part, et hétérogène de l'autre --- c'est-à-dire avec des cibles mues par les mêmes paramètres VFA et, respectivement, par des paramètres différents. Dans la condition hétérogène, chaque cible est de même taille ; dans la condition hétérogène, elles sont de tailles différentes selon l'estimation de leur difficulté de sélection, faite à partir de leurs paramètres VFA.
 	
 	\subsection{Dispositif expérimental et sujets}
-	Chaque sujet ayant participé à l'étude l'a fait avec une machine identique : un ordinateur de bureau doté d'un écran de 22 pouces de diagonale (Dell E2210), et d'une souris optique filaire ambidextre (Logitech Premium Optical Mouse). Les sujets étaient assis sur des chaises de bureau, et avaient la possibilité d'ajuster la luminosité et le contraste de l'écran, selon leurs préférences personnelles, afin de garantir leur confort. Notre groupe de 17 sujets était constitué de 16 hommes et 1 femme, de 16 droitiers et 1 gaucher, son âge moyen est de 22 ans, avec un écart-type d'un peu plus de 4 ans.
+	Chaque sujet ayant participé à l'étude l'a fait avec une machine identique : un ordinateur de bureau doté d'un écran de 22 pouces de diagonale (Dell E2210), et d'une souris optique filaire ambidextre (Logitech Premium Optical Mouse). Les sujets étaient assis sur des chaises de bureau, et avaient la possibilité d'ajuster la luminosité et le contraste de l'écran, selon leurs préférences personnelles, afin de garantir leur confort. Notre groupe de 16 sujets était constitué de 15 hommes et 1 femme, de 15 droitiers et 1 gaucher, son âge moyen est de 22 ans, avec un écart-type d'un peu plus de 4 ans.
 	
 	\subsection{Tâche et conditions}
 	% 22 pouces -> environ 1,84 cm par 1.0f
@@ -362,7 +364,7 @@
 	
 	Par conséquent, nous avons opté pour un échantillonnage exponentiel, avec 4 valeurs différentes, au lieu des 7 de la précédente étude, en omettant les plus faibles. De même, nos résultats montraient que le mouvement rectiligne était toujours aisé à sélectionner, aussi avons-nous supprimé la valeur 0 de l'ensemble des valeurs de A, en conservant tout de même 12 essais rectilignes. Pour réduire le nombre de conditions, nous avons remplacé les valeurs 30 et 60 par 45, et supprimé la valeur 120. Ceci nous a permis de passer de 6 valeurs de A à seulement 4.
 	
-	\emph{In fine}, cette révision des valeurs des paramètres VFA nous a permis de passer de $3\times{}7\times{}6+1=126$ combinaisons différentes à seulement $2\times{}4\times{}3+1=26$. En revanche, nous avons augmenté le nombre d'essais par combinaison, passant de 4 à 6, ou 12 pour la condition rectiligne (répétée 20 fois dans l'étude précédente). Ainsi, nous obtenons $24\times{}6+12=156$ essais au lieu de $126\times{}4+20=524$ précédemment. Toutefois, chaque sujet était soumis à deux conditions différentes, pour un total de 312 essais. 
+	\emph{In fine}, cette révision des valeurs des paramètres VFA nous a permis de passer de $3\times{}7\times{}6+1=126$ combinaisons différentes à seulement $2\times{}4\times{}3+1=26$. En revanche, nous avons augmenté le nombre d'essais par combinaison, passant de 4 à 6, ou 12 pour la condition rectiligne (répétée 20 fois dans l'étude précédente). Ainsi, nous obtenons $24\times{}6+12=156$ essais au lieu de $126\times{}4+20=524$ précédemment. Toutefois, chaque sujet était soumis à deux conditions différentes, pour un total de 312 essais.
 	
 	Cette réduction du nombre total d'essais nous parut appropriée, compte tenu d'une part des remarques des sujets de notre première étude, et d'autre part de l'augmentation de la difficulté moyenne des sélections dans cette seconde expérience, du fait de la suppression des vitesses faibles, et de l'augmentation des valeurs retenues, même si l'agrandissement des cibles compense partiellement.
 	
@@ -423,7 +425,7 @@
 	
 	La figure~\ref{fig:parabolae} illustre le comportement de cette fonction sur l'intervalle [0 ; 1] en fonction de la valeur de N, librement choisie entre 0 et 4. Celle-ci permet d'ajuster l'allure de la parabole, et donc la mesure dans laquelle ce procédé agrandit les cibles \og difficiles \fg{} et rétrécit les cibles \og faciles \fg{}. Pour un effet prononcé, on optera donc pour une valeur proche de 4, tandis que l'on préférera une valeur proche de 0 pour un effet plus léger.
 	
-	Attention toutefois, la constance de la somme des aires de toutes les cibles n'est garantie que si celles-ci sont réparties uniformément sur l'intervalle normalisé de leurs aires\footnotemark{}. En pratique, ce n'est généralement pas le cas, et une légère correction doit s'appliquer. Pour cela, nous mesurons cette somme des aires avant l'ajustement des tailles, puis après, et appliquons un petit correctif uniforme à la hausse ou à la baisse, selon le cas rencontré. Ce correctif permet aussi d'appliquer le facteur d'ajustement de taille non pas à l'aire d'une cible mais, dans un souci de simplicité, au rayon de chaque cible. À l'issue de plusieurs pilotes, nous avons choisi la valeur $N=2$. Ce choix informé par des essais empiriques n'est pas nécessairement optimal.
+	Attention toutefois, la constance de la somme des aires de toutes les cibles n'est garantie que si celles-ci sont réparties uniformément sur l'intervalle normalisé de leurs aires.\footnotemark{} En pratique, ce n'est généralement pas le cas, et une légère correction doit s'appliquer. Pour cela, nous mesurons cette somme des aires avant l'ajustement des tailles, puis après, et appliquons un petit correctif uniforme à la hausse ou à la baisse, selon le cas rencontré. Ce correctif permet aussi d'appliquer le facteur d'ajustement de taille non pas à l'aire d'une cible mais, dans un souci de simplicité, au rayon de chaque cible. À l'issue de plusieurs pilotes, nous avons choisi la valeur $N=2$. Ce choix informé par des essais empiriques n'est pas nécessairement optimal.
 
 	
 	\footnotetext{La normalisation doit se faire par rapport au maximum d'espérance de l'aire d'une enveloppe convexe de trajectoire, correspondant à $A\sqrt{F} = 120$.}
@@ -701,7 +703,7 @@
 
 	
 	\subsection{Expérience et protocole}
-	Afin d'évaluer ces hypothèses, nous avons mené une étude similaire à celle de la section précédente, avec 8 participants (les mêmes que pour l'étude sur la distance de Fitts, plus un homme droitier de 22 ans). Les mêmes combinaisons de V, F, et A ont été utilisées, mais répétées 20 fois chacune au lieu de 6, pour un total de 520 essais par condition, soit 1040 par passation. Chaque sujet a effectué deux passations, d'où 2080 essais par sujet. Cette multiplication du nombre d'essais fut permise par l'utilisation d'une technique d'aide à la sélection presque identique à \emph{Hook}, avec une différence limitée au retour visuel : au lieu d'un cône (voir la figure~\ref{fig:hookPic}) pointant vers la cible \og accrochée \fg{}, trop instable avec des cibles aussi vives, nous nous sommes contentés de colorer la cible à sélectionner en vert quand elle est accrochée, ce que la figure~\ref{fig:hook_red_green} illustre.
+	Afin d'évaluer ces hypothèses, nous avons mené une étude similaire à celle de la section précédente, avec 8 participants (les mêmes que pour l'étude sur la distance de Fitts). Les mêmes combinaisons de V, F, et A ont été utilisées, mais répétées 20 fois chacune au lieu de 6, pour un total de 520 essais par condition, soit 1040 par passation. Chaque sujet a effectué deux passations, d'où 2080 essais par sujet. Cette multiplication du nombre d'essais fut permise par l'utilisation d'une technique d'aide à la sélection presque identique à \emph{Hook}, avec une différence limitée au retour visuel : au lieu d'un cône (voir la figure~\ref{fig:hookPic}) pointant vers la cible \og accrochée \fg{}, trop instable avec des cibles aussi vives, nous nous sommes contentés de colorer la cible à sélectionner en vert quand elle est accrochée, ce que la figure~\ref{fig:hook_red_green} illustre.
 	
 	\begin{figure}[!htb]
 		\begin{subfigure}[t]{0.49\textwidth}
@@ -925,7 +927,7 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/phRawProducts}
-			\caption{Produits $T(E+1)$ bruts.}
+			\caption{$\overline{Perf}$ brutes.}
 			\label{fig:phRawProducts}
 		\end{subfigure}
 		~
@@ -976,7 +978,7 @@
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/phSpRawProducts}
-			\caption{Produits $T(E+1)$ bruts.}
+			\caption{$\overline{Perf}$ brutes.}
 			\label{fig:phSpRawProducts}
 		\end{subfigure}
 		~
@@ -1064,6 +1066,39 @@
 	Les sujets n'ayant pas trop cherché à favoriser la précision, en revanche, n'ont pas passé beaucoup de temps à poursuivre la cible \emph{après} l'avoir accrochée, et c'est ce qui explique leurs erreurs (toutefois rares) : la cible pouvait se décrocher entre la décision de cliquer et le clic effectif. De fait, le temps d'accrochage était, pour ces sujets, bien plus long que le temps de renforcement de l'accrochage. Or, au cours de ce premier, l'assistance pseudo-haptique n'est d'aucune aide, puisqu'elle attire le curseur vers un distracteur : elle constitue même une gêne. De fait, le temps d'accrochage est accru, et les performances globales chutent.
 	
 	En somme, \emph{FastHook} est à privilégier lorsqu'il est impératif de minimiser les taux d'erreurs, voire de les annuler. Dans le cas contraire, il est plutôt délétère. Notons toutefois que l'assistance pseudo-haptique utilisée ici était forte, suffisamment pour suivre une cible extrêmement rapide sans intervention aucune de l'utilisateur (pour une valeur de $f_{accrochage}$ suffisamment élevée --- voir l'équation~\ref{eq:phDisplacement2}). Une assitance plus faible pourrait avoir des effets différents sur les performances de sélection. Nous pouvons donc retenir notre hypothèse \textbf{H6} (via sa composante \textbf{H6a}) lorsque la stratégie est très orientée vers la précision, et la rejeter dans le cas contraire. Dans tous les cas, la composante \textbf{H6b} doit être rejetée, puisque les taux d'erreurs ne baissent pas significativement avec une stratégie orientée vitesse, et sont toujours nuls avec une stratégie orientée précision.
+	
+	\section{Cascade et prédiction intentionnelle -- \emph{BaggingHook}}
+	Les performances de \emph{Hook} dans sa version de base sont très bonnes. Certes, les temps de sélection rapportés sur la figure~\ref{fig:phRawTimes} sont élevés, mais c'est à mettre en rapport avec l'extrême difficulté de la tâche d'une part, et avec le fait que \emph{Hook}, contrairement à de nombreuses techniques de sélection, n'augmente que peu l'encombrement visuel (et même pas du tout dans la version que nous évaluons ici), n'interromp pas le temps, ni même ne le ralentit, et n'altère pas les mouvements des cibles. Il ne cause pas non plus la moindre perte de contexte spatial ou dynamique. En somme, il a un impact quasi nul sur le contexte applicatif, visuellement, spatialement ou temporellement.
+	
+	La difficulté de la tâche tient essentiellement à deux facteurs : les mouvements des cibles d'une part, et leur forte densité d'autre part. En effet, la technique \emph{Hook} cherche à déterminer quel objet l'utilisateur est en train d'essayer d'attraper en analysant ses mouvements et en les comparant à ceux des cibles potentielles. Or, quand la densité est élevée, il devient probable qu'un distracteur aient des positions plus fortement corrélées à celle du curseur que celles de la cible visée. Dans ce cas, l'heuristique peine à \og accrocher \fg{} la bonne cible. Ce problème ne se pose de manière sérieuse que lorsque la forte densité est conjugée à des mouvements difficiles (rapides et imprévisibles), car lorsque la densité est très élevée mais les mouvements sont lents ou prévisibles, il devient relativement aisé de suivre la cible de près, ce qui permet à l'heuristique de l'identifier correctement.
+	
+	Par conséquent, une piste possible pour faciliter la sélection lorsque les mouvements sont difficiles et la densité est forte est de simplifier la nature des mouvements, par exemple en s'appuyant sur une des méthodes proposées dans la section~\ref{sub:vfaGuide}. Mais il est également possible de réduire la densité (effective). Nous avons vu dans la section~\ref{sub:cascade} que la sélection en cascade vise généralement à découper la tâche de sélection en sous-tâches, permettant de réduire le nombre d'objets (ou de paquets d'objets) à sélectionner au cours de chaque sous-tâche. Toutefois, la plupart des techniques passées en revue dans cette section ont des inconvénients incompatibles avec les objectifs que nous nous sommes fixées, compte tenu des contraintes applicatives identifiées dans le chapitre~\ref{chap1}. Elles entraînent généralement une perte de contexte spatial ou dynamique, et peuvent même être fondamentalement incompatible avec des cibles mobiles. De plus, elles impliquent le plus souvent l'obligation de diviser la tâche en plusieurs parties, ce qui a nécessairement un coût cognitif et temporel. Celui-ci est généralement rentabilisé, mais pas toujours.
+	
+	\subsection{\emph{BaggingHook}, ou l'élagage optionnel et à volonté}
+	L'amélioration des performances d'une technique fondée sur \emph{Hook} reposerait donc idéalement sur une méthode permettant de réduire le nombre de cibles potentielles pour faciliter la convergence de l'heuristique de prédiction vers la bonne cible, mais sans occasionner de perte du contexte, et sans imposer d'étape préalable à la sélection. Nous proposons donc \emph{BaggingHook}, qui ajoute au curseur ponctuel de \emph{Hook} un curseur zonal circulaire, permettant, via le bouton secondaire de la souris\footnote{De fait inutilisable pour réinitialiser les scores.}, de retirer tous les objets non inclus dans son rayon de la liste des cibles potentielles considérées par l'heuristique de prédiction. Cette opération peut être répétée à l'envi, afin d'exclure autant de cibles que possible\ldots{} ou ne pas être utilisée du tout, afin de ne pas imposer d'étape supplémentaire dans la sélection. Ce dernier point est particulièrement intéressant pour les cibles faciles ne nécessitant pas cet élagage, car le coût cognitif et temporel qui lui est associé pourrait s'avérer globalement délétère.
+	
+	Ce procédé a néanmoins un inconvénient, puisqu'il est possible de \og rater \fg{} son élagage, c'est-à-dire de retirer la bonne cible de la liste des objets potentiels. Nous aurions pu considérer un tel événement comme une erreur et, par exemple, réintégrer tous les objets dans la liste des cibles potentielles automatiquement dans ce cas. Nous estimons cependant que, dans bien des applications, une sélection erronée peut avoir des effets indésirables (effets graphiques perturbants, action subséquente automatique\ldots{}), tandis qu'un élagage erroné, s'il est réversible, n'a pour inconvénient que de prendre du temps. Nous avons donc décider de fournir à nos utilisteurs la possibilité de réintégrer tous les objets à la liste des cibles potentielles par la pression de la touche R du clavier (pour \emph{Reset}), et de ne pas considérer cela comme une erreur.
+	
+	Il pourrait être préférable de plutôt associer cette touche à une fonction d'annulation du dernier élagage opéré, permettant de revenir à l'état antérieur de la liste des cibles potentielles. Pour simplifier cette première évaluation du potentiel de \emph{BaggingHook}, nous avons préféré la solution de réinitialisation, ayant le mérite d'une part d'être plus simple, et d'autre part de ne nécessiter qu'une seule action, tandis que plusieurs retours successifs aux états antérieurs pourraient être nécessaire, en cas de multiples élagages erronés, parfaitement possible avec un utilisateur faisant un usage intensif de cette fonction.
+	
+	
+	\subsection{Retour graphique associé à l'élagage}
+	Lorsque l'utilisateur déclenche un élagage, il importe de lui fournir un retour lui permettant de mesurer l'effet de l'opération. Il est possible, par exemple, de rendre toutes les cibles élagées semi-transparentes, ou de les assombrir, ce qui pose la question du niveau d'opacité dans le premier cas, ou de la mesure de l'assombrissement dans le second. Dans un souci de simplicité, nous avons simplement rendu les cibles élagées invisibles. Gardons simplement à l'esprit que, selon le contexte, il peut être nécessaire de les maintenir à l'écran, qu'elles soient transparentes, sombres, ou altérées d'une autre manière.
+	
+	\subsection{Résultats}
+	
+	\subsection{Biais et zone d'élagage ajustable}
+	Pertinence du biais ? Peu de corrélation diff-temps
+	
+	Mais forte anticorrélation area-culls
+		Donc zone d'élagage petite avec petites aires ?
+		Et périmètres ?
+		Non aires.
+	
+	\subsection{Inconvénients}
+	Charge cognitive, doute stratégique.
+	
+	Perspective : biais brownien ?
 	
 	\section{Limites de \emph{Hook} et de ses dérivés}
 	Certes, la technique \emph{Hook} fournit d'excellentes performances, et nos dérivés peuvent les améliorer encore. Certes, les principes sur lesquels \emph{SharpHook} et \emph{FastHook} reposent peuvent être combinés, et leur mise en œuvre peut être améliorée et calibrée avec plus grand soin. Certes, d'autres techniques, telles que celles évoquées dans la section~\ref{sub:vfaGuide} peuvent encore s'y ajouter. Néanmoins, dans le cadre de l'utilisation d'un dispositif de type CAVE avec un dispositif d'interaction à l'échelle 1, l'utilisation d'une technique de ce type impose à l'utilisateur de suivre la cible en bougeant son bras à une vitesse approximativement comparable. Si la cible se déplace sur plus de quelques dizaines de centimètres, il devient alors nécessaire de déplacer tout son corps à cette vitesse.

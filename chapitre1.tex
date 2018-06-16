@@ -4,7 +4,8 @@
 
 \minitoc
 \label{chap1}
-\cleardoublepage
+%\cleardoublepage
+\clearpage
 
 	\section{Introduction}
 	La sélection de cibles est une tâche omniprésente en interaction homme-machine. Si la sélection de cibles mobiles est moins répandue, elle demeure courante, mais assez peu étudiée, cette tache étant plus difficile, selon la nature du mouvement des cibles. En effet, si les cibles mobiles peuvent être décrites par les caractéristiques classiques des cibles statiques, c'est à dire une taille, une forme et une position, s'ajoutent des caractéristiques de mouvement : direction, vitesse, accélération, et qui peuvent de plus varier dans le temps. 
@@ -32,7 +33,7 @@
 	\subsubsection{Besoins} Il est difficile d'observer une macromolécule à l'état statique, et impossible de le faire \emph{in vivo}, lorsqu'elle est en mouvement dans son système naturel. Par conséquent, l'étude de phénomènes moléculaires complexes nécessite de passer par des simulations numériques, seules à même d'en rendre compte. En particulier, la biologie structurale s'intéresse à la \emph{dynamique conformationnelle} des macromolécules (c'est-à-dire à leur conformation tridimensionnelle dans le temps) et à leurs interactions avec leur environnement --- par exemple le milieu cellulaire. Ces simulations sont devenues fiables en s'appuyant autant que possible sur des données expérimentales.
 	
 	\subsubsection{Initialisation}
-	Une simulation de dynamique moléculaire nécessite une phase d'initialisation : on assigne une position à chaque particule. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant (le fluide dans lequel la molécule se trouve --- généralement de l'eau), mais c'est plus compliqué pour les macromolécules dont la conformation est complexe. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Cette technique fut d'abord employée pour déterminer la structure de petits cristaux inorganiques~\cite{friedrich1912sitzungsberichte, bragg1914reflexion, bragg1913structure, dickinson1923crystal}, puis de molécules organiques et de protéines*~\cite{de1925interpretation, crowfoot1935x, kendrew1958three}\footnotemark{}. Lorsque la cristallographie n'est pas possible, d'autres méthodes, souvent moins précises, peuvent être utilisées. Citons la spectroscopie de résonance magnétique nucléaire~\cite{clore1989determination, wuthrich1990protein, clore1991structures, wuthrich2001way}, ou la cryo-microscopie électronique~\cite{adrian1984cryo} (cryo-ME/\emph{cryo-EM}), de plus en plus utilisée~\cite{kuhlbrandt2014cryo, callaway2015revolution, dellisanti2015barrier, bartesaghi20152}.
+	Une simulation de dynamique moléculaire nécessite une phase d'initialisation : on assigne une position à chaque particule. Pour ce faire, il est nécessaire de connaître au moins approximativement la conformation de chaque molécule du système. C'est relativement simple pour le solvant (le fluide dans lequel la molécule se trouve --- généralement de l'eau), mais c'est plus compliqué pour les macromolécules dont la conformation est complexe. Celle-ci est généralement déterminée par une méthode expérimentale telle que la cristallographie aux rayons X, illustrée par la figure~\ref{fig:crystal}. Cette technique fut d'abord employée pour déterminer la structure de petits cristaux inorganiques~\cite{friedrich1912sitzungsberichte, bragg1914reflexion, bragg1913structure, dickinson1923crystal}, puis de molécules organiques et de protéines*~\cite{de1925interpretation, crowfoot1935x, kendrew1958three}.\footnotemark{} Lorsque la cristallographie n'est pas possible, d'autres méthodes, souvent moins précises, peuvent être utilisées. Citons la spectroscopie de résonance magnétique nucléaire~\cite{clore1989determination, wuthrich1990protein, clore1991structures, wuthrich2001way}, ou la cryo-microscopie électronique~\cite{adrian1984cryo} (cryo-ME/\emph{cryo-EM}), de plus en plus utilisée~\cite{kuhlbrandt2014cryo, callaway2015revolution, dellisanti2015barrier, bartesaghi20152}.
 
 	\footnotetext{Les notions évoquées dans cette section et suivies d'un astérisque sont définies et détaillées dans l'annexe~\ref{appendix:annexeA}.}
 	
@@ -52,7 +53,7 @@
 	
 	\subsubsection{Paramètres initiaux} Le principe de la simulation est de calculer les forces exercées sur chaque particule à chaque itération, et d'intégrer ces forces sur un pas de temps donné pour déplacer les particules. Pour pouvoir simuler le comportement du système sur un temps assez long --- afin d'observer des phénomènes biologiques complexes et longs --- le pas de temps doit être aussi grand que possible.
 	
-	Cependant, il doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes*, par exemple, sont très courtes, de l'ordre de $10^{-14}$~s, soit 10~fs\footnotemark{}. Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins le double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1~fs pour les simulations les plus précises.
+	Cependant, il doit être suffisamment court pour que les événements les plus rapides ne soient pas perdus. Or, les oscillations des liaisons covalentes*, par exemple, sont très courtes, de l'ordre de $10^{-14}$~s, soit 10~fs.\footnotemark{} Le théorème de Nyquist-Shannon~\cite{shannon1949communication} nous apprend qu'il est nécessaire que la fréquence d'échantillonage soit au moins le double de la fréquence du signal, aussi le pas de temps doit-il être, au plus, deux fois plus court que la période d'une oscillation de liaison covalente. En pratique, la valeur choisie est généralement de l'ordre de $10^{-15}$~s, soit 1~fs pour les simulations les plus précises.
 	
 	\footnotetext{Une femtoseconde (fs) vaut $10^{-15}$ seconde.}
 	
@@ -231,20 +232,20 @@
 	
 	\footnotetext{\url{https://theaviationist.com/2018/03/12/russia-test-fires-new-kh-47m2-kinzhal-hypersonic-missile}}
 	
-	Des planeurs hypersoniques tels que le RS-26 \emph{Rubezh} sont supposés capables de vitesses de l'ordre de Mach~20, et demeurent manœuvrales~\footnotemark{}.
+	Des planeurs hypersoniques tels que le RS-26 \emph{Rubezh} sont supposés capables de vitesses de l'ordre de Mach~20, et demeurent manœuvrales~.\footnotemark{}
 	
 	\footnotetext{\url{https://www.washingtonpost.com/business/technology/putin-russia-has-nuclear-weapons-impossible-to-intercept/2018/03/01/47d71e3a-1d77-11e8-98f5-ceecfa8741b6_story.html}
 	
 	\url{https://russianmilitaryanalysis.wordpress.com/2018/03/04/emerging-russian-weapons-welcome-to-the-2020s-part-1-kinzhal-sarmat-4202} }
 
-	D'autres ont vocation à opérer en essaim, de manière collaborative et relativement furtive, ce qui implique l'apparition soudaine, tardive et fugace de nombreuses cibles densément regroupées\footnotemark{}.
+	D'autres ont vocation à opérer en essaim, de manière collaborative et relativement furtive, ce qui implique l'apparition soudaine, tardive et fugace de nombreuses cibles densément regroupées.\footnotemark{}
 	
 	\footnotetext{\url{http://www.defense24.news/2018/02/19/puissance-aerienne-remue-menage-secteur-anti-iads}}
 	
 	\begin{SCfigure}[50][!htbp]
 		\centering
 		\includegraphics[width=0.36\textwidth]{figures/ch1/brahmos-II}
-		\caption[Missile hypersonique BrahMos-II]{Maquette du missile de croisière hypersonique russo-indien BrahMos-II, en cours de développement : ce missile devrait atteindre une vitesse de croisière de Mach~7\footnotemark{}. Crédit : Pakistan Defence.}
+		\caption[Missile hypersonique BrahMos-II]{Maquette du missile de croisière hypersonique russo-indien BrahMos-II, en cours de développement : ce missile devrait atteindre une vitesse de croisière de Mach~7.\footnotemark{} Crédit : Pakistan Defence.}
 		\label{fig:brahmos}
 	\end{SCfigure}
 	
@@ -254,7 +255,7 @@
 	En situation réelle, un espace aérien pourrait tout à fait contenir des véhicules et autres engins volants de tous les types sus-cités, des essaims de drones très manœvrables jusqu'aux missiles balistiques les plus rapides. Un système de contrôle interactif devrait donc être assez souple pour permettre la sélection de cibles de natures très différentes.
 	Les engins volants militaires ont vocation à chercher à éviter d'être détectés, par leur furtivité ou leur profil de vol. Il en résulte qu'ils peuvent n'apparaître sur les écrans de contrôle que lorsqu'ils sont déjà très proches de lieux à protéger, offrant une fenêtre temporelle restreinte pour l'interaction.
 	
-	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17\footnotemark{}. En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Au cours d'un entretien qu'il nous a accordé, le général de brigade aérienne (2S) Jean-Vincent Brisset a également insisté fortement sur la nature critique de la tâche d'identification, préalable indispensable à toute décision de faire feu.	
+	De plus, le commandant du \emph{Chevalier Paul}\footnotemark{} précise qu'outre la détection d'un aéronef, son identification est souvent très difficile, ce qui peut expliquer des accidents tels que la destruction du vol MH17.\footnotemark{} En pratique, l'équipage du \emph{Chevalier Paul} s'entraîne avec une quarantaine de cibles potentielles, mais attendu que le navire est capable de surveiller un espace aérien de plus de 500~000~km², l'on imagine aisément qu'en situation réelle, ce nombre pourrait être plus élevé, \emph{a fortiori} avec des drones en essaims. Au cours d'un entretien qu'il nous a accordé, le général de brigade aérienne (2S) Jean-Vincent Brisset a également insisté fortement sur la nature critique de la tâche d'identification, préalable indispensable à toute décision de faire feu.	
 	
 	\addtocounter{footnote}{-1}
 	\footnotetext{Frégate de défense aérienne (FDA) française de classe \emph{Horizon}, d'un déplacement d'environ 7000 tonnes, ayant pour mission principale de participer à la défense antiaérienne d'un groupe aéronaval, ou d'assurer la protection d'une zone ou d'un convoi contre des attaques aériennes ou de missiles.}
@@ -277,7 +278,7 @@
 	
 	\footnotetext{\url{http://eunavfor.eu/}}
 	
-	La multiplicité des petites embarcations des pirates rend leur éradication particulièrement difficile, car les navires et aéronefs des marines luttant contre la piraterie sont trop peu nombreux\footnotemark{}. La Somalie n'est d'ailleurs pas le seul lieu où la piraterie sévit, puisqu'on la retrouve notamment dans le Golfe de Guinée~\cite{onuoha2012piracy}, aux abords du détroit de Malacca~\cite{raymond2009piracy} ou encore au large du Bangladesh~\cite{liss2011oceans}.
+	La multiplicité des petites embarcations des pirates rend leur éradication particulièrement difficile, car les navires et aéronefs des marines luttant contre la piraterie sont trop peu nombreux.\footnotemark{} La Somalie n'est d'ailleurs pas le seul lieu où la piraterie sévit, puisqu'on la retrouve notamment dans le Golfe de Guinée~\cite{onuoha2012piracy}, aux abords du détroit de Malacca~\cite{raymond2009piracy} ou encore au large du Bangladesh~\cite{liss2011oceans}.
 	
 	\footnotetext{\url{http://www.defense24.news/2018/02/26/guerre-hybride-mer-lexperience-de-jeune-ecole}}
 	
@@ -306,7 +307,7 @@
 	\FloatBarrier \subsection{Difficultés}
 	La plupart des navires se déplacent à la surface de l'eau. Par conséquent, leur représentation dans le plan sur un écran de contrôle n'implique généralement pas de perte d'information significative, contrairement au cas aérien. Les sous-marins constituent toutefois une exception à cette règle, et peuvent plonger à plusieurs centaines de mètres. S'ils représentent une très petite minorité des navires en circulation, leur détection revêt une importance militaire critique.
 	
-	Nous pouvons également citer dans cette catégorie des engins plus atypiques, tels que la torpille nucléaire \emph{Status-6}\footnotemark{}, encore en développement, et censée être capable de se mouvoir à 185~km/h et à 1000 mètres de profondeur --- ce qui la rend extrême par sa vitesse, sa profondeur et sa dangerosité. Le drone militaire \emph{Klavesin} est annoncé comme capable d'atteindre 2000~m de profondeur, à des vitesses beaucoup plus modestes.
+	Nous pouvons également citer dans cette catégorie des engins plus atypiques, tels que la torpille nucléaire \emph{Status-6},\footnotemark{} encore en développement, et censée être capable de se mouvoir à 185~km/h et à 1000 mètres de profondeur --- ce qui la rend extrême par sa vitesse, sa profondeur et sa dangerosité. Le drone militaire \emph{Klavesin} est annoncé comme capable d'atteindre 2000~m de profondeur, à des vitesses beaucoup plus modestes.
 	
 	\footnotetext{\url{https://russianmilitaryanalysis.wordpress.com/2018/03/06/emerging-russian-weapons-welcome-to-the-2020s-part-2-9m730-status-6-klavesin-2r}}
 	
@@ -342,7 +343,7 @@
 	
 	\footnotetext{\url{http://www.ucsusa.org/sites/default/files/legacy/assets/documents/nwgs/debris-in-brief-factsheet.pdf}}
 	
-	Si le sujet est préoccupant pour les satellites et autres vols non habités, il est beaucoup plus inquiétant pour les vols habités, d'autant qu'ils pourraient devenir bien plus courants à moyen terme\footnotemark{}.
+	Si le sujet est préoccupant pour les satellites et autres vols non habités, il est beaucoup plus inquiétant pour les vols habités, d'autant qu'ils pourraient devenir bien plus courants à moyen terme.\footnotemark{}
 	
 	\footnotetext{\url{http://www.space.com/34210-elon-musk-unveils-spacex-mars-colony-ship.html}}
 	
@@ -367,7 +368,7 @@
 	Dans certains cas, par exemple au cours de manifestations publiques ou de concerts, les individus filmés peuvent devenir quasi statiques, mais très nombreux et confinés dans un espace réduit d'où une densité de cibles potentielles et un niveau d'occultation très élevés. Dans ces circonstances, la vidéo-surveillance devient difficile.
 
 	\FloatBarrier \subsection{Véhicules motorisés}
-	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, sauf infraction. Mais, soit à cause de l'infraction en question, soit parce qu'ils fuient après des délits ou crimes plus graves, ces véhicules-là peuvent justement faire l'objet d'une attention particulière de la part des forces de l'ordre. La vitesse d'un véhicule peut alors dépasser les 300~km/h\footnotemark{}.
+	Sur la voie publique, un véhicule motorisé n'est pas censé dépasser 130~km/h, sauf infraction. Mais, soit à cause de l'infraction en question, soit parce qu'ils fuient après des délits ou crimes plus graves, ces véhicules-là peuvent justement faire l'objet d'une attention particulière de la part des forces de l'ordre. La vitesse d'un véhicule peut alors dépasser les 300~km/h.\footnotemark{}
 	
 	\footnotetext{\url{http://www.rts.ch/info/suisse/3483170-un-chauffard-roule-a-plus-de-320-km-h-sur-l-a1.html}}
 	
@@ -382,7 +383,7 @@
 	La surveillance s'applique également à la partie invisible du spectre électromagnétique, et notamment aux signaux émis par les téléphones portables. Les objectifs de cette surveillance sont multiples mais peuvent inclure la lutte contre la criminalité, le terrorisme, ou un adversaire militaire, mais aussi l'étude des usages afin d'adapter les réseaux de communication, de transport, etc.	
 	
 	\FloatBarrier \subsection{Moyens et méthodes}
-	La figure~\ref{fig:cellphones} fournit une illustration d'un tel système, tirée d'une œuvre de fiction. Si l'œuvre en question présente ce système comme fondé sur des détections par satellite, en pratique, les systèmes réels se fondent plutôt sur des capteurs aériens ou, plus simplement, sur les données fournies directement par les opérateurs téléphoniques, comme le permet par exemple l'article 20 de la loi de programmation militaire de décembre 2013, en France\footnotemark{}. L'État français s'appuie notamment sur les services d'entreprises telles que Deveryware --- voir la section~\ref{sub:deveryware} pour plus de détails. Nous avons pu confirmer auprès de spécialistes du renseignement (issus du monde opérationnel ou académique), la pertinence de tels systèmes, et leur usage par divers services de renseignement.
+	La figure~\ref{fig:cellphones} fournit une illustration d'un tel système, tirée d'une œuvre de fiction. Si l'œuvre en question présente ce système comme fondé sur des détections par satellite, en pratique, les systèmes réels se fondent plutôt sur des capteurs aériens ou, plus simplement, sur les données fournies directement par les opérateurs téléphoniques, comme le permet par exemple l'article 20 de la loi de programmation militaire de décembre 2013, en France.\footnotemark{} L'État français s'appuie notamment sur les services d'entreprises telles que Deveryware --- voir la section~\ref{sub:deveryware} pour plus de détails. Nous avons pu confirmer auprès de spécialistes du renseignement (issus du monde opérationnel ou académique), la pertinence de tels systèmes, et leur usage par divers services de renseignement.
 
 	\footnotetext{\url{https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028338825}}
 	
@@ -399,7 +400,7 @@
 	
 	\FloatBarrier \subsection{Athlètes}
 	
-	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pied obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc., d'où des vitesses nettement élevées, jusqu'à plus de 160~km/h pour certains skieurs\footnotemark{}.
+	Certains sports d'équipe comme le football, le hockey sur glace ou le basket-ball sont caractérisés par des cibles potentielles relativement nombreuses, mobiles, et dont les mouvements ne sont pas toujours très prévisibles. Les mouvements d'humains à pied obéissent aux règles habituelles, mais dans un cadre sportif, ils peuvent être sur des patins à glace, des bicyclettes, des skis, etc., d'où des vitesses nettement élevées, jusqu'à plus de 160~km/h pour certains skieurs.\footnotemark{}
 	
 	\footnotetext{\url{http://www.swissinfo.ch/fre/societe/ski-alpin-_une-histoire-de-famille-se-termine-au-lauberhorn/37746484}}
 	
@@ -412,13 +413,13 @@
 	
 	
 	\FloatBarrier \subsection{Véhicules}
-	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques : les mouvements y sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens\footnotemark{}, les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
+	Les valeurs deviennent plus extrêmes encore dans les sports hippiques ou mécaniques : les mouvements y sont certes (souvent) plus prévisibles, mais aussi nettement plus rapides, avec en plus une certaine tendance des cibles à être très proches les unes des autres, ce qui augmente la probabilité d'erreur de sélection. Et si l'on inclut les courses de drones aériens,\footnotemark{} les objets sont à la fois très rapides et très manœuvrables, donc potentiellement imprévisibles dans leurs mouvements.
 	
 	\footnotetext{\url{https://thedroneracingleague.com}}
 	
 	\subsection{Projectiles}
 	\label{sub:projectiles}
-	Les divers projectiles utilisés dans les sports (balles, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficiles : plus de 180~km/h pour un palet de hockey sur glace\footnotemark{}, 199~km/h pour une balle de baseball\footnotemark{}, 260~km/h pour une balle de tennis\footnotemark{}, et 350~km/h pour une balle de golfe\footnotemark{}. Dans le cas du hockey sur glace, les rebonds potentiellement nombreux du palet peuvent rendre sa trajectoire complexe et imprévisible. Dans une moindre mesure, c'est vrai d'une balle de baseball, voire d'un ballon de football, par exemple. Cependant, il n'y a généralement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié (éventuellement actionné à l'aide d'un contrôle spécifique) serait probablement une option préférable à l'utilisation d'une technique de sélection \og libre \fg{}, fût-elle assistée.
+	Les divers projectiles utilisés dans les sports (balles, volants, palets, etc.) sont généralement beaucoup plus petits et rapides que les joueurs, ce qui en fait des cibles très difficiles : plus de 180~km/h pour un palet de hockey sur glace,\footnotemark{} 199~km/h pour une balle de baseball,\footnotemark{} 260~km/h pour une balle de tennis,\footnotemark{} et 350~km/h pour une balle de golfe.\footnotemark{} Dans le cas du hockey sur glace, les rebonds potentiellement nombreux du palet peuvent rendre sa trajectoire complexe et imprévisible. Dans une moindre mesure, c'est vrai d'une balle de baseball, voire d'un ballon de football, par exemple. Cependant, il n'y a généralement qu'un seul projectile de ce type par match, donc dans la mesure du possible, un raccourci dédié (éventuellement actionné à l'aide d'un contrôle spécifique) serait probablement une option préférable à l'utilisation d'une technique de sélection \og libre \fg{}, fût-elle assistée.
 	
 	\addtocounter{footnote}{-3}
 	\footnotetext{\url{https://sports.yahoo.com/blogs/nhl-puck-daddy/khl-alexander-ryazantsev-sets-world-record-hardest-shot-174131642.html}}
@@ -432,11 +433,11 @@
 	\addtocounter{footnote}{1}
 	\footnotetext{\url{http://www.guinnessworldrecords.com/world-records/fastest-golf-drive}}
 	
-	Le billard, sous ses diverses formes (\emph{pool}, \emph{snooker}, etc.) est intéressant en ce que, d'une part, les \og projectiles \fg{}, c'est-à-dire les boules, sont en relativement grand nombre, et ne peuvent donc bénéficier d'un raccourci dédié, et d'autre part, leurs mouvements sont extrêmement vifs et difficiles à prédire. En effet, le premier segment d'une trajectoire de boule peut ne durer que 0,12~seconde\footnotemark{}.
+	Le billard, sous ses diverses formes (\emph{pool}, \emph{snooker}, etc.) est intéressant en ce que, d'une part, les \og projectiles \fg{}, c'est-à-dire les boules, sont en relativement grand nombre, et ne peuvent donc bénéficier d'un raccourci dédié, et d'autre part, leurs mouvements sont extrêmement vifs et difficiles à prédire. En effet, le premier segment d'une trajectoire de boule peut ne durer que 0,12~seconde.\footnotemark{}
 	
 	\footnotetext{\url{http://www.sfbilliards.com/Misc/onoda_all_txt.pdf}}
 	
-	Citons également les courses de billes dans le sable (\emph{sand marble racing}), un jeu curieux qui consiste à laisser rouler plusieurs billes dans des sillons creusés dans le sable dont le tracé est soigneusement étudié pour créer une sensation de suspense concernant l'issue de la \og course \fg{}. Ce passe-temps plus intéressant qu'il peut en avoir l'air donne lieu à des enregistrements vidéo largement diffusés sur internet\footnotemark{}, agrémentés de statistiques, et tout à fait susceptibles d'être augmentés par des capacités d'interaction qui nécessiteraient la sélection de ces objets rapides aux mouvements vifs.
+	Citons également les courses de billes dans le sable (\emph{sand marble racing}), un jeu curieux qui consiste à laisser rouler plusieurs billes dans des sillons creusés dans le sable dont le tracé est soigneusement étudié pour créer une sensation de suspense concernant l'issue de la \og course \fg{}. Ce passe-temps plus intéressant qu'il peut en avoir l'air donne lieu à des enregistrements vidéo largement diffusés sur internet,\footnotemark{} agrémentés de statistiques, et tout à fait susceptibles d'être augmentés par des capacités d'interaction qui nécessiteraient la sélection de ces objets rapides aux mouvements vifs.
 	
 	\footnotetext{\url{https://www.reddit.com/r/videos/comments/6linoy/sand_marble_races_are_a_lot_more_thrilling_than_i}}
 
@@ -475,7 +476,7 @@
 
 	S'il est fréquemment nécessaire de sélectionner des cibles dans ces jeux, ce n'est pas une fin en soi, ou un objectif conçu comme ayant une valeur ludique. Il s'agit de sélectionner des unités amies pour leur donner des instructions, ou des unités ennemies pour les désigner comme cibles à attaquer. La tâche de sélection est purement utilitaire et vue comme une nécessité, voire une corvée. Elle fait perdre du temps qui pourrait être utilisé pour organiser des ressources ou tout simplement réfléchir.
 	
-	Par conséquent, une technique de sélection facilitant cette tâche serait bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses : jusqu'à 64~000 unités dans \emph{Cossacks~II: Napoleonic Wars}, et la situation devient assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités\footnotemark{}. Si cette solution est vaguement acceptable dans un jeu opposant une intelligence artificielle au joueur, elle devient beaucoup plus gênante dans un contexte multijoueur, où les instances du jeu s'exécutant sur chaque machine doivent rester synchronisées. Une bataille de ce jeu est illustrée par la figure~\ref{fig:cossacks2}, mais elle est eclipsée par l'énorme bataille du jeu multijoueur \emph{EVE Online} (figure~\ref{fig:eveonline}).
+	Par conséquent, une technique de sélection facilitant cette tâche serait bénéfique en recentrant ces jeux sur leurs cœurs. Dans les jeux de gestion, les cibles peuvent être extrêmement nombreuses : jusqu'à 64~000 unités dans \emph{Cossacks~II: Napoleonic Wars}, et la situation devient assez délicate à gérer pour pousser les joueurs à mettre le jeu en pause, le temps de donner des instructions aux unités.\footnotemark{} Si cette solution est vaguement acceptable dans un jeu opposant une intelligence artificielle au joueur, elle devient beaucoup plus gênante dans un contexte multijoueur, où les instances du jeu s'exécutant sur chaque machine doivent rester synchronisées. Une bataille de ce jeu est illustrée par la figure~\ref{fig:cossacks2}, mais elle est eclipsée par l'énorme bataille du jeu multijoueur \emph{EVE Online} (figure~\ref{fig:eveonline}).
 	
 	\footnotetext{\url{http://www.ign.com/articles/2005/05/27/cossacks-ii-napoleonic-wars-strategy-guide}}
 	
@@ -485,7 +486,7 @@
 	\label{sub:moba}
 	Les jeux de type arène de bataille en ligne (MOBA) ont émergé comme un sous-genre des jeux de stratégie. Le joueur n'y contrôle qu'un seul personnage, et est éventuellement aidé par des personnages non jouables. Ses ennemis sont souvent au nombre d'une poignée ou de quelques dizaines, et sont généralement caractérisés par leurs mouvements vifs. Les MOBA présentent donc un petit nombre de cibles potentielles, mais elles sont rapides et leurs mouvements sont imprévisibles. Le jeu \emph{League of Legends} est un exemple de MOBA, illustré par la figure~\ref{fig:lol}.
 
-	Le \emph{wiki} du MOBA \emph{Dota~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales du jeu\footnotemark{}, reproduites dans le tableau~\ref{tab:dotamoves} : les personnages peuvent changer de direction de façon significative à une fréquence de plusieurs dizaines de hertz, et ils peuvent se déplacer d'une dizaine de centimètres par seconde sur l'écran du joueur. Ces changements de direction se font au gré des décisions du joueur, qui cherche naturellement à éviter les attaques de ses adversaires, en adoptant des mouvements imprévisibles.
+	Le \emph{wiki} du MOBA \emph{Dota~2} fournit des informations très précises sur les caractéristiques de mouvement des unités principales du jeu,\footnotemark{} reproduites dans le tableau~\ref{tab:dotamoves} : les personnages peuvent changer de direction de façon significative à une fréquence de plusieurs dizaines de hertz, et ils peuvent se déplacer d'une dizaine de centimètres par seconde sur l'écran du joueur. Ces changements de direction se font au gré des décisions du joueur, qui cherche naturellement à éviter les attaques de ses adversaires, en adoptant des mouvements imprévisibles.
 	
 	Une technique d'aide à la sélection permettrait aux joueurs de se concentrer sur les aspects tactiques du jeu, mais pourrait également modifier l'équilibre du jeu en faveur de l'attaque, au détriment de l'esquive. Cette perturbation pourrait aussi être compensée par une augmentation de la vitesse des personnages, d'où une sensation de vivacité du jeu accrue. Une autre option serait de permettre aux personnages, actuellement limités à un espace bidimensionnel, d'évoluer en 3D, conférant une toute nouvelle profondeur tactique au genre MOBA.
 	

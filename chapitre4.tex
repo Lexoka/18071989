@@ -3,7 +3,7 @@
 \chapter[Analyse de l'acquisition de cibles mobiles]{Analyse de l'acquisition de cibles mobiles}
 \minitoc
 \label{chap4}
-\cleardoublepage
+\clearpage
 
 \section{Introduction}
 	Dans ce chapitre nous présentons les résultats d'une étude empirique visant à caractériser les performances de sélection de cibles mobiles en fonction de la nature de leurs mouvements, dans un contexte aussi simple que possible : un ordinateur de bureau avec un écran monoscopique et une souris. Notre objectif étant de mieux comprendre cette tâche, dans le but éventuel d'aboutir à un modèle fiable, nous avons en effet cherché à limiter autant que possible l'influence de facteurs tels que la stéréoscopie (éventuellement adaptative), la nécessité de déplacements du corps entier, l'utilisation de périphériques peu familiers, etc. 
@@ -41,7 +41,7 @@
 	Nous avons mené une étude empirique~\cite{kouyoumdjian2015characterizing} visant à évaluer les performances de sélection de cibles mobiles en fonction de la nature du mouvement. Nous avions 13 sujets, âgés de 14 à 56 ans (un des 14 sujets ayant répondu positivement à notre appel dut être retiré de nos résultats du fait d'une corruption des données collectées). Ils avaient pour tâche de cliquer sur une cible mobile (un disque) affichée sur un écran d'ordinateur de bureau.
 
 	\subsection{Dispositif expérimental}
-	Le périphérique de saisie était une souris standard sans accélération, afin d'éviter le biais potentiel introduit par une fonction de gain pouvant être familière pour certains utilisateurs et pas pour d'autres. Cette souris pilotait un curseur cruciforme gris. Le moniteur était un Dell \emph{UltraSharp U2412M}\footnotemark{}, de 24 pouces (60,96~cm) de diagonale, et d'environ 94 pixels par pouce (37 pixels par cm).
+	Le périphérique de saisie était une souris standard sans accélération, afin d'éviter le biais potentiel introduit par une fonction de gain pouvant être familière pour certains utilisateurs et pas pour d'autres. Cette souris pilotait un curseur cruciforme gris. Le moniteur était un Dell \emph{UltraSharp U2412M},\footnotemark{} de 24 pouces (60,96~cm) de diagonale, et d'environ 94 pixels par pouce (37 pixels par cm).
 	
 	La tâche elle-même était toutefois limitée à une fenêtre carrée de 1000 pixels de côté, soit 26,92~cm.
 
@@ -808,9 +808,9 @@
 		\label{eq:brokenPower}
 		f(x) &= M \left( 1 + \left( \frac{x}{x_{n}} \right)^{k} \right)^{-\frac{1}{k}} \\
 		\label{eq:brokenPowerAF}
-		f(A\sqrt{F}) &= M \left( 1 + \frac{A^{2}F}{x_{n}^{2}}\right)^{-\frac{1}{2}} \\
+		f(A,F) &= M \left( 1 + \frac{A^{2}F}{x_{n}^{2}}\right)^{-\frac{1}{2}} \\
 		\label{eq:brokenPowerNum}
-		f(A\sqrt{F}) &= 10 \left( 1 + \frac{A^{2}F}{138,87382085^{2}} \right)^{-\frac{1}{2}}
+		f(A,F) &= 10 \left( 1 + \frac{A^{2}F}{138,87382085^{2}} \right)^{-\frac{1}{2}}
 	\end{align}
 	
 	Grâce à ce modèle, nous pouvons exprimer le coefficient $\gamma$( par lequel il faut multiplier la vitesse afin de trouver le périmètre de l'enveloppe convexe) en fonction de l'expression $A\sqrt{F}$. Cela nous permet d'exprimer le périmètre directement en fonction de nos paramètres, selon l'équation~\ref{eq:areaModel}.
