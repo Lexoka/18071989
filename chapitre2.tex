@@ -9,16 +9,12 @@
 \section{Introduction}
 	Dans le présent chapitre, nous commençons par quelques rappels sur la théorie de la sélection de cibles, et un bref état de l'art des modèles existants, en particulier lorsqu'ils sont dédiés aux cibles mobiles. Puis, nous nous attachons à établir une taxinomie des techniques de sélection les plus connues et/ou performantes. Sans être exhaustif, il s'agit de tâcher d'être représentatif, de mentionner et d'analyser les mérites et limites des principales techniques de sélection.
 	
-	Cette taxinomie n'a pas vocation à avoir un intérêt universel pour la sélection de cibles, mais elle est établie dans l'optique de la sélection de cibles \emph{mobiles}, et en particulier de cibles mobiles dans des environnements particulièrement difficiles : denses, souvent hétérogènes, avec beaucoup d'occultation, de mouvements vifs et imprévisibles, etc. Par conséquent, nos observations sur les différentes techniques citées plus bas sont orientées par la problématique qui nous intéresse, et ne sauraient être prises pour des évaluations absolues des techniques concernées.
+	Cette taxinomie n'a pas vocation à avoir un intérêt universel pour la sélection de cibles, mais elle est établie dans l'optique de la sélection de cibles \emph{mobiles}, et en particulier de cibles mobiles dans des environnements particulièrement difficiles : denses, souvent hétérogènes, avec beaucoup d'occultation, de mouvements vifs et imprévisibles, etc. Par conséquent, nos observations sur les différentes techniques citées plus bas sont orientées par la problématique qui nous intéresse, et ne sauraient être prises pour des évaluations absolues des techniques concernées. De fait, nous séparons les techniques selon l'objectif pour lequel elles sont conçues : pour des cibles statiques ou mobiles --- tout en admettant qu'une technique appartenant à une catégorie peut généralement être utilisée pour les cibles de l'autre. Ainsi, nous discutons des techniques de sélection fondées sur un curseur zonal (surfacique ou volumique), sur l'augmentation ou la transformation des cibles, sur l'altération du temps, sur le lancer de rayon ou la projection conique, sur la sélection à plusieurs étapes (dite en cascade), ainsi que sur la prédiction de l'intention de l'utilisateur.
 	
-	De fait, nous séparons les techniques selon l'objectif pour lequel elles sont conçues : pour des cibles statiques ou mobiles --- tout en admettant qu'une technique appartenant à une catégorie peut généralement être utilisée pour les cibles de l'autre. Ainsi, nous discutons des techniques de sélection fondées sur un curseur zonal (surfacique ou volumique), sur l'augmentation ou la transformation des cibles, sur l'altération du temps, sur le lancer de rayon ou la projection conique, sur la sélection à plusieurs étapes (dite en cascade), ainsi que sur la prédiction de l'intention de l'utilisateur.
-	
-	Remarquez que ces catégories ne sont pas mutuellement exclusives, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâchons d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, selon ce qui nous paraît être son principe fondamental --- qui est généralement identifié et mis en avant par les auteurs de chaque technique.
-	
-	Outre les principes de fonctionnement et mérites apparents des techniques que nous analysons dans ce chapitre, nous nous attachons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles, attendu qu'elles peuvent porter sur différentes métriques, ou résulter de protocoles très différents. Nous tâchons simplement d'en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur.
+	Remarquez que ces catégories ne sont pas mutuellement exclusives, et qu'une technique pourrait tout à la fois utiliser un curseur volumique, augmenter les cibles, éventuellement altérer le temps, se décomposer en plusieurs étapes, et tenter de prédire l'intention de l'utilisateur. La répartition des techniques décrites ici a donc nécessairement quelque chose d'arbitraire, et nous tâchons d'attribuer à chaque technique une catégorie en fonction de ce qui la distingue le plus des autres, selon ce qui nous paraît être son principe fondamental --- qui est généralement identifié et mis en avant par les auteurs de chaque technique. Outre les principes de fonctionnement et mérites apparents des techniques que nous analysons dans ce chapitre, nous nous attachons, dans la mesure du possible, à en présenter les performances mesurées empiriquement lorsqu'elle le furent. Il va sans dire qu'aucune étude n'a jamais été menée afin de comparer toutes ces techniques et que, par conséquent, les différentes mesures effectuées ne sont pas toujours directement comparables entre elles, attendu qu'elles peuvent porter sur différentes métriques, ou résulter de protocoles très différents. Nous tâchons simplement d'en tirer le plus d'enseignements possible afin d'informer au mieux le lecteur.
 
 \section{Notions théoriques et modèles pour le pointage}
-	Le pointage et la sélection de cibles sont de vieux problèmes. Si les cas sur lesquels nous nous concentrons, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter la problématique de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, comme illustré par la figure~\ref{fig:fitts}, et détaillé par sa légende.
+	Si les cas sur lesquels nous nous concentrons, énumérés dans le chapitre précédent, présentent des difficultés particulières, de nombreuses techniques existent déjà et certaines d'entre elles tiennent compte d'une partie de ces difficultés. L'on peut faire remonter la problématique de la recherche sur le pointage au moins jusqu'à la loi de Fitts~\cite{fitts1954information}. Celle-ci fut établie notamment grâce à une expérience simple, dans laquelle on demandait aux sujets de toucher certaines zones à l'aide d'un stylet, ce que la figure~\ref{fig:fitts} détaille.
 	
 	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.58\textwidth}
@@ -38,7 +34,7 @@
 		\label{fig:fittstheta}
 	\end{figure}
 	
-	Paul M. Fitts a donc pu déduire de cette étude la loi qui porte son nom, et que l'on peut décrire par les équations~\ref{eq:fitts} et~\ref{eq:fittsID}.
+	Paul M. Fitts a pu déduire de cette étude la loi qui porte son nom, et que l'on peut décrire par les équations~\ref{eq:fitts} et~\ref{eq:fittsID}.
 	
 	\begin{equation}
 		\label{eq:fitts}
@@ -50,9 +46,7 @@
 		ID = \log_2\left(\frac{2D}{W} \right)
 	\end{equation}
 	
-	Dans l'équation~\ref{eq:fitts}, $T_{M}$ représente le temps de mouvement, $a$ et $b$ sont des constantes déterminées empiriquement. Dans l'équation~\ref{eq:fittsID}, $ID$ représente l'indice de difficulté, $D$ représente l'amplitude du mouvement, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que $W$ représente la largeur de la cible. La partie la plus intéressante de cette équation est l'indice de difficulté. C'est la seule partie variable, et c'est celle qui, comme son nom l'indique, détermine la difficulté de la tâche. Cet indice est aisé à comprendre intuitivement : plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile.
-	
-	Pour l'indice de difficulté, MacKenzie propose une formulation de l'indice de difficulté dite de Shannon, inspirée de la théorie de l'information proposée par ce dernier~\cite{mackenzie1989note}. Cette formulation, qui a l'avantage d'être positive même quand l'amplitude de mouvement est très faible, est fournie dans l'équation~\ref{eq:shannon}.
+	Dans l'équation~\ref{eq:fitts}, $T_{M}$ représente le temps de mouvement, $a$ et $b$ sont des constantes déterminées empiriquement. Dans l'équation~\ref{eq:fittsID}, $ID$ représente l'indice de difficulté, $D$ représente l'amplitude du mouvement, c'est-à-dire la distance entre la cible et le point de départ du mouvement, tandis que $W$ représente la largeur de la cible. La partie la plus intéressante de cette équation est l'indice de difficulté. C'est la seule partie variable, et elle détermine la difficulté de la tâche. Intuitivement, plus l'amplitude du mouvement nécessaire est grande, plus la tâche sera difficile ; plus la largeur de la cible est grande, plus la tâche sera facile. MacKenzie propose une formulation de l'indice de difficulté dite de Shannon, inspirée de la théorie de l'information proposée par ce dernier~\cite{mackenzie1989note}. Cette formulation a l'avantage d'être positive même quand l'amplitude de mouvement est très faible (voir l'équation~\ref{eq:shannon}).
 	
 	\begin{equation}
 		\label{eq:shannon}
@@ -72,31 +66,25 @@
 		ID = \log_2\left( \frac{D}{min(largeur,hauteur,profondeur)} + 1\right)
 	\end{equation}
 	
-	Bien que la loi de Fitts soit d'une élégante simplicité et d'une utilité évidente pour modéliser les performances de sélection, de nombreuses formulations plus ou moins différentes existent, et leurs mérites respectifs font débat~\cite{casallas2015prediction}. Certaines extensions peuvent, par exemple, tenir compte de l'angle $\theta$ entre le vecteur qui va du curseur à la cible et un vecteur horizontal orienté vers la droite (cf. la figure~\ref{fig:theta}). C'est le cas de la formulation de~\cite{murata2001extending} exposée dans l'équation~\ref{eq:murata}.
+	Bien qu'elle soit d'une élégante simplicité et d'une utilité évidente pour modéliser les performances de sélection, de nombreuses formulations plus ou moins différentes existent, et leurs mérites respectifs font débat~\cite{casallas2015prediction}. Par exemple, certaines extensions tiennent compte de l'angle $\theta$ entre le vecteur qui va du curseur à la cible et un vecteur horizontal orienté vers la droite (cf. la figure~\ref{fig:theta}). C'est le cas de la formulation de Murata et Iwase~\cite{murata2001extending} exposée dans l'équation~\ref{eq:murata}. D'autres versions tiennent compte simultanément de la forme de la cible et de cet angle $\theta$~\cite{appert2008evaluation, grossman2004pointing}.
 	
 	\begin{equation}
 		\label{eq:murata}
 		ID = \log_2\left(\frac{D}{W} + 1\right) + c \sin \theta
 	\end{equation}
 	
-	D'autres versions tiennent compte simultanément de la forme de la cible et de cet angle $\theta$~\cite{appert2008evaluation, grossman2004pointing}.
-	
 	\subsection{Loi de Fitts et cibles mobiles}
 	\label{sub:fittsMobile}
-	La recherche sur la loi de Fitts appliquée aux cibles mobiles, comparativement aux travaux sur les cibles statiques, est très pauvre~\cite{casallas2015prediction}. Elle n'est pas inexistante~\cite{jagacinski1980test, hoffmann1991capture, hajri2011moving} mais très limitée, et elle s'intéresse rarement à la nature du mouvement des cibles, surtout quand ce mouvement est imprévisible. Par exemple, les modèles développés dans les travaux de Jagacinski \emph{et al.}~\cite{jagacinski1980test} ou d'Al Harji \emph{et al.}~\cite{hajri2011moving} font l'hypothèse de cibles de vitesse et de direction constantes.
-	
-	La loi de Fitts étendue par Jagacinski \emph{et al.} est présentée dans l'équation~\ref{eq:jagacinski}, où $CT$ est le temps de sélection, $D$ et $W$ sont toujours la distance à la cible et sa largeur, $V$ est la vitesse de la cible, tandis que $c$, $d$ et $e$ sont des constantes réelles.
+	La recherche sur la loi de Fitts appliquée aux cibles mobiles, comparativement aux travaux sur les cibles statiques, est pauvre~\cite{casallas2015prediction}. Elle n'est pas inexistante~\cite{jagacinski1980test, hoffmann1991capture, hajri2011moving} mais limitée, et elle s'intéresse rarement à la nature du mouvement des cibles, surtout quand ce mouvement est imprévisible. Par exemple, les modèles développés dans les travaux de Jagacinski \emph{et al.}~\cite{jagacinski1980test} ou d'Al Harji \emph{et al.}~\cite{hajri2011moving} font l'hypothèse de cibles de vitesse et de direction constantes. La loi de Fitts étendue par Jagacinski \emph{et al.} est présentée dans l'équation~\ref{eq:jagacinski}, où $CT$ est le temps de sélection, $D$, $W$, et $V$ sont la distance à la cible, sa largeur, et sa vitesse, tandis que $c$, $d$ et $e$ sont des constantes réelles.
 	
 	\begin{equation}
 		\label{eq:jagacinski}
 		CT = c + dD + e(V + 1) \left(\frac{1}{W} - 1\right)
 	\end{equation}
 	
-	Les travaux d'Al Harji \emph{et al.}~\cite{hajri2011moving} vont plus loin en tenant compte de la direction de la cible. Les auteurs ont développé deux modèles basés sur ce principe. Le premier est défini par l'équation~\ref{eq:hajriC2}, où $\vec{F}$ est un vecteur déterminé empiriquement, $\vec{D}$ est le vecteur distance entre le curseur et la cible, $\vec{V}$ est le vecteur de vélocité de la cible, et $\vec{R} = \frac{1}{2} \begin{pmatrix}
+	Les travaux d'Al Harji \emph{et al.}~\cite{hajri2011moving} tiennent aussi compte de la direction de la cible ; ils ont développé deux modèles fondés sur ce principe. Le premier est décrit par l'équation~\ref{eq:hajriC2}, où $\vec{F}$ est un vecteur déterminé empiriquement, $\vec{D}$ est le vecteur distance entre le curseur et la cible, $\vec{V}$ est le vecteur de vélocité de la cible, et $\vec{R} = \frac{1}{2} \begin{pmatrix}
 	W \\ H \\
-	\end{pmatrix}$.
-	
-	Le second est défini par l'équation~\ref{eq:hajriVW}, où $f_{W'}(\theta)$ est un paramètre empirique dépendant de $\theta$, l'angle formé par la direction du mouvement de la cible et l'horizontale. De même $K$ est un paramètre empirique. $D$ est la distance entre le curseur et la cible, $V$ est la vitesse de la cible, et $W'$ est sa largeur dans la direction du mouvement.
+\end{pmatrix}$. Le second est défini par l'équation~\ref{eq:hajriVW}, où $f_{W'}(\theta)$ est un paramètre empirique dépendant de $\theta$, l'angle formé par la direction du mouvement de la cible et l'horizontale. De même, $K$ est un paramètre empirique. $D$ est la distance entre le curseur et la cible, $V$ est la vitesse de la cible, et $W'$ est sa largeur dans la direction du mouvement.
 	
 	\begin{equation}
 		\label{eq:hajriC2}
@@ -108,62 +96,47 @@
 		ID_{VWtW'\theta} = \log_{2}\left( f_{W'}(\theta) \left( \frac{D \pm \frac{V}{K}}{\frac{W'}{2} - \frac{V}{K}} \right) \right)
 	\end{equation}
 	
-	Les corrélations entre ces indices de difficulté et les temps de sélection mesurés par Al Hajri \emph{et al.} sont présentées sur la figure~\ref{fig:holdID}, où l'on observera qu'elles sont supérieures à 90~\%{}. Néanmoins, ces travaux ne portent que sur des cibles dont la vitesse et la direction sont constantes.
-		
-	Casallas~\cite{casallas2015prediction} a également développé un modèle de prédiction du temps de sélection pour les cibles mobiles, détaillé dans l'équation~\ref{eq:casallas}, où $MT$ est le temps de mouvement, $a_{V}$, $b_{V}$, $c_{V}$ et $d_{V}$ sont des coefficients dépendant linéairement de la vitesse $V$, $D_{m}$ et $D_{s}$ sont les longueurs des composantes orthogonales de $\vec{D}$, le vecteur du curseur à la cible (voir la figure~\ref{fig:casallas}).
+	Les corrélations entre ces indices de difficulté et les temps de sélection mesurés par Al Hajri \emph{et al.} sont présentées sur la figure~\ref{fig:holdID}, où l'on observe qu'elles sont supérieures à 90~\%{}. Néanmoins, ces travaux ne portent que sur des cibles dont la vitesse et la direction sont constantes. Casallas~\cite{casallas2015prediction} a également développé un modèle de prédiction du temps de sélection pour les cibles mobiles, détaillé dans l'équation~\ref{eq:casallas}, où $MT$ est le temps de mouvement, $a_{V}$, $b_{V}$, $c_{V}$ et $d_{V}$ sont des coefficients dépendant linéairement de la vitesse $V$, $D_{m}$ et $D_{s}$ sont les longueurs des composantes orthogonales de $\vec{D}$, le vecteur du curseur à la cible (voir la figure~\ref{fig:casallas}).
 	
 	\begin{equation}
 		\label{eq:casallas}
 		MT = a_{V} + b_{V}\sqrt{D_{s}} +  c_{V}\sqrt{D_{m}} + d_{V} \log_{2} \left( \frac{2D_{m}}{W} \right)
 	\end{equation}
 	
-	Dans une évaluation en 3D, l'auteur observe d'une part que l'effet de la vitesse est plus fort que celui de toutes les autres variables, et d'autre part qu'elle réduit l'écart-type des temps de sélection mesurés à mesure qu'elle croît. Il mesure même un très bon ajustement de son modèle aux résultats mesurés, avec le coefficient de détermination $R^{2} \in [0,89 ; 0,96]$.
-	
-	Il convient cependant de noter un point très spécifique à cette évaluation : les cibles mobiles se dirigeaient toutes \emph{vers} l'utilisateur --- plus ou moins directement. De fait, l'augmentation de la vitesse \emph{diminue} le temps de sélection, puisqu'elle réduit la distance à parcourir pour l'utilisateur, dans un mouvement rectiligne, donc relativement aisé à prédire et anticiper. Ce résultat au demeurant intéressant ne saurait donc suffire à modéliser les performances de sélection pour les cibles mobiles de mouvements quelconques.
+	Dans une évaluation en 3D, l'auteur observe d'une part que l'effet de la vitesse est plus fort que celui de toutes les autres variables, et d'autre part qu'elle réduit l'écart-type des temps de sélection mesurés quand elle croît. Il mesure même un très bon ajustement de son modèle aux résultats mesurés, avec le coefficient de détermination $R^{2} \in [0,89 ; 0,96]$. Il convient cependant de noter un point très spécifique à cette évaluation : les cibles mobiles se dirigeaient toutes \emph{vers} l'utilisateur --- plus ou moins directement. De fait, l'augmentation de la vitesse \emph{diminue} le temps de sélection, puisqu'elle réduit la distance à parcourir pour l'utilisateur, dans un mouvement rectiligne, donc relativement aisé à prédire et anticiper. Ce résultat au demeurant intéressant ne saurait donc suffire à modéliser les performances de sélection pour les cibles de mouvements quelconques.
 	
 	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.28\textwidth]{figures/ch2/casallas}
+		\includegraphics[width=0.24\textwidth]{figures/ch2/casallas}
 		\caption[Paramètres du modèle de Casallas]{Modèle de Casallas. $\vec{D}$ est le vecteur du curseur (rouge) à la cible (verte), $\vec{D} = \vec{D_{m}} + \vec{D_{s}}$ où $\vec{D_{m}}$ est la projection de $\vec{V}$ sur $\vec{D}$, et $\vec{D_{s}}$ est la composante de $\vec{D}$ orthogonale à $\vec{D_{m}}$. Crédit : \cite{casallas2015prediction}.}
 		\label{fig:casallas}
 	\end{SCfigure}
 	
-	D'autres travaux s'attachent à développer des techniques de sélection de cibles mobiles \og quelconques \fg{} --- c'est-à-dire de direction et de vitesse potentiellement changeantes --- sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts.
-	
-	Celle-ci n'a, à notre connaissance, jamais été étendue pour modéliser le temps de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
+	D'autres travaux s'attachent à développer des techniques de sélection de cibles de mouvements quelconques, sans nécessairement s'attarder sur les aspects théoriques~\cite{hasan2011comet, ortega2013hook}, et donc sans chercher à étendre la loi de Fitts. Celle-ci n'a, à notre connaissance, jamais été étendue pour modéliser le temps de sélection de cibles mobiles dont la direction peut changer de façon aléatoire, ce qui la rend d'une utilité discutable pour certaines des applications identifiées plus haut, et particulièrement pour les simulations moléculaires interactives, caractérisées par l'imprévisibilité des mouvements de leurs cibles.
 	
 	\subsection{Complexité du mouvement : décomposition en sous-mouvements}
-	Woodworth~\cite{woodworth1899accuracy} fut à notre connaissance le premier à identifier deux phases dans le mouvement ciblé : une impulsion initiale et une phase de contrôle. Welford~\cite{welford1968fundamentals} fit la même observation et nota par ailleurs que la première phase, visant à couvrir la distance nécessaire, était plus rapide, tandis que la seconde, celle de ciblage, était plus courte~\cite{mackenzie1987three}. Il remarqua de plus, et de même que Crossman et Goodeve~\cite{crossman1983feedback}, que la première phase était \emph{balistique} et qu'à la seconde s'ajoutait un processus de contrôle visuel.
-	
-	Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
+	Woodworth~\cite{woodworth1899accuracy} fut à notre connaissance le premier à identifier deux phases dans le mouvement ciblé : une impulsion initiale et une phase de contrôle. Welford~\cite{welford1968fundamentals} fit la même observation et nota par ailleurs que la première phase, visant à couvrir la distance nécessaire, était plus rapide, tandis que la seconde, celle de ciblage, était plus courte~\cite{mackenzie1987three}. Il remarqua de plus, et de même que Crossman et Goodeve~\cite{crossman1983feedback}, que la première phase était \emph{balistique} et qu'à la seconde s'ajoutait un processus de contrôle visuel. Cela s'observe concrètement dans le profil de vitesse d'un curseur en fonction du temps au cours d'un mouvement ciblé, par exemple de sélection. La phase balistique est caractérisée par une forte croissance suivie d'une forte décroissance de la vitesse, dans un profil pouvant rappeler une cloche ; puis la phase de correction suit, et se distingue par de faibles mais potentiellement nombreuses et surtout rapides oscillations, comme l'illustre la figure~\ref{fig:ballistic}.
 	
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.60\textwidth]{figures/ch2/ballistic}
+		\includegraphics[width=0.50\textwidth]{figures/ch2/ballistic}
 		\caption[Profil de vitesse -- phases balistique et de correction]{Vitesse du pointeur en fonction du temps au cours d'un mouvement ciblé. La vitesse croît fortement puis décroît de même au cours de la phase balistique, puis connaît de petites oscillations au cours de la phase de correction. Crédit : \cite{liu2009designing}.}
 		\label{fig:ballistic}
 	\end{figure}
 	
 	Langolf \emph{et al.}~\cite{langolf1976investigation} ont de plus montré que \og le mouvement entier vers le centre de la cible devient plus lent quand les tolérances sur la cible (i.e. sa largeur) diminuent \fg{}, ce qui est cohérent avec les travaux de Crossman et Goodeve~\cite{crossman1983feedback}, Marteniuk \emph{et al.}~ \cite{marteniuk1987constraints}, ainsi que ceux de Soechting~\cite{soechting1984effect}. Ce dernier remarqua par ailleurs qu'avec de petites cibles, la phase balistique était plus courte, et de fait la phase de correction en était d'autant rallongée.
-	
-	Meyer \emph{et al.}~\cite{meyer1988optimality} proposent un modèle \og des sous-mouvements stochastiques optimisés \fg{} (ou SMSO) alternatif, fondé sur des hypothèses assez différentes. Ici, la phase balistique et la phase de correction ne sont pas considérées comme telles, mais font place à des sous-mouvements successifs, permettant chacun de se rapprocher un peu plus de la cible. Une illustration de cette modélisation est fournie dans la figure~\ref{fig:meyer}. Ce qui retient particulièrement notre attention dans cette approche, outre le fait que le modèle SMSO permet d'expliquer (entre autres) l'origine de la loi de Fitts, est que bien que la quantité de sous-mouvements soit fixée à 2 par les auteurs du modèle --- notamment du fait des travaux de Langolf \emph{et al.}~\cite{langolf1976investigation} et Carlton~\cite{carlton1979control}, qui ont constaté la prépondérance de ce cas de figure --- ils admettent eux-mêmes qu'elle peut éventuellement être plus élevée~\cite{crossman1963feedback, crossman1983feedback}, notamment quand la difficulté de sélection est grande, en particulier quand le pointage doit être stable, c'est-à-dire quand le curseur doit rester sur la cible et non se contenter de passer dessus.
+
+	\label{sub:smso}
+	Meyer \emph{et al.}~\cite{meyer1988optimality} proposent un modèle des \og sous-mouvements stochastiques optimisés \fg{} (ou SMSO), fondé sur des hypothèses différentes : la phase balistique et la phase de correction ne sont pas considérées comme telles, mais font place à des sous-mouvements successifs, permettant chacun de se rapprocher un peu plus de la cible (voir la figure~\ref{fig:meyer}). Outre le fait que le modèle SMSO permet d'expliquer l'origine de la loi de Fitts, et bien que la quantité de sous-mouvements soit fixée à 2 par les auteurs du modèle --- notamment du fait des travaux de Langolf \emph{et al.}~\cite{langolf1976investigation} et Carlton~\cite{carlton1979control}, qui ont constaté la prépondérance de ce cas de figure --- ils admettent qu'elle peut être plus élevée~\cite{crossman1963feedback, crossman1983feedback}, notamment quand la difficulté de sélection est grande, et en particulier quand le curseur doit rester sur la cible et non se contenter de passer dessus.
 	
 	\begin{SCfigure}[50][!htbp]
 		\centering
-		\includegraphics[width=0.50\textwidth]{figures/ch2/meyer}
+		\includegraphics[width=0.5\textwidth]{figures/ch2/meyer}
 		\caption[Profils de vitesse et d'accélération dans le modèle SMSO]{Profils de vitesse et d'accélération dans le modèle SMSO. Les unités sont en dégrés d'angle, car le mouvement étudié par Meyer \emph{et al.} était rotatif. Crédit : \cite{meyer1988optimality}.}
 		\label{fig:meyer}
 	\end{SCfigure}
 	
-	Dans ce dernier cas, étudié par Jagacinski \emph{et al.}~\cite{jagacinski1980fitts}, les cibles étaient statiques. Pourtant, lorsque l'indice de difficulté de Fitts était élevé, le nombre de sous-mouvements pouvait atteindre quatre. Il est donc raisonnable de supposer que dans un cas similaire, mais avec des cibles mobiles --- \emph{a fortiori} vives et imprévisibles --- ce nombre pourrait être (beaucoup) plus élevé.
-	
-	Par conséquent, nous évaluerons plus loin la pertinence de l'interprétation d'un mouvement de sélection de cible mobile en succession (potentiellement très longue) de sous-mouvements, en nous appuyant sur ces travaux.
-	
-	La conclusion générale de ces diverses études et propositions théoriques est que la précision requise par un mouvement influe non seulement sur son temps global de complétion, mais également sur l'ensemble de la trajectoire, et notamment sur le profil de vitesse du curseur en fonction du temps. Dès lors, nous pouvons formuler l'hypothèse que les difficultés inhérentes à la sélection de cibles mobiles peuvent être assimilées à un besoin accru de précision, et que par conséquent, un effet spécifique pourra être observé sur les trajectoires des curseurs.
-	
-	Plus précisément, nous pouvons formuler l'hypothèse que la mobilité d'une cible mène à une multiplication des sous-mouvements, et que ceux-ci sont d'autant plus nombreux que les mouvements de la cible sont \og difficiles \fg{}.
-	
-	Nous reviendrons dans les chapitres suivants sur cette hypothèse.
+	Dans ce dernier cas, étudié par Jagacinski \emph{et al.}~\cite{jagacinski1980fitts}, les cibles étaient statiques. Pourtant, lorsque l'ID était élevé, le nombre de sous-mouvements pouvait atteindre quatre. Dans un cas similaire mais avec des cibles mobiles, ce nombre pourrait être (beaucoup) plus élevé. Nous reviendrons donc plus loin sur la pertinence de l'interprétation d'un mouvement de sélection de cible mobile en succession (potentiellement longue) de sous-mouvements, en nous appuyant sur ces travaux. La conclusion générale de ces diverses études et propositions théoriques est que la précision requise par un mouvement influe non seulement sur son temps global de complétion, mais également sur l'ensemble de la trajectoire, et notamment sur le profil de vitesse du curseur en fonction du temps. Dès lors, nous pouvons formuler l'hypothèse que les difficultés inhérentes à la sélection de cibles mobiles constituent un besoin accru de précision, et que par conséquent, un effet spécifique pourra être observé sur les trajectoires des curseurs. Plus précisément, nous pouvons formuler l'hypothèse que la mobilité d'une cible mène à une multiplication des sous-mouvements.
 	
 \section{Taxinomie des techniques de sélection}
 	Dans les sections suivantes, nous présenterons un échantillon représentatif de techniques de sélection de cibles, statiques et mobiles. Cette présentation sera structurée selon la taxinomie dont un schéma est fourni sur la figure~\ref{fig:selTaxi}, et dont les critères et catégories seront explicités le long des sections suivantes. À la fin du chapitre, un retour global et plus détaillé sur cette taxinomie sera proposé.	
@@ -505,7 +478,7 @@
 		~
 		\begin{subfigure}[t]{\textwidth}
 			\centering
-			\includegraphics[width=0.8\textwidth]{figures/ch2/lookandtouch2}
+			\includegraphics[width=0.7\textwidth]{figures/ch2/lookandtouch2}
 			\caption[\emph{Look \&{} Touch -- principe II}]{Fonctionnement des deux derniers modes de sélection en cascade de la famille \emph{Look \&{} Touch}.}
 			\label{fig:lookandtouch2}
 		\end{subfigure}
@@ -516,76 +489,67 @@
 	\paragraph{De bons résultats, sans vainqueur clair.}
 	Stellmach \emph{et al.} ont évalué les variantes de \emph{Look \&{} Touch} sus-citées dans trois blocs de tâches : T1, avec des objets disjoints sur une grille 2D ; T2, avec une ligne d'objets 2D se chevauchant ; et T3, avec des objets 2D de tailles diverses se chevauchant. Diverses tailles et distances ont également été testées. Les temps de sélection et les taux d'erreurs ont été mesurés ; ils sont rapportés sur la figure~\ref{fig:latRes}. Si le \emph{Gaze-directed cursor} montre rapidement ses limites, les autres techniques fournissent de bonnes performances, avec un léger avantage pour \emph{MAGIC tab}. Ctte tendance est confirmée par les impressions sujectives exposées sur la figure~\ref{fig:latSubj}.
 	
-	\paragraph{\emph{MAGIC tab} et le problème de linéarité.}
-	\emph{MAGIC tab} souffre cependant d'une limitation inhérente à sa nature : le temps de sélection dans la phase fine dépend de façon approximativement linéaire du nombre d'objets à parcourir, puisque l'utilisateur est contraint de faire ce parcours de façon linéaire. En comparaison, la plupart des processus de sélection sont associés à une relation logarithmique entre le nombre d'objets et le temps de sélection~\cite{hick1952rate, hyman1953stimulus}. L'on peut donc émettre des doutes sur la robustesse de \emph{MAGIC tab} dans des environnements très denses. Par ailleurs, le comportement de cette technique avec des cibles mobiles pose question, puisque le menu contiendrait des objets n'étant plus nécessairement dans l'espace de pré-sélection au moment où l'utilisateur les parcourt. Cette perte de contexte spatial pourrait, dans le cas de cibles visuellement très proches (ou identiques) rendre la sélection impossible.
+	\paragraph{Le problème de linéarité.}
+	\emph{MAGIC tab} souffre cependant d'une limitation inhérente à sa nature : le temps de sélection dans la phase fine dépend linéairement du nombre d'objets, puisque l'utilisateur les parcourt linéairement. En comparaison, la plupart des processus de sélection admettent une relation logarithmique entre le nombre d'objets et le temps de sélection~\cite{hick1952rate, hyman1953stimulus}. La robustesse de \emph{MAGIC tab} en environnement dense est donc douteuse, de même qu'avec des cibles mobiles, puisque le menu contiendrait des objets n'étant plus nécessairement dans l'espace de pré-sélection au moment où l'utilisateur les parcourt. Cette perte de contexte spatial pourrait, dans le cas de cibles visuellement très proches (ou identiques) rendre la sélection impossible.
 	
 	\subsubsection{\emph{Sphere-casting refined by QUAD-menu
 (SQUAD)}}
-	La technique \emph{Sphere-casting refined by QUAD-menu
-(SQUAD)}~\cite{kopper2011rapid} est un exemple de méthode de sélection en cascade. Avec SQUAD, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; \emph{in fine}, le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}. Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)$ étapes, où $n$ est le nombre d'objets pré-sélectionnés par la sphère au cours de la première étape. Naturellement, il faut ajouter à cela l'étape de pré-sélection. Au total, la sélection d'un objet parmi 256 se fait en seulement 5 étapes, où chaque étape peut être très rapide.
-	
-	En pratique, dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des objets uniformes : des sphères de rayons identiques. Seule la couleur variait, avec du gris pour des distracteurs et du rouge pour la cible à sélectionner, comme on le voit sur la figure~\ref{fig:squad2}. 
+	Avec \emph{Sphere-casting refined by QUAD-menu
+(SQUAD)}~\cite{kopper2011rapid}, l'utilisateur commence par sélectionner un volume contenant sa cible ; puis, il affine progressivement sa sélection en choisissant le sous-ensemble de cibles contenant celle qu'il veut, via un menu à quatre options affichant tous les objets n'ayant pas encore été éliminés ; le dernier objet restant est sélectionné. Aucune des sous-tâches de SQUAD ne nécessite d'être précis. Le fonctionnement de cette technique est illustré par la figure~\ref{fig:squad}. Bien que le procédé puisse paraître pénible, il permet d'affiner la sélection jusqu'au dernier élément en $log_{4}(n)+1$ étapes, où $n$ est le nombre d'objets pré-sélectionnés par la sphère au cours de la première étape. Dans~\cite{kopper2011rapid}, SQUAD fut évaluée avec des sphères de rayons identiques --- grises pour des distracteurs, et rouges pour la cible à sélectionner (voir la figure~\ref{fig:squad2}).
 	
 	\paragraph{Performances.}
-	Les performances de SQUAD, comparée au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity} : SQUAD offre de meilleures performances en environnement dense, de moins bonnes en environnement peu dense, et des résultats comparables entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Comme attendu, les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, la technique SQUAD est avantageuse avec de petites cibles, désavantageuses quand elles sont grandes, et à peu près équivalent entre les deux.
+	Les performances de SQUAD, comparé au \emph{raycasting} et en fonction du nombre de distracteurs sont détaillées sur la figure~\ref{fig:squadDensity} : SQUAD est plus performant en environnement dense, moins en environnement peu dense, et comparable entre les deux. Les mêmes résultats sont présentés sur la figure~\ref{fig:squadSize}, mais en fonction de la taille des cibles. Les performances de SQUAD sont à peu près constantes tandis que le \emph{raycasting} est d'autant plus performant que les cibles sont grandes. De fait, SQUAD est avantageux avec de petites cibles, désavantageux quand elles sont grandes, et à peu près équivalent entre les deux. Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap} : SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Par ailleurs, le taux d'erreurs avec SQUAD était extrêmement faible (0,7~\%{}) --- un élément important en faveur de SQUAD.
 	
 	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/squadDensity}
-			\caption{Performances en fonction de la densité de distracteurs. Les performances de SQUAD dépendent fortement de la densité, car le nombre d'étapes dépend en dépend. La technique brille quand la densité est faible, mais se montre désavantageuse sinon.}
+			\includegraphics[width=0.92\textwidth]{figures/ch2/squadDensity}
+			\caption{Performances en fonction de la densité de distracteurs, dont le nombre d'étapes dépend avec SQUAD.}
 			\label{fig:squadDensity}
 		\end{subfigure}
 		~
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/squadSize}
-			\caption{Performances de SQUAD en fonction de la taille des cibles, avec différentes densités de distracteurs. SQUAD est plus performante à faible densité, et capable de gérer de très petites cibles efficacement. Avec de grosses cibles, on préférera le \emph{raycasting}.}
+			\includegraphics[width=0.92\textwidth]{figures/ch2/squadSize}
+			\caption{Performances de SQUAD en fonction de la taille des cibles, avec différentes densités de distracteurs.}
 			\label{fig:squadSize}
 		\end{subfigure}
-		\caption[Performances de SQUAD]{Performances de SQUAD. Crédit : \cite{kopper2011rapid}.}
+		\caption[Performances de SQUAD]{Performances de SQUAD (brun) et du \emph{raycasting} (bleu). Crédit : \cite{kopper2011rapid}.}
 		\label{fig:squadPerf}
 	\end{figure}
 	
-	Un récapitulatif de ces résultats est présenté sur la figure~\ref{fig:squadRecap} : SQUAD gère très bien les petites cibles, mais voit ses performances chuter avec le nombre de distracteurs. Par ailleurs, le taux d'erreurs avec SQUAD était extrêmement faible, avec seulement 0,7~\%{}. De fait, si l'on considérait non pas les temps de sélection, mais les temps de sélection normalisés par rapport aux erreurs, l'évaluation serait nettement plus favorable à SQUAD.
-	
 	\subsubsection{\emph{Disambiguation Canvas}}
-	Le \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est aussi une technique de sélection en cascade, illustrée par les figures~\ref{fig:dCanvas} et~\ref{fig:dCanvas2}. Elle a pour avantage de ne nécessiter qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et de le réutiliser pour la sélection finale dans la phase fine. Dans la première, il est utilisé pour faire une pré-sélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets pré-sélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur n'a plus qu'à appuyer avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (se rapporter à la figure~\ref{fig:dCanvas} pour plus de clarté).
+	Le fonctionnement du \emph{Disambiguation Canvas}~\cite{debarba2013disambiguation} est illustré par les figures~\ref{fig:dCanvas} et~\ref{fig:dCanvas2}. Il ne nécessite qu'un \emph{smartphone} comme périphérique de pointage pour la phase grossière, et le réutilise pour la sélection finale dans la phase fine. Dans la première, il permet une pré-sélection à l'aide d'une sphère, comme dans SQUAD~\cite{kopper2011rapid} ; dans la seconde, les objets pré-sélectionnés sont arrangés dans un rectangle de même ratio d'aspect que l'écran du téléphone, et l'utilisateur appuie avec son pouce sur la zone de l'écran du téléphone correspondant à la zone du rectangle de sélection où se trouve la cible (voir la figure~\ref{fig:dCanvas}). Pour définir un agencement optimal des objets dans la deuxième phase, dite de désambiguïsation, Debarba \emph{et al.} ont opté pour une étape de calibrage présentée sur la figure~\ref{fig:dCanvasLayout}. La taille des objets pré-sélectionnés est ajustée pour emplir l'espace de sélection dans la seconde phase, donc elle dépend du nombre d'objets pré-sélectionnés dans la première plus que de la taille initiale des objets, de même que la difficulté effective de sélection, voir la figure~\ref{fig:dCanvasDensity}.
 		 
 	\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/ch2/dCanvas}
+		\includegraphics[width=0.7\textwidth]{figures/ch2/dCanvas}
 		\caption[\emph{Disambiguation Canvas}]{\emph{Disambiguation Canvas}. (a) : L'utilisateur pointe vers la région où sa cible est située ; cette pré-sélection se fait par \emph{volume casting}, c'est-à-dire que le périphérique de pointage contrôle un volume de sélection. (b) : Une fois la pré-sélection faite, une \og toile \fg{} (\emph{canvas}) de sélection s'ouvre, les cibles pré-sélectionnées y sont disposées et agrandies. Cette toile correspond à un \emph{mapping} absolu de l'écran tactile d'un périphérique de saisie, ce qui permet à l'utilisateur de sélectionner la cible avec son pouce. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvas}
 	\end{figure}
 		
-	Pour définir un agencement optimal des objets dans la deuxième phase, dite de désambiguïsation, Debarba \emph{et al.} ont opté pour une étape de calibrage présentée sur la figure~\ref{fig:dCanvasLayout}. La taille des objets pré-sélectionnés est ajustée pour emplir l'espace de sélection dans la seconde phase. De fait, leur taille dans cette phase dépend essentiellement du nombre d'objets pré-sélectionnés dans la première, plus que de la taille des objets eux-mêmes, de même que la difficulté effective de sélection, voir la figure~\ref{fig:dCanvasDensity}.
-		
 	\paragraph{Performances.}
-	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique : cette technique ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites. Ce n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs étapes, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée. Les taux d'erreurs du \emph{Disambiguation Canvas} sont toujours inférieurs à ceux du \emph{raycasting}, parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse/précision inhérent à toute tâche de pointage.
+	Les performances du \emph{Disambiguation Canvas} sont présentées sur la figure~\ref{fig:dCanvasRCPerf}, comparées à celle du \emph{raycasting} classique : il ne fait mieux que le \emph{raycasting} qu'à condition que la densité soit faible ou que les cibles soient petites. Ce n'est pas surprenant puisque la sélection en cascade implique nécessairement un coût en divisant la tâche en plusieurs étapes, mais ce coût peut rester acceptable si la difficulté de la tâche est suffisamment élevée. Ses taux d'erreurs sont toujours inférieurs à ceux du \emph{raycasting}, parfois de beaucoup. C'est une caractéristique courante de la sélection en cascade, qui implique intrinsèquement un biais en faveur de la précision dans le compromis vitesse-précision inhérent à toute tâche de pointage. Enfin, l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci --- on peut supposer qu'avec cette optimisation, les résultats obtenus seraient meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
 	
-	\begin{figure}[!htbp]
+	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=\textwidth]{figures/ch2/dCanvasRCPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances I]{Performances du \emph{Disambiguation Canvas}, comparées à celles du \emph{raycasting}, en fonction de la taille des cibles. Pour le premier, les résultats sont séparés en fonction de la distance angulaire entre les cibles, donc de leur densité. Plus cette densité est élevée plus la sélection est difficile car les cibles deviennent petites dans la phase de sélection fine. Les temps de sélection sont à gauche, les erreurs à droite. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasRCPerf}
 	\end{figure}
-
-	Enfin, l'agencement calibré des objets décrit sur la figure~\ref{fig:dCanvasLayout} n'était pas utilisé dans cette étude, puisqu'il a été inspiré par les retours des utilisateurs au cours de celle-ci --- on peut supposer qu'avec cette optimisation, les résultats obtenus seraient meilleurs. Par ailleurs, les utilisateurs rapportent une préférence marquée pour le \emph{Disambiguation Canvas} par rapport au \emph{raycasting}, surtout pour les cibles difficiles, et de même une diminution de la fatigue ressentie.
 	
-	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont légèrement modifié celle-ci en ajoutant après chaque étape \og d'affichage \fg{} une animation de 200~ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation. Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier. Plus les objets sont nombreux, plus son avantage croît. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objets colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées par une pression du pouce.	
+	Pour comparer leur technique à SQUAD, Debarba \emph{et al.} ont modifié celle-ci en ajoutant après chaque étape \og d'affichage \fg{} une animation de 200~ms repositionnant les objets dans les quadrants vidés. Quoique cette animation ait un coût, elle permet à l'utilisateur de ne pas perdre la cible qu'il souhaite sélectionner, et donc d'éviter une nouvelle phase de recherche visuelle. Pour des contextes où les objets se ressemblent (voire sont identiques) c'est un compromis qui peut être avantageux (voire indispensable). De plus, l'utilisateur peut déplacer son rayon de sélection pendant l'animation. Les résultats du \emph{Disambiguation Canvas} comparé à SQUAD sont présentés sur la figure~\ref{fig:dCanvasSPerf}, et sont en faveur de ce premier, surtout avec beaucoup d'objets. On peut toutefois s'interroger sur la solidité de ce résultat avec des objets extrêmement nombreux, puisque la convergence logarithmique de SQUAD permet en principe de gérer un nombre d'objets colossal sans dégradation catastrophique des performances, tandis que le \emph{Disambiguation Canvas} pourrait voir ses performances s'effrondrer lorsque les cibles deviennent trop petites pour être sélectionnées par une pression du pouce : les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Ici, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, ce qui reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques. Elles furent toutes deux évaluées avec des cibles à égale distance du périphérique de pointage, donc sans aucune occultation. Leurs performances dans des environnements denses avec beaucoup d'occultation demeurent par conséquent inconnues, et sujettes à caution.
 	
-	\begin{figure}[!htbp]
+	\begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.7\textwidth]{figures/ch2/dCanvasSPerf}
+		\includegraphics[width=0.65\textwidth]{figures/ch2/dCanvasSPerf}
 		\caption[\emph{Disambiguation Canvas} -- performances II]{Temps de sélection du \emph{Disambiguation Canvas}, comparés à ceux de SQUAD, en fonction du nombre de cibles. Crédit : \cite{debarba2013disambiguation}.}
 		\label{fig:dCanvasSPerf}
 	\end{figure}
-	
-	Au-delà des temps de sélection, les taux d'erreurs deviendraient certainement problématiques dans ce cas-là, alors qu'ils devraient rester à peu près stables pour SQUAD. Ici, SQUAD a d'ailleurs un léger avantage sur ce plan, avec 0,9~\%{} d'erreurs contre 1,8~\%{} pour le \emph{Disambiguation Canvas}, mais ce dernier résultat reste très bon. Les impressions subjectives des utilisateurs sont grossièrement similaires pour les deux techniques. Dans les deux cas, les techniques furent évaluées avec des cibles à égale distance du périphérique de pointage, donc sans aucune occultation. Leurs performances dans des environnements denses avec beaucoup d'occultation demeurent par conséquent inconnues, et sujettes à caution.
+
 	
 	\subsubsection{\emph{Rake cursor}}
-	Le \emph{Rake cursor}~\cite{blanch2009rake} est une technique particulièrement originale, fondée sur la combinaison \emph{simultanée} de deux canaux d'interaction : une souris classique, et le regard. De fait, il ne s'agit pas d'une \og vraie \fg{} technique de sélection en cascade, puisque les phases de sélection sont simultanées --- ou du moins chevauchées --- et non successives. Le \emph{Rake cursor} se présente sous la forme d'une grille de curseurs s'étendant sur tout l'écran. Le regard de l'utilisateur est suivi et estimé afin de déterminer lequel des curseurs doit être actif. Ce principe de fonctionnement est illustré par la figure~\ref{fig:rakeCursor2d}.
+	Le \emph{Rake cursor}~\cite{blanch2009rake} est une technique particulièrement originale, fondée sur la combinaison \emph{simultanée} de deux canaux d'interaction : une souris classique, et le regard. De fait, il ne s'agit pas d'une \og vraie \fg{} technique de sélection en cascade, puisque les phases de sélection sont simultanées --- ou du moins chevauchées --- et non successives. Le \emph{Rake cursor} se présente sous la forme d'une grille de curseurs s'étendant sur tout l'écran. Le regard de l'utilisateur est suivi afin de déterminer lequel des curseurs doit être actif, comme l'illustre la figure~\ref{fig:rakeCursor2d}.
 	
 	\begin{figure}[!htbp]
 		\begin{subfigure}[t]{0.52\textwidth}
@@ -595,9 +559,9 @@
 			\label{fig:rakeCursor2d}
 		\end{subfigure}
 		~
-		\begin{subfigure}[t]{0.45\textwidth}
+		\begin{subfigure}[t]{0.46\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{figures/ch2/rakeCursor1d}
+			\includegraphics[width=0.96\textwidth]{figures/ch2/rakeCursor1d}
 			\caption{Principe de la version 1D du \emph{Rake cursor} telle qu'utilisée pour l'évaluation.}
 			\label{fig:rakeCursor1d}
 		\end{subfigure}
@@ -605,16 +569,14 @@
 		\label{fig:rakeCursor}
 	\end{figure}
 	
-	Il est intéressant de remarquer que, d'un certain point de vue, cette technique peut s'assimiler à un curseur zonal, puisque l'ensemble de curseurs couvre une grande zone de l'écran. Cependant, un curseur zonal a en principe une aire et, sauf à considérer qu'en pratique, chaque curseur occupe au moins un pixel, conceptuellement, chaque curseur n'est qu'un point, c'est-à-dire un objet géométrique de dimension zéro et d'aire nulle. Le \emph{Rake cursor} est, de fait, une technique difficile à classer, mais sa conception nous paraît inspirée par les mêmes considérations que celles qui motivent l'existence de techniques de sélection en cascade, au rafinement près que les phases de sélection se chevauchent.
-	
-	Il résulte de ce chevauchement que le temps total de sélection peut être diminué, puisque le pointage et la sélection du bon curseur se font en parallèle. C'est du moins l'hypothèse des auteurs, évaluée en confrontant le \emph{Rake cursor} à la technique \emph{MAGIC}~\cite{zhai1999manual}, ainsi qu'à un curseur ponctuel standard, dans une tache de sélection à une dimension, sur le modèle de l'expérience fondatrice de Fitts. Pour l'occasion, les curseurs étaient donc remplacés par des barres verticales, comme l'illustre la figure~\ref{fig:rakeCursor1d}.
+	D'un certain point de vue, cette technique peut s'assimiler à un curseur zonal, puisque l'ensemble de curseurs couvre une grande zone de l'écran. Cependant, un curseur zonal a en principe une aire et, conceptuellement, chaque curseur n'est qu'un point, c'est-à-dire un objet géométrique d'aire nulle. Le \emph{Rake cursor} est, de fait, une technique difficile à classer, mais sa conception nous paraît inspirée par les mêmes considérations que celles qui motivent l'existence de techniques de sélection en cascade, au rafinement près que les phases de sélection se chevauchent. Par conséquent, le temps total de sélection peut être diminué. C'est l'hypothèse des auteurs, évaluée en confrontant le \emph{Rake cursor} à \emph{MAGIC}~\cite{zhai1999manual}, ainsi qu'à un curseur ponctuel standard, dans une tache de sélection à une dimension, sur le modèle de l'expérience fondatrice de Fitts. Pour l'occasion, les curseurs étaient donc remplacés par des barres verticales (voir la figure~\ref{fig:rakeCursor1d}).
 	
 	\paragraph{Performances.}
 	Les auteurs rapportent que le \emph{Rake cursor} permet une amélioration conséquente du temps de mouvement et du taux d'erreurs, au prix cependant d'une augmentation importante du temps de réaction. Sur les tâches évaluées, cependant, dont les indices de difficulté (ID) étaient de 3, 4, 5 et 6, avec des distances de 511 et 1023 pixels, ce compromis est avantageux, comme l'illustre la figure~\ref{fig:rakeCursorPerf}, qui fait état du temps de sélection total, selon la technique et l'ID de la tâche.
 	
 	\begin{SCfigure}[50][htbp]
 		\centering
-		\includegraphics[width=0.45\textwidth]{figures/ch2/rakeCursorPerf}
+		\includegraphics[width=0.42\textwidth]{figures/ch2/rakeCursorPerf}
 		\caption[\emph{Rake cursor} -- performances]{Temps de sélection du \emph{Rake cursor}, comparés à deux d'un curseur ponctuel et de la technique \emph{MAGIC}, en fonction du nombre de l'ID de la tâche. Crédit : \cite{blanch2009rake}.}
 		\label{fig:rakeCursorPerf}
 	\end{SCfigure}
@@ -634,31 +596,25 @@
 		ID_{S} \leq \log_2\left(\frac{k}{D_{R}} + 1 \right)
 	\end{equation}
 	
-	Du point de vue de la théorie de l'information, chaque ID correspond à un nombre de bits, avec l'indice de difficulté global de la tâche : $ID = ID_{S} + ID_{M}$. Pour compléter la tâche, tous les bits doivent être transmis. L'originalité du \emph{Rake cursor} est de permettre la transmission de ces bits sur deux canaux en parallèle, afin de la compléter plus rapidement.
+	Du point de vue de la théorie de l'information, chaque ID correspond à un nombre de bits, avec l'indice de difficulté global de la tâche $ID = ID_{S} + ID_{M}$. Pour compléter la tâche, tous les bits doivent être transmis. L'originalité du \emph{Rake cursor} est de permettre la transmission de ces bits sur deux canaux en parallèle, afin de la compléter plus rapidement.
 	
-	Néanmoins, cette technique présente au moins deux inconvénients : d'une part, l'abondance de curseurs augmente l'encombrement visuel, dans une mesure plus ou moins gênante selon le contexte ; d'autre part, l'augmentation du temps de réaction ne peut être compensée que si le temps de mouvement est suffisamment long, c'est-à-dire si l'ID de la tâche est relativement élevé. Dans le cas contraire, le \emph{Rake cursor} pourrait nuire aux performances de sélection.
-	
-	Cette technique ne paraît pas particulièrement adaptée à la sélection de cibles mobiles, pour lesquelles la difficulté réside plus dans la phase d'approche de la cible que dans la phase initiale (ou balistique) permettant d'en rapprocher le curseur, et sur laquelle cette technique se concentre. Nous reviendrons sur ce point dans le chapitre~\ref{chap4}.
+	Néanmoins, cette technique présente au moins deux inconvénients : d'une part, l'abondance de curseurs augmente l'encombrement visuel, dans une mesure plus ou moins gênante selon le contexte ; d'autre part, l'augmentation du temps de réaction ne peut être compensée que si le temps de mouvement est suffisamment long, c'est-à-dire si l'ID de la tâche est relativement élevé. Dans le cas contraire, le \emph{Rake cursor} pourrait nuire aux performances de sélection. Il ne paraît pas particulièrement adapté à la sélection de cibles mobiles, pour lesquelles la difficulté réside plus dans la phase d'approche de la cible que dans la phase initiale (ou balistique) permettant d'en rapprocher le curseur, et sur laquelle elle se concentre. Nous reviendrons sur ce point dans le chapitre~\ref{chap4}.
 		 
 	\subsubsection{Le problème de la perte du contexte}
 	Les techniques de sélection en cascade pouvant prendre des formes diverses, leurs avantages et inconvénients sont également divers. Néanmoins, elles ont pour principe commun de travailler successivement à différentes échelles, ce qui peut être perturbant en environnement immersif, particulièrement lorsque l'on cherche à maintenir une correspondance entre l'espace moteur et l'espace virtuel. La question de l'influence de ces transitions forcées par le système sur le risque de \emph{cybersickness}~\cite{laviola2000discussion} (ou \og mal du simulateur \fg{}) n'est par ailleurs pas abordée par les auteurs des études citées plus haut. Néanmoins, si les gains de performances offerts par la sélection en cascade sont importants, ces désagréments pourraient être une contrepartie acceptable.
 	
-	Les choix faits dans la conception du \emph{Disambiguation Canvas} sont différents de ceux de SQUAD, et les évaluations de ces techniques le montrent. Toutefois, les inconvénients majeurs de ces deux techniques sont sensiblement les mêmes, à savoir une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs, ou \emph{a fortiori} identique.
-	
-	Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon \og douce \fg{} et progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
+	Malgré les différences entre le \emph{Disambiguation Canvas} et SQUAD, leurs inconvénients majeurs sont sensiblement les mêmes : une perte de contexte en passant d'une phase à l'autre, et de grandes difficultés à reconnaître l'objet à sélectionner s'il est visuellement proche des distracteurs. Pour pallier ce problème, Debarba \emph{et al.} proposent de gérer la transition entre les deux phases avec une animation permettant de déplacer les objets de l'espace virtuel 3D d'origine vers le rectangle de sélection finale de façon progressive, afin que l'utilisateur ne perde pas sa cible des yeux et puisse la retrouver aisément. Dans une certaine mesure, le contexte spatial (local) est préservé, mais il est significativement déformé en règle générale. Cette solution, que les auteurs ont mise en \oe{}uvre mais pas encore évaluée, est illustrée par la figure~\ref{fig:dCanvasContext}.
 		
-	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemblent, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure très dégradé en passant d'une phase à l'autre, et les cibles ne sont, là encore, que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles, tout comme SQUAD.
-	
-	Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ. Le \emph{Rake cursor} n'étant pas \emph{stricto sensu} une technique de sélection en cascade, il ne souffre pas précisément des mêmes inconvénients, mais demeure inadapté à la sélection de cibles mobiles, vives et imprévisibles.
+	Bien que ce palliatif puisse améliorer les performances de sélection quand les objets se ressemblent, on peut douter de son efficacité quand ils sont identiques. De plus, le contexte spatial demeure dégradé en passant d'une phase à l'autre, et les cibles ne sont que statiques. Il apparaît donc difficile d'appliquer le \emph{Disambiguation Canvas} à des contextes caractérisés par des objets semblables, nombreux et mobiles, tout comme SQUAD. Cela ne revient pas à rejeter le principe de la sélection en cascade pour les applications qui nous intéressent, mais à souligner que les solutions existantes sont généralement peu adaptées à de telles tâches, et qu'une technique de sélection en cascade appropriée nécessiterait probablement d'être pensée pour les cibles mobiles dès le départ. Le \emph{Rake cursor} n'étant pas \emph{stricto sensu} une technique de sélection en cascade, il ne souffre pas précisément des mêmes inconvénients, mais demeure inadapté à la sélection de cibles mobiles, vives et imprévisibles.
 	
 	\subsection{Techniques de prédiction de la trajectoire du curseur}
 	Une classe de techniques consiste à analyser une partie du mouvement du curseur de sélection pour tenter d'estimer son point d'arrivée, donc la cible visée par l'utilisateur, et ainsi accélérer la sélection. Les techniques \emph{Delphian Desktop} et KEP sont décrites dans les sections~\ref{sub:delphian} et~\ref{sub:kep}, respectivement.
 
 		
 	\subsubsection{\emph{Speed Profile sEparation for Endpoint Divination}}
-	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED base donc sa prédiction de cible sur la phase de décélération.
+	\emph{Speed Profile sEparation for Endpoint Divination} (SPEED)~\cite{wonner2011speed} est une heuristique de prédiction de cible. Quand l'utilisateur tente de sélectionner une cible, il déplace son curseur vers elle d'une façon que l'on peut séparer en deux phases. Au cours de la première phase, il accélère, tandis qu'il décélère pendant la seconde, comme le montre la figure~\ref{fig:speedProfile}. C'est dans cette dernière que l'utilisateur est généralement le plus précis. SPEED fonde donc sa prédiction de cible sur la phase de décélération. L'heuristique estime la distance que le curseur finira par couvrir à partir de sa vitesse, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, SPEED utilise sa position et sa direction courantes, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, donc la cible visée par l'utilisateur. Ce fonctionnement est explicité sur la figure~\ref{fig:speedExplained}.
 	
-	\begin{figure}[!htbp]
+	\begin{figure}[hbp]
 		\begin{subfigure}[t]{0.48\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch2/speedProfile}
@@ -676,15 +632,13 @@
 		\label{fig:speedCursor}
 	\end{figure}
 	
-	L'heuristique estime la distance que le curseur finira par couvrir à partir de la vitesse du curseur, par ajustement de courbe avec celle d'une fonction quadratique. Quand le curseur a parcouru 85~\%{} de la distance totale estimée, SPEED utilise la position et la direction courantes du curseur, ainsi que l'estimation de la distance qu'il lui reste à parcourir pour prédire sa destination finale, et par conséquent, la cible visée par l'utilisateur. Ce fonctionnement, au demeurant très proche de celui de KEP, est expliqué sur la figure~\ref{fig:speedExplained}.
-	
 	\paragraph{Performances.}
-	Cette technique fournit de bien meilleurs résultats de prédiction que les précédentes approches de ce type qui ne faisaient pas de distinction entre les phases d'accélération et de décélération, comme l'illustre le tableau~\ref{tab:speedingPastKep} qui présente les résultats de SPEED face à ceux de KEP, précédemment la meilleure technique de prédiction de point d'arrivée. Les résultats de SPEED sont corrects même avec un indice de difficulté élevé, tandis que KEP tend à s'effondrer dans ces cas-là, avec un taux de prédiction nul pour des cibles de 16 pixels de largeur à une distance de 1536 pixels, contre 26,2~\%{} pour SPEED.
+	SPEED fournit de bien meilleurs résultats de prédiction que les précédentes approches de ce type, qui ne faisaient pas de distinction entre les phases d'accélération et de décélération, comme l'illustre le tableau~\ref{tab:speedingPastKep}, qui présente les résultats de SPEED face à ceux de KEP, précédemment la meilleure technique de prédiction de point d'arrivée. Les résultats de SPEED sont corrects même avec un indice de difficulté très élevé (contre 26,2~\%{} pour SPEED et 0~\%{} pour KEP).
 
 	
 	\begin{table}
 	\centering
-	\begin{tabular}{l | c c c}
+	\begin{tabular}{r | c c c}
 				& \multicolumn{3}{c}{Distance}	\\
 		Taille	& 512					& 1024					& 1536					\\ \hline
 		16		& 32,1 / \emph{5,0}		& 30,8 / \emph{2,0}		& 26,2 / \emph{0,0}		\bigstrut[t] \\
@@ -692,14 +646,12 @@
 		64		& 50,5 / \emph{35,0}	& 45,4 / \emph{16,0}	& 46,5 / \emph{10,0}	\\
 		128		& 74,3 / \emph{76,0}	& 60,9 / \emph{33,0}	& 47,9 / \emph{22,0}	\\
 	\end{tabular}
-	\caption[SPEED -- performances comparées à celles de KEP]{Fiabilité des prédictions de l'algorithme SPEED en fonction de la taille des cibles (16 à 128 pixels), et de la distance du mouvement à accomplir (512 à 1536 pixels). Les résultats sont présentés sous forme de pourcentages de prédictions correctes, avec les taux produits par SPEED en police romaine et ceux de KEP en italique. Données tirées de~\cite{wonner2011speed}.}
+	\caption[SPEED -- performances comparées à celles de KEP]{Fiabilité des prédictions de l'algorithme SPEED en fonction de la taille des cibles (16 à 128 pixels), et de la distance du mouvement à accomplir (512 à 1536 pixels). Pourcentages de prédictions correctes, avec les taux produits par SPEED en police romaine et ceux de KEP en italique. Données tirées de~\cite{wonner2011speed}.}
 	\label{tab:speedingPastKep}
 	\end{table}
 		
 	\subsubsection{L'hypothèse de rectitude et les cibles mobiles}
-	Les techniques de prédiction de la trajectoire du curseur ont un point faible commun : leur hypothèse de base selon laquelle la trajectoire du curseur est rectiligne. Quoique raisonnable pour les cibles statiques, cette hypothèse ne tient pas quand les cibles sont mobiles, surtout si elles sont rapides et leurs mouvements sont imprévisibles. Elle peut s'avérer une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, où dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le premier chapitre, ce n'est vraisemblablement pas le cas. Il ne nous semble donc pas possible de retenir ces techniques pour les tâches particulièrement difficiles identifiées plus haut dans ce manuscrit.
-	
-	Toutefois, même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut supposer qu'une telle technique puisse l'accélérer. Mais plus les cibles sont rapides et imprévisibles, plus la phase de correction domine temporellement la phase balistique, comme nous le verrons plus loin.
+	Les techniques de prédiction de la trajectoire du curseur ont un point faible commun : leur hypothèse de base selon laquelle la trajectoire du curseur est rectiligne. Quoique raisonnable pour les cibles statiques, elle ne tient pas quand les cibles sont mobiles, surtout si elles sont rapides et leurs mouvements sont imprévisibles. Elle peut être une approximation acceptable pour des mouvements relativement petits et/ou vers des cibles relativement lentes, ou dont les mouvements sont suffisamment prévisibles pour que l'utilisateur puisse anticiper leur position dans l'avenir proche, mais dans les cas qui nous intéressent particulièrement et qui sont détaillés dans le chapitre~\ref{chap1}, ce n'est pas souvent le cas. Nous ne pouvons donc retenir ces techniques pour ces applications. Toutefois, même pour une sélection de cible mobile, une phase balistique peut exister, et l'on peut supposer qu'une telle technique puisse l'accélérer. Mais plus les cibles sont rapides et imprévisibles, plus la phase de correction domine temporellement la phase balistique.
 
 \section{Techniques pour la sélection de cibles mobiles}
 	Étudions à présent les techniques conçues pour la sélection de cibles mobiles, sachant que malgré ce focus, elles permettent également de sélectionner des cibles statiques, en améliorant ou non les performances de sélection.

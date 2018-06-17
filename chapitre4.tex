@@ -476,12 +476,12 @@
 	
 	Nous notions alors que, notamment d'après les travaux de Soechting \emph{et al.}~\cite{soechting1984effect}, une sélection difficile rallonge la phase de correction, et nous avancions que les difficultés présentées par le caractère mobile des cibles qui nous intéressent pouvait mener à une observation similaire.
 	
-	\subsection{Hypothèses}
-	Nous allons nous attacher ici à analyser les profils de vitesse du curseur lors de tâches de sélection de difficultés diverses, afin d'évaluer cette hypothèse, qui est en réalité double :
+	\subsection{Sous-mouvements et hypothèse}
+	Nous allons nous attacher ici à analyser les profils de vitesse du curseur lors de tâches de sélection de difficultés diverses, afin d'évaluer notre hypothèse double, formellement énoncée ainsi :
 	
 	\begin{description}
-		\item[H1] : La phase de correction sera proportionnellement plus longue pour les cibles mobiles que pour les cibles statiques.
-		\item[H2] : La phase de correction sera proportionnellement plus longue quand le temps total de sélection est plus long --- c'est-à-dire pour les conditions précédemment identifiées comme \og difficiles \fg{} par rapport aux conditions \og faciles \fg{}.
+		\item[H1] : Les phases lentes des mouvements de sélection sont proportionnellement plus longues pour les cibles mobiles que pour les cibles statiques.
+		\item[H2] : Les phases lentes des mouvements de sélection sont proportionnellement plus longues quand le temps total de sélection est plus long --- c'est-à-dire pour les conditions précédemment identifiées comme \og difficiles \fg{} par rapport aux conditions \og faciles \fg{}.
 	\end{description}
 	
 	\subsection{Exemples}
@@ -490,7 +490,7 @@
 	\subsubsection{Cibles statiques}
 	Examinons donc les profils de la figure~\ref{fig:staticProfiles}, qui correspondent chacun à quatre sélections successives, avec des cibles statiques --- c'est-à-dire des cibles pour lesquelles la sélection est la plus facile. Précisons avant toute chose que ces profils sont lissés, selon la méthode de la moyenne glissante (aussi appelée moyenne mobile). La taille de la fenêtre glissante choisie ici est de 16~ms ; cette valeur représente un bon compromis entre la lisibilité des graphiques et leur fidélité, et a le mérite de correspondre à une fréquence légèrement supérieure à 60~Hz, soit deux fois plus que la valeur maximale de F, ce qui est conforme aux recommandations qui découlent du théorème de Shannon-Nyquist~\cite{shannon1949communication}.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[htb]
 		\centering
 		\begin{subfigure}[t]{\subImgWlineplot}
 			\centering
@@ -523,12 +523,12 @@
 		\label{fig:staticProfiles}
 	\end{figure}
 	
-	On constate sur ces profils que les phases balistiques et de correction sont relativement équilibrées, leurs parts respectives du temps de sélection étant approximativement les mêmes. Précisons que la limite entre la phase balistique et la phase de correction n'est pas toujours délimitée de façon très précise, aussi est-il difficile d'en faire des mesures exactes. Mais il est possible de tirer des enseignements d'un examen visuel des profils, ainsi que de mesures quantitatives et précises de la vitesse du curseur.
+	On constate sur ces profils que les phases rapides et lentes sont relativement équilibrées, leurs parts respectives du temps de sélection étant approximativement les mêmes. Précisons que la limite entre la phase rapide et la phase lente n'est pas toujours délimitée de façon très précise, aussi est-il difficile d'en faire des mesures exactes. Mais il est possible de tirer des enseignements d'un examen visuel des profils, ainsi que de mesures quantitatives et précises de la vitesse du curseur.
 	
 	\subsubsection{Cibles en mouvement rectiligne}
-	Si l'on compare les profils de la figure~\ref{fig:staticProfiles}, enregistrés pendant des sélections successives de quatre cibles statiques, à ceux de la figure~\ref{fig:rectProfiles}, issus de sélections de quatre cibles de mouvement rectiligne, on remarque déjà des différences, alors que le mouvement rectiligne est celui qui génère le moins de difficultés. On observe en effet que les sélections sont plus longues, mais que la durée des phases balistiques n'est pas sensiblement modifiée. En revanche, les phases de correction sont rallongées, et leur forme change quelque peu, avec l'apparition d'oscillations dont l'amplitude peut atteindre --- voire dépasser --- les 10~cm/s.
+	Si l'on compare les profils de la figure~\ref{fig:staticProfiles}, enregistrés pendant des sélections successives de quatre cibles statiques, à ceux de la figure~\ref{fig:rectProfiles}, issus de sélections de quatre cibles de mouvement rectiligne, on remarque déjà des différences, alors que le mouvement rectiligne est celui qui génère le moins de difficultés. On observe en effet que les sélections sont plus longues, mais que la durée des phases rapides n'est pas sensiblement modifiée. En revanche, les phases lentes sont rallongées, et leur forme change quelque peu, avec l'apparition d'oscillations dont l'amplitude peut atteindre --- voire dépasser --- les 10~cm/s.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[htb]
 		\centering
 		\begin{subfigure}[t]{\subImgWlineplot}
 			\centering
@@ -561,9 +561,7 @@
 		\label{fig:rectProfiles}
 	\end{figure}
 	
-	Si l'on examine les vitesses moyennes des curseurs de nos sujets lorsqu'ils sélectionnaient des cibles statiques d'une part, et en mouvement rectiligne d'autre part, l'on peut en effet remarquer que la vitesse moyenne du curseur chute légèrement lorsque les cibles sont mobiles ; ces données sont rapportées dans la table~\ref{tab:cursorSpeed}.
-	
-	C'est cependant moins vrai pour le sujet numéro 8, dont le curseur était en moyenne à peine moins rapide avec des cibles en mouvement rectiligne. Pourtant, l'examen de ses profils de vitesse montre que les phases de correction étaient nettement plus longues avec des cibles en mouvement rectiligne. La raison de cette légère anomalie est très probablement la faible vitesse moyenne de son curseur lors de la sélection de cibles statiques, qui s'explique sans doute par la faible hauteur des \og pics \fg{} de ses phases balistiques avec des cibles statiques. Peut-être la facilité perçue de la tâche n'encourageait-elle pas suffisamment ce sujet à se presser quand les cibles étaient statiques.
+	Si l'on examine les vitesses moyennes des curseurs de nos sujets lorsqu'ils sélectionnaient des cibles statiques d'une part, et en mouvement rectiligne d'autre part, l'on peut en effet remarquer que la vitesse moyenne du curseur chute légèrement lorsque les cibles sont mobiles ; ces données sont rapportées dans le tableau~\ref{tab:cursorSpeed}. C'est cependant moins vrai pour le sujet numéro 8, dont le curseur était en moyenne à peine moins rapide avec des cibles en mouvement rectiligne. Pourtant, l'examen de ses profils de vitesse montre que les phases lentes étaient nettement plus longues avec des cibles en mouvement rectiligne. La raison de cette légère anomalie est très probablement la faible vitesse moyenne de son curseur lors de la sélection de cibles statiques, qui s'explique sans doute par la faible hauteur des \og pics \fg{} de ses phases rapides avec des cibles statiques. Peut-être la facilité perçue de la tâche n'encourageait-elle pas suffisamment ce sujet à se presser quand les cibles étaient statiques.
 	
 	\begin{table}
 		\centering
@@ -580,9 +578,9 @@
 	\end{table}
 	
 	\subsubsection{Cibles aux mouvements imprévisibles}
-	Les choses deviennent beaucoup plus nettes lorsque l'on s'intéresse aux conditions les plus difficiles. Comme on le voit sur la figure~\ref{fig:hardProfiles}, les phases balistiques sont réduites à de courts sursauts de vitesse, et les phases de correction dominent largement le temps total de sélection. Bien sûr, ce n'est pas dû à une réduction de la durée des phases balistiques, mais à un rallongement des phases de correction.
+	Les choses deviennent beaucoup plus nettes lorsque l'on s'intéresse aux conditions les plus difficiles. Comme on le voit sur la figure~\ref{fig:hardProfiles}, les phases rapides sont réduites à de courts sursauts de vitesse, et les phases lentes dominent largement le temps total de sélection. Bien sûr, ce n'est pas dû à une réduction de la durée des phases balistiques, mais à un rallongement des phases lentes.
 
-	\begin{figure}[!htb]
+	\begin{figure}[htb]
 		\centering
 		\begin{subfigure}[t]{\subImgWlineplot}
 			\centering
@@ -615,7 +613,7 @@
 		\label{fig:hardProfiles}
 	\end{figure}
 	
-	Une représentation plus objective et quantitative de cette observation est proposée dans la table~\ref{tab:cursorSpeedTough}, où l'on observe les vitesses moyennes du curseur en fonction des sujets et des types de condition. Comme on le voit, les vitesses moyennes sont considérablement réduites pour les conditions difficiles, en dépit du fait que les vitesses maximales ne sont pas significativement différentes, comme l'illustrent les hauteurs des pics sur la figure~\ref{fig:hardProfiles}. Cette réduction de la vitesse moyenne est donc bien due au rallongement des phases de correction.
+	Une représentation plus objective et quantitative de cette observation est proposée dans la table~\ref{tab:cursorSpeedTough}, où l'on observe les vitesses moyennes du curseur en fonction des sujets et des types de condition. Comme on le voit, les vitesses moyennes sont considérablement réduites pour les conditions difficiles, en dépit du fait que les vitesses maximales ne sont pas significativement différentes, comme l'illustrent les hauteurs des pics sur la figure~\ref{fig:hardProfiles}. Cette réduction de la vitesse moyenne est donc bien due au rallongement des phases lentes.
 	
 	\begin{table}
 		\centering
@@ -631,12 +629,10 @@
 		\label{tab:cursorSpeedTough}
 	\end{table}
 	
-	\subsection{Prédominance de la phase de correction}
-	Si, pour des cibles statiques, les phases balistique et de correction sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase de correction dominant alors le temps total de sélection, conformément à nos hypothèses de départ. Nous reviendrons sur ce point dans le chapitre suivant.
+	\subsection{Prédominance de la phase lente}
+	Si, pour des cibles statiques, les phases rapide et lente sont à peu près équilibrées dans le temps, comme l'illustre la figure~\ref{fig:staticProfiles}, la figure~\ref{fig:rectProfiles} montre que ce n'est plus vraiment le cas avec des cibles se déplaçant en ligne droite, et la figure~\ref{fig:hardProfiles} nous apprend que ce n'est plus du tout vrai lorsque les mouvements des cibles sont imprévisibles, la phase lente dominant alors le temps total de sélection, conformément à nos hypothèses de départ. Nous reviendrons sur ce point dans le chapitre suivant. De plus, la considérable multiplication des oscillations au cours des phases lente est cohérente avec le modèle des \og sous-mouvements stochastiques optimisés \fg{}, qui prévoit une multiplication de petits mouvements correctifs lorsque la difficulté est particulièrement élevée.
 	
-	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du facteur d'accélération possible sur cette portion.
-	
-	Cette loi s'énonce formellement selon l'équation~\ref{eq:amdahl}, où $S(s)$ est l'accélération totale de la tâche (facteur sans unité), $p$ est la proportion (en temps) de la tâche qui peut être accélérée, et $s$ est l'accélération possible sur cette portion (facteur sans unité). Or, il est évident que cette loi implique la limite énoncée dans l'équation~\ref{eq:amdahlLimit}.
+	Il est donc logique de recommander à qui souhaiterait concevoir une technique d'assistance à la sélection de cibles mobiles de concentrer ses efforts sur la réduction de la durée de la phase de correction, et ce d'autant plus que les mouvements des cibles des applications visées sont imprévisibles. En effet, la loi d'Amdahl~\cite{amdahl1967validity} nous permet de quantifier l'accélération possible d'une tâche hétérogène en fonction d'une part de la portion de la tâche qu'il est possible d'accélérer, et d'autre part du facteur d'accélération possible sur cette portion. Cette loi s'énonce formellement selon l'équation~\ref{eq:amdahl}, où $S(s)$ est l'accélération totale de la tâche (facteur sans unité), $p$ est la proportion (en temps) de la tâche qui peut être accélérée, et $s$ est l'accélération possible sur cette portion (facteur sans unité). Or, il est évident que cette loi implique la limite énoncée dans l'équation~\ref{eq:amdahlLimit}.
 	
 	\begin{align}
 		\label{eq:amdahl}

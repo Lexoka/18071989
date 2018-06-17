@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{book}
+\documentclass[a4paper,11pt,openany]{book}  % openany, so that chapters can start on a left page if they damn well please!
 
 \pagenumbering{arabic}
 \setcounter{secnumdepth}{3}% enlève la numérotation après les subsections
@@ -95,14 +95,6 @@
 
 \usepackage{multicol}
 
-% pour pouvoir commencer sur une page paire : insérer à l'endroit voulu \skiptoevenpage
-\usepackage{changepage,ifthen}
-\newcommand\skiptoevenpage{%
-   \checkoddpage
-   \ifthenelse{\boolean{oddpage}}%
-      {\null\clearpage}%
-      {\null\clearpage \null \clearpage}%
-}
 
 \usepackage{caption}
 
