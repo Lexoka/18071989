@@ -705,7 +705,7 @@
 	\subsection{Expérience et protocole}
 	Afin d'évaluer ces hypothèses, nous avons mené une étude similaire à celle de la section précédente, avec 8 participants (les mêmes que pour l'étude sur la distance de Fitts). Les mêmes combinaisons de V, F, et A ont été utilisées, mais répétées 20 fois chacune au lieu de 6, pour un total de 520 essais par condition, soit 1040 par passation. Chaque sujet a effectué deux passations, d'où 2080 essais par sujet. Cette multiplication du nombre d'essais fut permise par l'utilisation d'une technique d'aide à la sélection presque identique à \emph{Hook}, avec une différence limitée au retour visuel : au lieu d'un cône (voir la figure~\ref{fig:hookPic}) pointant vers la cible \og accrochée \fg{}, trop instable avec des cibles aussi vives, nous nous sommes contentés de colorer la cible à sélectionner en vert quand elle est accrochée, ce que la figure~\ref{fig:hook_red_green} illustre.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[htb]
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figures/ch5/hook_red}
@@ -725,7 +725,7 @@
 
 	
 	\subsection{Score biaisé}
-	Pour rappel, l'équation~\ref{eq:standardHookNear} décrit le calcul du score des $NCT$ cibles les plus proches du curseur pour chaque tour de boucle du programme, et l'équation~\ref{eq:standardHookFar} décrit ce calcul des autres cibles, plus distantes. $Score_{cible_{i}}(t)$ est le score de la cible $i$ à l'instant $t$, $NCT$ est le nombre d'objets proches du curseur et $\Delta{}t$ est le temps écoulé depuis la précédente itération. Nous avons ici adopté une valeur de 8 pour NCT, choisie empiriquement.
+	Pour rappel, l'équation~\ref{eq:standardHookNear} décrit le calcul du score des $NCT$ cibles les plus proches du curseur pour chaque tour de boucle du programme, et l'équation~\ref{eq:standardHookFar} décrit ce calcul des autres cibles, plus distantes. $Score_{cible_{i}}(t)$ est le score de la cible $i$ à l'instant $t$, $NCT$ est le nombre d'objets proches du curseur et $\Delta{}t$ est le temps écoulé depuis la précédente itération. Nous avons ici adopté une valeur de 8 pour NCT, choisie empiriquement. Un score n'est jamais négatif, il est ramené à zéro s'il descend en dessous.
 	
 	\begin{align}
 		\label{eq:standardHookNear}
@@ -890,10 +890,22 @@
 	
 	L'expérience menée était par ailleurs identique à celle portant sur \emph{SharpHook}, avec les mêmes sujets, et des cibles de taille réduite, afin de limiter l'encombrement visuel : de 18,5~mm de diamètre, elles passent à 11,4~mm. De plus, deux sessions d'entraînement précédaient les passations : une sans assistance pseudo-haptique, et une avec. Cela nous parut nécessaire compte tenu de la difficulté de prise en main de l'assistance pseudo-haptique --- nous y reviendrons plus bas. La figure~\ref{fig:pseudohaptics} fournit une illustration de l'environnement d'évaluation. Cette image ne permet toutefois pas de se représenter la difficulté extrême des sélections à réaliser, aussi invitons-nous le lecteur à se référer à un enregistrement vidéo que nous avons mis en ligne\footnote{\url{https://www.youtube.com/watch?v=hv9IYbEzR3s} -- la vitesse de lecture de la vidéo est réglable.}.
 	
-	\begin{figure}[!htb]
-		\centering
-		\includegraphics[width=0.7\textwidth]{figures/ch5/pseudohaptics}
-		\caption[Évaluation de \emph{FastHook}]{\emph{FastHook} : les distracteurs sont très nombreux.}
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/pseudohaptics_cursor_red}
+			\caption{La cible n'est pas accrochée.}
+			\label{fig:pseudohaptics_cursor_red}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/pseudohaptics_cursor_green}
+			\caption{Cible accrochée et curseur attiré vers elle.}
+			\label{fig:pseudohaptics_cursor_green}
+		\end{subfigure}
+		\caption[Évaluation de \emph{FastHook}]{\emph{FastHook} : les distracteurs sont nombreux.}
 		\label{fig:pseudohaptics}
 	\end{figure}
 	
@@ -1077,29 +1089,153 @@
 	\subsection{\emph{BaggingHook}, ou l'élagage optionnel et à volonté}
 	L'amélioration des performances d'une technique fondée sur \emph{Hook} reposerait donc idéalement sur une méthode permettant de réduire le nombre de cibles potentielles pour faciliter la convergence de l'heuristique de prédiction vers la bonne cible, mais sans occasionner de perte du contexte, et sans imposer d'étape préalable à la sélection. Nous proposons donc \emph{BaggingHook}, qui ajoute au curseur ponctuel de \emph{Hook} un curseur zonal circulaire, permettant, via le bouton secondaire de la souris\footnote{De fait inutilisable pour réinitialiser les scores.}, de retirer tous les objets non inclus dans son rayon de la liste des cibles potentielles considérées par l'heuristique de prédiction. Cette opération peut être répétée à l'envi, afin d'exclure autant de cibles que possible\ldots{} ou ne pas être utilisée du tout, afin de ne pas imposer d'étape supplémentaire dans la sélection. Ce dernier point est particulièrement intéressant pour les cibles faciles ne nécessitant pas cet élagage, car le coût cognitif et temporel qui lui est associé pourrait s'avérer globalement délétère. D'un certain point de vue, \emph{BaggingHook} s'apparente au \emph{Rake cursor}~\cite{blanch2009rake}, puisque les deux phases de la sélection sont menées simultanément, l'heuristique de prédiction continuant à fonctionner pendant les éventuels élagages.
 	
+	Le fonctionnement de \emph{BaggingHook} est illustré par la figure~\ref{fig:baggingHookPix}. En particulier, on remarque sur la figure~\ref{fig:baggingHook_culled} que tous les distracteurs ont été élagués (ils sont assombris) et que la cible peut être sélectionnée d'un simple clic, sans mouvement particulier. Pour rappel, du point de vue de la théorie de l'information, dans cette situation, l'utilisateur n'a plus qu'un seul bit à communiquer au système pour effectuer sa sélection. Un enregistrement vidéo de la technique en fonctionnement est également disponible en ligne.\footnotemark{}
+	
+	\footnotetext{\url{https://www.youtube.com/watch?v=c0K2nML1Upg}}
+	
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingHook_init}
+			\caption{Cible non accrochée, pas d'élagage.}
+			\label{fig:baggingHook_init}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingHook_culled}
+			\caption{Environnement élagué, l'unique cible est accrochée.}
+			\label{fig:baggingHook_culled}
+		\end{subfigure}
+		\caption[Évaluation de \emph{BaggingHook}]{\emph{BaggingHook} : les distracteurs sont nombreux, mais l'élagage permet de les éliminer.}
+		\label{fig:baggingHookPix}
+	\end{figure}
+	
 	Ce procédé a néanmoins un inconvénient, puisqu'il est possible de \og rater \fg{} son élagage, c'est-à-dire de retirer la bonne cible de la liste des objets potentiels. Nous aurions pu considérer un tel événement comme une erreur et, par exemple, réintégrer tous les objets dans la liste des cibles potentielles automatiquement dans ce cas. Nous estimons cependant que, dans bien des applications, une sélection erronée peut avoir des effets indésirables (effets graphiques perturbants, action subséquente automatique\ldots{}), tandis qu'un élagage erroné, s'il est réversible, n'a pour inconvénient que de prendre du temps. Nous avons donc décider de fournir à nos utilisteurs la possibilité de réintégrer tous les objets à la liste des cibles potentielles par la pression de la touche R du clavier (pour \emph{Reset}), et de ne pas considérer cela comme une erreur.
 	
 	Il pourrait être préférable de plutôt associer cette touche à une fonction d'annulation du dernier élagage opéré, permettant de revenir à l'état antérieur de la liste des cibles potentielles. Pour simplifier cette première évaluation du potentiel de \emph{BaggingHook}, nous avons préféré la solution de réinitialisation, ayant le mérite d'une part d'être plus simple, et d'autre part de ne nécessiter qu'une seule action, tandis que plusieurs retours successifs aux états antérieurs pourraient être nécessaire, en cas de multiples élagages erronés, parfaitement possible avec un utilisateur faisant un usage intensif de cette fonction.
 	
 	
 	\subsection{Retour graphique associé à l'élagage}
-	Lorsque l'utilisateur déclenche un élagage, il importe de lui fournir un retour lui permettant de mesurer l'effet de l'opération. Il est possible, par exemple, de rendre toutes les cibles élagées semi-transparentes, ou de les assombrir, ce qui pose la question du niveau d'opacité dans le premier cas, ou de la mesure de l'assombrissement dans le second. Dans un souci de simplicité, nous avons simplement rendu les cibles élagées invisibles. Gardons simplement à l'esprit que, selon le contexte, il peut être nécessaire de les maintenir à l'écran, qu'elles soient transparentes, sombres, ou altérées d'une autre manière.
+	Lorsque l'utilisateur déclenche un élagage, il importe de lui fournir un retour lui permettant de mesurer l'effet de l'opération. Il est possible, par exemple, de rendre toutes les cibles élagées semi-transparentes, de les désaturer ou de les assombrir, ce qui pose la question du niveau d'opacité dans le premier cas, ou de la mesure de l'assombrissement dans le second. Dans un souci de simplicité, nous avons assombri les cibles en les réduisant à 30\%{} de leur niveau de luminosité originel. Gardons simplement à l'esprit que, selon le contexte, la semi-transparence, ou d'autres degrés d'assombrissement ou de désaturation pourraient être préférables, et que peut-être d'autres procédés encore seraient plus indiqués.
+	
+	\subsection{Protocole expérimental}
+	Pour évaluer \emph{BaggingHook}, nous avons mené une étude sur les 8 mêmes sujets, avec le même dispositif expérimental. Nous devons d'abord préciser qu'ils ont tous complété une passation dans la condition \emph{BaggingHook} après avoir complété les deux conditions précédentes (standard et \emph{FastHook}). Par conséquent, un effet d'apprentissage est possible. Néanmoins, et attendu qu'ils avaient également complété l'expérience sur \emph{SharpHook} avant, ainsi qu'une longue phase d'entraînement préalable aux passations de l'étude sur \emph{FastHook}, le risque paraît faible. Du reste, nous ne notons pas d'effet d'apprentissage significatif sur cette dernière étude, lorsque nous comparons les résultats des sujets ayant complété la condition standard avant la condition avec assistance pseudo-haptique à ceux ayant procédé dans l'ordre inverse.
+	
+	Les combinaisons VFA étaient par ailleurs identiques, ainsi que le nombre d'essais, la consigne enjoignant les sujets à favoriser la précision, et la durée de la session d'entraînement. Comme toujours, les différentes combinaisons VFA étaient présentées en ordre aléatoire.
 	
 	\subsection{Résultats}
+	Les résultats de \emph{BaggingHook} sont sur la figure~\ref{fig:baggingHookAllRes}, bruts et normalisés. Il s'agit des résultats de tous nos sujets. Précisions que les erreurs sont toutes imputables au sous-groupe orienté vitesse, mais attendu que les résultats sont par ailleurs homogènes, nous ne les séparons pas ici. Ils sont au demeurant tous très clairement en faveur de \emph{BaggingHook} : temps de sélection, erreurs, $Perf$, sur les résultats bruts ou normalisés.	
 	
-	\subsection{Biais et zone d'élagage ajustable}
-	Pertinence du biais ? Peu de corrélation diff-temps
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingRawTimes}
+			\caption{Temps de sélection bruts.}
+			\label{fig:baggingRawTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingRawErrors}
+			\caption{Nombres moyens d'erreurs bruts.}
+			\label{fig:baggingRawErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingRawProducts}
+			\caption{$\overline{Perf}$ brutes.}
+			\label{fig:baggingRawProducts}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingNormTimes}
+			\caption{MTSN.}
+			\label{fig:baggingNormTimes}
+		\end{subfigure}
+				~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingNormErrors}
+			\caption{MTEN.}
+			\label{fig:baggingNormErrors}
+		\end{subfigure}
+				~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/baggingNormProducts}
+			\caption{$\overline{Perf}$ (avec normalisation).}
+			\label{fig:baggingNormProducts}
+		\end{subfigure}
+		\caption[\emph{BaggingHook} -- résultats]{Performances de sélection de \emph{BaggingHook} -- résultats globaux, bruts et normalisés. Moyennes, intervalles de confiance à 95~\%{} (boîtes) et 99~\%{} (moustaches).}
+		\label{fig:baggingHookAllRes}
+	\end{figure}
 	
-	Mais forte anticorrélation area-culls
-		Donc zone d'élagage petite avec petites aires ?
-		Et périmètres ?
-		Non aires.
+	\subsection{Combinaisons et améliorations possibles}
+	Ici encore, \emph{BaggingHook} peut être combiné avec d'autres approches, notamment l'ajout d'un biais à l'heuristique de prédiction, comme dans \emph{SharpHook}, ou encore une assistance pseudo-haptique, comme dans \emph{FastHook}. Cependant, la corrélation que nous mesurons entre entre notre estimation de la difficulté de sélection et les temps de sélection est assez faible, de l'ordre de 10,6~\%{} à 15,7~\%{}, sur les résultats normalisés et bruts, respectivement (\emph{p-values} : 9,3$.10^{-5}$ et 6,3$.10^{-9}$, respectivement). De fait, il est peu probable que l'apport du biais soit aussi significatif que pour la version standard de \emph{Hook}, à moins de développer un modèle d'estimation de la difficulté de sélection mieux adapté à \emph{BaggingHook}.
 	
-	\subsection{Inconvénients}
-	Charge cognitive, doute stratégique.
+	\subsubsection{Zone d'élagage ajustable}
+	Cependant, nous avons aussi comptabilisé le nombre d'élagages opéré par chaque sujet, pour chaque sélection. Or, sur l'ensemble de nos sujets, nous observons une anti-corrélation marquée entre l'espérance de l'aire de l'enveloppe convexe associée à une combinaison VFA et le nombre d'élagages : -21,2~\%{} (\emph{p-value} : 2,6$.10^{-15}$). Si nous limitons notre étude aux sujets ayant fait un usage particulièrement intensif de l'élagage, ces valeurs atteignent -31,4~\%{} (\emph{p-value} : 5,3$.10^{-17}$). Selon nos observations et les retours de nos participants, ce résultat s'explique par le fait que, lorsque le mouvement est perçu comme \og vibratoire \fg{} ou \og brownien \fg{}, l'élagage est difficile car la cible reste dans une même zone, accompagnée de distracteurs qu'il est difficile d'éliminer. Or, ces mouvements sont préciséments associés à de petites enveloppes convexes.
 	
-	Perspective : biais brownien ?
+	Naturellement, il serait possible de réduire la taille de la zone d'élagage pour limiter ce problème, afin d'élager de manière plus agressive. Cependant, il devient alors plus probable que l'élagage \og échoue \fg{}, en excluant la cible visée de la liste des objets considérés par l'heuristique de prédiction. Nous proposons donc de réduire dynamiquement la taille de cette zone d'élagage quand, et seulement quand les objets non encore élagés ont, en moyenne, de petites enveloppes convexes. En effet, une cible vibratoire se déplace peu sur une fenêtre temporelle de l'ordre de la seconde, et a donc peu de chances d'échapper à la zone d'élagage.
 	
+	\subsection{Dilemme stratégique et charge cognitive}
+	Si nos participants sont unanimes quant à leur préférence de \emph{BaggingHook} par rapport aux autres variantes, eu égard à ses performances et son confort d'utilisation, ils sont nombreux à faire mention de ce que nous pouvons appeler un dilemme stratégique. En effet, le chevauchement de deux méthodes de sélection, par élagage des distracteurs et par poursuite de la cible, impose à l'utilisateur un certain effort cognitif. \og Faut-il se concentrer sur la poursuite ? Est-il préférable de faire quelques étapes d'élagage d'abord ? Faut-il tâcher de faire les deux en même temps, quitte à se concentrer un peu moins sur chaque tâche ? N'est-il pas vain, compte tenu des mouvements browniens de la cible actuelle et de ses voisines, de tenter un élagage de plus ? \fg{}. Ces questions se posent régulièrement lorsque l'on utilise \emph{BaggingHook} dans un contexte tel que celui de notre évaluation, et cette \og charge cognitive \fg{} n'est pas négligeable.
+	
+	Certes, la disponibilité permanente de deux méthodes de sélection complémentaires est avant tout une force, mais la charge cognitive et le doute stratégique qui en découlent sont des inconvénients qu'il nous faut mentionner, et qui, par ailleurs, nécessitent une phase d'apprentissage afin d'être correctement appréhendés. Nous pouvons cependant supposer que, dans une certaine mesure, l'ajustement dynamique de la taille de la zone d'élagage pourrait simplifier ce dilemme, du moins dans certains cas.
+	
+	\subsection{Quantification de l'effort fourni}
+	L'intérêt de \emph{BaggingHook} ne se limite pas aux performances brutes mesurées par les temps de sélection et les taux d'erreurs. En effet, nos participants ont tous souligné, dans des termes différents, la \og facilité \fg{} de la technique, la diminution de l'effort requis. Nous avons cherché à évaluer ce phénomène objectivement et quantitativement. Pour ce faire, nous avons mesuré les mouvements du curseur pour chaque sélection effectuée par chaque sujet. Chaque fois, nous avons analysé la distance parcourue par le curseur, sa vitesse, son accélération, et ses à-coups (c'est-à-dire la dérivée de l'accélération, permettant de mesurer ses changements). Nous avons traité l'accélération et les à-coups comme des valeurs absolues, considérant que les valeurs négatives nécessitent également un effort physique. Pour chaque grandeur considérée et pour chaque sélection, nous avons calculé une valeur maximale (sauf pour la distance) et une valeur moyenne. Puis, nous avons calculé les moyennes globales de toutes ces valeurs, c'est-à-dire les moyennes des distances, les moyennes des vitesses maximales, les moyennes des vitesses moyennes, etc. Nous rapportons ces moyennes globales sur la figure~\ref{fig:baggingHookCursorStats}.
+
+
+	\begin{figure}[htb]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/distHisto}
+			\caption{Distance parcourue.}
+			\label{fig:distHisto}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/speedHisto}
+			\caption{Vitesses maximale et moyenne.}
+			\label{fig:speedHisto}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/accelHisto}
+			\caption{Accélaration maximale et moyenne.}
+			\label{fig:accelHisto}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/jerkHisto}
+			\caption{À-coups maximaux et moyen.}
+			\label{fig:jerkHisto}
+		\end{subfigure}
+		\caption[\emph{BaggingHook} -- effort physique]{Valeurs maximales et moyennes de diverses mesures, illustrant l'intérêt de \emph{BaggingHook} pour réduire les efforts. Lorsque les valeurs maximales moyennes sont représentées sur la même sous-figure, la valeur maximale se lit sur l'axe vertical gauche, la valeur moyenne, sur le droit.}
+		\label{fig:baggingHookCursorStats}
+	\end{figure}
+	
+	En observant les réductions de vitesse, d'accélération ou d'à-coup permises par \emph{BaggingHook}, il faut garder à l'esprit que les temps de sélection sont également bien plus court, ce qui signifie que, non seulement l'effort fourni pour une sélection est de bien moindre intensité avec \emph{BaggingHook}, mais de plus, il n'est nécessaire que sur une plus courte durée (voir les figures~\ref{fig:baggingRawTimes} et~\ref{fig:baggingNormTimes}).
+	
+	
+	\subsection{Heuristique d'élagage}
+	D'un certain point de vue, l'élagage que nous proposons aux utilisateurs de \emph{BaggingHook} est équivalent au fonctionnement normal de \emph{Hook}, mais en prenant le problème dans l'autre sens : au lieu de favoriser les objets probablement visés, il s'agit de défavoriser à l'extrême ceux qui ne le sont pas, au point de les exclure de l'heuristique. Or, il apparaît qu'il serait probablement possible de remplacer cette opération manuelle par une heuristique complémentaire de celle sur laquelle \emph{Hook} s'appuie. Au moins deux approches sont possibles :
+	
+	\begin{description}
+		\item[Exclusion par seuils :] Dans cette première version, directement adaptée du fonctionnement de \emph{BaggingHook}, l'heuristique maintient un liste des cibles et de leur \og score d'exclusion \fg{}, où $score_{ex}$. De façon analogue au fonctionnement de \emph{Hook}, à chaque tour de boucle, une cible voit son $score_{ex}$ augmenter si sa distance au curseur est supérieure à un certain seuil, et augmenter d'autant plus vite que la distance est élevée. Quand $score_{ex}$ atteint un certain seuil, la cible est définitivement exclue de la liste des objets considérés par l'heuristique de sélection.
+		\item[\emph{Hook} avec scores négatifs :] Dans la version classique de \emph{Hook}, le score d'une cible n'est jamais négatif, et est ramené à zéro si une étape intermédiaire de calcul produit un résultat négatif. De fait, une cible peut toujours, potentiellement, être accrochée assez rapidement, puisque son score peut croître rapidement. C'est généralement un avantage de cette technique, mais l'inconvénient est qu'un distracteur peut, même si son score est nul, être accroché par erreur par l'heuristique. Il pourrait donc être avantageux d'autoriser les scores négatifs, sans autre modification de la technique.
+	\end{description}
+	
+	Ces deux propositions ont toutefois un inconvénient commun : le risque d'exclure par erreur la cible visée par l'utilisateur. Bien sûr, il demeure possible de permettre à celui-ci de réinitialiser la liste des cibles potentielles, mais ces mauvaises prédictions pourraient constituer une source de frustration plus importantes que les élagages manuels erronés, ceux-ci pouvant être perçus par l'utilisateur comme imputables à sa propre maladresse plutôt qu'à un échec du système d'assistance à la sélection.
+	
+		
 	\section{Limites de \emph{Hook} et de ses dérivés}
 	Certes, la technique \emph{Hook} fournit d'excellentes performances, et nos dérivés peuvent les améliorer encore. Certes, les principes sur lesquels \emph{SharpHook} et \emph{FastHook} reposent peuvent être combinés, et leur mise en œuvre peut être améliorée et calibrée avec plus grand soin. Certes, d'autres techniques, telles que celles évoquées dans la section~\ref{sub:vfaGuide} peuvent encore s'y ajouter. Néanmoins, dans le cadre de l'utilisation d'un dispositif de type CAVE avec un dispositif d'interaction à l'échelle 1, l'utilisation d'une technique de ce type impose à l'utilisateur de suivre la cible en bougeant son bras à une vitesse approximativement comparable. Si la cible se déplace sur plus de quelques dizaines de centimètres, il devient alors nécessaire de déplacer tout son corps à cette vitesse.
 	
@@ -1132,6 +1268,8 @@
 	C'est justement ce que nous avons évalué dans la troisième partie de ce chapitre, avec 8 participants. Nous avons montré que ce biais permet d'améliorer légèrement --- mais significativement --- les temps de sélection et les taux d'erreurs, en comparant notre technique biaisée, que nous appelons \emph{SharpHook}, à la technique \emph{Hook}~\cite{ortega2013hook}.
 	
 	Dans la quatrième partie, nous avons évalué l'intérêt d'une assistance pseudo-haptique utilisée en conjonction avec \emph{Hook} dans sa version non biaisée. Nous avons observé que, selon la stratégie des utilisateurs, cette assistance peut avoir un effet bénéfique ou délétère. Nous appelons cette nouvelle technique \emph{FastHook}.
+	
+	Dans la cinquième partie, nous proposons et évaluons une nouvelle technique de sélection, fondée sur deux procédés : l'élagage des distracteurs et la prédiction intentionnelle de type \emph{Hook}. Nous montrons que ses performances sont très bonnes, et qu'elle réduit considérablement l'effort physique à fournir lorsque les cibles sont très vives et que le milieu est dense.
 	
 	Nous signalons par ailleurs que l'usage de tels procédés est compatible avec les lissages et filtrages décrits dans la première partie. Nous proposons également une métrie paramétrable pour quantifier les performances de sélection en ajustant la pondération des temps de sélection et des erreurs.
 	
