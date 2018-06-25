@@ -108,9 +108,7 @@
 	D'autres combinaisons de VFA engendrant un mouvement plus \og brownien \fg{} toléreraient mieux de fortes réductions de vitesse, et sans doute certains contextes applicatifs seraient-ils propices à de fortes réductions, quitte à introduire un grand décalage --- potentiellement divergent --- entre une cible et son \emph{proxy}. En somme, l'utilisation d'un \emph{proxy} lent peut fortement faciliter la sélection, à condition que le contexte applicatif tolère les modifications du comportement de la cible qu'elle implique.
 	
 	\subsection{Modification du paramètre F}
-	Il est difficile d'imaginer une façon d'augmenter la valeur de F qui ait du sens, à l'exception, peut-être, du choix d'une plus haute fréquence d'échantillonage, lorsqu'il s'agit de données mesurées ou simulées, par exemple pour un enregistrement vidéo, ou une simulation scientifique impliquant des particules.
-	
-	Toutefois, une option permettant de réduire le paramètre F est d'appliquer un filtrage, par exemple de façon analogue à ce qu'opérerait un filtre passe-bas. La conception d'une telle technique d'assistance à la sélection serait différente selon le degré d'intégration à l'application : avec une intégration forte, il serait possible de modifier directement le comportement des cibles ; avec une intégration faible, il faudrait se contenter d'ajouter un \emph{proxy}, comme le fait la technique \emph{Ghost}~\cite{hasan2011comet}. Ce procédé a par ailleurs l'avantage d'éviter de perdre les informations concernant les positions exactes des cibles potentielles, au prix d'un encombrement visuel accru.
+	Il est difficile d'imaginer une façon d'augmenter la valeur de F qui ait du sens, à l'exception, peut-être, du choix d'une plus haute fréquence d'échantillonage, lorsqu'il s'agit de données mesurées ou simulées, par exemple pour un enregistrement vidéo, ou une simulation scientifique impliquant des particules. Toutefois, une option permettant de réduire le paramètre F est d'appliquer un filtrage, par exemple de façon analogue à ce qu'opérerait un filtre passe-bas. La conception d'une telle technique d'assistance à la sélection serait différente selon le degré d'intégration à l'application : avec une intégration forte, il serait possible de modifier directement le comportement des cibles ; avec une intégration faible, il faudrait se contenter d'ajouter un \emph{proxy}, comme le fait la technique \emph{Ghost}~\cite{hasan2011comet}. Ce procédé a par ailleurs l'avantage d'éviter de perdre les informations concernant les positions exactes des cibles potentielles, au prix d'un encombrement visuel accru.
 	
 	\subsubsection{Filtrage avec limitation à 4~Hz}
 	Illustrons notre propos par un exemple concret de technique d'aide à la sélection, fondée sur une limitation de la fréquence de changements de direction à 4~Hz --- ce choix est quelque peu arbitraire, mais informé par les données de la figure~\ref{fig:fEffectPerf}, section~\ref{sub:freqEffect}. Si une cible a un paramètre F dont la valeur intrinsèque est de 32~Hz, un \emph{proxy} de la cible est créé, mais sa position n'est mise à jour que quatre fois par seconde ; les valeurs intérmédiaires étant interpolées. Cette méthode a l'avantage de permettre au \emph{proxy}, dans une certaine mesure, de \og coller \fg{} aux mouvements de la cible réelle, mais de manière moins saccadée, plus prévisible.
@@ -161,11 +159,7 @@
 	Dans ces cas-là, il peut être plus judicieux de chercher à diminuer ce dernier --- là encore, il paraît difficile de chercher à l'augmenter de manière sensée. La réduction du paramètre A est peut-être plus délicate que celle de F, attendu qu'elle ne se prête pas à un filtrage temporel. Certes, s'il est possible de modifier directement le comportement des objets, alors la réduction de A peut s'avérer possible dans certaines circonstances, à condition qu'elle n'ait pas d'impact trop négatif sur l'application concernée.
 	
 	\subsubsection{Report de la pseudo-entropie sur F}
-	Pour rappel, les paramètres A et F ne sont pas égaux dans leur influence sur les performances de sélection, puisque c'est la racine carrée de F dont l'influence est primordiale, et non F lui-même. Par conséquent, il peut être judicieux de diminuer A et d'augmenter F proportionnellement, pour compenser, et maintenir une pseudo-entropie constante, si le contexte applicatif l'exige.
-	
-	Supposons en effet une cible dont la pseudo-entropie subjective est la \og pire \fg{} possible, soit $A\sqrt{F} = PES_{max} = 250$, avec $A = 50~; F = 25~; \sqrt{F} = 5~; AF = 1250$. S'il on veut conserver la même quantité de désordre sur une durée donnée, il faut maintenir le produit AF constant à 250. Pour ce faire, nous pouvons, par exemple, diviser A par 2, et multiplier F par le même nombre, ce qui aboutit à la situation suivante : $A = 25~; F = 50~; \sqrt{F} \approx 7,07$ ; d'où $A\sqrt{F} \approx 176,78$, soit une diminution de la PES qui l'éloigne de $PES_{max}$.
-	
-	Naturellement, l'effet est d'autant plus fort que le facteur choisi est élevé ; ainsi, avec 5, nous obtenons les valeurs suivantes : $A = 10~; F = 125~; \sqrt{F} \approx 11,18~; A\sqrt{F} \approx 111,80$. La figure~\ref{fig:tAsqrtF} montre que pour ces valeurs de PES, les performances de sélection sont bien meilleures que pour $PES_{max}$. Néanmoins, tous les dispositifs d'affichage ne sont pas capables d'atteindre de telles fréquences, ce qui limite la portée de cette approche.
+	Pour rappel, les paramètres A et F ne sont pas égaux dans leur influence sur les performances de sélection, puisque c'est la racine carrée de F dont l'influence est primordiale, et non F lui-même. Par conséquent, il peut être judicieux de diminuer A et d'augmenter F proportionnellement, pour compenser, et maintenir une pseudo-entropie constante, si le contexte applicatif l'exige. Supposons en effet une cible dont la pseudo-entropie subjective est la \og pire \fg{} possible, soit $A\sqrt{F} = PES_{max} = 250$, avec $A = 50~; F = 25~; \sqrt{F} = 5~; AF = 1250$. S'il on veut conserver la même quantité de désordre sur une durée donnée, il faut maintenir le produit AF constant à 250. Pour ce faire, nous pouvons, par exemple, diviser A par 2, et multiplier F par le même nombre, ce qui aboutit à la situation suivante : $A = 25~; F = 50~; \sqrt{F} \approx 7,07$ ; d'où $A\sqrt{F} \approx 176,78$, soit une diminution de la PES qui l'éloigne de $PES_{max}$. Naturellement, l'effet est d'autant plus fort que le facteur choisi est élevé ; ainsi, avec 5, nous obtenons les valeurs suivantes : $A = 10~; F = 125~; \sqrt{F} \approx 11,18~; A\sqrt{F} \approx 111,80$. La figure~\ref{fig:tAsqrtF} montre que pour ces valeurs de PES, les performances de sélection sont bien meilleures que pour $PES_{max}$. Néanmoins, tous les dispositifs d'affichage ne sont pas capables d'atteindre de telles fréquences, ce qui limite la portée de cette approche.
 	
 	\subsubsection{Limitation de A avec compensation ultérieure}
 	Une autre option consiste à imposer une limite ferme à la cible (ou à son \emph{proxy}) et à chercher à compenser à chaque nouveau changement de direction. Supposons par exemple une borne de 30\textdegree{} imposée au paramètre A, et un proxy représentant chaque cible. Pour une cible donnée, si son vecteur vitesse subit à un instant $t$ une rotation de plus de 30\textdegree{}, son \emph{proxy} ne voit son vecteur vitesse tourner que de 30\textdegree{}. Lors du prochain changement de direction du vecteur vitesse, celui du proxy est alors ajusté non pas de manière à correspondre à la nouvelle rotation subie par le vecteur vitesse réelle, mais de manière à orienter le proxy dans la direction de la cible qu'il représente, pour compenser le décalage induit par l'imposition d'une borne sur A. Cette compensation se fait néanmoins toujours avec au plus une rotation de 30\textdegree{}. Cette opération est possible sans que la distance entre la cible et son \emph{proxy} ne diverge, car les changements de direction limitent la distance totale parcourue par un objet sur une période et à une vitesse données, attendu que c'est en allant tout droit que l'on s'éloigne le plus de son point de départ.
@@ -212,7 +206,7 @@
 	
 	Ces effets sont quantifiés sur la figure~\ref{fig:filteringByMovingAverageHistograms}. Les différences sur ces métriques ne sont pas suffisamment marquées pour faire une distinction claire entre le filtrage fréquentiel et l'application d'une moyenne mobile. Cependant, les natures profondément différentes des trajectoires générées (ciné-discrètes dans le premier cas, ciné-continues dans le second) justifient la coexistence de ces deux techniques, dont chacun pourra juger de la pertinence, selon l'application visée. De même, un compromis entre le \og pouvoir \fg{} de lissage et la latence proportionnelle à L doit être trouvé de manière \emph{ad hoc}, selon le contexte applicatif.
 	
-	\begin{figure}[!htb]
+	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/ch5/filteringByMovingAverageHistograms}
 		\caption[Effet du filtrage par moyenne mobile]{Effet du filtrage par moyenne mobile sur les caractéristiques d'une trajectoire. Celle-ci, générée avec $V=2,19~cm/s$, $F=32~Hz$, et $A=120\degree{}$, se trouve modifiée de telle manière que la vitesse moyenne de la cible chute drastiquement --- de 2,19~cm/s à 1,03~cm/s lorsque la fenêtre mobile a une largeur de 250~ms. L'aire de l'enveloppe convexe demeure relativement stable.}
@@ -236,14 +230,10 @@
 	Nous recommandons donc de se rapporter à notre taxinomie des techniques de sélection (chapitre~\ref{chap2}) afin de choisir la plus approprié à chaque contexte applicatif, et de faire de même avec l'ensemble des propositions que nous détaillons dans le chapitre présent (section~\ref{sub:vfaGuide}) afin de choisir la meilleure combinaison possible. Nous suggérons par exemple de combiner le filtrage fréquentiel, qui conserve bien l'allure d'une trajectoire et son enveloppe convexe, avec la technique \emph{Hook}~\cite{ortega2013hook}, qui a fait ses preuves, mais n'est pas conçue pour gérer le mouvement brownien, que le filtrage fréquentiel permet, dans une certaine mesure, \og d'ordonner \fg{}.
 
 \section{Estimer la difficulté de sélection pour mieux la réduire}
-	Cependant, il n'est pas toujours possible de modifier le comportement des cibles. Même l'ajout de \emph{proxies} peut poser problème, y compris en en limitant le nombre par des heuristiques intentionnelles. Ces conditions ne rendent pas le modèle VFA inutile pour autant. D'une part, il permet d'estimer la difficulté de la tâche, et peut donc informer la conception de l'interface d'une application en indiquant si une aide à la sélection est nécessaire, si le nombre d'objets doit être réduit, si les objets doivent être agrandis, etc. D'autre part et surtout, il est peut-être possible d'utiliser les informations qu'il fournit pour réduire la difficulté moyenne d'une tâche de sélection.
-	
-	En effet, dans la plupart des contextes applicatifs évoqués au cours du chapitre~\ref{chap1}, les cibles potentielles forment un ensemble hétérogène du point de vue cinématique, c'est-à-dire que leurs mouvements respectifs ne sont pas tous de même nature. En particulier, les paramètres VFA qui les décrivent ne sont pas les mêmes.
+	Cependant, il n'est pas toujours possible de modifier le comportement des cibles. Même l'ajout de \emph{proxies} peut poser problème, y compris en en limitant le nombre par des heuristiques intentionnelles. Ces conditions ne rendent pas le modèle VFA inutile pour autant. D'une part, il permet d'estimer la difficulté de la tâche, et peut donc informer la conception de l'interface d'une application en indiquant si une aide à la sélection est nécessaire, si le nombre d'objets doit être réduit, si les objets doivent être agrandis, etc. D'autre part et surtout, il est peut-être possible d'utiliser les informations qu'il fournit pour réduire la difficulté moyenne d'une tâche de sélection. En effet, dans la plupart des contextes applicatifs évoqués au cours du chapitre~\ref{chap1}, les cibles potentielles forment un ensemble hétérogène du point de vue cinématique, c'est-à-dire que leurs mouvements respectifs ne sont pas tous de même nature. En particulier, les paramètres VFA qui les décrivent ne sont pas les mêmes.
 	
 	\subsection{Différents parmètres VFA, différentes difficultés}
-	De fait, dans un contexte hétérogène particulier, la difficulté inhérente à la sélection d'une cible donnée n'est pas forcément la même que pour une autre cible. Or, les paramètres VFA, qui permettent d'estimer cette difficulté (notamment par le truchement de l'espérance de l'aire de l'enveloppe convexe associée, voir la figure~\ref{fig:perf_V_RealArea_better_fit} de la section~\ref{sub:areaVperf}) sont de fait différents d'une cible à l'autre, et peuvent être déterminés. Selon le contexte, ils seront déterminés exactement, ou estimés, ou mesurés en temps réel, mais ils peuvent presque toujours être connus.
-	
-	Il est donc possible de dresser un tableau des différentes cibles (ou des différents types de cibles) et de leurs difficultés de sélection respective, afin de savoir quels objets poseront le plus de problèmes aux utilisateurs.
+	De fait, dans un contexte hétérogène particulier, la difficulté inhérente à la sélection d'une cible donnée n'est pas forcément la même que pour une autre cible. Or, les paramètres VFA, qui permettent d'estimer cette difficulté (notamment par le truchement de l'espérance de l'aire de l'enveloppe convexe associée, voir la figure~\ref{fig:perf_V_RealArea_better_fit} de la section~\ref{sub:areaVperf}) sont de fait différents d'une cible à l'autre, et peuvent être déterminés. Selon le contexte, ils seront déterminés exactement, ou estimés, ou mesurés en temps réel, mais ils peuvent presque toujours être connus. Il est donc possible de dresser un tableau des différentes cibles (ou des différents types de cibles) et de leurs difficultés de sélection respective, afin de savoir quels objets poseront le plus de problèmes aux utilisateurs.
 	
 	\subsection{Distance de Fitts et cibles mobiles}
 	\label{sub:fittsDistance}
@@ -256,7 +246,7 @@
 	\subsubsection{Temps de sélection et erreurs}
 	Nous présentons les résultats obtenus sur la figure~\ref{fig:fittsDistAndPerf}, sous forme de moyennes et d'intervalles de confiance à 95~\%{}. Les temps de sélection moyens bruts sont sur la figure~\ref{fig:ampTimeRes}, les moyennes des temps de sélection normalisés sont sur la figure~\ref{fig:normTimes}, les moyennes des taux d'erreurs normalisés sont sur la figure~\ref{fig:normErrors}, et les moyennes des produits $Temps\times(Erreurs+1)$ sont sur la figure~\ref{fig:normProducts} --- cette dernière métrique est détaillée dans la section~\ref{sub:product}. Comme nous le supposions, la distance de Fitts ne semble plus avoir d'influence majeure sur les performances de sélection d'une cible mobile lorsque la difficulté est suffisamment élevée. Il n'en va cependant pas de même de la largeur de la cible, comme nous le verrons plus loin.
 
-	\begin{figure}[!htb]
+	\begin{figure}[htbp]
 		%\centering
 		\begin{subfigure}[t]{0.49\textwidth}
 			\centering
@@ -356,17 +346,11 @@
 		\item[A :] 45 ; 90 ; 180\textdegree{} (3 valeurs)
 	\end{description}
 	
-	Là aussi, une condition de mouvement rectiligne à 14,2~cm/s était ajoutée, et répétée 12 fois. Au total, il y avait donc $2\times{}4\times{}3\times{}6+1\times{}12=156$ essais.
+	Là aussi, une condition de mouvement rectiligne à 14,2~cm/s était ajoutée, et répétée 12 fois. Au total, il y avait donc $2\times{}4\times{}3\times{}6+1\times{}12=156$ essais. Nous avons choisi ces valeurs en nous appuyant sur les enseignements de l'étude décrite dans le chapitre~\ref{chap4}. En effet, il importe d'avoir suffisamment d'essais par condition pour obtenir des résultats précis, tout en limitant la durée de chaque passation, afin d'éviter de trop fatiguer ou lasser nos sujets. Il importe également d'échantillonner correctement notre espace des paramètres afin de ne pas omettre de \og type \fg{} ou \og famille \fg{} de mouvement importants\ldots{}
 	
-	Nous avons choisi ces valeurs en nous appuyant sur les enseignements de l'étude décrite dans le chapitre~\ref{chap4}. En effet, il importe d'avoir suffisamment d'essais par condition pour obtenir des résultats précis, tout en limitant la durée de chaque passation, afin d'éviter de trop fatiguer ou lasser nos sujets. Il importe également d'échantillonner correctement notre espace des paramètres afin de ne pas omettre de \og type \fg{} ou \og famille \fg{} de mouvement importants\ldots{}
+	Il convient donc d'éliminer les paramètres qui ne sont pas indispensables, et d'essayer d'augmenter le nombre d'essais par condition. En particulier, nous avions constaté que les cibles lentes étaient toujours relativement aisées à sélectionner ; nous les avons donc supprimées. L'analyse de nos précédentes données montre également une certaine continuité dans l'effet du paramètre F, et suggère fortement que sa racine carrée soit à prendre en compte, plus que F lui-même. De plus, nous avons observé que les très basses fréquences génèrent du mouvement relativement prévisible et aisé à sélectioner. Par conséquent, nous avons opté pour un échantillonnage exponentiel, avec 4 valeurs différentes, au lieu des 7 de la précédente étude, en omettant les plus faibles. De même, nos résultats montraient que le mouvement rectiligne était toujours aisé à sélectionner, aussi avons-nous supprimé la valeur 0 de l'ensemble des valeurs de A, en conservant tout de même 12 essais rectilignes. Pour réduire le nombre de conditions, nous avons remplacé les valeurs 30 et 60 par 45, et supprimé la valeur 120. Ceci nous a permis de passer de 6 valeurs de A à seulement 4.
 	
-	Il convient donc d'éliminer les paramètres qui ne sont pas indispensables, et d'essayer d'augmenter le nombre d'essais par condition. En particulier, nous avions constaté que les cibles lentes étaient toujours relativement aisées à sélectionner ; nous les avons donc supprimées. L'analyse de nos précédentes données montre également une certaine continuité dans l'effet du paramètre F, et suggère fortement que sa racine carrée soit à prendre en compte, plus que F lui-même. De plus, nous avons observé que les très basses fréquences génèrent du mouvement relativement prévisible et aisé à sélectioner.
-	
-	Par conséquent, nous avons opté pour un échantillonnage exponentiel, avec 4 valeurs différentes, au lieu des 7 de la précédente étude, en omettant les plus faibles. De même, nos résultats montraient que le mouvement rectiligne était toujours aisé à sélectionner, aussi avons-nous supprimé la valeur 0 de l'ensemble des valeurs de A, en conservant tout de même 12 essais rectilignes. Pour réduire le nombre de conditions, nous avons remplacé les valeurs 30 et 60 par 45, et supprimé la valeur 120. Ceci nous a permis de passer de 6 valeurs de A à seulement 4.
-	
-	\emph{In fine}, cette révision des valeurs des paramètres VFA nous a permis de passer de $3\times{}7\times{}6+1=126$ combinaisons différentes à seulement $2\times{}4\times{}3+1=26$. En revanche, nous avons augmenté le nombre d'essais par combinaison, passant de 4 à 6, ou 12 pour la condition rectiligne (répétée 20 fois dans l'étude précédente). Ainsi, nous obtenons $24\times{}6+12=156$ essais au lieu de $126\times{}4+20=524$ précédemment. Toutefois, chaque sujet était soumis à deux conditions différentes, pour un total de 312 essais.
-	
-	Cette réduction du nombre total d'essais nous parut appropriée, compte tenu d'une part des remarques des sujets de notre première étude, et d'autre part de l'augmentation de la difficulté moyenne des sélections dans cette seconde expérience, du fait de la suppression des vitesses faibles, et de l'augmentation des valeurs retenues, même si l'agrandissement des cibles compense partiellement.
+	\emph{In fine}, cette révision des valeurs des paramètres VFA nous a permis de passer de $3\times{}7\times{}6+1=126$ combinaisons différentes à seulement $2\times{}4\times{}3+1=26$. En revanche, nous avons augmenté le nombre d'essais par combinaison, passant de 4 à 6, ou 12 pour la condition rectiligne (répétée 20 fois dans l'étude précédente). Ainsi, nous obtenons $24\times{}6+12=156$ essais au lieu de $126\times{}4+20=524$ précédemment. Toutefois, chaque sujet était soumis à deux conditions différentes, pour un total de 312 essais. Cette réduction du nombre total d'essais nous parut appropriée, compte tenu d'une part des remarques des sujets de notre première étude, et d'autre part de l'augmentation de la difficulté moyenne des sélections dans cette seconde expérience, du fait de la suppression des vitesses faibles, et de l'augmentation des valeurs retenues, même si l'agrandissement des cibles compense partiellement.
 	
 	\subsection{Procédure et collecte des données}
 	L'expérience à proprement parler était précédée d'une session d'entraînement, décrite ci-dessus. Ensuite, et avant de débuter les sélections, un très bref questionnaire était soumis à chaque sujet, pour recueillir leur nom (ensuite remplacé par un identifiant), leur sexe, leur âge, leur main dominante, et la fréquence à laquelle ils jouent aux jeux vidéos (jamais, rarement, parfois, souvent, ou quotidiennement).
@@ -1079,6 +1063,88 @@
 	
 	En somme, \emph{FastHook} est à privilégier lorsqu'il est impératif de minimiser les taux d'erreurs, voire de les annuler. Dans le cas contraire, il est plutôt délétère. Notons toutefois que l'assistance pseudo-haptique utilisée ici était forte, suffisamment pour suivre une cible extrêmement rapide sans intervention aucune de l'utilisateur (pour une valeur de $f_{accrochage}$ suffisamment élevée --- voir l'équation~\ref{eq:phDisplacement2}). Une assitance plus faible pourrait avoir des effets différents sur les performances de sélection. Nous pouvons donc retenir notre hypothèse \textbf{H6} (via sa composante \textbf{H6a}) lorsque la stratégie est très orientée vers la précision, et la rejeter dans le cas contraire. Dans tous les cas, la composante \textbf{H6b} doit être rejetée, puisque les taux d'erreurs ne baissent pas significativement avec une stratégie orientée vitesse, et sont toujours nuls avec une stratégie orientée précision.
 	
+	\subsection{Mouvement brownien}
+	\label{sub:fastHookBrown}
+	Nous avons constaté au cours de cette étude de \emph{FastHook} que la technique semblait présenter un intérêt particulier lorsque les cibles sont de mouvement brownien, c'est-à-dire quand A est proche de 180\textdegree{}, et F est élevé. Or, Ortega précise dans sa présentation de \emph{Hook} que la technique est précisément conçue pour des mouvements qui ne sont \emph{pas} browniens~\cite{ortega2013hook}. Il s'agirait donc de combler une lacune ou faiblesse de cette technique par ailleurs performante et robuste.
+	
+	\subsubsection{Expérience et protocole}
+	Nous avons établi un protocole expérimental très proche du précédent, mais avec des cibles plus petites : leur diamètre est de 1,56~\%{} de la largeur du cadre, soit environ 71~mm. Au total, 294 cibles browniennes sont à l'écran, plus 6 de mouvement rectiligne. Chacun des 8 sujets (les mêmes) a effectué 147 essais dans la condition \emph{Hook} standard, et avec \emph{FastHook}, dans cet ordre pour quatre d'entre eux, et en ordre inverse pour les autres. Pour le mouvement brownien, nous avons simplement utilisé une unique combinaison VFA : 31,25~\%{} de la largeur de l'écran par seconde, soit 14,2~cm/s ; 60~Hz ; et 180\textdegree{}. La figure~\ref{fig:pseudohaptics_brown} fournit une illustration du dispositif d'évaluation, et un enregistrement vidéo en est disponible en ligne.\footnotemark{} La consigne demeure la même : minimiser le nombre d'erreurs autant que possible.
+	
+	\footnotetext{\url{https://www.youtube.com/watch?v=a2nd3siCGVg}}
+	
+%	// Brownian stuff
+%	///*
+%	static float[] CHOSEN_SPEEDS = {5f, 5f, 5f, 5f, 5f, 5f}; % 6 vals
+%	static float[] CHOSEN_FREQUENCIES = { 60f, 60f, 60f, 60f, 60f, 60f, 60f }; % 7 vals
+%	static float[] CHOSEN_ANGLES = { 180f, 180f, 180f, 180f, 180f, 180f, 180f}; % 7 vals
+%	//*/
+
+	% Donc 6 * 7 * 7 + 6 cibles, 300 cibles, 294 essais, donc / 2 = 147 par sujet
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figures/ch5/pseudohaptics_brown}
+		\caption[\emph{FastHook} avec cibles browniennes]{Dispositif d'évaluation de \emph{FastHook} avec des cibles browniennes, en environnement très dense (300 objets mobiles).}
+		\label{fig:pseudohaptics_brown}
+	\end{figure}
+
+	
+	\subsubsection{Résultats}
+	Les résultats bruts et normalisés sont présentés sur la figure~\ref{fig:fastHookBrownAllRes}. Si les taux d'erreurs diminuent avec \emph{FastHook}, l'amélioration n'est pas significative. En revanche, elle l'est pour les temps de sélection, ainsi que les $Perf$, que les résultats soient bruts ou normalisés. Si nos sujets exhibent la même dichotomie stratégique, leurs résultats demeurent suffisamment homogènes pour qu'il ne soit pas utile de les séparer en deux groupes.
+	
+	\begin{figure}[htbp]
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/brownRawTimes}
+			\caption{Temps de sélection bruts.}
+			\label{fig:brownRawTimes}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/brownRawErrors}
+			\caption{Nombres moyens d'erreurs bruts.}
+			\label{fig:brownRawErrors}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/brownRawProducts}
+			\caption{$\overline{Perf}$ brutes.}
+			\label{fig:brownRawProducts}
+		\end{subfigure}
+		~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/brownNormTimes}
+			\caption{MTSN.}
+			\label{fig:brownNormTimes}
+		\end{subfigure}
+				~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/brownNormErrors}
+			\caption{MTEN.}
+			\label{fig:brownNormErrors}
+		\end{subfigure}
+				~
+		\begin{subfigure}[t]{0.49\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/ch5/brownNormProducts}
+			\caption{$\overline{Perf}$ (avec normalisation).}
+			\label{fig:brownNormProducts}
+		\end{subfigure}
+		\caption[\emph{FastHook} -- résultats II]{Performances de sélection de \emph{FastHook} avec des cibles browniennes -- résultats globaux, bruts et normalisés. Moyennes, intervalles de confiance à 95~\%{} (boîtes) et 99~\%{} (moustaches).}
+		\label{fig:fastHookBrownAllRes}
+	\end{figure}
+	
+	\subsubsection{Interprétation}
+	Bien que dans sa présentation de \emph{Hook}, Ortega ne précise pas pourquoi les mouvements browniens seraient problématiques, il apparaît en pratique que lorsque l'on suit une telle cible, si les distracteurs voisins se meuvent de la même manière, alors ils tendent non seulement à rester proche d'elle, mais encore sont-ils susceptibles de s'approcher du curseur de manière très soudaine, ce qui peut faire \og décrocher \fg{} l'heuristique de la bonne cible, et la faire accrocher à un distracteur. Il est en effet difficile, dans ces cas-là, de s'assurer que, sur une fenêtre temporelle suffisamment longue, le curseur demeure suffisamment près de la cible, et suffisamment loin des distracteurs, pour assurer le bon fonctionnement de l'heuristique. En pratique, les résultats demeurent corrects, mais le risque d'erreur devient significatif. Or, l'assistance pseudo-haptique permet de \og coller \fg{} le curseur à la cible dès lors qu'elle est accrochée, ce qui réduit considérablement ce risque, et permet de valider la sélection en toute confiance et de manière rapide. En contrepartie, l'utilisateur doit \og lutter \fg{} contre le déplacement du curseur lorsqu'un distracteur est accroché par l'heuristique.
+	
+	\subsection{Assistance pseudo-haptique et difficulté de calibrage}
+	Peut-être serait-il opportun de modifier le fonctionnement de l'assistance pseudo-haptique pour tenter de mitiger ce problème. Nous pourrions par exemple envisager un seuil de déclenchement de cette assistance, dépendant du score de la cible accrochée par l'heuristique. Ce score pourrait être absolu, ou lié au facteur $f_{accrochage}$ de l'équation~\ref{eq:phDisplacement2}, ou encore à une conjonction des deux\ldots{}. Sans doute certains des paramètres impliqués devraient-ils être exposés à l'utilisateur, pour tenir compte des préférences individuelles.
+
+	
 	\section{Cascade et prédiction intentionnelle -- \emph{BaggingHook}}
 	Les performances de \emph{Hook} dans sa version de base sont très bonnes. Certes, les temps de sélection rapportés sur la figure~\ref{fig:phRawTimes} sont élevés, mais c'est à mettre en rapport avec l'extrême difficulté de la tâche d'une part, et avec le fait que \emph{Hook}, contrairement à de nombreuses techniques de sélection, n'augmente que peu l'encombrement visuel (et même pas du tout dans la version que nous évaluons ici), n'interromp pas le temps, ni même ne le ralentit, et n'altère pas les mouvements des cibles. Il ne cause pas non plus la moindre perte de contexte spatial ou dynamique. En somme, il a un impact quasi nul sur le contexte applicatif, visuellement, spatialement ou temporellement.
 	
@@ -1176,10 +1242,14 @@
 	\subsection{Combinaisons et améliorations possibles}
 	Ici encore, \emph{BaggingHook} peut être combiné avec d'autres approches, notamment l'ajout d'un biais à l'heuristique de prédiction, comme dans \emph{SharpHook}, ou encore une assistance pseudo-haptique, comme dans \emph{FastHook}. Cependant, la corrélation que nous mesurons entre entre notre estimation de la difficulté de sélection et les temps de sélection est assez faible, de l'ordre de 10,6~\%{} à 15,7~\%{}, sur les résultats normalisés et bruts, respectivement (\emph{p-values} : 9,3$.10^{-5}$ et 6,3$.10^{-9}$, respectivement). De fait, il est peu probable que l'apport du biais soit aussi significatif que pour la version standard de \emph{Hook}, à moins de développer un modèle d'estimation de la difficulté de sélection mieux adapté à \emph{BaggingHook}.
 	
-	\subsubsection{Zone d'élagage ajustable}
-	Cependant, nous avons aussi comptabilisé le nombre d'élagages opéré par chaque sujet, pour chaque sélection. Or, sur l'ensemble de nos sujets, nous observons une anti-corrélation marquée entre l'espérance de l'aire de l'enveloppe convexe associée à une combinaison VFA et le nombre d'élagages : -21,2~\%{} (\emph{p-value} : 2,6$.10^{-15}$). Si nous limitons notre étude aux sujets ayant fait un usage particulièrement intensif de l'élagage, ces valeurs atteignent -31,4~\%{} (\emph{p-value} : 5,3$.10^{-17}$). Selon nos observations et les retours de nos participants, ce résultat s'explique par le fait que, lorsque le mouvement est perçu comme \og vibratoire \fg{} ou \og brownien \fg{}, l'élagage est difficile car la cible reste dans une même zone, accompagnée de distracteurs qu'il est difficile d'éliminer. Or, ces mouvements sont préciséments associés à de petites enveloppes convexes.
+	\subsubsection{Mouvement brownien}
+	Cependant, nous avons aussi comptabilisé le nombre d'élagages opéré par chaque sujet, pour chaque sélection. Or, sur l'ensemble de nos sujets, nous observons une anti-corrélation marquée entre l'espérance de l'aire de l'enveloppe convexe associée à une combinaison VFA et le nombre d'élagages : -21,2~\%{} (\emph{p-value} : 2,6$.10^{-15}$). Si nous limitons notre étude aux sujets ayant fait un usage particulièrement intensif de l'élagage, ces valeurs atteignent -31,4~\%{} et 5,3$.10^{-17}$. Selon nos observations et les retours de nos participants, ce résultat s'explique par le fait que, lorsque le mouvement est perçu comme \og vibratoire \fg{} ou \og brownien \fg{}, l'élagage est difficile car la cible reste dans une même zone, accompagnée de distracteurs qu'il est difficile d'éliminer. Or, ces mouvements sont préciséments associés à de petites enveloppes convexes.
 	
-	Naturellement, il serait possible de réduire la taille de la zone d'élagage pour limiter ce problème, afin d'élager de manière plus agressive. Cependant, il devient alors plus probable que l'élagage \og échoue \fg{}, en excluant la cible visée de la liste des objets considérés par l'heuristique de prédiction. Nous proposons donc de réduire dynamiquement la taille de cette zone d'élagage quand, et seulement quand les objets non encore élagés ont, en moyenne, de petites enveloppes convexes. En effet, une cible vibratoire se déplace peu sur une fenêtre temporelle de l'ordre de la seconde, et a donc peu de chances d'échapper à la zone d'élagage.
+	\paragraph{Zone d'élagage ajustable.}
+	Naturellement, il serait possible de réduire la taille de la zone d'élagage pour limiter ce problème, afin d'élager de manière plus agressive. Cependant, quand cette zone est petite, il devient plus probable que l'élagage \og échoue \fg{}, en excluant la cible visée de la liste des objets considérés par l'heuristique de prédiction. Nous proposons donc de réduire dynamiquement la taille de cette zone d'élagage quand, et seulement quand les objets non encore élagés ont, en moyenne, de petites enveloppes convexes. En effet, une cible vibratoire se déplace peu sur une fenêtre temporelle de l'ordre de la seconde, et a donc peu de chances d'échapper à la zone d'élagage.
+	
+	\paragraph{Assistance pseudo-haptique.}
+	Comme nous l'avons vu dans la section~\ref{sub:fastHookBrown}, l'assistance pseudo-haptique a un effet particulièrement bénéfique lorsque les mouvements des cibles sont browniens. À la place ou en complément de l'ajustement de la taille de la zone d'élagage, il pourrait donc être avantageux d'ajouter à \emph{BaggingHook} une assistance pseudo-haptique, lui permettant de mieux gérer ce cas particulier, et probablement les autres, dans une moindre mesure.
 	
 	\subsection{Dilemme stratégique et charge cognitive}
 	Si nos participants sont unanimes quant à leur préférence de \emph{BaggingHook} par rapport aux autres variantes, eu égard à ses performances et son confort d'utilisation, ils sont nombreux à faire mention de ce que nous pouvons appeler un dilemme stratégique. En effet, le chevauchement de deux méthodes de sélection, par élagage des distracteurs et par poursuite de la cible, impose à l'utilisateur un certain effort cognitif. \og Faut-il se concentrer sur la poursuite ? Est-il préférable de faire quelques étapes d'élagage d'abord ? Faut-il tâcher de faire les deux en même temps, quitte à se concentrer un peu moins sur chaque tâche ? N'est-il pas vain, compte tenu des mouvements browniens de la cible actuelle et de ses voisines, de tenter un élagage de plus ? \fg{}. Ces questions se posent régulièrement lorsque l'on utilise \emph{BaggingHook} dans un contexte tel que celui de notre évaluation, et cette \og charge cognitive \fg{} n'est pas négligeable.
@@ -1235,8 +1305,15 @@
 	
 	Ces deux propositions ont toutefois un inconvénient commun : le risque d'exclure par erreur la cible visée par l'utilisateur. Bien sûr, il demeure possible de permettre à celui-ci de réinitialiser la liste des cibles potentielles, mais ces mauvaises prédictions pourraient constituer une source de frustration plus importantes que les élagages manuels erronés, ceux-ci pouvant être perçus par l'utilisateur comme imputables à sa propre maladresse plutôt qu'à un échec du système d'assistance à la sélection.
 	
+\section{Flexbibilité de \emph{Hook} et de ses dérivés}
+	Au cours du chapitre~\ref{chap1}, nous avons identifié un certain nombre de caractéristiques souhaitables pour une technique de sélection, eu égard aux besoins des contextes applicatifs étudiés. Nous observions notamment qu'il serait souhaitable de pouvoir paramétrer une technique pour l'orienté vers un extrême du spectre vitesse-précision ou l'autre, selon le contexte. Or, \emph{Hook} pourrait probablement permettre cela en ajustant le calcul des scores pour jouer sur \og l'inertie \fg{} : en favorisant une évolution rapide des scores, on favorise la vitesse, au détriment de la précision, puisqu'une cible accrochée peut être décrochée au profit d'un distracteur, et vice-versa. Il en va naturellement de même des dérivés \emph{SharpHook}, \emph{FastHook} et \emph{BaggingHook}.
+	
+	La question des interfaces tactiles est plus ouverte, puisque \emph{Hook} repose sur l'hypothèse de la présence permanente d'un curseur, tandis qu'une interface tactile s'en dispense totalement en général. Néanmoins, deux méthodes d'adaptation de cette technique à une interface tactile nous apparaissent. Il serait par exemple possible de considérer chaque tapotement de l'écran comme la création d'un curseur éphémère, lequel devient donc une entité discrète et non continue. Dès lors, il est possible d'appliquer le principe de \emph{Hook}, mais en ne mettant les scores à jour que lorsque le curseur fait une apparition, et probablement en modifiant la pondération des fonctions de \emph{scoring}. Une autre option consisterait à avoir un curseur continu, en faisant glisser continuellement son doigt sur l'écran tactile plutôt qu'en le tapotant. Dans ce dernier cas, l'utilisation d'un stylet pourrait être préférable, pour limiter l'occultation liée à l'appendice de pointage.
+	
+	\emph{Hook} repose fondamentalement sur un curseur ponctuel, quel que soit la façon dont celui-ci est mû. La technique peut donc tout à fait être utilisée avec une souris comme dans les études ci-dessus ou dans celle d'Ortega, avec un \emph{flystick} comme l'a également montré Ortega, mais il n'y a aucune incompatibilité manifeste avec d'autres dispositifs de pointage tels que les \emph{joysticks}, \emph{touchpads}, \emph{trackballs}, \emph{touchpoints}\ldots{} Il est même possible d'utiliser le lancer de rayon pour positionner un curseur pontuel sur un plan, contenant éventuellement une projection d'un environnement 3D. Pour une interaction réellement 3D, éventuellement avec un rendu stéréoscopique adaptatif ou un HMD, l'utilisation d'un lancer de rayon serait probablement mieux adaptée à une heuristique de type \emph{IntenSelect}~\cite{de2005intenselect}, éventuellement modifiée de manière analogue à ce que nous avons proposé et évalué ici pour \emph{Hook}.
+	
 		
-	\section{Limites de \emph{Hook} et de ses dérivés}
+\section{Limites de \emph{Hook} et de ses dérivés}
 	Certes, la technique \emph{Hook} fournit d'excellentes performances, et nos dérivés peuvent les améliorer encore. Certes, les principes sur lesquels \emph{SharpHook} et \emph{FastHook} reposent peuvent être combinés, et leur mise en œuvre peut être améliorée et calibrée avec plus grand soin. Certes, d'autres techniques, telles que celles évoquées dans la section~\ref{sub:vfaGuide} peuvent encore s'y ajouter. Néanmoins, dans le cadre de l'utilisation d'un dispositif de type CAVE avec un dispositif d'interaction à l'échelle 1, l'utilisation d'une technique de ce type impose à l'utilisateur de suivre la cible en bougeant son bras à une vitesse approximativement comparable. Si la cible se déplace sur plus de quelques dizaines de centimètres, il devient alors nécessaire de déplacer tout son corps à cette vitesse.
 	
 	Or, nous avons évalué \emph{FastHook} dans un contexte où des cibles d'environ 1~cm de diamètre se meuvent à environ 40~cm/s. Une simple règle de trois fournit un équivalent possible dans un grand environnement immersif : des cibles de 10~cm de diamètre se déplaçant à 4~m/s, soit près de 15~km/h. Il s'agit là d'un rythme de course à pied relativement soutenu, et il nous apparaît clair que se déplacer de manière continue à cette vitesse pour interagir avec des cibles, et en changeant constamment de direction de surcroît, serait extrêmement fatigant, et intolérable sur plus de quelques secondes. Aussi devons-nous rejeter \emph{Hook} et ses dérivés pour des applications aussi extrêmes.
@@ -1267,10 +1344,10 @@
 	
 	C'est justement ce que nous avons évalué dans la troisième partie de ce chapitre, avec 8 participants. Nous avons montré que ce biais permet d'améliorer légèrement --- mais significativement --- les temps de sélection et les taux d'erreurs, en comparant notre technique biaisée, que nous appelons \emph{SharpHook}, à la technique \emph{Hook}~\cite{ortega2013hook}.
 	
-	Dans la quatrième partie, nous avons évalué l'intérêt d'une assistance pseudo-haptique utilisée en conjonction avec \emph{Hook} dans sa version non biaisée. Nous avons observé que, selon la stratégie des utilisateurs, cette assistance peut avoir un effet bénéfique ou délétère. Nous appelons cette nouvelle technique \emph{FastHook}.
+	Dans la quatrième partie, nous avons évalué l'intérêt d'une assistance pseudo-haptique utilisée en conjonction avec \emph{Hook} dans sa version non biaisée. Nous avons observé que, selon la stratégie des utilisateurs, cette assistance peut avoir un effet bénéfique ou délétère, ou toujours bénéfique si les cibles sont browniennes. Nous appelons cette nouvelle technique \emph{FastHook}.
 	
-	Dans la cinquième partie, nous proposons et évaluons une nouvelle technique de sélection, fondée sur deux procédés : l'élagage des distracteurs et la prédiction intentionnelle de type \emph{Hook}. Nous montrons que ses performances sont très bonnes, et qu'elle réduit considérablement l'effort physique à fournir lorsque les cibles sont très vives et que le milieu est dense.
+	Dans la cinquième partie, nous proposons et évaluons une nouvelle technique de sélection, fondée sur deux procédés : l'élagage des distracteurs et la prédiction intentionnelle. Nous montrons que ses performances sont très bonnes, et qu'elle réduit considérablement l'effort physique à fournir lorsque les cibles sont très vives et que le milieu est dense.
 	
-	Nous signalons par ailleurs que l'usage de tels procédés est compatible avec les lissages et filtrages décrits dans la première partie. Nous proposons également une métrie paramétrable pour quantifier les performances de sélection en ajustant la pondération des temps de sélection et des erreurs.
+	Nous signalons par ailleurs que l'usage de tels procédés est compatible avec les lissages et filtrages décrits dans la première partie. Nous proposons également une métrique paramétrable pour quantifier les performances de sélection en ajustant la pondération des temps de sélection et des erreurs.
 	
 	Enfin, nous avons critiqué notre modèle de prédiction de la difficulté de sélection, et proposé une piste pour obtenir des résultats plus précis et plus fiables, afin de mieux contribuer aux performances de sélection, dans le cadre d'un paradigme combinant plusieurs procédés.
