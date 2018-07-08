@@ -9,7 +9,7 @@ f(x) = M*(1-N*(x - 0.5)**2)
 set xrange [0:1]
 set yrange [0:1.6]
 
-set xlabel "Aire normalisée"
+set xlabel "Espérance de l'aire de l'enveloppe convexe normalisée"
 set ylabel "Facteur de mise à l'échelle"
 
 plot f(x) lw 6
